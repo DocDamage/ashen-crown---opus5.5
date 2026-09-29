@@ -13,7 +13,7 @@
   "verification": {
     "runtime_tests": "godot --headless --path game -- --qa-tests (57 tests, all passing at last run)",
     "offline": ["python tools/compile_content.py", "python tools/check_reach.py (0 problems incl. strict arrival->exit pass)", "python tools/check_world.py"],
-    "routes": "b1 (New Game..CH01, save/reload) then chained segments seg2..seg8 + segq; each resumes the milestone written by the previous normal-input segment; logs in reports/evidence/chain/"
+    "routes": "b1 (New Game..CH01, save/reload) then chained segments seg2..seg8 + segq; each resumes the milestone written by the previous normal-input segment; logs in reports/evidence/final_chain/"
   },
   "known_open_items": [
     "Windows launch on the owner's machine (AC065) and human play review (AC068)",
