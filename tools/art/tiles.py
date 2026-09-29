@@ -1047,8 +1047,8 @@ def build_family(name):
             o["r"] = list(pos[s.key()]) + [s.w, s.h]
             if r["alts"]:
                 o["alt"] = [list(pos[a.key()]) + [a.w, a.h] for a in r["alts"]]
-            if r["tall"]:
-                o["tall"] = True
+            if r["tall"] or s.w > 16 or s.h > 16:
+                o["tall"] = True      # anything overhanging its cell is y-sorted (ground chunks have no margin)
             if r.get("inner") is not None:
                 i = r["inner"]
                 o["inner"] = list(pos[i.key()]) + [i.w, i.h]

@@ -35,8 +35,21 @@ var ext_rules: Dictionary = {}     # kind -> {type: tile|auto|wall|stamp, ...}
 var ext_group: Dictionary = {}     # kind -> autotile connection group
 var _kc: Dictionary = {}           # per-draw kind cache (Vector2i -> kind)
 var _ci: CanvasItem = null         # current draw target (self, or a cached ground layer)
-var ground_static: Node2D          # whole-map ground recorded once (re-recorded when conditional tiles change)
-var ground_anim: Node2D            # visible animated cells (water etc.), re-recorded on animation ticks
+# Library ground is recorded into 16x16-cell chunk nodes (culled off-screen): one static node per chunk plus three
+# animation-frame nodes that are only toggled. Re-recorded when the map or its conditional tiles change.
+const CHUNK := 16
+var ground_root: Node2D
+var chunk_static: Array = []
+var chunk_anim: Array = []         # [chunk][3]
+var _force_frame = -1
+var _dry = false                   # collect tall objects without drawing
+var _img: Image = null             # when set, cells are composited into this chunk image instead of drawn
+var _img_org = Vector2.ZERO
+var ext_img: Image = null
+var atlas_img: Image = null
+var _shadow_img: Image = null
+const CHUNK_M := 0                 # no margin: anything overhanging a cell is a y-sorted stamp
+var _chunk_fi = 0
 var ext_anim: Dictionary = {}
 var _static_talls: Array = []
 var _bake_sig = ""
@@ -97,14 +110,9 @@ func _ready() -> void:
 		tall_set[s] = true
 	objects_tex = _tex("res://assets/sprites/objects.png")
 	_ci = self
-	ground_static = Node2D.new()
-	ground_static.show_behind_parent = true
-	add_child(ground_static)
-	ground_static.draw.connect(_draw_static)
-	ground_anim = Node2D.new()
-	ground_anim.show_behind_parent = true
-	add_child(ground_anim)
-	ground_anim.draw.connect(_draw_anim)
+	ground_root = Node2D.new()
+	ground_root.show_behind_parent = true
+	add_child(ground_root)
 
 func _tex(path: String) -> Texture2D:
 	if tex_cache.has(path):
@@ -771,14 +779,19 @@ func _tile_kind_draw(x: int, y: int) -> String:
 	return k
 
 func _draw_tile_kind(k: String, x: int, y: int, pos: Vector2) -> void:
+	if _dry:
+		return
 	var row: int = kinds_row.get(k, -1)
 	if row < 0 or atlas == null:
-		_ci.draw_rect(Rect2(pos, Vector2(TS, TS)), Color8(20, 16, 28))
+		if _img != null:
+			_img.fill_rect(Rect2i(Vector2i(pos - _img_org), Vector2i(TS, TS)), Color8(20, 16, 28))
+		elif not _dry:
+			_ci.draw_rect(Rect2(pos, Vector2(TS, TS)), Color8(20, 16, 28))
 		return
 	var v = _variant(x, y)
 	if k in ["water", "deep", "shallow", "puddle", "wheel", "boat"]:
 		v = int(time * 2.0 + (x + y) * 0.0) % 2 if k != "boat" else 0
-	_ci.draw_texture_rect_region(atlas, Rect2(pos, Vector2(TS, TS)), Rect2(v * TS, row * TS, TS, TS))
+	_put(atlas, atlas_img, Rect2(v * TS, row * TS, TS, TS), pos)
 
 # ----------------------------------------------------------------------
 # Library tiles: RPG-Maker-style autotiles (A1/A2 32x48 blocks, A4 wall top + face) and plain/stamp tiles,
@@ -789,6 +802,10 @@ func _load_ext(ts: String) -> void:
 	ext_anim = {}
 	_static_talls = []
 	_bake_sig = ""
+	for c in ground_root.get_children():
+		c.queue_free()
+	chunk_static = []
+	chunk_anim = []
 	ext_tex = _tex("res://assets/tiles/%s_ext.png" % ts)
 	if ext_tex == null:
 		return
@@ -798,6 +815,8 @@ func _load_ext(ts: String) -> void:
 		return
 	var d = JSON.parse_string(f.get_as_text())
 	ext_rules = d.get("rules", {})
+	ext_img = _rgba(ext_tex)
+	atlas_img = _rgba(atlas)
 	for k in ext_rules:
 		ext_group[k] = ext_rules[k].get("g", k)
 	ext_anim = {}
@@ -812,11 +831,32 @@ func _load_ext(ts: String) -> void:
 			if kk == "" or kk == "@":
 				break
 	_bake_sig = ""
-	_anim_sig = ""
+	_anim_sig = "none"
+	for cy in range(ceili(H / float(CHUNK))):
+		for cx in range(ceili(W / float(CHUNK))):
+			var n = Node2D.new()
+			n.show_behind_parent = true
+			ground_root.add_child(n)
+			n.set_meta("c", Vector3i(cx, cy, -1))
+			n.draw.connect(_draw_chunk_tex.bind(n))
+			chunk_static.append(n)
+
 
 var _overs: Array = []            # active tileset_over entities for this draw
 
 ## kind_at() for drawing: same result, but conditions are evaluated once per frame instead of per call.
+func _rgba(t: Texture2D) -> Image:
+	if t == null:
+		return null
+	var im = t.get_image()
+	if im == null:
+		return null
+	if im.is_compressed():
+		im.decompress()
+	if im.get_format() != Image.FORMAT_RGBA8:
+		im.convert(Image.FORMAT_RGBA8)
+	return im
+
 func _kind_c(x: int, y: int) -> String:
 	var key = Vector2i(x, y)
 	if _kc.has(key):
@@ -840,7 +880,30 @@ func _hash(x: int, y: int) -> int:
 
 ## Draw one 16x16 cell from an A2-layout block (32x48 at `b`) given the 8 neighbour flags.
 ## face=true: a 32x32 block (A4 wall face) = the lower 2x2 part of an A2 block, no inner corners.
+## Drawing primitives: direct CanvasItem draw, or CPU compositing into the current chunk image.
+func _put(tex: Texture2D, img: Image, src: Rect2, dst: Vector2) -> void:
+	if _dry:
+		return
+	if _img != null:
+		if img != null:
+			_img.blend_rect(img, Rect2i(src), Vector2i(dst - _img_org))
+	else:
+		_ci.draw_texture_rect_region(tex, Rect2(dst, src.size), src)
+
+func _shade(r: Rect2) -> void:
+	if _dry:
+		return
+	if _img != null:
+		if _shadow_img == null:
+			_shadow_img = Image.create(6, TS, false, Image.FORMAT_RGBA8)
+			_shadow_img.fill(Color(0.05, 0.03, 0.12, 0.3))
+		_img.blend_rect(_shadow_img, Rect2i(0, 0, int(r.size.x), int(r.size.y)), Vector2i(r.position - _img_org))
+	else:
+		_ci.draw_rect(r, Color(0.05, 0.03, 0.12, 0.3))
+
 func _auto_cell(b: Vector2, n: bool, s: bool, w: bool, e: bool, nw: bool, ne: bool, sw: bool, se: bool, pos: Vector2, face: bool = false) -> void:
+	if _dry:
+		return
 	var q = [[0, 0], [1, 0], [0, 1], [1, 1]]
 	for i in range(4):
 		var qx = q[i][0]
@@ -870,12 +933,15 @@ func _auto_cell(b: Vector2, n: bool, s: bool, w: bool, e: bool, nw: bool, ne: bo
 			sx = 0 if qx == 0 else 3
 			sy = 2 if qy == 0 else 5
 		var src = b + Vector2(sx * 8, (sy - (2 if face else 0)) * 8)
-		_ci.draw_texture_rect_region(ext_tex, Rect2(pos + Vector2(qx * 8, qy * 8), Vector2(8, 8)), Rect2(src, Vector2(8, 8)))
+		_put(ext_tex, ext_img, Rect2(src, Vector2(8, 8)), pos + Vector2(qx * 8, qy * 8))
 
 func _frame_of(r: Dictionary, key: String) -> Vector2:
 	var fr: Array = r[key]
 	if fr.size() == 0:
 		return Vector2.ZERO
+	if _force_frame >= 0:
+		var fv = fr[mini(_force_frame, fr.size() - 1)]
+		return Vector2(fv[0], fv[1])
 	var i = 0
 	if r.has("fps") and fr.size() > 1:
 		var n = fr.size()
@@ -927,7 +993,7 @@ func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
 			var v = vs[idx]
 			if r.has("fps"):
 				v = r["t"][int(time * float(r["fps"])) % vs.size()]
-			_ci.draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)))
+			_put(ext_tex, ext_img, Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)), pos)
 		"auto":
 			var b = _frame_of(r, "b")
 			_auto_cell(b, _same(g, x, y - 1), _same(g, x, y + 1), _same(g, x - 1, y), _same(g, x + 1, y),
@@ -955,7 +1021,7 @@ func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
 			elif not _same(g, x, y + 1):
 				cy = 2
 			var v9 = t9[cy * 3 + cx]
-			_ci.draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v9[0], v9[1]), Vector2(TS, TS)))
+			_put(ext_tex, ext_img, Rect2(Vector2(v9[0], v9[1]), Vector2(TS, TS)), pos)
 		"hrow":
 			# one-row structure (house front, fence, counter): left end / middle / right end / single
 			var tl: Array = r["t"]
@@ -968,7 +1034,7 @@ func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
 				v = tl[0]
 			elif not l and not rr:
 				v = tl[3] if tl.size() > 3 else tl[1]
-			_ci.draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)))
+			_put(ext_tex, ext_img, Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)), pos)
 		"stamp":
 			var st: Array = r["r"]
 			if r.has("inner") and _same(g, x, y - 1):
@@ -984,12 +1050,12 @@ func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
 			if r.get("tall", false):
 				talls.append([y * TS + 15, "ext", rect, dpos])
 			else:
-				_ci.draw_texture_rect_region(ext_tex, Rect2(dpos, rect.size), rect)
+				_put(ext_tex, ext_img, rect, dpos)
 	if r["type"] != "stamp" and not r.get("casts", false):
 		# FF-style soft drop shadow cast onto the ground right of a wall/structure
 		var lk = _kind_c(x - 1, y)
 		if ext_rules.get(lk, {}).get("casts", false):
-			_ci.draw_rect(Rect2(pos, Vector2(6, TS)), Color(0.05, 0.03, 0.12, 0.3))
+			_shade(Rect2(pos, Vector2(6, TS)))
 	return true
 
 func _active_overs() -> Array:
@@ -999,47 +1065,105 @@ func _active_overs() -> Array:
 			out.append(e)
 	return out
 
-## Whole-map static ground (ext tilesets): recorded once per map/condition state; the layer is just moved by -cam.
-func _draw_static() -> void:
-	if map.is_empty() or ext_tex == null:
-		return
-	_ci = ground_static
+func _draw_chunk_tex(node: Node2D) -> void:
+	var frames: Array = node.get_meta("frames", [])
+	var t = frames[_chunk_fi] if frames.size() == 3 else node.get_meta("tex", null)
+	if t != null:
+		var c: Vector3i = node.get_meta("c")
+		node.draw_texture(t, Vector2(c.x * CHUNK * TS - CHUNK_M, c.y * CHUNK * TS - CHUNK_M))
+
+## Composite every chunk (static + 3 animation frames) into textures; called when the map or its conditional
+## tiles change. Each chunk is then a single quad per frame.
+func _rebuild_chunks() -> void:
+	chunk_anim = []
+	for n in chunk_static:
+		var c: Vector3i = n.get_meta("c")
+		var base: Image = _build_chunk(c.x, c.y, -1, null)
+		if base == null:
+			continue
+		var frames = []
+		for i in range(3):
+			var im: Image = _build_chunk(c.x, c.y, i, base)
+			if im == null:
+				break
+			frames.append(ImageTexture.create_from_image(im))
+		if frames.size() == 3:
+			n.set_meta("frames", frames)
+			chunk_anim.append(n)
+		else:
+			n.set_meta("frames", [])
+			n.set_meta("tex", ImageTexture.create_from_image(base))
+		n.queue_redraw()
+
+## One ground chunk image: static cells (frame < 0), or `base` plus the animated cells for one animation frame
+## (null when the chunk has no animated cells).
+func _build_chunk(cx: int, cy: int, frame: int, base: Image) -> Image:
+	if map.is_empty() or ext_tex == null or ext_img == null:
+		return null
+	var xa = cx * CHUNK
+	var ya = cy * CHUNK
+	var xb = mini(W, xa + CHUNK)
+	var yb = mini(H, ya + CHUNK)
+	if frame >= 0:
+		var any = false
+		for y in range(ya, yb):
+			for x in range(xa, xb):
+				if ext_anim.has(_kind_c(x, y)):
+					any = true
+					break
+			if any:
+				break
+		if not any:
+			return null
+	if base != null:
+		_img = base.duplicate()
+	else:
+		_img = Image.create(CHUNK * TS + CHUNK_M * 2, CHUNK * TS + CHUNK_M * 2, false, Image.FORMAT_RGBA8)
+	_img_org = Vector2(xa * TS - CHUNK_M, ya * TS - CHUNK_M)
+	_force_frame = frame
+	var dummy = []
+	if frame < 0:
+		var pad = TS * 2
+		var r0 = Vector2(xa * TS - (pad if xa == 0 else 0), ya * TS - (pad if ya == 0 else 0))
+		var r1 = Vector2(xb * TS + (pad if xb == W else 0), yb * TS + (pad if yb == H else 0))
+		_img.fill_rect(Rect2i(Vector2i(r0 - _img_org), Vector2i(r1 - r0)), Color8(12, 10, 18))
+	for y in range(ya, yb):
+		for x in range(xa, xb):
+			var k = _kind_c(x, y)
+			if frame < 0:
+				if not ext_anim.has(k):
+					_draw_cell_any(k, x, y, Vector2(x * TS, y * TS), dummy)
+			elif ext_anim.has(k):
+				_draw_ext(k, x, y, Vector2(x * TS, y * TS), dummy)
+	if frame < 0:
+		for e in map["entities"]:
+			if e["type"] == "block" and Game.eval_cond(e["cond"]):
+				for by in range(maxi(e["y1"], ya), mini(e["y2"] + 1, yb)):
+					for bx in range(maxi(e["x1"], xa), mini(e["x2"] + 1, xb)):
+						if not _draw_ext(e["tile"], bx, by, Vector2(bx * TS, by * TS), dummy):
+							_draw_tile_kind(e["tile"], bx, by, Vector2(bx * TS, by * TS))
+	var out = _img
+	_img = null
+	_force_frame = -1
+	return out
+
+## Tall objects standing on the static ground (y-sorted with actors every frame).
+func _collect_talls() -> void:
+	_dry = true
 	_kc = {}
 	_overs = _active_overs()
 	_static_talls = []
-	ground_static.draw_rect(Rect2(Vector2(-TS * 2, -TS * 2), Vector2(W * TS + TS * 4, H * TS + TS * 4)), Color8(12, 10, 18))
 	for y in range(H):
 		for x in range(W):
 			var k = _kind_c(x, y)
-			if ext_anim.has(k):
-				continue
-			_draw_cell_any(k, x, y, Vector2(x * TS, y * TS), _static_talls)
+			if not ext_anim.has(k):
+				_draw_cell_any(k, x, y, Vector2(x * TS, y * TS), _static_talls)
 	for e in map["entities"]:
 		if e["type"] == "block" and Game.eval_cond(e["cond"]):
 			for by in range(e["y1"], e["y2"] + 1):
 				for bx in range(e["x1"], e["x2"] + 1):
-					if not _draw_ext(e["tile"], bx, by, Vector2(bx * TS, by * TS), _static_talls):
-						_draw_tile_kind(e["tile"], bx, by, Vector2(bx * TS, by * TS))
-	_ci = self
-
-## Visible animated cells only (water, lava, sky), re-recorded when the animation frame or view origin changes.
-func _draw_anim() -> void:
-	if map.is_empty() or ext_tex == null or ext_anim.is_empty():
-		return
-	_ci = ground_anim
-	_kc = {}
-	_overs = _active_overs()
-	var x0 = maxi(0, int(cam.x / TS) - 1)
-	var y0 = maxi(0, int(cam.y / TS) - 1)
-	var x1 = mini(W - 1, int((cam.x + VIEW.x) / TS) + 2)
-	var y1 = mini(H - 1, int((cam.y + VIEW.y) / TS) + 3)
-	var dummy = []
-	for y in range(y0, y1 + 1):
-		for x in range(x0, x1 + 1):
-			var k = _kind_c(x, y)
-			if ext_anim.has(k):
-				_draw_ext(k, x, y, Vector2(x * TS, y * TS), dummy)
-	_ci = self
+					_draw_ext(e["tile"], bx, by, Vector2(bx * TS, by * TS), _static_talls)
+	_dry = false
 
 ## Library rule or generated fallback for one cell (fallback tall props go to talls).
 func _draw_cell_any(k: String, x: int, y: int, pos: Vector2, talls: Array) -> void:
@@ -1078,14 +1202,16 @@ func _draw() -> void:
 				sig += "%d," % e.get("x1", 0) + "%d;" % e.get("y1", 0)
 		if sig != _bake_sig:
 			_bake_sig = sig
-			ground_static.queue_redraw()
-		var tick = int(time * 3.0) if ext_anim.size() > 0 else 0
-		var asig = "%s|%d|%d|%d" % [sig, tick, int(cam.x / TS), int(cam.y / TS)]
-		if asig != _anim_sig:
-			_anim_sig = asig
-			ground_anim.queue_redraw()
-		ground_static.position = ox
-		ground_anim.position = ox
+			_kc = {}
+			_overs = _active_overs()
+			_rebuild_chunks()
+			_collect_talls()
+		var fi = [0, 1, 2, 1][int(time * 3.0) % 4]
+		ground_root.position = ox
+		if fi != _chunk_fi:
+			_chunk_fi = fi
+			for n in chunk_anim:
+				n.queue_redraw()
 		for t in _static_talls:
 			var tp: Vector2 = t[3] + ox
 			if tp.x > -64 and tp.x < VIEW.x + 64 and tp.y > -64 and tp.y < VIEW.y + 96:
