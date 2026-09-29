@@ -354,3 +354,313 @@ def sheet(f):
     for i, (pose, fr) in enumerate(POSES):
         img.paste(draw_world(f, "down", fr, pose).image(), (i * W, 4 * H))
     return img
+
+
+# =================================================================================================================
+# Library build (owner-licensed Time Fantasy art -> game/assets/ext/, git-ignored).
+# Heroes and most named NPCs are assembled from Time Fantasy *Elements* pieces (finalbossblues' layered character
+# kit: 48x48 frames, 23 columns x 4 directions S/W/E/N) and palette-remapped toward the character bible colours in
+# figures.py. Generic townsfolk roles use finalbossblues' NPC-animation frames (38x36) as drawn.
+# World sheet: 6 x 5 cells of CW x CH; rows down,left,right,up = idle + walk (TF 0,1,2,1); row 4 = six poses.
+# =================================================================================================================
+import colorsys as _cs
+from art.pix import lib_img as _lib_img, shade as _shade, hexc as _hexc
+
+EL = "characters/Elements Character Generator/"
+EL_ORDER = ["backextra", "backhair", "bottom", "top", "head", "frontextra", "hair", "hat", "weapon"]
+EL_ORDER_N = ["bottom", "top", "head", "frontextra", "hair", "backhair", "backextra", "hat", "weapon"]
+EL_DIR = {"down": 0, "left": 1, "right": 2, "up": 3}
+CW, CH = 32, 36                     # world cell; feet 2px above the cell bottom (= tile bottom)
+EL_BOX = (8, -3)                    # crop origin of a world cell inside a 48x48 Elements frame
+NA_BOX = (3, -2)                    # same for 38x36 NPC-animation frames
+
+# Source palette families (dark -> light) shared by all Elements pieces, with the index the target colour anchors to.
+FAM = {
+    "skin": (["73172d", "bb7547", "dba463", "f4d29c", "faf4d6"], 3),
+    "cloth": (["4e182a", "871247", "d21e3c", "fb6028"], 2),
+    "leather": (["49392d", "866037", "c59159"], 1),
+    "gold": (["f9d51a"], 0),
+    "white": (["bbc1f6", "ffffff"], 1),          # collars / capelets / tabards (top layer only)
+    "legs": (["20275b", "185cbf", "2c8cd8", "63c7ee"], 1),
+    "boots": (["4a2c1c", "a26320", "d69738"], 1),
+    "trim": (["9bd65c"], 0),
+    "hair": (["250809", "480e11", "a0480e", "f9a31b", "fffc40"], 3),
+    "backhair": (["5c1435", "b3356c", "e86abe", "fcb5f2"], 2),
+    "tie": (["313919", "4e6827", "66942e", "81c035"], 2),
+    "cape": (["2f2961", "8446b4", "c668d4", "f396e5"], 1),
+    "fx": (["2a356a", "3d61a9", "6493ce", "a6c3e3"], 2),
+    "hat": (["431216", "7d5338", "d5a038", "fee457", "fff9bd"], 2),
+    "hat2": (["143464", "596792", "a2abd0", "deebf0"], 1),
+    "eye": (["1a7a3e"], 0),
+}
+LAYER_ONLY = {"white": ("top",), "eye": ("head",)}
+
+
+def _lum(c):
+    return (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]) / 255.0
+
+
+def _ramp_map(fam, target, cols=None, ai=0):
+    """Map each source colour of a family onto target with the same relative light/dark offsets (cool shadows,
+    warm highlights via pix.shade)."""
+    if cols is None:
+        cols, ai = FAM[fam]
+    src = [_hexc(c) if isinstance(c, str) else tuple(c) + (255,) for c in cols]
+    la = _lum(src[ai])
+    lt = _lum(target)
+    out = {}
+    for s in src:
+        ls = _lum(s)
+        if ls >= la:
+            f = (0.2 if fam in ("hair", "backhair") else 0.75) * (ls - la) / max(1e-3, 1.0 - la)
+        else:
+            f = (ls - la) / max(1e-3, la) * (0.85 if lt > 0.25 else 0.6)
+        out[s[:3]] = _shade(target, max(-0.85, min(0.8, f)))[:3]
+    return out
+
+
+def el_layer(t, name, colours):
+    """One Elements piece, palette-remapped. colours: family -> target RGBA (families absent are left as drawn)."""
+    rel = EL + ("core/" if (t, name) in (("bottom", "bottom0"), ("top", "top0")) else "assets/") + f"{t}/{name}.png"
+    img = _lib_img(rel).copy()
+    lut = {}
+    for fam, tgt in colours.items():
+        base = fam.split("@")[0]
+        if base not in FAM:
+            continue
+        if base in LAYER_ONLY and t not in LAYER_ONLY[base]:
+            continue
+        if "@" in fam and fam.split("@")[1] != t:
+            continue
+        lut.update(_ramp_map(base, tgt))
+    if lut:
+        px = img.load()
+        for y in range(img.height):
+            for x in range(img.width):
+                p = px[x, y]
+                if p[3] and p[:3] in lut:
+                    px[x, y] = lut[p[:3]] + (p[3],)
+    return img, rel
+
+
+def el_compose(spec, weapon=False):
+    """Full 1104x192 Elements sheet for a spec -> (image, [library sources]). North row uses the north layer order."""
+    from PIL import Image
+    layers = {}
+    srcs = []
+    for t, n in spec["parts"].items():
+        if t == "weapon" and not weapon:
+            continue
+        layers[t], rel = el_layer(t, n, spec.get("colours", {}))
+        srcs.append(rel)
+    out = Image.new("RGBA", (1104, 192), (0, 0, 0, 0))
+    for r in range(4):
+        order = EL_ORDER_N if r == 3 else EL_ORDER
+        band = Image.new("RGBA", (1104, 48), (0, 0, 0, 0))
+        for t in order:
+            if t in layers:
+                band.alpha_composite(layers[t].crop((0, r * 48, 1104, r * 48 + 48)))
+        out.paste(band, (0, r * 48))
+    return out, srcs
+
+
+def el_frame(sheet, direction, col):
+    r = EL_DIR[direction] if isinstance(direction, str) else direction
+    return sheet.crop((col * 48, r * 48, col * 48 + 48, r * 48 + 48))
+
+
+def _c(h):
+    return _hexc(h) if isinstance(h, str) else h
+
+
+def _spec(parts, **colours):
+    return {"parts": parts, "colours": {k.replace("__", "@"): _c(v) for k, v in colours.items()}}
+
+
+def hero_specs():
+    from art.figures import FIG
+    f = FIG
+    return _with_eyes({
+        # Dain: snouted head + tail recoloured to crimson scales, charcoal plate over red straps
+        "C01": _spec(dict(head="head20", top="top11", bottom="bottom8", backextra="tail1", weapon="sword1"),
+                     skin=f["C01"]["skin"], cape=f["C01"]["skin"], cloth=f["C01"]["top"], leather=f["C01"]["accent"],
+                     legs=f["C01"]["legs"], boots="4a3a3a"),
+        # Tessa: short dark bob, cobalt long coat, amber spectacles
+        "C02": _spec(dict(head="head1", hair="hair11", top="top4", bottom="bottom1", frontextra="frontextra8"),
+                     skin=f["C02"]["skin"], hair=f["C02"]["hair"], cloth=f["C02"]["top"], legs=f["C02"]["legs"],
+                     boots=f["C02"]["boots"], fx=f["C02"]["goggles"], eye="5a3a2a"),
+        # Corren: messy brown hair, teal breastplate + ochre scarf (capelet recoloured), leather harness
+        "C03": _spec(dict(head="head1", hair="hair4", top="top10", bottom="bottom2", weapon="spear1"),
+                     skin=f["C03"]["skin"], hair=f["C03"]["hair"], cloth=f["C03"]["top"], white=f["C03"]["scarf"],
+                     leather=f["C03"]["harness"], legs=f["C03"]["legs"], boots=f["C03"]["boots"], trim=f["C03"]["scarf"]),
+        # Ivo: grey curls + beard, cream shirt with rolled sleeves under a dark apron-vest, copper rig belt
+        "C04": _spec(dict(head="head1", hair="hair25", frontextra="frontextra1", top="top5", bottom="bottom3", weapon="hammer"),
+                     skin=f["C04"]["skin"], hair=f["C04"]["hair"], fx=f["C04"]["beard"], cloth=f["C04"]["top"],
+                     leather=f["C04"]["apron"], legs=f["C04"]["legs"], boots=f["C04"]["boots"], white=f["C04"]["rig"]),
+        # Nera: long dark braid, moss cape, khaki tunic
+        "C05": _spec(dict(head="head1", hair="hair5", backhair="backhair4", top="top2", bottom="bottom6",
+                          backextra="backextra1", weapon="bow1arrow1"),
+                     skin=f["C05"]["skin"], hair=f["C05"]["hair"], backhair=f["C05"]["hair"], tie=f["C05"]["maptube"],
+                     cloth=f["C05"]["top"], cape=f["C05"]["cape"], legs=f["C05"]["legs"], boots=f["C05"]["boots"],
+                     trim=f["C05"]["maptube"]),
+        # Oriel: cropped silver hair, plum robe + skirt, ivory stole (gold trim -> brass)
+        "C06": _spec(dict(head="head1", hair="hair7", top="top8", bottom="bottom5"),
+                     skin=f["C06"]["skin"], hair=f["C06"]["hair"], cloth=f["C06"]["top"], leather=f["C06"]["stole"],
+                     gold=f["C06"]["bell"], legs=f["C06"]["legs"], trim=f["C06"]["stole"], boots=f["C06"]["boots"]),
+        # Sable: black hair tied back with a white tie, black-violet long coat
+        "C07": _spec(dict(head="head1", hair="hair5", backhair="backhair5", top="top4", bottom="bottom1", weapon="sword4"),
+                     skin=f["C07"]["skin"], hair=f["C07"]["hair"], backhair=f["C07"]["hair"], tie="eeeef4",
+                     cloth=f["C07"]["top"], legs=f["C07"]["legs"], boots="2a2230", eye=f["C07"]["eye"]),
+        # Pip: short brown curls, cream shirt + rust waistcoat, green sash
+        "C08": _spec(dict(head="head1", hair="hair6", top="top5", bottom="bottom2", weapon="daggers"),
+                     skin=f["C08"]["skin"], hair=f["C08"]["hair"], cloth=f["C08"]["top"], leather=f["C08"]["waistcoat"],
+                     legs=f["C08"]["legs"], boots=f["C08"]["boots"], trim=f["C08"]["sash"]),
+    }, f)
+
+
+def _with_eyes(specs, figs):
+    for k, sp in specs.items():
+        sp["colours"].setdefault("eye", figs[k].get("eye", _hexc("2a1a10")))
+    return specs
+
+
+def npc_specs():
+    from art.figures import NPCS as N
+    def s(k, parts, **kw):
+        n = N[k]
+        base = dict(skin=n["skin"], hair=n["hair"], backhair=n["hair"], cloth=n["top"], legs=n["legs"], boots="3a2a24", eye=n["eye"])
+        base.update(kw)
+        return _spec(parts, **base)
+    return {
+        "mara": s("mara", dict(head="head1", hair="hair5", backhair="backhair2", top="top7", bottom="bottom5"), leather=N["mara"]["apron"], white="e8e0d0"),
+        "inspector": s("inspector", dict(head="head7", hair="hair5", top="top3", bottom="bottom1", hat="hat11"), hat2=N["inspector"]["hat"], leather="3a3440"),
+        "rook": s("rook", dict(head="head1", hair="hair4", frontextra="frontextra8", top="top4", bottom="bottom1"), fx="5a5a60"),
+        "voss": s("voss", dict(head="head7", hair="hair3", top="top12", bottom="bottom8", backextra="backextra1"), white=N["voss"]["gauntlet"], cape=N["voss"]["cape"], leather="3a2a2a"),
+        "pell": s("pell", dict(head="head1", hair="hair1", top="top7", bottom="bottom2"), leather=N["pell"]["apron"], white="d0d0c8"),
+        "jori": s("jori", dict(head="head2", hair="hair6", frontextra="frontextra8", top="top1", bottom="bottom3"), fx="6a6a70", leather="5a4a3a"),
+        "edda": s("edda", dict(head="head4", hair="hair5", backhair="backhair5", top="top10", bottom="bottom2"), white=N["edda"]["scarf"], tie=N["edda"]["scarf"]),
+        "sen": s("sen", dict(head="head4", hair="hair22", backhair="backhair9", top="top8", bottom="bottom5"), leather="e8e0f0", gold="c0a0e0"),
+        "ansel": s("ansel", dict(head="head5", hair="hair3", top="top1", bottom="bottom1"), leather="4a4450"),
+        "ilyr": s("ilyr", dict(head="head20", hair="hair4", top="top2", bottom="bottom3", backextra="tail2"), cape=N["ilyr"]["skin"]),
+        "worker": s("worker", dict(head="head2", top="top9", bottom="bottom3", hat="hat12"), leather="6a5a44"),
+        "clerk": s("clerk", dict(head="head6", hair="hair5", top="top1", bottom="bottom1"), leather="3a3a44"),
+        "keeper": s("keeper", dict(head="head1", hair="hair1", top="top7", bottom="bottom2"), leather=N["keeper"]["apron"]),
+        "sailor": s("sailor", dict(head="head2", hair="hair3", top="top25", bottom="bottom1", hat="hat11"), hat2=N["sailor"]["hat"]),
+        "volunteer": s("volunteer", dict(head="head20", hair="hair22", top="top9", bottom="bottom2", backextra="tail1"), cape=N["volunteer"]["skin"]),
+        "survivor": s("survivor", dict(head="head3", hair="hair7", top="top2", bottom="bottom3")),
+        "apprentice": s("apprentice", dict(head="head4", hair="hair10", top="top4", bottom="bottom1")),
+        "patient": s("patient", dict(head="head4", hair="hair22", backhair="backhair1", top="top8", bottom="bottom5"), leather="c8c0b0", gold="c8c0b0"),
+        "scholar": s("scholar", dict(head="head4", hair="hair22", backhair="backhair2", frontextra="frontextra8", top="top8", bottom="bottom5"), fx="8a8a90", leather="3a2a3a"),
+        "pilot": s("pilot", dict(head="head2", hair="hair3", frontextra="frontextra3", top="top10", bottom="bottom8"), white=N["pilot"]["scarf"], fx="a07a3a"),
+        "soldier": s("soldier", dict(head="head1", top="top11", bottom="bottom8", hat="hat6"), hat="8a8a94", leather="4a3a2a"),
+        "noble": s("noble", dict(head="head4", hair="hair22", backhair="backhair10", top="top27", bottom="bottom5"), gold="e0c060"),
+    }
+
+
+# NPC-animation (finalbossblues) characters used as drawn, for generic roles.
+NA = "finalbossblues/npc-animations/individual_frames/"
+NPC_ANIM = {"child": ("children", "child1"), "elder": ("elders", "elder2"), "guard": ("knights", "knight1"),
+            "farmer": ("farmer", "farmer1"), "baker": ("household", "chef"), "monk": ("townsfolk", "folk3")}
+
+WORLD_POSES = [("down", 4), ("down", 6), ("down", 0), ("down", 5), ("down", 1), ("down", 6)]   # Elements cols
+
+
+def el_world_sheet(full):
+    from PIL import Image
+    img = Image.new("RGBA", (CW * 6, CH * 5), (0, 0, 0, 0))
+    ox, oy = EL_BOX
+    def cell(fr):
+        return fr.crop((ox, oy, ox + CW, oy + CH))
+    for r, d in enumerate(["down", "left", "right", "up"]):
+        for i, col in enumerate([1, 0, 1, 2, 1]):
+            img.paste(cell(el_frame(full, d, col)), (i * CW, r * CH))
+    for i, (d, col) in enumerate(WORLD_POSES):
+        img.paste(cell(el_frame(full, d, col)), (i * CW, 4 * CH))
+    return img
+
+
+def na_world_sheet(folder, name):
+    from PIL import Image
+    img = Image.new("RGBA", (CW * 6, CH * 5), (0, 0, 0, 0))
+    ox, oy = NA_BOX
+    srcs = []
+    def fr(d, k):
+        rel = f"{NA}{folder}/{name}_{d} ({k}).png"
+        srcs.append(rel)
+        return _lib_img(rel).crop((ox, oy, ox + CW, oy + CH))
+    for r, d in enumerate(["down", "left", "right", "up"]):
+        for i, k in enumerate([2, 1, 2, 3, 2]):
+            img.paste(fr(d, k), (i * CW, r * CH))
+    for i, (d, k) in enumerate([("down", 1), ("down", 3), ("left", 2), ("right", 2), ("down", 2), ("up", 2)]):
+        img.paste(fr(d, k), (i * CW, 4 * CH))
+    return img, srcs
+
+
+# Dain: Time Fantasy Beast Tribes lizard hero (walk + emote sheets and matching MV side-view battler), recoloured
+# from green scales / grey plate / brown cape to crimson scales / charcoal plate / dark-red cloth.
+DAIN_SRC = {"walk": "finalbossblues/100/beast_hero_3.png", "emote": "finalbossblues/100/beast_hero_3_emote.png",
+            "sv": "finalbossblues/100/sv_battler/beast_hero_3_sv.png"}
+TF_OUTLINE = (53, 64, 72)
+
+
+def dain_lut():
+    from art.figures import FIG
+    f = FIG["C01"]
+    lut = {}
+    lut.update(_ramp_map(None, f["skin"], ["2f4d41", "2f7132", "4aa10d", "89bc1e"], 2))
+    lut.update(_ramp_map(None, f["top"], ["484562", "485369", "748c7d", "aec3be"], 2))
+    lut.update(_ramp_map(None, f["accent"], ["6c3c4a", "7d5643", "9b6b53", "bf8264"], 2))
+    return lut
+
+
+def tf_recolour(img, lut, strip_shadow=True, feet=None):
+    """Apply a colour LUT; optionally drop Time Fantasy's baked ground shadow (outline-coloured pixels below the
+    feet row of each frame: `feet` = (frame_h, feet_row))."""
+    img = img.copy()
+    px = img.load()
+    for y in range(img.height):
+        for x in range(img.width):
+            p = px[x, y]
+            if p[3] and p[:3] in lut:
+                px[x, y] = lut[p[:3]] + (p[3],)
+    if strip_shadow and feet:
+        fh, fr = feet
+        for y in range(img.height):
+            if y % fh <= fr:
+                continue
+            for x in range(img.width):
+                p = px[x, y]
+                if p[3] and p[:3] == TF_OUTLINE:
+                    above = px[x, y - 1]
+                    if not (y % fh == fr + 1 and above[3] and above[:3] != TF_OUTLINE):
+                        px[x, y] = (0, 0, 0, 0)
+    return img
+
+
+def dain_world_sheet():
+    from PIL import Image
+    walk = tf_recolour(_lib_img(DAIN_SRC["walk"]), dain_lut(), feet=(36, 32))
+    emo = tf_recolour(_lib_img(DAIN_SRC["emote"]), dain_lut(), feet=(36, 32))
+    img = Image.new("RGBA", (CW * 6, CH * 5), (0, 0, 0, 0))
+    ox, oy = (CW - 26) // 2, 1                     # TF feet row 32 -> cell row 33, like the Elements cells
+    for r in range(4):
+        for i, k in enumerate([1, 0, 1, 2, 1]):
+            img.paste(walk.crop((k * 26, r * 36, k * 26 + 26, r * 36 + 36)), (i * CW + ox, r * CH + oy))
+    for i, (r, k) in enumerate([(3, 0), (1, 1), (0, 0), (3, 1), (0, 1), (1, 2)]):
+        img.paste(emo.crop((k * 26, r * 36, k * 26 + 26, r * 36 + 36)), (i * CW + ox, 4 * CH + oy))
+    return img, [DAIN_SRC["walk"], DAIN_SRC["emote"]]
+
+
+def build_library(save_ext):
+    note = f"{CW}x{CH}; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses"
+    img, srcs = dain_world_sheet()
+    save_ext(img, "sprites/world/C01.png", "world_sprite", srcs, note, "TF Beast Tribes lizard hero, recoloured")
+    for cid, spec in list(hero_specs().items()) + list(npc_specs().items()):
+        if cid == "C01":
+            continue
+        full, srcs = el_compose(spec)
+        save_ext(el_world_sheet(full), f"sprites/world/{cid}.png", "world_sprite", srcs, note,
+                 "Time Fantasy Elements pieces, palette-remapped to docs/03 colours")
+    for cid, (folder, name) in NPC_ANIM.items():
+        img, srcs = na_world_sheet(folder, name)
+        save_ext(img, f"sprites/world/{cid}.png", "world_sprite", srcs, note, "Time Fantasy NPC animations")

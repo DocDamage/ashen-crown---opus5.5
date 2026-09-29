@@ -182,6 +182,11 @@ LIB_ROOT = _os.environ.get("ASHEN_LIB", "/home/claude/lib/root")
 LICENSES = {
     "finalbossblues": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, "
                       "raw files not redistributed; credit finalbossblues",
+    # Only characters/Elements Character Generator (+ elements character expansion) is used from this folder:
+    # Time Fantasy "Elements" character kit by Jason Perry (finalbossblues); its guide covers use in your own game
+    # engine. Other packs in characters/ (e.g. the non-commercial Mystic Woods files) are NOT used.
+    "characters": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in "
+                  "games in any engine allowed, raw files not redistributed; credit finalbossblues",
 }
 
 

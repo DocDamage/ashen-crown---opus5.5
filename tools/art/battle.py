@@ -264,3 +264,66 @@ def sheet(f):
 def build(save):
     for cid, f in FIG.items():
         save(sheet(f), f"sprites/battle/{cid}.png", "battle_sprite", "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4")
+
+
+# =================================================================================================================
+# Library build: same 27-frame 48x64 layout (see module docstring), facing left, feet on row 62.
+# Heroes C02-C08: frames taken from the recoloured Time Fantasy Elements sheet (west row) built for the world sprite.
+# Dain (C01): the matching Beast Tribes lizard MV side-view battler, recoloured the same way as his world sprite.
+# =================================================================================================================
+def _el_battle(spec, bow=False):
+    from art import world_sprites as ws
+    plain, srcs = ws.el_compose(spec)
+    armed, srcs2 = ws.el_compose(spec, weapon=True)
+    atk = [15, 16, 17, 18, 17] if bow else [10, 11, 12, 13, 14]
+    seq = ([(plain, 1, 1, 0)] * 4 +
+           [(armed, 1, c, 0) for c in atk] + [(plain, 1, 1, 0)] +
+           [(plain, 1, c, 0) for c in (3, 4, 5, 5)] +
+           [(plain, 1, 6, 2), (plain, 1, 6, 4)] +
+           [(plain, 1, 15, 0), (plain, 1, 15, 1)] +
+           [(plain, 0, c, 0) for c in (3, 4, 5, 4)] +
+           [(plain, 1, 22, "ko")] +
+           [(plain, 1, c, 0) for c in (0, 1, 2, 1)])
+    img = Image.new("RGBA", (W * 27, H), (0, 0, 0, 0))
+    for i, (sh, r, c, dx) in enumerate(seq):
+        fr = sh.crop((c * 48, r * 48, c * 48 + 48, r * 48 + 48))
+        oy = 29 if dx == "ko" else 32
+        img.paste(fr, (i * W + (0 if dx == "ko" else dx), oy), fr)
+    return img, sorted(set(srcs + srcs2))
+
+
+SV_MOTION = {"walk": 0, "wait": 1, "chant": 2, "guard": 3, "damage": 4, "evade": 5, "thrust": 6, "swing": 7,
+             "missile": 8, "skill": 9, "spell": 10, "item": 11, "escape": 12, "victory": 13, "dying": 14,
+             "abnormal": 15, "sleep": 16, "dead": 17}
+
+
+def _sv_battle(sv_img):
+    """MV side-view battler (9x6 of 48x48; motion m in column-group m//6, row m%6) -> 27-frame sheet."""
+    def f(m, k):
+        n = SV_MOTION[m]
+        x, y = ((n // 6) * 3 + k) * 48, (n % 6) * 48
+        return sv_img.crop((x, y, x + 48, y + 48))
+    seq = ([f("walk", k) for k in (1, 1, 1, 1)] +
+           [f("swing", k) for k in (0, 1, 2)] + [f("swing", 2), f("swing", 2), f("walk", 1)] +
+           [f("chant", 0), f("chant", 1), f("spell", 1), f("spell", 2)] +
+           [f("damage", 0), f("damage", 1)] + [f("guard", 0), f("guard", 1)] +
+           [f("victory", k) for k in (0, 1, 2, 1)] + [f("dead", 0)] +
+           [f("walk", k) for k in (0, 1, 2, 1)])
+    img = Image.new("RGBA", (W * 27, H), (0, 0, 0, 0))
+    for i, fr in enumerate(seq):
+        img.paste(fr, (i * W, 20), fr)
+    return img
+
+
+def build_library(save_ext):
+    from art import world_sprites as ws
+    frames = "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)"
+    sv = ws.tf_recolour(ws._lib_img(ws.DAIN_SRC["sv"]), ws.dain_lut(), feet=(48, 42))
+    save_ext(_sv_battle(sv), "sprites/battle/C01.png", "battle_sprite", [ws.DAIN_SRC["sv"]], frames,
+             "TF Beast Tribes lizard side-view battler, recoloured")
+    for cid, spec in ws.hero_specs().items():
+        if cid == "C01":
+            continue
+        img, srcs = _el_battle(spec, bow=spec["parts"].get("weapon", "").startswith("bow"))
+        save_ext(img, f"sprites/battle/{cid}.png", "battle_sprite", srcs, frames,
+                 "Time Fantasy Elements west-facing frames, recoloured")
