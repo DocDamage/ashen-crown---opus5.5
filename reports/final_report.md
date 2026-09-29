@@ -1,6 +1,6 @@
 # The Ashen Crown — build report
 
-Revision: git `7428b37` (local repository; nothing pushed). Content build `e528220ab0ff6194`.
+Revision: git `6177d07` (Phase 2; nothing pushed). Content build `4ba609eefb875f89`.
 Engine: Godot 4.7.2-stable (`4.7.2.stable.official.ed1daf0bf`), Compatibility renderer, 320x240 internal.
 
 ## What exists
@@ -13,13 +13,13 @@ Engine: Godot 4.7.2-stable (`4.7.2.stable.official.ed1daf0bf`), Compatibility re
 - **Editable source**: `game/` (Godot project), `content_src/` (maps + scenes), `tools/` (content compiler, map
   scripts, art/audio/font generators, reachability/world audits, packaging, chain runner), `docs/` (design package).
 - **Windows build**: `AshenCrown.exe` (single file, data embedded), exported from a clean `git archive` of the
-  revision (not from the working tree). SHA-256 `df9d11283a76138f9d27bbeccece66eadb5bd03699552c7232c9b80e0c8a6aae`.
+  revision (not from the working tree). SHA-256 `c266a3286bd0377fea20bf8de78cfa2ed4e203e8bddce8ac8694417f4cbe42c8`.
 
 ## Evidence (all produced by this revision unless marked)
 
 | What | Result | Where |
 | --- | --- | --- |
-| Runtime tests (in engine) | 57 passed, 0 failed | `reports/evidence/tests/runtime_tests_final.txt` |
+| Runtime tests (in engine) | 64 passed, 0 failed (Phase 2) | `reports/evidence/tests/runtime_tests_final.txt` |
 | Content compile, strict refs, font-glyph coverage | OK | `reports/evidence/release/compile.txt` |
 | Reachability (every entity; every arrival spawn reaches every exit) | 0 problems | `reports/evidence/release/check_reach.txt` |
 | World audit (landings have ground; every post location reachable) | OK | `reports/evidence/release/check_world.txt` |

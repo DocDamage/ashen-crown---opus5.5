@@ -17,7 +17,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
 [92m[ DONE ][39m [1mfirst_scan_filesystem[22m
 [0m
-[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (31 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (32 steps)[39m[0m
 [   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
 [   3% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
 [   6% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
@@ -26,22 +26,23 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  15% ] [90m[1mupdate_scripts_classes[22m | BattleScene[39m[0m
 [  18% ] [90m[1mupdate_scripts_classes[22m | BattleModel[39m[0m
 [  21% ] [90m[1mupdate_scripts_classes[22m | F[39m[0m
-[  25% ] [90m[1mupdate_scripts_classes[22m | Rng[39m[0m
-[  28% ] [90m[1mupdate_scripts_classes[22m | Field[39m[0m
-[  31% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
-[  34% ] [90m[1mupdate_scripts_classes[22m | Director[39m[0m
-[  37% ] [90m[1mupdate_scripts_classes[22m | CreditsView[39m[0m
-[  40% ] [90m[1mupdate_scripts_classes[22m | DialogueBox[39m[0m
-[  43% ] [90m[1mupdate_scripts_classes[22m | DocView[39m[0m
-[  46% ] [90m[1mupdate_scripts_classes[22m | GameMenu[39m[0m
-[  50% ] [90m[1mupdate_scripts_classes[22m | MenuList[39m[0m
-[  53% ] [90m[1mupdate_scripts_classes[22m | Router[39m[0m
-[  56% ] [90m[1mupdate_scripts_classes[22m | TitleScreen[39m[0m
-[  59% ] [90m[1mupdate_scripts_classes[22m | UI[39m[0m
-[  62% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
-[  65% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
-[  68% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
-[  71% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  24% ] [90m[1mupdate_scripts_classes[22m | Rng[39m[0m
+[  27% ] [90m[1mupdate_scripts_classes[22m | Field[39m[0m
+[  30% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | Director[39m[0m
+[  36% ] [90m[1mupdate_scripts_classes[22m | CreditsView[39m[0m
+[  39% ] [90m[1mupdate_scripts_classes[22m | DialogueBox[39m[0m
+[  42% ] [90m[1mupdate_scripts_classes[22m | DocView[39m[0m
+[  45% ] [90m[1mupdate_scripts_classes[22m | GameMenu[39m[0m
+[  48% ] [90m[1mupdate_scripts_classes[22m | MenuList[39m[0m
+[  51% ] [90m[1mupdate_scripts_classes[22m | Router[39m[0m
+[  54% ] [90m[1mupdate_scripts_classes[22m | TitleScreen[39m[0m
+[  57% ] [90m[1mupdate_scripts_classes[22m | UI[39m[0m
+[  60% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  63% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  66% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  69% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  72% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
 [  75% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
 [  78% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
 [  81% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
@@ -51,7 +52,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  93% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
 [92m[ DONE ][39m [1mupdate_scripts_classes[22m
 [0m
-[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (427 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (429 steps)[39m[0m
 [   0% ] [90m[1m_update_scan_actions[22m | M001.ogg[39m[0m
 [   0% ] [90m[1m_update_scan_actions[22m | M002.ogg[39m[0m
 [   0% ] [90m[1m_update_scan_actions[22m | M003.ogg[39m[0m
@@ -82,7 +83,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [   6% ] [90m[1m_update_scan_actions[22m | M028.ogg[39m[0m
 [   6% ] [90m[1m_update_scan_actions[22m | M029.ogg[39m[0m
 [   6% ] [90m[1m_update_scan_actions[22m | M030.ogg[39m[0m
-[   7% ] [90m[1m_update_scan_actions[22m | FX001.wav[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | FX001.wav[39m[0m
 [   7% ] [90m[1m_update_scan_actions[22m | FX002.wav[39m[0m
 [   7% ] [90m[1m_update_scan_actions[22m | FX003.wav[39m[0m
 [   7% ] [90m[1m_update_scan_actions[22m | FX004.wav[39m[0m
@@ -112,7 +113,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  13% ] [90m[1m_update_scan_actions[22m | FX028.wav[39m[0m
 [  13% ] [90m[1m_update_scan_actions[22m | FX029.wav[39m[0m
 [  13% ] [90m[1m_update_scan_actions[22m | FX030.wav[39m[0m
-[  14% ] [90m[1m_update_scan_actions[22m | FX031.wav[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | FX031.wav[39m[0m
 [  14% ] [90m[1m_update_scan_actions[22m | FX032.wav[39m[0m
 [  14% ] [90m[1m_update_scan_actions[22m | C01.png[39m[0m
 [  14% ] [90m[1m_update_scan_actions[22m | C02.png[39m[0m
@@ -125,7 +126,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  16% ] [90m[1m_update_scan_actions[22m | archive.png[39m[0m
 [  16% ] [90m[1m_update_scan_actions[22m | conduit.png[39m[0m
 [  16% ] [90m[1m_update_scan_actions[22m | crown.png[39m[0m
-[  17% ] [90m[1m_update_scan_actions[22m | crown_core.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | crown_core.png[39m[0m
 [  17% ] [90m[1m_update_scan_actions[22m | dais.png[39m[0m
 [  17% ] [90m[1m_update_scan_actions[22m | field_post.png[39m[0m
 [  17% ] [90m[1m_update_scan_actions[22m | field_r01.png[39m[0m
@@ -142,7 +143,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  20% ] [90m[1m_update_scan_actions[22m | underways.png[39m[0m
 [  20% ] [90m[1m_update_scan_actions[22m | vault.png[39m[0m
 [  20% ] [90m[1m_update_scan_actions[22m | whitebone.png[39m[0m
-[  21% ] [90m[1m_update_scan_actions[22m | winter.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | winter.png[39m[0m
 [  21% ] [90m[1m_update_scan_actions[22m | B06.png[39m[0m
 [  21% ] [90m[1m_update_scan_actions[22m | B13.png[39m[0m
 [  21% ] [90m[1m_update_scan_actions[22m | E001.png[39m[0m
@@ -155,11 +156,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  23% ] [90m[1m_update_scan_actions[22m | E015.png[39m[0m
 [  23% ] [90m[1m_update_scan_actions[22m | E017.png[39m[0m
 [  23% ] [90m[1m_update_scan_actions[22m | E018.png[39m[0m
-[  24% ] [90m[1m_update_scan_actions[22m | E020.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | E020.png[39m[0m
 [  24% ] [90m[1m_update_scan_actions[22m | E021.png[39m[0m
 [  24% ] [90m[1m_update_scan_actions[22m | E022.png[39m[0m
 [  24% ] [90m[1m_update_scan_actions[22m | E023.png[39m[0m
-[  25% ] [90m[1m_update_scan_actions[22m | E024.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | E024.png[39m[0m
 [  25% ] [90m[1m_update_scan_actions[22m | E025.png[39m[0m
 [  25% ] [90m[1m_update_scan_actions[22m | E027.png[39m[0m
 [  25% ] [90m[1m_update_scan_actions[22m | E028.png[39m[0m
@@ -168,11 +169,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  26% ] [90m[1m_update_scan_actions[22m | E032.png[39m[0m
 [  26% ] [90m[1m_update_scan_actions[22m | E033.png[39m[0m
 [  26% ] [90m[1m_update_scan_actions[22m | E035.png[39m[0m
-[  27% ] [90m[1m_update_scan_actions[22m | E036.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | E036.png[39m[0m
 [  27% ] [90m[1m_update_scan_actions[22m | E037.png[39m[0m
 [  27% ] [90m[1m_update_scan_actions[22m | E038.png[39m[0m
 [  27% ] [90m[1m_update_scan_actions[22m | E039.png[39m[0m
-[  28% ] [90m[1m_update_scan_actions[22m | E040.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | E040.png[39m[0m
 [  28% ] [90m[1m_update_scan_actions[22m | ansel.png[39m[0m
 [  28% ] [90m[1m_update_scan_actions[22m | apprentice.png[39m[0m
 [  28% ] [90m[1m_update_scan_actions[22m | baker.png[39m[0m
@@ -185,11 +186,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  30% ] [90m[1m_update_scan_actions[22m | C07.png[39m[0m
 [  30% ] [90m[1m_update_scan_actions[22m | C08.png[39m[0m
 [  30% ] [90m[1m_update_scan_actions[22m | child.png[39m[0m
-[  31% ] [90m[1m_update_scan_actions[22m | clerk.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | clerk.png[39m[0m
 [  31% ] [90m[1m_update_scan_actions[22m | edda.png[39m[0m
 [  31% ] [90m[1m_update_scan_actions[22m | elder.png[39m[0m
 [  31% ] [90m[1m_update_scan_actions[22m | farmer.png[39m[0m
-[  32% ] [90m[1m_update_scan_actions[22m | guard.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | guard.png[39m[0m
 [  32% ] [90m[1m_update_scan_actions[22m | ilyr.png[39m[0m
 [  32% ] [90m[1m_update_scan_actions[22m | inspector.png[39m[0m
 [  32% ] [90m[1m_update_scan_actions[22m | jori.png[39m[0m
@@ -198,100 +199,102 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  33% ] [90m[1m_update_scan_actions[22m | monk.png[39m[0m
 [  33% ] [90m[1m_update_scan_actions[22m | noble.png[39m[0m
 [  33% ] [90m[1m_update_scan_actions[22m | patient.png[39m[0m
-[  34% ] [90m[1m_update_scan_actions[22m | pell.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | pell.png[39m[0m
 [  34% ] [90m[1m_update_scan_actions[22m | pilot.png[39m[0m
 [  34% ] [90m[1m_update_scan_actions[22m | rook.png[39m[0m
 [  34% ] [90m[1m_update_scan_actions[22m | sailor.png[39m[0m
-[  35% ] [90m[1m_update_scan_actions[22m | scholar.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | scholar.png[39m[0m
 [  35% ] [90m[1m_update_scan_actions[22m | sen.png[39m[0m
 [  35% ] [90m[1m_update_scan_actions[22m | soldier.png[39m[0m
 [  35% ] [90m[1m_update_scan_actions[22m | survivor.png[39m[0m
 [  35% ] [90m[1m_update_scan_actions[22m | volunteer.png[39m[0m
 [  36% ] [90m[1m_update_scan_actions[22m | voss.png[39m[0m
 [  36% ] [90m[1m_update_scan_actions[22m | worker.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | icons_11.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | icons_24.png[39m[0m
 [  36% ] [90m[1m_update_scan_actions[22m | objects.png[39m[0m
-[  36% ] [90m[1m_update_scan_actions[22m | archive_ext.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | archive_ext.png[39m[0m
 [  37% ] [90m[1m_update_scan_actions[22m | basin_ext.png[39m[0m
 [  37% ] [90m[1m_update_scan_actions[22m | capital_ext.png[39m[0m
 [  37% ] [90m[1m_update_scan_actions[22m | conduit_ext.png[39m[0m
-[  37% ] [90m[1m_update_scan_actions[22m | crown_ext.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | crown_ext.png[39m[0m
 [  38% ] [90m[1m_update_scan_actions[22m | furnace_ext.png[39m[0m
 [  38% ] [90m[1m_update_scan_actions[22m | grove_ext.png[39m[0m
 [  38% ] [90m[1m_update_scan_actions[22m | grove_flood_ext.png[39m[0m
-[  38% ] [90m[1m_update_scan_actions[22m | harbor_ext.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | harbor_ext.png[39m[0m
 [  39% ] [90m[1m_update_scan_actions[22m | interior_ext.png[39m[0m
 [  39% ] [90m[1m_update_scan_actions[22m | interior_stone_ext.png[39m[0m
 [  39% ] [90m[1m_update_scan_actions[22m | quarry_ext.png[39m[0m
-[  39% ] [90m[1m_update_scan_actions[22m | reef_ext.png[39m[0m
-[  39% ] [90m[1m_update_scan_actions[22m | ship_ext.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | reef_ext.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | ship_ext.png[39m[0m
 [  40% ] [90m[1m_update_scan_actions[22m | sky_ext.png[39m[0m
 [  40% ] [90m[1m_update_scan_actions[22m | town_r01_ext.png[39m[0m
 [  40% ] [90m[1m_update_scan_actions[22m | town_r02_ext.png[39m[0m
-[  40% ] [90m[1m_update_scan_actions[22m | town_r03_ext.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | town_r03_ext.png[39m[0m
 [  41% ] [90m[1m_update_scan_actions[22m | town_r04_ext.png[39m[0m
 [  41% ] [90m[1m_update_scan_actions[22m | town_r05_ext.png[39m[0m
 [  41% ] [90m[1m_update_scan_actions[22m | underways_ext.png[39m[0m
-[  41% ] [90m[1m_update_scan_actions[22m | vault_ext.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | vault_ext.png[39m[0m
 [  42% ] [90m[1m_update_scan_actions[22m | whitebone_ext.png[39m[0m
 [  42% ] [90m[1m_update_scan_actions[22m | winter_ext.png[39m[0m
 [  42% ] [90m[1m_update_scan_actions[22m | world_ext.png[39m[0m
-[  42% ] [90m[1m_update_scan_actions[22m | world_post_ext.png[39m[0m
-[  42% ] [90m[1m_update_scan_actions[22m | ashen8.fnt[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | world_post_ext.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | ashen8.fnt[39m[0m
 [  43% ] [90m[1m_update_scan_actions[22m | ashen8.png[39m[0m
 [  43% ] [90m[1m_update_scan_actions[22m | C01.png[39m[0m
 [  43% ] [90m[1m_update_scan_actions[22m | C02.png[39m[0m
-[  43% ] [90m[1m_update_scan_actions[22m | C03.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | C03.png[39m[0m
 [  44% ] [90m[1m_update_scan_actions[22m | C04.png[39m[0m
 [  44% ] [90m[1m_update_scan_actions[22m | C05.png[39m[0m
 [  44% ] [90m[1m_update_scan_actions[22m | C06.png[39m[0m
-[  44% ] [90m[1m_update_scan_actions[22m | C07.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | C07.png[39m[0m
 [  45% ] [90m[1m_update_scan_actions[22m | C08.png[39m[0m
 [  45% ] [90m[1m_update_scan_actions[22m | archive.png[39m[0m
 [  45% ] [90m[1m_update_scan_actions[22m | conduit.png[39m[0m
-[  45% ] [90m[1m_update_scan_actions[22m | crown.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | crown.png[39m[0m
 [  46% ] [90m[1m_update_scan_actions[22m | crown_core.png[39m[0m
 [  46% ] [90m[1m_update_scan_actions[22m | dais.png[39m[0m
 [  46% ] [90m[1m_update_scan_actions[22m | field_post.png[39m[0m
 [  46% ] [90m[1m_update_scan_actions[22m | field_r01.png[39m[0m
-[  46% ] [90m[1m_update_scan_actions[22m | field_r02.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | field_r02.png[39m[0m
 [  47% ] [90m[1m_update_scan_actions[22m | field_r03.png[39m[0m
 [  47% ] [90m[1m_update_scan_actions[22m | field_r04.png[39m[0m
 [  47% ] [90m[1m_update_scan_actions[22m | field_r05.png[39m[0m
-[  47% ] [90m[1m_update_scan_actions[22m | furnace.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | furnace.png[39m[0m
 [  48% ] [90m[1m_update_scan_actions[22m | grove.png[39m[0m
 [  48% ] [90m[1m_update_scan_actions[22m | grove_flood.png[39m[0m
 [  48% ] [90m[1m_update_scan_actions[22m | quarry.png[39m[0m
-[  48% ] [90m[1m_update_scan_actions[22m | reef.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | reef.png[39m[0m
 [  49% ] [90m[1m_update_scan_actions[22m | sky.png[39m[0m
 [  49% ] [90m[1m_update_scan_actions[22m | underways.png[39m[0m
 [  49% ] [90m[1m_update_scan_actions[22m | vault.png[39m[0m
-[  49% ] [90m[1m_update_scan_actions[22m | whitebone.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | whitebone.png[39m[0m
 [  50% ] [90m[1m_update_scan_actions[22m | winter.png[39m[0m
 [  50% ] [90m[1m_update_scan_actions[22m | B01.png[39m[0m
 [  50% ] [90m[1m_update_scan_actions[22m | B01_P1.png[39m[0m
 [  50% ] [90m[1m_update_scan_actions[22m | B02.png[39m[0m
-[  50% ] [90m[1m_update_scan_actions[22m | B03.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | B03.png[39m[0m
 [  51% ] [90m[1m_update_scan_actions[22m | B03_P1.png[39m[0m
 [  51% ] [90m[1m_update_scan_actions[22m | B04.png[39m[0m
 [  51% ] [90m[1m_update_scan_actions[22m | B05.png[39m[0m
-[  51% ] [90m[1m_update_scan_actions[22m | B06.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | B06.png[39m[0m
 [  52% ] [90m[1m_update_scan_actions[22m | B07.png[39m[0m
 [  52% ] [90m[1m_update_scan_actions[22m | B08.png[39m[0m
 [  52% ] [90m[1m_update_scan_actions[22m | B09.png[39m[0m
-[  52% ] [90m[1m_update_scan_actions[22m | B10.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | B10.png[39m[0m
 [  53% ] [90m[1m_update_scan_actions[22m | B10_P1.png[39m[0m
 [  53% ] [90m[1m_update_scan_actions[22m | B10_P2.png[39m[0m
 [  53% ] [90m[1m_update_scan_actions[22m | B11.png[39m[0m
 [  53% ] [90m[1m_update_scan_actions[22m | B11_P1.png[39m[0m
-[  53% ] [90m[1m_update_scan_actions[22m | B12.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | B12.png[39m[0m
 [  54% ] [90m[1m_update_scan_actions[22m | B13.png[39m[0m
 [  54% ] [90m[1m_update_scan_actions[22m | B13_P1.png[39m[0m
 [  54% ] [90m[1m_update_scan_actions[22m | B14.png[39m[0m
-[  54% ] [90m[1m_update_scan_actions[22m | B15.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | B15.png[39m[0m
 [  55% ] [90m[1m_update_scan_actions[22m | B16.png[39m[0m
 [  55% ] [90m[1m_update_scan_actions[22m | E001.png[39m[0m
 [  55% ] [90m[1m_update_scan_actions[22m | E002.png[39m[0m
-[  55% ] [90m[1m_update_scan_actions[22m | E003.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | E003.png[39m[0m
 [  56% ] [90m[1m_update_scan_actions[22m | E004.png[39m[0m
 [  56% ] [90m[1m_update_scan_actions[22m | E005.png[39m[0m
 [  56% ] [90m[1m_update_scan_actions[22m | E006.png[39m[0m
@@ -300,28 +303,28 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  57% ] [90m[1m_update_scan_actions[22m | E009.png[39m[0m
 [  57% ] [90m[1m_update_scan_actions[22m | E010.png[39m[0m
 [  57% ] [90m[1m_update_scan_actions[22m | E011.png[39m[0m
-[  57% ] [90m[1m_update_scan_actions[22m | E012.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | E012.png[39m[0m
 [  58% ] [90m[1m_update_scan_actions[22m | E013.png[39m[0m
 [  58% ] [90m[1m_update_scan_actions[22m | E014.png[39m[0m
 [  58% ] [90m[1m_update_scan_actions[22m | E015.png[39m[0m
-[  58% ] [90m[1m_update_scan_actions[22m | E016.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | E016.png[39m[0m
 [  59% ] [90m[1m_update_scan_actions[22m | E017.png[39m[0m
 [  59% ] [90m[1m_update_scan_actions[22m | E018.png[39m[0m
 [  59% ] [90m[1m_update_scan_actions[22m | E019.png[39m[0m
-[  59% ] [90m[1m_update_scan_actions[22m | E020.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | E020.png[39m[0m
 [  60% ] [90m[1m_update_scan_actions[22m | E021.png[39m[0m
 [  60% ] [90m[1m_update_scan_actions[22m | E022.png[39m[0m
 [  60% ] [90m[1m_update_scan_actions[22m | E023.png[39m[0m
 [  60% ] [90m[1m_update_scan_actions[22m | E024.png[39m[0m
-[  60% ] [90m[1m_update_scan_actions[22m | E025.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | E025.png[39m[0m
 [  61% ] [90m[1m_update_scan_actions[22m | E026.png[39m[0m
 [  61% ] [90m[1m_update_scan_actions[22m | E027.png[39m[0m
 [  61% ] [90m[1m_update_scan_actions[22m | E028.png[39m[0m
-[  61% ] [90m[1m_update_scan_actions[22m | E029.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | E029.png[39m[0m
 [  62% ] [90m[1m_update_scan_actions[22m | E030.png[39m[0m
 [  62% ] [90m[1m_update_scan_actions[22m | E031.png[39m[0m
 [  62% ] [90m[1m_update_scan_actions[22m | E032.png[39m[0m
-[  62% ] [90m[1m_update_scan_actions[22m | E033.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | E033.png[39m[0m
 [  63% ] [90m[1m_update_scan_actions[22m | E034.png[39m[0m
 [  63% ] [90m[1m_update_scan_actions[22m | E035.png[39m[0m
 [  63% ] [90m[1m_update_scan_actions[22m | E036.png[39m[0m
@@ -330,11 +333,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  64% ] [90m[1m_update_scan_actions[22m | E039.png[39m[0m
 [  64% ] [90m[1m_update_scan_actions[22m | E040.png[39m[0m
 [  64% ] [90m[1m_update_scan_actions[22m | ansel.png[39m[0m
-[  64% ] [90m[1m_update_scan_actions[22m | apprentice.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | apprentice.png[39m[0m
 [  65% ] [90m[1m_update_scan_actions[22m | baker.png[39m[0m
 [  65% ] [90m[1m_update_scan_actions[22m | C01.png[39m[0m
 [  65% ] [90m[1m_update_scan_actions[22m | C02.png[39m[0m
-[  65% ] [90m[1m_update_scan_actions[22m | C03.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | C03.png[39m[0m
 [  66% ] [90m[1m_update_scan_actions[22m | C04.png[39m[0m
 [  66% ] [90m[1m_update_scan_actions[22m | C05.png[39m[0m
 [  66% ] [90m[1m_update_scan_actions[22m | C06.png[39m[0m
@@ -343,15 +346,15 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  67% ] [90m[1m_update_scan_actions[22m | cantor.png[39m[0m
 [  67% ] [90m[1m_update_scan_actions[22m | child.png[39m[0m
 [  67% ] [90m[1m_update_scan_actions[22m | clerk.png[39m[0m
-[  67% ] [90m[1m_update_scan_actions[22m | echo.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | echo.png[39m[0m
 [  68% ] [90m[1m_update_scan_actions[22m | edda.png[39m[0m
 [  68% ] [90m[1m_update_scan_actions[22m | elder.png[39m[0m
 [  68% ] [90m[1m_update_scan_actions[22m | farmer.png[39m[0m
-[  68% ] [90m[1m_update_scan_actions[22m | fox.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | fox.png[39m[0m
 [  69% ] [90m[1m_update_scan_actions[22m | guard.png[39m[0m
 [  69% ] [90m[1m_update_scan_actions[22m | hind.png[39m[0m
 [  69% ] [90m[1m_update_scan_actions[22m | ilyr.png[39m[0m
-[  69% ] [90m[1m_update_scan_actions[22m | inspector.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | inspector.png[39m[0m
 [  70% ] [90m[1m_update_scan_actions[22m | jori.png[39m[0m
 [  70% ] [90m[1m_update_scan_actions[22m | keeper.png[39m[0m
 [  70% ] [90m[1m_update_scan_actions[22m | leviathan.png[39m[0m
@@ -360,11 +363,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  71% ] [90m[1m_update_scan_actions[22m | monk.png[39m[0m
 [  71% ] [90m[1m_update_scan_actions[22m | moth.png[39m[0m
 [  71% ] [90m[1m_update_scan_actions[22m | noble.png[39m[0m
-[  71% ] [90m[1m_update_scan_actions[22m | patient.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | patient.png[39m[0m
 [  72% ] [90m[1m_update_scan_actions[22m | pell.png[39m[0m
 [  72% ] [90m[1m_update_scan_actions[22m | pilot.png[39m[0m
 [  72% ] [90m[1m_update_scan_actions[22m | rook.png[39m[0m
-[  72% ] [90m[1m_update_scan_actions[22m | sailor.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | sailor.png[39m[0m
 [  73% ] [90m[1m_update_scan_actions[22m | scholar.png[39m[0m
 [  73% ] [90m[1m_update_scan_actions[22m | sen.png[39m[0m
 [  73% ] [90m[1m_update_scan_actions[22m | soldier.png[39m[0m
@@ -377,7 +380,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  75% ] [90m[1m_update_scan_actions[22m | worker.png[39m[0m
 [  75% ] [90m[1m_update_scan_actions[22m | V01.png[39m[0m
 [  75% ] [90m[1m_update_scan_actions[22m | V02.png[39m[0m
-[  75% ] [90m[1m_update_scan_actions[22m | V03.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | V03.png[39m[0m
 [  76% ] [90m[1m_update_scan_actions[22m | V04.png[39m[0m
 [  76% ] [90m[1m_update_scan_actions[22m | V05.png[39m[0m
 [  76% ] [90m[1m_update_scan_actions[22m | V06.png[39m[0m
@@ -390,11 +393,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  78% ] [90m[1m_update_scan_actions[22m | C02.png[39m[0m
 [  78% ] [90m[1m_update_scan_actions[22m | C03.png[39m[0m
 [  78% ] [90m[1m_update_scan_actions[22m | C04.png[39m[0m
-[  78% ] [90m[1m_update_scan_actions[22m | C05.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | C05.png[39m[0m
 [  79% ] [90m[1m_update_scan_actions[22m | C06.png[39m[0m
 [  79% ] [90m[1m_update_scan_actions[22m | C07.png[39m[0m
 [  79% ] [90m[1m_update_scan_actions[22m | C08.png[39m[0m
-[  79% ] [90m[1m_update_scan_actions[22m | child.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | child.png[39m[0m
 [  80% ] [90m[1m_update_scan_actions[22m | clerk.png[39m[0m
 [  80% ] [90m[1m_update_scan_actions[22m | edda.png[39m[0m
 [  80% ] [90m[1m_update_scan_actions[22m | elder.png[39m[0m
@@ -407,7 +410,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  82% ] [90m[1m_update_scan_actions[22m | keeper.png[39m[0m
 [  82% ] [90m[1m_update_scan_actions[22m | leviathan.png[39m[0m
 [  82% ] [90m[1m_update_scan_actions[22m | mara.png[39m[0m
-[  82% ] [90m[1m_update_scan_actions[22m | monk.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | monk.png[39m[0m
 [  83% ] [90m[1m_update_scan_actions[22m | noble.png[39m[0m
 [  83% ] [90m[1m_update_scan_actions[22m | patient.png[39m[0m
 [  83% ] [90m[1m_update_scan_actions[22m | pell.png[39m[0m
@@ -420,7 +423,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  85% ] [90m[1m_update_scan_actions[22m | survivor.png[39m[0m
 [  85% ] [90m[1m_update_scan_actions[22m | tortoise.png[39m[0m
 [  85% ] [90m[1m_update_scan_actions[22m | volunteer.png[39m[0m
-[  85% ] [90m[1m_update_scan_actions[22m | voss.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | voss.png[39m[0m
 [  86% ] [90m[1m_update_scan_actions[22m | worker.png[39m[0m
 [  86% ] [90m[1m_update_scan_actions[22m | ferry.png[39m[0m
 [  86% ] [90m[1m_update_scan_actions[22m | objects.png[39m[0m
@@ -437,7 +440,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  89% ] [90m[1m_update_scan_actions[22m | crown_props.png[39m[0m
 [  89% ] [90m[1m_update_scan_actions[22m | furnace.png[39m[0m
 [  89% ] [90m[1m_update_scan_actions[22m | furnace_props.png[39m[0m
-[  89% ] [90m[1m_update_scan_actions[22m | grove.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | grove.png[39m[0m
 [  90% ] [90m[1m_update_scan_actions[22m | grove_flood.png[39m[0m
 [  90% ] [90m[1m_update_scan_actions[22m | grove_flood_props.png[39m[0m
 [  90% ] [90m[1m_update_scan_actions[22m | grove_props.png[39m[0m
@@ -450,7 +453,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  92% ] [90m[1m_update_scan_actions[22m | quarry.png[39m[0m
 [  92% ] [90m[1m_update_scan_actions[22m | quarry_props.png[39m[0m
 [  92% ] [90m[1m_update_scan_actions[22m | reef.png[39m[0m
-[  92% ] [90m[1m_update_scan_actions[22m | reef_props.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | reef_props.png[39m[0m
 [  93% ] [90m[1m_update_scan_actions[22m | ship.png[39m[0m
 [  93% ] [90m[1m_update_scan_actions[22m | ship_props.png[39m[0m
 [  93% ] [90m[1m_update_scan_actions[22m | sky.png[39m[0m
@@ -481,7 +484,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  99% ] [90m[1m_update_scan_actions[22m | title.png[39m[0m
 [92m[ DONE ][39m [1m_update_scan_actions[22m
 [0m
-[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (426 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (428 steps)[39m[0m
 [   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -512,7 +515,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[   7% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [   7% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [   7% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [   7% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -529,7 +532,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -542,7 +545,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -559,7 +562,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  17% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  17% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  17% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  17% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -572,11 +575,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -589,7 +592,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -602,11 +605,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -619,6 +622,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  32% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  32% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  32% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -627,7 +631,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -657,7 +661,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  41% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  41% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  41% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  41% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -734,7 +738,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  58% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  58% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  58% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  58% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -764,7 +768,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -777,11 +781,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -794,6 +798,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  73% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  73% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  73% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -802,7 +807,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  74% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  74% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  74% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  74% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -815,11 +820,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -832,7 +837,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  82% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  82% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  82% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  82% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -849,7 +854,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -862,7 +867,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  88% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  88% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  88% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  88% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -879,7 +884,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  92% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  92% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  92% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
-[  92% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
 [  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
@@ -939,7 +944,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [   6% ] [90m[1mreimport[22m | M012.ogg[39m[0m
 [   6% ] [90m[1mreimport[22m | M013.ogg[39m[0m
 [   6% ] [90m[1mreimport[22m | M014.ogg[39m[0m
-[   7% ] [90m[1mreimport[22m | M015.ogg[39m[0m
+[   6% ] [90m[1mreimport[22m | M015.ogg[39m[0m
 [   7% ] [90m[1mreimport[22m | ashen8.fnt[39m[0m
 [   7% ] [90m[1mreimport[22m | M030.ogg[39m[0m
 [   7% ] [90m[1mreimport[22m | M029.ogg[39m[0m
@@ -956,7 +961,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  10% ] [90m[1mreimport[22m | M018.ogg[39m[0m
 [  10% ] [90m[1mreimport[22m | M017.ogg[39m[0m
 [  10% ] [90m[1mreimport[22m | M001.ogg[39m[0m
-[  11% ] [90m[1mreimport[22m | M002.ogg[39m[0m
+[  10% ] [90m[1mreimport[22m | M002.ogg[39m[0m
 [  11% ] [90m[1mreimport[22m | M003.ogg[39m[0m
 [  11% ] [90m[1mreimport[22m | M004.ogg[39m[0m
 [  11% ] [90m[1mreimport[22m | M005.ogg[39m[0m
@@ -969,118 +974,118 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  13% ] [90m[1mreimport[22m | M012.ogg[39m[0m
 [  13% ] [90m[1mreimport[22m | M013.ogg[39m[0m
 [  13% ] [90m[1mreimport[22m | M014.ogg[39m[0m
-[  14% ] [90m[1mreimport[22m | M015.ogg[39m[0m
+[  13% ] [90m[1mreimport[22m | M015.ogg[39m[0m
 [  14% ] [90m[1mreimport[22m | M016.ogg[39m[0m
+[  14% ] [90m[1mreimport[22m | clerk.png[39m[0m
 [  14% ] [90m[1mreimport[22m | echo.png[39m[0m
 [  14% ] [90m[1mreimport[22m | edda.png[39m[0m
-[  14% ] [90m[1mreimport[22m | elder.png[39m[0m
+[  15% ] [90m[1mreimport[22m | elder.png[39m[0m
 [  15% ] [90m[1mreimport[22m | farmer.png[39m[0m
 [  15% ] [90m[1mreimport[22m | fox.png[39m[0m
 [  15% ] [90m[1mreimport[22m | guard.png[39m[0m
-[  15% ] [90m[1mreimport[22m | hind.png[39m[0m
+[  16% ] [90m[1mreimport[22m | hind.png[39m[0m
 [  16% ] [90m[1mreimport[22m | ilyr.png[39m[0m
 [  16% ] [90m[1mreimport[22m | inspector.png[39m[0m
 [  16% ] [90m[1mreimport[22m | jori.png[39m[0m
-[  16% ] [90m[1mreimport[22m | keeper.png[39m[0m
-[  17% ] [90m[1mreimport[22m | leviathan.png[39m[0m
-[  17% ] [90m[1mreimport[22m | clerk.png[39m[0m
+[  17% ] [90m[1mreimport[22m | keeper.png[39m[0m
 [  17% ] [90m[1mreimport[22m | child.png[39m[0m
 [  17% ] [90m[1mreimport[22m | cantor.png[39m[0m
-[  18% ] [90m[1mreimport[22m | C08.png[39m[0m
-[  18% ] [90m[1mreimport[22m | C07.png[39m[0m
+[  17% ] [90m[1mreimport[22m | C08.png[39m[0m
+[  17% ] [90m[1mreimport[22m | C07.png[39m[0m
 [  18% ] [90m[1mreimport[22m | C06.png[39m[0m
 [  18% ] [90m[1mreimport[22m | C05.png[39m[0m
 [  18% ] [90m[1mreimport[22m | C04.png[39m[0m
-[  19% ] [90m[1mreimport[22m | C03.png[39m[0m
+[  18% ] [90m[1mreimport[22m | C03.png[39m[0m
 [  19% ] [90m[1mreimport[22m | C02.png[39m[0m
 [  19% ] [90m[1mreimport[22m | C01.png[39m[0m
 [  19% ] [90m[1mreimport[22m | baker.png[39m[0m
-[  20% ] [90m[1mreimport[22m | V05.png[39m[0m
+[  19% ] [90m[1mreimport[22m | apprentice.png[39m[0m
 [  20% ] [90m[1mreimport[22m | V04.png[39m[0m
 [  20% ] [90m[1mreimport[22m | V03.png[39m[0m
 [  20% ] [90m[1mreimport[22m | V02.png[39m[0m
-[  21% ] [90m[1mreimport[22m | V01.png[39m[0m
-[  21% ] [90m[1mreimport[22m | worker.png[39m[0m
+[  20% ] [90m[1mreimport[22m | V01.png[39m[0m
+[  20% ] [90m[1mreimport[22m | worker.png[39m[0m
 [  21% ] [90m[1mreimport[22m | whale.png[39m[0m
 [  21% ] [90m[1mreimport[22m | voss.png[39m[0m
-[  22% ] [90m[1mreimport[22m | volunteer.png[39m[0m
-[  22% ] [90m[1mreimport[22m | tortoise.png[39m[0m
+[  21% ] [90m[1mreimport[22m | volunteer.png[39m[0m
+[  21% ] [90m[1mreimport[22m | tortoise.png[39m[0m
 [  22% ] [90m[1mreimport[22m | survivor.png[39m[0m
 [  22% ] [90m[1mreimport[22m | stag.png[39m[0m
 [  22% ] [90m[1mreimport[22m | soldier.png[39m[0m
-[  23% ] [90m[1mreimport[22m | sen.png[39m[0m
+[  22% ] [90m[1mreimport[22m | sen.png[39m[0m
 [  23% ] [90m[1mreimport[22m | scholar.png[39m[0m
 [  23% ] [90m[1mreimport[22m | sailor.png[39m[0m
 [  23% ] [90m[1mreimport[22m | rook.png[39m[0m
-[  24% ] [90m[1mreimport[22m | pilot.png[39m[0m
+[  23% ] [90m[1mreimport[22m | pilot.png[39m[0m
 [  24% ] [90m[1mreimport[22m | pell.png[39m[0m
 [  24% ] [90m[1mreimport[22m | patient.png[39m[0m
 [  24% ] [90m[1mreimport[22m | noble.png[39m[0m
-[  25% ] [90m[1mreimport[22m | moth.png[39m[0m
-[  25% ] [90m[1mreimport[22m | monk.png[39m[0m
+[  24% ] [90m[1mreimport[22m | moth.png[39m[0m
+[  24% ] [90m[1mreimport[22m | monk.png[39m[0m
 [  25% ] [90m[1mreimport[22m | mara.png[39m[0m
 [  25% ] [90m[1mreimport[22m | manta.png[39m[0m
-[  25% ] [90m[1mreimport[22m | E017.png[39m[0m
-[  26% ] [90m[1mreimport[22m | E016.png[39m[0m
+[  25% ] [90m[1mreimport[22m | leviathan.png[39m[0m
+[  25% ] [90m[1mreimport[22m | E016.png[39m[0m
 [  26% ] [90m[1mreimport[22m | E015.png[39m[0m
 [  26% ] [90m[1mreimport[22m | E014.png[39m[0m
 [  26% ] [90m[1mreimport[22m | E013.png[39m[0m
-[  27% ] [90m[1mreimport[22m | E012.png[39m[0m
+[  26% ] [90m[1mreimport[22m | E012.png[39m[0m
 [  27% ] [90m[1mreimport[22m | E011.png[39m[0m
 [  27% ] [90m[1mreimport[22m | E010.png[39m[0m
 [  27% ] [90m[1mreimport[22m | E009.png[39m[0m
-[  28% ] [90m[1mreimport[22m | E008.png[39m[0m
-[  28% ] [90m[1mreimport[22m | E007.png[39m[0m
+[  27% ] [90m[1mreimport[22m | E008.png[39m[0m
+[  27% ] [90m[1mreimport[22m | E007.png[39m[0m
 [  28% ] [90m[1mreimport[22m | E006.png[39m[0m
 [  28% ] [90m[1mreimport[22m | E005.png[39m[0m
-[  29% ] [90m[1mreimport[22m | E004.png[39m[0m
-[  29% ] [90m[1mreimport[22m | E003.png[39m[0m
+[  28% ] [90m[1mreimport[22m | E004.png[39m[0m
+[  28% ] [90m[1mreimport[22m | E003.png[39m[0m
 [  29% ] [90m[1mreimport[22m | E002.png[39m[0m
 [  29% ] [90m[1mreimport[22m | E001.png[39m[0m
 [  29% ] [90m[1mreimport[22m | B16.png[39m[0m
-[  30% ] [90m[1mreimport[22m | B15.png[39m[0m
+[  29% ] [90m[1mreimport[22m | B15.png[39m[0m
 [  30% ] [90m[1mreimport[22m | B14.png[39m[0m
 [  30% ] [90m[1mreimport[22m | B13_P1.png[39m[0m
 [  30% ] [90m[1mreimport[22m | B13.png[39m[0m
-[  31% ] [90m[1mreimport[22m | B12.png[39m[0m
+[  30% ] [90m[1mreimport[22m | B12.png[39m[0m
 [  31% ] [90m[1mreimport[22m | B11_P1.png[39m[0m
-[  31% ] [90m[1mreimport[22m | apprentice.png[39m[0m
+[  31% ] [90m[1mreimport[22m | B11.png[39m[0m
 [  31% ] [90m[1mreimport[22m | ansel.png[39m[0m
-[  32% ] [90m[1mreimport[22m | E040.png[39m[0m
-[  32% ] [90m[1mreimport[22m | E039.png[39m[0m
+[  31% ] [90m[1mreimport[22m | E040.png[39m[0m
+[  31% ] [90m[1mreimport[22m | E039.png[39m[0m
 [  32% ] [90m[1mreimport[22m | E038.png[39m[0m
 [  32% ] [90m[1mreimport[22m | E037.png[39m[0m
-[  33% ] [90m[1mreimport[22m | E036.png[39m[0m
-[  33% ] [90m[1mreimport[22m | E035.png[39m[0m
+[  32% ] [90m[1mreimport[22m | E036.png[39m[0m
+[  32% ] [90m[1mreimport[22m | E035.png[39m[0m
 [  33% ] [90m[1mreimport[22m | E034.png[39m[0m
 [  33% ] [90m[1mreimport[22m | E033.png[39m[0m
 [  33% ] [90m[1mreimport[22m | E032.png[39m[0m
-[  34% ] [90m[1mreimport[22m | E031.png[39m[0m
+[  33% ] [90m[1mreimport[22m | E031.png[39m[0m
 [  34% ] [90m[1mreimport[22m | E030.png[39m[0m
 [  34% ] [90m[1mreimport[22m | E029.png[39m[0m
 [  34% ] [90m[1mreimport[22m | E028.png[39m[0m
-[  35% ] [90m[1mreimport[22m | E027.png[39m[0m
-[  35% ] [90m[1mreimport[22m | E026.png[39m[0m
+[  34% ] [90m[1mreimport[22m | E027.png[39m[0m
+[  34% ] [90m[1mreimport[22m | E026.png[39m[0m
 [  35% ] [90m[1mreimport[22m | E025.png[39m[0m
 [  35% ] [90m[1mreimport[22m | E024.png[39m[0m
-[  36% ] [90m[1mreimport[22m | E023.png[39m[0m
-[  36% ] [90m[1mreimport[22m | E022.png[39m[0m
+[  35% ] [90m[1mreimport[22m | E023.png[39m[0m
+[  35% ] [90m[1mreimport[22m | E022.png[39m[0m
 [  36% ] [90m[1mreimport[22m | E021.png[39m[0m
 [  36% ] [90m[1mreimport[22m | E020.png[39m[0m
-[  37% ] [90m[1mreimport[22m | E019.png[39m[0m
-[  37% ] [90m[1mreimport[22m | E018.png[39m[0m
+[  36% ] [90m[1mreimport[22m | E019.png[39m[0m
+[  36% ] [90m[1mreimport[22m | E018.png[39m[0m
+[  37% ] [90m[1mreimport[22m | E017.png[39m[0m
 [  37% ] [90m[1mreimport[22m | sky.png[39m[0m
 [  37% ] [90m[1mreimport[22m | ship_props.png[39m[0m
 [  37% ] [90m[1mreimport[22m | ship.png[39m[0m
-[  38% ] [90m[1mreimport[22m | reef_props.png[39m[0m
+[  37% ] [90m[1mreimport[22m | reef_props.png[39m[0m
 [  38% ] [90m[1mreimport[22m | reef.png[39m[0m
 [  38% ] [90m[1mreimport[22m | quarry_props.png[39m[0m
 [  38% ] [90m[1mreimport[22m | quarry.png[39m[0m
-[  39% ] [90m[1mreimport[22m | interior_stone_props.png[39m[0m
+[  38% ] [90m[1mreimport[22m | interior_stone_props.png[39m[0m
 [  39% ] [90m[1mreimport[22m | interior_stone.png[39m[0m
 [  39% ] [90m[1mreimport[22m | interior_props.png[39m[0m
 [  39% ] [90m[1mreimport[22m | interior.png[39m[0m
-[  40% ] [90m[1mreimport[22m | harbor_props.png[39m[0m
+[  39% ] [90m[1mreimport[22m | harbor_props.png[39m[0m
 [  40% ] [90m[1mreimport[22m | harbor.png[39m[0m
 [  40% ] [90m[1mreimport[22m | grove_props.png[39m[0m
 [  40% ] [90m[1mreimport[22m | grove_flood_props.png[39m[0m
@@ -1089,10 +1094,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  41% ] [90m[1mreimport[22m | furnace_props.png[39m[0m
 [  41% ] [90m[1mreimport[22m | furnace.png[39m[0m
 [  41% ] [90m[1mreimport[22m | crown_props.png[39m[0m
-[  42% ] [90m[1mreimport[22m | crown.png[39m[0m
+[  41% ] [90m[1mreimport[22m | crown.png[39m[0m
 [  42% ] [90m[1mreimport[22m | conduit_props.png[39m[0m
 [  42% ] [90m[1mreimport[22m | conduit.png[39m[0m
 [  42% ] [90m[1mreimport[22m | capital_props.png[39m[0m
+[  42% ] [90m[1mreimport[22m | capital.png[39m[0m
 [  43% ] [90m[1mreimport[22m | title.png[39m[0m
 [  43% ] [90m[1mreimport[22m | icon.png[39m[0m
 [  43% ] [90m[1mreimport[22m | world_props.png[39m[0m
@@ -1118,56 +1124,56 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  48% ] [90m[1mreimport[22m | town_r01_props.png[39m[0m
 [  48% ] [90m[1mreimport[22m | town_r01.png[39m[0m
 [  48% ] [90m[1mreimport[22m | sky_props.png[39m[0m
-[  48% ] [90m[1mreimport[22m | keeper.png[39m[0m
-[  49% ] [90m[1mreimport[22m | jori.png[39m[0m
+[  48% ] [90m[1mreimport[22m | jori.png[39m[0m
 [  49% ] [90m[1mreimport[22m | inspector.png[39m[0m
 [  49% ] [90m[1mreimport[22m | ilyr.png[39m[0m
 [  49% ] [90m[1mreimport[22m | hind.png[39m[0m
-[  50% ] [90m[1mreimport[22m | guard.png[39m[0m
+[  49% ] [90m[1mreimport[22m | guard.png[39m[0m
 [  50% ] [90m[1mreimport[22m | farmer.png[39m[0m
 [  50% ] [90m[1mreimport[22m | elder.png[39m[0m
 [  50% ] [90m[1mreimport[22m | edda.png[39m[0m
-[  51% ] [90m[1mreimport[22m | clerk.png[39m[0m
+[  50% ] [90m[1mreimport[22m | clerk.png[39m[0m
 [  51% ] [90m[1mreimport[22m | child.png[39m[0m
 [  51% ] [90m[1mreimport[22m | C08.png[39m[0m
 [  51% ] [90m[1mreimport[22m | C07.png[39m[0m
 [  51% ] [90m[1mreimport[22m | C06.png[39m[0m
-[  52% ] [90m[1mreimport[22m | C05.png[39m[0m
+[  51% ] [90m[1mreimport[22m | C05.png[39m[0m
 [  52% ] [90m[1mreimport[22m | C04.png[39m[0m
 [  52% ] [90m[1mreimport[22m | C03.png[39m[0m
 [  52% ] [90m[1mreimport[22m | C02.png[39m[0m
-[  53% ] [90m[1mreimport[22m | C01.png[39m[0m
+[  52% ] [90m[1mreimport[22m | C01.png[39m[0m
 [  53% ] [90m[1mreimport[22m | baker.png[39m[0m
 [  53% ] [90m[1mreimport[22m | apprentice.png[39m[0m
 [  53% ] [90m[1mreimport[22m | ansel.png[39m[0m
-[  54% ] [90m[1mreimport[22m | V08.png[39m[0m
+[  53% ] [90m[1mreimport[22m | V08.png[39m[0m
 [  54% ] [90m[1mreimport[22m | V07.png[39m[0m
 [  54% ] [90m[1mreimport[22m | V06.png[39m[0m
-[  54% ] [90m[1mreimport[22m | capital.png[39m[0m
-[  55% ] [90m[1mreimport[22m | basin_props.png[39m[0m
+[  54% ] [90m[1mreimport[22m | V05.png[39m[0m
+[  54% ] [90m[1mreimport[22m | basin_props.png[39m[0m
 [  55% ] [90m[1mreimport[22m | basin.png[39m[0m
 [  55% ] [90m[1mreimport[22m | archive_props.png[39m[0m
 [  55% ] [90m[1mreimport[22m | archive.png[39m[0m
 [  55% ] [90m[1mreimport[22m | wayfarer.png[39m[0m
-[  56% ] [90m[1mreimport[22m | objects.png[39m[0m
+[  55% ] [90m[1mreimport[22m | objects.png[39m[0m
 [  56% ] [90m[1mreimport[22m | ferry.png[39m[0m
 [  56% ] [90m[1mreimport[22m | worker.png[39m[0m
 [  56% ] [90m[1mreimport[22m | voss.png[39m[0m
-[  57% ] [90m[1mreimport[22m | volunteer.png[39m[0m
+[  56% ] [90m[1mreimport[22m | volunteer.png[39m[0m
 [  57% ] [90m[1mreimport[22m | tortoise.png[39m[0m
 [  57% ] [90m[1mreimport[22m | survivor.png[39m[0m
 [  57% ] [90m[1mreimport[22m | soldier.png[39m[0m
-[  58% ] [90m[1mreimport[22m | sen.png[39m[0m
+[  57% ] [90m[1mreimport[22m | sen.png[39m[0m
 [  58% ] [90m[1mreimport[22m | scholar.png[39m[0m
 [  58% ] [90m[1mreimport[22m | sailor.png[39m[0m
 [  58% ] [90m[1mreimport[22m | rook.png[39m[0m
-[  59% ] [90m[1mreimport[22m | pilot.png[39m[0m
-[  59% ] [90m[1mreimport[22m | pell.png[39m[0m
+[  58% ] [90m[1mreimport[22m | pilot.png[39m[0m
+[  58% ] [90m[1mreimport[22m | pell.png[39m[0m
 [  59% ] [90m[1mreimport[22m | patient.png[39m[0m
 [  59% ] [90m[1mreimport[22m | noble.png[39m[0m
 [  59% ] [90m[1mreimport[22m | monk.png[39m[0m
-[  60% ] [90m[1mreimport[22m | mara.png[39m[0m
+[  59% ] [90m[1mreimport[22m | mara.png[39m[0m
 [  60% ] [90m[1mreimport[22m | leviathan.png[39m[0m
+[  60% ] [90m[1mreimport[22m | keeper.png[39m[0m
 [  60% ] [90m[1mreimport[22m | baker.png[39m[0m
 [  60% ] [90m[1mreimport[22m | apprentice.png[39m[0m
 [  61% ] [90m[1mreimport[22m | ansel.png[39m[0m
@@ -1191,7 +1197,7 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  65% ] [90m[1mreimport[22m | noble.png[39m[0m
 [  65% ] [90m[1mreimport[22m | monk.png[39m[0m
 [  65% ] [90m[1mreimport[22m | mara.png[39m[0m
-[  66% ] [90m[1mreimport[22m | keeper.png[39m[0m
+[  65% ] [90m[1mreimport[22m | keeper.png[39m[0m
 [  66% ] [90m[1mreimport[22m | jori.png[39m[0m
 [  66% ] [90m[1mreimport[22m | inspector.png[39m[0m
 [  66% ] [90m[1mreimport[22m | ilyr.png[39m[0m
@@ -1204,11 +1210,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  68% ] [90m[1mreimport[22m | C08.png[39m[0m
 [  68% ] [90m[1mreimport[22m | C07.png[39m[0m
 [  68% ] [90m[1mreimport[22m | C06.png[39m[0m
-[  69% ] [90m[1mreimport[22m | C05.png[39m[0m
+[  68% ] [90m[1mreimport[22m | C05.png[39m[0m
 [  69% ] [90m[1mreimport[22m | C04.png[39m[0m
 [  69% ] [90m[1mreimport[22m | C03.png[39m[0m
 [  69% ] [90m[1mreimport[22m | C02.png[39m[0m
-[  70% ] [90m[1mreimport[22m | C01.png[39m[0m
+[  69% ] [90m[1mreimport[22m | C01.png[39m[0m
 [  70% ] [90m[1mreimport[22m | grove.png[39m[0m
 [  70% ] [90m[1mreimport[22m | furnace.png[39m[0m
 [  70% ] [90m[1mreimport[22m | field_r05.png[39m[0m
@@ -1221,11 +1227,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  72% ] [90m[1mreimport[22m | crown_core.png[39m[0m
 [  72% ] [90m[1mreimport[22m | crown.png[39m[0m
 [  72% ] [90m[1mreimport[22m | conduit.png[39m[0m
-[  73% ] [90m[1mreimport[22m | archive.png[39m[0m
+[  72% ] [90m[1mreimport[22m | archive.png[39m[0m
 [  73% ] [90m[1mreimport[22m | C08.png[39m[0m
 [  73% ] [90m[1mreimport[22m | C07.png[39m[0m
 [  73% ] [90m[1mreimport[22m | C06.png[39m[0m
-[  74% ] [90m[1mreimport[22m | C05.png[39m[0m
+[  73% ] [90m[1mreimport[22m | C05.png[39m[0m
 [  74% ] [90m[1mreimport[22m | C04.png[39m[0m
 [  74% ] [90m[1mreimport[22m | C03.png[39m[0m
 [  74% ] [90m[1mreimport[22m | C02.png[39m[0m
@@ -1234,11 +1240,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  75% ] [90m[1mreimport[22m | E018.png[39m[0m
 [  75% ] [90m[1mreimport[22m | E017.png[39m[0m
 [  75% ] [90m[1mreimport[22m | E015.png[39m[0m
-[  76% ] [90m[1mreimport[22m | E013.png[39m[0m
+[  75% ] [90m[1mreimport[22m | E013.png[39m[0m
 [  76% ] [90m[1mreimport[22m | E011.png[39m[0m
 [  76% ] [90m[1mreimport[22m | E008.png[39m[0m
 [  76% ] [90m[1mreimport[22m | E006.png[39m[0m
-[  77% ] [90m[1mreimport[22m | E005.png[39m[0m
+[  76% ] [90m[1mreimport[22m | E005.png[39m[0m
 [  77% ] [90m[1mreimport[22m | E004.png[39m[0m
 [  77% ] [90m[1mreimport[22m | E001.png[39m[0m
 [  77% ] [90m[1mreimport[22m | B13.png[39m[0m
@@ -1251,28 +1257,28 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  79% ] [90m[1mreimport[22m | reef.png[39m[0m
 [  79% ] [90m[1mreimport[22m | quarry.png[39m[0m
 [  79% ] [90m[1mreimport[22m | grove_flood.png[39m[0m
-[  80% ] [90m[1mreimport[22m | quarry.png[39m[0m
-[  80% ] [90m[1mreimport[22m | grove_flood.png[39m[0m
+[  79% ] [90m[1mreimport[22m | grove_flood.png[39m[0m
 [  80% ] [90m[1mreimport[22m | grove.png[39m[0m
 [  80% ] [90m[1mreimport[22m | furnace.png[39m[0m
-[  81% ] [90m[1mreimport[22m | field_r05.png[39m[0m
-[  81% ] [90m[1mreimport[22m | field_r04.png[39m[0m
+[  80% ] [90m[1mreimport[22m | field_r05.png[39m[0m
+[  80% ] [90m[1mreimport[22m | field_r04.png[39m[0m
 [  81% ] [90m[1mreimport[22m | field_r03.png[39m[0m
 [  81% ] [90m[1mreimport[22m | field_r02.png[39m[0m
 [  81% ] [90m[1mreimport[22m | field_r01.png[39m[0m
-[  82% ] [90m[1mreimport[22m | field_post.png[39m[0m
+[  81% ] [90m[1mreimport[22m | field_post.png[39m[0m
 [  82% ] [90m[1mreimport[22m | dais.png[39m[0m
 [  82% ] [90m[1mreimport[22m | crown_core.png[39m[0m
 [  82% ] [90m[1mreimport[22m | crown.png[39m[0m
-[  83% ] [90m[1mreimport[22m | conduit.png[39m[0m
-[  83% ] [90m[1mreimport[22m | archive.png[39m[0m
+[  82% ] [90m[1mreimport[22m | conduit.png[39m[0m
+[  82% ] [90m[1mreimport[22m | archive.png[39m[0m
 [  83% ] [90m[1mreimport[22m | C08.png[39m[0m
 [  83% ] [90m[1mreimport[22m | C07.png[39m[0m
-[  84% ] [90m[1mreimport[22m | C06.png[39m[0m
-[  84% ] [90m[1mreimport[22m | C05.png[39m[0m
+[  83% ] [90m[1mreimport[22m | C06.png[39m[0m
+[  83% ] [90m[1mreimport[22m | C05.png[39m[0m
 [  84% ] [90m[1mreimport[22m | C04.png[39m[0m
-[  84% ] [90m[1mreimport[22m | B11.png[39m[0m
-[  85% ] [90m[1mreimport[22m | B10_P2.png[39m[0m
+[  84% ] [90m[1mreimport[22m | C03.png[39m[0m
+[  84% ] [90m[1mreimport[22m | C02.png[39m[0m
+[  84% ] [90m[1mreimport[22m | B10_P2.png[39m[0m
 [  85% ] [90m[1mreimport[22m | B10_P1.png[39m[0m
 [  85% ] [90m[1mreimport[22m | B10.png[39m[0m
 [  85% ] [90m[1mreimport[22m | B09.png[39m[0m
@@ -1281,32 +1287,33 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  86% ] [90m[1mreimport[22m | B06.png[39m[0m
 [  86% ] [90m[1mreimport[22m | B05.png[39m[0m
 [  86% ] [90m[1mreimport[22m | B04.png[39m[0m
-[  87% ] [90m[1mreimport[22m | B03_P1.png[39m[0m
+[  86% ] [90m[1mreimport[22m | B03_P1.png[39m[0m
 [  87% ] [90m[1mreimport[22m | B03.png[39m[0m
 [  87% ] [90m[1mreimport[22m | B02.png[39m[0m
 [  87% ] [90m[1mreimport[22m | B01_P1.png[39m[0m
-[  88% ] [90m[1mreimport[22m | B01.png[39m[0m
+[  87% ] [90m[1mreimport[22m | B01.png[39m[0m
 [  88% ] [90m[1mreimport[22m | winter.png[39m[0m
 [  88% ] [90m[1mreimport[22m | whitebone.png[39m[0m
 [  88% ] [90m[1mreimport[22m | vault.png[39m[0m
 [  88% ] [90m[1mreimport[22m | underways.png[39m[0m
 [  89% ] [90m[1mreimport[22m | sky.png[39m[0m
 [  89% ] [90m[1mreimport[22m | reef.png[39m[0m
-[  89% ] [90m[1mreimport[22m | grove_flood_ext.png[39m[0m
-[  89% ] [90m[1mreimport[22m | grove_ext.png[39m[0m
-[  90% ] [90m[1mreimport[22m | furnace_ext.png[39m[0m
-[  90% ] [90m[1mreimport[22m | crown_ext.png[39m[0m
+[  89% ] [90m[1mreimport[22m | quarry.png[39m[0m
+[  89% ] [90m[1mreimport[22m | furnace_ext.png[39m[0m
+[  89% ] [90m[1mreimport[22m | crown_ext.png[39m[0m
 [  90% ] [90m[1mreimport[22m | conduit_ext.png[39m[0m
 [  90% ] [90m[1mreimport[22m | capital_ext.png[39m[0m
-[  91% ] [90m[1mreimport[22m | basin_ext.png[39m[0m
-[  91% ] [90m[1mreimport[22m | archive_ext.png[39m[0m
+[  90% ] [90m[1mreimport[22m | basin_ext.png[39m[0m
+[  90% ] [90m[1mreimport[22m | archive_ext.png[39m[0m
 [  91% ] [90m[1mreimport[22m | objects.png[39m[0m
+[  91% ] [90m[1mreimport[22m | icons_24.png[39m[0m
+[  91% ] [90m[1mreimport[22m | icons_11.png[39m[0m
 [  91% ] [90m[1mreimport[22m | worker.png[39m[0m
 [  92% ] [90m[1mreimport[22m | voss.png[39m[0m
 [  92% ] [90m[1mreimport[22m | ashen8.fnt[39m[0m
 [  92% ] [90m[1mreimport[22m | M030.ogg[39m[0m
 [  92% ] [90m[1mreimport[22m | M029.ogg[39m[0m
-[  92% ] [90m[1mreimport[22m | M028.ogg[39m[0m
+[  93% ] [90m[1mreimport[22m | M028.ogg[39m[0m
 [  93% ] [90m[1mreimport[22m | M027.ogg[39m[0m
 [  93% ] [90m[1mreimport[22m | M026.ogg[39m[0m
 [  93% ] [90m[1mreimport[22m | M025.ogg[39m[0m
@@ -1334,11 +1341,11 @@ ERROR: Error loading custom project font 'res://assets/fonts/ashen8.fnt'
 [  98% ] [90m[1mreimport[22m | M014.ogg[39m[0m
 [  99% ] [90m[1mreimport[22m | M015.ogg[39m[0m
 [  99% ] [90m[1mreimport[22m | M016.ogg[39m[0m
-[  99% ] [90m[1mreimport[22m | echo.png[39m[0m
+[  99% ] [90m[1mreimport[22m | clerk.png[39m[0m
 [  99% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
 [92m[ DONE ][39m [1mreimport[22m
 [0m
-[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (426 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (428 steps)[39m[0m
 [   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
 [92m[ DONE ][39m [1mreimport[22m
 [0m
