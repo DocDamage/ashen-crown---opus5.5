@@ -1,0 +1,56 @@
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/characters.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/regions.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/towns.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/dungeons.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/enemies.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/bosses.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/abilities.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/weapons.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/armor.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/accessories.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/consumables.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/statuses.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/quests.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/chapters.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/music.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/sfx.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/claude/ashen/tools/validate_pack.py:16: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/claude/ashen/data/acceptance.json' mode='r' encoding='utf-8'>
+  return {k: json.load(open(os.path.join(data_dir, k + ".json"), encoding="utf-8")) for k in EXPECTED}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.015s
+
+OK

@@ -1,0 +1,1 @@
+compile_content: OK e528220ab0ff6194 {'characters': 8, 'abilities': 80, 'items': 151, 'statuses': 16, 'enemies': 109, 'vestiges': 8, 'formations': 2, 'shops': 8, 'shop_rules': 6, 'chapters': 24, 'quests': 12, 'dungeons': 12, 'towns': 7, 'regions': 6, 'music': 30, 'sfx': 32, 'speakers': 44, 'locations': 18, 'tile_rules': 4, 'scenes': 440, 'maps': 128}

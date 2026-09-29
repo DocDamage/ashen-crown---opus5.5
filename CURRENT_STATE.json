@@ -2,7 +2,7 @@
   "project": "The Ashen Crown",
   "engine": "Godot 4.7.2-stable (verified 4.7.2.stable.official.ed1daf0bf), Compatibility renderer, 320x240",
   "updated": "2026-09-28",
-  "phase": "B5/B6: full campaign content implemented (CH01-CH24, Q01-Q12, D01-D12, B01-B16); chained normal-input route evidence and release packaging in progress",
+  "phase": "B6 complete except owner-side checks: full campaign implemented; final normal-input chain (New Game -> credits -> post-clear, plus Q01-Q12) PASS on revision 7428b37 / content e528220ab0ff6194; Windows build exported from a clean archive and delivered",
   "content": {
     "chapters": "CH01-CH24 authored (content_src/scenes/ch01..ch22.scn, quests.scn, gates.scn, travel.scn, ship.scn)",
     "maps": 128,
@@ -16,9 +16,8 @@
     "routes": "b1 (New Game..CH01, save/reload) then chained segments seg2..seg8 + segq; each resumes the milestone written by the previous normal-input segment; logs in reports/evidence/chain/"
   },
   "known_open_items": [
-    "Final evidence rerun of the whole chain on the packaged revision (AC067)",
     "Windows launch on the owner's machine (AC065) and human play review (AC068)",
     "Encounters-off campaign segment (AC063), audio listening review (AC061)"
   ],
-  "next_action": "Run tools/package.sh after the final chain passes; deliver dist/ to the connected folder; update reports/final_report.md and requirements ledger."
+  "next_action": "Owner: launch The Ashen Crown/Windows/AshenCrown.exe on Windows and play the opening and finale (AC065/AC068). Agent: address feedback, then rerun tools/run_chain.sh, --qa-tests and tools/package.sh."
 }

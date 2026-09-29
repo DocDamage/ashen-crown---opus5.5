@@ -1,5 +1,5 @@
 {
- "content_sha": "bfbb42eb1ec31161",
+ "content_sha": "a0ca87511117187d",
  "criteria": [
   {
    "id": "AC001",
@@ -57,7 +57,7 @@
    "expected": "Reach Brackenford and control Dain without debug commands.",
    "status": "verified",
    "evidence": [
-    "reports/evidence/b1/b1_route_log.txt"
+    "reports/evidence/final_chain/b1.txt"
    ],
    "note": "B1 route: Title -> New Game -> Brackenford with normal input."
   },
@@ -81,7 +81,7 @@
    "expected": "No clipping, unreadable required labels or off-screen confirm/cancel controls.",
    "status": "partial",
    "evidence": [
-    "reports/evidence/screens/"
+    "reports/evidence/final_chain/screens/"
    ],
    "note": "Captures reviewed at 320x240; long objective toasts now wrap. Not every panel was inspected at every scale."
   },
@@ -119,7 +119,7 @@
    "evidence": [
     "tools/check_reach.py",
     "reports/evidence/release/check_reach.txt",
-    "reports/evidence/chain/"
+    "reports/evidence/final_chain/"
    ],
    "note": "Offline: every entity reachable and every arrival spawn reaches every exit of its room. Runtime: all story doorways crossed by the chained routes."
   },
@@ -143,7 +143,7 @@
    "expected": "Feet align, actors sort correctly and interaction targets are unambiguous.",
    "status": "partial",
    "evidence": [
-    "reports/evidence/screens/"
+    "reports/evidence/final_chain/screens/"
    ],
    "note": "Y-sorted actors/props and door interaction verified in captures; no systematic sweep."
   },
@@ -480,7 +480,7 @@
    "status": "partial",
    "evidence": [
     "reports/evidence/tests/runtime_tests_final.txt",
-    "reports/evidence/b1/b1_route_log.txt"
+    "reports/evidence/final_chain/b1.txt"
    ],
    "note": "test_campaign::test_save_round_trip; B1 saves at a lamp, returns to title and reloads through the menu. Ship/pre-boss reloads not separately automated."
   },
@@ -552,9 +552,9 @@
    "expected": "All required locations, recruits and bosses work without flag edits.",
    "status": "verified",
    "evidence": [
-    "reports/evidence/chain/"
+    "reports/evidence/final_chain/"
    ],
-   "note": "Normal-input chain: b1 (New Game..CH01) -> seg2 -> seg3 -> seg4 -> seg5 (CH11), each segment resuming from the milestone the previous one wrote. No flag edits in routes."
+   "note": "Normal-input chain: b1 (New Game..CH01) -> seg2 -> seg3 -> seg4 -> seg5 (CH11, then CH12), each segment resuming from the milestone the previous one wrote. No flag edits in routes."
   },
   {
    "id": "AC047",
@@ -565,7 +565,7 @@
    "status": "verified",
    "evidence": [
     "reports/evidence/tests/runtime_tests_final.txt",
-    "reports/evidence/chain/"
+    "reports/evidence/final_chain/"
    ],
    "note": "test_campaign::test_catastrophe_transaction_preserves_ownership; test_post_state::test_catastrophe_scene_commits_post_state; seg5 reaches Hearthward through the real scene."
   },
@@ -589,7 +589,7 @@
    "expected": "Two/three/four-person sections are viable and Wayfarer is earned normally.",
    "status": "verified",
    "evidence": [
-    "reports/evidence/chain/"
+    "reports/evidence/final_chain/"
    ],
    "note": "seg6: CH13-CH16 with the two-, three- and four-person party; Wayfarer earned in play."
   },
@@ -602,7 +602,7 @@
    "status": "partial",
    "evidence": [
     "reports/evidence/tests/runtime_tests_final.txt",
-    "reports/evidence/chain/"
+    "reports/evidence/final_chain/"
    ],
    "note": "test_post_state::test_reunion_orders_all_six runs the real completion scenes in all six orders; the routes play one order (CH17, CH18, CH19) end to end."
   },
@@ -612,11 +612,12 @@
    "title": "Personal quests",
    "procedure": "Complete each of Q01\u2013Q08 and reload at each stage.",
    "expected": "Exact weapon/ability rewards, world changes and epilogue flags occur once.",
-   "status": "PENDING",
+   "status": "partial",
    "evidence": [
-    "reports/evidence/chain/"
+    "reports/evidence/final_chain/",
+    "reports/evidence/tests/runtime_tests_final.txt"
    ],
-   "note": "segq route: Q01-Q08."
+   "note": "segq plays Q01-Q08 to COMPLETED with normal input (rewards and final techniques granted); reload at every stage is covered only by the quest-state tests, not per stage in play."
   },
   {
    "id": "AC052",
@@ -624,11 +625,11 @@
    "title": "Optional bosses",
    "procedure": "Complete Q09\u2013Q12, flee attempts and loss/retry paths.",
    "expected": "Boss gating, rewards and optional status are correct.",
-   "status": "PENDING",
+   "status": "verified",
    "evidence": [
-    "reports/evidence/chain/"
+    "reports/evidence/final_chain/"
    ],
-   "note": "segq route: Q09-Q11; Q12 from the pre-finale state."
+   "note": "segq defeats B13, B14, B15 and B16 (Q12 before the final commitment) and receives V07, V08, A023, A024; defeat/Retry paths occurred in dev runs."
   },
   {
    "id": "AC053",
@@ -638,7 +639,7 @@
    "expected": "Both routes are solvable with available items and recovery; no inventory duplication.",
    "status": "partial",
    "evidence": [
-    "reports/evidence/chain/",
+    "reports/evidence/final_chain/",
     "reports/evidence/tests/runtime_tests_final.txt"
    ],
    "note": "seg8 plays the default balanced split; unbalanced splits are allowed by the split screen (healer warning) but not route-tested."
@@ -673,11 +674,11 @@
    "title": "Zero-optionals ending",
    "procedure": "Finish the main route without CH21 or optional quests.",
    "expected": "Complete valid ending; no missing final key or false bad-ending label.",
-   "status": "PENDING",
+   "status": "verified",
    "evidence": [
-    "reports/evidence/chain/"
+    "reports/evidence/final_chain/"
    ],
-   "note": "seg8 finishes with no optional quests."
+   "note": "seg8 finishes CH22-CH24 with zero optional quests; the ending, credits and clear save complete."
   },
   {
    "id": "AC057",
@@ -697,11 +698,11 @@
    "title": "Post-clear return",
    "procedure": "Return from credits to before the final descent.",
    "expected": "Safe pre-finale snapshot, clear flag and completed optional content retained.",
-   "status": "PENDING",
+   "status": "verified",
    "evidence": [
-    "reports/evidence/chain/"
+    "reports/evidence/final_chain/"
    ],
-   "note": "seg8 ends by choosing Continue from Before the Final Descent."
+   "note": "seg8 chooses Continue from Before the Final Descent and lands at the Accord Dock with the post_clear flag."
   },
   {
    "id": "AC059",
@@ -723,7 +724,7 @@
    "expected": "No placeholder geometry disguised as final art or identical room stamping.",
    "status": "partial",
    "evidence": [
-    "reports/evidence/screens/"
+    "reports/evidence/final_chain/screens/"
    ],
    "note": "Every location has its own composition; art is programmatic and plain in places."
   },
@@ -747,7 +748,7 @@
    "expected": "Record encounter time, resource use, level and failures; revise bottlenecks without inventing measured total playtime.",
    "status": "partial",
    "evidence": [
-    "reports/evidence/chain/"
+    "reports/evidence/final_chain/"
    ],
    "note": "Route traces record level, battles and resources per segment; the bot takes direct paths, so it is a lower bound for play time."
   },
@@ -781,9 +782,9 @@
    "title": "Windows export launch",
    "procedure": "Launch the produced Windows executable on Windows.",
    "expected": "Actual platform smoke and save/load results recorded; cross-export alone is not a pass.",
-   "status": "PENDING",
+   "status": "unverified",
    "evidence": [],
-   "note": "Windows launch attempt on the owner's machine."
+   "note": "Build copied to the owner's folder and checksum-verified there; it was not launched on Windows (computer use could not run an unregistered executable)."
   },
   {
    "id": "AC066",
@@ -805,9 +806,12 @@
    "title": "Evidence freshness",
    "procedure": "Compare source/content hashes to test and screenshot records.",
    "expected": "Claims refer to the packaged revision; stale artifacts are rejected.",
-   "status": "PENDING",
-   "evidence": [],
-   "note": "Final evidence rerun on the packaged revision."
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/final_chain/",
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "Final chain, runtime tests and clean-archive export all ran on revision 7428b37 / content e528220ab0ff6194 (logs print the content hash)."
   },
   {
    "id": "AC068",

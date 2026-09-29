@@ -1,16 +1,20 @@
 #!/bin/bash
-# Build the delivery set: Windows build (exe + notices + README), source archive, evidence archive.
+# Clean-source release build (AC064): export from a fresh `git archive` of HEAD, not from the working tree.
 set -e
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 G=${GODOT:-/home/claude/tools/godot/Godot_v4.7.2-stable_linux.x86_64}
-DIST=$ROOT/dist
-rm -rf "$DIST"; mkdir -p "$DIST/AshenCrown_Windows"
-cd "$ROOT/game"
-"$G" --headless --path . --import >/dev/null 2>&1
-"$G" --headless --path . --export-release "Windows Desktop" "$DIST/AshenCrown_Windows/AshenCrown.exe" > "$ROOT/reports/evidence/release/export.txt" 2>&1
+REV=$(cd "$ROOT" && git rev-parse --short HEAD)
+DIST=$ROOT/dist; REL=$ROOT/reports/evidence/release
+CLEAN=/tmp/ashen_clean_$REV
+rm -rf "$DIST" "$CLEAN"; mkdir -p "$DIST/AshenCrown_Windows" "$CLEAN" "$REL"
+(cd "$ROOT" && git archive HEAD) | tar -x -C "$CLEAN"
+cd "$CLEAN/game"
+"$G" --headless --path . --import > "$REL/clean_import.txt" 2>&1 || true
+"$G" --headless --path . --import > "$REL/clean_import_second_pass.txt" 2>&1
+"$G" --headless --path . --export-release "Windows Desktop" "$DIST/AshenCrown_Windows/AshenCrown.exe" > "$REL/clean_export.txt" 2>&1
+echo "revision $REV exported from clean archive $CLEAN" >> "$REL/clean_export.txt"
 cp -r "$ROOT/game/licenses" "$DIST/AshenCrown_Windows/"
 cp "$ROOT/README.md" "$DIST/AshenCrown_Windows/README.md"
-cd "$DIST" && sha256sum AshenCrown_Windows/AshenCrown.exe > AshenCrown_Windows/SHA256SUMS.txt
-cd "$ROOT" && git archive --format=tar.gz -o "$DIST/AshenCrown_source.tar.gz" HEAD
-tar -czf "$DIST/AshenCrown_evidence.tar.gz" -C "$ROOT" reports
+(cd "$DIST/AshenCrown_Windows" && sha256sum AshenCrown.exe > SHA256SUMS.txt)
+(cd "$ROOT" && git archive --format=tar.gz --prefix=AshenCrown_source/ -o "$DIST/AshenCrown_source_$REV.tar.gz" HEAD)
 ls -la "$DIST" "$DIST/AshenCrown_Windows"
