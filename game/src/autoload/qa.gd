@@ -106,7 +106,10 @@ func finish(ok: bool, summary: String) -> void:
 const GALLERY_MAPS := ["T01_PLATFORM", "T01_BAKERY", "D01_R01", "D02_R01", "D03_R02", "T03_TOWN", "D04_R02", "T04_QUAY",
 	"D05_R01", "D06_R01", "T05_COURT", "T06_MARKET", "D07_R01", "D08_R01", "D09_R01", "D10_R01", "T07_MARKET",
 	"D11_R01", "D12_R01", "WORLD", "T02_SQUARE", "W_DECK"]
-const GALLERY_FORMS := ["D01_4", "D03_2", "B01", "B05", "D07_2", "B08", "OW1_1", "D09_4", "B12", "D12_2"]
+const GALLERY_FORMS := ["D01_4", "D03_2", "B01", "B05", "D07_2", "B08", "OW1_1", "D09_4", "B12", "D12_2",
+	# every battle backdrop and boss (art review)
+	"D02_2", "B02", "B15", "B03", "B11", "D04_2", "B04", "D05_1", "D06_1", "B06", "B07", "D08_1", "B09", "B10",
+	"D10_1", "B16", "D11_1", "B13", "B14", "OW2_1", "OW3_1", "OW4_1", "OW5_1", "OWP_1", "D03P_1", "D01_1", "D02_1"]
 
 
 func run_gallery(p_main: Node, which: String) -> void:
@@ -146,7 +149,12 @@ func run_gallery(p_main: Node, which: String) -> void:
 		main.router.pop(m)
 		m.queue_free()
 	if which in ["battle", "all"]:
+		for cid in ["C02", "C03", "C04"]:
+			if Content.data["characters"].has(cid):
+				Game.recruit(cid)
 		for f in GALLERY_FORMS:
+			if Content.formation(f).is_empty():
+				continue
 			var bs = BattleScene.new()
 			bs.main = main
 			main.world.add_child(bs)

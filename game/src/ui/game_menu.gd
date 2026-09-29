@@ -701,10 +701,14 @@ func _bestiary() -> void:
 		var tx: Texture2D = Content.load_art("res://assets/sprites/enemies/%s.png" % it["value"])
 		var y = 8
 		if tx:
+			# frame 0 of the 4-frame sheet; large battlers (up to 160 px) are shown at 1/2 so the panel keeps its text
 			var fw = tx.get_width() / 4
-			var h = mini(tx.get_height(), 80)
-			draw_texture_rect_region(tx, Rect2(232 - fw / 2.0, y, fw, h), Rect2(0, 0, fw, h))
-			y += h + 4
+			var fh = tx.get_height()
+			var k = 1.0 if (fw <= 156 and fh <= 80) else 0.5
+			var dw = fw * k
+			var dh = mini(int(fh * k), 80)
+			draw_texture_rect_region(tx, Rect2(232 - dw / 2.0, y, dw, dh), Rect2(0, 0, fw, dh / k))
+			y += dh + 4
 		UI.text(self, Vector2(154, y), "Lv %d  HP %d" % [e["level"], e["hp"]])
 		y += 12
 		var wk = []

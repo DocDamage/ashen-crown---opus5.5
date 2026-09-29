@@ -185,8 +185,16 @@ LICENSES = {
     # Only characters/Elements Character Generator (+ elements character expansion) is used from this folder:
     # Time Fantasy "Elements" character kit by Jason Perry (finalbossblues); its guide covers use in your own game
     # engine. Other packs in characters/ (e.g. the non-commercial Mystic Woods files) are NOT used.
-    "characters": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in "
+    "characters/Elements Character Generator": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in "
                   "games in any engine allowed, raw files not redistributed; credit finalbossblues",
+    "ansimuz": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games "
+               "(creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
+    "characters":  # monster packs in other characters/ subfolders
+         "Pixel monster packs (Stone Golem, Huge Knight, Headless Horseman, Cerberus, Gargoyle, Gryphon, Imp, Witch) - "
+                  "per-pack License.txt: 'You can use this asset in any game project, personal or commercial'; "
+                  "no resale/redistribution as a game asset, no NFTs",
+    "haydeos": "Factory Monster Pack 1 by Haydeos (haydeos.itch.io/factory-monster-pack-1) - 'You may use these assets in "
+               "any commercial or non-commercial game project'; any engine; credit appreciated",
 }
 
 
@@ -209,4 +217,7 @@ def lib_available(rel="finalbossblues"):
 
 
 def pack_of(rel):
-    return rel.replace("\\", "/").split("/")[0]
+    """Most specific LICENSES key that prefixes the library-relative path (falls back to the top folder)."""
+    rel = rel.replace("\\", "/")
+    keys = [k for k in LICENSES if rel == k or rel.startswith(k.rstrip("/") + "/")]
+    return max(keys, key=len) if keys else rel.split("/")[0]

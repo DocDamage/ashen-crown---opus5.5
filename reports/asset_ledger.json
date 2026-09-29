@@ -1,575 +1,666 @@
 [
  {
-  "path": "game/assets/ext/sprites/battle/C01.png",
-  "w": 1296,
-  "h": 64,
-  "kind": "battle_sprite",
-  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "path": "game/assets/ext/sprites/bg/archive.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "finalbossblues/100/sv_battler/beast_hero_3_sv.png",
-  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Old-dark-Castle-tileset-Files/PNG/old-dark-castle-interior-background.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "705c8e658613",
-  "note": "TF Beast Tribes lizard side-view battler, recoloured"
+  "sha": "e6b1bf6f824b",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/battle/C02.png",
-  "w": 1296,
-  "h": 64,
-  "kind": "battle_sprite",
-  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "path": "game/assets/ext/sprites/bg/conduit.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/frontextra/frontextra8.png; characters/Elements Character Generator/assets/hair/hair11.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top4.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Warped/Environments/Scifi lab Files/layers/back.png; ansimuz/Legacy Collection/Assets/Warped/Environments/Scifi lab Files/layers/middle.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "26153564edda",
-  "note": "Time Fantasy Elements west-facing frames, recoloured"
+  "sha": "fa236afc9dcf",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/battle/C03.png",
-  "w": 1296,
-  "h": 64,
-  "kind": "battle_sprite",
-  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "path": "game/assets/ext/sprites/bg/crown.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair4.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top10.png; characters/Elements Character Generator/assets/weapon/spear1.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Warped/Environments/another-world/PNG/layered/composed-bg.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "f201bbf110d4",
-  "note": "Time Fantasy Elements west-facing frames, recoloured"
+  "sha": "412575a55156",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/battle/C04.png",
-  "w": 1296,
-  "h": 64,
-  "kind": "battle_sprite",
-  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "path": "game/assets/ext/sprites/bg/crown_core.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/frontextra/frontextra1.png; characters/Elements Character Generator/assets/hair/hair25.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top5.png; characters/Elements Character Generator/assets/weapon/hammer.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/lava-background/PNG/background.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/lava-background/PNG/middle-rocks.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "96888be48932",
-  "note": "Time Fantasy Elements west-facing frames, recoloured"
+  "sha": "13ae1083b20c",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/battle/C05.png",
-  "w": 1296,
-  "h": 64,
-  "kind": "battle_sprite",
-  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "path": "game/assets/ext/sprites/bg/dais.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backextra/backextra1.png; characters/Elements Character Generator/assets/backhair/backhair4.png; characters/Elements Character Generator/assets/bottom/bottom6.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top2.png; characters/Elements Character Generator/assets/weapon/bow1arrow1.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Warped/Environments/alien-environment/PNG/layers/back-structures.png; ansimuz/Legacy Collection/Assets/Warped/Environments/alien-environment/PNG/layers/background.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "6a76ed96894b",
-  "note": "Time Fantasy Elements west-facing frames, recoloured"
+  "sha": "c950e65afc9c",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/battle/C06.png",
-  "w": 1296,
-  "h": 64,
-  "kind": "battle_sprite",
-  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "path": "game/assets/ext/sprites/bg/field_post.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair7.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top8.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Gothic-Horror-Files/PNG/layers/clouds.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Gothic-Horror-Files/PNG/layers/town.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "112900c9ad84",
-  "note": "Time Fantasy Elements west-facing frames, recoloured"
+  "sha": "8dd14a07a3b1",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/battle/C07.png",
-  "w": 1296,
-  "h": 64,
-  "kind": "battle_sprite",
-  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "path": "game/assets/ext/sprites/bg/field_r01.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backhair/backhair5.png; characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top4.png; characters/Elements Character Generator/assets/weapon/sword4.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Day-Platformer/PNG/clouds.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Day-Platformer/PNG/sky.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Day-Platformer/PNG/trees.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "c0aeb435d790",
-  "note": "Time Fantasy Elements west-facing frames, recoloured"
+  "sha": "f3bb5c08df94",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/battle/C08.png",
-  "w": 1296,
-  "h": 64,
-  "kind": "battle_sprite",
-  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "path": "game/assets/ext/sprites/bg/field_r02.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair6.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top5.png; characters/Elements Character Generator/assets/weapon/daggers.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Rocky Pass Files/PNG/back.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Rocky Pass Files/PNG/middle.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "4971d6a81d98",
-  "note": "Time Fantasy Elements west-facing frames, recoloured"
+  "sha": "dd9d52794690",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/C01.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/field_r03.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "finalbossblues/100/beast_hero_3.png; finalbossblues/100/beast_hero_3_emote.png",
-  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Warped/Environments/Ocean View Files/Layers/Day/Back.png; ansimuz/Legacy Collection/Assets/Warped/Environments/Ocean View Files/Layers/Day/Clouds.png; ansimuz/Legacy Collection/Assets/Warped/Environments/Ocean View Files/Layers/Day/Middle.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "81f45d28e0b0",
-  "note": "TF Beast Tribes lizard hero, recoloured"
+  "sha": "0c9bd933f6fd",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/C02.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/field_r04.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/frontextra/frontextra8.png; characters/Elements Character Generator/assets/hair/hair11.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top4.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/version B/Layers/far-mountains.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/version B/Layers/far-trees.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/version B/Layers/middle-mountains.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/version B/Layers/sky.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "d327dc15aca0",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "f149d0fc4dfa",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/C03.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/field_r05.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair4.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top10.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Rocky Beach environment/layers/background.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Rocky Beach environment/layers/mountain.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "7ecde60d78e4",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "982f56d212f1",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/C04.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/furnace.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/frontextra/frontextra1.png; characters/Elements Character Generator/assets/hair/hair25.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top5.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Warped/Environments/parallax-industrial-web/Layers/bg.png; ansimuz/Legacy Collection/Assets/Warped/Environments/parallax-industrial-web/Layers/buildings.png; ansimuz/Legacy Collection/Assets/Warped/Environments/parallax-industrial-web/Layers/far-buildings.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "342c8596cbc5",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "91073d44edd9",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/C05.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/grove.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backextra/backextra1.png; characters/Elements Character Generator/assets/backhair/backhair4.png; characters/Elements Character Generator/assets/bottom/bottom6.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top2.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/forest-road-background/PNG/back.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/forest-road-background/PNG/middle.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "484cbf2c4e4d",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "42131778f69d",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/C06.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/grove_flood.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair7.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top8.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/mist-forest-background/layers/mist-forest-background-back-trees.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/mist-forest-background/layers/mist-forest-background-back.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/mist-forest-background/layers/mist-forest-background-tree.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "49a3d247bb39",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "874caf4c0f11",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/C07.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/quarry.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backhair/backhair5.png; characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top4.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/Version C/layers/canyon.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/Version C/layers/far-mountains.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/Version C/layers/sky.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "2e7988451b67",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "cc992cc057ca",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/C08.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/reef.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair6.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top5.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Underwater Fantasy/PNG/layers/far.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Underwater Fantasy/PNG/layers/foreground-1.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Underwater Fantasy/PNG/layers/sand.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "9c3b9e23feef",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "8391d560a030",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/ansel.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/sky.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair3.png; characters/Elements Character Generator/assets/head/head5.png; characters/Elements Character Generator/assets/top/top1.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Day-Platformer/PNG/clouds.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Day-Platformer/PNG/sky.png; ansimuz/Legacy Collection/Assets/Warped/Environments/Ocean View Files/Layers/Day/Clouds.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "1bd736d25014",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "29f49c34ead4",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/apprentice.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/underways.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair10.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top4.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Warped/Environments/bulkhead-walls/v1/layers/bulkhead-walls-back.png; ansimuz/Legacy Collection/Assets/Warped/Environments/bulkhead-walls/v1/layers/bulkhead-walls-pipes.png; ansimuz/Legacy Collection/Assets/Warped/Environments/bulkhead-walls/v1/layers/cols.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "411bc67487fb",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "3d4f7d552353",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/baker.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/vault.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "finalbossblues/npc-animations/individual_frames/household/chef_down (1).png; finalbossblues/npc-animations/individual_frames/household/chef_down (2).png; finalbossblues/npc-animations/individual_frames/household/chef_down (3).png; finalbossblues/npc-animations/individual_frames/household/chef_left (1).png; finalbossblues/npc-animations/individual_frames/household/chef_left (2).png; finalbossblues/npc-animations/individual_frames/household/chef_left (3).png; finalbossblues/npc-animations/individual_frames/household/chef_right (1).png; finalbossblues/npc-animations/individual_frames/household/chef_right (2).png; finalbossblues/npc-animations/individual_frames/household/chef_right (3).png; finalbossblues/npc-animations/individual_frames/household/chef_up (1).png; finalbossblues/npc-animations/individual_frames/household/chef_up (2).png; finalbossblues/npc-animations/individual_frames/household/chef_up (3).png",
-  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/treasure-hoard-platform/PNG/back-gold.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/treasure-hoard-platform/PNG/background.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "4e760d7cec2a",
-  "note": "Time Fantasy NPC animations"
+  "sha": "5821dc197fd0",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/child.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/whitebone.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "finalbossblues/npc-animations/individual_frames/children/child1_down (1).png; finalbossblues/npc-animations/individual_frames/children/child1_down (2).png; finalbossblues/npc-animations/individual_frames/children/child1_down (3).png; finalbossblues/npc-animations/individual_frames/children/child1_left (1).png; finalbossblues/npc-animations/individual_frames/children/child1_left (2).png; finalbossblues/npc-animations/individual_frames/children/child1_left (3).png; finalbossblues/npc-animations/individual_frames/children/child1_right (1).png; finalbossblues/npc-animations/individual_frames/children/child1_right (2).png; finalbossblues/npc-animations/individual_frames/children/child1_right (3).png; finalbossblues/npc-animations/individual_frames/children/child1_up (1).png; finalbossblues/npc-animations/individual_frames/children/child1_up (2).png; finalbossblues/npc-animations/individual_frames/children/child1_up (3).png",
-  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Gothic-Castle-Files/PNG/layers/gothic-castle-background.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "9dd7cb5e8e97",
-  "note": "Time Fantasy NPC animations"
+  "sha": "4d75215691be",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/clerk.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/bg/winter.png",
+  "w": 320,
+  "h": 168,
+  "kind": "battle_bg",
+  "frames": "320x168",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head6.png; characters/Elements Character Generator/assets/top/top1.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/version A/Layers/far-clouds.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/version A/Layers/far-mountains.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/version A/Layers/mountains.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/version A/Layers/sky.png; ansimuz/Legacy Collection/Assets/Gothicvania/Environments/Mountain Dusk/version A/Layers/trees.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "ecd91cde1aee",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "585825df07e5",
+  "note": "FF6-style panorama: graded parallax layers + painted perspective ground + painted set pieces"
  },
  {
-  "path": "game/assets/ext/sprites/world/edda.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/B06.png",
+  "w": 632,
+  "h": 134,
+  "kind": "boss_sprite",
+  "frames": "158x134 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backhair/backhair5.png; characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top10.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "characters/Gryphon/NEW VERSION/Sprites/without_outline/ATTACK 1.png; characters/Gryphon/NEW VERSION/Sprites/without_outline/HURT.png; characters/Gryphon/NEW VERSION/Sprites/without_outline/IDLE.png",
+  "license": "Pixel monster packs (Stone Golem, Huge Knight, Headless Horseman, Cerberus, Gargoyle, Gryphon, Imp, Witch) - per-pack License.txt: 'You can use this asset in any game project, personal or commercial'; no resale/redistribution as a game asset, no NFTs",
   "status": "library",
-  "sha": "2bb917c022ee",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "032f0f9a7e76",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/elder.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/B13.png",
+  "w": 644,
+  "h": 162,
+  "kind": "boss_sprite",
+  "frames": "161x162 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "finalbossblues/npc-animations/individual_frames/elders/elder2_down (1).png; finalbossblues/npc-animations/individual_frames/elders/elder2_down (2).png; finalbossblues/npc-animations/individual_frames/elders/elder2_down (3).png; finalbossblues/npc-animations/individual_frames/elders/elder2_left (1).png; finalbossblues/npc-animations/individual_frames/elders/elder2_left (2).png; finalbossblues/npc-animations/individual_frames/elders/elder2_left (3).png; finalbossblues/npc-animations/individual_frames/elders/elder2_right (1).png; finalbossblues/npc-animations/individual_frames/elders/elder2_right (2).png; finalbossblues/npc-animations/individual_frames/elders/elder2_right (3).png; finalbossblues/npc-animations/individual_frames/elders/elder2_up (1).png; finalbossblues/npc-animations/individual_frames/elders/elder2_up (2).png; finalbossblues/npc-animations/individual_frames/elders/elder2_up (3).png",
-  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Characters/demon-Files/Sprites/DemonAttack/frame8.png; ansimuz/Legacy Collection/Assets/Gothicvania/Characters/demon-Files/Sprites/Idle/idle1.png; ansimuz/Legacy Collection/Assets/Gothicvania/Characters/demon-Files/Sprites/Idle/idle2.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "769f419c818c",
-  "note": "Time Fantasy NPC animations"
+  "sha": "530f7d9c683c",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/farmer.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E001.png",
+  "w": 348,
+  "h": 76,
+  "kind": "enemy_sprite",
+  "frames": "87x76 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "finalbossblues/npc-animations/individual_frames/farmer/farmer1_down (1).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_down (2).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_down (3).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_left (1).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_left (2).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_left (3).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_right (1).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_right (2).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_right (3).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_up (1).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_up (2).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_up (3).png",
-  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "source": "haydeos/Factory Monster Pack 1/Trash_Rat.png",
+  "license": "Factory Monster Pack 1 by Haydeos (haydeos.itch.io/factory-monster-pack-1) - 'You may use these assets in any commercial or non-commercial game project'; any engine; credit appreciated",
   "status": "library",
-  "sha": "57b6e4a57cca",
-  "note": "Time Fantasy NPC animations"
+  "sha": "f42cb9b82d0b",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/guard.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E004.png",
+  "w": 360,
+  "h": 72,
+  "kind": "enemy_sprite",
+  "frames": "90x72 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "finalbossblues/npc-animations/individual_frames/knights/knight1_down (1).png; finalbossblues/npc-animations/individual_frames/knights/knight1_down (2).png; finalbossblues/npc-animations/individual_frames/knights/knight1_down (3).png; finalbossblues/npc-animations/individual_frames/knights/knight1_left (1).png; finalbossblues/npc-animations/individual_frames/knights/knight1_left (2).png; finalbossblues/npc-animations/individual_frames/knights/knight1_left (3).png; finalbossblues/npc-animations/individual_frames/knights/knight1_right (1).png; finalbossblues/npc-animations/individual_frames/knights/knight1_right (2).png; finalbossblues/npc-animations/individual_frames/knights/knight1_right (3).png; finalbossblues/npc-animations/individual_frames/knights/knight1_up (1).png; finalbossblues/npc-animations/individual_frames/knights/knight1_up (2).png; finalbossblues/npc-animations/individual_frames/knights/knight1_up (3).png",
-  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Characters/Hell-Hound-Files/Sprites/Idle/frame1.png; ansimuz/Legacy Collection/Assets/Gothicvania/Characters/Hell-Hound-Files/Sprites/Idle/frame6.png; ansimuz/Legacy Collection/Assets/Gothicvania/Characters/Hell-Hound-Files/Sprites/Jump/frame2.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "fc40106242a3",
-  "note": "Time Fantasy NPC animations"
+  "sha": "c259218a10ec",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/ilyr.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E005.png",
+  "w": 392,
+  "h": 61,
+  "kind": "enemy_sprite",
+  "frames": "98x61 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backextra/tail2.png; characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/hair/hair4.png; characters/Elements Character Generator/assets/head/head20.png; characters/Elements Character Generator/assets/top/top2.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Living Pack 1/Slime/Sprites/slime1.png; ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Living Pack 1/Slime/Sprites/slime3.png; ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Living Pack 1/Slime/Sprites/slime4.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "6935943f870e",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "3bf397015dff",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/inspector.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E006.png",
+  "w": 344,
+  "h": 104,
+  "kind": "enemy_sprite",
+  "frames": "86x104 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/hat/hat11.png; characters/Elements Character Generator/assets/head/head7.png; characters/Elements Character Generator/assets/top/top3.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Mechanic/Drone.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "c44ffe9864c5",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "61837d080a98",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/jori.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E008.png",
+  "w": 224,
+  "h": 79,
+  "kind": "enemy_sprite",
+  "frames": "56x79 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/frontextra/frontextra8.png; characters/Elements Character Generator/assets/hair/hair6.png; characters/Elements Character Generator/assets/head/head2.png; characters/Elements Character Generator/assets/top/top1.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Mechanic/Metal-Slug.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "d2515dcbd148",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "b2891d1a3378",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/keeper.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E011.png",
+  "w": 312,
+  "h": 85,
+  "kind": "enemy_sprite",
+  "frames": "78x85 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair1.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top7.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Monster Pack Files/Sprites/Treant/Treant1.png; ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Monster Pack Files/Sprites/Treant/Treant2.png; ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Monster Pack Files/Sprites/Treant/Treant4.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "155cdcf26a28",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "8b1516d66d9b",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/mara.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E013.png",
+  "w": 240,
+  "h": 61,
+  "kind": "enemy_sprite",
+  "frames": "60x61 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backhair/backhair2.png; characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top7.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "haydeos/Factory Monster Pack 1/Scrap_Bandit.png",
+  "license": "Factory Monster Pack 1 by Haydeos (haydeos.itch.io/factory-monster-pack-1) - 'You may use these assets in any commercial or non-commercial game project'; any engine; credit appreciated",
   "status": "library",
-  "sha": "0e21178662bc",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "e266e4ee4ade",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/monk.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E015.png",
+  "w": 336,
+  "h": 70,
+  "kind": "enemy_sprite",
+  "frames": "84x70 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "finalbossblues/npc-animations/individual_frames/townsfolk/folk3_down (1).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_down (2).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_down (3).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_left (1).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_left (2).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_left (3).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_right (1).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_right (2).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_right (3).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_up (1).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_up (2).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_up (3).png",
-  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "source": "characters/Imp/Sprites/no_outline/ATTACK.png; characters/Imp/Sprites/no_outline/HURT.png; characters/Imp/Sprites/no_outline/IDLE.png",
+  "license": "Pixel monster packs (Stone Golem, Huge Knight, Headless Horseman, Cerberus, Gargoyle, Gryphon, Imp, Witch) - per-pack License.txt: 'You can use this asset in any game project, personal or commercial'; no resale/redistribution as a game asset, no NFTs",
   "status": "library",
-  "sha": "2f553a6ed7fb",
-  "note": "Time Fantasy NPC animations"
+  "sha": "9cd0df5fe721",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/noble.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E017.png",
+  "w": 368,
+  "h": 112,
+  "kind": "enemy_sprite",
+  "frames": "92x112 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backhair/backhair10.png; characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair22.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top27.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Living Pack 1/Wizard/Sprites/wizard1.png; ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Living Pack 1/Wizard/Sprites/wizard3.png; ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Living Pack 1/Wizard/Sprites/wizard5.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "489b63dc853a",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "47bf6ec2e41a",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/patient.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E018.png",
+  "w": 224,
+  "h": 55,
+  "kind": "enemy_sprite",
+  "frames": "56x55 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backhair/backhair1.png; characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair22.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top8.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "haydeos/Factory Monster Pack 1/Rust_Slug.png",
+  "license": "Factory Monster Pack 1 by Haydeos (haydeos.itch.io/factory-monster-pack-1) - 'You may use these assets in any commercial or non-commercial game project'; any engine; credit appreciated",
   "status": "library",
-  "sha": "e9a60e2b205d",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "819d9ba3b242",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/pell.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E020.png",
+  "w": 256,
+  "h": 65,
+  "kind": "enemy_sprite",
+  "frames": "64x65 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair1.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top7.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Mechanic/observer.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "8b0dd2b29540",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "d5a3ff70abef",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/pilot.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E021.png",
+  "w": 312,
+  "h": 65,
+  "kind": "enemy_sprite",
+  "frames": "78x65 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom8.png; characters/Elements Character Generator/assets/frontextra/frontextra3.png; characters/Elements Character Generator/assets/hair/hair3.png; characters/Elements Character Generator/assets/head/head2.png; characters/Elements Character Generator/assets/top/top10.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Mechanic/steel-eagle.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "a64d6b55b5a0",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "f2f10047057c",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/rook.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E022.png",
+  "w": 260,
+  "h": 65,
+  "kind": "enemy_sprite",
+  "frames": "65x65 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/frontextra/frontextra8.png; characters/Elements Character Generator/assets/hair/hair4.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top4.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "haydeos/Factory Monster Pack 1/Volt_Viper.png",
+  "license": "Factory Monster Pack 1 by Haydeos (haydeos.itch.io/factory-monster-pack-1) - 'You may use these assets in any commercial or non-commercial game project'; any engine; credit appreciated",
   "status": "library",
-  "sha": "6d6a397f898e",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "e2de3d24d287",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/sailor.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E023.png",
+  "w": 288,
+  "h": 75,
+  "kind": "enemy_sprite",
+  "frames": "72x75 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair3.png; characters/Elements Character Generator/assets/hat/hat11.png; characters/Elements Character Generator/assets/head/head2.png; characters/Elements Character Generator/assets/top/top25.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "characters/Stone Golem/new version/Sprites/without_outline/ATTACK.png; characters/Stone Golem/new version/Sprites/without_outline/HURT.png; characters/Stone Golem/new version/Sprites/without_outline/IDLE.png",
+  "license": "Pixel monster packs (Stone Golem, Huge Knight, Headless Horseman, Cerberus, Gargoyle, Gryphon, Imp, Witch) - per-pack License.txt: 'You can use this asset in any game project, personal or commercial'; no resale/redistribution as a game asset, no NFTs",
   "status": "library",
-  "sha": "a5777baf0c3e",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "dff664b4e8e9",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/scholar.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E024.png",
+  "w": 232,
+  "h": 60,
+  "kind": "enemy_sprite",
+  "frames": "58x60 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backhair/backhair2.png; characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/frontextra/frontextra8.png; characters/Elements Character Generator/assets/hair/hair22.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top8.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Warped/Characters/alien-flying-enemy/sprites/alien-enemy-flying1.png; ansimuz/Legacy Collection/Assets/Warped/Characters/alien-flying-enemy/sprites/alien-enemy-flying4.png; ansimuz/Legacy Collection/Assets/Warped/Characters/alien-flying-enemy/sprites/alien-enemy-flying6.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "2b9856b7fd97",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "cbf02a7a8b00",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/sen.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E025.png",
+  "w": 444,
+  "h": 114,
+  "kind": "enemy_sprite",
+  "frames": "111x114 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backhair/backhair9.png; characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair22.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top8.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "characters/Huge Knight/Sprites/without_outline/ATTACK.png; characters/Huge Knight/Sprites/without_outline/HURT.png; characters/Huge Knight/Sprites/without_outline/IDLE.png",
+  "license": "Pixel monster packs (Stone Golem, Huge Knight, Headless Horseman, Cerberus, Gargoyle, Gryphon, Imp, Witch) - per-pack License.txt: 'You can use this asset in any game project, personal or commercial'; no resale/redistribution as a game asset, no NFTs",
   "status": "library",
-  "sha": "cf407ec8cb97",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "305e4b660d16",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/soldier.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E027.png",
+  "w": 384,
+  "h": 46,
+  "kind": "enemy_sprite",
+  "frames": "96x46 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom8.png; characters/Elements Character Generator/assets/hat/hat6.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top11.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Characters/wolf-runing-cycle/Sprites/wolf-runing-cycle-skin1.png; ansimuz/Legacy Collection/Assets/Gothicvania/Characters/wolf-runing-cycle/Sprites/wolf-runing-cycle-skin3.png; ansimuz/Legacy Collection/Assets/Gothicvania/Characters/wolf-runing-cycle/Sprites/wolf-runing-cycle-skin4.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "8eb075da3756",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "6901fcad4235",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/survivor.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E028.png",
+  "w": 340,
+  "h": 73,
+  "kind": "enemy_sprite",
+  "frames": "85x73 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/hair/hair7.png; characters/Elements Character Generator/assets/head/head3.png; characters/Elements Character Generator/assets/top/top2.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "characters/Cerberus/New Version/Sprites/no_outline/ATTACK.png; characters/Cerberus/New Version/Sprites/no_outline/HURT.png; characters/Cerberus/New Version/Sprites/no_outline/IDLE.png",
+  "license": "Pixel monster packs (Stone Golem, Huge Knight, Headless Horseman, Cerberus, Gargoyle, Gryphon, Imp, Witch) - per-pack License.txt: 'You can use this asset in any game project, personal or commercial'; no resale/redistribution as a game asset, no NFTs",
   "status": "library",
-  "sha": "d50e977c42f9",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "36cbee71035a",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/volunteer.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E030.png",
+  "w": 212,
+  "h": 74,
+  "kind": "enemy_sprite",
+  "frames": "53x74 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backextra/tail1.png; characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair22.png; characters/Elements Character Generator/assets/head/head20.png; characters/Elements Character Generator/assets/top/top9.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "characters/Witch/Sprite/ATTACK.png; characters/Witch/Sprite/HURT.png; characters/Witch/Sprite/IDLE.png",
+  "license": "Pixel monster packs (Stone Golem, Huge Knight, Headless Horseman, Cerberus, Gargoyle, Gryphon, Imp, Witch) - per-pack License.txt: 'You can use this asset in any game project, personal or commercial'; no resale/redistribution as a game asset, no NFTs",
   "status": "library",
-  "sha": "83c766bedb51",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "b42adb4ce587",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/voss.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E031.png",
+  "w": 392,
+  "h": 100,
+  "kind": "enemy_sprite",
+  "frames": "98x100 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/backextra/backextra1.png; characters/Elements Character Generator/assets/bottom/bottom8.png; characters/Elements Character Generator/assets/hair/hair3.png; characters/Elements Character Generator/assets/head/head7.png; characters/Elements Character Generator/assets/top/top12.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Mechanic/Sentinel.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
   "status": "library",
-  "sha": "f41f26a7a99f",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "bb01309e7ce2",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
-  "path": "game/assets/ext/sprites/world/worker.png",
-  "w": 192,
-  "h": 180,
-  "kind": "world_sprite",
-  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "path": "game/assets/ext/sprites/enemies/E032.png",
+  "w": 428,
+  "h": 109,
+  "kind": "enemy_sprite",
+  "frames": "107x109 x4 (idle,idle,tell,hurt)",
   "palette": "",
-  "source": "characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/hat/hat12.png; characters/Elements Character Generator/assets/head/head2.png; characters/Elements Character Generator/assets/top/top9.png",
-  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "source": "characters/Headless Horseman/Sprites/without_outline/ATTACK.png; characters/Headless Horseman/Sprites/without_outline/HURT.png; characters/Headless Horseman/Sprites/without_outline/IDLE.png",
+  "license": "Pixel monster packs (Stone Golem, Huge Knight, Headless Horseman, Cerberus, Gargoyle, Gryphon, Imp, Witch) - per-pack License.txt: 'You can use this asset in any game project, personal or commercial'; no resale/redistribution as a game asset, no NFTs",
   "status": "library",
-  "sha": "47ec908b4b3c",
-  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+  "sha": "fab3309c2c86",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
+ },
+ {
+  "path": "game/assets/ext/sprites/enemies/E033.png",
+  "w": 300,
+  "h": 74,
+  "kind": "enemy_sprite",
+  "frames": "75x74 x4 (idle,idle,tell,hurt)",
+  "palette": "",
+  "source": "haydeos/Factory Monster Pack 1/Magnet_Maw.png",
+  "license": "Factory Monster Pack 1 by Haydeos (haydeos.itch.io/factory-monster-pack-1) - 'You may use these assets in any commercial or non-commercial game project'; any engine; credit appreciated",
+  "status": "library",
+  "sha": "3d63f8eb0e61",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
+ },
+ {
+  "path": "game/assets/ext/sprites/enemies/E035.png",
+  "w": 352,
+  "h": 88,
+  "kind": "enemy_sprite",
+  "frames": "88x88 x4 (idle,idle,tell,hurt)",
+  "palette": "",
+  "source": "ansimuz/Legacy Collection/Assets/Gothicvania/Characters/Fire-Skull-Files/Sprites/Fire/frame1.png; ansimuz/Legacy Collection/Assets/Gothicvania/Characters/Fire-Skull-Files/Sprites/Fire/frame4.png; ansimuz/Legacy Collection/Assets/Gothicvania/Characters/Fire-Skull-Files/Sprites/Fire/frame7.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
+  "status": "library",
+  "sha": "ce5001b45bdf",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
+ },
+ {
+  "path": "game/assets/ext/sprites/enemies/E036.png",
+  "w": 352,
+  "h": 79,
+  "kind": "enemy_sprite",
+  "frames": "88x79 x4 (idle,idle,tell,hurt)",
+  "palette": "",
+  "source": "haydeos/Factory Monster Pack 1/Defective_Turret.png",
+  "license": "Factory Monster Pack 1 by Haydeos (haydeos.itch.io/factory-monster-pack-1) - 'You may use these assets in any commercial or non-commercial game project'; any engine; credit appreciated",
+  "status": "library",
+  "sha": "9e46319c775f",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
+ },
+ {
+  "path": "game/assets/ext/sprites/enemies/E037.png",
+  "w": 360,
+  "h": 91,
+  "kind": "enemy_sprite",
+  "frames": "90x91 x4 (idle,idle,tell,hurt)",
+  "palette": "",
+  "source": "characters/Gargoyle/New Version/Sprites/no_outline/ATTACK 1.png; characters/Gargoyle/New Version/Sprites/no_outline/HURT.png; characters/Gargoyle/New Version/Sprites/no_outline/IDLE.png",
+  "license": "Pixel monster packs (Stone Golem, Huge Knight, Headless Horseman, Cerberus, Gargoyle, Gryphon, Imp, Witch) - per-pack License.txt: 'You can use this asset in any game project, personal or commercial'; no resale/redistribution as a game asset, no NFTs",
+  "status": "library",
+  "sha": "cc04def29f05",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
+ },
+ {
+  "path": "game/assets/ext/sprites/enemies/E038.png",
+  "w": 336,
+  "h": 109,
+  "kind": "enemy_sprite",
+  "frames": "84x109 x4 (idle,idle,tell,hurt)",
+  "palette": "",
+  "source": "haydeos/Factory Monster Pack 1/Boiler_Golem.png",
+  "license": "Factory Monster Pack 1 by Haydeos (haydeos.itch.io/factory-monster-pack-1) - 'You may use these assets in any commercial or non-commercial game project'; any engine; credit appreciated",
+  "status": "library",
+  "sha": "0eb56bb715c9",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
+ },
+ {
+  "path": "game/assets/ext/sprites/enemies/E039.png",
+  "w": 188,
+  "h": 77,
+  "kind": "enemy_sprite",
+  "frames": "47x77 x4 (idle,idle,tell,hurt)",
+  "palette": "",
+  "source": "ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Monster Pack Files/Sprites/Witch/witch1.png; ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Monster Pack Files/Sprites/Witch/witch3.png; ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Monster Pack Files/Sprites/Witch/witch5.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
+  "status": "library",
+  "sha": "dbc1c18245c8",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
+ },
+ {
+  "path": "game/assets/ext/sprites/enemies/E040.png",
+  "w": 400,
+  "h": 145,
+  "kind": "enemy_sprite",
+  "frames": "100x145 x4 (idle,idle,tell,hurt)",
+  "palette": "",
+  "source": "ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Monster Pack Files/Sprites/Demon/demon1.png; ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Monster Pack Files/Sprites/Demon/demon3.png; ansimuz/Legacy Collection/Assets/TinyRPG/Characters/Battle Sprites/Monster Pack Files/Sprites/Demon/demon5.png",
+  "license": "Ansimuz Legacy Collection (ansimuz.itch.io/gothicvania-patreon-collection) - free for commercial games (creator's statement on the itch page: 'You can use it commercially'); credit ansimuz",
+  "status": "library",
+  "sha": "5d4cff2b3d08",
+  "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
   "path": "game/assets/sprites/battle/C01.png",
@@ -685,7 +776,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "f6e7a3308197",
+  "sha": "cc5b5fef022e",
   "note": ""
  },
  {
@@ -698,7 +789,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "a63fd89bb9a2",
+  "sha": "6a3fe5f709cb",
   "note": ""
  },
  {
@@ -711,7 +802,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "c41f60d03f27",
+  "sha": "4911e173f70d",
   "note": ""
  },
  {
@@ -724,7 +815,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "f8702ea6dfdc",
+  "sha": "6d29c53c2e34",
   "note": ""
  },
  {
@@ -737,7 +828,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "46a32f7b9f90",
+  "sha": "10eee1de19ae",
   "note": ""
  },
  {
@@ -750,7 +841,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "9df310a96b21",
+  "sha": "72a292460d53",
   "note": ""
  },
  {
@@ -763,7 +854,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "00398d1c65de",
+  "sha": "4bacf8c6d4f2",
   "note": ""
  },
  {
@@ -776,7 +867,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e9fa83624029",
+  "sha": "f5034602dbdb",
   "note": ""
  },
  {
@@ -789,7 +880,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1cb99208533f",
+  "sha": "89ad209fa355",
   "note": ""
  },
  {
@@ -802,7 +893,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "612b1355989c",
+  "sha": "8104a9be4524",
   "note": ""
  },
  {
@@ -815,7 +906,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "ac46406bf1b3",
+  "sha": "59fb2373aa45",
   "note": ""
  },
  {
@@ -828,7 +919,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "47bafd2b3a3f",
+  "sha": "19ed0a5d8bf7",
   "note": ""
  },
  {
@@ -841,7 +932,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "22cda0770462",
+  "sha": "c0974de561f2",
   "note": ""
  },
  {
@@ -854,7 +945,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1f6a0b9e83ae",
+  "sha": "25070d8a4d22",
   "note": ""
  },
  {
@@ -867,7 +958,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "d30467f1764a",
+  "sha": "6f691e0e7ce6",
   "note": ""
  },
  {
@@ -880,7 +971,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "b3d07456520d",
+  "sha": "e9f349eee328",
   "note": ""
  },
  {
@@ -893,7 +984,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1778ddaae114",
+  "sha": "fa01c889e837",
   "note": ""
  },
  {
@@ -906,7 +997,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e3f5d689d5ec",
+  "sha": "7b010c858463",
   "note": ""
  },
  {
@@ -919,7 +1010,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "35d3a5473b85",
+  "sha": "b5dfc7b53698",
   "note": ""
  },
  {
@@ -932,7 +1023,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "4f897bbf3038",
+  "sha": "1c0d8837b223",
   "note": ""
  },
  {
@@ -945,12 +1036,12 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "aae4055a2c11",
+  "sha": "c5f1a3711e9c",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B01.png",
-  "w": 512,
+  "w": 544,
   "h": 144,
   "kind": "boss_sprite",
   "frames": "128x144 x4",
@@ -958,7 +1049,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "c3d4f64fcbdd",
+  "sha": "79f224ba3f8f",
   "note": ""
  },
  {
@@ -971,33 +1062,33 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "2c42e84a78cc",
+  "sha": "10401fc1cec5",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B02.png",
   "w": 448,
-  "h": 128,
+  "h": 150,
   "kind": "boss_sprite",
-  "frames": "112x128 x4",
+  "frames": "112x150 x4",
   "palette": "humanoid",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "5a7ca0c64e9e",
+  "sha": "ca1ce934d28c",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B03.png",
-  "w": 448,
-  "h": 128,
+  "w": 592,
+  "h": 164,
   "kind": "boss_sprite",
-  "frames": "112x128 x4",
+  "frames": "148x164 x4",
   "palette": "beast",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "c5cbf9bb9f54",
+  "sha": "095b3cdc2d0e",
   "note": ""
  },
  {
@@ -1010,33 +1101,33 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "518aa9df7752",
+  "sha": "6d186bb0c63c",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B04.png",
-  "w": 448,
-  "h": 144,
+  "w": 560,
+  "h": 156,
   "kind": "boss_sprite",
-  "frames": "112x144 x4",
+  "frames": "140x156 x4",
   "palette": "machine",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "3f7e019537ec",
+  "sha": "2670b7eb7c16",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B05.png",
-  "w": 448,
-  "h": 128,
+  "w": 512,
+  "h": 156,
   "kind": "boss_sprite",
-  "frames": "112x128 x4",
+  "frames": "128x156 x4",
   "palette": "machine",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "47576457843b",
+  "sha": "9a7e41aaa976",
   "note": ""
  },
  {
@@ -1049,59 +1140,59 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "83def9e141c2",
+  "sha": "994a74c3cc62",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B07.png",
   "w": 448,
-  "h": 128,
+  "h": 160,
   "kind": "boss_sprite",
-  "frames": "112x128 x4",
+  "frames": "112x160 x4",
   "palette": "humanoid",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "f850775ce65a",
+  "sha": "44ce8a7db187",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B08.png",
-  "w": 448,
-  "h": 128,
+  "w": 560,
+  "h": 140,
   "kind": "boss_sprite",
-  "frames": "112x128 x4",
+  "frames": "140x140 x4",
   "palette": "choir",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1939b5378dc5",
+  "sha": "ae74aa9f1727",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B09.png",
-  "w": 448,
-  "h": 128,
+  "w": 480,
+  "h": 158,
   "kind": "boss_sprite",
-  "frames": "112x128 x4",
+  "frames": "120x158 x4",
   "palette": "humanoid",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "62018af71681",
+  "sha": "05da11915f36",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B10.png",
-  "w": 448,
-  "h": 128,
+  "w": 512,
+  "h": 156,
   "kind": "boss_sprite",
-  "frames": "112x128 x4",
+  "frames": "128x156 x4",
   "palette": "humanoid",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "edf230403437",
+  "sha": "41de6469ba46",
   "note": ""
  },
  {
@@ -1114,7 +1205,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1e153e655044",
+  "sha": "97052ac667fe",
   "note": ""
  },
  {
@@ -1127,20 +1218,20 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1e153e655044",
+  "sha": "97052ac667fe",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B11.png",
-  "w": 448,
-  "h": 128,
+  "w": 600,
+  "h": 132,
   "kind": "boss_sprite",
-  "frames": "112x128 x4",
+  "frames": "150x132 x4",
   "palette": "beast",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "5b352cc5913f",
+  "sha": "05d9aade4b06",
   "note": ""
  },
  {
@@ -1153,20 +1244,20 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "2c42e84a78cc",
+  "sha": "10401fc1cec5",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B12.png",
-  "w": 512,
-  "h": 160,
+  "w": 600,
+  "h": 164,
   "kind": "boss_sprite",
-  "frames": "128x160 x4",
+  "frames": "150x164 x4",
   "palette": "machine",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "5c2b793d3ee9",
+  "sha": "900cbeab97d5",
   "note": ""
  },
  {
@@ -1179,7 +1270,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "6ccab42ff29e",
+  "sha": "9846a9a8bc4c",
   "note": ""
  },
  {
@@ -1192,46 +1283,46 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "8ec58032a15a",
+  "sha": "7b9f53477e6c",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B14.png",
-  "w": 512,
-  "h": 128,
+  "w": 624,
+  "h": 140,
   "kind": "boss_sprite",
-  "frames": "128x128 x4",
+  "frames": "156x140 x4",
   "palette": "serpent",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "7f4bbb9a20fa",
+  "sha": "22a7376af305",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B15.png",
-  "w": 448,
-  "h": 128,
+  "w": 512,
+  "h": 150,
   "kind": "boss_sprite",
-  "frames": "112x128 x4",
+  "frames": "128x150 x4",
   "palette": "humanoid",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "ecb636fb895a",
+  "sha": "fb3db531e079",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/B16.png",
-  "w": 448,
-  "h": 128,
+  "w": 528,
+  "h": 160,
   "kind": "boss_sprite",
-  "frames": "112x128 x4",
+  "frames": "132x160 x4",
   "palette": "cantor",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "865386688807",
+  "sha": "731ec183e497",
   "note": ""
  },
  {
@@ -1244,33 +1335,33 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "9e65a4dc28ab",
+  "sha": "b02193a76704",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E002.png",
-  "w": 128,
-  "h": 32,
+  "w": 256,
+  "h": 50,
   "kind": "enemy_sprite",
-  "frames": "32x32 x4 (idle,idle,tell,hurt)",
+  "frames": "64x50 x4 (idle,idle,tell,hurt)",
   "palette": "beetle",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "5f4a0145f81f",
+  "sha": "e8922edbcbbb",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E003.png",
-  "w": 128,
-  "h": 32,
+  "w": 192,
+  "h": 60,
   "kind": "enemy_sprite",
-  "frames": "32x32 x4 (idle,idle,tell,hurt)",
+  "frames": "48x60 x4 (idle,idle,tell,hurt)",
   "palette": "wisp",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "7cf2fc72acda",
+  "sha": "4aceb7b85c65",
   "note": ""
  },
  {
@@ -1283,7 +1374,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "0ac6fb8519ec",
+  "sha": "af3f694273a3",
   "note": ""
  },
  {
@@ -1296,7 +1387,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "aff8acd65302",
+  "sha": "91c7f161f84f",
   "note": ""
  },
  {
@@ -1309,20 +1400,20 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1aff8c5011f7",
+  "sha": "f07df6a561df",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E007.png",
-  "w": 128,
-  "h": 32,
+  "w": 272,
+  "h": 56,
   "kind": "enemy_sprite",
-  "frames": "32x32 x4 (idle,idle,tell,hurt)",
+  "frames": "68x56 x4 (idle,idle,tell,hurt)",
   "palette": "moth",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "c436a2183e78",
+  "sha": "d88e4c503c29",
   "note": ""
  },
  {
@@ -1335,33 +1426,33 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "d509c54f5907",
+  "sha": "2ecc42d3dbc3",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E009.png",
-  "w": 192,
-  "h": 48,
+  "w": 304,
+  "h": 58,
   "kind": "enemy_sprite",
-  "frames": "48x48 x4 (idle,idle,tell,hurt)",
+  "frames": "76x58 x4 (idle,idle,tell,hurt)",
   "palette": "wolf",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "886ffffade50",
+  "sha": "522c7596d2a5",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E010.png",
-  "w": 128,
-  "h": 32,
+  "w": 240,
+  "h": 44,
   "kind": "enemy_sprite",
-  "frames": "32x32 x4 (idle,idle,tell,hurt)",
+  "frames": "60x44 x4 (idle,idle,tell,hurt)",
   "palette": "mite",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "edc9a0e77901",
+  "sha": "17d3827ac1ad",
   "note": ""
  },
  {
@@ -1374,20 +1465,20 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "5d395e54a4b3",
+  "sha": "b9d8fd9573ad",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E012.png",
-  "w": 128,
-  "h": 32,
+  "w": 192,
+  "h": 64,
   "kind": "enemy_sprite",
-  "frames": "32x32 x4 (idle,idle,tell,hurt)",
+  "frames": "48x64 x4 (idle,idle,tell,hurt)",
   "palette": "lantern",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "b51d6f25638f",
+  "sha": "7a80ef723486",
   "note": ""
  },
  {
@@ -1400,20 +1491,20 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "4abd3c5c709d",
+  "sha": "358055d1211c",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E014.png",
-  "w": 192,
-  "h": 48,
+  "w": 304,
+  "h": 56,
   "kind": "enemy_sprite",
-  "frames": "48x48 x4 (idle,idle,tell,hurt)",
+  "frames": "76x56 x4 (idle,idle,tell,hurt)",
   "palette": "crab",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "4ce3bc4d6904",
+  "sha": "27a79a35ee56",
   "note": ""
  },
  {
@@ -1426,20 +1517,20 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "aff74137d630",
+  "sha": "601051e8a34f",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E016.png",
-  "w": 192,
-  "h": 48,
+  "w": 240,
+  "h": 70,
   "kind": "enemy_sprite",
-  "frames": "48x48 x4 (idle,idle,tell,hurt)",
+  "frames": "60x70 x4 (idle,idle,tell,hurt)",
   "palette": "hand",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "989c16ce9bd0",
+  "sha": "376901c1e5d2",
   "note": ""
  },
  {
@@ -1452,7 +1543,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "f72d2f6887b0",
+  "sha": "c5b0ce61a989",
   "note": ""
  },
  {
@@ -1465,20 +1556,20 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "5d689f6813a1",
+  "sha": "c0a9bdbc9ce8",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E019.png",
-  "w": 192,
-  "h": 48,
+  "w": 240,
+  "h": 76,
   "kind": "enemy_sprite",
-  "frames": "48x48 x4 (idle,idle,tell,hurt)",
+  "frames": "60x76 x4 (idle,idle,tell,hurt)",
   "palette": "diver",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e9489c13fdb1",
+  "sha": "d360b07ee039",
   "note": ""
  },
  {
@@ -1491,7 +1582,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "d6b98b90a983",
+  "sha": "aecbd496c190",
   "note": ""
  },
  {
@@ -1504,7 +1595,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "a0f8990ec40d",
+  "sha": "ef69bee5d269",
   "note": ""
  },
  {
@@ -1517,7 +1608,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1a92ac6a9a3b",
+  "sha": "9cd7c7a68a8f",
   "note": ""
  },
  {
@@ -1530,7 +1621,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "3515c00b3fdc",
+  "sha": "8d0a9d1ea1ed",
   "note": ""
  },
  {
@@ -1543,7 +1634,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "5dfddc645818",
+  "sha": "4dbf7a82dec0",
   "note": ""
  },
  {
@@ -1556,20 +1647,20 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "91452686d1d6",
+  "sha": "e3b39f141402",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E026.png",
-  "w": 192,
-  "h": 48,
+  "w": 272,
+  "h": 40,
   "kind": "enemy_sprite",
-  "frames": "48x48 x4 (idle,idle,tell,hurt)",
+  "frames": "68x40 x4 (idle,idle,tell,hurt)",
   "palette": "leech",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e6b71746e216",
+  "sha": "4331ad453f66",
   "note": ""
  },
  {
@@ -1582,7 +1673,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "3b82a41cbe74",
+  "sha": "a9b9b74d3c67",
   "note": ""
  },
  {
@@ -1595,20 +1686,20 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "83194305c703",
+  "sha": "bf46825b8936",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E029.png",
-  "w": 128,
-  "h": 32,
+  "w": 208,
+  "h": 68,
   "kind": "enemy_sprite",
-  "frames": "32x32 x4 (idle,idle,tell,hurt)",
+  "frames": "52x68 x4 (idle,idle,tell,hurt)",
   "palette": "shard",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "75bda1d62a3c",
+  "sha": "632ab4cc89a0",
   "note": ""
  },
  {
@@ -1621,7 +1712,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "3aa991ca7df7",
+  "sha": "aace1b453d16",
   "note": ""
  },
  {
@@ -1634,7 +1725,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "2e729c501a5c",
+  "sha": "098c96ce2779",
   "note": ""
  },
  {
@@ -1647,7 +1738,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "59ff00d0ccb1",
+  "sha": "d8fd9402b76c",
   "note": ""
  },
  {
@@ -1660,20 +1751,20 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "a617935752dc",
+  "sha": "f444988f50fc",
   "note": ""
  },
  {
   "path": "game/assets/sprites/enemies/E034.png",
-  "w": 256,
-  "h": 64,
+  "w": 320,
+  "h": 80,
   "kind": "enemy_sprite",
-  "frames": "64x64 x4 (idle,idle,tell,hurt)",
+  "frames": "80x80 x4 (idle,idle,tell,hurt)",
   "palette": "lancer",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "f925f6293c2e",
+  "sha": "0484c9046e86",
   "note": ""
  },
  {
@@ -1686,7 +1777,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "296d49295ce1",
+  "sha": "be000bc945f5",
   "note": ""
  },
  {
@@ -1699,7 +1790,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "d89fe1f4fc0c",
+  "sha": "a8adfab3f431",
   "note": ""
  },
  {
@@ -1712,7 +1803,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "6606522bd708",
+  "sha": "df1aa506d693",
   "note": ""
  },
  {
@@ -1725,7 +1816,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "ab8754b74609",
+  "sha": "c6140851e41b",
   "note": ""
  },
  {
@@ -1738,7 +1829,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "0517d706565f",
+  "sha": "eee776753d7b",
   "note": ""
  },
  {
@@ -1751,7 +1842,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "476ab8d50c7b",
+  "sha": "86986ec0faa2",
   "note": ""
  },
  {
@@ -1790,7 +1881,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "30eef53ac974",
+  "sha": "3a1e9f8bc50f",
   "note": ""
  },
  {
@@ -1803,7 +1894,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "38f58b2b1d07",
+  "sha": "3a339307e6a1",
   "note": ""
  },
  {
@@ -1816,7 +1907,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "280fc2011b14",
+  "sha": "4c8d31758b9a",
   "note": ""
  },
  {
@@ -1829,7 +1920,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "c3bf53cd8a62",
+  "sha": "f29b69786421",
   "note": ""
  },
  {
@@ -1842,7 +1933,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "76f4282768bb",
+  "sha": "89df2bb79800",
   "note": ""
  },
  {
@@ -1855,7 +1946,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "fe548e926a72",
+  "sha": "9ba6a5107962",
   "note": ""
  },
  {
@@ -1868,7 +1959,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "ba653e3841cc",
+  "sha": "51d86b866bc8",
   "note": ""
  },
  {
@@ -1881,7 +1972,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "26156e712d55",
+  "sha": "1205a51013c1",
   "note": ""
  },
  {
@@ -1894,7 +1985,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "df0e37a57fae",
+  "sha": "c4f3d6f62b36",
   "note": ""
  },
  {
@@ -1907,7 +1998,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "22fd46765f21",
+  "sha": "c5783096cda7",
   "note": ""
  },
  {
@@ -1920,7 +2011,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "318ce3274e9e",
+  "sha": "28562c2f8538",
   "note": ""
  },
  {
@@ -1946,7 +2037,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "87a88e68aab2",
+  "sha": "b5a229fa3a1d",
   "note": ""
  },
  {
@@ -1959,7 +2050,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "84de1b3e5c87",
+  "sha": "7597b305d3f8",
   "note": ""
  },
  {
@@ -1985,7 +2076,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "5381cc3b3bb9",
+  "sha": "e31ff35a0e4f",
   "note": ""
  },
  {
@@ -1998,7 +2089,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "537ff0f03cc1",
+  "sha": "da6a6265606b",
   "note": ""
  },
  {
@@ -2011,7 +2102,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "2d8a6a5ca643",
+  "sha": "11c893957f69",
   "note": ""
  },
  {
@@ -2037,7 +2128,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "8e1f50ded367",
+  "sha": "df5c2082eb1a",
   "note": ""
  },
  {
@@ -2063,7 +2154,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "efd087e48cc6",
+  "sha": "9f3f39144bb7",
   "note": ""
  },
  {
@@ -2076,7 +2167,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "4f61b12f6a49",
+  "sha": "2aa62265bb1d",
   "note": ""
  },
  {
@@ -2089,7 +2180,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "5a11c990343e",
+  "sha": "ec75e80469c0",
   "note": ""
  },
  {
@@ -2102,7 +2193,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "df14fd07987f",
+  "sha": "38cadb0e782d",
   "note": ""
  },
  {
@@ -2141,7 +2232,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e3989c1dce5c",
+  "sha": "e13d3affc803",
   "note": ""
  },
  {
@@ -2154,7 +2245,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "3ca3e3a09c69",
+  "sha": "97d60dd5f288",
   "note": ""
  },
  {
@@ -2180,7 +2271,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e9a2b6c8ee01",
+  "sha": "98317460635d",
   "note": ""
  },
  {
@@ -2193,7 +2284,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "9919c3a089ec",
+  "sha": "b4d996653dfa",
   "note": ""
  },
  {
@@ -2206,7 +2297,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "3df6fa8e859c",
+  "sha": "18500d9ffa44",
   "note": ""
  },
  {
@@ -2219,7 +2310,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "4becb4eff2f0",
+  "sha": "aea5725160c5",
   "note": ""
  },
  {
@@ -2232,7 +2323,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "2c7e8ec3d188",
+  "sha": "8010ead0b91c",
   "note": ""
  },
  {
@@ -2245,7 +2336,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "b5ec210a44f1",
+  "sha": "fd70f5e4779e",
   "note": ""
  },
  {
@@ -2258,7 +2349,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "667b416d5717",
+  "sha": "9913d70a79d2",
   "note": ""
  },
  {
@@ -2271,7 +2362,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "32a2f3e13ef0",
+  "sha": "117e246344b7",
   "note": ""
  },
  {
@@ -2284,7 +2375,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "7f121bb56259",
+  "sha": "bb3249e63c42",
   "note": ""
  },
  {
@@ -2310,7 +2401,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "584102ba899b",
+  "sha": "516bf6c20bd8",
   "note": ""
  },
  {
@@ -2336,7 +2427,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "a1f6ceec96d1",
+  "sha": "e302be065c05",
   "note": ""
  },
  {
@@ -2349,7 +2440,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "45f33737a013",
+  "sha": "cec1f6e6b1da",
   "note": ""
  },
  {
@@ -2375,7 +2466,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "bf9ab6456a30",
+  "sha": "cce37c60f9ad",
   "note": ""
  },
  {

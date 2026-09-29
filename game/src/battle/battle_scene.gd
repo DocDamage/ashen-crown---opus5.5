@@ -5,7 +5,11 @@ extends Node2D
 
 signal finished(result: String)
 
-const PARTY_ANCHORS := [Vector2(224, 80), Vector2(280, 96), Vector2(224, 136), Vector2(280, 152)]
+## FF6-style staging: the party stands in a staggered column on the right, facing left; enemies own the left/centre
+## of the ground plane. Foot anchors (x zig-zags so neighbouring sprites never overlap).
+const PARTY_ANCHORS := [Vector2(240, 80), Vector2(272, 102), Vector2(240, 124), Vector2(272, 146)]
+const ARENA_H := 168
+const ENEMY_BOX := Rect2(4, 6, 208, 160)   # enemies (and their frames) stay inside this box
 const FRAMES := {"idle": [0, 4], "attack": [4, 6], "cast": [10, 4], "hurt": [14, 2], "guard": [16, 2], "victory": [18, 4], "ko": [22, 1], "step": [23, 4]}
 
 var main: Node
@@ -82,23 +86,65 @@ func _t(path: String) -> Texture2D:
 func _layout_enemies() -> void:
 	var ids = model.enemy_ids.filter(func(x): return not model.battlers[x].tags.has("part"))
 	var parts = model.enemy_ids.filter(func(x): return model.battlers[x].tags.has("part"))
-	var slots = {1: [Vector2(88, 120)], 2: [Vector2(60, 100), Vector2(124, 136)],
-		3: [Vector2(52, 84), Vector2(124, 108), Vector2(64, 150)], 4: [Vector2(44, 84), Vector2(116, 84), Vector2(60, 148), Vector2(132, 148)]}
+	# foot positions on the ground plane (horizon ~y96): back rank higher/smaller, front rank lower
 	var boss = false
 	for eid in ids:
 		if model.battlers[eid].is_boss():
 			boss = true
 	if boss:
-		enemy_pos[ids[0]] = Vector2(84, 156)
+		var bsz = _enemy_size(ids[0])
+		enemy_pos[ids[0]] = Vector2(clampf(20 + bsz.x / 2.0, 0, 110), 162)
+		var right = enemy_pos[ids[0]].x + bsz.x / 2.0
 		var others = ids.slice(1)
 		for i in range(others.size()):
-			enemy_pos[others[i]] = Vector2(150, 70 + i * 50)
+			enemy_pos[others[i]] = Vector2(minf(right + 30, 190), 100 + i * 46)
 		for i in range(parts.size()):
-			enemy_pos[parts[i]] = Vector2(30 + i * 108, 150)
+			var psz = _enemy_size(parts[i])
+			enemy_pos[parts[i]] = Vector2(minf(right + 8 + psz.x / 2.0, 204 - psz.x / 2.0), 130 + i * 34)
 	else:
-		var s: Array = slots.get(mini(ids.size(), 4), slots[4])
-		for i in range(ids.size()):
-			enemy_pos[ids[i]] = s[i % s.size()] + Vector2(0, 0 if i < 4 else 20)
+		_layout_rows(ids)
+	# keep every sprite inside the enemy area, whatever its size
+	for eid in enemy_pos.keys():
+		var sz = _enemy_size(eid)
+		var p: Vector2 = enemy_pos[eid]
+		p.x = clampf(p.x, ENEMY_BOX.position.x + sz.x / 2.0, ENEMY_BOX.end.x - sz.x / 2.0)
+		p.y = clampf(p.y, ENEMY_BOX.position.y + sz.y, ENEMY_BOX.end.y)
+		enemy_pos[eid] = p
+
+## Ordinary formations: one staggered rank when the sprites fit side by side, otherwise a back rank (higher on the
+## ground plane) and a front rank offset by half a slot, so large painted enemies overlap as little as possible.
+func _layout_rows(ids: Array) -> void:
+	var n = ids.size()
+	if n == 0:
+		return
+	var W = ENEMY_BOX.size.x
+	var total = 0.0
+	for eid in ids:
+		total += _enemy_size(eid).x
+	var rows: Array = [ids] if (total + 6 * (n - 1) <= W or n == 1) else [ids.slice(0, (n + 1) / 2), ids.slice((n + 1) / 2)]
+	var ys = [158] if rows.size() == 1 else [116, 166]
+	for r in range(rows.size()):
+		var row: Array = rows[r]
+		var sum = 0.0
+		for eid in row:
+			sum += _enemy_size(eid).x
+		var gap = clampf((W - sum) / float(row.size() + 1), -24.0, 40.0)
+		var x = ENEMY_BOX.position.x + maxf(gap, 0.0) + (8.0 if r == 1 else 0.0)
+		for i in range(row.size()):
+			var w = _enemy_size(row[i]).x
+			var stagger = (-10.0 if i % 2 == 0 else 2.0) if rows.size() == 1 and row.size() > 1 else 0.0
+			enemy_pos[row[i]] = Vector2(x + w / 2.0, ys[r] + stagger)
+			x += w + gap
+
+## Frame size of an enemy sheet (4 frames side by side: idle, idle, tell, hurt).
+func _enemy_size(eid: String) -> Vector2:
+	var b = model.battlers.get(eid)
+	if b == null:
+		return Vector2(32, 32)
+	var tx = _enemy_tex(b)
+	if tx == null:
+		return Vector2(32, 32)
+	return Vector2(tx.get_width() / 4, tx.get_height())
 
 func _enemy_tex(b) -> Texture2D:
 	return _t("res://assets/sprites/enemies/%s.png" % Content.enemy(b.ref).get("sprite", b.ref).split("@")[0])
@@ -360,7 +406,7 @@ func _battler_pos(id: String) -> Vector2:
 	if b.side == 0:
 		var i = model.party_ids.find(id)
 		return PARTY_ANCHORS[i] + Vector2(0, -20)
-	return enemy_pos.get(id, Vector2(88, 110)) + Vector2(0, -24)
+	return enemy_pos.get(id, Vector2(88, 110)) + Vector2(0, -minf(_enemy_size(id).y * 0.55, 48))
 
 # ======================================================================
 # Commands
@@ -615,6 +661,7 @@ func _draw() -> void:
 				fr = 2
 			if flashes.get(eid, 0.0) > 0:
 				fr = 3
+			_draw_shadow(p, fw)
 			var dst = Rect2(p - Vector2(fw / 2.0, fh), Vector2(fw, fh)).abs()
 			dst.position = dst.position.round()
 			draw_texture_rect_region(tx, dst, Rect2(fr * fw, 0, fw, fh))
@@ -659,7 +706,7 @@ func _draw() -> void:
 		for tid in sel:
 			var tp = _battler_pos(tid)
 			if model.battlers[tid].side == 1:
-				UI.cursor(self, tp + Vector2(-34, 0))
+				UI.cursor(self, tp + Vector2(-_enemy_size(tid).x / 2.0 - 10, -4))
 			else:
 				UI.cursor(self, tp + Vector2(-36, 4))
 	# vfx
@@ -681,6 +728,14 @@ func _draw() -> void:
 	for p in popups:
 		var yoff: float = (1.0 - p["t"]) * 10.0
 		UI.text_center(self, p["pos"].x, p["pos"].y - yoff, p["text"], p["col"])
+
+## Soft stepped contact shadow under a battler (keeps pale enemies grounded on bright floors).
+func _draw_shadow(p: Vector2, w: float) -> void:
+	var rx = clampf(w * 0.36, 8.0, 56.0)
+	for k in range(3):
+		var f = 1.0 - k * 0.28
+		var r = Rect2(p.x - rx * f, p.y - 3 + k, rx * 2 * f, 5 - k * 2)
+		draw_rect(r.abs(), Color(0.05, 0.03, 0.1, 0.16 + k * 0.08))
 
 func _draw_ui() -> void:
 	var c = ui
@@ -718,17 +773,19 @@ func _draw_ui() -> void:
 			if tb.side == 0:
 				var pp = _battler_pos(x) + Vector2(10, -44)
 				UI.text(c, pp, "!", UI.C_RED)
-	# bottom panel
-	UI.win(c, Rect2(0, 168, 320, 72))
-	# left: enemy list (when no command menu)
+	# bottom panel, FF6-style: enemy names (left window) | party name, HP, MP, readiness (right window)
+	UI.win(c, Rect2(0, 168, 108, 72))
+	UI.win(c, Rect2(108, 168, 212, 72))
 	if cmd_menu == null:
-		var y = 172
-		var seen = {}
+		var y = 173
 		for eid in model.enemy_ids:
 			var e = model.battlers[eid]
 			if not e.alive() or e.tags.has("part"):
 				continue
-			UI.text(c, Vector2(8, y), (e.name.split(",")[0]).substr(0, 16), UI.C_TEXT)
+			var nm: String = e.name.split(",")[0]
+			while nm.length() > 4 and UI.width(nm) > 96:
+				nm = nm.substr(0, nm.length() - 1)
+			UI.text(c, Vector2(8, y), nm, UI.C_TEXT)
 			var bi: Dictionary = Game.S["bestiary"].get(Content.enemy(e.ref).get("variant_of", e.ref), {})
 			if bi.get("affinity", false) or bi.get("weak", []).size() > 0:
 				var wk = []
@@ -736,13 +793,12 @@ func _draw_ui() -> void:
 					if e.aff[el] == "weak":
 						wk.append(UI.elem_label(el))
 				if bi.get("affinity", false) and not wk.is_empty():
-					UI.text(c, Vector2(8, y + 9), "Weak: " + ",".join(wk), UI.C_GOLD)
+					UI.text(c, Vector2(12, y + 9), "Weak: " + ",".join(wk), UI.C_GOLD)
 					y += 9
 			y += 11
 			if y > 226:
 				break
-	# right: party status
-	var px = 96
+	var px = 114
 	var py = 172
 	for i in range(model.party_ids.size()):
 		var b = model.battlers[model.party_ids[i]]
@@ -750,25 +806,26 @@ func _draw_ui() -> void:
 		var ready = b.state in ["READY", "SELECTING"]
 		var ncol = UI.C_HI if selecting == b else (UI.C_TEXT if b.alive() else UI.C_RED)
 		UI.text(c, Vector2(px, yy), b.name, ncol)
-		# status letters
 		var sl = ""
-		for s in b.statuses:
-			sl += s.substr(0, 2).capitalize()
+		for st in b.statuses:
+			sl += st.substr(0, 2).capitalize()
 		if b.oath != "":
 			sl = "[" + b.oath.substr(0, 3).capitalize() + "]" + sl
 		if b.row == "back":
-			UI.text(c, Vector2(px + 42, yy), "B", UI.C_DIM)
-		UI.text(c, Vector2(px + 52, yy), sl.substr(0, 10), Color8(210, 170, 250))
+			UI.text(c, Vector2(px + 38, yy), "B", UI.C_DIM)
+		UI.text(c, Vector2(px + 46, yy), sl.substr(0, 7), Color8(210, 170, 250))
 		var hpc = UI.C_TEXT if float(b.hp) / b.mhp > 0.25 else UI.C_RED
-		UI.text_right(c, px + 162, yy, "%d/%d" % [b.hp, b.mhp], hpc)
-		UI.text_right(c, px + 190, yy, str(b.mp), UI.C_BLUE)
-		UI.gauge(c, Rect2(px + 194, yy + 2, 26, 5), b.atb / 1000.0, UI.C_GOLD if ready else Color8(90, 150, 220))
-		UI.gauge(c, Rect2(px, yy + 11, 190, 2), float(b.hp) / b.mhp, UI.C_GREEN if float(b.hp) / b.mhp > 0.25 else UI.C_RED)
-	# concord + flee
-	UI.text(c, Vector2(250, 159), "Concord", UI.C_DIM)
-	UI.gauge(c, Rect2(290, 161, 26, 5), model.concord / 100.0, Color8(240, 150, 220))
+		UI.text_right(c, px + 138, yy, "%d/%d" % [b.hp, b.mhp], hpc)
+		UI.text_right(c, px + 160, yy, str(b.mp), UI.C_BLUE)
+		UI.gauge(c, Rect2(px + 164, yy + 2, 36, 6), b.atb / 1000.0, UI.C_GOLD if ready else Color8(90, 150, 220))
+		UI.gauge(c, Rect2(px, yy + 11, 160, 2), float(b.hp) / b.mhp, UI.C_GREEN if float(b.hp) / b.mhp > 0.25 else UI.C_RED)
+	# Concord (and the shared escape meter) sit in slim tabs on the arena's bottom edge
+	UI.win(c, Rect2(232, 154, 88, 14))
+	UI.text(c, Vector2(236, 155), "Concord", UI.C_DIM)
+	UI.gauge(c, Rect2(282, 158, 34, 6), model.concord / 100.0, Color8(240, 150, 220))
 	if model.flee_meter > 0:
-		UI.text(c, Vector2(4, 157), "Escape %d%%" % mini(100, model.flee_meter / 10), UI.C_HI)
+		UI.win(c, Rect2(0, 154, 84, 14))
+		UI.text(c, Vector2(4, 155), "Escape %d%%" % mini(100, model.flee_meter / 10), UI.C_HI)
 	# sub-menu description / disabled reasons
 	var m: MenuList = sub_menu if sub_menu != null else cmd_menu
 	if m != null and target_mode == "":
@@ -789,12 +846,12 @@ func _draw_ui() -> void:
 		var label: String = "All" if target_mode in ["enemy_all", "ally_all"] else tb.name
 		if tb.side == 1 and target_mode == "enemy_one":
 			label += "  HP %d%%" % int(100.0 * tb.hp / tb.mhp)
-		UI.win(c, Rect2(4, 150, 160, 16))
-		UI.text(c, Vector2(10, 153), "Target: " + label, UI.C_HI)
+		UI.win(c, Rect2(88, 152, 140, 16))
+		UI.text(c, Vector2(94, 155), "Target: " + label, UI.C_HI)
 	if pause_open:
 		c.draw_rect(Rect2(0, 0, 320, 240), Color(0, 0, 0, 0.5))
 		UI.win(c, Rect2(96, 90, 128, 44))
 		UI.text_center(c, 160, 96, "Paused", UI.C_GOLD)
 		UI.text_center(c, 160, 110, "Mode: " + Settings.get_v("battle_mode").capitalize(), UI.C_TEXT)
 	if Settings.get_v("battle_mode") == "active" and cmd_menu != null:
-		UI.text(c, Vector2(250, 148), "ACTIVE", UI.C_RED)
+		UI.text(c, Vector2(282, 140), "ACTIVE", UI.C_RED)
