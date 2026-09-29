@@ -318,7 +318,7 @@ grid:
 ############....############
 entities:
 read 9 4 "The Command Ledger." scene=Q11_LEDGER
-trigger 10..17 8..9 scene=Q11_ECHO if=q:Q11,!flag:b15_done
+trigger 10..17 8..9 scene=Q11_ECHO if=q:Q11:ACTIVE,!flag:b15_done
 save 5 14
 spawn from_canals 13 18 up
 spawn default 13 18 up

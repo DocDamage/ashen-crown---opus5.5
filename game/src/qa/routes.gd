@@ -364,6 +364,14 @@ func exit_to(dest: String) -> bool:
 		if e["type"] in ["door", "exit"] and e["dest"] == dest and Game.eval_cond(e["cond"]):
 			var tx: int = e["x1"]
 			var ty: int = e["y1"]
+			# prefer a walkable tile of the exit strip (edges can sit on scenery)
+			var found_free = false
+			for yy in range(e["y1"], e["y2"] + 1):
+				for xx in range(e["x1"], e["x2"] + 1):
+					if not found_free and not f.solid_set.has(f.kind_at(xx, yy)):
+						tx = xx
+						ty = yy
+						found_free = true
 			var map0: String = f.map_id
 			if not await walk_to(tx, ty):
 				return false
@@ -1135,7 +1143,17 @@ func r_seg8() -> bool:
 # ---------------------------------------------------------------- CH21 window: the twelve optional quests
 func r_segq() -> bool:
 	if not await seg_resume("ch20_done", "segq"): return false
-	var steps = [
+	return await run_steps(SEGQ)
+
+func r_segq2() -> bool:
+	if not await seg_resume("q_winter", "segq2"): return false
+	return await run_steps(SEGQ.slice(SEGQ.find(["ms", "q_winter"]) + 1))
+
+func r_segq3() -> bool:
+	if not await seg_resume("q_reef", "segq3"): return false
+	return await run_steps(SEGQ.slice(SEGQ.find(["ms", "q_reef"]) + 1))
+
+var SEGQ = [
 		# Nacre leads (Q06, Q07, Q09, Q12)
 		["loc", "L_T06"], ["npc", "patient_p"], ["npc", "survivor_n"], ["npc", "winter_pilgrim"], ["npc", "pool_voice"],
 		["check", "q:Q06:ACTIVE,q:Q07:ACTIVE,q:Q09:ACTIVE,q:Q12:ACTIVE"], ["exit", "WORLD_POST"],
@@ -1199,7 +1217,7 @@ func r_segq() -> bool:
 		["use", "switch", "lockB"], ["wait_map", "D10_R04"], ["go", 15, 18], ["save", 3], ["heal"], ["exit", "D10_ALCOVE"], ["choice", [0]],
 		["go", 10, 8], ["check", "q:Q12"], ["ms", "q_all"],
 	]
-	return await run_steps(steps)
+
 
 func r_shoptest() -> bool:
 	if not await seg_resume("ch12_done", "shoptest"): return false

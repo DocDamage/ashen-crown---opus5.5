@@ -172,7 +172,7 @@ def d02p_echo():
     g.rect(12, 16, 15, 19, ".")
     g.text(11, 4, "m.m.m")
     g.e("read 9 4 \"The Command Ledger.\" scene=Q11_LEDGER")
-    g.e("trigger 10..17 8..9 scene=Q11_ECHO if=q:Q11,!flag:b15_done")
+    g.e("trigger 10..17 8..9 scene=Q11_ECHO if=q:Q11:ACTIVE,!flag:b15_done")
     g.e("save 5 14")
     g.e("spawn from_canals 13 18 up")
     g.e("spawn default 13 18 up")
