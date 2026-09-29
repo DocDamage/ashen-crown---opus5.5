@@ -1,0 +1,38 @@
+[
+ {
+  "id": "R01",
+  "name": "Crown March",
+  "geography": "River farms, quarry rail, a fortified capital",
+  "palette": "green-black masonry, faded wheat, red pennants"
+ },
+ {
+  "id": "R02",
+  "name": "Cinder Reach",
+  "geography": "Basalt ridges, pipe viaducts, furnace terraces",
+  "palette": "umber, copper, orange light, smoke-blue shadows"
+ },
+ {
+  "id": "R03",
+  "name": "Glass Coast",
+  "geography": "Tidal libraries, bell towers, salt-bright docks",
+  "palette": "teal shallows, cream stone, oxidized bronze"
+ },
+ {
+  "id": "R04",
+  "name": "Skyspine",
+  "geography": "Cliff settlements, cable ferries, wind shrines",
+  "palette": "pale granite, indigo cloud shadows, worn ochre cloth"
+ },
+ {
+  "id": "R05",
+  "name": "Pale Basin",
+  "geography": "Salt flats, mineral gardens, memory vaults",
+  "palette": "lilac salt, moon-white boneglass, dark plum"
+ },
+ {
+  "id": "R06",
+  "name": "Ember Sea",
+  "geography": "Broken islands, refugee pontoons, exposed crown relay",
+  "palette": "charcoal reefs, coral-red lanterns, deep cobalt"
+ }
+]

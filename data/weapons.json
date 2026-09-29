@@ -1,0 +1,482 @@
+[
+ {
+  "id": "W001",
+  "name": "Service Sword",
+  "owner": "C01",
+  "tier": 1,
+  "atk": 8,
+  "mag": 1,
+  "price": 100,
+  "acquisition": "Guaranteed starter/join kit or any open town’s basic stock; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W002",
+  "name": "River Iron",
+  "owner": "C01",
+  "tier": 2,
+  "atk": 17,
+  "mag": 2,
+  "price": 420,
+  "acquisition": "Shared tier stock unlocked at CH04; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W003",
+  "name": "Cinderbrand",
+  "owner": "C01",
+  "tier": 3,
+  "atk": 29,
+  "mag": 3,
+  "price": 1100,
+  "acquisition": "Shared tier stock unlocked at CH08; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W004",
+  "name": "Witness Edge",
+  "owner": "C01",
+  "tier": 4,
+  "atk": 44,
+  "mag": 5,
+  "price": 2600,
+  "acquisition": "Shared tier stock unlocked at CH16; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W005",
+  "name": "Accord Steel",
+  "owner": "C01",
+  "tier": 5,
+  "atk": 62,
+  "mag": 7,
+  "price": 5800,
+  "acquisition": "Shared tier stock unlocked at CH20; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W006",
+  "name": "Open Hand",
+  "owner": "C01",
+  "tier": 6,
+  "atk": 82,
+  "mag": 10,
+  "price": 0,
+  "acquisition": "Quest Q01; While an oath is active, first protected hit per enemy action gains an additional 10% damage reduction, within the global 80% cap."
+ },
+ {
+  "id": "W007",
+  "name": "Apprentice Rod",
+  "owner": "C02",
+  "tier": 1,
+  "atk": 4,
+  "mag": 8,
+  "price": 100,
+  "acquisition": "Guaranteed starter/join kit or any open town’s basic stock; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W008",
+  "name": "Copper Wand",
+  "owner": "C02",
+  "tier": 2,
+  "atk": 8,
+  "mag": 17,
+  "price": 420,
+  "acquisition": "Shared tier stock unlocked at CH04; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W009",
+  "name": "Tideglass Rod",
+  "owner": "C02",
+  "tier": 3,
+  "atk": 13,
+  "mag": 29,
+  "price": 1100,
+  "acquisition": "Shared tier stock unlocked at CH08; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W010",
+  "name": "Prism Branch",
+  "owner": "C02",
+  "tier": 4,
+  "atk": 20,
+  "mag": 44,
+  "price": 2600,
+  "acquisition": "Shared tier stock unlocked at CH16; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W011",
+  "name": "Dawn Conductor",
+  "owner": "C02",
+  "tier": 5,
+  "atk": 28,
+  "mag": 62,
+  "price": 5800,
+  "acquisition": "Shared tier stock unlocked at CH20; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W012",
+  "name": "Lantern Unbound",
+  "owner": "C02",
+  "tier": 6,
+  "atk": 37,
+  "mag": 82,
+  "price": 0,
+  "acquisition": "Quest Q02; Overcast self-damage becomes 5% max HP; other costs remain."
+ },
+ {
+  "id": "W013",
+  "name": "Anchor Spear",
+  "owner": "C03",
+  "tier": 1,
+  "atk": 8,
+  "mag": 1,
+  "price": 100,
+  "acquisition": "Guaranteed starter/join kit or any open town’s basic stock; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W014",
+  "name": "Gust Lance",
+  "owner": "C03",
+  "tier": 2,
+  "atk": 17,
+  "mag": 2,
+  "price": 420,
+  "acquisition": "Shared tier stock unlocked at CH04; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W015",
+  "name": "Chainbreaker",
+  "owner": "C03",
+  "tier": 3,
+  "atk": 29,
+  "mag": 3,
+  "price": 1100,
+  "acquisition": "Shared tier stock unlocked at CH08; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W016",
+  "name": "Cloud Needle",
+  "owner": "C03",
+  "tier": 4,
+  "atk": 44,
+  "mag": 5,
+  "price": 2600,
+  "acquisition": "Shared tier stock unlocked at CH16; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W017",
+  "name": "Returner’s Pike",
+  "owner": "C03",
+  "tier": 5,
+  "atk": 62,
+  "mag": 7,
+  "price": 5800,
+  "acquisition": "Shared tier stock unlocked at CH20; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W018",
+  "name": "Homeward Sky",
+  "owner": "C03",
+  "tier": 6,
+  "atk": 82,
+  "mag": 10,
+  "price": 0,
+  "acquisition": "Quest Q03; After landing from a leap, heal 5% max HP once per landing action."
+ },
+ {
+  "id": "W019",
+  "name": "Rivet Driver",
+  "owner": "C04",
+  "tier": 1,
+  "atk": 8,
+  "mag": 4,
+  "price": 100,
+  "acquisition": "Guaranteed starter/join kit or any open town’s basic stock; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W020",
+  "name": "Pressure Wrench",
+  "owner": "C04",
+  "tier": 2,
+  "atk": 17,
+  "mag": 9,
+  "price": 420,
+  "acquisition": "Shared tier stock unlocked at CH04; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W021",
+  "name": "Arc Welder",
+  "owner": "C04",
+  "tier": 3,
+  "atk": 29,
+  "mag": 16,
+  "price": 1100,
+  "acquisition": "Shared tier stock unlocked at CH08; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W022",
+  "name": "Clock Hammer",
+  "owner": "C04",
+  "tier": 4,
+  "atk": 44,
+  "mag": 24,
+  "price": 2600,
+  "acquisition": "Shared tier stock unlocked at CH16; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W023",
+  "name": "Common Engine",
+  "owner": "C04",
+  "tier": 5,
+  "atk": 62,
+  "mag": 34,
+  "price": 5800,
+  "acquisition": "Shared tier stock unlocked at CH20; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W024",
+  "name": "Hands of Many",
+  "owner": "C04",
+  "tier": 6,
+  "atk": 82,
+  "mag": 45,
+  "price": 0,
+  "acquisition": "Quest Q04; Field Patch also removes Burn."
+ },
+ {
+  "id": "W025",
+  "name": "Ashwood Bow",
+  "owner": "C05",
+  "tier": 1,
+  "atk": 8,
+  "mag": 1,
+  "price": 100,
+  "acquisition": "Guaranteed starter/join kit or any open town’s basic stock; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W026",
+  "name": "Riverbend",
+  "owner": "C05",
+  "tier": 2,
+  "atk": 17,
+  "mag": 2,
+  "price": 420,
+  "acquisition": "Shared tier stock unlocked at CH04; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W027",
+  "name": "Bramble String",
+  "owner": "C05",
+  "tier": 3,
+  "atk": 29,
+  "mag": 3,
+  "price": 1100,
+  "acquisition": "Shared tier stock unlocked at CH08; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W028",
+  "name": "Farwatch",
+  "owner": "C05",
+  "tier": 4,
+  "atk": 44,
+  "mag": 5,
+  "price": 2600,
+  "acquisition": "Shared tier stock unlocked at CH16; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W029",
+  "name": "Crossing Song",
+  "owner": "C05",
+  "tier": 5,
+  "atk": 62,
+  "mag": 7,
+  "price": 5800,
+  "acquisition": "Shared tier stock unlocked at CH20; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W030",
+  "name": "Every Road",
+  "owner": "C05",
+  "tier": 6,
+  "atk": 82,
+  "mag": 10,
+  "price": 0,
+  "acquisition": "Quest Q05; Hunter’s Mark lasts one additional target action."
+ },
+ {
+  "id": "W031",
+  "name": "Travel Staff",
+  "owner": "C06",
+  "tier": 1,
+  "atk": 4,
+  "mag": 8,
+  "price": 100,
+  "acquisition": "Guaranteed starter/join kit or any open town’s basic stock; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W032",
+  "name": "Quiet Bell",
+  "owner": "C06",
+  "tier": 2,
+  "atk": 8,
+  "mag": 17,
+  "price": 420,
+  "acquisition": "Shared tier stock unlocked at CH04; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W033",
+  "name": "Saltwood Crook",
+  "owner": "C06",
+  "tier": 3,
+  "atk": 13,
+  "mag": 29,
+  "price": 1100,
+  "acquisition": "Shared tier stock unlocked at CH08; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W034",
+  "name": "Listening Branch",
+  "owner": "C06",
+  "tier": 4,
+  "atk": 20,
+  "mag": 44,
+  "price": 2600,
+  "acquisition": "Shared tier stock unlocked at CH16; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W035",
+  "name": "Mercy Without Law",
+  "owner": "C06",
+  "tier": 5,
+  "atk": 28,
+  "mag": 62,
+  "price": 5800,
+  "acquisition": "Shared tier stock unlocked at CH20; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W036",
+  "name": "Right to Refuse",
+  "owner": "C06",
+  "tier": 6,
+  "atk": 37,
+  "mag": 82,
+  "price": 0,
+  "acquisition": "Quest Q06; Cleanse also removes Doom."
+ },
+ {
+  "id": "W037",
+  "name": "Binding Blade",
+  "owner": "C07",
+  "tier": 1,
+  "atk": 8,
+  "mag": 4,
+  "price": 100,
+  "acquisition": "Guaranteed starter/join kit or any open town’s basic stock; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W038",
+  "name": "Split Rune",
+  "owner": "C07",
+  "tier": 2,
+  "atk": 17,
+  "mag": 9,
+  "price": 420,
+  "acquisition": "Shared tier stock unlocked at CH04; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W039",
+  "name": "Unsealed Edge",
+  "owner": "C07",
+  "tier": 3,
+  "atk": 29,
+  "mag": 16,
+  "price": 1100,
+  "acquisition": "Shared tier stock unlocked at CH08; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W040",
+  "name": "Mirrorbrand",
+  "owner": "C07",
+  "tier": 4,
+  "atk": 44,
+  "mag": 24,
+  "price": 2600,
+  "acquisition": "Shared tier stock unlocked at CH16; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W041",
+  "name": "Witness Blade",
+  "owner": "C07",
+  "tier": 5,
+  "atk": 62,
+  "mag": 34,
+  "price": 5800,
+  "acquisition": "Shared tier stock unlocked at CH20; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W042",
+  "name": "Unwritten",
+  "owner": "C07",
+  "tier": 6,
+  "atk": 82,
+  "mag": 45,
+  "price": 0,
+  "acquisition": "Quest Q07; An infusion lasts two additional Sable actions."
+ },
+ {
+  "id": "W043",
+  "name": "Dock Knife",
+  "owner": "C08",
+  "tier": 1,
+  "atk": 8,
+  "mag": 1,
+  "price": 100,
+  "acquisition": "Guaranteed starter/join kit or any open town’s basic stock; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W044",
+  "name": "Ledger Fang",
+  "owner": "C08",
+  "tier": 2,
+  "atk": 17,
+  "mag": 2,
+  "price": 420,
+  "acquisition": "Shared tier stock unlocked at CH04; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W045",
+  "name": "Rope Cutter",
+  "owner": "C08",
+  "tier": 3,
+  "atk": 29,
+  "mag": 3,
+  "price": 1100,
+  "acquisition": "Shared tier stock unlocked at CH08; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W046",
+  "name": "Quick Answer",
+  "owner": "C08",
+  "tier": 4,
+  "atk": 44,
+  "mag": 5,
+  "price": 2600,
+  "acquisition": "Shared tier stock unlocked at CH16; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W047",
+  "name": "True Name",
+  "owner": "C08",
+  "tier": 5,
+  "atk": 62,
+  "mag": 7,
+  "price": 5800,
+  "acquisition": "Shared tier stock unlocked at CH20; No hidden passive; stat progression only."
+ },
+ {
+  "id": "W048",
+  "name": "No Crown",
+  "owner": "C08",
+  "tier": 6,
+  "atk": 82,
+  "mag": 10,
+  "price": 0,
+  "acquisition": "Quest Q08; Successful common Pilfer refunds 150 ATB, once per readiness cycle."
+ }
+]

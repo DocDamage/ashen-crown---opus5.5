@@ -1,0 +1,296 @@
+#! D03 Rootward
+=== D03_R01
+name: Rootward - Wagon Hollow
+encounters: none
+save: true
+tileset: grove
+music: M021
+zone: D03
+region: R01
+location: L_D03
+legend: %=vine Y=tree2
+grid:
+T##TTTYYTT#T#TT#ThhTT##TTTTTTTTTTTTTY##T
+##TT###TYYTY####TT#TThYYTT#Y#TTTT#hYTT##
+###T###TT#YT##h####TT##T#TTT###TTTT###Y#
+T#YTTT#TTYTTT#TT,,,,,,,,,#TTTTTTTT##T##T
+TT#T##YT##hT,,,,,,,,,,,,,,,,,YT#T#TThYT#
+TY#TTTYTY#,,,,,,,,,,,,,,,,,,,,,YT##YYTTT
+#TTThTTT,,,,,,,,""""""""",,,,,,,,#YTTThY
+TT#Y#TY,,,,,]""""""""""""""",,,,,,#TYTYT
+T#TYY#,,],,"""""""""""""2.2""",,,,,TTT#Y
+#YTYT,,,,,""""""""""""""""""""",,,,,TTh#
+hTY#,,,,,"""""22"""""""""""""""",,,,,TYT
+TT##,,,,""""""""""""""""""""""""",,,,#TT
+h#T,,,rr"""""""""""""""""""""""""",,::::
+#TT,,,c""""""""""""""""""""""""""",,::::
+#TT,,,,"""""""""""""::::::::::::::::::::
+#TT,,,,"""""""""""""::::::::::::::::::::
+TTY,,,,"""""""""""""::"""""""""""",,,,T#
+T#YT,,,,""""""""""""::""""""""""",,,,TTT
+#TT#,,,,]"""""""""!"::"""""""""",,,,,TYT
+TT###,,,,,""""""""""::""""""]"",,,,,TTY#
+Y##TYT,,,,,"""""""""::"""""""",,,,,TTT#T
+YYYTTTT,,,,,,"""""""::"""""",,,,,,YYTT##
+#TTTT#TT,,,,,,,,""""::""",,,,,,,,#TYThTY
+#T#Th#YTT#,,,,,,,,,,::,,,,,,,,,hTYTYTT#Y
+#YYYTTTYYTT#,,,,,,,,::,,,,,,,###YTTTTThT
+hTTTTT#TT#TT##YT,,::::,,,##TTTTTYY#T#TT#
+#T#YT##TYhY###YTTT::::##T#YT#TYTY##TYhTY
+###T##TYTTTTYYT#TT::::TT#TTTT##YTT#T#T##
+entities:
+spawn world 20 26 up
+spawn from_r02 37 13 left
+spawn default 20 26 up
+exit 18..21 27 WORLD l_d03
+exit 39 12..15 D03_R02 from_r01 if=event:D03_NERA_MEET locked="Nera: That's our road you're about to trample. Talk first."
+npc nera_camp 20 12 down sprite=C05 talk=D03_NERA_MEET if=!recruited:C05
+npc camp_elder 10 10 right sprite=elder talk=D03_CAMP_ELDER if=!ch:CH03
+npc camp_mother 25 17 left sprite=farmer talk=D03_CAMP_MOTHER if=!ch:CH03
+npc camp_child 14 16 up sprite=child talk=D03_CAMP_CHILD wander=1 if=!ch:CH03
+npc camp_carter 30 10 down sprite=worker talk=D03_CAMP_CARTER if=!ch:CH03
+save 16 20
+
+=== D03_R02
+name: Rootward - Root Ford
+encounters: D03
+rate: 0.9
+tileset: grove
+music: M021
+zone: D03
+region: R01
+location: L_D03
+legend: %=vine Y=tree2
+grid:
+T##T#YTY#YTTT#,,,,#T###YTT#TTTTT
+TY#YT#TTY###TT,,,,TT#TYTYhTT#TYT
+T##TTTY#TTTTYT,,,,#TT#TYTTTT#YTY
+TT##T#TT#TTTT,,,,,,,#T#TTYT##TT#
+#TT#hT##YT,,,,,,,,,,,,,TTYT#T##T
+T#TTY##T,,,,,,,,,,,,,,,,,#TTTTTT
+TYTT###,,,,,,,,,,,,,,,,,,,Y#TTTY
+#YTYT#,,,,,,,,,,,,,,,,,,,,,T#TY#
+YY###,,,,,,,,,,,,,,,,,,,,,,,T#Y#
+ThY#,,,,,,,,,,,,,,,,,,,,,,,,,#TY
+YT##,,,,,,,,,,,,,,,,,,,,,,,,,YYT
+:::,,,,,,,,,,,,,,,,,,,,,,,,,,,Y#
+:::,,,,,,,,,&,,,,,,,,,,,,,,,,,Th
+:::,,,,,,,,,,,,,,,,,,,,,,,,,,,,T
+:::,,,,,,,,,,,,,,,,,,,,,,,,,,,,#
+T#,,,,,,,,,,,,,,,,,,,,,,,,,,,,,T
+T~~~~~www~~~~~~~~~~~~~~~~~~~~~~Y
+T~~~~~www~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~www~~~~~~~~~~~~~~~~~~~~~~T
+T~~~~~www~~~~~~~~~~~~~~~~~~~~~~T
+#TT,,,,,,,,,,,,,,,,,,,,,,,,,,,#Y
+T#T,,,,,,,,,,,,,,,,,,,,,,,,,,,#T
+T#Y#,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+T#TT,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+TYY#Y,,,,,,,,,,,,,,,,,,,,,,,T,,,
+TTTTT#,,,,,,,,,,,,,,,,,,,,,TT,,,
+##TTT#T,,,,,,,,,,,,,,,,,,,YYTYTT
+TT#TTT#T,,,,,,,,,,,,,,,,,Y##Y#TT
+TTT#TTT###,,,,,,,,,,,,,#T#hT#hTT
+##T#h##TYThh#,,,,,,,#T###hYT##TT
+T#hTT#T#TTYTT###Y#T#TThTYY###TT#
+#T#Y##TY##TY#T#YT#TYTYhTTTTY#TTT
+entities:
+tileset_over 22..23 16..19 bridge if=flag:d03_sluices
+switch shortcut 12 12 scene=D03_SHORTCUT
+sign 14 11 "Irrigation map: 'Ford sluice feeds the upper camp. Three Sluices feed the grove bridges.'"
+chest D03_C_R02 5 24 I011 2
+spawn from_r01 1 12 right
+spawn from_r03 15 2 down
+spawn from_r05 30 23 left
+exit 0 11..14 D03_R01 from_r02
+exit 14..17 0 D03_R03 from_r02
+exit 31 22..25 D03_R05 from_r02 if=flag:d03_sluices
+
+=== D03_R03
+name: Rootward - Three Sluices
+encounters: D03
+rate: 0.6
+tileset: grove
+music: M021
+zone: D03
+region: R01
+location: L_D03
+legend: %=vine Y=tree2
+grid:
+T#YTTY#YYTTT#ThTTT#Y##TTTT#TT#T#T#TTTT#T
+YThh#Y##TT#T#hTTTT#TTT##TTY#T###TTT#TYTT
+T##TYY#YTh###TT,88888888,,T#TT##T#TTTTTT
+T#Y#TT#hhTT,,,,,88888888,,,,,,hY##T##T#T
+#T##TY#Y#,,,,,,,,,,,,,,,,,,,,,,,TTh#TTTT
+TT#YTYT,,,,,,,,,,,,,,,,,,,,,,,,,,,TTTTT#
+#T#Y~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#YTT
+T#T#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~,T#T
+TTT#,,,,&,,,,,,,,,,,&,,,,,,,,,,,&,,,,Th#
+hT#,,,,,,,,,,,,,,,,,,,,,,,S,,,,,,,,,,,,,
+##,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#T,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+##,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#T,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,#
+#T,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,T
+#TT,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,T#
+YT#T,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,hT#
+TTTT,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TTY
+##TTT,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TYYT
+TT##YYY,,,,,,,,,,,,,,,,,,,,,,,,,,,hYYYT#
+TY###TTTT,,,,,,,,,,,,,,,,,,,,,,,T#TTY#TT
+#YTTY#T#TT#,,,,,,,,,,,,,,,,,,,T#T#TTYTTY
+TTTTTYTY#YT#T#Y,,,,,,,,,,,TT#TTT#TTY#YTT
+T#TY###TYT#Y#TTh#Y,,,,T#TTTT#YTT##TTTTT#
+entities:
+switch valve_a 8 8 scene=D03_VALVE_A
+switch valve_b 20 8 scene=D03_VALVE_B
+switch valve_c 32 8 scene=D03_VALVE_C
+read 26 9 "A plaque copies the mural across the channel: water leaves the hill at the RIGHT, turns through the LEFT field, and only then feeds the MIDDLE grove."
+spawn from_r02 19 22 up
+spawn from_r04 38 10 left
+exit 18..21 23 D03_R02 from_r03
+exit 39 9..12 D03_R04 from_r03 if=flag:d03_sluices locked="Roots hang too low to pass. Water would lift them."
+
+=== D03_R04
+name: Rootward - Canopy Rise
+encounters: D03
+rate: 0.7
+save: true
+tileset: grove
+music: M021
+zone: D03
+region: R01
+location: L_D03
+legend: %=vine Y=tree2
+grid:
+TTTYTTTYT##T#TT#TTYTTTT#TT####TT
+#YT#YYT##T#TTTTT#YYY#YTTYYYTTY#Y
+TT##YTThT##TT,,,,,,,#TTT##TTYTT#
+YTTT#hhYT#,,,,,,,,,,"""""#TTTTTT
+T#T#TTYTT,,,,,,,,,""""S""""TY#YT
+##TYTTT,,,,,,,,,,"""""""""""YY##
+hT#TTT,,,,,,,,,,,"""""""""""TTT#
+#T#hh,,,,,,,,,,,,"""""""""""TY#T
+T#TTY,,,,,,,,,,,,,""""""""",TTTT
+#T#T,,,,,,,,,,,,,,,,""""",,,,T#T
+ThTT,,,,,,,,,,,,,,,,,,,,,,,,,TTT
+TTT,,,,,,,,,,,,,,,,,,,,,,,,,,,T#
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,TY
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YT
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YT
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Yh
+#TT,,,,,,,,,,,,,,,,,,,,,,,,,,,#T
+T##,,,,,,,,,,,,,,,,,,,,,,,,,,,##
+#TTY,,,,,,,,,,,,,,,,,,,,,,,,,#TT
+YT#TTTTTT,,,,,,,,,,,,,,,,,,,,Y#T
+hYTT,,,,,,,,,,,,,,,,,,,,,,,,#TTT
+TT#T,,,,,,,,,,,,,,,,,,,,,,,,T#TT
+Th#h,,,,,,,,,,,,,,,,,,,,,,,TT#TY
+YTTT,,,,,,,,,,,,,,,,,,,,,,T#TT#Y
+##hTYhTT#,,,,,,,,,,,,,,,#YTTTT#T
+TTTYTTTT#T,,,,,,,,,,,,,YTYT#TTT#
+#TT#TT#TYh#T#,,,,,,,YY#hY#T##Y##
+#TTYT#T#YYTTTT,,,,T#TT##TT#TT#T#
+entities:
+chest D03_SECRET_CHEST 5 21 A003 1 acq=D03_SECRET
+read 22 5 "From the lookout you see the whole grove - and a hollow elm in the south-west, open on its far side."
+chest D03_C_R04 24 20 W026 1
+save 10 8
+heal 12 8
+spawn from_r03 1 13 right
+spawn from_r05 15 26 up
+exit 0 12..15 D03_R03 from_r04
+exit 14..17 27 D03_R05 from_r04
+
+=== D03_R05
+name: Rootward - Hollow Grove
+encounters: none
+tileset: grove
+music: M021
+zone: D03
+region: R01
+location: L_D03
+legend: %=vine Y=tree2
+grid:
+TTThYYYT###Y#TTTYT,,,,Y#TYTY#T#YThT#Y#TT
+##TY#TT#TYTTTTTYT#,,,,###TTTTh##T#T####T
+hYTTYYTTYTTYTYTYTh,,,,##TTTTYTTYTTT#T##Y
+hTY##T##h##TYYT#YT,,,,Y##TT####ThTYYT#YT
+TTTT##T#Y#T#TYTT"",,,,"""TYTYhT##TYTT##T
+Th##TYhTTT#hY"""""""""""""""T#TTTY##hT#T
+TTYTTT#TYTh"""""""""""""""""""ThY##Y##T#
+#TTYT#YTT"""""""""""""""""""""""##T##TY#
+#TYTT#TT""%"""""""""""""""""""%""Y#TT#YT
+hT#TYT#"""""""""""""""""""""""""""TTTTTT
+T#Y##Y"""""""""""""""""""""""""""""##TT#
+##YY#"""""""""""""""""""""""""""""""#YTY
+YTTTT""""""""""""",,,,,"""""""""""""#YT#
+#YYTT""""""""""",,,,,,,,,"""""""""""T#YY
+###T""""""""""",,,,,,,,,,,"""""""""",,,,
+T#TT"""""""""",,,,,,,,,,,,,""""""""",,,,
+TT#T""%""""""",,,,,,,,,,,,,"""""""%",,,,
+YTYT"""""""""",,,,,,,,,,,,,""""""""",,,,
+###T""""""""""",,,,,,,,,,,"""""""""""hTT
+TTTh#""""""""""",,,,,,,,,"""""""""""Y#T#
+T#TTY""""""""""""",,,,,"""""""""""""YTT#
+TTT#T"""""""""""""""""""""""""""""""TTTT
+,,,,,,,,,,"""""""""""""""""""""""""YTTTT
+,,,,,,,,,,""""""""""""""""""""""""TY###T
+,,,,,,,,,,%"""""""""""""""""""%""TTTTTT#
+,,,,,,,,,,""""""""""""""""""""""Y#h###Y#
+YTTTTT#TTTT"""""""""""""""""""YhT#YTTT#T
+#T##TT#TTT#TT"""""""""""""""hYTTYTT#TTT#
+##YTTTTTTTThTTT#"""""""""#TTY#YYTT#T#TYY
+#TY###T#T#TTTT#YT#TYT#TTTTTT#Y#TTT#YT###
+TYYYTT###TTTT#TYhTh#T##YT#YT##YTTYY#Y##Y
+#TTYTT#T##TY#YTY#T#Y###TYY#T####YYTT#T##
+entities:
+trigger 14..25 12 scene=D03_STAG if=!flag:b03_done
+trigger 14..25 20 scene=D03_STAG if=!flag:b03_done
+spawn from_r04 19 1 down
+spawn from_r02 1 23 right
+spawn from_r06 38 15 left
+exit 18..21 0 D03_R04 from_r05
+exit 0 22..25 D03_R02 from_r05
+exit 39 14..17 D03_R06 from_r05 if=flag:b03_done
+
+=== D03_R06
+name: Rootward - North Verge
+encounters: none
+tileset: grove
+music: M021
+zone: D03
+region: R01
+location: L_D03
+legend: %=vine Y=tree2
+grid:
+T#TYT##T###Y#T::::#TY#TTThTYT#YY
+TYTYTY#####T#T::::TTTT#T##TTTT#Y
+##YYY##h#YYhTT::::T##YYTYYT#TT##
+###TTT#TYTT#T,::::,,###h#YT#h#TT
+#T##YT#TT,,,,,,::,,,,,,,Y###TYTY
+TT#TTTYT,,,,,,,::,,,,,,,,TT##T#T
+T#YT#T,,,,,,,,,::,,,,,,,,,,Y##TY
+T##T#,,,,,,,,,,::,,,,,,,,,,,YY#Y
+hTY#,,,,,,,,,,,::,,,,,,,,,,,,#T#
+TTY#,,,,,,,,,,,::,,,,,,,,,,,,TT#
+,,,,,,,,,,,,,,,::,,,,,,,,,,,,,T#
+,,,,,,,,,,,,,,,::,,,,,,,,,,,,,YY
+,,:::::::::::::::,,,,,,,,,,,,,#Y
+,,::::::::::::::,,,,,,,,,,,,,,Y#
+#TY,,,,,,,,,,,,,,,,,^^^^^^^,,,#T
+TTYT,,,,,,,,,,,,,,,,^^^^^^^,,#TT
+T#TT,,,,,,,,,,,,,,,,^^^^^^^,,##T
+T#TT#,,,,,,,,,,,,,,,^^^^^^^,#TTT
+TYT#h#,,,,,,,,,,,,,,^^^^^^^TTYT#
+TTTTT#TT,,,,,,,,,,,,,,,,,TYTT##T
+#Y#TTYTT#,,,,,,,,,,,,,,,##YTY#YT
+T##TY##TTT#YT,,,,,,,TT#T#h###TTT
+YTYTTTT##TTTTTYY#TTT#TYTY##TYTT#
+TT#YT#TThTTT#TT#TYhT##TTTTT#hTTT
+entities:
+trigger 12..19 5..6 scene=CH03_VERGE if=!ch:CH03
+spawn from_r05 1 11 right
+spawn default 1 11 right
+exit 0 10..13 D03_R05 from_r06
+exit 14..17 0 WORLD l_d03 if=ch:CH03

@@ -1,0 +1,217 @@
+#! T07 Hearthward + Wayfarer deck
+=== T07_MARKET
+name: Hearthward - Ponton Market
+tileset: harbor
+music: M016
+zone: T07
+region: R06
+location: L_T07
+phase: post
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~dddddddddddddddddddddddddddddddddddddddd~~~
+~~~d$d]]dd]]dd]]dddddddddd]]d]]ddlddddbddddddd
+~~~dddddddddddddddddddd$dddddddddddddddddddddd
+~~~dcdddddd2ddddldddddddddddddddddddd$dddddddd
+~~~ddddddddddddddddddddddddddddddddddddddddddd
+~~~dd~~~~~~~dd~~~~~~~dd~~~~~~~dd~~~~~~~~~dd~~~
+~~~dddddddddddddddddddddddddddddddddddddddd~~~
+~~~ddd$dddddlddbddddddd2dd2dddddddddddddddd~~~
+~~~dddddddddddddddaaaaddddddddddddddddddbdd~~~
+ddddddddddddddddddnnnnddddcdcr2dddddddddddd~~~
+dddddddddlddddddddddddddddddddddddddldddddd~~~
+ddddddddddddddddddddddddddddddddddddddddddd~~~
+dddddddldddddddddddbddddlddddbdd$dddddddddd~~~
+~~~dddddddddddddddddddddddddddddddddddddddd~~~
+~~~dd~~~~~~~dd~~~~~~~dd~~~~~~~dd~~~~~~~~~dd~~~
+~~~dddddddddddddddddddddddddddddddddddddddd~~~
+~~~ddd]]dd]]ddddddd2ddddrdddddddd]]dd]]dbdd~~~
+~~~ddddddddddddddddddddddddd2dddddddddddddd~~~
+~~~ddddddddddddddd2dddddd]dddddddddddddddld~~~
+~~~dcddcdddddddddddddddddddddddddddddlddddd~~~
+~~~dddddddddddddrdrdddddddd]dddbdcdcddddd$d~~~
+~~~ddddddddddddddddddddd$dddddddddddddddddd~~~
+~~~~~~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~~~~~~
+entities:
+tileset_over 6..7 5 house if=ch:CH16
+tileset_over 10..11 5 house if=ch:CH16
+tileset_over 14..15 5 house if=ch:CH16
+tileset_over 26..27 5 house if=ch:CH16
+tileset_over 29..30 5 house if=ch:CH16
+tileset_over 6..7 20 house if=ch:CH20
+tileset_over 10..11 20 house if=ch:CH20
+tileset_over 33..34 20 house if=ch:CH20
+tileset_over 37..38 20 house if=ch:CH20
+spawn world 1 14 right
+spawn from_hearth 22 27 up
+spawn from_berth 43 6 left
+spawn default 22 22 up
+exit 0 13..16 WORLD_POST l_t07 if=ch:CH13 locked="Mara: 'Not yet - you can barely stand. Help at the hearth first.'"
+exit 20..25 29 T07_HEARTH from_market
+exit 45 5..8 T07_BERTH from_market
+npc mara_m 16 15 down sprite=mara talk=T07_MARA
+npc sign_keeper 8 11 down sprite=elder talk=T07_SIGNS
+npc argue_a 27 16 left sprite=worker talk=T07_ARGUE
+npc argue_b 26 16 right sprite=farmer talk=T07_ARGUE
+npc bell_child 38 11 left sprite=child talk=T07_BELL_CHILD
+npc fuel_worker 12 22 up sprite=worker talk=T07_FUEL
+npc stall 20 14 down sprite=keeper talk=T07_SHOP
+shop 20 13 SHOP_T07
+npc ferryman 40 16 left sprite=sailor talk=T07_FERRY
+read 5 13 "A sign nailed to a post: 'BRACKENFORD BAKERY - BEST RYE ON THE RIVER'. The river is somewhere under the sea now."
+read 34 10 "Painted board: 'CINDERWAKE CANTEEN - SHIFT STEW'. Someone has added: 'still open (sort of)'."
+
+=== T07_HEARTH
+name: Hearthward - Communal Hearth
+save: true
+tileset: harbor
+music: M016
+zone: T07
+region: R06
+location: L_T07
+phase: post
+grid:
+~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~
+~~~dddddddddddddddddddddddddddddd~~~
+~~~ddddddddddddbdddddddddddddbddd~~~
+~~~ddBB.BBddddddddddddddddttddddd~~~
+~~~ddddddddddddddcdddddddddddddtd~~~
+~~~ddddddddddddddddddddddddddbddd~~~
+~~~ddBB.BBddddd,,,,,ddddddddddddd~~~
+~~~ddddddddddd,,,,,,,dddddddddddd~~~
+~~~dddddddddd,,,,,,,,,ddddddrddcd~~~
+~~~dddddddcd,,,,,,,,,,,dddddddddd~~~
+~~~ddddddddd,,,,,!,,,,,ddddddddddddd
+~~~ddddddddd,,,,,,,,,,,dd$dddddddddd
+~~~dddrdddddd,,,,,,,,,ddddddddddd~~~
+~~~ddddddddddd,,,,,,,dddddddddddd~~~
+~~~dddddddddddd,,,,,ddddddddddddd~~~
+~~~ddddddddddddddddddddd$$ddddddd~~~
+~~~dddddddddddddddddddddddddddddd~~~
+~~~dcddrdbdrddddddddddddddddddddd~~~
+~~~dddddddddd$ddbdddddddddddbdddd~~~
+~~~ddddddddddddddddddddbddddddddd~~~
+~~~dddddddddddddddddddddddddddddd~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+entities:
+block 30 12..13 tile=hole if=!flag:t07_path msg="A broken section of walkway. Planks are stacked by the cots."
+trigger 30 12..13 scene=T07_FIX_PATH touch=0 if=!flag:t07_path
+spawn wake 8 6 down
+spawn from_market 17 1 down
+spawn default 17 4 down
+exit 15..20 0 T07_MARKET from_hearth
+trigger 7..9 6..7 scene=CH13_WAKE if=!event:CH13_WAKE
+npc oriel_h 10 7 left sprite=C06 talk=T07_ORIEL if=!ch:CH13
+npc lamp_keeper 22 9 left sprite=elder talk=T07_LAMP if=!ch:CH13
+npc plank_pile 12 10 up sprite=worker talk=T07_PLANKS if=!ch:CH13
+npc stranded 34 12 left sprite=survivor talk=T07_STRANDED
+npc cook_h 20 16 up sprite=baker talk=T07_COOK
+npc medic 27 6 down sprite=monk talk=T07_MEDIC
+chest T07_SUPPLIES 25 17 I002 4 acq=T07_SUPPLIES
+chest T07_SUPPLIES2 24 17 I004 3 acq=T07_SUPPLIES2
+switch salvage_chest 28 18 scene=T07_SALVAGE
+inn 5 11 scene=T07_INN
+npc cot_keeper 5 12 up sprite=keeper talk=T07_INN
+trigger 12..22 13..15 scene=CH23_EPILOGUES if=ch:CH23,!event:CH23_EPILOGUES
+save 14 18
+
+=== T07_BERTH
+name: Hearthward - Wayfarer Berth
+tileset: harbor
+music: M016
+zone: T07
+region: R06
+location: L_T07
+phase: post
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~666~~~~~~~~~~~~~~~~~~~
+ddddddddddddddd~~~~~~~~~~~~~~~~~~~~~~~~~
+ddddddddddddddd~~~~~~~~~~~~~~~~~~~~~~~~~
+ddddcdccddddddd~~~~~~~~~~~~~~~~~~~~~~~~~
+ddddddrrddddddd~~~~~~~~~~~~~~~~~~~~~~~~~
+ddddddddddddddd~~~~~~~~~~~~~~~~~~~~~~~~~
+dddddddd6ddcddddddddddddddddddddddddd~~~
+ddddddddddddddddddddddddddddddddddddd~~~
+dddddd6dddddddddddddddddddd6ddddddddd~~~
+ddddddddddddddddddddddddddddddddddddd~~~
+ddddddddddddddddddddddddddddddddddddd~~~
+ddddddddddddddd~~~~~~~~~~~~~~~~~~~~~~~~~
+ddddddddddddcdd~~~~~~~~~~~~~~~~~~~~~~~~~
+ddddddddddrdddd~~~~~~~~~~~~~~~~~~~~~~~~~
+dddddcddddddddd~~~~~~~~~~~~~~~~~~~~~~~~~
+ddddddddddddddd~~~~~~~~~~~~~~~~~~~~~~~~~
+ddddddddddddddd~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+entities:
+spawn from_market 1 6 right
+spawn from_deck 30 12 left
+spawn default 3 12 right
+exit 0 5..8 T07_MARKET from_berth
+npc berth_master 10 14 up sprite=sailor talk=T07_BERTH_MASTER
+npc crew_berth 33 11 down sprite=pilot talk=T07_WAYFARER if=ch:CH16
+trigger 34..36 10..14 scene=T07_BOARD if=ch:CH16,!flag:dawn
+trigger 16..18 10..14 scene=CH24_MORNING if=flag:dawn,!event:CH24_MORNING
+trigger 34..36 10..14 scene=CH24_BOARD if=flag:dawn,event:CH24_MORNING
+npc lamp_w1 17 9 down sprite=worker talk=T07_LAMP_W if=flag:dawn
+npc lamp_w2 19 15 up sprite=worker talk=T07_LAMP_W if=flag:dawn
+
+=== W_DECK
+name: Wayfarer - Common Deck
+tileset: ship
+music: M019
+zone: SHIP
+phase: post
+save: true
+grid:
+#############....#############
+#############.L..#############
+##..........................##
+##.kkk..tt..kkk.............##
+##..........................##
+##..........................##
+##..........................##
+##..........................##
+##..........................##
+##..........................##
+##..........................##
+##..........................##
+##..................BB......##
+##..t.t.............BB......##
+##..........................##
+##..........................##
+##..........................##
+##..........................##
+##############################
+##############################
+entities:
+spawn from_world 15 4 down
+spawn from_berth 15 4 down
+spawn default 15 4 down
+exit 13..16 0 WORLD_POST helm
+npc deck_ivo 8 8 right sprite=C04 talk=W_IVO if=party:C04
+npc deck_crew 18 6 down sprite=pilot talk=W_CREW
+npc rumor_board 6 12 up sprite=scholar talk=W_RUMORS if=ch:CH20
+npc formation_mate 24 8 left sprite=sailor talk=W_FORMATION
+shop 10 4 SHOP_SHIP
+inn 22 11 scene=W_REST
+save 25 15
+heal 23 15
+read 20 4 "The deck log. Every entry is signed by two crew, not one."

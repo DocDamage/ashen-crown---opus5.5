@@ -1,0 +1,1022 @@
+[
+ {
+  "id": "D01",
+  "name": "Crown Quarry",
+  "region": "R01",
+  "chapter": "CH01",
+  "levels": [
+   2,
+   4
+  ],
+  "optional": false,
+  "mechanic": "Drain routes, then release the rail brake without opening the occupied lift",
+  "rooms": [
+   {
+    "id": "D01_R01",
+    "name": "Gatehouse",
+    "purpose": "Arrival and rescue briefing",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D01_R02",
+    "name": "Lunch Gallery",
+    "purpose": "Meet Tessa under guard; find the worker list",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D01_R03",
+    "name": "Flooded Spur",
+    "purpose": "Shallow-water path and first enemies",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D01_R04",
+    "name": "Pump Loft",
+    "purpose": "Two linked pumps; preview the safe lift route",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D01_R05",
+    "name": "Heartglass Face",
+    "purpose": "Hear Ilyr; extraction boss arena",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D01_R06",
+    "name": "Lift Yard",
+    "purpose": "Evacuate workers; departure scene",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D01_R01",
+    "D01_R02"
+   ],
+   [
+    "D01_R02",
+    "D01_R03"
+   ],
+   [
+    "D01_R03",
+    "D01_R04"
+   ],
+   [
+    "D01_R04",
+    "D01_R05"
+   ],
+   [
+    "D01_R05",
+    "D01_R06"
+   ],
+   [
+    "D01_R04",
+    "D01_R02"
+   ]
+  ],
+  "boss": "B01",
+  "state_change": "After the catastrophe, the entrance is a memorial and supply cache; the underground section is sealed, with all unique missed rewards moved to Mara",
+  "secret_accessory": "A001"
+ },
+ {
+  "id": "D02",
+  "name": "Veyr Underways",
+  "region": "R01",
+  "chapter": "CH02",
+  "levels": [
+   4,
+   6
+  ],
+  "optional": false,
+  "mechanic": "Reroute a signal bell to move patrols; no real-time stealth failure",
+  "rooms": [
+   {
+    "id": "D02_R01",
+    "name": "Intake Hall",
+    "purpose": "Arrest escape",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D02_R02",
+    "name": "Ledger Stacks",
+    "purpose": "Oriel finds living names marked deceased",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D02_R03",
+    "name": "Bell Junction",
+    "purpose": "Ring decoy bell and inspect patrol route",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D02_R04",
+    "name": "Cistern Walk",
+    "purpose": "Optional chest and one-way drop with return ladder",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D02_R05",
+    "name": "Seal Chamber",
+    "purpose": "Brass Bailiff arena",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D02_R06",
+    "name": "Canal Exit",
+    "purpose": "Boat exit and recovery point",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D02_R01",
+    "D02_R02"
+   ],
+   [
+    "D02_R02",
+    "D02_R03"
+   ],
+   [
+    "D02_R03",
+    "D02_R04"
+   ],
+   [
+    "D02_R04",
+    "D02_R05"
+   ],
+   [
+    "D02_R05",
+    "D02_R06"
+   ],
+   [
+    "D02_R03",
+    "D02_R05"
+   ]
+  ],
+  "boss": "B02",
+  "state_change": "Post-state removes the arrest route, adds Pip’s registry rescue and a sealed optional echo chamber for B15; preserve opened chest IDs",
+  "secret_accessory": "A002"
+ },
+ {
+  "id": "D03",
+  "name": "Rootward",
+  "region": "R01",
+  "chapter": "CH03",
+  "levels": [
+   6,
+   8
+  ],
+  "optional": false,
+  "mechanic": "Route irrigation through roots to reveal bridges; always leave a walking return path",
+  "rooms": [
+   {
+    "id": "D03_R01",
+    "name": "Wagon Hollow",
+    "purpose": "Nera’s displaced caravan",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D03_R02",
+    "name": "Root Ford",
+    "purpose": "First water-level demonstration",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D03_R03",
+    "name": "Three Sluices",
+    "purpose": "Three valves with a visible correct-order mural",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D03_R04",
+    "name": "Canopy Rise",
+    "purpose": "Optional lookout and bow cache",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D03_R05",
+    "name": "Hollow Grove",
+    "purpose": "Rootbound Stag arena",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D03_R06",
+    "name": "North Verge",
+    "purpose": "Climb to the northern road",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D03_R01",
+    "D03_R02"
+   ],
+   [
+    "D03_R02",
+    "D03_R03"
+   ],
+   [
+    "D03_R03",
+    "D03_R04"
+   ],
+   [
+    "D03_R04",
+    "D03_R05"
+   ],
+   [
+    "D03_R05",
+    "D03_R06"
+   ],
+   [
+    "D03_R02",
+    "D03_R05"
+   ]
+  ],
+  "boss": "B03",
+  "state_change": "Post-state is flooded; existing trees become stepping bridges. B11 guards a new rescue channel during Nera’s reunion",
+  "secret_accessory": "A003"
+ },
+ {
+  "id": "D04",
+  "name": "Furnace Spine",
+  "region": "R02",
+  "chapter": "CH04",
+  "levels": [
+   8,
+   11
+  ],
+  "optional": false,
+  "mechanic": "Balance three pressure lines, venting into empty chambers rather than occupied workshops",
+  "rooms": [
+   {
+    "id": "D04_R01",
+    "name": "Shift Gate",
+    "purpose": "Ivo joins the party",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D04_R02",
+    "name": "Boiler Walk",
+    "purpose": "Observe burst rhythm before crossing",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D04_R03",
+    "name": "Red Valve",
+    "purpose": "First valve and optional workers",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D04_R04",
+    "name": "Blue Valve",
+    "purpose": "Second valve; bridge to regulator",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D04_R05",
+    "name": "Regulator Crown",
+    "purpose": "Foundry Colossus arena",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D04_R06",
+    "name": "Cooling Garden",
+    "purpose": "Manual shutdown and workers’ argument",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D04_R01",
+    "D04_R02"
+   ],
+   [
+    "D04_R02",
+    "D04_R03"
+   ],
+   [
+    "D04_R02",
+    "D04_R04"
+   ],
+   [
+    "D04_R03",
+    "D04_R05"
+   ],
+   [
+    "D04_R04",
+    "D04_R05"
+   ],
+   [
+    "D04_R05",
+    "D04_R06"
+   ]
+  ],
+  "boss": "B04",
+  "state_change": "Post-state repurposes pressure puzzle into a waterwheel start sequence; recovering Ivo activates V06 and the airship’s ordinary engine",
+  "secret_accessory": "A004"
+ },
+ {
+  "id": "D05",
+  "name": "Drowned Archive",
+  "region": "R03",
+  "chapter": "CH06",
+  "levels": [
+   10,
+   13
+  ],
+  "optional": false,
+  "mechanic": "Match three bell tones to archive shelves; clues remain visible and can be replayed",
+  "rooms": [
+   {
+    "id": "D05_R01",
+    "name": "Tide Door",
+    "purpose": "Enter at low water",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D05_R02",
+    "name": "Bell Nave",
+    "purpose": "Three reproducible bell clues",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D05_R03",
+    "name": "Dry Gallery",
+    "purpose": "Records of extraction contracts",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D05_R04",
+    "name": "Wet Gallery",
+    "purpose": "Submerged route above safe stepping blocks",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D05_R05",
+    "name": "Witness Vault",
+    "purpose": "Custodian arena and Rook’s evidence",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D05_R06",
+    "name": "Roof Pier",
+    "purpose": "Open the coastal ferry route",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D05_R01",
+    "D05_R02"
+   ],
+   [
+    "D05_R02",
+    "D05_R03"
+   ],
+   [
+    "D05_R02",
+    "D05_R04"
+   ],
+   [
+    "D05_R03",
+    "D05_R05"
+   ],
+   [
+    "D05_R04",
+    "D05_R05"
+   ],
+   [
+    "D05_R05",
+    "D05_R06"
+   ]
+  ],
+  "boss": "B05",
+  "state_change": "Post-state swaps low-water paths for upper shelves. Tessa is maintaining a failing shield; releasing it safely opens the same exit",
+  "secret_accessory": "A005"
+ },
+ {
+  "id": "D06",
+  "name": "Skychain Viaduct",
+  "region": "R04",
+  "chapter": "CH07",
+  "levels": [
+   12,
+   15
+  ],
+  "optional": false,
+  "mechanic": "Use ballast anchors to change wind channels; falls reset locally without losing rewards",
+  "rooms": [
+   {
+    "id": "D06_R01",
+    "name": "Cable Foot",
+    "purpose": "Corren introduction",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D06_R02",
+    "name": "Ballast Yard",
+    "purpose": "Two ballast locks",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D06_R03",
+    "name": "Crosswind Span",
+    "purpose": "Readable gust cycle with generous movement windows",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D06_R04",
+    "name": "Pilots’ Niche",
+    "purpose": "Optional rescue gear and rest point",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D06_R05",
+    "name": "Chain Nest",
+    "purpose": "Chain Roc arena",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D06_R06",
+    "name": "High Landing",
+    "purpose": "High Aerie cable system unlocked",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D06_R01",
+    "D06_R02"
+   ],
+   [
+    "D06_R02",
+    "D06_R03"
+   ],
+   [
+    "D06_R03",
+    "D06_R04"
+   ],
+   [
+    "D06_R04",
+    "D06_R05"
+   ],
+   [
+    "D06_R05",
+    "D06_R06"
+   ],
+   [
+    "D06_R02",
+    "D06_R04"
+   ]
+  ],
+  "boss": "B06",
+  "state_change": "Post-state changes the chain into an island link. Corren’s reunion restores safe moorings, not a mandatory movement skill",
+  "secret_accessory": "A006"
+ },
+ {
+  "id": "D07",
+  "name": "Whitebone Redoubt",
+  "region": "R05",
+  "chapter": "CH08",
+  "levels": [
+   14,
+   17
+  ],
+  "optional": false,
+  "mechanic": "Replace binding sigils with consent keys recorded from actual occupants",
+  "rooms": [
+   {
+    "id": "D07_R01",
+    "name": "White Gate",
+    "purpose": "Sable requests a temporary truce",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D07_R02",
+    "name": "Barracks",
+    "purpose": "Inspect identical uniforms and different personal effects",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D07_R03",
+    "name": "Names Hall",
+    "purpose": "Read individual seals",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D07_R04",
+    "name": "Binding Cells",
+    "purpose": "Release captives; Sable’s equipment teaching",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D07_R05",
+    "name": "Tribunal Ring",
+    "purpose": "Ivory Adjudicator arena",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D07_R06",
+    "name": "Snow Exit",
+    "purpose": "Sable becomes a permanent party member",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D07_R01",
+    "D07_R02"
+   ],
+   [
+    "D07_R02",
+    "D07_R03"
+   ],
+   [
+    "D07_R03",
+    "D07_R04"
+   ],
+   [
+    "D07_R04",
+    "D07_R05"
+   ],
+   [
+    "D07_R05",
+    "D07_R06"
+   ],
+   [
+    "D07_R02",
+    "D07_R04"
+   ]
+  ],
+  "boss": "B07",
+  "state_change": "Post-state becomes a prisoner sanctuary. Sable returns voluntarily; the player removes distributed seals through a noncombat room sequence",
+  "secret_accessory": "A007"
+ },
+ {
+  "id": "D08",
+  "name": "Memory Vault",
+  "region": "R05",
+  "chapter": "CH09",
+  "levels": [
+   17,
+   20
+  ],
+  "optional": false,
+  "mechanic": "Arrange testimony in chronology; conflicting accounts must both remain in the record",
+  "rooms": [
+   {
+    "id": "D08_R01",
+    "name": "Listening Gate",
+    "purpose": "Consent warning and opt-out that changes staging, not progression",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D08_R02",
+    "name": "Voluntary Accord",
+    "purpose": "Original shared-body pact",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D08_R03",
+    "name": "First Industry",
+    "purpose": "Industrial conversion of the pact",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D08_R04",
+    "name": "Quiet Nursery",
+    "purpose": "Dain sees records without entering a named child’s memory",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D08_R05",
+    "name": "Choir Chamber",
+    "purpose": "Pale Choir arena",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D08_R06",
+    "name": "Still Pool",
+    "purpose": "Ilyr speaks with Dain instead of through him",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D08_R01",
+    "D08_R02"
+   ],
+   [
+    "D08_R02",
+    "D08_R03"
+   ],
+   [
+    "D08_R02",
+    "D08_R04"
+   ],
+   [
+    "D08_R03",
+    "D08_R05"
+   ],
+   [
+    "D08_R04",
+    "D08_R05"
+   ],
+   [
+    "D08_R05",
+    "D08_R06"
+   ]
+  ],
+  "boss": "B08",
+  "state_change": "Post-state preserves the evidence rooms and adds Oriel’s restitution scene. No new false history overrides the first visit",
+  "secret_accessory": "A008"
+ },
+ {
+  "id": "D09",
+  "name": "Sable Conduit",
+  "region": "R01",
+  "chapter": "CH11",
+  "levels": [
+   20,
+   24
+  ],
+  "optional": false,
+  "mechanic": "Disable three synchronization relays while keeping evacuation transport powered",
+  "rooms": [
+   {
+    "id": "D09_R01",
+    "name": "Old Aqueduct",
+    "purpose": "All eight travel together; select active four",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D09_R02",
+    "name": "South Relay",
+    "purpose": "Release local relay",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D09_R03",
+    "name": "North Relay",
+    "purpose": "Reroute occupied lift",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D09_R04",
+    "name": "Soldiers’ Walk",
+    "purpose": "Optional rescue; final warning and protected backup save",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D09_R05",
+    "name": "Marshal Bridge",
+    "purpose": "Voss human-form boss",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D09_R06",
+    "name": "Crown Dais",
+    "purpose": "Rook boss B10 and irreversible world transition",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D09_R01",
+    "D09_R02"
+   ],
+   [
+    "D09_R01",
+    "D09_R03"
+   ],
+   [
+    "D09_R02",
+    "D09_R04"
+   ],
+   [
+    "D09_R03",
+    "D09_R04"
+   ],
+   [
+    "D09_R04",
+    "D09_R05"
+   ],
+   [
+    "D09_R05",
+    "D09_R06"
+   ]
+  ],
+  "boss": "B09",
+  "state_change": "Destroyed after the catastrophe. Unique loot is forwarded to Hearthward’s salvage chest. No quest requires returning here",
+  "secret_accessory": "A009"
+ },
+ {
+  "id": "D10",
+  "name": "Crown Heart",
+  "region": "R06",
+  "chapter": "CH22",
+  "levels": [
+   34,
+   42
+  ],
+  "optional": false,
+  "mechanic": "Two four-person parties release alternating locks; neither party can trap the other",
+  "rooms": [
+   {
+    "id": "D10_R01",
+    "name": "Accord Dock",
+    "purpose": "Reversible final warning; recovery and formation screen",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D10_R02",
+    "name": "West Lung",
+    "purpose": "Party A pressure sequence",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D10_R03",
+    "name": "East Lung",
+    "purpose": "Party B name-release sequence",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D10_R04",
+    "name": "Concord Bridge",
+    "purpose": "Reunite; rest point; optional B16 alcove",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D10_R05",
+    "name": "Crown Vessel",
+    "purpose": "Three-phase final boss, one encounter identity",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D10_R06",
+    "name": "Open Sky",
+    "purpose": "Release ritual and ending transition",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D10_R01",
+    "D10_R02"
+   ],
+   [
+    "D10_R01",
+    "D10_R03"
+   ],
+   [
+    "D10_R02",
+    "D10_R04"
+   ],
+   [
+    "D10_R03",
+    "D10_R04"
+   ],
+   [
+    "D10_R04",
+    "D10_R05"
+   ],
+   [
+    "D10_R05",
+    "D10_R06"
+   ]
+  ],
+  "boss": "B12",
+  "state_change": "Post only. Clear-save returns to Accord Dock before the final commitment while preserving clear flags and optional completion",
+  "secret_accessory": "A010"
+ },
+ {
+  "id": "D11",
+  "name": "Cradle of Winter",
+  "region": "R05",
+  "chapter": "CH21",
+  "levels": [
+   30,
+   35
+  ],
+  "optional": true,
+  "mechanic": "Warm occupied shelters before thawing the route to the frozen sanctum",
+  "rooms": [
+   {
+    "id": "D11_R01",
+    "name": "White Causeway",
+    "purpose": "Quest Q09 starts here",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D11_R02",
+    "name": "Sleeping House",
+    "purpose": "Identify living sleepers",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D11_R03",
+    "name": "Warmth Channels",
+    "purpose": "Three reusable heat sources with no consumable lock",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D11_R04",
+    "name": "Rime Gallery",
+    "purpose": "Optional equipment cache",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D11_R05",
+    "name": "Lantern Cradle",
+    "purpose": "Lantern Eater optional boss",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D11_R06",
+    "name": "Dawn Window",
+    "purpose": "Winter Hind offers a pact",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D11_R01",
+    "D11_R02"
+   ],
+   [
+    "D11_R02",
+    "D11_R03"
+   ],
+   [
+    "D11_R03",
+    "D11_R04"
+   ],
+   [
+    "D11_R04",
+    "D11_R05"
+   ],
+   [
+    "D11_R05",
+    "D11_R06"
+   ],
+   [
+    "D11_R02",
+    "D11_R04"
+   ]
+  ],
+  "boss": "B13",
+  "state_change": "Post-only island visible from Nacre; airship landing is permanent after discovery",
+  "secret_accessory": "A011"
+ },
+ {
+  "id": "D12",
+  "name": "Starless Reef",
+  "region": "R06",
+  "chapter": "CH21",
+  "levels": [
+   34,
+   39
+  ],
+  "optional": true,
+  "mechanic": "Follow audible beacons through a dark reef; provide equal visual signals",
+  "rooms": [
+   {
+    "id": "D12_R01",
+    "name": "Blackwater Mooring",
+    "purpose": "Quest Q10 start",
+    "w": 40,
+    "h": 28
+   },
+   {
+    "id": "D12_R02",
+    "name": "First Beacon",
+    "purpose": "Teach signal rhythm",
+    "w": 32,
+    "h": 32
+   },
+   {
+    "id": "D12_R03",
+    "name": "Second Beacon",
+    "purpose": "Move reflector without extinguishing return beacon",
+    "w": 40,
+    "h": 24
+   },
+   {
+    "id": "D12_R04",
+    "name": "Wreck Library",
+    "purpose": "Recovered passenger names",
+    "w": 32,
+    "h": 28
+   },
+   {
+    "id": "D12_R05",
+    "name": "Night Trench",
+    "purpose": "Heartless Leviathan optional boss",
+    "w": 40,
+    "h": 32
+   },
+   {
+    "id": "D12_R06",
+    "name": "Open Current",
+    "purpose": "Night Leviathan offers a pact",
+    "w": 32,
+    "h": 24
+   }
+  ],
+  "connections": [
+   [
+    "D12_R01",
+    "D12_R02"
+   ],
+   [
+    "D12_R02",
+    "D12_R03"
+   ],
+   [
+    "D12_R03",
+    "D12_R04"
+   ],
+   [
+    "D12_R04",
+    "D12_R05"
+   ],
+   [
+    "D12_R05",
+    "D12_R06"
+   ],
+   [
+    "D12_R02",
+    "D12_R04"
+   ]
+  ],
+  "boss": "B14",
+  "state_change": "Post only. Return beacon is unconditionally lit after boss victory; audio is never the sole navigation channel",
+  "secret_accessory": "A012"
+ }
+]

@@ -1,0 +1,463 @@
+[
+ {
+  "id": "G001",
+  "name": "Traveler’s Coat",
+  "slot": "body",
+  "allowed": [
+   "C02",
+   "C06"
+  ],
+  "def": 3.25,
+  "res": 6.75,
+  "price": 120,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G002",
+  "name": "Tidewoven Robe",
+  "slot": "body",
+  "allowed": [
+   "C02",
+   "C06"
+  ],
+  "def": 7.8,
+  "res": 16.2,
+  "price": 650,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G003",
+  "name": "Listening Mantle",
+  "slot": "body",
+  "allowed": [
+   "C02",
+   "C06"
+  ],
+  "def": 15.6,
+  "res": 32.4,
+  "price": 1900,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G004",
+  "name": "Dawnweave",
+  "slot": "body",
+  "allowed": [
+   "C02",
+   "C06"
+  ],
+  "def": 26,
+  "res": 54,
+  "price": 4600,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G005",
+  "name": "Route Leather",
+  "slot": "body",
+  "allowed": [
+   "C05",
+   "C08"
+  ],
+  "def": 5,
+  "res": 3.75,
+  "price": 120,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G006",
+  "name": "Bramble Jacket",
+  "slot": "body",
+  "allowed": [
+   "C05",
+   "C08"
+  ],
+  "def": 12,
+  "res": 9,
+  "price": 650,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G007",
+  "name": "Crosswind Hide",
+  "slot": "body",
+  "allowed": [
+   "C05",
+   "C08"
+  ],
+  "def": 24,
+  "res": 18,
+  "price": 1900,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G008",
+  "name": "Common Road",
+  "slot": "body",
+  "allowed": [
+   "C05",
+   "C08"
+  ],
+  "def": 40,
+  "res": 30,
+  "price": 4600,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G009",
+  "name": "Working Mail",
+  "slot": "body",
+  "allowed": [
+   "C03",
+   "C04",
+   "C07"
+  ],
+  "def": 5,
+  "res": 3.75,
+  "price": 120,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G010",
+  "name": "Regulator Mesh",
+  "slot": "body",
+  "allowed": [
+   "C03",
+   "C04",
+   "C07"
+  ],
+  "def": 12,
+  "res": 9,
+  "price": 650,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G011",
+  "name": "Mirror Links",
+  "slot": "body",
+  "allowed": [
+   "C03",
+   "C04",
+   "C07"
+  ],
+  "def": 24,
+  "res": 18,
+  "price": 1900,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G012",
+  "name": "Accord Mail",
+  "slot": "body",
+  "allowed": [
+   "C03",
+   "C04",
+   "C07"
+  ],
+  "def": 40,
+  "res": 30,
+  "price": 4600,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G013",
+  "name": "Service Plate",
+  "slot": "body",
+  "allowed": [
+   "C01"
+  ],
+  "def": 6.75,
+  "res": 3.75,
+  "price": 120,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G014",
+  "name": "Cinder Plate",
+  "slot": "body",
+  "allowed": [
+   "C01"
+  ],
+  "def": 16.2,
+  "res": 9,
+  "price": 650,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G015",
+  "name": "Broken Seal",
+  "slot": "body",
+  "allowed": [
+   "C01"
+  ],
+  "def": 32.4,
+  "res": 18,
+  "price": 1900,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G016",
+  "name": "Unbound Plate",
+  "slot": "body",
+  "allowed": [
+   "C01"
+  ],
+  "def": 54,
+  "res": 30,
+  "price": 4600,
+  "effect": "No hidden passive."
+ },
+ {
+  "id": "G017",
+  "name": "Wool Cap",
+  "slot": "head",
+  "allowed": [
+   "C01",
+   "C02",
+   "C03",
+   "C04",
+   "C05",
+   "C06",
+   "C07",
+   "C08"
+  ],
+  "def": 4,
+  "res": 4,
+  "price": 120,
+  "effect": "Even-index styles favor DEF by +2; odd-index styles favor RES by +2. Apply once in the content compiler."
+ },
+ {
+  "id": "G018",
+  "name": "Route Band",
+  "slot": "head",
+  "allowed": [
+   "C01",
+   "C02",
+   "C03",
+   "C04",
+   "C05",
+   "C06",
+   "C07",
+   "C08"
+  ],
+  "def": 4,
+  "res": 4,
+  "price": 370,
+  "effect": "Even-index styles favor DEF by +2; odd-index styles favor RES by +2. Apply once in the content compiler."
+ },
+ {
+  "id": "G019",
+  "name": "Copper Goggles",
+  "slot": "head",
+  "allowed": [
+   "C01",
+   "C02",
+   "C03",
+   "C04",
+   "C05",
+   "C06",
+   "C07",
+   "C08"
+  ],
+  "def": 10,
+  "res": 10,
+  "price": 620,
+  "effect": "Even-index styles favor DEF by +2; odd-index styles favor RES by +2. Apply once in the content compiler."
+ },
+ {
+  "id": "G020",
+  "name": "Quiet Hood",
+  "slot": "head",
+  "allowed": [
+   "C01",
+   "C02",
+   "C03",
+   "C04",
+   "C05",
+   "C06",
+   "C07",
+   "C08"
+  ],
+  "def": 10,
+  "res": 10,
+  "price": 870,
+  "effect": "Even-index styles favor DEF by +2; odd-index styles favor RES by +2. Apply once in the content compiler."
+ },
+ {
+  "id": "G021",
+  "name": "Cloud Helm",
+  "slot": "head",
+  "allowed": [
+   "C01",
+   "C02",
+   "C03",
+   "C04",
+   "C05",
+   "C06",
+   "C07",
+   "C08"
+  ],
+  "def": 16,
+  "res": 16,
+  "price": 1120,
+  "effect": "Even-index styles favor DEF by +2; odd-index styles favor RES by +2. Apply once in the content compiler."
+ },
+ {
+  "id": "G022",
+  "name": "Witness Circlet",
+  "slot": "head",
+  "allowed": [
+   "C01",
+   "C02",
+   "C03",
+   "C04",
+   "C05",
+   "C06",
+   "C07",
+   "C08"
+  ],
+  "def": 16,
+  "res": 16,
+  "price": 1370,
+  "effect": "Even-index styles favor DEF by +2; odd-index styles favor RES by +2. Apply once in the content compiler."
+ },
+ {
+  "id": "G023",
+  "name": "Accord Crownlet",
+  "slot": "head",
+  "allowed": [
+   "C01",
+   "C02",
+   "C03",
+   "C04",
+   "C05",
+   "C06",
+   "C07",
+   "C08"
+  ],
+  "def": 22,
+  "res": 22,
+  "price": 1620,
+  "effect": "Even-index styles favor DEF by +2; odd-index styles favor RES by +2. Apply once in the content compiler."
+ },
+ {
+  "id": "G024",
+  "name": "Dawn Hood",
+  "slot": "head",
+  "allowed": [
+   "C01",
+   "C02",
+   "C03",
+   "C04",
+   "C05",
+   "C06",
+   "C07",
+   "C08"
+  ],
+  "def": 22,
+  "res": 22,
+  "price": 1870,
+  "effect": "Even-index styles favor DEF by +2; odd-index styles favor RES by +2. Apply once in the content compiler."
+ },
+ {
+  "id": "G025",
+  "name": "Service Buckler",
+  "slot": "offhand",
+  "allowed": [
+   "C01",
+   "C07",
+   "C08"
+  ],
+  "def": 5,
+  "res": 3,
+  "price": 180,
+  "effect": "Cannot be equipped while a two-handed weapon is equipped."
+ },
+ {
+  "id": "G026",
+  "name": "Cinder Shield",
+  "slot": "offhand",
+  "allowed": [
+   "C01",
+   "C07"
+  ],
+  "def": 14,
+  "res": 5,
+  "price": 540,
+  "effect": "Cannot be equipped while a two-handed weapon is equipped."
+ },
+ {
+  "id": "G027",
+  "name": "Mirror Shield",
+  "slot": "offhand",
+  "allowed": [
+   "C01",
+   "C07"
+  ],
+  "def": 22,
+  "res": 14,
+  "price": 900,
+  "effect": "Cannot be equipped while a two-handed weapon is equipped."
+ },
+ {
+  "id": "G028",
+  "name": "Witness Shield",
+  "slot": "offhand",
+  "allowed": [
+   "C01",
+   "C07"
+  ],
+  "def": 32,
+  "res": 24,
+  "price": 1260,
+  "effect": "Cannot be equipped while a two-handed weapon is equipped."
+ },
+ {
+  "id": "G029",
+  "name": "Copper Focus",
+  "slot": "offhand",
+  "allowed": [
+   "C02"
+  ],
+  "def": 2,
+  "res": 12,
+  "price": 1620,
+  "effect": "Cannot be equipped while a two-handed weapon is equipped."
+ },
+ {
+  "id": "G030",
+  "name": "Prism Focus",
+  "slot": "offhand",
+  "allowed": [
+   "C02"
+  ],
+  "def": 5,
+  "res": 26,
+  "price": 1980,
+  "effect": "Cannot be equipped while a two-handed weapon is equipped."
+ },
+ {
+  "id": "G031",
+  "name": "Route Charm",
+  "slot": "offhand",
+  "allowed": [
+   "C08"
+  ],
+  "def": 8,
+  "res": 12,
+  "price": 2340,
+  "effect": "Cannot be equipped while a two-handed weapon is equipped."
+ },
+ {
+  "id": "G032",
+  "name": "True-Name Charm",
+  "slot": "offhand",
+  "allowed": [
+   "C08"
+  ],
+  "def": 12,
+  "res": 22,
+  "price": 2700,
+  "effect": "Cannot be equipped while a two-handed weapon is equipped."
+ }
+]

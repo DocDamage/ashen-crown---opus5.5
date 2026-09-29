@@ -1,0 +1,810 @@
+#! Optional post-state content
+=== D04P_R01
+name: Furnace Spine - Waterwheel Engine House
+tileset: furnace
+music: M022
+zone: D04P
+region: R02
+location: L_D04
+encounters: none
+save: true
+phase: post
+grid:
+########################################
+########################################
+########################################
+##....................................##
+##..c.................................##
+##................<<<<................##
+##.............mmmmmmmmmm.............##
+##....................................##
+##.......5..........................5.##
+##....................................##
+##...........c......t.................##
+##........>...........................##
+##....................r...............##
+##.......................r............##
+##....................................##
+##....................................##
+##......>.............................##
+##....................................##
+##...............5............>..>....##
+##..................c.................##
+##....................................##
+##....................................##
+##...............::::::...............##
+#################::::::#################
+#################::::::#################
+#################::::::#################
+entities:
+spawn world 19 24 up
+spawn default 19 24 up
+exit 17..22 25 WORLD_POST l_d04
+read 20 10 "The engine manual." scene=Q04_MANUAL
+npc q4w1 8 12 right sprite=worker talk=Q04_WORKER1
+npc q4w2 31 12 left sprite=worker talk=Q04_WORKER2
+npc q4w3 20 17 up sprite=apprentice talk=Q04_WORKER3
+switch restart 24 9 scene=Q04_RESTART if=qs:Q04:revised
+npc crew_d4 5 20 right sprite=worker talk=D04P_CREW
+save 34 20
+
+=== D05P_R01
+name: Drowned Archive - Lantern Stations
+tileset: archive
+music: M023
+zone: D05P
+region: R03
+location: L_D05
+encounters: D05P
+rate: 0.5
+phase: post
+grid:
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+www..................................www
+www...l..........................l...www
+www..................................www
+www.k.................?........k..?..www
+www......k...?.......................www
+www................==................www
+wwwwwwwwwwwwwwwwwww==wwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwww==wwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwww==wwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwww==wwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwww==wwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwww==wwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwww==wwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwww==wwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwww==wwwwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwwwww==wwwwwwwwwwwwwwwwwww
+www................==................www
+www..................................www
+www...........?...........k...m......www
+www...l.............?................www
+www.............................k....www
+www..................................www
+wwwwwwwwwwwwwwwww......wwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwww......wwwwwwwwwwwwwwwww
+wwwwwwwwwwwwwwwww......wwwwwwwwwwwwwwwww
+entities:
+npc station1 7 4 down sprite=keeper talk=Q02_STATION1
+npc station2 34 4 down sprite=monk talk=Q02_STATION2
+npc station3 7 22 down sprite=worker talk=Q02_STATION3
+switch circuit 30 20 scene=Q02_CIRCUIT if=qs:Q02:observed
+npc apprentice_q2 28 21 left sprite=apprentice talk=Q02_APPRENTICE if=q:Q02:ACTIVE
+chest D05P_C1 35 23 I005 2
+spawn world 19 26 up
+spawn default 19 26 up
+exit 17..22 27 WORLD_POST l_d05
+read 20 20 "A notice: 'Lantern stations are staffed. Knock, don't shout.'"
+
+=== D08P_R01
+name: Memory Vault - Prognosis Room
+tileset: vault
+music: M024
+zone: D08P
+region: R05
+location: L_D08
+encounters: none
+save: true
+phase: post
+grid:
+################################
+################################
+################################
+###..........................###
+###...................k......###
+###..kkk.......@.............###
+###..........................###
+###..........................###
+###........?.................###
+###..........................###
+###..........................###
+###..........................###
+###....?.....................###
+###............?.........k...###
+###..........................###
+###..........................###
+###..........................###
+###..........................###
+###.....*......k.............###
+###.........?................###
+###..........................###
+##############....##############
+##############....##############
+##############....##############
+entities:
+read 6 6 "The original authorization." scene=Q06_AUTH
+switch seal 15 6 scene=Q06_SEAL if=q:Q06:ACTIVE
+npc q6_patient 22 10 left sprite=patient talk=Q06_PATIENT if=q:Q06:ACTIVE
+spawn world 15 22 up
+spawn default 15 22 up
+exit 14..17 23 WORLD_POST l_d08
+save 26 18
+
+=== D07P_R03
+name: Whitebone Sanctuary - Deep Seals
+tileset: whitebone
+music: M008
+zone: D07P
+region: R05
+location: L_D07
+encounters: none
+phase: post
+grid:
+################################
+################################
+################################
+###..........................###
+###..........................###
+###..........................###
+###....@.......@.......@.....###
+###..........................###
+###..........................###
+###..........................###
+###..........................###
+###..........................###
+###..........................###
+###..........................###
+###............m.............###
+###..........................###
+###..........................###
+###..........................###
+###..........................###
+##############....##############
+##############....##############
+##############....##############
+entities:
+read 7 7 "A binding seal." scene=Q07_SEAL1
+npc q7occ1 7 9 up sprite=survivor talk=Q07_OCC1
+read 15 7 "A binding seal." scene=Q07_SEAL2
+npc q7occ2 15 9 up sprite=elder talk=Q07_OCC2
+read 23 7 "A binding seal." scene=Q07_SEAL3
+npc q7occ3 23 9 up sprite=patient talk=Q07_OCC3
+switch repeater 15 13 scene=Q07_REPEATER if=qs:Q07:recorded
+spawn from_r02 15 20 up
+spawn default 15 20 up
+exit 14..17 21 D07P_R02 from_r03
+
+=== D02P_SEALS
+name: Veyr Underways - Seal Chamber
+tileset: underways
+music: M011
+zone: D02P
+region: R01
+location: L_T02
+encounters: none
+phase: post
+grid:
+############################
+############################
+############################
+###......................###
+###......................###
+###.....>....>....>......###
+###......................###
+###......................###
+###.........................
+###.........................
+###.........................
+###.........................
+###..........$...........###
+###......................###
+###......................###
+###......................###
+###......................###
+############################
+############################
+############################
+entities:
+switch dial1 8 6 scene=Q08_DIAL1
+switch dial2 13 6 scene=Q08_DIAL2
+switch dial3 18 6 scene=Q08_DIAL3
+read 13 11 "The seal safe." scene=Q08_SAFE
+read 5 4 "Scratched by a clerk: 'River, Crown, Ledger. The order the city was built in.'"
+spawn from_canals 26 9 left
+spawn default 26 9 left
+exit 27 8..11 T02_CANALS from_seals
+
+=== D11_R01
+name: Cradle of Winter - White Causeway
+encounters: D11
+rate: 0.5
+save: true
+tileset: winter
+music: M017
+zone: D11
+region: R05
+location: L_D11
+phase: post
+grid:
+qqqqqqqqqqqqqqqq........qqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqq........qq*qqqqqqqqqqqqq
+qqqqqqqqqqqqqqqq........qqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqq........qqqqqqqqqq*qqqqq
+qqqqq*qqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqoqqqqqqqqqqqqqq
+qqqqqqqqqoqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqq!qqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqoqqqqqqqiiiiiiiiqqqqqqqqq*qqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqq*qqq
+qqqqqqqqq*qqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqq*qqqqiiiiiiiiqqqqqqqqqqqqqq*q
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqq*qqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqq*qqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqiiiiiiiiqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqq........qqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqq........qqqqqqoqqqqqqqqq
+qqqqqqqqqqqqqqqq........qqqqqqqqqqqqqqqq
+entities:
+spawn world 19 26 up
+spawn from_r02 19 1 down
+spawn default 19 26 up
+exit 16..23 27 WORLD_POST l_d11
+exit 16..23 0 D11_R02 from_r01
+trigger 16..23 20..21 scene=Q09_CAUSEWAY if=!event:Q09_CAUSEWAY
+save 13 12
+heal 11 12
+
+=== D11_R02
+name: Cradle of Winter - Sleeping House
+encounters: none
+tileset: winter
+music: M017
+zone: D11
+region: R05
+location: L_D11
+phase: post
+grid:
+##############....##############
+##############....##############
+##############....##############
+###..........................###
+###..........................###
+###..........................###
+###..BB..BB..BB..BB....t.....###
+###..........................###
+###..........................###
+###..........................###
+###..........................###
+###............k........t....###
+###..........................###
+###....................t.....###
+###.............................
+###.............................
+###.....t.......k.....t.........
+###.............................
+###..........................###
+###..t.......................###
+###.......................y..###
+###..........................###
+###..........................###
+###....c........t............###
+###..........................###
+###..........................###
+###..........................###
+###..........................###
+###..........................###
+##############....##############
+##############....##############
+##############....##############
+entities:
+npc sleeper1 6 8 down sprite=elder talk=Q09_SLEEPER1
+npc sleeper2 14 8 down sprite=survivor talk=Q09_SLEEPER2
+npc sleeper3 22 8 down sprite=child talk=Q09_SLEEPER3
+read 26 21 "A figure under a blanket, perfectly still. Frost on its eyelashes. It is a carved statue - someone's memorial, not a sleeper."
+spawn from_r01 15 30 up
+spawn from_r03 30 15 left
+spawn from_r04 15 1 down
+exit 14..17 31 D11_R01 from_r02
+exit 31 14..17 D11_R03 from_r02
+exit 14..17 0 D11_R04 from_r02 if=flag:d11_thaw locked="Ice seals the north door. The warmth channels (east) could thaw it."
+
+=== D11_R03
+name: Cradle of Winter - Warmth Channels
+encounters: D11
+rate: 0.6
+tileset: winter
+music: M017
+zone: D11
+region: R05
+location: L_D11
+phase: post
+grid:
+qqqqqqqqqqqqqqqqqq....qqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqq....qqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqq....qqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqq....qqqqqqqqqqqqqqqqqq
+qq....................................qq
+qq...............................*....qq
+qq..............q.....................qq
+qq.o.......o............q.............qq
+qq.......!.........!.........!........qq
+qq.....................q.o.......q....qq
+...o...........................o...*..qq
+......................................qq
+....iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii..qq
+....iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii..qq
+qq....................................qq
+qq.................q.....o............qq
+qq....................................qq
+qq.....................*..............qq
+qq.......................o.......q....qq
+qq....................................qq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+entities:
+switch heat1 9 9 flag=d11_heat1 scene=Q09_HEAT1
+switch heat2 19 9 flag=d11_heat2 scene=Q09_HEAT2
+switch heat3 29 9 flag=d11_heat3 scene=Q09_HEAT3
+block 18..21 3..4 tile=ice if=!flag:d11_thaw msg="Solid ice. The three heat braziers could melt it together."
+spawn from_r02 1 11 right
+spawn from_r04 19 1 down
+exit 0 10..13 D11_R02 from_r03
+exit 18..21 0 D11_R04 from_r03 if=flag:d11_thaw
+
+=== D11_R04
+name: Cradle of Winter - Rime Gallery
+encounters: D11
+rate: 0.5
+save: true
+tileset: winter
+music: M017
+zone: D11
+region: R05
+location: L_D11
+phase: post
+grid:
+##############....##############
+##############....##############
+##############....##############
+###iiiiiiiiiii....iiiiiiiiiii###
+###iiiiiiiiiiiiiiiiiiiiiiiiii###
+###iiiiiiiiiiiiiiii*iiiiiiiii###
+###iii**i**iiiiiiiiiiiiiiiiii###
+###iiiiiiiiiiiiiiiiiiiiiiiiii###
+###iiioiii*iiiiiioiiiii*iiiii###
+###iiiiiiiiiiiiiiiiiiiiiiiiii###
+###iiiiiiiiiiiiiiiiiiiiiiiioi###
+###iiiiiiiiiiiiiiiiiiiiiiiiii###
+###iiiiiiii*iiiiiiiiii######i###
+###iiiiiiiiiiiiioiiiii#....#i###
+###iiiiiiiiiiiiiiiiiii.....#i###
+###iiiiiiiiiiiiiiiiiii#....#i###
+###iiiiiiiiiiiiiiiiiii######i###
+###iiiiiiioiiiiiiiiiiiiiiiiii###
+###iiiiiiiiiiioiiiiiiiiiiiiii###
+###iiiiiiiiiiiiioiiiiiiiiiiii###
+###iiiiiiiiiiiiiiiiiiiiiiiii....
+###iiiiiiiiiiiiiiiiiiiiiioii....
+###iiiiiiiiiiiiiiiiiiiiiiiii....
+###iiiiiiiiiiiiiiiiiiiiiiiii....
+###iiiiiiiiiii....iiiiiiiiiii###
+##############....##############
+##############....##############
+##############....##############
+entities:
+chest D11_CACHE 5 22 W035 1
+chest D11_CACHE2 26 5 G024 1
+chest D11_SECRET_CHEST 25 14 A011 1 acq=D11_SECRET
+read 10 20 "A child's scratch on the ice: 'the warm hiding place is where the light bends east.'"
+spawn from_r02 15 26 up
+spawn from_r03 30 21 left
+spawn from_r05 15 1 down
+exit 14..17 27 D11_R02 from_r04
+exit 31 20..23 D11_R03 from_r04
+exit 14..17 0 D11_R05 from_r04
+save 6 18
+
+=== D11_R05
+name: Cradle of Winter - Lantern Cradle
+encounters: none
+tileset: winter
+music: M017
+zone: D11
+region: R05
+location: L_D11
+phase: post
+grid:
+qqqqqqqqqqqqqqqqqq....qqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqq....qqqqqqqq*qqqqqqqqq
+qqqqqqqqqqqqqqqqqq....qqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqq....qqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqq.........qqqqqqqqqqqqq*q
+qqqqqqqqqqqqq...............qqqqqqqqqqqq
+qqqqqqqqqqq...................qqqqqqqqqq
+qqqqqqqqq.......................qqqqq*qq
+qqqqqqqq............!............qqqqqqq
+qqqqqqq...........................qqqqqq
+qqqqqq.............................qqqqq
+qqqqq...............................qqqq
+qqqqq...............................qqqq
+qqqqq...............................qqqq
+qqqq.................................qqq
+qqqq.................................qqq
+qqqq.................................qqq
+qqqq.................................qqq
+qqqq.................................qqq
+qqqqq...............................qqqq
+qqqoq...............................qqqq
+qqqqq...............................qqqq
+qqqqqq.............................qqqqq
+qqqoqqq...........................qqqqqq
+qqqqqqqq.........................qqqqqqq
+qqqqqqqqq.......................qqqqqq*q
+qqqqqqqqqqq...................qqqqqoqqqq
+qqqqqqoqqqqqq...............qqqqqqqqqqqq
+qqqoqqqqqqqqqqqq.........qqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqq....qqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqq....qqqqqqqqqqqqqqq*qq
+qqqqqqqqqqqqqqqqqq....qqqqqqqqqqqqqqqqqq
+entities:
+trigger 14..25 16..17 scene=Q09_B13 if=!flag:b13_done
+spawn from_r04 19 29 up
+spawn from_r06 19 2 down
+exit 18..21 31 D11_R04 from_r05
+exit 18..21 0 D11_R06 from_r05 if=flag:b13_done
+
+=== D11_R06
+name: Cradle of Winter - Dawn Window
+encounters: none
+tileset: winter
+music: M017
+zone: D11
+region: R05
+location: L_D11
+phase: post
+grid:
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqQQQQQQ..qqqqqqqqqqqq
+qqqqqqqqqq.............qqqqqqqqq
+qqqqqqqq.................qqqqqqq
+qqqqqqq...................qqqqqq
+qqqqqq.....................qqqqq
+qqqqq.......................qqqq
+qqqq.........................qqq
+qqqq.........................qqq
+qqqq.........................qqq
+qqqq.........................qqq
+qqqq.........................qqq
+qqqqq.......................qqqq
+qqqqqq.....................qqqqq
+qqqqqqq...................qqqqqq
+qqqqqqqq.................qqqqqqq
+qqqqqqqqqq.............qqqqqqqqq
+qqqqqqqqqqqqq.......qqqqqqqqqqqq
+qqqqqqqqqqqqqq....qqqqqqqqqqqqqq
+qqqqqqqqqqqqqq....qqqqqqqqqqqqqq
+qqqqqqqqqqqqqq....qqqqqqqqqqqqqq
+entities:
+trigger 10..21 9..11 scene=Q09_HIND if=!flag:v07_given
+spawn from_r05 15 21 up
+spawn default 15 21 up
+exit 14..17 23 D11_R05 from_r06
+
+=== D12_R01
+name: Starless Reef - Blackwater Mooring
+encounters: none
+save: true
+tileset: reef
+music: M023
+zone: D12
+region: R06
+location: L_D12
+phase: post
+dark: true
+grid:
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~Z,,Z~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~ddddddddZ,,Zdddddddd~~~~~~~~~~
+~~~~~~~~~~dddddddddddddddddddd~~~~~~~~~~
+~~~~~~~~~~ddddlddddddddddddddd~~~~~~~~~~
+~~~~~~~~~~dddddddddddddddddddd~~~~~~~~~~
+~~~~~~~~~~dddddddddddddddddddd~~~~~~~~~~
+~~~~~~~~~~dddddddddddddddddddd~~~~~~~~~~
+~~~~~~~~~~dddddddddddddddddddd~~~~~~~~~~
+~~~~~~~~~~dddddddddddddddddddd~~~~~~~~~~
+~~~~~~~~~~dddddddddddddddddddd~~~~~~~~~~
+~~~~~~~~~~dddddddddddddddddddd~~~~~~~~~~
+~~~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~~~
+entities:
+spawn world 19 26 up
+spawn from_r02 19 1 down
+spawn default 19 26 up
+exit 17..22 27 WORLD_POST l_d12
+exit 18..21 0 D12_R02 from_r01
+trigger 12..27 20..21 scene=Q10_MOORING if=!event:Q10_MOORING
+save 25 22
+heal 23 22
+
+=== D12_R02
+name: Starless Reef - First Beacon
+encounters: D12
+rate: 0.6
+tileset: reef
+music: M023
+zone: D12
+region: R06
+location: L_D12
+phase: post
+dark: true
+grid:
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,Z,,,,,,,,,,,,,,,,~~~
+~~~,,,,,o,,,,,,,,,,,,,,,,Z,,,~~~
+~~~,,,,,,,Z,,,,,,,o,,,,,,,,,,~~~
+~~~,,,,,,,,,o,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,o,,,,,,,,,,,,,Z,,,,~~~
+~~~,,,,,,,,,,o,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,Z,,,,,,,Z,,,,,,,,,~~~
+~~~,,,o,,,,,,,,,,,,,,,,,,o,,,~~~
+~~~,,,,,,,,,,Z,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,Z,,l,,,,,,,,o,,,,,,,
+~~~,,,,,,,,,,,,,,,,o,,,,,,,o,,,,
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,6,,,,,,,,o,,,,,~~~
+~~~,,,,,6,,,,,,,,,,,,,,,,,,,,~~~
+~~~,6,,,,,,,,,,,,6,,,,o,o,,,,~~~
+~~~,,,6,,,,,,,,,,,,,,,,,,,6,,~~~
+~~~,Z,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+entities:
+hazard 4..27 18..21 period=4 on=1.4 phase=0
+sign 13 26 "The beacon lamp brightens and the bell sounds together. Then the tide surges across the reef. Cross while the lamp is dark."
+spawn from_r01 15 30 up
+spawn from_r03 15 1 down
+spawn from_r04 30 15 left
+exit 14..17 31 D12_R01 from_r02
+exit 14..17 0 D12_R03 from_r02
+exit 31 14..17 D12_R04 from_r02
+
+=== D12_R03
+name: Starless Reef - Second Beacon
+encounters: D12
+rate: 0.6
+tileset: reef
+music: M023
+zone: D12
+region: R06
+location: L_D12
+phase: post
+dark: true
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,~~
+~~,6,,,,,,,,,,,,,,,,,,,,,,,,,6,,,,,,,,~~
+~~,,,6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,~~
+~~,,,,,,l,,,,,,,,,,,,,,,,,,,,,,l,,,,,,~~
+~~,,,,,,,,o,,,,,,,,,,,,,,,,,,,,,,,,,,,~~
+~~,,,,,,,,,,,,,,,,,,,,,,,,,,6,,,,,,,,,~~
+~~,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,~~
+~~,,,,,,,,,,,6,,,,,,,,,,,o,,,,,,,,,o,,,,
+~~,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+~~,,,,,,,,,Z,,,,,,Z,,,,,,,,,,,,,,,,,,,,,
+~~,Z,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+~~,,,,,,,,,,,,,,,,,,,,,,,,,,6,,Z,,,,,,~~
+~~,,,,,,,,,,,,Z,,,,,,,,,,,,,,,,,,,,,,,~~
+~~,,,,,o,,,,,,,,,,,,,,,,,,,,,,,,,,,6,,~~
+~~,,,6,,,,,,,,,,,,,Z,,,,,,,,6,,6,,,,,,~~
+~~,,,,,,,,,,,,,,,,,,,,,,,,6,,,,,,,,,,,~~
+~~,,,,,,,,o,,,,,,,,,,,,,,,,,,,,,,,,,,,~~
+~~,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,~~
+~~~~~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~~~~~
+entities:
+switch reflector 20 10 scene=Q10_REFLECTOR
+read 8 7 "The return beacon. Keep it lit, or nobody finds the way back."
+spawn from_r02 19 21 up
+spawn from_r04 38 11 left
+exit 18..21 23 D12_R02 from_r03
+exit 39 10..13 D12_R04 from_r03 if=flag:d12_reflector locked="The channel east is black. The second beacon's light doesn't reach it yet."
+
+=== D12_R04
+name: Starless Reef - Wreck Library
+encounters: none
+save: true
+tileset: reef
+music: M023
+zone: D12
+region: R06
+location: L_D12
+phase: post
+dark: true
+grid:
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,c,,,,,,,,,,,,,,,,~~~
+~~~,,,6666,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,x,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,6,,,,,,,,,,x,,,~~~
+~~~,,,,,,,,,x,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,c,,,~~~
+~~~,,x,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+,,,,,,,,kk.kk.kk,,,,,,,,,,,,,~~~
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+,,,,,c,,,,,,,,,,,,c,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,c,,,,,,,,,c,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,######,~~~
+~~~,,,,,,,,,,,,,,,,,,,#,,,,#,~~~
+~~~,,,,,x,,,,,,,,,,,,,,,,,,#,~~~
+~~~,,,,,,,,,,,,,,,,,,,#,,,,#,~~~
+~~~,,,,,,,,,,,,,,,,,,,######,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~,,,,,,,,,,,,,,,,,,,,,,,,,,~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+entities:
+read 11 12 "The wreck library." scene=Q10_REGISTER
+chest D12_SECRET_CHEST 25 20 A012 1 acq=D12_SECRET
+read 6 20 "A purser's note: 'Valuables in the aft locker, starboard. Past the bent rib.'"
+spawn from_r03 1 13 right
+spawn from_r02 15 26 up
+spawn from_r05 15 1 down
+exit 0 12..15 D12_R03 from_r04
+exit 14..17 27 D12_R02 from_r04
+exit 14..17 0 D12_R05 from_r04 if=item:K_PASSENGER_REGISTER locked="The trench bell won't answer without the passenger register."
+save 26 5
+
+=== D12_R05
+name: Starless Reef - Night Trench
+encounters: none
+tileset: reef
+music: M023
+zone: D12
+region: R06
+location: L_D12
+phase: post
+dark: true
+grid:
+KKKKKKKKKKKKKKKKKK,,,,KKKKKKKKKKKKKKKKKK
+KKKKKKKKKKKKKKKKKK,,,,KKKKKKKKKKKKKKKKKK
+KKKKKKKKKKKKKKKKKK,,,,KKKKKKKKKKKKKKKKKK
+KKKKKKKKKKKKKKKKKK,,,,KKKKKKKKKKKKKKKKKK
+KKKKKKKKKKKKKKKKKK,,,,KKKKKKKKKKKKKKKKKK
+KKKKKKKKKKKKKKKK,,,,,,,,,KKKKKKKKKKKKKKK
+KKKKKKKKKKKKK,,,,,,,,,,,,,,,KKKKKKKKKKKK
+KKKKKKKKKKK,,,,,,,,,,,,,,,,,,,KKKKKKKKKK
+KKKKKKKKKK,,,,,,,,,,,,,,,,o,,,,KKKKKKKKK
+KKKKKKKK,,,,,,,,,,o,,,,,,,,,,,,,,KKKKKKK
+KKKKKKK,l,,,,,,,,,,,,,,,o,,,,,,,l,KKKKKK
+KKKKKKK,,,,,,,,,,,,,,,,,,,,,,,,,,,KKKKKK
+KKKKKK,,,,,,,,,,,,,,,,,,,,,,,,,,,,,KKKKK
+KKKKKK,,,,,,,,,,,,,,,,,,,,,,,,,Z,,,KKKKK
+KKKKK,,Z,,,,,,,,,,,,,,,,,,,,,,,,,,,,KKKK
+KKKKK,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,KKKK
+KKKKK,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,KKKK
+KKKKK,,,,,,,,,,,,,,,,,,,,,,,o,,,,,Z,KKKK
+KKKKK,,,,,,,,,,,,,,,,,,,,,,,,,,Z,,,,KKKK
+KKKKKK,,,o,Z,,,,,,,,,,,,,,,,,,,,,,,KKKKK
+KKKKKK,,,,,,,,,,,,,,,,,,o,,,o,,,,,,KKKKK
+KKKKKKK,,,,,,,,,,,,,,,,,,,,,,,,,,,KKKKKK
+KKKKKKK,l,,,,,,,,,,,,,,,,,,,,,,,l,KKKKKK
+KKKKKKKK,,,,,,,,,,,,,,,,,,,,,,,,,KKKKKKK
+KKKKKKKKKK,,Z,,,,,,,,,,,,Z,,,,,KKKKKKKKK
+KKKKKKKKKKK,,,,,,,,,,,,,,,,,,,KKKKKKKKKK
+KKKKKKKKKKKKK,,,,,,,,,,,,,,,KKKKKKKKKKKK
+KKKKKKKKKKKKKKKK,,,,,,,,,KKKKKKKKKKKKKKK
+KKKKKKKKKKKKKKKKKK,,,,KKKKKKKKKKKKKKKKKK
+KKKKKKKKKKKKKKKKKK,,,,KKKKKKKKKKKKKKKKKK
+KKKKKKKKKKKKKKKKKK,,,,KKKKKKKKKKKKKKKKKK
+KKKKKKKKKKKKKKKKKK,,,,KKKKKKKKKKKKKKKKKK
+entities:
+trigger 14..25 16..17 scene=Q10_B14 if=!flag:b14_done
+spawn from_r04 19 29 up
+spawn from_r06 19 2 down
+exit 18..21 31 D12_R04 from_r05
+exit 18..21 0 D12_R06 from_r05 if=flag:b14_done
+
+=== D12_R06
+name: Starless Reef - Open Current
+encounters: none
+tileset: reef
+music: M023
+zone: D12
+region: R06
+location: L_D12
+phase: post
+dark: false
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~,,,,,,,~~~~~~~~~~~~
+~~~~~~~~~~,,,,,,,,,,,,,~~~~~~~~~
+~~~~~~~~,,,,,,,,,,,,,,,,,~~~~~~~
+~~~~~~~,,,,,,,,,,,,,,,,,,,~~~~~~
+~~~~~~,,,,,,,,,,,,,,,,,,,,,~~~~~
+~~~~~~,,,,,,,,,,,,,,,,,,,,,~~~~~
+~~~~~,,,,,,,,,,,,,,,,,,,,,,,~~~~
+~~~~~,,,,,,,,,,,,,,,,,,,,,,,~~~~
+~~~~~,,,,,,,,,,,,,,,,,,,,,,,~~~~
+~~~~~~,,,,,,,,,,,,,,,,,,,,,~~~~~
+~~~~~~,,,,,,,,,,,,,,,,,,,,,~~~~~
+~~~~~~~,,,,,,,,,,,,,,,,,,,~~~~~~
+~~~~~~~~,,,,,,,,,,,,,,,,,~~~~~~~
+~~~~~~~~~~,,,,,,,,,,,,,~~~~~~~~~
+~~~~~~~~~~~~~,,,,,,,~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~,,,,~~~~~~~~~~~~~~
+entities:
+trigger 10..21 9..12 scene=Q10_LEVIATHAN if=!flag:v08_given
+spawn from_r05 15 21 up
+spawn default 15 21 up
+exit 14..17 23 D12_R05 from_r06

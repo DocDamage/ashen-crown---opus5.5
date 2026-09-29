@@ -1,0 +1,162 @@
+[
+ {
+  "id": "FX001",
+  "name": "Menu Move",
+  "slot": "sfx/menu_move"
+ },
+ {
+  "id": "FX002",
+  "name": "Menu Confirm",
+  "slot": "sfx/menu_confirm"
+ },
+ {
+  "id": "FX003",
+  "name": "Menu Cancel",
+  "slot": "sfx/menu_cancel"
+ },
+ {
+  "id": "FX004",
+  "name": "Menu Error",
+  "slot": "sfx/menu_error"
+ },
+ {
+  "id": "FX005",
+  "name": "Page Turn",
+  "slot": "sfx/page_turn"
+ },
+ {
+  "id": "FX006",
+  "name": "Save Complete",
+  "slot": "sfx/save_complete"
+ },
+ {
+  "id": "FX007",
+  "name": "Chest Open",
+  "slot": "sfx/chest_open"
+ },
+ {
+  "id": "FX008",
+  "name": "Door Wood",
+  "slot": "sfx/door_wood"
+ },
+ {
+  "id": "FX009",
+  "name": "Door Stone",
+  "slot": "sfx/door_stone"
+ },
+ {
+  "id": "FX010",
+  "name": "Switch Lever",
+  "slot": "sfx/switch_lever"
+ },
+ {
+  "id": "FX011",
+  "name": "Footstep Stone",
+  "slot": "sfx/footstep_stone"
+ },
+ {
+  "id": "FX012",
+  "name": "Footstep Wood",
+  "slot": "sfx/footstep_wood"
+ },
+ {
+  "id": "FX013",
+  "name": "Footstep Shallow Water",
+  "slot": "sfx/footstep_shallow_water"
+ },
+ {
+  "id": "FX014",
+  "name": "Sword Swing",
+  "slot": "sfx/sword_swing"
+ },
+ {
+  "id": "FX015",
+  "name": "Sword Impact",
+  "slot": "sfx/sword_impact"
+ },
+ {
+  "id": "FX016",
+  "name": "Guard Impact",
+  "slot": "sfx/guard_impact"
+ },
+ {
+  "id": "FX017",
+  "name": "Arrow Release",
+  "slot": "sfx/arrow_release"
+ },
+ {
+  "id": "FX018",
+  "name": "Rivet Shot",
+  "slot": "sfx/rivet_shot"
+ },
+ {
+  "id": "FX019",
+  "name": "Fire Cast",
+  "slot": "sfx/fire_cast"
+ },
+ {
+  "id": "FX020",
+  "name": "Ice Break",
+  "slot": "sfx/ice_break"
+ },
+ {
+  "id": "FX021",
+  "name": "Storm Crack",
+  "slot": "sfx/storm_crack"
+ },
+ {
+  "id": "FX022",
+  "name": "Heal Bloom",
+  "slot": "sfx/heal_bloom"
+ },
+ {
+  "id": "FX023",
+  "name": "Status Afflicted",
+  "slot": "sfx/status_afflicted"
+ },
+ {
+  "id": "FX024",
+  "name": "Status Cleansed",
+  "slot": "sfx/status_cleansed"
+ },
+ {
+  "id": "FX025",
+  "name": "KO Fall",
+  "slot": "sfx/ko_fall"
+ },
+ {
+  "id": "FX026",
+  "name": "Enemy Defeat",
+  "slot": "sfx/enemy_defeat"
+ },
+ {
+  "id": "FX027",
+  "name": "Level Up",
+  "slot": "sfx/level_up"
+ },
+ {
+  "id": "FX028",
+  "name": "New Ability",
+  "slot": "sfx/new_ability"
+ },
+ {
+  "id": "FX029",
+  "name": "Concord Full",
+  "slot": "sfx/concord_full"
+ },
+ {
+  "id": "FX030",
+  "name": "Summon Entry",
+  "slot": "sfx/summon_entry"
+ },
+ {
+  "id": "FX031",
+  "name": "Ferry Bell",
+  "slot": "sfx/ferry_bell"
+ },
+ {
+  "id": "FX032",
+  "name": "Airship Engine Start",
+  "slot": "sfx/airship_engine_start"
+ }
+]

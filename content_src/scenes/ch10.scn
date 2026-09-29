@@ -1,0 +1,80 @@
+# CH10 — The Smaller Accord. Three communities, three guarantees; SC07 at the trial relay outside Nacre.
+
+@scene CH10_CINDER_FIX once
+say narr | The old cooling channel under the garden. Ivo talks two crew members through fitting the bypass, hands in his pockets.
+say ivo | Left valve first. No - your other left. Good. Now you know it and I don't have to.
+sfx FX010
+set accord_cinder
+say pell | Heat without the regulator. Slower to warm up. Doesn't hum.
+say narr | (Cinderwake's guarantee: heat, maintained by its own crew.)
+call CH10_CHECK
+@end
+
+@scene CH10_AERIE_FIX once
+say narr | The cable brake by the operator's post. Ivo adds a counterweight governor while Corren and the crew hold the basket steady.
+sfx FX010
+set accord_aerie
+say corren | The basket's hanging on its own weight now. No relay.
+say edda | Good. Write down how you did it. Put it on a wall, since we love walls.
+say narr | (High Aerie's guarantee: stable transit that doesn't depend on a relay.)
+call CH10_CHECK
+@end
+
+@scene CH10_NACRE once
+say sen | Nacre needs the hardest thing: a way to separate consent from pressure. Every dragonborn here has been told what to want by someone with a seal.
+say sable | Hearings with no officer in the room. The person speaks, the record keeps it, nobody signs over them.
+say oriel | And the answer can change later. That is what the old separation rite understood.
+say sen | Then we hold the first hearing tonight. One volunteer. One relay. No hurry.
+set accord_nacre
+say narr | (Nacre's guarantee: consent heard without institutional pressure.)
+call CH10_CHECK
+@end
+
+@scene CH10_CHECK
+if flag:accord_cinder,flag:accord_aerie,flag:accord_nacre ready
+say narr | (Accord visits remaining: Cinderwake's garden bypass, High Aerie's cable brake, Nacre's hearing with Sen.)
+end
+label ready
+objective oriel | All three communities agreed. Meet the volunteer at the trial relay by Nacre's listening pool.
+@end
+
+@scene CH10_VOLUNTEER
+if flag:accord_cinder,flag:accord_aerie,flag:accord_nacre ready
+say volunteer | I'm the first volunteer. When the three towns agree, we'll try the relay. Not before.
+end
+label ready
+say volunteer | Everyone's here. Step up to the relay when you're ready.
+@end
+
+@scene CH10_SC07 once
+say narr | A trial relay outside Nacre, humming in a stone housing. Ivo has built a distributed circuit around it; Oriel sits with the volunteer.
+say ivo | One relay. Kept alive, no captive holding it. The load goes out to the wheel, the cable, the pool - little bits, everywhere.
+say oriel | You may stop at any point. Say so, and we stop.
+say volunteer | I know.
+sfx FX024
+wait 0.5
+say narr | Slowly - over a long hour - the hum changes key. It doesn't stop. It stops sounding like someone holding their breath.
+show rook 26 12 left rook
+say rook | One relay. While a hundred keep screaming.
+say ivo | This one no longer needs a captive to hold it.
+say rook | How many years will you ask them to wait?
+say volunteer | Ask me.
+say rook | You should not have to accept this.
+say volunteer | I have not accepted it. I am choosing how to leave.
+say tessa | ...I almost agreed with you, Rook. Almost.
+say tessa | The difference is not nothing.
+say rook | It will be, to the ones who do not live long enough.
+say narr | Rook leaves before anyone can answer. Nera watches him go south.
+say nera | He's heading for the old aqueduct under Veyr. The Conduit.
+say sable | Voss has been massing soldiers at the Crown Dais for weeks. If Rook forces a synchronisation there -
+say dain | Every node at once. Every dragonborn. Nobody asked.
+say ivo | One more thing. My plan of the Conduit shows three relay stations. The dais draws load for four. I can't find the fourth.
+say oriel | Then we watch for it.
+key K_ACCORD_NOTES
+set local_release_proven
+chapter CH10
+objective dain | Stop a forced mass awakening. Enter the Sable Conduit (old aqueduct north of Veyr).
+discover L_D09
+level_floor 22
+hide rook
+@end

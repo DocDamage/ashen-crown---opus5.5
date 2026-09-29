@@ -1,0 +1,188 @@
+# CH16 — The Engine That Waited. Cinderwake's assembly yard: channels, space, the Iron Tortoise, the manual, the launch.
+
+@scene CH16_YARD once
+say narr | The old assembly yard. On the slipway lies a hull - broad, ugly, bolted rather than grown. Ivo is under it with a lamp.
+say ivo | Tessa. Nera. Dain. Oriel. ...You're here. You're here and I'm covered in grease.
+say tessa | You found a ship.
+say ivo | I found a ship nobody finished. Rescue vessel, drafted before heartglass made everything 'efficient'. Steam and gears. Heavy. Slow.
+say ivo | Her name's Wayfarer. The engine works. I've tested every part twice. It just needs the cooling channels powered and room to fit the stabilisers.
+say oriel | And?
+say ivo | And the hull twists on the slipway. Nothing I've got is heavy enough to hold her straight while we bolt the keel.
+objective ivo | Power the three cooling channels (valves on the north wall), then help the crews clear the assembly space.
+@end
+
+@scene CH16_IVO
+if flag:t03y_ch1,flag:t03y_ch2,flag:t03y_ch3 powered
+say ivo | Three valves on the north wall. The channels have to run cold before the engine can breathe.
+end
+label powered
+if flag:t03y_clear cleared
+say ivo | Channels are cold! Now the crews can shift the scrap - talk to the crew chief.
+end
+label cleared
+say ivo | Space is clear. Now all we need is something that can hold a ship straight. Something very heavy and very patient.
+@end
+
+@scene CH16_CHANNEL1
+if flag:t03y_ch1 done
+sfx FX010
+set t03y_ch1
+say narr | The west valve opens. Water hisses into the channel; the pipe frosts white.
+call CH16_CHANNELS
+end
+label done
+say narr | The west channel runs cold.
+@end
+
+@scene CH16_CHANNEL2
+if flag:t03y_ch2 done
+sfx FX010
+set t03y_ch2
+say narr | The middle valve opens with a shudder. The channel under the slipway starts to sing.
+call CH16_CHANNELS
+end
+label done
+say narr | The middle channel runs cold.
+@end
+
+@scene CH16_CHANNEL3
+if flag:t03y_ch3 done
+sfx FX010
+set t03y_ch3
+say narr | The east valve opens. Steam coils out of the vents and thins to nothing.
+call CH16_CHANNELS
+end
+label done
+say narr | The east channel runs cold.
+@end
+
+@scene CH16_CHANNELS
+if flag:t03y_ch1,flag:t03y_ch2,flag:t03y_ch3 all
+end
+label all
+objective ivo | The channels are cold. Talk to the crew chief about clearing the assembly space.
+@end
+
+@scene CH16_CREW
+say worker | Channels are running cold - we can work the yard now. Scrap on both sides, and a few rust-crawlers nesting in it.
+say worker | You handle the crawlers, we handle the scrap. Deal?
+battle D04P_1
+fade out 0.4
+say narr | The crews haul, stack and sort for an hour. The assembly space opens up around the hull.
+set t03y_clear
+fade in 0.4
+say worker | Space is clear. Now - what's that at the east end? It wasn't there this morning.
+objective ivo | Something very large is waiting at the east end of the slipway.
+@end
+
+@scene CH16_TORTOISE
+say narr | A tortoise the size of a cottage, its shell plated like a boiler. It has been watching the hull for some time.
+say tortoise | I held up this yard's roof in the old days. Under orders. They called me a foundation.
+say tortoise | Nobody has ordered me since the bell. So I came to see whether anyone would ask.
+say ivo | ...Would you hold the hull straight while we bolt the keel? You can stop whenever you like. We'll brace it with jacks as we go, so it doesn't depend on you.
+say tortoise | You asked. And you built it so it does not need me.
+say tortoise | Then I will help. And afterward I will go where I like - which is, I think, with you.
+fade out 0.6
+say narr | The Iron Tortoise leans its shell against the hull. The crews bolt the keel in one long afternoon, jacks going in behind every bolt.
+fade in 0.6
+set v06_given
+vestige V06
+say ivo | ...Now the manual. Pell's going to ask.
+@end
+
+@scene CH16_PELL
+say pell | Ivo. Before you take her anywhere. The manual.
+say ivo | It's in my head.
+say pell | That's the problem. Write it down. All of it. Every valve, every spare, every noise she makes when she's sick.
+say ivo | That's weeks of work -
+say pell | Then we'll wait weeks. I'm not watching another machine that only works when one man stands beside it.
+wait 0.4
+say ivo | ...You're right. You were right about the wheel, too.
+fade out 0.6
+say narr | Ivo writes for three days. Tessa checks every page. The crews read it aloud and argue with it, and Ivo changes it where they're right.
+fade in 0.6
+key K_MANUAL
+say narr | The manual lies on the workshop bench, heavy and dog-eared. Anyone can pick it up.
+call CH16_LAUNCH
+@end
+
+@scene CH16_BENCH
+if flag:v06_given bench
+say narr | A workbench covered in Ivo's calculations. Very little of it is legible to anyone but Ivo.
+end
+label bench
+if ch:CH16 manual
+say narr | The workbench, waiting for a manual.
+end
+label manual
+say narr | The Wayfarer manual, dog-eared, with a pencil tied to it on a string. The newest note, in a crew hand: 'Page 12 is wrong. Fixed.'
+@end
+
+@scene CH16_LAUNCH once
+music silence
+say narr | Launch morning. The crews take their places - not Ivo. Ivo stands at the back, with his hands in his pockets.
+say worker | Page one. Cooling channels open.
+say worker | Open.
+say worker | Page two. Boiler to working pressure. Slow.
+say worker | Slow. Holding.
+say worker | Page three. Release the slipway brakes.
+sfx FX031
+shake 0.5
+music M019
+say narr | Wayfarer slides down the slipway and lifts, heavy and steady, into the smoky sky over Cinderwake.
+say ivo | ...I didn't touch anything.
+say tessa | You wrote it down. That's touching everything.
+join C04
+chapter CH16
+vehicle ship true
+airship home
+objective dain | Wayfarer waits at Hearthward's berth. Find Corren (High Aerie), Pip (Veyr) and Sable (Whitebone) - in any order.
+rumor | High Aerie's broken chain now links two new islands. A cliff settlement there is evacuating.
+rumor | Veyr's throne square is a distribution point. Someone is guarding the lower registry from Voss's remnants.
+rumor | Whitebone's old cells are a sanctuary now. People with bindings nobody can safely remove shelter there.
+level_floor 28
+@end
+
+# ---------------------------------------------------------------- Cinderwake (post)
+@scene T03P_PELL
+if ch:CH16 after
+say pell | Power fails in patches now. We rotate heat workshop by workshop. The clinic never goes cold - that's the one rule.
+say pell | Ivo's in the old assembly yard east of here. He says he found a ship. He also says he's fine. He's lying about one of those.
+end
+label after
+if ch:CH20 q04
+say pell | The manual's on every bench in town now. People argue with it in the margins. That's how you know it's alive.
+end
+label q04
+call Q04_HOOK
+@end
+
+@scene T03P_ROTA
+say worker | Heat rota: canteen at dawn, clinic always, workshops by turn. We post it on the wall under the injury tally.
+@end
+
+@scene T03P_CLINIC
+say monk | The clinic's warm. That was the question you all asked, back when. Here's the answer: we share.
+@end
+
+@scene T03P_TALLY
+say worker | The tally wall. We kept counting after the bell. Fewer marks since the regulators went dark. Make of that what you like.
+@end
+
+@scene T03P_CHILD
+say child | The pipes don't sing anymore. The waterwheels squeak instead. I like the squeak better.
+@end
+
+@scene T03P_WHEEL
+say worker | Waterwheels at every terrace. Slower than the regulators. Nobody's inside them.
+@end
+
+@scene T03P_CANTEEN
+say baker | Shift stew. Same as ever. Except now there's a waterwheel keeping it warm instead of a - well. You know.
+shop SHOP_T03
+@end
+
+@scene T03P_INN
+say keeper | Cots by the canteen stove. Take a shift on the wheels if you want. Or don't. Rest.
+inn 0
+@end

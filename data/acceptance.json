@@ -1,0 +1,478 @@
+[
+ {
+  "id": "AC001",
+  "area": "BOOT",
+  "test": "Clean import",
+  "exercise": "Extract into a clean workspace and import the new game project.",
+  "required": "No missing scripts/assets and no unacknowledged engine-version mismatch."
+ },
+ {
+  "id": "AC002",
+  "area": "BOOT",
+  "test": "No accidental replacement",
+  "exercise": "Start in a workspace containing unrelated files.",
+  "required": "Agent inventories existing work and does not overwrite it."
+ },
+ {
+  "id": "AC003",
+  "area": "DATA",
+  "test": "Content compiler coverage",
+  "exercise": "Compile every catalog record.",
+  "required": "Unknown effects, missing assets and unresolved refs fail clearly; no silent Attack fallback."
+ },
+ {
+  "id": "AC004",
+  "area": "DATA",
+  "test": "Acquisition coverage",
+  "exercise": "Trace every weapon, armor, accessory, summon and required item source.",
+  "required": "All mandatory content has a reachable guaranteed path; unique optional rewards have defined sources."
+ },
+ {
+  "id": "AC005",
+  "area": "UI",
+  "test": "New game route",
+  "exercise": "Start at Title with normal keyboard input.",
+  "required": "Reach Brackenford and control Dain without debug commands."
+ },
+ {
+  "id": "AC006",
+  "area": "UI",
+  "test": "Controller-only session",
+  "exercise": "Navigate title, exploration, battle, equipment and save with a controller.",
+  "required": "No mouse/keyboard-only dead end or lost focus."
+ },
+ {
+  "id": "AC007",
+  "area": "UI",
+  "test": "Native-resolution text",
+  "exercise": "Inspect every major panel at 320×240 and scaled window sizes.",
+  "required": "No clipping, unreadable required labels or off-screen confirm/cancel controls."
+ },
+ {
+  "id": "AC008",
+  "area": "UI",
+  "test": "Remapping and focus loss",
+  "exercise": "Change key bindings, lose focus, return and restart.",
+  "required": "Bindings persist and the default focus pause works."
+ },
+ {
+  "id": "AC009",
+  "area": "UI",
+  "test": "Reduced effects",
+  "exercise": "Disable shake/flashes, shorten summons and mute sound.",
+  "required": "Critical tells and puzzles remain understandable."
+ },
+ {
+  "id": "AC010",
+  "area": "WORLD",
+  "test": "Doorway graph",
+  "exercise": "Traverse every authored doorway through actual collision geometry.",
+  "required": "Every endpoint has a safe spawn and lawful return path."
+ },
+ {
+  "id": "AC011",
+  "area": "WORLD",
+  "test": "Puzzle reset",
+  "exercise": "Make incorrect operations at every required puzzle.",
+  "required": "A reset or recovery remains reachable without rare consumables."
+ },
+ {
+  "id": "AC012",
+  "area": "WORLD",
+  "test": "Y-sort and collision",
+  "exercise": "Walk behind roofs, beside props and through doors.",
+  "required": "Feet align, actors sort correctly and interaction targets are unambiguous."
+ },
+ {
+  "id": "AC013",
+  "area": "WORLD",
+  "test": "Encounter meter",
+  "exercise": "Wait in menus, push against a wall and operate a switch.",
+  "required": "None advances encounter distance; post-battle grace remains."
+ },
+ {
+  "id": "AC014",
+  "area": "WORLD",
+  "test": "Landing failure",
+  "exercise": "Attempt landing outside a valid zone and reload a valid parked position.",
+  "required": "No lost ship or invalid foot spawn."
+ },
+ {
+  "id": "AC015",
+  "area": "BATTLE",
+  "test": "Fixed-step determinism",
+  "exercise": "Replay the same seed and public command stream at different render rates.",
+  "required": "Same authoritative action, damage, reward and end-state hashes."
+ },
+ {
+  "id": "AC016",
+  "area": "BATTLE",
+  "test": "Wait vs Active",
+  "exercise": "Open target selection in both modes.",
+  "required": "Wait pauses simulation timers; Active advances them; pause menu freezes both."
+ },
+ {
+  "id": "AC017",
+  "area": "BATTLE",
+  "test": "MP reservation",
+  "exercise": "Rapidly confirm/cancel and then allow one spell to resolve.",
+  "required": "Exactly one valid MP charge; invalid/canceled actions consume none."
+ },
+ {
+  "id": "AC018",
+  "area": "BATTLE",
+  "test": "Item reservation",
+  "exercise": "Two allies select the last Phoenix Leaf before resolution.",
+  "required": "Only one valid reservation; no negative inventory or duplicate revive."
+ },
+ {
+  "id": "AC019",
+  "area": "BATTLE",
+  "test": "Fallen target retarget",
+  "exercise": "KO an intended damage/heal target before another committed action resolves.",
+  "required": "Documented retarget/refund rules apply and are logged."
+ },
+ {
+  "id": "AC020",
+  "area": "BATTLE",
+  "test": "Actor KO while casting",
+  "exercise": "KO a caster before resolution.",
+  "required": "Turn is lost, reserved cost restored and no phantom spell occurs."
+ },
+ {
+  "id": "AC021",
+  "area": "BATTLE",
+  "test": "Simultaneous wipe",
+  "exercise": "Cause legal simultaneous last-enemy and last-player KO.",
+  "required": "Defeat-priority rule applies consistently; reward transaction is not committed."
+ },
+ {
+  "id": "AC022",
+  "area": "BATTLE",
+  "test": "Status duration",
+  "exercise": "Exercise all sixteen statuses through actions and skipped opportunities.",
+  "required": "No infinite stun, repeated DOT from animation frames or leaked exploration poison."
+ },
+ {
+  "id": "AC023",
+  "area": "BATTLE",
+  "test": "Defense stacking",
+  "exercise": "Combine oath, Defend, Barrier and accessories.",
+  "required": "Direct reduction caps correctly; no accidental invulnerability or negative damage."
+ },
+ {
+  "id": "AC024",
+  "area": "BATTLE",
+  "test": "Reaction recursion",
+  "exercise": "Use counter, interception, reflection and a multi-hit enemy action.",
+  "required": "Trigger caps honor origin action IDs; no counter-counter loop."
+ },
+ {
+  "id": "AC025",
+  "area": "ROLE",
+  "test": "Dain oaths",
+  "exercise": "Switch every oath, take protection hits and approach 1 HP.",
+  "required": "One oath only; transfers obey nonlethal and per-action caps."
+ },
+ {
+  "id": "AC026",
+  "area": "ROLE",
+  "test": "Tessa Overcast",
+  "exercise": "Arm, cancel, cast, fail target validation and repeat recovery actions.",
+  "required": "Documented costs, nonlethal self-damage and Heat Exchange limits hold."
+ },
+ {
+  "id": "AC027",
+  "area": "ROLE",
+  "test": "Corren airborne",
+  "exercise": "KO grounded allies while Corren is in flight; pause and resume.",
+  "required": "Battle waits for his lawful landing and does not softlock."
+ },
+ {
+  "id": "AC028",
+  "area": "ROLE",
+  "test": "Ivo devices",
+  "exercise": "Reapply a mine, destroy a decoy and revive Ivo.",
+  "required": "No duplicate mine, stale decoy or reset of once-per-battle engine use."
+ },
+ {
+  "id": "AC029",
+  "area": "ROLE",
+  "test": "Nera knowledge",
+  "exercise": "Mark and inspect a new enemy, win, reload and inspect bestiary.",
+  "required": "Discovered information persists without granting unrelated drops."
+ },
+ {
+  "id": "AC030",
+  "area": "ROLE",
+  "test": "Oriel intent",
+  "exercise": "Inspect an enemy with and without a committed move.",
+  "required": "Only actual committed intent is shown; no invented future RNG result."
+ },
+ {
+  "id": "AC031",
+  "area": "ROLE",
+  "test": "Sable infusion",
+  "exercise": "Change infusion, remove accessory magic, dispel a boss.",
+  "required": "One infusion; removable buffs only; no deletion of phase scripts."
+ },
+ {
+  "id": "AC032",
+  "area": "ROLE",
+  "test": "Pip transactions",
+  "exercise": "Steal repeatedly, use last item with Quick Hands, then retry a loss.",
+  "required": "Steal caps, item counts and retry rollback hold."
+ },
+ {
+  "id": "AC033",
+  "area": "SUMMON",
+  "test": "Concord accounting",
+  "exercise": "Use area/multi-hit actions, Defend, Seeds and summons.",
+  "required": "Action-based gain caps and once-per-battle limits hold; no self-generating summon loop."
+ },
+ {
+  "id": "AC034",
+  "area": "SUMMON",
+  "test": "Unique links",
+  "exercise": "Attempt duplicate Vestige links and link from unavailable members.",
+  "required": "Ownership/availability rules hold and reassignment at safe screens works."
+ },
+ {
+  "id": "AC035",
+  "area": "GEAR",
+  "test": "Two-handed swap",
+  "exercise": "Equip/unequip every weapon type with a full inventory.",
+  "required": "Offhand returns safely; no duplication or lost unique item."
+ },
+ {
+  "id": "AC036",
+  "area": "GEAR",
+  "test": "Stats and grant removal",
+  "exercise": "Compare UI preview to battle; remove a spell-grant accessory.",
+  "required": "Derived stats match and temporary spell access disappears."
+ },
+ {
+  "id": "AC037",
+  "area": "ECONOMY",
+  "test": "Shop boundaries",
+  "exercise": "Buy with exact gold, insufficient gold and a 99-item stack.",
+  "required": "Prices/capacity validated before payment; no underflow."
+ },
+ {
+  "id": "AC038",
+  "area": "ECONOMY",
+  "test": "Full-inventory reward",
+  "exercise": "Complete a personal quest with no ordinary capacity.",
+  "required": "Unique reward enters delivery storage and completion remains consistent."
+ },
+ {
+  "id": "AC039",
+  "area": "PROGRESS",
+  "test": "Reserve growth",
+  "exercise": "Win battles with unavailable members and trigger a reunion twice.",
+  "required": "XP is correct; growth and starter gear do not duplicate."
+ },
+ {
+  "id": "AC040",
+  "area": "SAVE",
+  "test": "Round trip",
+  "exercise": "Save and reload at town, field, ship and pre-boss locations.",
+  "required": "Relevant state matches with safe spawn and correct music/availability."
+ },
+ {
+  "id": "AC041",
+  "area": "SAVE",
+  "test": "Corrupt primary",
+  "exercise": "Corrupt a disposable test copy of a save.",
+  "required": "Backup recovery offered; corrupt copy retained; no silent new game."
+ },
+ {
+  "id": "AC042",
+  "area": "SAVE",
+  "test": "Future schema",
+  "exercise": "Load a deliberately newer schema fixture.",
+  "required": "Clear unsupported-version response; no destructive overwrite."
+ },
+ {
+  "id": "AC043",
+  "area": "SAVE",
+  "test": "Crash during write",
+  "exercise": "Inject process interruption at controlled disposable save-write stages.",
+  "required": "Either old or new complete state loads; no partial hybrid."
+ },
+ {
+  "id": "AC044",
+  "area": "STORY",
+  "test": "Skipped scene equivalence",
+  "exercise": "Play and skip each major scene from equivalent fixtures.",
+  "required": "Same authoritative committed state and rewards."
+ },
+ {
+  "id": "AC045",
+  "area": "STORY",
+  "test": "Duplicate trigger",
+  "exercise": "Re-enter a chapter/quest trigger after completion.",
+  "required": "No repeated reward, party join or world transition."
+ },
+ {
+  "id": "AC046",
+  "area": "STORY",
+  "test": "Pre-catastrophe campaign",
+  "exercise": "Use normal input from New Game through CH11.",
+  "required": "All required locations, recruits and bosses work without flag edits."
+ },
+ {
+  "id": "AC047",
+  "area": "STORY",
+  "test": "Catastrophe preservation",
+  "exercise": "Transition with mixed gear, quests, loot, chest and reserve states.",
+  "required": "CH12 changes phase atomically and preserves specified ownership/state."
+ },
+ {
+  "id": "AC048",
+  "area": "STORY",
+  "test": "Sealed-map salvage",
+  "exercise": "Skip a unique pre-state reward, then complete CH12.",
+  "required": "Salvage delivers it once; already acquired copies are not duplicated."
+ },
+ {
+  "id": "AC049",
+  "area": "STORY",
+  "test": "Recovery route",
+  "exercise": "Play CH13–CH16 at expected resource/level floor.",
+  "required": "Two/three/four-person sections are viable and Wayfarer is earned normally."
+ },
+ {
+  "id": "AC050",
+  "area": "STORY",
+  "test": "Six reunion orders",
+  "exercise": "Run all six permutations of CH17, CH18 and CH19 from the ship checkpoint.",
+  "required": "No dependency cycle, absent-person dialogue or missing CH20 unlock."
+ },
+ {
+  "id": "AC051",
+  "area": "QUEST",
+  "test": "Personal quests",
+  "exercise": "Complete each of Q01–Q08 and reload at each stage.",
+  "required": "Exact weapon/ability rewards, world changes and epilogue flags occur once."
+ },
+ {
+  "id": "AC052",
+  "area": "QUEST",
+  "test": "Optional bosses",
+  "exercise": "Complete Q09–Q12, flee attempts and loss/retry paths.",
+  "required": "Boss gating, rewards and optional status are correct."
+ },
+ {
+  "id": "AC053",
+  "area": "FINAL",
+  "test": "Two-party formations",
+  "exercise": "Try representative balanced and legal unbalanced splits of all eight.",
+  "required": "Both routes are solvable with available items and recovery; no inventory duplication."
+ },
+ {
+  "id": "AC054",
+  "area": "FINAL",
+  "test": "Cross-party locks",
+  "exercise": "Change teams, reload and approach the shared gate in both orders.",
+  "required": "No one-way lock traps the other team; route state persists."
+ },
+ {
+  "id": "AC055",
+  "area": "FINAL",
+  "test": "Final phase thresholds",
+  "exercise": "Cross B12 thresholds with large and multi-hit attacks.",
+  "required": "Each phase starts once; one boss reward and correct ending transition."
+ },
+ {
+  "id": "AC056",
+  "area": "FINAL",
+  "test": "Zero-optionals ending",
+  "exercise": "Finish the main route without CH21 or optional quests.",
+  "required": "Complete valid ending; no missing final key or false bad-ending label."
+ },
+ {
+  "id": "AC057",
+  "area": "FINAL",
+  "test": "Epilogue combinations",
+  "exercise": "Test none, all, each personal flag alone and one mixed set.",
+  "required": "Correct base/enhanced scenes; no unavailable actors or contradictory lines."
+ },
+ {
+  "id": "AC058",
+  "area": "FINAL",
+  "test": "Post-clear return",
+  "exercise": "Return from credits to before the final descent.",
+  "required": "Safe pre-finale snapshot, clear flag and completed optional content retained."
+ },
+ {
+  "id": "AC059",
+  "area": "ART",
+  "test": "Sprite contact sheets",
+  "exercise": "Inspect every hero direction and battle frame in a contact sheet and runtime.",
+  "required": "No inconsistent identity, jitter, misplaced weapon or empty required animation."
+ },
+ {
+  "id": "AC060",
+  "area": "ART",
+  "test": "Distinct locations",
+  "exercise": "Review all towns and dungeons in actual captures.",
+  "required": "No placeholder geometry disguised as final art or identical room stamping."
+ },
+ {
+  "id": "AC061",
+  "area": "AUDIO",
+  "test": "Cue transitions",
+  "exercise": "Enter/leave houses, start/retry battles, pause and change buses.",
+  "required": "No clicks, unwanted restarts, clipping, mute leaks or missing critical cues."
+ },
+ {
+  "id": "AC062",
+  "area": "BALANCE",
+  "test": "Normal route pacing",
+  "exercise": "Play representative early/mid/late sequences without debug resources.",
+  "required": "Record encounter time, resource use, level and failures; revise bottlenecks without inventing measured total playtime."
+ },
+ {
+  "id": "AC063",
+  "area": "BALANCE",
+  "test": "Ordinary encounters off",
+  "exercise": "Use the documented accessibility mode through a campaign segment.",
+  "required": "Milestone progression or offered training keeps the route viable; story bosses remain."
+ },
+ {
+  "id": "AC064",
+  "area": "RELEASE",
+  "test": "Clean-source build",
+  "exercise": "Import and export a fresh copy at the tested revision.",
+  "required": "No dependence on untracked files or author-machine absolute paths."
+ },
+ {
+  "id": "AC065",
+  "area": "RELEASE",
+  "test": "Windows export launch",
+  "exercise": "Launch the produced Windows executable on Windows.",
+  "required": "Actual platform smoke and save/load results recorded; cross-export alone is not a pass."
+ },
+ {
+  "id": "AC066",
+  "area": "RELEASE",
+  "test": "Asset provenance",
+  "exercise": "Audit every bundled asset, dependency and credit.",
+  "required": "Source/permission recorded; no ripped commercial assets or undocumented font files."
+ },
+ {
+  "id": "AC067",
+  "area": "RELEASE",
+  "test": "Evidence freshness",
+  "exercise": "Compare source/content hashes to test and screenshot records.",
+  "required": "Claims refer to the packaged revision; stale artifacts are rejected."
+ },
+ {
+  "id": "AC068",
+  "area": "RELEASE",
+  "test": "Human quality review",
+  "exercise": "Have the owner or a separate tester play the exported opening and finale.",
+  "required": "Record feedback honestly; agent self-review is not reported as external approval."
+ }
+]

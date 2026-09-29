@@ -1,0 +1,146 @@
+[
+ {
+  "id": "A001",
+  "name": "Ember Token",
+  "price": 800,
+  "effect": "Grant S065 while equipped."
+ },
+ {
+  "id": "A002",
+  "name": "Rime Token",
+  "price": 980,
+  "effect": "Grant S066 while equipped."
+ },
+ {
+  "id": "A003",
+  "name": "Storm Token",
+  "price": 1160,
+  "effect": "Grant S067 while equipped."
+ },
+ {
+  "id": "A004",
+  "name": "Tide Token",
+  "price": 1340,
+  "effect": "Grant S068 while equipped."
+ },
+ {
+  "id": "A005",
+  "name": "Hearth Token",
+  "price": 1520,
+  "effect": "Grant S069 while equipped."
+ },
+ {
+  "id": "A006",
+  "name": "Clock Token",
+  "price": 1700,
+  "effect": "Grant S070 while equipped."
+ },
+ {
+  "id": "A007",
+  "name": "Night Token",
+  "price": 1880,
+  "effect": "Grant S071 while equipped."
+ },
+ {
+  "id": "A008",
+  "name": "Day Token",
+  "price": 2060,
+  "effect": "Grant S072 while equipped."
+ },
+ {
+  "id": "A009",
+  "name": "Returner’s Cord",
+  "price": 2240,
+  "effect": "Reduce physical damage received by 10%; does not stack with another copy."
+ },
+ {
+  "id": "A010",
+  "name": "Witness Glass",
+  "price": 2420,
+  "effect": "Reveal enemy elemental affinities at battle start; no stat effect."
+ },
+ {
+  "id": "A011",
+  "name": "Clear Bell",
+  "price": 2600,
+  "effect": "Immunity to Silence."
+ },
+ {
+  "id": "A012",
+  "name": "Open-Eye Thread",
+  "price": 2780,
+  "effect": "Immunity to Blind and Sleep."
+ },
+ {
+  "id": "A013",
+  "name": "Salt Locket",
+  "price": 2960,
+  "effect": "Immunity to Poison and Burn."
+ },
+ {
+  "id": "A014",
+  "name": "Steady Hand",
+  "price": 3140,
+  "effect": "Physical accuracy +10 percentage points, capped at 100%."
+ },
+ {
+  "id": "A015",
+  "name": "Warm Lantern",
+  "price": 3320,
+  "effect": "Healing done x1.15; strongest duplicate only."
+ },
+ {
+  "id": "A016",
+  "name": "Reserve Cell",
+  "price": 3500,
+  "effect": "Maximum MP +15%; current MP does not increase when equipped."
+ },
+ {
+  "id": "A017",
+  "name": "Long Breath",
+  "price": 3680,
+  "effect": "Maximum HP +15%; current HP preserves percentage when changing equipment outside battle."
+ },
+ {
+  "id": "A018",
+  "name": "Twin Oath Ring",
+  "price": 3860,
+  "effect": "Counter one direct physical attack at 50% normal Attack power per enemy action; no recursion or counter-counter chains."
+ },
+ {
+  "id": "A019",
+  "name": "Empty Scabbard",
+  "price": 4040,
+  "effect": "Two-handed physical damage x1.15; no effect on magical damage or one-handed weapons."
+ },
+ {
+  "id": "A020",
+  "name": "Mercy Thread",
+  "price": 4220,
+  "effect": "One automatic Barrier charge when crossing below 30% HP; once per battle."
+ },
+ {
+  "id": "A021",
+  "name": "Hasty Ledger",
+  "price": 4400,
+  "effect": "Start normal battles with +100 ATB; no effect on script-fixed tutorial starts."
+ },
+ {
+  "id": "A022",
+  "name": "Pilgrim’s Map",
+  "price": 4580,
+  "effect": "Reduce field encounter-meter accumulation by 25%; does not affect scripted bosses or eliminate encounters."
+ },
+ {
+  "id": "A023",
+  "name": "Broken Diadem",
+  "price": 0,
+  "effect": "First hostile dispel against the wearer fails each battle; no immunity to damage or narrative scenes."
+ },
+ {
+  "id": "A024",
+  "name": "Unowned Song",
+  "price": 0,
+  "effect": "Concord gain from the wearer’s successful actions +2, respecting the shared cap; summon animation may be shortened without reducing effects."
+ }
+]

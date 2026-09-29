@@ -1,0 +1,91 @@
+# Regional travel: coastal ferry (after CH06), cable ferry (after CH07). Authored routes, no fuel.
+@scene FERRY_BELLHARBOR
+if ch:CH06 run
+say sailor | The coastal ferry's tied up. Ministry orders: no sailings until the archive business is settled.
+end
+label run
+sfx FX031
+choice | Take the ferry north to Skyspine -> go | Stay -> stay
+label go
+say narr | The ferry bell rings. The coast slides by, cream stone and bronze bells, until the cliffs rise.
+warp WORLD ferry_sky
+label stay
+@end
+
+@scene FERRY_SKYSPINE
+if ch:CH06 run
+say narr | An empty ferry landing.
+end
+label run
+sfx FX031
+choice | Take the ferry south to Bellharbor -> go | Stay -> stay
+label go
+say narr | The ferry works down the coast to Bellharbor's quay.
+warp WORLD ferry_bh
+label stay
+@end
+
+@scene CABLE_AERIE
+if ch:CH07 run
+say narr | The cable ferry across the chasm hangs still. High Aerie's crew hasn't reset the anchors.
+end
+label run
+choice | Ride the cable west to the Pale Basin -> go | Stay -> stay
+label go
+say narr | The basket creaks out over the chasm. Salt glitters far below.
+warp WORLD cable_nacre
+label stay
+@end
+
+@scene CABLE_NACRE
+if ch:CH07 run
+say narr | The basin end of the cable ferry. The basket is on the far side.
+end
+label run
+choice | Ride the cable east to Skyspine -> go | Stay -> stay
+label go
+say narr | The basket swings east toward the cliffs.
+warp WORLD cable_aerie
+label stay
+@end
+
+# ---------------------------------------------------------------- Wayfarer (after CH16)
+@scene SHIP_BOARD
+choice | Take the helm -> helm | Go below deck -> below | Stay ashore -> stay
+label helm
+airship board
+end
+label below
+airship below
+warp W_DECK from_world up
+label stay
+@end
+
+@scene SHIP_HELM
+choice | Land here -> land | Go below deck -> below | Stay aloft -> stay
+label land
+airship land
+end
+label below
+airship below
+warp W_DECK from_world up
+label stay
+@end
+
+@scene SHIP_RECALL
+say narr | A marked landing field. Wayfarer can be called down here.
+choice | Call Wayfarer -> call | Not now -> stay
+label call
+airship recall
+say narr | Wayfarer settles onto the field, engines ticking as they cool.
+label stay
+@end
+
+@scene FERRY_HEARTHWARD
+sfx FX031
+choice | Take the ferry back to Hearthward -> go | Stay -> stay
+label go
+say narr | The ferry crosses the Ember Sea to Hearthward's pontoons.
+warp T07_MARKET from_berth left
+label stay
+@end

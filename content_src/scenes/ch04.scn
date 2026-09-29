@@ -1,0 +1,186 @@
+# CH04 — The Walking Furnace. Cinderwake, Ivo, the Foundry Colossus. SC04 is authored.
+
+@scene T03_CLINIC
+say worker | How does stopping extraction keep the clinic heated? Tell me that and I'll march with you.
+@end
+
+@scene T03_HEAT
+say worker | The regulators turned pressure into steady heat. First winter nobody froze. That's hard to argue with.
+@end
+
+@scene T03_CHILD
+say child | My mum says the pipes sing when it's cold. I think they're complaining.
+@end
+
+@scene T03_FOREMAN
+if ch:CH04 after
+say "Foreman" | Spine's closed unless Quill vouches for you. He built half of it.
+end
+label after
+say "Foreman" | Waterwheel's turning. It's slower. The clinic's warm. I'll take slower.
+@end
+
+@scene T03_PIPEFITTER
+say worker | Copper for the pipes, brass for the regulators, and heartglass for - well. For whatever's inside the brass.
+@end
+
+@scene T03_ELDER
+say elder | Before the regulators we burned coal and coughed. After, we stopped coughing. Now you want to take it away?
+say dain | No. I want to know what's inside it.
+@end
+
+@scene T03_COOK
+say baker | Shift stew. Same as yesterday. Same as tomorrow. Warm, which is the point.
+@end
+
+@scene T03_TALLY_WALL
+say worker | Every mark on that wall is somebody burned, crushed or scalded. The ministry ledger says 'minor incidents.'
+say worker | We keep our own count.
+@end
+
+@scene T03_INN
+say keeper | Canteen cots. Warm pipes under the floor. You'll sleep like the dead, which is a joke we don't make much here.
+inn
+@end
+
+@scene T03_GARDENER
+say farmer | Old cooling garden. The pipes used to run under it. Plants grew all winter. Then they rerouted the heat to the Spine.
+@end
+
+@scene T03_PELL
+if recruited:C04 after
+say pell | You're the ones from Veyr. Ivo said you'd come. Ivo says a lot of things he means to do next week.
+end
+label after
+say pell | Leave the manual. That's all I ask. Leave it so someone else can keep the wheel turning.
+@end
+
+@scene T03_PELL_GARDEN
+if ch:CH09,!flag:accord_cinder accord
+say pell | The temporary wheel is running. Crews rotate the hand crank at the lower sluice.
+say pell | It isn't elegant. It's ours.
+end
+label accord
+say pell | Ivo. You read the vault's records. So: the heartglass is alive and the clinic still needs heat. Both.
+say ivo | Both. The wheel's governor can take a pressure bypass - the old channel under this garden.
+say pell | Then fit it. With the crew watching, so they can do it without you.
+@end
+
+@scene T03_IVO_SHOP once
+say ivo | Visitors. Mind the bench, that regulator is calibrated to a hair.
+say ivo | Converts furnace pressure into steady power. Before these, the town froze every third winter. After them, nobody froze.
+say tessa | I've seen that coil before. In Crown Quarry. It was wrapped around the extractor, turning the heartglass pulse into - volume.
+say ivo | ...It amplifies the relay signal, yes. Steadier pressure, steadier output.
+say tessa | It made the voices louder.
+say ivo | What voices?
+say dain | The heartglass spoke my name in the quarry. Your coil was on the machine.
+say ivo | That's - pressure artifacts do strange things with resonance.
+say oriel | That is what the inspector said.
+shake 0.6
+sfx FX015
+say narr | A deep clang shakes the shop. Somewhere up the ridge, a siren begins.
+say pell | That's the Spine. The main regulator's gone over pressure.
+say ivo | Then it'll vent into the workshops. There are people in the workshops.
+say ivo determined | You want to know what's inside my regulator? Come with me and help me keep it from killing anyone.
+objective ivo | Enter the Furnace Spine (east gate) and vent the pressure lines into empty chambers.
+@end
+
+@scene D04_SHIFT_GATE once
+say ivo | Three pressure lines. Red, blue, and the regulator crown itself.
+say ivo | Every valve can vent into two chambers. One is always a workshop. Look through the window before you turn anything.
+say nera | Empty room, then. Not the one with people in it.
+say ivo | You'd be surprised how often that isn't the first thing people check.
+join C04
+say narr | Ivo's Tools set mines, decoys and field repairs. With five in the party, the extra member waits in reserve. Use Formation in the menu to swap.
+objective ivo | Balance the red and blue lines, venting into empty chambers.
+@end
+
+@scene D04_OCC_WORKERS
+say worker | We're sealed in until the line drops! Don't vent in here!
+@end
+
+@scene D04_LOST_WORKER once
+say worker | I got turned around in the steam. Which way's the gate?
+say nera | West, then south. Follow the catwalk, not the pipes.
+set d04_lost
+@end
+
+@scene D04_D04_RED
+if flag:d04_red done
+say narr | The red valve. Its vent can go LEFT or RIGHT. Through the windows you can see who is in each chamber.
+choice | Vent into the left chamber -> left | Vent into the right chamber -> right | Leave it -> leave
+label left
+sfx FX004
+say worker | NOT IN HERE!
+say narr | You slam the valve back. The workers in the left chamber are shaken, not hurt. Look again.
+end
+label right
+sfx FX010
+set d04_red
+say narr | Steam roars into the empty right chamber. The red line's gauge drops to the green.
+end
+label done
+say narr | The red line is balanced.
+label leave
+@end
+
+@scene D04_D04_BLUE
+if flag:d04_blue done
+say narr | The blue valve. Its vent can go LEFT or RIGHT. Check the windows.
+choice | Vent into the left chamber -> left | Vent into the right chamber -> right | Leave it -> leave
+label right
+sfx FX004
+say worker | THERE ARE PEOPLE HERE!
+say narr | You close it before the steam reaches them. The right chamber is occupied.
+end
+label left
+sfx FX010
+set d04_blue
+say narr | Steam vents into the empty left chamber. The blue line settles.
+end
+label done
+say narr | The blue line is balanced.
+label leave
+@end
+
+@scene D04_COLOSSUS once
+music silence
+say narr | The regulator crown. The main regulator has torn itself out of its housing and is walking.
+say ivo | It's not supposed to be able to do that. It's a regulator. It regulates.
+say tessa | It's full of the same thing the quarry was. Whatever's in there is pushing.
+say ivo | Three vents light before its boiler sweep. Cold slows it. Defend when all three are lit.
+battle B04 noflee
+set b04_done
+music M022
+say narr | The Colossus sags against the wall. Its brass shell cracks, and inside, a cup of heartglass flickers - then dims.
+say ivo | That's my design. All of it.
+say ivo | I told myself it was a battery. A very good battery.
+xp 160
+objective ivo | Shut the regulator down by hand in the cooling garden beyond.
+@end
+
+@scene D04_SC04 once
+say narr | The cooling garden. Workers are already here, arguing over the manual shutdown.
+say tessa | Shut every line down.
+say pell | The clinic is on the second line.
+say tessa | You know what is inside it.
+say pell | I know who is inside the clinic.
+say ivo | We can turn the lower wheel by hand until the canal clears.
+say pell | For how long?
+say ivo | I do not know yet.
+say pell | That is a better beginning than another promise.
+fade out 0.5
+say narr | Workers rig a waterwheel at the lower sluice and take turns at the crank. The clinic stays warm. The regulator stays dark.
+fade in 0.5
+say pell | Go and find out what's in the heartglass, Ivo. Then come back and fix the heating properly.
+say ivo | That's not a revolution, Pell.
+say pell | It's a better one.
+say ivo | Shipping manifest from the regulator office. Heartglass crates, marked for Bellharbor on the Glass Coast.
+key K_MANIFEST
+chapter CH04
+objective ivo | Follow the shipping manifest east to Bellharbor on the Glass Coast.
+discover L_T04
+rumor | Bellharbor dock workers say the ministry is hunting a forger who turns refugees into 'cargo'.
+level_floor 11
+warp T03_TOWN from_spine left
+@end

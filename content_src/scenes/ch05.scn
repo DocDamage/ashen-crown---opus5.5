@@ -1,0 +1,154 @@
+# CH05 — Paper Ghosts. Bellharbor, Pip, the confiscated ledger. SC05 is authored.
+
+@scene T04_POT_CHILD
+if event:T04_PIP_OFFER,!flag:t04_distracted alarm
+say child | They took our bell. So when the tide's coming in wrong, I bang this pot. Everyone knows the pot now.
+end
+label alarm
+call T04_POT_ALARM
+@end
+
+@scene T04_SAILOR
+if ch:CH06 run
+say sailor | Coastal ferry's tied up. Ministry won't let us sail till the archive business is settled.
+end
+label run
+say sailor | Ferry runs north to Skyspine now. Board at the east pier on the world road.
+@end
+
+@scene T04_DOCKHAND
+say worker | Seven barrels of lamp oil came in yesterday. Lamp oil doesn't cough.
+@end
+
+@scene T04_REFUGEE
+say survivor | I came in on a cargo tag. Now I'm here and I don't exist. I'd like to exist again, if it's allowed.
+@end
+
+@scene T04_CUSTOMS_GUARD
+say guard | Customs house is closed to the public. The public is very annoying today.
+@end
+
+@scene T04_FISHWIFE
+say baker | Fish, rope, lamp oil. The good charts are down the lane at Jori's.
+shop SHOP_T04
+@end
+
+@scene T04_CHARTMAKER
+say scholar | Charts of every coast from here to the cliffs. Most of them still true, after this summer.
+@end
+
+@scene T04_LANE_KID
+say child | Jori writes our names down properly. Pip writes them down wrong on purpose. Mum says both are a kind of kindness.
+@end
+
+@scene T04_LAMPLIGHTER
+say worker | Heartglass lamps on the quay, oil lamps in the lane. The oil ones don't hum.
+@end
+
+@scene T04_CHAPLAIN
+say monk | Every bell in this chapel is a different size. Every family brought one. None of them match, which is the point.
+@end
+
+@scene T04_CHAPEL_REST
+say elder | The chapel keeps cots for travellers. We ask a little, if you have it.
+inn
+@end
+
+@scene T04_JORI
+if ch:CH05 after
+say jori | Jori Marr. Clerk in practice, if not on paper. I write down who people are. My brother writes down who they aren't.
+end
+label after
+say jori | The families are choosing their own names in the archive record. That's how it should have been from the start.
+@end
+
+@scene T04_PIP_OFFER once
+say pip | You look like people who need a boat and can't be seen asking for one.
+say dain | Who are you?
+say pip | Pip Marr. Forger, some say. Logistics, I say. Passage out of Bellharbor, anywhere the tide goes.
+say pip | Price: the customs house confiscated a ledger of mine. Get it back and you sail free.
+say oriel | What is in the ledger?
+say pip | Names. Numbers. The usual paperwork of making people disappear, in a nice way.
+say nera | 'In a nice way.'
+say pip | There's a nice way! I'll show you. Ledger first.
+say pip | The clerk won't leave the counter unless something louder than her happens. Ask the kid with the pot.
+objective pip | Recover Pip's confiscated ledger from the customs house (south-west of the quay).
+@end
+
+@scene T04_CUSTOMS_CLERK
+if flag:t04_distracted gone
+say clerk | Customs. Closed. Unless you're filing a complaint, in which case also closed.
+if event:T04_PIP_OFFER plan
+end
+label plan
+say narr | The clerk won't leave the counter. Something louder than her would have to happen outside.
+end
+label gone
+say narr | The counter is empty.
+@end
+
+@scene T04_POT_ALARM once
+say pip | Kid. How'd you like to be a hero of the harbour for exactly one minute?
+say child | Is it the pot?
+say pip | It's the pot.
+sfx FX016
+shake 0.3
+say narr | CLANG. CLANG. CLANG. Half the quay runs to the water's edge to see what the tide is doing.
+set t04_distracted
+say pip | Customs clerk will be out looking at the sea. Now or never. Well - now or in a few minutes.
+@end
+
+@scene T04_CUSTOMS_GUARD2
+say guard | Nobody past the counter.
+if flag:t04_distracted fine
+end
+label fine
+say guard | ...the tide's doing WHAT? Stay here. Don't touch anything.
+@end
+
+@scene T04_TAKE_LEDGER once
+say narr | Behind the counter: the confiscation shelf. A thick ledger, chain unlocked.
+key K_CONFISCATED
+set t04_ledger
+say guard | Hey! That's evidence!
+say pip | Run. Back alleys. Follow me and don't be where the guards are standing.
+warp T04_CHASE start right
+say narr | (Being caught only sends you back to the alley mouth. The guards never leave their posts.)
+@end
+
+@scene T04_CAUGHT
+say guard | Got you -
+say pip | Not today. Back the way we came!
+warp T04_CHASE start right
+@end
+
+@scene CH05_CHASE_END once
+say pip | Lost them. Chartmaker lane. My brother's office. Don't tell him I ran.
+objective pip | Bring the ledger to Jori's office in Chartmaker Lane.
+@end
+
+@scene CH05_SC05 once
+say narr | Jori is waiting outside his office. He takes the ledger and opens it without asking.
+say pip | Seven barrels of lamp oil. Extremely talkative lamp oil.
+say jori | Her name is Senn.
+say pip | Not at the checkpoint it is not.
+say jori | And when she asks for her wages?
+say pip | We work something out.
+say jori | You work something out. She waits.
+say tessa | Keep the names with the cargo numbers.
+say pip | I did.
+say jori | Then give them back.
+say narr | A woman steps out of the lane. She has been listening.
+say "Senn" | Which name am I allowed to use?
+say pip | ...Whichever you want. That's - that should be yours.
+say "Senn" | Then write it down somewhere the ministry can't cross it out.
+say pip | There's an archive under the tide. The drowned archive. Old contracts, older than the ministry. A record there isn't theirs.
+say pip | I'll take you. I owe - I owe the paperwork.
+join C08
+say narr | Pip's Tricks include Pilfer: steal from enemies. The Journal keeps rumors you hear, separate from your objective.
+chapter CH05
+objective pip | Reach the Drowned Archive, south-east along the coast from Bellharbor, at low water.
+discover L_D05
+rumor | Pip says the Drowned Archive opens its tide door at low water, south-east of Bellharbor.
+level_floor 12
+@end

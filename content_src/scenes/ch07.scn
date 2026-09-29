@@ -1,0 +1,133 @@
+# CH07 — To Borrow Sky. Skychain Viaduct, Corren, the Chain Roc, High Aerie.
+
+@scene D06_CREW
+say pilot | Maintenance crew, Skychain anchors. We'd reset them ourselves if the captain let us up.
+say worker | Captain says it's a one-person job. Captain's brother volunteered. Of course he did.
+@end
+
+@scene D06_CORREN_MEET once
+say corren | Travellers. The Skychain's closed. Anchors failed in the last storm.
+say corren | I'm going up alone to reset them. One leap from the high anchor to the nest, a few turns of the capstan, and the span holds.
+say nera | And if you miss the leap?
+say corren | Then High Aerie adds a name to the memorial and sends the next one. It's an honourable way to fall.
+say nera | There's room on those anchors for a whole maintenance crew. Why is it a one-person job?
+say corren | ...Because it always has been.
+say dain | We're crossing anyway. Come with us. Bring the crew.
+say corren | The ballast yard locks steady the wind lanes. The crew knows the locks.
+say corren | Fine. We go together. I'll still take the nest myself.
+say oriel | We'll see.
+join C03
+say narr | Corren's Aerial techniques leave the field and strike on landing. While airborne he can't be targeted.
+objective corren | Cross the Skychain: lock the ballast in the yard, then cross the span to the Chain Nest.
+@end
+
+@scene D06_BALLAST1
+if flag:d06_b1 done
+sfx FX010
+set d06_b1
+say narr | The first ballast lock drops into place. Across the span, the west half of the middle lane goes still.
+end
+label done
+say narr | The ballast lock is set.
+@end
+
+@scene D06_BALLAST2
+if flag:d06_b2 done
+sfx FX010
+set d06_b2
+say narr | The second lock seats with a groan of chain. The east half of the middle lane calms.
+end
+label done
+say narr | The ballast lock is set.
+@end
+
+@scene D06_ROC once
+music silence
+say narr | The Chain Nest. A great grey bird is chained to the anchor ring, its wings holding the whole span level.
+say corren | The Chain Roc. They tethered it here as a stabiliser. It's been holding the bridge up for years.
+say tessa | A living anchor. Of course it is. Everything here is somebody's body holding something up.
+say corren | If I cut the tether mid-leap, the span drops. If I don't, it keeps screaming.
+say nera | Or the crew holds the alternate cable while you cut. Like we discussed. Like adults.
+say narr | The Roc strains against its chain. A shadow sweeps across the front row.
+battle B06 noflee
+set b06_done
+music M021
+say narr | The Roc slumps against the anchor, exhausted. The crew's alternate cable is already rigged, taut and steady.
+say corren | ...The span's holding.
+say nera | Because six people are holding it. Cut the tether.
+say narr | Corren cuts the chain. The Roc beats its wings once, twice, and lifts away into the cloud. Nobody falls.
+say corren | I was supposed to - there was supposed to be a leap.
+say oriel | You survived something you expected to die for. That can be disorienting.
+xp 260
+objective | Continue to the High Landing, north-east of the nest.
+@end
+
+@scene CH07_LANDING once
+say narr | The High Landing. The crew is already bolting the new anchors into the rock, cheering in bursts.
+say corren | They're going to want to put me on a wall.
+say dain | Which wall?
+say corren | The memorial. For nearly dying.
+say nera | You didn't nearly die. You did a maintenance shift.
+say corren | ...I don't know how to be thanked for that.
+chapter CH07
+set cable_open
+say narr | High Aerie's cable ferry now runs west across the chasm toward the Pale Basin and Nacre.
+objective corren | Visit High Aerie (north), then take the cable ferry west to the Pale Basin.
+discover L_T05
+rumor | Corren says the wind shrine above High Aerie's stair is older than the Crown.
+level_floor 15
+@end
+
+@scene T05_SHRINE once
+say narr | At the wind shrine the cloths stream east. Something wide and dark glides out of the cloud: a manta of storm and sky.
+say "Sky Manta" | The Roc is free. It hunted me from this shrine for years, chained. I was never the anchor. You unchained the anchor.
+say "Sky Manta" | I will ride your wind when you call.
+vestige V04
+@end
+
+@scene T05_EDDA
+if ch:CH09,!flag:accord_aerie accord
+if ch:CH07 after
+say edda | Captain Edda Hale. Corren's sister and supervisor. The Skychain's closed until the anchors are reset.
+end
+label accord
+say edda | The evidence from the vault - Corren told me. The cable ferry runs on a relay under the court. If that relay goes silent, every basket stops mid-chasm.
+say edda | I need transit that doesn't depend on something screaming under my feet. Can your machinist do anything?
+say ivo | The cable brake by the operator's post. If I give it a counterweight governor, the baskets hold without the relay.
+end
+label after
+say edda | You brought my brother back with a crew behind him. I don't have a ceremony for that. I should.
+@end
+
+@scene T05_OLD_PILOT
+say pilot | Forty years flying rescue baskets. I'll tell you a secret: the ceremonial uniforms make safe landings harder.
+say pilot | All that cloth. Looks grand falling. Snags on everything landing.
+@end
+
+@scene T05_CABLE_OP
+if ch:CH07 run
+say worker | Cable ferry's stopped until the Skychain anchors are sorted.
+end
+label run
+say worker | Cable ferry's running west to the basin. Board at the chasm edge on the world road, west of the court.
+@end
+
+@scene T05_KID
+say child | When I grow up I'm going to fall off something really high. For the wall.
+say corren | Or you could fly rescue and come home for supper.
+say child | ...Can I do both?
+say corren | No.
+@end
+
+@scene T05_WIDOW
+say elder | My son is on the memorial. I'd trade the wall for one more supper.
+@end
+
+@scene T05_TRAINEE
+say "Trainee" | We practise the heroic leap every morning. We never practise the landing.
+@end
+
+@scene T05_HALL_INN
+say elder | Returners' hall. Beds for crews coming back from the cliffs. Most nights, there's room.
+inn
+@end

@@ -1,0 +1,114 @@
+[
+ {
+  "id": "T01",
+  "name": "Brackenford",
+  "region": "R01",
+  "function": "Quarry workers’ river town",
+  "scene_maps": [
+   "Rail platform",
+   "shared bakery",
+   "miners’ bunkhouse"
+  ],
+  "before": "Low roofs, laundry lines, wheeled lunch carts, rails cutting through vegetable gardens",
+  "after": "Flood divides the town. The bakery becomes a footbridge depot; the bunkhouse is a shelter",
+  "human_detail": "A forewoman counts workers by name rather than production number",
+  "recurring": "Mara Pell",
+  "conversation": "Wages unpaid for three months; a storekeeper quietly extends credit"
+ },
+ {
+  "id": "T02",
+  "name": "Veyr",
+  "region": "R01",
+  "function": "Fortified capital",
+  "scene_maps": [
+   "South market",
+   "oath square",
+   "lower records hall"
+  ],
+  "before": "Heavy arches, red banners repaired with mismatched cloth, public heartglass lamps",
+  "after": "Outer walls fall into the river. The throne square becomes a distribution point; the records survive below ground",
+  "human_detail": "A palace clerk refuses a false death certificate even before the rebellion",
+  "recurring": "Clerk Ansel",
+  "conversation": "Two guards disagree about whether their families can eat loyalty"
+ },
+ {
+  "id": "T03",
+  "name": "Cinderwake",
+  "region": "R02",
+  "function": "Industrial terrace settlement",
+  "scene_maps": [
+   "Shift canteen",
+   "regulator shop",
+   "old cooling garden"
+  ],
+  "before": "Visible repair patches, copper pipe shadows, rich orange furnace interiors",
+  "after": "Power fails unevenly. Workers rig waterwheels and rotate heat between workshops",
+  "human_detail": "A worker asks how stopping extraction will keep the clinic heated",
+  "recurring": "Pell Quill",
+  "conversation": "A canteen wall keeps a tally of workplace injuries that no official ledger records"
+ },
+ {
+  "id": "T04",
+  "name": "Bellharbor",
+  "region": "R03",
+  "function": "Port and archive town",
+  "scene_maps": [
+   "Bell quay",
+   "chartmaker lane",
+   "tide chapel"
+  ],
+  "before": "Dense awnings, rope bundles, cream and teal stone, bells of uneven sizes",
+  "after": "Lower streets flood. Ropewalks become upper-level roads; the tide chapel is an evacuation station",
+  "human_detail": "A child rings an alarm using a cooking pot after the state removes the bell",
+  "recurring": "Jori Marr",
+  "conversation": "Shipping manifests contain passenger names disguised as cargo"
+ },
+ {
+  "id": "T05",
+  "name": "High Aerie",
+  "region": "R04",
+  "function": "Cliffside cable settlement",
+  "scene_maps": [
+   "Cable court",
+   "returners’ hall",
+   "wind stair"
+  ],
+  "before": "Ochre streamers, anchored baskets, horizontal architecture clinging to cliffs",
+  "after": "A broken chain links two new islands. Windmills replace the suspended extraction engines",
+  "human_detail": "The memorial lists those who died but has no wall for those who brought others home",
+  "recurring": "Captain Edda Hale",
+  "conversation": "An old pilot admits the ceremonial uniforms make safe landings harder"
+ },
+ {
+  "id": "T06",
+  "name": "Nacre",
+  "region": "R05",
+  "function": "Mineral garden and sanctuary",
+  "scene_maps": [
+   "Salt market",
+   "quiet cloister",
+   "listening pool"
+  ],
+  "before": "Layered lilac minerals, low domes, water carried in cloth-lined jars",
+  "after": "The pool projects conflicting dragon memories. Residents establish a consent-based listening house",
+  "human_detail": "A gardener tends plants without asking whether they count as sacred",
+  "recurring": "Archivist Sen",
+  "conversation": "A family disagrees openly about a vision rather than receiving a single authoritative answer"
+ },
+ {
+  "id": "T07",
+  "name": "Hearthward",
+  "region": "R06",
+  "function": "Post-catastrophe refugee harbor",
+  "scene_maps": [
+   "Ponton market",
+   "communal hearth",
+   "Wayfarer berth"
+  ],
+  "before": "Tents become cabins across a visible sequence; reused signs retain old town names",
+  "after": "Post-only town. Services grow through reunions and the Ash Accord; no construction minigame",
+  "human_detail": "Residents preserve signs from lost businesses, not just relics of rulers",
+  "recurring": "Mara Pell",
+  "conversation": "Residents argue over practical rebuilding priorities; decisions appear in later scenery"
+ }
+]

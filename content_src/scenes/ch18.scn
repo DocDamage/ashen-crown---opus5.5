@@ -1,0 +1,155 @@
+# CH18 — Names for the Living. Veyr: the canals, the lower registry, Pip, Jori's satchel.
+
+@scene CH18_JORI
+if ch:CH18 after
+say jori | You came through Bellharbor? Then you know I've been trying to reach Pip. He's under the square, in the lower registry.
+say jori | Voss's remnants want the ledgers - the ones that prove what they did. Pip won't let them near. He won't let anyone near, including the people whose names are in there.
+say jori | The canals changed when the walls fell. The ladder by the south of the square goes down; the lock gates raise the crossings.
+objective dain | Reach the lower registry through Veyr's changed canals (ladder, south of the square).
+end
+label after
+say jori | Go on. I'll bring the satchel when it's time.
+@end
+
+@scene CH18_GATE1
+if flag:t02c_gate1 done
+sfx FX010
+set t02c_gate1
+say narr | The west lock gate rises. Water drops in the west channel, and a crossing shoulders up out of it.
+end
+label done
+say narr | The west crossing is up.
+@end
+
+@scene CH18_GATE2
+if flag:t02c_gate2 done
+sfx FX010
+set t02c_gate2
+say narr | The middle gate grinds open. The centre crossing surfaces, streaming.
+end
+label done
+say narr | The middle crossing is up.
+@end
+
+@scene CH18_GATE3
+if flag:t02c_gate3 done
+sfx FX010
+set t02c_gate3
+say narr | The east gate lifts. The last crossing rises toward the registry stair.
+end
+label done
+say narr | The east crossing is up.
+@end
+
+@scene CH18_REMNANTS once
+say narr | Uniforms at the registry door, stripped of rank but not of habit. Voss's remnants.
+say guard | The ledgers are ministry property. Stand aside.
+say dain | The ministry sank. The names didn't.
+battle D02P_2 noflee
+set t02r_clear
+say narr | The remnants scatter back into the canals. Behind a barricade of filing cabinets, someone coughs.
+@end
+
+@scene CH18_PIP
+if ch:CH18 after
+say pip | Don't - oh. Oh, it's you. It's actually you.
+if party:C03 corren
+goto cont
+label corren
+say pip | And Corren! Alive! Nobody told me you could survive falling off a sky.
+label cont
+say pip | I've been guarding the originals. Every forged pass I ever made is in here, next to the real name it replaced.
+say pip | If the remnants get these, they burn them. If the refugees get them, they - I don't know what they'll do. That's what scares me.
+say oriel | That's not yours to decide, Pip.
+say pip | I made the forgeries. Doesn't that make it mine to fix?
+say dain | It makes it yours to answer for. Not to decide.
+objective dain | Bring the original ledgers to the residents at the tables and let them choose how their names are recorded.
+end
+label after
+say pip | New seal, blank forms, no forgeries. It's a very boring satchel now. I love it.
+@end
+
+@scene CH18_LEDGERS
+if flag:t02r_names done
+if !flag:t02r_clear blocked
+say narr | The original ledgers, stacked on the tables. Pip hovers.
+say survivor | This one's mine. Page forty. That's the name the ministry gave me when they sold my contract.
+say elder | And here's the name my mother gave me. Different page.
+say pip | I can write whichever you -
+say survivor | No. We decide how it's written. You can hold the ink.
+fade out 0.5
+say narr | The residents take the ledgers one page at a time. Some keep the old names. Some write new ones. Each entry is signed by the person it belongs to.
+fade in 0.5
+set t02r_names
+say jori | Pip.
+say narr | Jori sets a worn leather satchel on the table - the one Pip used to carry false papers.
+say jori | It's got blank forms in it now. And a proper seal, issued by the refugee assembly. It's yours, if you'll carry it.
+say pip | ...I'm not forgiven.
+say jori | No. You're employed.
+say pip | That's better. That's so much better.
+if party:C07 sableline
+goto sabledone
+label sableline
+say sable | You and I signed the same kind of papers, Pip. Different hands. Same ink.
+say pip | ...Then we both keep better ones now.
+label sabledone
+join C08
+chapter CH18
+objective dain | Pip is back. Veyr's distribution point is open.
+call REUNION_CHECK
+level_floor 29
+end
+label blocked
+say narr | The ledgers are behind the barricade. Someone is guarding them.
+end
+label done
+say narr | The ledgers, every entry signed by the person it names.
+@end
+
+@scene CH18_RES
+if flag:t02r_names after
+say survivor | We've been waiting for our own names. Not for someone to hand them to us.
+end
+label after
+say survivor | Page forty. My name. My handwriting. Nobody else's.
+@end
+
+@scene T02R_REGISTRAR
+if ch:CH20 q08
+say clerk | Registry's open for amendments. Every change is signed by the one who asked for it.
+end
+label q08
+call Q08_HOOK
+@end
+
+# ---------------------------------------------------------------- Veyr (post)
+@scene T02P_ANSEL
+if ch:CH20 q11
+say ansel | Clerk Ansel. I refused false death certificates back when it could get me hanged. Now I sign ration chits. Better job.
+end
+label q11
+call Q11_HOOK
+@end
+
+@scene T02P_GUARDS
+say guard | Do you think our families can eat loyalty?
+say soldier | Not anymore. They can eat the rations, though. So we hand out rations.
+@end
+
+@scene T02P_DIST
+say worker | Distribution point. One line, no ranks. You'd be amazed how much faster it goes without ranks.
+@end
+
+@scene T02P_REFUGEE
+say survivor | The throne used to be right there. Now it's a soup table. Nobody misses the throne.
+@end
+
+@scene T02P_SHOP
+say keeper | South market, moved north because the south is underwater. Same prices. Mostly.
+shop SHOP_T02
+@end
+
+@scene T02P_INN
+say keeper | Barracks cots. Ex-barracks. Ex-cots, some of them, but they hold.
+inn 0
+@end

@@ -1,0 +1,191 @@
+# CH09 — A Voice with My Hands. Nacre and the Memory Vault. SC06 is authored.
+
+@scene T06_SEN
+if ch:CH09,!flag:accord_nacre accord
+if ch:CH09 after
+say sen | Archivist Sen. Nacre keeps disagreements. Other archives keep only the winner's copy.
+say sen | The Memory Vault is north, up the vault road. Go in with a question, not an answer.
+end
+label accord
+call CH10_NACRE
+end
+label after
+say sen | You kept both accounts. Good. The record is heavier than it was. That's how you know it's honest.
+@end
+
+@scene T06_GARDENER
+say farmer | Do the plants count as sacred? No idea. They need water either way.
+@end
+
+@scene T06_FAMILY
+say elder | The pool showed my grandmother's wedding. My granddaughter saw a funeral in the same water.
+say survivor | We saw the same morning. It was both. We argue about it every week. It's our favourite argument.
+@end
+
+@scene T06_SALT
+say keeper | Salt, jars, remedies. The good cloth-lined jars keep water sweet across the flats.
+shop SHOP_T06
+@end
+
+@scene T06_WATER
+say worker | Water carried in cloth-lined jars. It tastes of linen. You get used to it.
+@end
+
+@scene T06_PILGRIM
+say monk | I came to hear my mother in the pool. I heard three other people's mothers. It helped anyway.
+@end
+
+@scene T06_INN
+say monk | Quiet cloister. We ask little and you rest long. No talking after the second bell.
+inn
+@end
+
+@scene T06_LISTENER
+say scholar | Listening is a practice. You don't take from the pool. You let it tell you, and you're allowed to stop.
+@end
+
+@scene T06_POOL_KEEPER
+say sen | The listening pool. It holds voices that were never anyone's property. Come back later. It will still be here.
+@end
+
+@scene D08_CONSENT once
+say narr | The Listening Gate. Words cut in the lintel: 'The vault will show you memory, if you consent. You may refuse. The walls carry the same testimony in ink.'
+say oriel | It is asking. That is more than the ministry ever did.
+choice | Accept the memory projection -> accept | Decline; read the walls instead -> decline
+label accept
+set d08_projection
+say narr | A cool pressure behind the eyes, then light. The vault will show you what it holds.
+goto done
+label decline
+set d08_documents
+say narr | You decline. The gate dims politely. Ink testimony lines every wall ahead.
+label done
+say narr | (Your choice changes how the vault presents its testimony, not what you learn.)
+objective oriel | Gather the three testimonies and set them in order on the chronology wall in the Voluntary Accord.
+@end
+
+@scene D08_T1
+if flag:d08_t1 heard
+set d08_t1
+if flag:d08_projection mem
+doc Testimony_I | 312 years ago, a regional disaster. Some humans and dragons chose to share bodies to survive it. Each accord was voluntary. Each included a separation rite, available to either party at any time.
+end
+label mem
+say narr | Memory: two voices in one throat, laughing about the weather. One of them says, 'Whenever you want to leave, say so.'
+end
+label heard
+say narr | Testimony I: the voluntary accords, with a separation rite.
+@end
+
+@scene D08_T2A
+if flag:d08_t2a heard
+set d08_t2a
+doc Testimony_II_(worker) | A regulator crew chief: 'They said the hosts were infrastructure now. We stopped using names on the shift boards. The separation rite was struck from the training manual.'
+end
+label heard
+say narr | Testimony II, first account: the rite was removed; hosts became infrastructure.
+@end
+
+@scene D08_T2B
+if flag:d08_t2b heard
+set d08_t2b
+doc Testimony_II_(minister) | A ministry order: 'Standardisation improves safety. Separation rites caused outages. Discontinuation is humane in aggregate.'
+say tessa | 'Humane in aggregate.' That's a sentence you'd only write if you knew it was a lie.
+say oriel | Or if you believed it. Both accounts go in the record.
+end
+label heard
+say narr | Testimony II, second account: the ministry's reasons for standardisation.
+@end
+
+@scene D08_T3
+if flag:d08_t3 heard
+set d08_t3
+if flag:d08_projection mem
+doc Testimony_III | A century ago: the last independent great dragons were broken into distributed consciousnesses, spread across bred lineages and relay organs. The industry called the organs fossils. The lineages were called hosts.
+end
+label mem
+say narr | Memory flickers toward a nursery ledger. Dain stops at the records and does not step into the named child's memory.
+say dain | Records only. It's hers.
+doc Testimony_III | A century ago: the last independent great dragons were broken into distributed consciousnesses, spread across bred lineages and relay organs. The industry called the organs fossils. The lineages were called hosts.
+end
+label heard
+say narr | Testimony III: engineered lineages and distributed consciousness.
+@end
+
+@scene D08_WALL
+if flag:d08_chrono done
+if !flag:d08_t1 missing
+if !flag:d08_t2a missing
+if !flag:d08_t2b missing
+if !flag:d08_t3 missing
+say narr | The chronology wall has three slots. Which testimony goes first?
+choice | The industrial standardisation -> wrong | The voluntary accords -> first | The engineered lineages -> wrong
+label first
+say narr | Second?
+choice | The engineered lineages -> wrong | The standardisation (both accounts) -> second | Only the ministry's account -> onevoice
+label second
+say narr | Third?
+choice | The engineered lineages -> third | Leave it empty -> wrong
+label third
+sfx FX024
+set d08_chrono
+say narr | The wall accepts the record: voluntary accords; their standardisation, in two voices; the engineered lineages. The choir door beyond the galleries opens.
+say sen | (A voice from far above, carried by the vault): Heavier than it was.
+objective | The Choir Chamber is open, north of the First Industry and the Quiet Nursery.
+end
+label onevoice
+sfx FX004
+say narr | The wall rejects it. A record with one voice removed is not a record. The tablets return to their shelves.
+end
+label wrong
+sfx FX004
+say narr | Dissonance. The tablets slide back to their shelves. (The dates on each tablet show the order.)
+end
+label missing
+say narr | The wall needs three testimonies, and both accounts of the second. (The Voluntary Accord, the First Industry, the Quiet Nursery.)
+end
+label done
+say narr | The chronology is set.
+@end
+
+@scene D08_CHOIR once
+music silence
+say narr | The Choir Chamber. Three masked figures sing one note so perfectly that it hurts to hear.
+say "Pale Choir" | ONE HISTORY. ONE ACCOUNT. REMOVE THE CONTRADICTION.
+say oriel | It wants to make every account agree. Vary your commands - it echoes whatever you repeat.
+battle B08 noflee
+set b08_done
+music M024
+say narr | The masks crack. The single note breaks into many voices, all different, none silenced.
+say narr | A small fox made of warm light steps out of the broken chorus and sits at Oriel's feet.
+say "Lumen Fox" | You kept every voice. I light what is actually there. Call me when you need to see.
+vestige V05
+xp 380
+@end
+
+@scene D08_SC06 once
+say narr | The Still Pool. Dain kneels at the water. His reflection moves a half-beat late.
+say ilyr | There is enough of me here to begin again.
+say dain | Here means my hands.
+say ilyr | They made them to hold me.
+say dain | They are still mine.
+say ilyr | You would keep me imprisoned.
+say dain | I would stop you calling my life an empty room.
+say oriel | There was a way to leave. Before they removed it.
+say dain | Then we find that way.
+say ilyr | And until then?
+say dain | You ask.
+wait 0.6
+say ilyr | ...I am asking to speak with you. Not through you.
+say dain | Yes.
+set ilyr_accord
+say tessa | So the heartglass organs are relays, and dragonborn are - memory nodes. Living ones.
+say rook | And the relays can be released. All at once, from the Crown Dais.
+say oriel | 'Released' would include every dragonborn host. Every node. At once.
+say rook | Freedom for all of them.
+say oriel | Without asking any of them.
+chapter CH09
+objective oriel | Return the evidence to Cinderwake, High Aerie and Nacre. Each needs something different.
+rumor | Ivo and Oriel think a single relay could be released slowly, locally, without a captive holding it.
+level_floor 20
+@end

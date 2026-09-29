@@ -1,0 +1,274 @@
+# CH22 — A Gate with Two Keys. Crown Heart: two teams, alternating locks, the Crown Vessel (B12), SC11.
+# CH23 — Let the Names Remain. CH24 — The First Unborrowed Morning.
+
+@scene D10_DOCK once
+music M028
+say narr | Wayfarer ties up at the Crown Heart - a rib of dragon bone and relay glass rising out of the Ember Sea.
+say ivo | Two lungs. West runs the physical pressure; east runs the name-binding circuit. The locks alternate - west, east, west, east.
+say oriel | Two teams, then. Four and four. Neither team can finish alone and neither can shut the other in.
+say sable | The swap bells in each lung pass control between the teams whenever you like.
+say narr | (This is the Accord Dock. You can still leave: Wayfarer is moored behind you. Past the Concord Bridge, the Crown Vessel.)
+backup pre_finale
+say narr | (A protected backup has been written: "Before the Final Descent". It is kept separate from your slots and from any clear save.)
+objective oriel | When ready, use the split lever on the dock to divide into two teams.
+@end
+
+@scene D10_CREW
+say pilot | Wayfarer's moored and not going anywhere without you. Rest, restock, come back whenever.
+shop SHOP_SHIP
+@end
+
+@scene D10_SPLIT
+if flag:d10_split already
+say narr | Two teams of four. Same stores, same growth, same recovery point here. Any four can take either lung.
+split_party
+set d10_split
+say narr | (Team A takes the west lung; Team B the east. West first.)
+team A
+objective oriel | Team A: release the first west lock. Then ring the swap bell to hand over to Team B.
+warp D10_R02 from_r01 left
+end
+label already
+choice | Send Team A west -> a | Send Team B east -> b | Stay -> stay
+label a
+team A
+warp D10_R02 from_r01 left
+end
+label b
+team B
+warp D10_R03 from_r01 right
+label stay
+@end
+
+@scene D10_SWAP
+if var:team_on>=2 toA
+say narr | The swap bell. Its note carries through the bone to the other lung.
+choice | Hand over to Team B (east) -> go | Stay -> stay
+label go
+team B
+warp D10_R03 from_r01 right
+end
+label toA
+say narr | The swap bell. Its note carries through the bone to the other lung.
+choice | Hand over to Team A (west) -> go2 | Stay -> stay
+label go2
+team A
+warp D10_R02 from_r01 left
+label stay
+@end
+
+@scene D10_W1
+if flag:d10_w1 done
+sfx FX010
+set d10_w1
+say narr | The first west lock releases with a gasp of pressure. Across the Heart, something in the east lung unclamps.
+objective oriel | West lock 1 released. Ring the swap bell - Team B's first lock is free.
+end
+label done
+say narr | The first west lock is open.
+@end
+
+@scene D10_E1
+if flag:d10_e1 done
+if !flag:d10_w1 wait
+sfx FX024
+set d10_e1
+say narr | The first east lock unbinds a ring of names from the circuit. They drift up like sparks. The west lung's second lock unclamps.
+objective oriel | East lock 1 released. Swap to Team A for the second west lock.
+end
+label wait
+say narr | The lock is held by the west lung's pressure. Team A has to release theirs first.
+end
+label done
+say narr | The first east lock is open.
+@end
+
+@scene D10_W2
+if flag:d10_w2 done
+if !flag:d10_e1 wait
+sfx FX010
+set d10_w2
+say narr | The second west lock opens. The pressure in the Heart drops to a long, slow exhale.
+objective oriel | West lock 2 released. Swap to Team B for the last east lock.
+end
+label wait
+say narr | This lock is still bound by the east circuit. Team B has to release their first lock.
+end
+label done
+say narr | The second west lock is open.
+@end
+
+@scene D10_E2
+if flag:d10_e2 done
+if !flag:d10_w2 wait
+sfx FX024
+set d10_e2
+set d10_done_lungs
+say narr | The last east lock falls open. Both lungs breathe out together. The Concord Bridge unfolds from the dock.
+team all
+objective oriel | Both lungs are open. Meet on the Concord Bridge (north of the dock).
+warp D10_R04 from_r01 up
+end
+label wait
+say narr | This lock is still held by the west pressure. Team A has one more lock.
+end
+label done
+say narr | The last east lock is open.
+@end
+
+@scene D10_REUNITE once
+say narr | The two teams meet in the middle of the Concord Bridge.
+say corren | Nobody fell.
+say pip | Nobody forged anything. I checked.
+say tessa | Everyone's tired. That's allowed.
+say narr | (Rest at the lamp and choose the four who will face the Crown Vessel. The others will hold the release anchors from the bridge.)
+formation
+objective dain | Cross the Concord Bridge north to the Crown Vessel.
+@end
+
+@scene CH22_VESSEL once
+music silence
+say narr | The Crown Vessel: a heart of relay glass the size of a chapel, with a man's shape half-sunk in its surface.
+say voss | Order. You broke it. I am putting it back. Every fragment, every host, one voice.
+say dain | You don't have a voice anymore, Voss. You have a command.
+say voss | It is the same thing.
+say oriel | It never was.
+say narr | Behind the party, on the bridge, the others take up the release anchors. Across the Ember Sea, the towns begin the procedure at the same moment.
+battle B12 noflee
+set b12_done
+music silence
+say narr | The Vessel cracks from the inside. Voss's shape comes loose from the glass - a tired old man in a torn uniform, gasping.
+say voss | ...They will not obey anyone now.
+say sable | That was the point.
+say narr | Soldiers from the accord take Voss down to the boats. He will be heard, too.
+objective dain | Step out into the Open Sky.
+@end
+
+@scene CH22_SC11 once
+music silence
+say narr | The Open Sky. The last of the network drifts away as ordinary light. There are no chains in it.
+say narr | Something like a door stands open beside Dain - a form of light and scale, restored and waiting.
+say ilyr | The way is open.
+say dain | I know.
+say ilyr | You are not going to ask me to stay.
+say dain | Would that make it easier?
+say ilyr | No.
+say dain | Then I will ask whether you wish to.
+say ilyr | For now.
+say dain | And when that changes?
+say ilyr | We speak again.
+say narr | The binding pattern on Dain's hands fades. What is left is a promise, not a lock - one either of them can end.
+set voluntary_accord
+chapter CH22
+music M016
+fade out 1.0
+warp T07_MARKET from_hearth up
+fade in 1.0
+call CH23_WALK
+@end
+
+@scene CH23_WALK once
+say narr | Hearthward, some weeks later.
+say mara | Records are open. Engines run on waterwheels and wind. The rescue routes have names on them. It isn't finished.
+say mara | It's started. That's what you get.
+if flag:q01_done q1
+goto q1b
+label q1
+say narr | At the market wall, the quarry workers' names are carved where their numbers were. Mara chose the inscription.
+label q1b
+say narr | Rook's hearing is held in the open, on the pontoons. Sable appears before the Whitebone survivors, as promised. Nobody is paraded. Everybody is heard.
+say narr | Families light a lamp for each person lost. The lamps are not counted against anyone.
+chapter CH23
+objective dain | Walk Hearthward. When you're ready, go to the communal hearth.
+@end
+
+@scene CH23_EPILOGUES once
+say narr | By the hearth, the crew talk about what comes next.
+if flag:q02_done tessa2
+say tessa | I'm going to teach. Short lessons. Nobody faints.
+goto tessa_end
+label tessa2
+say tessa | The public workshop opens tomorrow. The apprentice's name goes above the door. Mine goes under it.
+label tessa_end
+epilogue C02
+if flag:q03_done corren2
+say corren | Rescue roster. Tuesdays. Some Thursdays.
+goto corren_end
+label corren2
+say corren | The Returners' Wall has forty names now. Mine isn't one of them. That's how I like it.
+label corren_end
+epilogue C03
+if flag:q04_done ivo2
+say ivo | Wayfarer needs maintenance. So does everything else. Good.
+goto ivo_end
+label ivo2
+say ivo | Every town has the notes now. Somebody in Bellharbor already improved the boiler. Didn't ask me. Perfect.
+label ivo_end
+epilogue C04
+if flag:q05_done nera2
+say nera | I'm drawing maps for anyone who asks. With the other guides' names on them.
+goto nera_end
+label nera2
+say nera | Every public map has warnings, detours, and who to blame. I'm on three of them. Deservedly.
+label nera_end
+epilogue C05
+if flag:q06_done oriel2
+say oriel | Ordinary medicine. Slow, useful, asked for.
+goto oriel_end
+label oriel2
+say oriel | The sanctuary asks first now. Always. My mistake is in the public record, where it belongs.
+label oriel_end
+epilogue C06
+if flag:q07_done sable2
+say sable | The hearing continues. I go back every month.
+goto sable_end
+label sable2
+say sable | They asked me a question at the hearing. I answered it without qualification. The hearing continues.
+label sable_end
+epilogue C07
+if flag:q08_done pip2
+say pip | Blank forms, proper seal. Very boring. Very good.
+goto pip_end
+label pip2
+say pip | The registry takes amendments now, and records who made each one. Including mine.
+label pip_end
+epilogue C08
+say dain | And me?
+say ilyr | And us.
+say narr | Dain unpins the old Crown service badge from his coat and leaves it at the public memorial, among the lamps. Then he signs up for a maintenance shift aboard Wayfarer.
+epilogue C01
+fade out 1.0
+music silence
+wait 0.8
+set dawn
+fade in 1.2
+music M030
+say narr | Dawn over the rebuilt harbor.
+objective dain | Wayfarer is waiting at the berth.
+@end
+
+@scene CH24_MORNING once
+say narr | On the way to the berth, a lamp flickers out.
+say worker | Lamp three is out.
+say worker | The spare is under the bench.
+say dain | Do you need -
+say worker | No. Thank you.
+say narr | The workers replace the part. The lamp comes back on.
+say ilyr | That sound.
+say dain | The morning bell.
+say ilyr | A door opening.
+say dain | Both, then.
+objective dain | Step aboard Wayfarer.
+@end
+
+@scene CH24_BOARD once
+chapter CH24
+say narr | Dain steps aboard Wayfarer.
+clear_save
+credits
+ending
+@end
+
+@scene T07_LAMP_W
+say worker | Morning. Mind the ladder.
+@end

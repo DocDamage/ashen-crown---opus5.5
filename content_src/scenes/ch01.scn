@@ -1,0 +1,427 @@
+# CH01 — The Orders We Carry. Brackenford and Crown Quarry.
+# Key scenes SC01/SC02 use the authored dialogue from docs/17; connective dialogue is newly written.
+
+@scene OPENING once
+music M010
+say narr | Brackenford Halt. The morning train from Veyr, three hours late.
+say inspector | Captain Ashward. The quarry gate is up the north road. The regulator report is due by the evening bell.
+say dain | Understood.
+say inspector | Whatever the crew tells you, Captain, production is not your department.
+move inspector up
+hide inspector
+objective | Report to Crown Quarry's gate, north of town.
+@end
+
+@scene T01_INSPECTOR
+say inspector | The gate is north. I will meet you there, Captain.
+@end
+
+@scene T01_WORKER_LIST
+if flag:sc00_done again
+say worker | I'm not getting on that train. Not till someone checks the list.
+say dain | What list?
+say worker | Seven of ours went down at dawn. None came up. Mara's gone to the gate to count them herself.
+say worker | You're ministry.
+say dain | Crown Guard. Dain Ashward.
+say worker | The badge means they sent you.
+say dain | It means I can open a gate.
+say worker | Then open it. Mara's up there already, arguing with a man who thinks people are a schedule.
+set sc00_done
+objective worker | Go north to the quarry gate. Mara is counting her crew.
+end
+label again
+say worker | Seven names. Mara has them. Go.
+@end
+
+@scene T01_KEEPER
+say keeper | Tonics, ether, a few blades. Everyone's wages are three months late, so I write it in the book.
+say keeper | You're not on the book, Captain. You pay.
+shop SHOP_T01
+@end
+
+@scene T01_CHILD
+say child | Mum says the quarry sings at night. I've heard it. It's not singing. It's more like a door creaking.
+@end
+
+@scene T01_FARMER
+say farmer | Rails through my beans, again. The ministry paid for the track, not the beans.
+say farmer | River road south goes to Veyr. Two days on foot if the bridge holds.
+@end
+
+@scene T01_ELDER
+say elder | Forty years I cut stone up there. Heartglass was just a bad seam, then. Red and warm.
+say elder | Nobody called it fuel till the regulators came. Now it hums at night and they call that pressure.
+rumor | An old quarryman says the heartglass started humming after the regulators arrived.
+@end
+
+@scene T01_LAUNDRESS
+say narr | Shirts on the line, each with a number stitched at the collar.
+say worker | Shift numbers. I stitch the names on the inside where the foreman can't see.
+@end
+
+@scene T01_GUARD
+say guard | Captain. Quiet post, this. Rats in the drains, a few angry wives. The quarry does its own policing.
+@end
+
+@scene T01_CARTMAN
+say worker | Lunch carts go up at noon. Nobody's eaten today. The crew's still under.
+@end
+
+@scene T01_BAKER
+say baker | Shared oven. Every house brings its dough, every house takes its loaf. Mara's crew gets theirs first when they come up.
+say baker | When. Not if.
+@end
+
+@scene T01_BAKERY_WORKER
+say worker | They docked us for the flooded lift. Docked us for the water.
+@end
+
+@scene T01_BAKERY_CHILD
+say child | Is my dad one of the seven? His name's Tobbe. He's got a bad knee.
+@end
+
+@scene T01_BUNK_INN
+say elder | Bunkhouse beds. Twenty-five crowns a head, and the stove is free.
+inn
+@end
+
+@scene T01_SLEEPER
+say worker | Night shift. Go away. Unless it's about the lift. Is it about the lift?
+@end
+
+@scene T01_MARA_MOTHER
+say elder | Mara's out counting again. She counts everyone. Her father was never counted, so she counts.
+@end
+
+@scene T01_TALLY
+say clerk | I keep the town's own tally. Injuries, deaths, who's owed. The ministry keeps a different one.
+say clerk | They don't match. They never have.
+@end
+
+@scene T01_MARA_AFTER
+say mara | Seven came up. Tonight I'll count them twice.
+say mara | You've got a long walk to Veyr, Captain. Don't let them make you into a report.
+@end
+
+# ------------------------------------------------------------------ Gatehouse
+@scene D01_MARA_GATE
+say mara | The lift is filling. Talk to the inspector if you want permission. I'm not waiting for it.
+@end
+
+@scene D01_INSPECTOR
+if flag:sc01_done after
+say inspector | Captain, the regulator is behind the heartglass face. Everything else is a distraction.
+end
+label after
+say inspector | You are exceeding your orders, Captain. I will be writing this down.
+@end
+
+@scene D01_GATE_GUARD
+say guard | The drains back up into the yard. Pump handles by the alcoves clear them. Old kit, but it works.
+@end
+
+@scene D01_SC01 once
+face player up
+music M020
+say mara | The lift is filling. My people are below it.
+say inspector | Production cannot stop on an unverified report.
+say dain | How many?
+say mara | Seven. I have their names.
+say inspector | Captain, the inspection is about the regulator.
+say dain | Then the regulator can wait.
+say mara | It never has before.
+say dain | Show me the lift.
+say mara | Hesk. Anni. Tobbe. Marit. Joss. Wren. Old Cale. Say them back to me when you find them.
+say mara | The gallery's below the gate. The loft pumps can clear the spur, if anyone still knows how to run them.
+set sc01_done
+setvar workers 0
+objective mara | Find Mara's seven workers below Crown Quarry, then get them out.
+say guard | Rats in the gate drains again, Captain. Mind your feet.
+battle D01_T noflee
+say narr | Attack strikes with your weapon. Defend halves the next blow until you act again.
+@end
+
+@scene D01_PUMP0
+if flag:d01_pump0 done
+say narr | An old hand pump. The alcove behind it is flooded to the knee.
+choice | Work the pump handle -> pump | Leave it -> leave
+label pump
+sfx FX010
+set d01_pump0
+say narr | The handle groans. Water sucks away through the grate, and the alcove floor shows again.
+end
+label done
+say narr | The alcove is drained.
+end
+label leave
+@end
+
+# ------------------------------------------------------------------ Lunch Gallery
+@scene D01_TESSA_GUARD
+say guard | She stays put, Captain. Detained for relay tampering.
+@end
+
+@scene D01_TESSA once
+say tessa | Don't touch anything. If I let go of this, the gallery lamps die and the second pump seizes.
+say tessa | It's like holding a door shut against a crowd, using a teaspoon.
+say dain | Who detained you?
+say tessa | The ministry. For telling them the relay was overloaded. Which it was. Which I proved by overloading it.
+say tessa determined | Which, yes, was a mistake.
+say dain | Can you run a pump?
+say tessa | I can hold one handle open. Not both. Nobody can do both.
+say dain | Then hold one. Guard - she comes with me. My order.
+say guard | On your badge, Captain.
+say tessa | Your badge. Fine. I'll owe it a thank-you note.
+set d01_tessa_circuit
+join C02
+say narr | Tessa's Magic spends MP. Ember Lance burns what fire hurts; flasks work for anyone and cost no MP.
+@end
+
+@scene D01_LIST once
+say narr | Under a lunch pail, a shift sheet. Seven names, each ticked at dawn. None ticked since.
+doc Shift_Sheet | Lower gallery, dawn shift. Hesk - pump crew. Anni - rail. Tobbe - rail (knee). Marit - face. Joss - face. Wren - carrier. Old Cale - lamps. Signed out: none.
+key K_WORKER_LIST
+if party:C02 tessa
+end
+label tessa
+say tessa | Somebody wrote 'production units: 7' in the margin. Somebody else crossed it out and wrote the names back.
+@end
+
+# ------------------------------------------------------------------ Workers (all recoverable, any order)
+@scene D01_W1 once
+say worker | You're not the ministry. The ministry doesn't come down here.
+say dain | Mara sent me. Name?
+say worker | Hesk. Pump crew. The pump crew with no pump.
+say dain | Hesk. Go up the gallery to the gate. Mara is counting.
+set d01_w1
+addvar workers 1
+say narr | Workers found: {v:workers} of 7.
+@end
+
+@scene D01_W2 once
+say worker | I can't swim and the island got smaller.
+say dain | Walk where the water's shallow. It's marked.
+say worker | Anni. Rail crew. Tell Mara I didn't leave the others. The water left me.
+set d01_w2
+addvar workers 1
+say narr | Workers found: {v:workers} of 7.
+@end
+
+@scene D01_W3 once
+say worker | My knee went when the rail jumped. I've been sitting here counting drips.
+say dain | Tobbe?
+say worker | How do you know?
+say dain | Your son asked. The bakery.
+say worker | Oh. Then I'd better walk.
+set d01_w3
+addvar workers 1
+say narr | Workers found: {v:workers} of 7.
+@end
+
+@scene D01_W4 once
+say worker | Marit. Face crew. We heard the heartglass knock. Like knuckles on a door.
+say worker | The foreman said pressure. It knocked in threes.
+set d01_w4
+addvar workers 1
+say narr | Workers found: {v:workers} of 7.
+@end
+
+@scene D01_W5 once
+say worker | Joss. I stayed with the lift cable so nobody would open it with Wren's cousins aboard.
+say dain | The lift gate stays shut.
+say worker | Good. Say that to anyone who has a lever.
+set d01_w5
+addvar workers 1
+say narr | Workers found: {v:workers} of 7.
+@end
+
+@scene D01_W6 once
+say worker | Wren. Carrier. I was bringing water to the face when the lamps went strange.
+say worker | The big machine says things. Not words. Near words.
+set d01_w6
+addvar workers 1
+say narr | Workers found: {v:workers} of 7.
+@end
+
+@scene D01_W7 once
+say worker | Old Cale. Lamps. Forty years. Lamps don't lie, and every one of them is leaning toward that face.
+say dain | Come up to the lift, Cale.
+set d01_w7
+addvar workers 1
+say narr | Workers found: {v:workers} of 7.
+@end
+
+@scene D01_RESCUED
+say worker | We wait for the rest. Mara's rule.
+@end
+
+# ------------------------------------------------------------------ Pump Loft
+@scene D01_PUMP1
+if flag:d01_drained done
+if flag:d01_p2 pull
+say narr | A pump handle, linked by a long rod to its twin across the loft.
+if party:C02 ask
+say narr | The handle moves, but water rushes back through the other valve. It needs two people.
+end
+label ask
+choice | Ask Tessa to hold this handle -> hold | Pull it alone -> alone
+label hold
+set d01_p1
+unset d01_p2
+say tessa | Holding. Go pull the other one before my arms remember they're arms.
+end
+label alone
+sfx FX010
+say narr | The handle moves, but the water rushes back through the other valve.
+end
+label pull
+call D01_DRAIN
+end
+label done
+say narr | The channel is drained.
+@end
+
+@scene D01_PUMP2
+if flag:d01_drained done
+if flag:d01_p1 pull
+say narr | A pump handle, linked by a long rod to its twin across the loft.
+if party:C02 ask
+say narr | The handle moves, but water rushes back through the other valve. It needs two people.
+end
+label ask
+choice | Ask Tessa to hold this handle -> hold | Pull it alone -> alone
+label hold
+set d01_p2
+unset d01_p1
+say tessa | Holding. Other side. Quickly, please.
+end
+label alone
+sfx FX010
+say narr | The handle moves, but the water rushes back through the other valve.
+end
+label pull
+call D01_DRAIN
+end
+label done
+say narr | The channel is drained.
+@end
+
+@scene D01_DRAIN
+sfx FX010
+shake 0.4
+say narr | Both pumps turn together. The channel north of the loft drains into the old sump.
+set d01_drained
+unset d01_p1
+unset d01_p2
+say tessa | One crew holds, the other pulls. That's the whole secret. Someone built it so nobody could do it alone.
+say dain | The ore cart is still on the track north. The brake is by the lift.
+@end
+
+@scene D01_BRAKE
+if flag:d01_brake done
+if flag:d01_drained ok
+say narr | The track north is under water. Releasing the cart now would sink it in the channel.
+end
+label ok
+sfx FX010
+set d01_brake
+say narr | The rail brake releases. The ore cart rolls north, clear of the passage, and thumps into the buffer.
+end
+label done
+say narr | The brake is released.
+@end
+
+@scene D01_LIFTLEVER
+say narr | The lift gate lever. Through the grille, the lift cage hangs with three people aboard.
+say dain | Not that one.
+@end
+
+@scene D01_LOFTGATE
+if flag:d01_loftgate done
+sfx FX009
+set d01_loftgate
+say narr | The service latch lifts. The lunch gallery is just below: a shorter way back.
+end
+label done
+say narr | The service gate is open.
+@end
+
+# ------------------------------------------------------------------ Heartglass Face
+@scene D01_SC02 once
+music silence
+show inspector 20 28 up inspector
+say narr | The heartglass face fills the chamber. Something in it pulses, slow and warm.
+say tessa | That pulse is answering the pump.
+say dain | Pressure does that.
+say tessa concern | Not with your name.
+wait 0.4
+say ilyr | Little ember.
+say dain | Who said that?
+say tessa | You heard it too.
+say inspector | Resonance artifact. Restart the line.
+say dain | No.
+wait 0.6
+say narr | The extractor light dims rather than flares. Then its red gauge begins to climb.
+hide inspector
+battle B01 noflee
+set b01_done
+music M020
+say narr | The Warden shudders and goes still. Its arm locks above the occupied lift - disconnected, not destroyed.
+say ilyr | That is not a stone.
+say tessa | Dain. You heard that.
+say dain | I heard it.
+objective | Get the workers out through the Lift Yard, east of the face.
+xp 60
+@end
+
+# ------------------------------------------------------------------ Lift Yard
+@scene D01_YARD_ARRIVE once
+say mara | You broke the Warden. The yard lift runs on counterweight now. We can take them up.
+call D01_MARA_YARD
+@end
+
+@scene D01_MARA_YARD
+if var:workers>=7 depart
+say mara | I count {v:workers}. Seven went down. We wait.
+say mara | Hesk, Anni, Tobbe, Marit, Joss, Wren, Old Cale. Whoever's missing is still below.
+end
+label depart
+call D01_DEPART
+@end
+
+@scene D01_DEPART once
+say mara | Hesk. Anni. Tobbe. Marit. Joss. Wren. Old Cale.
+say mara | All seven.
+show inspector 4 8 right inspector
+say inspector | Captain. The line restarts at noon. The heartglass face is intact, which is the one mercy in this.
+say dain | It is not a stone.
+say inspector | I beg your pardon?
+say dain | I will not order this line restarted.
+say inspector | Then you will explain that refusal to the ministry in Veyr. In person.
+say inspector | And the apprentice returns to custody. With the heartglass samples, which are worth more than -
+say tessa | Than seven names? Your ledger says so.
+say tessa determined | I'm taking the list. You can keep the rocks.
+say mara | Up we go. Everyone holds the rail. Nobody is last.
+fade out 0.6
+chapter CH01
+unset d01_p1
+warp T01_PLATFORM from_quarry down
+fade in 0.6
+say narr | Evening. The lift yard is quiet. The quarry does not sing.
+call V01_PACT
+say tessa | They'll arrest you in Veyr.
+say dain | Probably.
+say tessa | I'm coming anyway. Somebody has to explain relays to a courtroom.
+objective inspector | Report to the ministry in Veyr, south across the river.
+discover L_T02
+level_floor 4
+@end
+
+@scene V01_PACT once
+say narr | A small moth of ember light has followed Dain up from the quarry. It settles on his gauntlet.
+say ilyr | It came out of the dimmed machine. It asks to travel. It does not ask to be carried.
+say dain | Then it walks with us. Or flies.
+say narr | The Ember Moth offers a small pact: it will help when called, and leave when it chooses.
+vestige V01
+say narr | (Link a Vestige to a party member from Vestiges in the menu. Summons spend 100 Concord.)
+@end

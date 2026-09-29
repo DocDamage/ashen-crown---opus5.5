@@ -1,0 +1,195 @@
+# CH13 — After the Bell. Hearthward: wake, lamp fuel, a repaired path, news of the others.
+
+@scene CH13_WAKE once
+music M016
+say narr | A cot on a floating pontoon. A fire in an iron drum. Someone is humming, badly.
+say oriel | Don't sit up yet. You swallowed half the Ember Sea.
+say dain | The Ember - what sea?
+say oriel | The one that used to be the middle of the country. Three weeks ago.
+say dain | The others?
+say oriel | Scattered. I have been having visions - pieces of them. They are not reliable. I am not reliable right now either.
+say oriel | So we do the reliable things first. Eat. Help. Listen.
+say mara | Mara Pell. Brackenford, until the river moved. Now I run a floating town, apparently.
+say mara | You can pay for your cot the way everyone does. The lamps need fuel carried, and the east walkway's broken.
+objective oriel | Help at Hearthward: carry lamp fuel for the keeper, fix the broken walkway, and ask about the others.
+@end
+
+@scene T07_ORIEL
+if flag:t07_fuel,flag:t07_path ready
+say oriel | The lamp keeper needs fuel from the plank pile crates. And the east walkway is out.
+end
+label ready
+call CH13_TALK
+@end
+
+@scene T07_PLANKS
+if flag:t07_fuel_carry fuel
+say worker | Fuel cans and planks. Take what you can carry. Everyone carries something here.
+set t07_fuel_carry
+say narr | (You pick up two cans of lamp fuel and a length of plank.)
+end
+label fuel
+say worker | Lamps first, then planks. Keeper's by the hearth.
+@end
+
+@scene T07_LAMP
+if flag:t07_fuel done
+if !flag:t07_fuel_carry nofuel
+sfx FX022
+say elder | Fuel! Bless you. The night lamps go on the outer pontoons so the fishing skiffs can find home.
+set t07_fuel
+if flag:t07_path talk
+say elder | You've got a plank, too. The east walkway broke yesterday. There's a family stuck on the far pontoon.
+end
+label talk
+objective oriel | Sit with Oriel by the hearth.
+end
+label nofuel
+say elder | The lamps are low. There's fuel in the crates by the plank pile - if you can carry some over, the skiffs will thank you.
+end
+label done
+say elder | Lamps are lit. Nobody's lost on the water tonight.
+@end
+
+@scene T07_STRANDED
+if flag:t07_path safe
+say survivor | We're fine! We just can't get across. Somebody said there were planks.
+end
+label safe
+say survivor | Thank you. The kids were starting to think this pontoon was a new country.
+@end
+
+@scene T07_FIX_PATH
+if flag:t07_path done
+if !flag:t07_fuel_carry noplank
+sfx FX010
+say narr | Dain lays the plank across the gap and Oriel lashes it down. It isn't pretty. It holds.
+set t07_path
+say survivor | Oh thank goodness. Come on, kids - dry land. Well. Dry pontoon.
+if flag:t07_fuel talk
+objective oriel | Walkway fixed. Carry the lamp fuel to the keeper by the hearth.
+end
+label talk
+objective oriel | Sit with Oriel by the hearth.
+end
+label noplank
+say narr | A gap in the walkway. You'd need a plank - there's a pile by the cots.
+end
+label done
+say narr | The patched walkway creaks, but holds.
+@end
+
+@scene T07_COOK
+say baker | Fish broth. Every day. Tomorrow I'm told there may be a potato.
+@end
+
+@scene T07_MEDIC
+say monk | The old woman in the corner cot keeps asking for her husband by his quarry number. I keep answering with his name.
+@end
+
+@scene T07_INN
+say keeper | Cots, blankets, a fire. That's the whole inn. Nobody's charged; everyone helps.
+inn 0
+@end
+
+@scene T07_SALVAGE
+say narr | A salvage chest. Things found floating, washed up, or dragged out of the sealed ruins are brought here for their owners.
+salvage
+say narr | (The chest is empty for now.)
+@end
+
+@scene CH13_TALK once
+say narr | The lamps are lit. The walkway holds. Oriel and Dain sit by the hearth drum.
+say dain | Would the world be safer without me in it? Without - us.
+say oriel | No. I refuse the premise. Your body is not a public utility, Dain. Not the ministry's, not Rook's, not the world's.
+say ilyr | I heard them. During the activation. Other fragments, taking their hosts' voices. Some hosts let them. Some did not get the choice.
+say dain | Then we free both. The fragments and the hosts. Without making either of them disposable.
+say ilyr | Both.
+say mara | News, since you're awake. A signal flare's been going up over the flooded Rootward every dusk. Three green, one red. Old guide code.
+say dain | Nera.
+say mara | Brackenford's west of here along the pontoon road. Rootward's north of it, where the forest used to be dry.
+say mara | And take the supplies in the hearth chest. You two can't fight the whole sea with borrowed spoons.
+chapter CH13
+objective oriel | Follow Nera's signal flares to the flooded Rootward (north-west, past Brackenford).
+rumor | Brackenford's bakery is a footbridge depot now. Mara says the bunkhouse became a shelter.
+level_floor 24
+@end
+
+@scene T07_MARA
+if ch:CH13 after
+say mara | Help first, then talk. That's how Hearthward works.
+end
+label after
+if ch:CH20 accord
+say mara | Every tent that becomes a cabin, somebody argues about which one gets the roof first. Good. Arguing means we expect to still be here.
+end
+label accord
+say mara | The Ash Accord. I never thought I'd see ministry clerks and quarry crews sign the same page.
+@end
+
+@scene T07_SIGNS
+say elder | People bring the signs from their old shops. Not the palace banners - the bakeries, the cobblers, the laundries.
+say elder | Nobody fished out a throne. Nobody wanted to.
+@end
+
+@scene T07_ARGUE
+say worker | Roofs first! The rain's coming.
+say farmer | Water first! You can't drink a roof.
+say worker | ...Fine. Water tanks, then roofs.
+say farmer | And we write it down, so we don't have this argument again tomorrow.
+@end
+
+@scene T07_BELL_CHILD
+if ch:CH20 q10
+say child | The bell rang wrong. Everyone says so. I think it rang right and everything else went wrong.
+end
+label q10
+call Q10_HOOK
+@end
+
+@scene T07_FUEL
+if ch:CH13 after
+say worker | Fuel for the lamps is in the crates by the plank pile at the hearth.
+end
+label after
+say worker | Lamps stay lit every night now. We rotate who carries.
+@end
+
+@scene T07_SHOP
+say keeper | Ponton market. Whatever floats, whatever's found, whatever's traded.
+shop SHOP_T07
+@end
+
+@scene T07_FERRY
+if ch:CH14 run
+say sailor | Ferry to the Glass Coast? Hull's cracked. When someone clears the Rootward current, I'll have my caulk back.
+end
+label run
+choice | Take the repaired ferry east to Bellharbor -> go | Stay -> stay
+label go
+sfx FX031
+say narr | The ferry creeps across the Ember Sea, past dragon spines rising from the water, to what's left of Bellharbor's upper town.
+warp WORLD_POST ferry_bh
+label stay
+@end
+
+@scene T07_BERTH_MASTER
+if ch:CH16 after
+say sailor | Empty berth. Ivo Quill had plans for a ship here - a rescue ship. Heard he's in Cinderwake, if anyone's alive there.
+end
+label after
+say sailor | Wayfarer. Slowest ship I ever saw. Also the only one.
+@end
+
+@scene T07_WAYFARER
+say pilot | Wayfarer's tender runs from the end of the berth. Step on and we'll row you up.
+@end
+
+@scene T07_BOARD
+choice | Board Wayfarer -> go | Not now -> stay
+label go
+airship home
+airship below
+warp W_DECK from_berth up
+label stay
+@end

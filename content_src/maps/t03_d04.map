@@ -1,0 +1,446 @@
+#! T03 Cinderwake + D04 Furnace Spine
+=== T03_TOWN
+name: Cinderwake
+tileset: town_r02
+music: M012
+zone: T03
+region: R02
+location: L_T03
+legend: P=pipe_tall %=vine
+grid:
+############################################
+############################################
+############################################
+############################################
+##::::::::::::RRRRR4R:::::::::::::::::::::##
+##::::::::::::RRRRRRR:::P:::P:::P:::P:::P:::
+::::::::::::::WQWDWQW:::::::::::::::::::::::
+::+:::::::::::::::::::::::::::::::::::::::::
+::::::::::l:::::::::::::vv::vv::::l:::::::##
+##::::::::::::::::::::::::::::::::::::::::##
+##::::::::::::::::::::::::::::::::::::::::##
+####################sss#####################
+####################sss#####################
+##::::::::::::::::::::::::::::::::::::::::##
+##::RR4RRRRRR:::::::::::::::::RRRRRRRRR:::##
+##::RRRRRRRRR:::::::::::::::::RRRRRRRRR:::##
+##::WQWQDQWQW::::::::O::::::::WQWQWDWQW:::##
+##::::::::::::::l:::::::::l:::::::::::::::##
+##::::::::::::::::::::::::::::::::::::::::##
+##::::::::::::::::::::::::::::::::::::::::##
+##########sss#################sss###########
+##########sss#################sss###########
+##::::::::::::::::::::::::::::::::::::::::##
+##::RRRRRR4R::::::::::::::::::::R4RRRRRR::##
+##::RRRRRRRR::::::::::::::::::::RRRRRRRR::##
+##::WQWDWQWQ::::cc.r::::::::::::WQWQDQWQ::##
+##::::::::::::l:::::::::::::l:::::::::::::##
+##::::::::::::::::::::::::::::::::::::::::##
+##::::::::::::::::::::::::::::::::::::::::##
+##::::::::::::::::::::::::::::::::::::::::##
+###################::::::###################
+###################::::::###################
+entities:
+tileset_over 20..22 26..27 wheel if=ch:CH04
+spawn world 21 29 up
+spawn from_canteen 7 27 down
+spawn from_shop 8 18 down
+spawn from_garden 3 7 right
+spawn from_spine 40 6 left
+spawn default 21 29 up
+exit 19..24 31 WORLD l_t03
+door 7 26 T03_CANTEEN entry sfx=FX008
+door 8 17 T03_SHOP entry sfx=FX008
+exit 0 6..8 T03_GARDEN from_town
+exit 43 5..7 D04_R01 from_town if=event:T03_IVO_SHOP locked="A foreman: 'Spine's closed to visitors. Talk to Quill at the regulator shop.'"
+npc worker_t1 18 27 up sprite=worker talk=T03_CLINIC
+npc worker_t2 33 17 left sprite=worker talk=T03_HEAT
+npc child_t 26 24 down sprite=child talk=T03_CHILD wander=1
+npc foreman 38 7 left sprite=soldier talk=T03_FOREMAN
+npc pipefitter 28 8 down sprite=worker talk=T03_PIPEFITTER
+npc elder_t 12 8 right sprite=elder talk=T03_ELDER
+
+=== T03_CANTEEN
+name: Cinderwake - Shift Canteen
+tileset: interior
+music: M012
+zone: T03
+location: L_T03
+save: true
+grid:
+####################
+#kkk.nnnnnn.8888...#
+#..................#
+#..................#
+#..tt.tt.tt........#
+#..................#
+#..tt.tt.tt........#
+#..................#
+#..................#
+#..................#
+#..................#
+#########++#########
+entities:
+spawn entry 9 10 up
+exit 9..10 11 T03_TOWN from_canteen
+npc cook 7 1 down sprite=baker talk=T03_COOK
+npc tally_w 15 2 up sprite=worker talk=T03_TALLY_WALL
+read 13 2 "The canteen wall: a tally of injuries in chalk, row after row. No official ledger records it."
+shop 8 2 SHOP_T03
+inn 12 2 scene=T03_INN
+npc innkeep 12 1 down sprite=keeper talk=T03_INN solid=1
+
+=== T03_SHOP
+name: Cinderwake - Regulator Shop
+tileset: interior
+music: M012
+zone: T03
+location: L_T03
+save: true
+grid:
+######################
+#....................#
+#.mm.mm.pp.mm........#
+#....................#
+#....................#
+#....................#
+#....................#
+#..5.tt..>>..........#
+#....................#
+#.............cc.....#
+#.............r......#
+#....................#
+#....................#
+##########++##########
+entities:
+spawn entry 10 12 up
+exit 10..11 13 T03_TOWN from_shop
+npc ivo_shop 10 5 down sprite=C04 talk=T03_IVO_SHOP if=!recruited:C04
+npc pell 6 5 right sprite=pell talk=T03_PELL
+read 13 2 "A regulator on the bench: brass coils around a cup of red heartglass. Tessa goes very quiet looking at it."
+save 18 11
+
+=== T03_GARDEN
+name: Cinderwake - Old Cooling Garden
+tileset: town_r02
+music: M012
+zone: T03
+region: R02
+location: L_T03
+grid:
+T#T###TTTTT#T##TTTT#TT#####TTT##
+TTTTTTT####TTTT##TT#####TT####TT
+####T#T#T##T"""""""""#T#########
+TT#TT####"""""""""""""""#T#TT##T
+##T#TTT"""""""""""""""""""#T#T##
+#TT##"ggggggg"""""""""""""""##T#
+#T#T""ggggggg"""""""""""<""""T##
+T#T"""ggggggg"""""""""""""""""#T
+T##"""ggggggg"""""""""""""""""T#
+##""""""""""""""""""""""""""":::
+##""""""""""""9999""""""""""":::
+TT""""""""""""9999""""""""""":::
+#T""""""""""""9999"""""""""""""T
+##""""""""""""""""""ggggggg""""#
+#T#"""""""""""""""""ggggggg"""TT
+#T#"""""""""""""""""ggggggg"""##
+###T""""""""""""""""ggggggg""T##
+##T##"""""""""""""""""""""""#TTT
+T##T###"""""""""""""""""""#TT###
+###T#####"""""""""""""""T#TT#T##
+T##T###T#TT#"""""""""T###T##T#T#
+###TT##TT###T###T##TTT###T##T##T
+entities:
+spawn from_town 30 10 left
+exit 31 9..11 T03_TOWN from_garden
+npc gardener 10 12 up sprite=farmer talk=T03_GARDENER
+npc pell_garden 18 8 down sprite=pell talk=T03_PELL_GARDEN if=ch:CH04
+chest T03_C_GARDEN 4 11 I021 1
+switch bypass 23 7 scene=CH10_CINDER_FIX if=ch:CH09,!flag:accord_cinder
+
+=== D04_R01
+name: Furnace Spine - Shift Gate
+encounters: none
+save: true
+tileset: furnace
+music: M022
+zone: D04
+region: R02
+location: L_D04
+legend: P=pipe_tall %=vine
+grid:
+########################################
+########################################
+########################################
+##....................................##
+##....P.....P.....P.....P.....P.......##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##......mm............................##
+##......mm............................##
+........................................
+........................................
+........................................
+........................................
+##..........................cc........##
+##..........................rr........##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....P.....P.....P.....P.....P.......##
+##....................................##
+##....................................##
+########################################
+########################################
+########################################
+entities:
+spawn from_town 1 13 right
+spawn from_r02 38 13 left
+spawn default 1 13 right
+exit 0 12..15 T03_TOWN from_spine
+exit 39 12..15 D04_R02 from_r01 if=recruited:C04 locked="Ivo: Wait. You don't walk into the Spine without someone who knows the lines."
+trigger 5..7 12..15 scene=D04_SHIFT_GATE if=!recruited:C04
+save 20 20
+heal 22 20
+
+=== D04_R02
+name: Furnace Spine - Boiler Walk
+encounters: D04
+rate: 0.6
+tileset: furnace
+music: M022
+zone: D04
+region: R02
+location: L_D04
+legend: P=pipe_tall %=vine
+grid:
+##############....##############
+##############....##############
+##,,,,,,,,,,,,....,,,,,,,,,,,,##
+##,,,,,,,,,,,,,..,,,,,,,,,,,,,##
+##,,,,,,,,,,,,,..,,,,,,,,,,,,,##
+##,,,,,,,,,,,,,..,,,,,,,,,,,,,##
+##,,,,,,,,,,,,,..,,,,,,,,,,,,,##
+##,,,,,,,,,,,,,..,,,,,,,,,,,,,##
+##,eeeeeeeeeeee..eeeeeeeeeeee,##
+##,eeeeeeeeeeeev.eeeeeeeeeeee,##
+##,eeeeeeeeeeee..eeeeeeeeeeee,##
+##,eeeeeeeeeeee..eeeeeeeeeeee,##
+##,eeeeeeeeeeee..eeeeeeeeeeee,##
+##,eeeveeeeeeee..eeeeeeeeeeee,##
+...eeeeeeeeeeee..eeeeeeeeeeee,##
+.................eeeeeeeeeeee,##
+.................eeeeeeeeeeee,##
+...eeeeeeeveeee..eeeeeeeeeeee,##
+##,eeeeeeeeeeee..eeeeeeeeeeee,##
+##,eeeeeeeeeeee..eeeeeeeeeeee,##
+##,eeeeeeeeeeee.veeeeeeeeeeee,##
+##,eeeeeeeeeeee..eeeeeeeeeeee,##
+##,eeeeeeeeeeee..eeeeeeeeeeee,##
+##,eeeeeeeeeeee..eeeeeeeeeeee,##
+##,,,,,,,,,,,,,..,,,,,,,,,,,,,##
+##,,,,,,,,,,,,,v.,,,,,,,,,,,,,##
+##,,,,,,,,,,,,,..,,,,,,,,,,,,,##
+##,,,,,,,,,,,,,..,,,,,,,,,,,,,##
+##,,,,,,,,,,,,,..,,,,,,,,,,,,,##
+##,,,,,,,,,,,,....,,,,,,,,,,,,##
+##############....##############
+##############....##############
+entities:
+hazard 8..9 15..16 period=3 on=0.9 phase=0
+hazard 15..16 9..10 period=3 on=0.9 phase=1.2
+hazard 15..16 22..23 period=3.4 on=1.0 phase=2.0
+sign 3 13 "Boiler walk: vents fire in turn. Watch the puff, then cross."
+spawn from_r01 1 15 right
+spawn from_r03 15 1 down
+spawn from_r04 15 30 up
+exit 0 14..17 D04_R01 from_r02
+exit 14..17 0 D04_R03 from_r02
+exit 14..17 31 D04_R04 from_r02
+
+=== D04_R03
+name: Furnace Spine - Red Valve
+encounters: D04
+rate: 0.8
+tileset: furnace
+music: M022
+zone: D04
+region: R02
+location: L_D04
+legend: P=pipe_tall %=vine
+grid:
+########################################
+########################################
+########################################
+##..######....................######..##
+##..#....#....................#,,,,#..##
+##..#....#pppppppppppppppppppp#,,,,#..##
+##..##Q###....................##Q###..##
+##....................................##
+##....................................##
+##.................&..................##
+##......................................
+##......................................
+##......................................
+##......................................
+##....................................##
+##....................................##
+##....P..........................P....##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##############....######################
+##############....######################
+##############....######################
+entities:
+exit 14..17 23 D04_R02 from_r03
+exit 39 10..13 D04_R05 from_r03 if=flag:d04_red,flag:d04_blue locked="The regulator crown is still at full pressure."
+spawn from_r02 15 22 up
+spawn from_r05 38 11 left
+npc red_worker1 6 5 down sprite=worker talk=D04_OCC_WORKERS
+npc red_worker2 7 5 down sprite=worker talk=D04_OCC_WORKERS
+chest D04_C_R03 34 18 I016 2
+npc lost_worker 30 16 left sprite=worker talk=D04_LOST_WORKER if=!flag:d04_lost
+switch valve 19 9 flag=d04_red scene=D04_D04_RED
+save 35 14
+
+=== D04_R04
+name: Furnace Spine - Blue Valve
+encounters: D04
+rate: 0.8
+tileset: furnace
+music: M022
+zone: D04
+region: R02
+location: L_D04
+legend: P=pipe_tall %=vine
+grid:
+##############....######################
+##############....######################
+##############....######################
+##..######....................######..##
+##..#,,,,#....................#....#..##
+##..#,,,,#pppp====pppppppppppp#....#..##
+##..##Q###....................##Q###..##
+##....................................##
+##....................................##
+##.................&..................##
+##......................................
+##......................................
+##......................................
+##......................................
+##....................................##
+##....................................##
+##....P..........................P....##
+##....................................##
+##....................................##
+##....................................##
+##..,.................................##
+###,,,,#################################
+###,,,,#################################
+########################################
+entities:
+exit 14..17 0 D04_R02 from_r04
+exit 39 10..13 D04_R05 from_r04 if=flag:d04_red,flag:d04_blue locked="The bridge to the regulator crown is retracted until the pressure is balanced."
+spawn from_r02 15 4 down
+spawn from_r05 38 11 left
+npc blue_worker1 32 5 down sprite=worker talk=D04_OCC_WORKERS
+chest D04_C_R04 5 18 W020 1
+switch valve 19 9 flag=d04_blue scene=D04_D04_BLUE
+chest D04_SECRET_CHEST 5 22 A004 1 acq=D04_SECRET
+save 35 14
+read 21 9 "Valve plaque: 'Cold spares in the south-west hatch. Refill before the shift ends.'"
+
+=== D04_R05
+name: Furnace Spine - Regulator Crown
+encounters: none
+tileset: furnace
+music: M022
+zone: D04
+region: R02
+location: L_D04
+legend: P=pipe_tall %=vine
+grid:
+########################################
+########################################
+########################################
+########################################
+################mmmmmmmm.###############
+#############...mmmmmmmm....############
+########P##.....mmmmmmmm......#P########
+#########.......mmmmmmmm........########
+########........mmmmmmmm.........#######
+#######...........................######
+.....#.............................#####
+....................................####
+....................................####
+....................................####
+####....................................
+####....................................
+####....................................
+####....................................
+####.................................###
+#####...............................####
+....................................####
+....................................####
+.....#.............................#####
+.....##...........................######
+########.........................#######
+#########.......................########
+########P##...................#P########
+#############...............############
+################.........###############
+########################################
+########################################
+########################################
+entities:
+trigger 14..25 14..15 scene=D04_COLOSSUS if=!flag:b04_done
+spawn from_r03 1 11 right
+spawn from_r04 1 21 right
+spawn from_r06 38 15 left
+exit 0 10..13 D04_R03 from_r05
+exit 0 20..23 D04_R04 from_r05
+exit 39 14..17 D04_R06 from_r05 if=flag:b04_done
+
+=== D04_R06
+name: Furnace Spine - Cooling Garden
+encounters: none
+tileset: furnace
+music: M022
+zone: D04
+region: R02
+location: L_D04
+grid:
+################################
+################################
+#############"""""""############
+#########"""""""""""""""########
+#######"""""""""""""""""""######
+######"""""""""""""""""""""#####
+#####"""""""""""""""""""""""####
+####"""""""""""""""""""""""""###
+###"""""""ggggggggggggg"""""""##
+###"""""""ggggggggggggg"""""""##
+,,,"""""""gggg99999gggg""""""""#
+,,,"""""""gggg99999gggg""""""""#
+,,,"""""""gggg99999gggg""""""""#
+,,,"""""""gggg99999gggg""""""""#
+##""""""""ggggggggggggg""""""""#
+###"""""""ggggggggggggg"""""""##
+###"""""""""""""""""""""""""""##
+####"""""""""""""""""""""""""###
+#####"""""""""""""""""""""""####
+######"""""""""""""""""""""#####
+#######"""""""""""""""""""######
+#########"""""""""""""""########
+#############"""""""############
+################################
+entities:
+trigger 3..5 10..13 scene=D04_SC04 if=!ch:CH04
+spawn from_r05 1 11 right
+exit 0 10..13 D04_R05 from_r06

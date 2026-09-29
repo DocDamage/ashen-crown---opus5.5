@@ -1,0 +1,823 @@
+{
+ "content_sha": "bfbb42eb1ec31161",
+ "criteria": [
+  {
+   "id": "AC001",
+   "area": "BOOT",
+   "title": "Clean import",
+   "procedure": "Extract into a clean workspace and import the new game project.",
+   "expected": "No missing scripts/assets and no unacknowledged engine-version mismatch.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/release/clean_import.txt"
+   ],
+   "note": "Fresh copy (no .godot cache) imported headless; the first pass logs the usual font-before-import notice, the second pass is clean."
+  },
+  {
+   "id": "AC002",
+   "area": "BOOT",
+   "title": "No accidental replacement",
+   "procedure": "Start in a workspace containing unrelated files.",
+   "expected": "Agent inventories existing work and does not overwrite it.",
+   "status": "verified",
+   "evidence": [],
+   "note": "The connected folder held only the two handoff markdown files; nothing there was overwritten (deliverables go to new subfolders)."
+  },
+  {
+   "id": "AC003",
+   "area": "DATA",
+   "title": "Content compiler coverage",
+   "procedure": "Compile every catalog record.",
+   "expected": "Unknown effects, missing assets and unresolved refs fail clearly; no silent Attack fallback.",
+   "status": "verified",
+   "evidence": [
+    "tools/compile_content.py",
+    "reports/evidence/release/compile.txt"
+   ],
+   "note": "Compiler fails on unknown ops, refs, maps, scenes, ragged grids; --strict fails on pending location refs."
+  },
+  {
+   "id": "AC004",
+   "area": "DATA",
+   "title": "Acquisition coverage",
+   "procedure": "Trace every weapon, armor, accessory, summon and required item source.",
+   "expected": "All mandatory content has a reachable guaranteed path; unique optional rewards have defined sources.",
+   "status": "partial",
+   "evidence": [
+    "tools/validate_pack.py",
+    "reports/evidence/release/compile.txt"
+   ],
+   "note": "Starter kits, shops (by chapter tier), chests, quests and salvage cover the catalog; no automated per-item source trace yet."
+  },
+  {
+   "id": "AC005",
+   "area": "UI",
+   "title": "New game route",
+   "procedure": "Start at Title with normal keyboard input.",
+   "expected": "Reach Brackenford and control Dain without debug commands.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/b1/b1_route_log.txt"
+   ],
+   "note": "B1 route: Title -> New Game -> Brackenford with normal input."
+  },
+  {
+   "id": "AC006",
+   "area": "UI",
+   "title": "Controller-only session",
+   "procedure": "Navigate title, exploration, battle, equipment and save with a controller.",
+   "expected": "No mouse/keyboard-only dead end or lost focus.",
+   "status": "partial",
+   "evidence": [
+    "game/src/autoload/settings.gd"
+   ],
+   "note": "Joypad buttons/axes are bound for every action; no physical controller session was run."
+  },
+  {
+   "id": "AC007",
+   "area": "UI",
+   "title": "Native-resolution text",
+   "procedure": "Inspect every major panel at 320\u00d7240 and scaled window sizes.",
+   "expected": "No clipping, unreadable required labels or off-screen confirm/cancel controls.",
+   "status": "partial",
+   "evidence": [
+    "reports/evidence/screens/"
+   ],
+   "note": "Captures reviewed at 320x240; long objective toasts now wrap. Not every panel was inspected at every scale."
+  },
+  {
+   "id": "AC008",
+   "area": "UI",
+   "title": "Remapping and focus loss",
+   "procedure": "Change key bindings, lose focus, return and restart.",
+   "expected": "Bindings persist and the default focus pause works.",
+   "status": "partial",
+   "evidence": [
+    "game/src/autoload/settings.gd"
+   ],
+   "note": "Rebinding and pause-on-focus-loss are implemented and persisted; not exercised by an automated test."
+  },
+  {
+   "id": "AC009",
+   "area": "UI",
+   "title": "Reduced effects",
+   "procedure": "Disable shake/flashes, shorten summons and mute sound.",
+   "expected": "Critical tells and puzzles remain understandable.",
+   "status": "partial",
+   "evidence": [
+    "game/src/autoload/settings.gd"
+   ],
+   "note": "Shake/flash toggles and volume exist; tells are text + icon so they survive reduced effects. Not separately play-tested."
+  },
+  {
+   "id": "AC010",
+   "area": "WORLD",
+   "title": "Doorway graph",
+   "procedure": "Traverse every authored doorway through actual collision geometry.",
+   "expected": "Every endpoint has a safe spawn and lawful return path.",
+   "status": "partial",
+   "evidence": [
+    "tools/check_reach.py",
+    "reports/evidence/release/check_reach.txt",
+    "reports/evidence/chain/"
+   ],
+   "note": "Offline: every entity reachable and every arrival spawn reaches every exit of its room. Runtime: all story doorways crossed by the chained routes."
+  },
+  {
+   "id": "AC011",
+   "area": "WORLD",
+   "title": "Puzzle reset",
+   "procedure": "Make incorrect operations at every required puzzle.",
+   "expected": "A reset or recovery remains reachable without rare consumables.",
+   "status": "partial",
+   "evidence": [
+    "content_src/scenes/"
+   ],
+   "note": "Wrong valve/relay/dial/bell choices reset or explain without consuming items; verified by design review and partly by routes (not every wrong input automated)."
+  },
+  {
+   "id": "AC012",
+   "area": "WORLD",
+   "title": "Y-sort and collision",
+   "procedure": "Walk behind roofs, beside props and through doors.",
+   "expected": "Feet align, actors sort correctly and interaction targets are unambiguous.",
+   "status": "partial",
+   "evidence": [
+    "reports/evidence/screens/"
+   ],
+   "note": "Y-sorted actors/props and door interaction verified in captures; no systematic sweep."
+  },
+  {
+   "id": "AC013",
+   "area": "WORLD",
+   "title": "Encounter meter",
+   "procedure": "Wait in menus, push against a wall and operate a switch.",
+   "expected": "None advances encounter distance; post-battle grace remains.",
+   "status": "partial",
+   "evidence": [
+    "game/src/field/field.gd"
+   ],
+   "note": "Meter advances only on completed steps on encounter terrain; menus/switches/wall pushes cannot step. Not unit-tested."
+  },
+  {
+   "id": "AC014",
+   "area": "WORLD",
+   "title": "Landing failure",
+   "procedure": "Attempt landing outside a valid zone and reload a valid parked position.",
+   "expected": "No lost ship or invalid foot spawn.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_post_state::test_landing_needs_marked_field."
+  },
+  {
+   "id": "AC015",
+   "area": "BATTLE",
+   "title": "Fixed-step determinism",
+   "procedure": "Replay the same seed and public command stream at different render rates.",
+   "expected": "Same authoritative action, damage, reward and end-state hashes.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_fixed_step_determinism."
+  },
+  {
+   "id": "AC016",
+   "area": "BATTLE",
+   "title": "Wait vs Active",
+   "procedure": "Open target selection in both modes.",
+   "expected": "Wait pauses simulation timers; Active advances them; pause menu freezes both.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_wait_vs_active."
+  },
+  {
+   "id": "AC017",
+   "area": "BATTLE",
+   "title": "MP reservation",
+   "procedure": "Rapidly confirm/cancel and then allow one spell to resolve.",
+   "expected": "Exactly one valid MP charge; invalid/canceled actions consume none.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_mp_reservation."
+  },
+  {
+   "id": "AC018",
+   "area": "BATTLE",
+   "title": "Item reservation",
+   "procedure": "Two allies select the last Phoenix Leaf before resolution.",
+   "expected": "Only one valid reservation; no negative inventory or duplicate revive.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_item_reservation_last_phoenix."
+  },
+  {
+   "id": "AC019",
+   "area": "BATTLE",
+   "title": "Fallen target retarget",
+   "procedure": "KO an intended damage/heal target before another committed action resolves.",
+   "expected": "Documented retarget/refund rules apply and are logged.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_fallen_target_retarget, test_revive_refund_when_no_fallen."
+  },
+  {
+   "id": "AC020",
+   "area": "BATTLE",
+   "title": "Actor KO while casting",
+   "procedure": "KO a caster before resolution.",
+   "expected": "Turn is lost, reserved cost restored and no phantom spell occurs.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_actor_ko_while_casting_refunds."
+  },
+  {
+   "id": "AC021",
+   "area": "BATTLE",
+   "title": "Simultaneous wipe",
+   "procedure": "Cause legal simultaneous last-enemy and last-player KO.",
+   "expected": "Defeat-priority rule applies consistently; reward transaction is not committed.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_simultaneous_wipe_defeat_priority."
+  },
+  {
+   "id": "AC022",
+   "area": "BATTLE",
+   "title": "Status duration",
+   "procedure": "Exercise all sixteen statuses through actions and skipped opportunities.",
+   "expected": "No infinite stun, repeated DOT from animation frames or leaked exploration poison.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_status_durations_and_hard_control, test_haste_slow_exclusive, test_boss_immunities_and_delay_cap."
+  },
+  {
+   "id": "AC023",
+   "area": "BATTLE",
+   "title": "Defense stacking",
+   "procedure": "Combine oath, Defend, Barrier and accessories.",
+   "expected": "Direct reduction caps correctly; no accidental invulnerability or negative damage.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_defense_stacking_cap."
+  },
+  {
+   "id": "AC024",
+   "area": "BATTLE",
+   "title": "Reaction recursion",
+   "procedure": "Use counter, interception, reflection and a multi-hit enemy action.",
+   "expected": "Trigger caps honor origin action IDs; no counter-counter loop.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_counter_no_recursion."
+  },
+  {
+   "id": "AC025",
+   "area": "ROLE",
+   "title": "Dain oaths",
+   "procedure": "Switch every oath, take protection hits and approach 1 HP.",
+   "expected": "One oath only; transfers obey nonlethal and per-action caps.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_roles::test_dain_oaths_exclusive_and_sacrifice_caps, test_shelter_intercepts_low_ally_once."
+  },
+  {
+   "id": "AC026",
+   "area": "ROLE",
+   "title": "Tessa Overcast",
+   "procedure": "Arm, cancel, cast, fail target validation and repeat recovery actions.",
+   "expected": "Documented costs, nonlethal self-damage and Heat Exchange limits hold.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_roles::test_tessa_overcast_costs_and_nonlethal, test_heat_exchange_limits."
+  },
+  {
+   "id": "AC027",
+   "area": "ROLE",
+   "title": "Corren airborne",
+   "procedure": "KO grounded allies while Corren is in flight; pause and resume.",
+   "expected": "Battle waits for his lawful landing and does not softlock.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_roles::test_corren_airborne_no_softlock."
+  },
+  {
+   "id": "AC028",
+   "area": "ROLE",
+   "title": "Ivo devices",
+   "procedure": "Reapply a mine, destroy a decoy and revive Ivo.",
+   "expected": "No duplicate mine, stale decoy or reset of once-per-battle engine use.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_roles::test_ivo_mine_and_decoy."
+  },
+  {
+   "id": "AC029",
+   "area": "ROLE",
+   "title": "Nera knowledge",
+   "procedure": "Mark and inspect a new enemy, win, reload and inspect bestiary.",
+   "expected": "Discovered information persists without granting unrelated drops.",
+   "status": "partial",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_roles::test_nera_mark_bonus_not_multiplied; bestiary persistence covered by save round trip, not a dedicated test."
+  },
+  {
+   "id": "AC030",
+   "area": "ROLE",
+   "title": "Oriel intent",
+   "procedure": "Inspect an enemy with and without a committed move.",
+   "expected": "Only actual committed intent is shown; no invented future RNG result.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_roles::test_oriel_omen_reads_only_committed."
+  },
+  {
+   "id": "AC031",
+   "area": "ROLE",
+   "title": "Sable infusion",
+   "procedure": "Change infusion, remove accessory magic, dispel a boss.",
+   "expected": "One infusion; removable buffs only; no deletion of phase scripts.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_roles::test_sable_single_infusion."
+  },
+  {
+   "id": "AC032",
+   "area": "ROLE",
+   "title": "Pip transactions",
+   "procedure": "Steal repeatedly, use last item with Quick Hands, then retry a loss.",
+   "expected": "Steal caps, item counts and retry rollback hold.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_roles::test_pip_steal_caps."
+  },
+  {
+   "id": "AC033",
+   "area": "SUMMON",
+   "title": "Concord accounting",
+   "procedure": "Use area/multi-hit actions, Defend, Seeds and summons.",
+   "expected": "Action-based gain caps and once-per-battle limits hold; no self-generating summon loop.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_concord_accounting."
+  },
+  {
+   "id": "AC034",
+   "area": "SUMMON",
+   "title": "Unique links",
+   "procedure": "Attempt duplicate Vestige links and link from unavailable members.",
+   "expected": "Ownership/availability rules hold and reassignment at safe screens works.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_campaign::test_vestige_unique_links."
+  },
+  {
+   "id": "AC035",
+   "area": "GEAR",
+   "title": "Two-handed swap",
+   "procedure": "Equip/unequip every weapon type with a full inventory.",
+   "expected": "Offhand returns safely; no duplication or lost unique item.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_campaign::test_two_handed_swap_returns_offhand."
+  },
+  {
+   "id": "AC036",
+   "area": "GEAR",
+   "title": "Stats and grant removal",
+   "procedure": "Compare UI preview to battle; remove a spell-grant accessory.",
+   "expected": "Derived stats match and temporary spell access disappears.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_roles::test_accessory_spell_removed_with_accessory; test_formulas::test_equipment_change_does_not_regrow."
+  },
+  {
+   "id": "AC037",
+   "area": "ECONOMY",
+   "title": "Shop boundaries",
+   "procedure": "Buy with exact gold, insufficient gold and a 99-item stack.",
+   "expected": "Prices/capacity validated before payment; no underflow.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_campaign::test_shop_boundaries; test_post_state::test_every_shop_lists_stock_at_every_stage (regression for the tier-key crash found by the seg8 route)."
+  },
+  {
+   "id": "AC038",
+   "area": "ECONOMY",
+   "title": "Full-inventory reward",
+   "procedure": "Complete a personal quest with no ordinary capacity.",
+   "expected": "Unique reward enters delivery storage and completion remains consistent.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_campaign::test_unique_overflow_goes_to_delivery."
+  },
+  {
+   "id": "AC039",
+   "area": "PROGRESS",
+   "title": "Reserve growth",
+   "procedure": "Win battles with unavailable members and trigger a reunion twice.",
+   "expected": "XP is correct; growth and starter gear do not duplicate.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_campaign::test_reserve_growth_and_reunion; test_formulas::test_join_level."
+  },
+  {
+   "id": "AC040",
+   "area": "SAVE",
+   "title": "Round trip",
+   "procedure": "Save and reload at town, field, ship and pre-boss locations.",
+   "expected": "Relevant state matches with safe spawn and correct music/availability.",
+   "status": "partial",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt",
+    "reports/evidence/b1/b1_route_log.txt"
+   ],
+   "note": "test_campaign::test_save_round_trip; B1 saves at a lamp, returns to title and reloads through the menu. Ship/pre-boss reloads not separately automated."
+  },
+  {
+   "id": "AC041",
+   "area": "SAVE",
+   "title": "Corrupt primary",
+   "procedure": "Corrupt a disposable test copy of a save.",
+   "expected": "Backup recovery offered; corrupt copy retained; no silent new game.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_campaign::test_corrupt_primary_offers_backup."
+  },
+  {
+   "id": "AC042",
+   "area": "SAVE",
+   "title": "Future schema",
+   "procedure": "Load a deliberately newer schema fixture.",
+   "expected": "Clear unsupported-version response; no destructive overwrite.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_campaign::test_future_schema_rejected."
+  },
+  {
+   "id": "AC043",
+   "area": "SAVE",
+   "title": "Crash during write",
+   "procedure": "Inject process interruption at controlled disposable save-write stages.",
+   "expected": "Either old or new complete state loads; no partial hybrid.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_campaign::test_crash_during_write_keeps_complete_state."
+  },
+  {
+   "id": "AC044",
+   "area": "STORY",
+   "title": "Skipped scene equivalence",
+   "procedure": "Play and skip each major scene from equivalent fixtures.",
+   "expected": "Same authoritative committed state and rewards.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_story::test_skip_equivalence."
+  },
+  {
+   "id": "AC045",
+   "area": "STORY",
+   "title": "Duplicate trigger",
+   "procedure": "Re-enter a chapter/quest trigger after completion.",
+   "expected": "No repeated reward, party join or world transition.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_story::test_once_scene_not_reapplied; test_post_state::test_personal_quest_reward_once."
+  },
+  {
+   "id": "AC046",
+   "area": "STORY",
+   "title": "Pre-catastrophe campaign",
+   "procedure": "Use normal input from New Game through CH11.",
+   "expected": "All required locations, recruits and bosses work without flag edits.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/chain/"
+   ],
+   "note": "Normal-input chain: b1 (New Game..CH01) -> seg2 -> seg3 -> seg4 -> seg5 (CH11), each segment resuming from the milestone the previous one wrote. No flag edits in routes."
+  },
+  {
+   "id": "AC047",
+   "area": "STORY",
+   "title": "Catastrophe preservation",
+   "procedure": "Transition with mixed gear, quests, loot, chest and reserve states.",
+   "expected": "CH12 changes phase atomically and preserves specified ownership/state.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt",
+    "reports/evidence/chain/"
+   ],
+   "note": "test_campaign::test_catastrophe_transaction_preserves_ownership; test_post_state::test_catastrophe_scene_commits_post_state; seg5 reaches Hearthward through the real scene."
+  },
+  {
+   "id": "AC048",
+   "area": "STORY",
+   "title": "Sealed-map salvage",
+   "procedure": "Skip a unique pre-state reward, then complete CH12.",
+   "expected": "Salvage delivers it once; already acquired copies are not duplicated.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_campaign::test_salvage_forwarding_once."
+  },
+  {
+   "id": "AC049",
+   "area": "STORY",
+   "title": "Recovery route",
+   "procedure": "Play CH13\u2013CH16 at expected resource/level floor.",
+   "expected": "Two/three/four-person sections are viable and Wayfarer is earned normally.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/chain/"
+   ],
+   "note": "seg6: CH13-CH16 with the two-, three- and four-person party; Wayfarer earned in play."
+  },
+  {
+   "id": "AC050",
+   "area": "STORY",
+   "title": "Six reunion orders",
+   "procedure": "Run all six permutations of CH17, CH18 and CH19 from the ship checkpoint.",
+   "expected": "No dependency cycle, absent-person dialogue or missing CH20 unlock.",
+   "status": "partial",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt",
+    "reports/evidence/chain/"
+   ],
+   "note": "test_post_state::test_reunion_orders_all_six runs the real completion scenes in all six orders; the routes play one order (CH17, CH18, CH19) end to end."
+  },
+  {
+   "id": "AC051",
+   "area": "QUEST",
+   "title": "Personal quests",
+   "procedure": "Complete each of Q01\u2013Q08 and reload at each stage.",
+   "expected": "Exact weapon/ability rewards, world changes and epilogue flags occur once.",
+   "status": "PENDING",
+   "evidence": [
+    "reports/evidence/chain/"
+   ],
+   "note": "segq route: Q01-Q08."
+  },
+  {
+   "id": "AC052",
+   "area": "QUEST",
+   "title": "Optional bosses",
+   "procedure": "Complete Q09\u2013Q12, flee attempts and loss/retry paths.",
+   "expected": "Boss gating, rewards and optional status are correct.",
+   "status": "PENDING",
+   "evidence": [
+    "reports/evidence/chain/"
+   ],
+   "note": "segq route: Q09-Q11; Q12 from the pre-finale state."
+  },
+  {
+   "id": "AC053",
+   "area": "FINAL",
+   "title": "Two-party formations",
+   "procedure": "Try representative balanced and legal unbalanced splits of all eight.",
+   "expected": "Both routes are solvable with available items and recovery; no inventory duplication.",
+   "status": "partial",
+   "evidence": [
+    "reports/evidence/chain/",
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "seg8 plays the default balanced split; unbalanced splits are allowed by the split screen (healer warning) but not route-tested."
+  },
+  {
+   "id": "AC054",
+   "area": "FINAL",
+   "title": "Cross-party locks",
+   "procedure": "Change teams, reload and approach the shared gate in both orders.",
+   "expected": "No one-way lock traps the other team; route state persists.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_post_state::test_team_locks_alternate_without_trapping."
+  },
+  {
+   "id": "AC055",
+   "area": "FINAL",
+   "title": "Final phase thresholds",
+   "procedure": "Cross B12 thresholds with large and multi-hit attacks.",
+   "expected": "Each phase starts once; one boss reward and correct ending transition.",
+   "status": "partial",
+   "evidence": [
+    "reports/evidence/tests/runtime_tests_final.txt"
+   ],
+   "note": "test_battle_core::test_boss_phase_threshold_once; B12 fought in seg8."
+  },
+  {
+   "id": "AC056",
+   "area": "FINAL",
+   "title": "Zero-optionals ending",
+   "procedure": "Finish the main route without CH21 or optional quests.",
+   "expected": "Complete valid ending; no missing final key or false bad-ending label.",
+   "status": "PENDING",
+   "evidence": [
+    "reports/evidence/chain/"
+   ],
+   "note": "seg8 finishes with no optional quests."
+  },
+  {
+   "id": "AC057",
+   "area": "FINAL",
+   "title": "Epilogue combinations",
+   "procedure": "Test none, all, each personal flag alone and one mixed set.",
+   "expected": "Correct base/enhanced scenes; no unavailable actors or contradictory lines.",
+   "status": "partial",
+   "evidence": [
+    "content_src/scenes/ch22.scn"
+   ],
+   "note": "Each epilogue line branches on its quest flag; only the zero-quest combination is route-played."
+  },
+  {
+   "id": "AC058",
+   "area": "FINAL",
+   "title": "Post-clear return",
+   "procedure": "Return from credits to before the final descent.",
+   "expected": "Safe pre-finale snapshot, clear flag and completed optional content retained.",
+   "status": "PENDING",
+   "evidence": [
+    "reports/evidence/chain/"
+   ],
+   "note": "seg8 ends by choosing Continue from Before the Final Descent."
+  },
+  {
+   "id": "AC059",
+   "area": "ART",
+   "title": "Sprite contact sheets",
+   "procedure": "Inspect every hero direction and battle frame in a contact sheet and runtime.",
+   "expected": "No inconsistent identity, jitter, misplaced weapon or empty required animation.",
+   "status": "partial",
+   "evidence": [
+    "reports/asset_ledger.json"
+   ],
+   "note": "Generated sprites reviewed by the agent only; status 'generated', not final art."
+  },
+  {
+   "id": "AC060",
+   "area": "ART",
+   "title": "Distinct locations",
+   "procedure": "Review all towns and dungeons in actual captures.",
+   "expected": "No placeholder geometry disguised as final art or identical room stamping.",
+   "status": "partial",
+   "evidence": [
+    "reports/evidence/screens/"
+   ],
+   "note": "Every location has its own composition; art is programmatic and plain in places."
+  },
+  {
+   "id": "AC061",
+   "area": "AUDIO",
+   "title": "Cue transitions",
+   "procedure": "Enter/leave houses, start/retry battles, pause and change buses.",
+   "expected": "No clicks, unwanted restarts, clipping, mute leaks or missing critical cues.",
+   "status": "unverified",
+   "evidence": [
+    "reports/audio_ledger.json"
+   ],
+   "note": "Cue switching implemented; no listening test (headless audio is a dummy driver)."
+  },
+  {
+   "id": "AC062",
+   "area": "BALANCE",
+   "title": "Normal route pacing",
+   "procedure": "Play representative early/mid/late sequences without debug resources.",
+   "expected": "Record encounter time, resource use, level and failures; revise bottlenecks without inventing measured total playtime.",
+   "status": "partial",
+   "evidence": [
+    "reports/evidence/chain/"
+   ],
+   "note": "Route traces record level, battles and resources per segment; the bot takes direct paths, so it is a lower bound for play time."
+  },
+  {
+   "id": "AC063",
+   "area": "BALANCE",
+   "title": "Ordinary encounters off",
+   "procedure": "Use the documented accessibility mode through a campaign segment.",
+   "expected": "Milestone progression or offered training keeps the route viable; story bosses remain.",
+   "status": "unverified",
+   "evidence": [
+    "game/src/story/director.gd"
+   ],
+   "note": "level_floor milestone growth exists for encounters-off; no campaign segment run in that mode."
+  },
+  {
+   "id": "AC064",
+   "area": "RELEASE",
+   "title": "Clean-source build",
+   "procedure": "Import and export a fresh copy at the tested revision.",
+   "expected": "No dependence on untracked files or author-machine absolute paths.",
+   "status": "verified",
+   "evidence": [
+    "reports/evidence/release/clean_export.txt"
+   ],
+   "note": "Clean copy imported and exported the Windows build with no author-machine paths."
+  },
+  {
+   "id": "AC065",
+   "area": "RELEASE",
+   "title": "Windows export launch",
+   "procedure": "Launch the produced Windows executable on Windows.",
+   "expected": "Actual platform smoke and save/load results recorded; cross-export alone is not a pass.",
+   "status": "PENDING",
+   "evidence": [],
+   "note": "Windows launch attempt on the owner's machine."
+  },
+  {
+   "id": "AC066",
+   "area": "RELEASE",
+   "title": "Asset provenance",
+   "procedure": "Audit every bundled asset, dependency and credit.",
+   "expected": "Source/permission recorded; no ripped commercial assets or undocumented font files.",
+   "status": "verified",
+   "evidence": [
+    "reports/asset_ledger.json",
+    "reports/audio_ledger.json",
+    "game/licenses/"
+   ],
+   "note": "All art/audio/font generated by project code; Godot MIT license and third-party notices bundled."
+  },
+  {
+   "id": "AC067",
+   "area": "RELEASE",
+   "title": "Evidence freshness",
+   "procedure": "Compare source/content hashes to test and screenshot records.",
+   "expected": "Claims refer to the packaged revision; stale artifacts are rejected.",
+   "status": "PENDING",
+   "evidence": [],
+   "note": "Final evidence rerun on the packaged revision."
+  },
+  {
+   "id": "AC068",
+   "area": "RELEASE",
+   "title": "Human quality review",
+   "procedure": "Have the owner or a separate tester play the exported opening and finale.",
+   "expected": "Record feedback honestly; agent self-review is not reported as external approval.",
+   "status": "owner",
+   "evidence": [],
+   "note": "Needs the owner or a separate human tester; agent self-review is not a substitute."
+  }
+ ]
+}

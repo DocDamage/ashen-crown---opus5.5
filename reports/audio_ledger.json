@@ -1,0 +1,498 @@
+[
+ {
+  "id": "FX001",
+  "path": "game/assets/audio/sfx/FX001.wav",
+  "seconds": 0.33,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX002",
+  "path": "game/assets/audio/sfx/FX002.wav",
+  "seconds": 0.38,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX003",
+  "path": "game/assets/audio/sfx/FX003.wav",
+  "seconds": 0.38,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX004",
+  "path": "game/assets/audio/sfx/FX004.wav",
+  "seconds": 0.46,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX005",
+  "path": "game/assets/audio/sfx/FX005.wav",
+  "seconds": 0.12,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX006",
+  "path": "game/assets/audio/sfx/FX006.wav",
+  "seconds": 0.58,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX007",
+  "path": "game/assets/audio/sfx/FX007.wav",
+  "seconds": 0.58,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX008",
+  "path": "game/assets/audio/sfx/FX008.wav",
+  "seconds": 0.28,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX009",
+  "path": "game/assets/audio/sfx/FX009.wav",
+  "seconds": 0.35,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX010",
+  "path": "game/assets/audio/sfx/FX010.wav",
+  "seconds": 0.39,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX011",
+  "path": "game/assets/audio/sfx/FX011.wav",
+  "seconds": 0.07,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX012",
+  "path": "game/assets/audio/sfx/FX012.wav",
+  "seconds": 0.08,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX013",
+  "path": "game/assets/audio/sfx/FX013.wav",
+  "seconds": 0.15,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX014",
+  "path": "game/assets/audio/sfx/FX014.wav",
+  "seconds": 0.18,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX015",
+  "path": "game/assets/audio/sfx/FX015.wav",
+  "seconds": 0.17,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX016",
+  "path": "game/assets/audio/sfx/FX016.wav",
+  "seconds": 0.44,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX017",
+  "path": "game/assets/audio/sfx/FX017.wav",
+  "seconds": 0.12,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX018",
+  "path": "game/assets/audio/sfx/FX018.wav",
+  "seconds": 0.38,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX019",
+  "path": "game/assets/audio/sfx/FX019.wav",
+  "seconds": 0.45,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX020",
+  "path": "game/assets/audio/sfx/FX020.wav",
+  "seconds": 0.62,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX021",
+  "path": "game/assets/audio/sfx/FX021.wav",
+  "seconds": 0.4,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX022",
+  "path": "game/assets/audio/sfx/FX022.wav",
+  "seconds": 0.6,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX023",
+  "path": "game/assets/audio/sfx/FX023.wav",
+  "seconds": 0.25,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX024",
+  "path": "game/assets/audio/sfx/FX024.wav",
+  "seconds": 0.2,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX025",
+  "path": "game/assets/audio/sfx/FX025.wav",
+  "seconds": 0.5,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX026",
+  "path": "game/assets/audio/sfx/FX026.wav",
+  "seconds": 0.55,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX027",
+  "path": "game/assets/audio/sfx/FX027.wav",
+  "seconds": 0.7,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX028",
+  "path": "game/assets/audio/sfx/FX028.wav",
+  "seconds": 0.66,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX029",
+  "path": "game/assets/audio/sfx/FX029.wav",
+  "seconds": 0.66,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX030",
+  "path": "game/assets/audio/sfx/FX030.wav",
+  "seconds": 0.6,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX031",
+  "path": "game/assets/audio/sfx/FX031.wav",
+  "seconds": 2.1,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "FX032",
+  "path": "game/assets/audio/sfx/FX032.wav",
+  "seconds": 1.0,
+  "source": "tools/gen_audio.py",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M001",
+  "path": "game/assets/audio/music/M001.ogg",
+  "seconds": 58.2,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M002",
+  "path": "game/assets/audio/music/M002.ogg",
+  "seconds": 53.3,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M003",
+  "path": "game/assets/audio/music/M003.ogg",
+  "seconds": 34.3,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M004",
+  "path": "game/assets/audio/music/M004.ogg",
+  "seconds": 40.0,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M005",
+  "path": "game/assets/audio/music/M005.ogg",
+  "seconds": 43.6,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M006",
+  "path": "game/assets/audio/music/M006.ogg",
+  "seconds": 38.4,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M007",
+  "path": "game/assets/audio/music/M007.ogg",
+  "seconds": 54.9,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M008",
+  "path": "game/assets/audio/music/M008.ogg",
+  "seconds": 45.7,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M009",
+  "path": "game/assets/audio/music/M009.ogg",
+  "seconds": 32.0,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M010",
+  "path": "game/assets/audio/music/M010.ogg",
+  "seconds": 40.0,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M011",
+  "path": "game/assets/audio/music/M011.ogg",
+  "seconds": 41.7,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M012",
+  "path": "game/assets/audio/music/M012.ogg",
+  "seconds": 45.7,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M013",
+  "path": "game/assets/audio/music/M013.ogg",
+  "seconds": 36.9,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M014",
+  "path": "game/assets/audio/music/M014.ogg",
+  "seconds": 48.0,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M015",
+  "path": "game/assets/audio/music/M015.ogg",
+  "seconds": 53.3,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M016",
+  "path": "game/assets/audio/music/M016.ogg",
+  "seconds": 49.2,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M017",
+  "path": "game/assets/audio/music/M017.ogg",
+  "seconds": 36.9,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M018",
+  "path": "game/assets/audio/music/M018.ogg",
+  "seconds": 36.9,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M019",
+  "path": "game/assets/audio/music/M019.ogg",
+  "seconds": 34.9,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M020",
+  "path": "game/assets/audio/music/M020.ogg",
+  "seconds": 45.7,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M021",
+  "path": "game/assets/audio/music/M021.ogg",
+  "seconds": 42.7,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M022",
+  "path": "game/assets/audio/music/M022.ogg",
+  "seconds": 38.4,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M023",
+  "path": "game/assets/audio/music/M023.ogg",
+  "seconds": 50.5,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M024",
+  "path": "game/assets/audio/music/M024.ogg",
+  "seconds": 58.2,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M025",
+  "path": "game/assets/audio/music/M025.ogg",
+  "seconds": 25.3,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M026",
+  "path": "game/assets/audio/music/M026.ogg",
+  "seconds": 27.8,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M027",
+  "path": "game/assets/audio/music/M027.ogg",
+  "seconds": 48.0,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M028",
+  "path": "game/assets/audio/music/M028.ogg",
+  "seconds": 29.1,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M029",
+  "path": "game/assets/audio/music/M029.ogg",
+  "seconds": 8.0,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ },
+ {
+  "id": "M030",
+  "path": "game/assets/audio/music/M030.ogg",
+  "seconds": 58.2,
+  "source": "tools/gen_audio.py (programmatic synthesis)",
+  "license": "original",
+  "status": "generated (development-grade)"
+ }
+]

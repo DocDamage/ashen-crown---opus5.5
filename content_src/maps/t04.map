@@ -1,0 +1,219 @@
+#! T04 Bellharbor
+=== T04_QUAY
+name: Bellharbor - Bell Quay
+tileset: town_r03
+music: M013
+zone: T04
+region: R03
+location: L_T04
+grid:
+###################::::#####################
+###################::::#####################
+##::::::::::::::::::::::::::::::::::::::::::
+##:RR4RRRRR:::RRRRRR::::RRRRRRR:::RRRRRR4R::
+##:RRRRRRRR:::RRRRRR::::RRRRRRR:::RRRRRRRR::
+##:WQWQDQWQ:::WQDQWQ::::WQWDWQW:::WQWQWDWQ::
+##::::::::::::::::::::::::::::::::::::::::::
+##::::::::::::::::::::::::::::::::::::::::::
+##::::::::::::::::::::::::::::::::::::::::::
+##::::::::::::aaaa::::::::::::::::::::::::::
+##l:::::::::::nnnn::::::::::::::::::::::::::
+##::::::::::::::::::::::::::::::::::::::::::
+##::cc.rr:::cc:::::::j::::rr.c::::::::::::::
+##::::::::::::::::::::::::::::::::::::::::::
+##::::::::::::::::::::::::::::::::::::::::::
+##::::::::::::::::::::::::::::::::::::::::::
+##::::::::::l:::::::::::::::::l:::::::::::::
+##::::::::::::::::::::::::::::::::::::::::::
+~~~~~~dddd~~~~~~~~~~dddd~~~~~~~~~~dddd~~~~~~
+~~~~~~dddd~~~~~~~~~~dddd~~~~~~~~~~dddd~~~~~~
+~~~~~~dddd~~~~~~~~~~dddd~~~~~~~~~~dddd~~~~~~
+~~~~~~dddd~~~~~~~~~~dddd~~~~~~~~~~dddd~~~~~~
+~~~~~~dddd~~~~~~~~~~dddd~~~~~~~~~~dddd~~~~~~
+~~~~~~dddd~~~~~~~~~~dddd~~~~~~~~~~dddd~~~~~~
+~~~~~~dddd~~~~~~~~~~dddd~~~~~~~~~~dddd~~~~~~
+~~~~~~dddd~~~~~~~~~~~~~~~~~~~~~~~~dddd~~~~~~
+~~~~~~dddd~~~~~~~~~~~~~~~~~~~~~~~~dddd~~~~~~
+~~~~~~~~6~~~~~~~~~~~~~~~~~~~~~~~~~~~6~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+entities:
+spawn world 20 2 down
+spawn from_lane 41 9 left
+spawn from_customs 7 8 down
+spawn from_chapel 38 9 down
+spawn from_chase 20 14 up
+spawn default 20 2 down
+exit 19..22 0 WORLD l_t04
+exit 43 8..11 T04_LANE from_quay
+door 7 7 T04_CUSTOMS entry sfx=FX008
+door 38 8 T04_CHAPEL entry sfx=FX009
+npc pip_quay 22 16 left sprite=C08 talk=T04_PIP_OFFER if=!event:T04_PIP_OFFER
+npc pot_child 23 12 left sprite=child talk=T04_POT_CHILD
+npc sailor1 21 20 down sprite=sailor talk=T04_SAILOR
+npc dockhand 35 16 left sprite=worker talk=T04_DOCKHAND
+npc refugee1 10 15 right sprite=survivor talk=T04_REFUGEE
+npc customs_guard 5 9 down sprite=guard talk=T04_CUSTOMS_GUARD if=!ch:CH05
+npc fishwife 16 11 down sprite=baker talk=T04_FISHWIFE
+shop 16 10 SHOP_T04
+sign 19 12 "The harbor bell post. The bell was removed 'pending inspection'."
+
+=== T04_LANE
+name: Bellharbor - Chartmaker Lane
+tileset: town_r03
+music: M013
+zone: T04
+region: R03
+location: L_T04
+grid:
+RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+WWRRRRRWRRRRRWRRRRRWRRRRRWRRRRRWRRRR
+WWRRRRRWRRRRRWRRRRRWRRRRRWRRRRRWRRRR
+WWWQDQWWWQDQWWWQDQWWWQDQWWWQDQWWWQDQ
+::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::aaa:::::::::::::
+::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::
+WWRRRRRWRRRRRWRRRRRWRRRRRWRRRRRWRRRR
+WWRRRRRWRRRRRWRRRRRWRRRRRWRRRRRWRRRR
+WWWQWQWWWQWQWWWQWQWWWQWQWWWQWQWWWQWQ
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+entities:
+spawn from_quay 1 10 right
+spawn from_jori 16 6 down
+exit 0 8..13 T04_QUAY from_lane
+door 16 5 T04_JORI entry sfx=FX008
+npc chartmaker 22 10 down sprite=scholar talk=T04_CHARTMAKER
+npc lane_kid 9 12 up sprite=child talk=T04_LANE_KID wander=1
+npc lamplighter 30 9 down sprite=worker talk=T04_LAMPLIGHTER
+trigger 14..18 7..8 scene=CH05_SC05 if=flag:t04_ledger,!ch:CH05
+
+=== T04_JORI
+name: Bellharbor - Jori's Chart Office
+tileset: interior
+music: M013
+zone: T04
+location: L_T04
+grid:
+##############
+#kk?.nnnn.?kk#
+#............#
+#............#
+#..tt...tt...#
+#............#
+#............#
+#............#
+######++######
+entities:
+spawn entry 6 7 up
+exit 6..7 8 T04_LANE from_jori
+npc jori_shop 6 2 down sprite=jori talk=T04_JORI
+chest T04_C_JORI 11 6 I012 2
+
+=== T04_CHAPEL
+name: Bellharbor - Tide Chapel
+tileset: interior_stone
+music: M013
+zone: T04
+location: L_T04
+save: true
+grid:
+####################
+#..j.j...j..j.j....#
+#........@.........#
+#..................#
+#..................#
+#...bb.bb..bb.bb...#
+#..................#
+#..................#
+#...bb.bb..bb.bb...#
+#..................#
+#..................#
+#..................#
+#..................#
+#########++#########
+entities:
+spawn entry 9 12 up
+exit 9..10 13 T04_QUAY from_chapel
+npc chaplain 11 3 down sprite=monk talk=T04_CHAPLAIN
+inn 7 3 scene=T04_CHAPEL_REST
+npc rest_keeper 7 2 down sprite=elder talk=T04_CHAPEL_REST
+save 16 10
+
+=== T04_CUSTOMS
+name: Bellharbor - Customs House
+tileset: interior
+music: M013
+zone: T04
+location: L_T04
+grid:
+######################
+#kkkkk....kkkk.kkkk..#
+#....................#
+#.............cc.....#
+#.............cc.....#
+#....................#
+#nnnnn.nnnnnn........#
+#....................#
+#....................#
+#....................#
+#....................#
+#....................#
+#....................#
+##########++##########
+entities:
+spawn entry 10 12 up
+exit 10..11 13 T04_QUAY from_customs
+npc customs_clerk 6 6 down sprite=clerk talk=T04_CUSTOMS_CLERK if=!flag:t04_distracted
+npc customs_guard2 16 8 left sprite=guard talk=T04_CUSTOMS_GUARD2 if=!flag:t04_ledger
+trigger 3 3 scene=T04_TAKE_LEDGER touch=0 if=!flag:t04_ledger
+read 12 3 "A confiscation shelf. Tags: 'forged passage papers, dock 3.' One ledger is chained, the chain unlocked."
+
+=== T04_CHASE
+name: Bellharbor - Back Alleys
+tileset: town_r03
+music: M025
+zone: T04
+location: L_T04
+encounters: none
+grid:
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+W:::::::::::::::::::::::::::::
+W:::::::::::::::::::::::::::::
+W:::::::::::::::::::::::::::::
+W::::::::::::::::::::::::::::W
+W::::::::::::::::::::::::::::W
+WWWWWW:WWWWWWWW:WWWWWWWW:WWWWW
+W::::::::::::::::::::::::::::W
+W::::::::::::::::::::::::::::W
+W::::::::::::::::::::::::::::W
+W::::::::::::::::::::::::::::W
+W::::::::::::::::::::::::::::W
+WWWWWW:WWWWWWWW:WWWWWWWW:WWWWW
+W::::::::::::::::::::::::::::W
+W::::::::::::::::::::::::::::W
+W::::::::::::::::::::::::::::W
+:::::::::::::::::::::::::::::W
+:::::::::::::::::::::::::::::W
+:::::::::::::::::::::::::::::W
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+entities:
+npc chase_guard_6_5 6 5 down sprite=guard talk=T04_CAUGHT
+npc chase_guard_24_11 24 11 down sprite=guard talk=T04_CAUGHT
+trigger 6 7 scene=T04_CAUGHT
+trigger 24 13 scene=T04_CAUGHT
+sign 3 15 "Pip, whispering: 'Watch where they stand. They never leave their posts.'"
+trigger 26..27 2..3 scene=CH05_CHASE_END
+spawn start 1 17 right
+spawn end 28 2 left
+exit 28..29 1..3 T04_QUAY from_chase

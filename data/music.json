@@ -1,0 +1,182 @@
+[
+ {
+  "id": "M001",
+  "name": "Title — The Ashen Crown",
+  "use": "title",
+  "direction": "Slow restrained strings, bells and low pulse; end on an unresolved suspension."
+ },
+ {
+  "id": "M002",
+  "name": "Dain — An Open Hand",
+  "use": "character",
+  "direction": "Low brass and plucked strings; a repeated note opens into a fifth."
+ },
+ {
+  "id": "M003",
+  "name": "Tessa — Borrowed Light",
+  "use": "character",
+  "direction": "Bright mallet and woodwind phrase that learns to leave space."
+ },
+ {
+  "id": "M004",
+  "name": "Corren — The Return",
+  "use": "character",
+  "direction": "Airy flute over grounded hand percussion, not a constant heroic march."
+ },
+ {
+  "id": "M005",
+  "name": "Ivo — Working Hands",
+  "use": "character",
+  "direction": "Muted metallic percussion and bass ostinato with a warm middle voice."
+ },
+ {
+  "id": "M006",
+  "name": "Nera — Every Road",
+  "use": "character",
+  "direction": "Dry plucked strings, small woodwind replies, forward but unhurried motion."
+ },
+ {
+  "id": "M007",
+  "name": "Oriel — The Right to Refuse",
+  "use": "character",
+  "direction": "Breathy reed and distant bell; clear rests between phrases."
+ },
+ {
+  "id": "M008",
+  "name": "Sable — Unwritten",
+  "use": "character",
+  "direction": "Tight counterpoint loosening into a single candid melody."
+ },
+ {
+  "id": "M009",
+  "name": "Pip — Names We Keep",
+  "use": "character",
+  "direction": "Playful offbeat figure that later returns with fewer evasive ornaments."
+ },
+ {
+  "id": "M010",
+  "name": "Brackenford — Shift Change",
+  "use": "town",
+  "direction": "Warm domestic rhythm against a distant industrial pulse."
+ },
+ {
+  "id": "M011",
+  "name": "Veyr — Oath Square",
+  "use": "town",
+  "direction": "Ordered brass and precise percussion with subtle harmonic tension."
+ },
+ {
+  "id": "M012",
+  "name": "Cinderwake — The Cooling Garden",
+  "use": "town",
+  "direction": "Steam-like noise texture used sparingly, gentle machine rhythm."
+ },
+ {
+  "id": "M013",
+  "name": "Bellharbor — Tide and Paper",
+  "use": "town",
+  "direction": "Bell and flute over a rocking bass; no direct sea-shanty quotation."
+ },
+ {
+  "id": "M014",
+  "name": "High Aerie — Returners’ Hall",
+  "use": "town",
+  "direction": "Open intervals and audible breathing room."
+ },
+ {
+  "id": "M015",
+  "name": "Nacre — Listening Water",
+  "use": "town",
+  "direction": "Sparse chords, plucked mineral tones, restrained reverb."
+ },
+ {
+  "id": "M016",
+  "name": "Hearthward — Many Small Fires",
+  "use": "town",
+  "direction": "Main theme in warm intimate instrumentation, repaired rather than triumphant."
+ },
+ {
+  "id": "M017",
+  "name": "Before the Fault",
+  "use": "overworld",
+  "direction": "Confident travel pulse; leave room for footsteps and menu cues."
+ },
+ {
+  "id": "M018",
+  "name": "After the Fault",
+  "use": "overworld",
+  "direction": "Same melodic identity with missing bass notes and changed cadence."
+ },
+ {
+  "id": "M019",
+  "name": "Wayfarer — Ordinary Flight",
+  "use": "vehicle",
+  "direction": "Lift and motion without a military fanfare; combines Ivo and Corren motifs."
+ },
+ {
+  "id": "M020",
+  "name": "Quarry and Conduit",
+  "use": "dungeon",
+  "direction": "Low ostinato and metallic emphasis; two arrangement states."
+ },
+ {
+  "id": "M021",
+  "name": "Rootward",
+  "use": "dungeon",
+  "direction": "Organic percussion and short recurring flute calls."
+ },
+ {
+  "id": "M022",
+  "name": "Furnace Spine",
+  "use": "dungeon",
+  "direction": "Layered rhythmic machinery; audible rest sections before major scenes."
+ },
+ {
+  "id": "M023",
+  "name": "Drowned Archive",
+  "use": "dungeon",
+  "direction": "Bell fragments and rippling counterpoint with a clear tonal center."
+ },
+ {
+  "id": "M024",
+  "name": "Memory Vault",
+  "use": "dungeon",
+  "direction": "Contradictory voices resolve only after the listening scene."
+ },
+ {
+  "id": "M025",
+  "name": "Encounter — Broken Orders",
+  "use": "battle",
+  "direction": "Brisk syncopation, memorable bass line and readable transition into victory."
+ },
+ {
+  "id": "M026",
+  "name": "Boss — Pressure Rising",
+  "use": "battle",
+  "direction": "Strong ostinato and contrasting bridge; avoid endless identical two-bar loops."
+ },
+ {
+  "id": "M027",
+  "name": "Catastrophe — Crown of Cinders",
+  "use": "story",
+  "direction": "Begins with intended release, fractures into displaced rhythm, ends in silence."
+ },
+ {
+  "id": "M028",
+  "name": "Crown Vessel — No One Is Fuel",
+  "use": "final_boss",
+  "direction": "Three connected arrangements for the three phases; transitions on musical boundaries."
+ },
+ {
+  "id": "M029",
+  "name": "Victory and Rest",
+  "use": "stinger",
+  "direction": "Short separate victory, recovery and discovery cues sharing the core interval."
+ },
+ {
+  "id": "M030",
+  "name": "The First Unborrowed Morning",
+  "use": "ending",
+  "direction": "Complete the title’s suspended cadence; include character fragments without quoting other games."
+ }
+]

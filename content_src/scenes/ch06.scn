@@ -1,0 +1,111 @@
+# CH06 — The Bell That Broke. Drowned Archive, Rook, the Bell-Sworn Custodian.
+
+@scene D05_ENTER once
+say narr | The tide door stands open at low water. Salt light moves across drowned shelves.
+say pip | Records nobody owns. Contracts older than the Crown. The ministry forgot this place because it couldn't tax it.
+say oriel | Three bells on the nave floor. Old archives opened by tone.
+objective pip | Open the Bell Nave's galleries by matching bell tones to their doors.
+@end
+
+@scene D05_BELL_LOW
+sfx FX031
+setvar d05_tone 1
+say narr | A low tone rolls through the nave. (ANCHOR glyph.) The west door hums.
+@end
+
+@scene D05_BELL_MID
+sfx FX031
+setvar d05_tone 2
+say narr | A middle tone, clear as water. (WAVE glyph.) The east door hums.
+@end
+
+@scene D05_BELL_HIGH
+sfx FX031
+setvar d05_tone 3
+say narr | A high tone rings bright. (LANTERN glyph.) Somewhere deeper, past the dry gallery, a door answers.
+@end
+
+@scene D05_DOOR_DRY
+if var:d05_tone==1 open
+say narr | The anchor door stays shut. (It answers to the low tone - ring the west bell.)
+end
+label open
+sfx FX009
+set d05_dry
+say narr | The anchor door slides back into the wall.
+@end
+
+@scene D05_DOOR_WET
+if var:d05_tone==2 open
+say narr | The wave door stays shut. (It answers to the middle tone - ring the north bell.)
+end
+label open
+sfx FX009
+set d05_wet
+say narr | The wave door lifts, and seawater sighs in over the threshold.
+@end
+
+@scene D05_DOOR_VAULT
+if var:d05_tone==3 open
+say narr | The lantern door stays shut. (It answers to the high tone - the east bell in the nave.)
+end
+label open
+sfx FX009
+set d05_vault
+say narr | The lantern door opens onto the Witness Vault.
+@end
+
+@scene D05_CUSTODIAN once
+music silence
+say narr | A figure of salt and bronze rises from the vault floor. Three bells hang from its shoulders.
+say "Custodian" | UNREGISTERED READERS. THE ARCHIVE IS SEALED.
+say pip | Registered, unregistered. Everyone always wants a form.
+say oriel | When one bell vibrates, it mirrors the last element used. Change elements - or use steel.
+battle B05 noflee
+set b05_done
+music M023
+say narr | The Custodian settles back into the floor, its bells silent. The shelves around the vault stay open.
+show rook 20 26 up rook
+move rook up up up up
+say rook | Don't close it again. Please. I've been trying to reach this vault for two years.
+say dain | Who are you?
+say rook | Elian Rook. Ministry geologist, until I wrote the wrong report. I study heartglass.
+say rook | The organs are not fossils. They are transmitting. Continuously. A distributed consciousness spread across every relay in the kingdom.
+say rook | I don't ask you to believe me. I have names, dates, and the transmission logs. Read them.
+xp 200
+key K_ROOK_EVIDENCE
+doc Rook's_Evidence | Relay transmission logs, 312 years of samples. The pulse is not random: it repeats, it answers, it forms patterns that change when names are spoken near it. Extraction increases output and suffering-analogous distortion together. Appendix: seven relay sites. Appendix page 9 missing.
+say tessa | Page nine is missing.
+say rook | Water damage.
+say nera | The pages on either side are dry.
+say rook | ...Water damage.
+objective | Speak with Rook in the Witness Vault.
+@end
+
+@scene D05_ROOK_TALK
+say rook | There is a last synchronization chamber, under the Crown Dais in Veyr. If the relays could be released from there -
+say dain | We investigate. Nothing more until we understand it.
+say rook | Investigate. Yes. Of course.
+say narr | The Roof Pier is north of the vault.
+@end
+
+@scene CH06_ROOF once
+say narr | The roof pier. The tide is turning. From the harbor, a bell rings - a real bell, rehung by the town.
+say pip | They're copying the evidence. Every family in Bellharbor is taking a page home.
+say rook | You can't burn a thousand copies.
+say oriel | You can ignore them.
+say rook | Not if we act.
+say dain | We're going to see the chamber. That's all.
+say narr | Rook agrees quickly. Too quickly, Nera thinks. She doesn't say so yet.
+say narr | Something large and gentle rises under the pier: a whale-shaped Vestige, humming the harbor bell's note.
+say "Bell Whale" | You rang the old bells and did not seal the doors again. I will answer your call.
+vestige V03
+chapter CH06
+set rook_ally
+say rook | The Pale Basin holds the memory vaults. That's where the relays remember what they were. The route north is the Skychain.
+objective rook | Take the coastal ferry north to Skyspine (east pier on the world road), then the Skychain Viaduct.
+discover L_D06
+rumor | Sailors say the Skychain's anchors failed; High Aerie is sending a volunteer to reset them alone.
+level_floor 13
+warp WORLD ferry_bh left
+@end

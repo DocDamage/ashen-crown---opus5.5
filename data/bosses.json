@@ -1,0 +1,398 @@
+[
+ {
+  "id": "B01",
+  "name": "Extractor Warden",
+  "location": "D01",
+  "chapter": "CH01",
+  "optional": false,
+  "hp": 950,
+  "tell": "A digging arm pauses over one target while a red pressure gauge fills",
+  "counterplay": "Defend the marked target or use Tessa’s storm flask tutorial pickup; attacking the valve also reduces the hit",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "piston jab"
+   },
+   {
+    "threshold": 65,
+    "name": "telegraphed clamp"
+   },
+   {
+    "threshold": 30,
+    "name": "vent and sweep"
+   }
+  ],
+  "victory": "The occupied lift is disconnected after victory, never destroyed by the battle"
+ },
+ {
+  "id": "B02",
+  "name": "Brass Bailiff",
+  "location": "D02",
+  "chapter": "CH02",
+  "optional": false,
+  "hp": 1400,
+  "tell": "A stamped warrant names its next target one action before restraint",
+  "counterplay": "Cleanse or destroy the paper seal; Guard reduces the follow-up",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "baton and restraint"
+   },
+   {
+    "threshold": 50,
+    "name": "duplicated warrants with only one active seal"
+   }
+  ],
+  "victory": "Defeat disables the machine; no all-party permanent restraint"
+ },
+ {
+  "id": "B03",
+  "name": "Rootbound Stag",
+  "location": "D03",
+  "chapter": "CH03",
+  "optional": false,
+  "hp": 2100,
+  "tell": "The antlers bloom before a root binds the back row",
+  "counterplay": "Burn one root or use a weapon attack twice; bind expires even without the ideal counter",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "hoof and vines"
+   },
+   {
+    "threshold": 60,
+    "name": "root cage"
+   },
+   {
+    "threshold": 25,
+    "name": "pollen burst"
+   }
+  ],
+  "victory": "The growth seal breaks; the underlying creature survives as V02’s guardian"
+ },
+ {
+  "id": "B04",
+  "name": "Foundry Colossus",
+  "location": "D04",
+  "chapter": "CH04",
+  "optional": false,
+  "hp": 2900,
+  "tell": "Three vents light from left to right before the boiler sweep",
+  "counterplay": "Use ice, ground the charge or defend; pressure resets after the sweep rather than climbing forever",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "rivet strikes"
+   },
+   {
+    "threshold": 70,
+    "name": "steam screen"
+   },
+   {
+    "threshold": 35,
+    "name": "boiler sweep"
+   }
+  ],
+  "victory": "No story worker can die through random battle targeting"
+ },
+ {
+  "id": "B05",
+  "name": "Bell-Sworn Custodian",
+  "location": "D05",
+  "chapter": "CH06",
+  "optional": false,
+  "hp": 3800,
+  "tell": "One of three visible bells vibrates before the Custodian mirrors an element",
+  "counterplay": "Use a different element or physical attacks; a mirrored element resists rather than instantly kills the party",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "salt lash"
+   },
+   {
+    "threshold": 60,
+    "name": "mirror bell"
+   },
+   {
+    "threshold": 25,
+    "name": "choral wave"
+   }
+  ],
+  "victory": "Archive shelves remain accessible after victory"
+ },
+ {
+  "id": "B06",
+  "name": "Chain Roc",
+  "location": "D06",
+  "chapter": "CH07",
+  "optional": false,
+  "hp": 4700,
+  "tell": "The tether strains and a shadow marks the row targeted by the dive",
+  "counterplay": "Defend or use Corren’s aerial counter; either row can be made safe",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "talon"
+   },
+   {
+    "threshold": 55,
+    "name": "tethered dive"
+   },
+   {
+    "threshold": 25,
+    "name": "free-wing gust"
+   }
+  ],
+  "victory": "Break the tether; this is not the same entity as V04, which guarded the wind shrine"
+ },
+ {
+  "id": "B07",
+  "name": "Ivory Adjudicator",
+  "location": "D07",
+  "chapter": "CH08",
+  "optional": false,
+  "hp": 5600,
+  "tell": "A visible sigil announces whether the next seal targets a skill or an item",
+  "counterplay": "Alternate command families or dispel; basic Attack and Defend are never simultaneously locked",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "seal and strike"
+   },
+   {
+    "threshold": 65,
+    "name": "judgment mark"
+   },
+   {
+    "threshold": 30,
+    "name": "two seals with a full action of warning"
+   }
+  ],
+  "victory": "Sable removes the remaining cell locks in the following scene"
+ },
+ {
+  "id": "B08",
+  "name": "Pale Choir",
+  "location": "D08",
+  "chapter": "CH09",
+  "optional": false,
+  "hp": 6500,
+  "tell": "Three masks highlight the next repeated command it will echo",
+  "counterplay": "Vary actions or defend the repeat; players are not punished for merely opening menus",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "memory needle"
+   },
+   {
+    "threshold": 60,
+    "name": "echo command"
+   },
+   {
+    "threshold": 25,
+    "name": "shared refrain"
+   }
+  ],
+  "victory": "All contradictory testimony remains; defeating it does not delete a culture’s history"
+ },
+ {
+  "id": "B09",
+  "name": "Marshal Voss",
+  "location": "D09",
+  "chapter": "CH11",
+  "optional": false,
+  "hp": 7800,
+  "tell": "Voss raises the command baton and points to a protector",
+  "counterplay": "Change targets, dispel the order or defend; counterattacks have a per-action recursion guard",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "sword command"
+   },
+   {
+    "threshold": 55,
+    "name": "forced guard"
+   },
+   {
+    "threshold": 25,
+    "name": "command barrage"
+   }
+  ],
+  "victory": "Voss retreats into the apparatus. The player wins the encounter normally"
+ },
+ {
+  "id": "B10",
+  "name": "Elian Rook, Threshold Maker",
+  "location": "D09",
+  "chapter": "CH12",
+  "optional": false,
+  "hp": 8800,
+  "tell": "Three relay lights announce a full-party synchronization pulse",
+  "counterplay": "Break either active relay or defend; relay destruction reduces rather than cancels the required story event",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "relay arc"
+   },
+   {
+    "threshold": 60,
+    "name": "synchronization"
+   },
+   {
+    "threshold": 30,
+    "name": "accelerated pulse with visible recovery"
+   }
+  ],
+  "victory": "Rook is defeated. His previously established secondary route triggers the catastrophe in the subsequent scene"
+ },
+ {
+  "id": "B11",
+  "name": "Ash-Tide Warden",
+  "location": "D03",
+  "chapter": "CH14",
+  "optional": false,
+  "hp": 4600,
+  "tell": "A flood marker rises one step per action; a clear notch indicates the surge threshold",
+  "counterplay": "Strike a current valve, defend or use Nera’s Snare on the channel add",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "water claw"
+   },
+   {
+    "threshold": 55,
+    "name": "rising surge"
+   },
+   {
+    "threshold": 20,
+    "name": "exposed core"
+   }
+  ],
+  "victory": "Balanced for Dain, Oriel and Nera, not a full four-person party"
+ },
+ {
+  "id": "B12",
+  "name": "Crown Vessel",
+  "location": "D10",
+  "chapter": "CH22",
+  "optional": false,
+  "hp": 26000,
+  "tell": "Phase 1: shield tether; phase 2: named command; phase 3: three illuminated pressure rings",
+  "counterplay": "Phase 1: separate targets. Phase 2: alternate commands and dispel. Phase 3: stagger attacks and defend during the visible release. All counters also have accessible consumable equivalents",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "Voss controls the shell"
+   },
+   {
+    "threshold": 65,
+    "name": "coercion network exposed"
+   },
+   {
+    "threshold": 30,
+    "name": "overloaded crown"
+   }
+  ],
+  "victory": "One final battle, no unannounced new antagonist. Story release follows the victory"
+ },
+ {
+  "id": "B13",
+  "name": "Lantern Eater",
+  "location": "D11",
+  "chapter": "CH21",
+  "optional": true,
+  "hp": 15500,
+  "tell": "A lantern extinguishes and its shadow selects the next sleeper",
+  "counterplay": "Relight it with fire or a reusable arena interaction; immunity is not required",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "chill bite"
+   },
+   {
+    "threshold": 60,
+    "name": "sleep lantern"
+   },
+   {
+    "threshold": 25,
+    "name": "long-night pulse"
+   }
+  ],
+  "victory": "V07 pact offered after victory"
+ },
+ {
+  "id": "B14",
+  "name": "Heartless Leviathan",
+  "location": "D12",
+  "chapter": "CH21",
+  "optional": true,
+  "hp": 19000,
+  "tell": "Wave bands and beacon flashes show the next current direction",
+  "counterplay": "Ground the charge or defend the marked row; audio and visual timing match",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "reef bite"
+   },
+   {
+    "threshold": 60,
+    "name": "returning tide"
+   },
+   {
+    "threshold": 25,
+    "name": "wreck memory"
+   }
+  ],
+  "victory": "V08 pact offered after the coercive loop is broken"
+ },
+ {
+  "id": "B15",
+  "name": "Regent’s Echo",
+  "location": "D02",
+  "chapter": "CH21",
+  "optional": true,
+  "hp": 18000,
+  "tell": "The old command screen names the action that will be taxed next",
+  "counterplay": "Choose a different action, dispel or accept a bounded penalty. It never steals unique gear or deletes saves",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "levy"
+   },
+   {
+    "threshold": 65,
+    "name": "duplicate orders"
+   },
+   {
+    "threshold": 30,
+    "name": "final edict"
+   }
+  ],
+  "victory": "Reward A023 exactly once; source records retained"
+ },
+ {
+  "id": "B16",
+  "name": "Null Cantor",
+  "location": "D10",
+  "chapter": "CH21",
+  "optional": true,
+  "hp": 23500,
+  "tell": "A visible four-beat ring marks a silence window, then a response window",
+  "counterplay": "Defend through silence; act through response; Wait mode preserves the same simulation beats",
+  "phases": [
+   {
+    "threshold": 100,
+    "name": "mute refrain"
+   },
+   {
+    "threshold": 60,
+    "name": "two-part canon"
+   },
+   {
+    "threshold": 25,
+    "name": "open chorus"
+   }
+  ],
+  "victory": "Reward A024 and music variation, not a mandatory finale key"
+ }
+]

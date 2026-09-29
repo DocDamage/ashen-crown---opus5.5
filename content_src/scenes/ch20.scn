@@ -1,0 +1,71 @@
+# CH20 — The Ash Accord. Nacre's assembly; Rook under escort; the final route opens.
+
+@scene CH20_ACCORD once
+music M015
+say narr | Nacre's assembly benches, set in a ring around the listening pool. Delegates from Hearthward, Brackenford, Cinderwake, Bellharbor, High Aerie, Veyr and Whitebone. Nobody sits at the head. There isn't one.
+say sen | We are here to compare what worked. Not what was promised. What worked.
+say ivo | The trial relay at Nacre. Distributed load - the wheel, the cable, the pool. It still runs. Here's the circuit, drawn for anyone to build.
+say oriel | And the consent check. Asked, not assumed; answered, not signed over; revisable, at any time.
+say corren | Skyspine's mooring anchors hold without anyone on the lever. That's an anchor for the release.
+say pip | Veyr's registry records who wrote every name. That's an anchor too. Paper, but still.
+say sable | Whitebone's cells opened on keys their occupants chose. The seals remember. That can be taught.
+say nera | And every crossing in the Rootward has a named keeper. Nobody carries a whole map alone anymore.
+say tessa | Cinderwake's heat comes from waterwheels and a rota. We've already solved it, you see. Region by region. We don't need a new crown. We need everyone's pieces at once.
+say sen | Then there is one thing missing: how the activation route actually runs. Who knows it?
+music silence
+show rook 22 20 up rook
+say narr | Soldiers from three towns bring Rook in. His hands are bound in ordinary rope. He is thinner.
+say rook | I do.
+say rook | The hidden route. The fourth relay. Everything I pasted over in the archive diagrams. Here.
+key K_ROUTE_DIAGRAMS
+say rook | I imposed freedom as a command. I told myself it was different from what the ministry did. It was the same shape.
+say tessa | You want forgiveness?
+say rook | I want to answer for it. After this is done. Not instead.
+say sen | Then the assembly records it. Extraction was a harm. The forced awakening was a harm. Both require accountability. Neither cancels the other.
+say narr | The record is written in many hands. Rook signs where he is told to sign, and nowhere else. The soldiers take him to wait for his hearing.
+hide rook
+say ilyr | Voss is in the Crown Heart. What is left of him. He has fused himself to the vessel at the centre of the Ember Sea, and he is still trying to make every fragment obey.
+say dain | Then we go there with everyone's pieces.
+chapter CH20
+set ash_accord
+objective dain | The Ash Accord is signed. When you're ready, fly Wayfarer to the Crown Heart in the middle of the Ember Sea.
+rumor | The Wayfarer crew room has a board of leads - personal matters for each of you, and four strange ones besides. None of them has to be done first.
+level_floor 33
+@end
+
+# ---------------------------------------------------------------- Nacre (post)
+@scene T06P_SEN
+if ch:CH20 after
+say sen | The pool projects conflicting memories now - dragon and human, overlapping. We set up a listening house. Nobody has to listen alone, or at all.
+if ch:CH17,ch:CH18,ch:CH19 ready
+say sen | When your whole crew is together again, come to the assembly benches south of the pool.
+end
+label ready
+say sen | You're all here. The assembly is waiting on the benches south of the pool.
+end
+label after
+say sen | Heavier than it was. That's how you know.
+@end
+
+@scene T06P_FAMILY
+say elder | The pool showed us the same morning again. I saw a wedding. She saw a funeral. We still argue. We still come every week.
+say survivor | We haven't agreed once. It's the best thing we do together.
+@end
+
+@scene T06P_GARDENER
+say farmer | Still watering. Still don't know if the plants are sacred. Still don't think it matters.
+@end
+
+@scene T06P_SHOP
+say keeper | Salt, jars, remedies. The cloth-lined jars are back in fashion. Everything old is useful again.
+shop SHOP_T06
+@end
+
+@scene T06P_LISTENER
+say scholar | The listening house has one rule: you may stop listening at any time. People keep coming back anyway.
+@end
+
+@scene T06P_INN
+say monk | The listening house has beds. Quiet after the second bell.
+inn 0
+@end

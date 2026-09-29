@@ -1,0 +1,29 @@
+# Wayfarer common deck (after CH16): crew room, formation, CH21 rumor board.
+
+@scene W_IVO
+say ivo | She's slow. She's heavy. Every part has a name in the manual, and every name has a spare in the hold.
+say ivo | Nothing on this ship needs a person inside it to run.
+@end
+
+@scene W_CREW
+say pilot | Climb the ladder to take the helm. Land on the marked fields by towns and ruins - look for the flattened grass.
+say pilot | On foot, stand on any marked field and call her; she'll come to you.
+@end
+
+@scene W_FORMATION
+say sailor | Swapping who goes ashore? Take your time.
+formation
+@end
+
+@scene W_REST
+say pilot | Crew bunks. Two hours' sleep and a hot drink.
+inn 0
+@end
+
+@scene W_RUMORS
+say scholar | The crew room board. Everyone pins up what they've heard.
+journal | Crew board: Mara in Brackenford is gathering the quarry names (Dain). A Bellharbor apprentice wants Tessa (Tessa). Edda wants a wall for returners (Corren). Pell says the engine only runs when Ivo stands by it (Ivo).
+journal | Crew board: two Brackenford camps want different roads (Nera). A patient at Nacre refuses an order in Oriel's hand (Oriel). A Whitebone survivor wants another binding site found (Sable). Jori has people whose names changed (Pip).
+journal | Crew board: an island lantern north of Nacre burns while its village never wakes. A Hearthward bell repeats a lost ship's departure. A machine under Veyr still issues Voss's orders. Nacre's pool holds a voice nobody claims.
+say scholar | (The leads are recorded in your Journal. None of them is required to reach Crown Heart.)
+@end

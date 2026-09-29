@@ -1,0 +1,146 @@
+[
+ {
+  "id": "I001",
+  "name": "Tonic",
+  "price": 45,
+  "effect": "Restore 250 HP to one living ally."
+ },
+ {
+  "id": "I002",
+  "name": "High Tonic",
+  "price": 150,
+  "effect": "Restore 900 HP to one living ally."
+ },
+ {
+  "id": "I003",
+  "name": "Grand Tonic",
+  "price": 400,
+  "effect": "Restore 1800 HP to one living ally."
+ },
+ {
+  "id": "I004",
+  "name": "Ether",
+  "price": 100,
+  "effect": "Restore 40 MP to one living ally."
+ },
+ {
+  "id": "I005",
+  "name": "High Ether",
+  "price": 320,
+  "effect": "Restore 100 MP to one living ally."
+ },
+ {
+  "id": "I006",
+  "name": "Phoenix Leaf",
+  "price": 120,
+  "effect": "Revive one fallen ally at 25% max HP."
+ },
+ {
+  "id": "I007",
+  "name": "Purifying Salt",
+  "price": 80,
+  "effect": "Remove Poison, Burn, Bleed, Blind, Sleep and Silence."
+ },
+ {
+  "id": "I008",
+  "name": "Eyesalve",
+  "price": 25,
+  "effect": "Remove Blind."
+ },
+ {
+  "id": "I009",
+  "name": "Antidote",
+  "price": 25,
+  "effect": "Remove Poison."
+ },
+ {
+  "id": "I010",
+  "name": "Wake Bell",
+  "price": 25,
+  "effect": "Remove Sleep."
+ },
+ {
+  "id": "I011",
+  "name": "Cool Cloth",
+  "price": 25,
+  "effect": "Remove Burn."
+ },
+ {
+  "id": "I012",
+  "name": "Stilling Root",
+  "price": 25,
+  "effect": "Remove Silence."
+ },
+ {
+  "id": "I013",
+  "name": "Travel Tent",
+  "price": 160,
+  "effect": "At a save point or overworld safe location, restore party HP and MP; not usable in a battle."
+ },
+ {
+  "id": "I014",
+  "name": "Smoke Pellet",
+  "price": 50,
+  "effect": "Add 600 flee meter in eligible battles; consumes nothing when fleeing is forbidden."
+ },
+ {
+  "id": "I015",
+  "name": "Ember Flask",
+  "price": 65,
+  "effect": "120-power fire magic attack with fixed item MAG 30."
+ },
+ {
+  "id": "I016",
+  "name": "Rime Flask",
+  "price": 65,
+  "effect": "120-power ice magic attack with fixed item MAG 30."
+ },
+ {
+  "id": "I017",
+  "name": "Storm Flask",
+  "price": 65,
+  "effect": "120-power storm magic attack with fixed item MAG 30."
+ },
+ {
+  "id": "I018",
+  "name": "Guard Powder",
+  "price": 75,
+  "effect": "Apply Barrier to one ally for 3 actions."
+ },
+ {
+  "id": "I019",
+  "name": "Clock Dust",
+  "price": 75,
+  "effect": "Apply Slow to one enemy at 85% base chance; boss resistance applies."
+ },
+ {
+  "id": "I020",
+  "name": "Concord Seed",
+  "price": 220,
+  "effect": "Restore 30 Concord; one consumed seed per battle; disabled outside battle."
+ },
+ {
+  "id": "I021",
+  "name": "Emergency Ration",
+  "price": 120,
+  "effect": "Heal all living allies for 200 HP each."
+ },
+ {
+  "id": "I022",
+  "name": "Waystone",
+  "price": 90,
+  "effect": "Return to the current dungeon entrance outside battle; forbid during atomic story transitions without consuming it."
+ },
+ {
+  "id": "I023",
+  "name": "Restorative Vial",
+  "price": 180,
+  "effect": "Remove Doom and Bleed from one ally."
+ },
+ {
+  "id": "I024",
+  "name": "Elixir",
+  "price": 0,
+  "effect": "Restore one living ally to full HP and MP; rare guaranteed chest source, not required for the critical path."
+ }
+]

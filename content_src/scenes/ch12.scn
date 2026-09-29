@@ -1,0 +1,66 @@
+# CH12 — Crown of Cinders. Rook (B10), SC08, the escape, and the atomic catastrophe transaction.
+
+@scene CH12_DAIS once
+music silence
+show rook 15 7 down rook
+say rook | You came. Good. I wanted witnesses who had read the vault.
+say dain | We read it. It said the separation rite was taken away. Not that you get to hand it back to everyone at once.
+say rook | A century of extraction, and you want to repair it one volunteer at a time.
+say tessa | One volunteer at a time is how you know they're volunteers.
+say rook | And the ones who die waiting? Do they get a hearing?
+say oriel | They get asked. That is what you are skipping.
+say rook | Then I will be the one who didn't ask. Someone has to.
+say narr | Three relay lights kindle around the dais.
+battle B10 noflee
+set b10_done
+music silence
+say narr | Rook goes down on one knee. The dais controls spark and fail. Ivo pulls the last visible coupling.
+say ivo | The visible relays are dark.
+shake 0.5
+sfx FX015
+say tessa | Then why is it still climbing?
+say dain | Rook.
+say rook | I could not leave it to permission.
+say oriel | Whose permission?
+say rook | Any of yours.
+say narr | Under the dais floor, lines Ivo never drew light one after another - the fourth relay, the pasted-over line from the archive diagram.
+say ilyr | (Through Dain's throat, a command arrives that is not his own: overwrite the host.)
+say ilyr | No.
+say dain | Was that for him or for me?
+say ilyr | For the command.
+say oriel | The common channel - it's giving every node the same order. I can break it. Not stop it. Break it.
+say ivo | The lifts still have power. Move.
+say narr | Oriel sets both hands on the dais and pulls the channel apart. The order shatters into a thousand small voices. It does not stop.
+music M027
+flash #ffd8a0
+shake 1.0
+say rook | ...It was supposed to be freedom.
+say sable | It was supposed to be asked.
+say narr | Soldiers drag Rook toward the lift. Nobody lets go of him, and nobody leaves him behind.
+objective dain | Escape! Reach the evacuation lift at the end of the collapsing aqueduct.
+warp D09_ESC start up
+@end
+
+@scene CH12_ESC_TALK
+say narr | Stone rains down in waves. Wait for the shaking to pass, then run.
+@end
+
+@scene CH12_FALL once
+music silence
+say narr | The lift cage slams shut. Ivo throws every lever he built into the cable brake.
+say ivo | Holding - holding -
+shake 1.2
+flash #ffffff
+fade out 1.2
+say narr | The Conduit gives way beneath Veyr.
+say narr | Coastlines fracture along old relay faults. Dormant dragon structures rise from the plains and the sea. The Crown's bell rings once, wrong, and every city hears it.
+say narr | The lift cable snaps. The party scatters into the dark.
+wait 1.0
+phase post
+music silence
+say narr | ...
+say narr | Salt water. A fire, somewhere. Someone humming badly.
+warp T07_HEARTH wake down
+fade in 1.5
+call CH13_WAKE
+@end

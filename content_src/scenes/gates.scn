@@ -1,0 +1,50 @@
+# Pre-state overworld entrance gates (tools/maps/world.py LOC_COND_PRE). Each explains the closed door in-world.
+
+@scene GATE_T02
+if ch:CH02 wanted
+say narr | Veyr's south gate. A queue of carts, a clerk with a ledger. The quarry lies behind you, and your report isn't written yet.
+say oriel | Brackenford first. The workers, then the capital.
+end
+label wanted
+call VEYR_WANTED
+@end
+
+@scene GATE_D03
+say narr | The Rootward forest, north of the capital. Ministry foresters wave travellers away: 'Sluice works. Closed.'
+@end
+
+@scene GATE_T03
+say narr | The northern road into Cinder Reach. A ministry barricade blocks the pass, and the foresters say the only way around it runs through the Rootward.
+@end
+
+@scene GATE_T04
+say narr | The coast road to Bellharbor. A checkpoint turns back anyone without a harbour pass - and the party is wanted.
+@end
+
+@scene GATE_D05
+say narr | The Drowned Archive sits on its tide island. Without someone who knows the tide tables, the causeway is a good way to drown.
+@end
+
+@scene GATE_D06
+say narr | The foot of the Skychain Viaduct. The span is closed: 'Anchors failed. No crossings.' The ferry north is the only way to the cable foot.
+@end
+
+@scene GATE_T05
+say narr | High Aerie is on the far side of the chasm. With the Skychain closed, there's no way across.
+@end
+
+@scene GATE_D07
+say narr | Whitebone Redoubt's outer patrols turn you back long before the white gate. Not yet.
+@end
+
+@scene GATE_T06
+say narr | The salt road to Nacre runs through redoubt patrols from Whitebone. Without a way across the chasm, it's a long walk into their arms.
+@end
+
+@scene GATE_D08
+say narr | The vault road. Redoubt soldiers still hold the approach.
+@end
+
+@scene GATE_D09
+say narr | The old aqueduct entrance under Veyr. Barred, and humming faintly. Not yet.
+@end

@@ -1,0 +1,157 @@
+# CH14 — Roads Grow Teeth. Flooded Rootward: Nera's survivors, three crossings, the Ash-Tide Warden (B11).
+
+@scene CH14_CAMP once
+say narr | A camp on the high roots. Tarps, a cook fire, and forty people who have been waiting for the water to decide something.
+say nera | Dain? Oriel. You're alive. Good. Don't touch the map.
+say dain | Hello to you too.
+say nera | There are three crossings north of here. Two of them drown people. One doesn't. I know which. So I lead every group across myself.
+say oriel | How many trips a day?
+say nera | As many as it takes.
+say mara | Which is why half of them are still here after two weeks. Nobody can wait for one guide forever, Nera.
+say nera | If I hand out the map and somebody takes the wrong crossing -
+say mara | Then we make every crossing the right one.
+say nera | ...The current's being pushed south by something in the old sluice. If the sluice lets go, the water drops. The walkways can be raised with the levers - if you know which way they lift.
+objective oriel | Raise all three walkways in the Three Crossings (north), then find what is diverting the current.
+@end
+
+@scene CH14_NERA_CAMP
+if event:CH14_CAMP after
+say nera | Who's that? Oh - it's you.
+end
+label after
+say nera | Three levers, three walkways. Up is up - don't overthink it. The thing in the sluice is another story.
+@end
+
+@scene CH14_MARA
+say mara | She's been carrying the whole camp on one map. Let's give her arms a rest.
+@end
+
+@scene CH14_CHILD
+say child | Nera says the forest used to be dry. I don't believe her. Trees can't live without swimming.
+@end
+
+@scene CH14_ELDER
+say elder | My hip won't take the ford twice. I'll go once, on a proper walkway, or not at all.
+@end
+
+@scene CH14_ROUTE1
+if flag:d03p_route1 done
+sfx FX010
+set d03p_route1
+say narr | The west lever lifts. A walkway rises dripping out of the flood, planks still marked with old guild paint.
+call CH14_ROUTES
+end
+label done
+say narr | The west walkway is raised.
+@end
+
+@scene CH14_ROUTE2
+if flag:d03p_route2 done
+sfx FX010
+set d03p_route2
+say narr | The middle lever groans. The centre walkway surfaces, green with weed.
+call CH14_ROUTES
+end
+label done
+say narr | The middle walkway is raised.
+@end
+
+@scene CH14_ROUTE3
+if flag:d03p_route3 done
+sfx FX010
+set d03p_route3
+say narr | The east lever snaps up. The last walkway rises, and for a moment the whole pool is quiet.
+call CH14_ROUTES
+end
+label done
+say narr | The east walkway is raised.
+@end
+
+@scene CH14_ROUTES
+if flag:d03p_route1,flag:d03p_route2,flag:d03p_route3 all
+say narr | (The current still tugs at the lowered crossings.)
+end
+label all
+objective oriel | All three crossings are up. Follow the current north to the old sluice.
+@end
+
+@scene CH14_WARDEN once
+music silence
+say narr | The old sluice. A shape of bark and silt and drowned iron is holding the gate shut with its whole body, forcing the river south over the camp.
+say oriel | It thinks it's holding back the flood. It is the flood.
+say narr | The Warden turns. Water surges toward the front row.
+battle B11 noflee
+set b11_done
+music M021
+say narr | The Warden sinks, and the sluice gate swings free. The water level drops a hand's width, then another.
+xp 900
+@end
+
+@scene CH14_NERA once
+show nera_s 17 16 up C05
+say nera | You did it. The current's falling.
+say mara | Now the map.
+say nera | ...There's only one. It took me four years.
+say mara | Then it's the most valuable thing in the camp, and it belongs to the camp.
+say nera | If someone reads it wrong -
+say oriel | Then they ask someone who read it right. That is how maps work when more than one person owns them.
+wait 0.5
+say nera | Fine. We make copies. One per family. Warnings in the margins. Names of who keeps each crossing.
+say nera | It's a start. Not a finish. I'm not done paying for what I sold, back before any of this.
+say dain | Come with us?
+say nera | Someone's got to find Tessa. She never could read a map.
+hide nera_s
+join C05
+chapter CH14
+set brackenford_routes
+objective dain | Brackenford's new crossings are open. Take the repaired ferry from Hearthward east to Bellharbor to find Tessa.
+rumor | Hearthward's ferryman has his caulk back. The ferry to the Glass Coast runs again.
+level_floor 26
+@end
+
+# ---------------------------------------------------------------- Brackenford (post)
+@scene T01P_MARA
+if ch:CH20 q01
+if ch:CH14 after
+say mara | I split my days between here and Hearthward. We count the shelter by name every night - that part I won't hand to anyone.
+end
+label after
+say mara | New crossings, copies of Nera's map on every door. Brackenford's two halves talk again.
+end
+label q01
+call Q01_HOOK
+@end
+
+@scene T01P_SHELTER
+say elder | The bunkhouse is a shelter now. Forty cots. The forewoman counts us by name every night. Nobody's a number in here.
+@end
+
+@scene T01P_INN
+say elder | A cot and a bowl. Nobody's charged.
+inn 0
+@end
+
+@scene T01P_DEPOT
+say baker | The bakery's a footbridge depot. Bread in the morning, planks in the afternoon, and I still burn the rye.
+shop SHOP_T01
+@end
+
+@scene T01P_CAMP_WEST
+if ch:CH20 q05
+say farmer | The west camp wants the road to the mill first. The east camp wants the road to the clinic. We'll see.
+end
+label q05
+call Q05_HOOK
+@end
+
+@scene T01P_CAMP_EAST
+say worker | Clinic road first. Grain's no good to a man with a fever.
+@end
+
+@scene T01P_STOREKEEPER
+say keeper | I kept extending credit after the quarry stopped paying. Now there's no quarry and no pay. I'm still extending it. Somebody has to believe in tomorrow.
+@end
+
+@scene T01P_SALVAGE
+say worker | Salvage crew. Anything we pull out of the sealed ruins goes to Hearthward's salvage chest - with the owner's name, if we can find it.
+@end

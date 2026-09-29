@@ -1,0 +1,362 @@
+[
+ {
+  "id": "E001",
+  "name": "Rail Rat",
+  "home": "D01",
+  "level": 3,
+  "hp": 144,
+  "weakness": "fire",
+  "behavior": "Bites the lowest current-HP front-row member; its tell is a short crouch."
+ },
+ {
+  "id": "E002",
+  "name": "Clamp Beetle",
+  "home": "D01",
+  "level": 3,
+  "hp": 194,
+  "weakness": "storm",
+  "behavior": "Alternates a normal hit and one-action shell; attack another target during shell."
+ },
+ {
+  "id": "E003",
+  "name": "Quarry Wisp",
+  "home": "D01",
+  "level": 3,
+  "hp": 144,
+  "weakness": "ice",
+  "behavior": "Charges a small fire bolt; interruptible by any direct hit during its announced charge."
+ },
+ {
+  "id": "E004",
+  "name": "Ministry Hound",
+  "home": "D01",
+  "level": 3,
+  "hp": 144,
+  "weakness": "earth",
+  "behavior": "Marks one target before a lunge; cannot mark a fallen ally."
+ },
+ {
+  "id": "E005",
+  "name": "Canal Slime",
+  "home": "D02",
+  "level": 5,
+  "hp": 192,
+  "weakness": "fire",
+  "behavior": "Splits once below 50% HP; child has no further split and no extra rare loot."
+ },
+ {
+  "id": "E006",
+  "name": "Seal Drone",
+  "home": "D02",
+  "level": 5,
+  "hp": 192,
+  "weakness": "storm",
+  "behavior": "Applies short Silence, then a weak strike; cannot Silence the whole party at once."
+ },
+ {
+  "id": "E007",
+  "name": "Ledger Moth",
+  "home": "D02",
+  "level": 5,
+  "hp": 192,
+  "weakness": "ice",
+  "behavior": "Steals at most 10 temporary battle gold; all stolen gold returns on victory."
+ },
+ {
+  "id": "E008",
+  "name": "Patrol Shell",
+  "home": "D02",
+  "level": 5,
+  "hp": 192,
+  "weakness": "storm",
+  "behavior": "Guards the nearest ally for one action, then exposes its core."
+ },
+ {
+  "id": "E009",
+  "name": "Briar Wolf",
+  "home": "D03",
+  "level": 7,
+  "hp": 252,
+  "weakness": "fire",
+  "behavior": "Coordinated bite gains 10% if another wolf lives; capped at two wolves."
+ },
+ {
+  "id": "E010",
+  "name": "Root Mite",
+  "home": "D03",
+  "level": 7,
+  "hp": 252,
+  "weakness": "ice",
+  "behavior": "Applies Poison only after a one-action sap tell."
+ },
+ {
+  "id": "E011",
+  "name": "Pollen Bell",
+  "home": "D03",
+  "level": 7,
+  "hp": 252,
+  "weakness": "fire",
+  "behavior": "Sleep pollen affects one target and cannot be reapplied before that target acts."
+ },
+ {
+  "id": "E012",
+  "name": "Bog Lantern",
+  "home": "D03",
+  "level": 7,
+  "hp": 252,
+  "weakness": "storm",
+  "behavior": "Alternates water damage and a harmless lure animation that reveals its next target."
+ },
+ {
+  "id": "E013",
+  "name": "Rivet Imp",
+  "home": "D04",
+  "level": 10,
+  "hp": 365,
+  "weakness": "ice",
+  "behavior": "Throws a ranged rivet, then reloads for one opportunity."
+ },
+ {
+  "id": "E014",
+  "name": "Boiler Crab",
+  "home": "D04",
+  "level": 10,
+  "hp": 493,
+  "weakness": "ice",
+  "behavior": "Pressure grows for two actions, then a small area burst; cold reduces pressure."
+ },
+ {
+  "id": "E015",
+  "name": "Soot Sprite",
+  "home": "D04",
+  "level": 10,
+  "hp": 365,
+  "weakness": "light",
+  "behavior": "Uses Blind, then weak shadow damage; healing items remain usable."
+ },
+ {
+  "id": "E016",
+  "name": "Furnace Hand",
+  "home": "D04",
+  "level": 10,
+  "hp": 365,
+  "weakness": "storm",
+  "behavior": "Raises a fist before a strong single-target strike; defense halves it."
+ },
+ {
+  "id": "E017",
+  "name": "Tide Page",
+  "home": "D05",
+  "level": 12,
+  "hp": 455,
+  "weakness": "fire",
+  "behavior": "Copies the element of the last incoming spell at reduced power."
+ },
+ {
+  "id": "E018",
+  "name": "Salt Leech",
+  "home": "D05",
+  "level": 12,
+  "hp": 455,
+  "weakness": "storm",
+  "behavior": "Drain heals only actual HP damage dealt."
+ },
+ {
+  "id": "E019",
+  "name": "Bell Diver",
+  "home": "D05",
+  "level": 12,
+  "hp": 455,
+  "weakness": "light",
+  "behavior": "Alternates melee and a water spell; explicit undead tag permits hostile healing."
+ },
+ {
+  "id": "E020",
+  "name": "Archive Eye",
+  "home": "D05",
+  "level": 12,
+  "hp": 455,
+  "weakness": "shadow",
+  "behavior": "Reveals and then targets the highest-MP ally; never drains more than 15 MP."
+ },
+ {
+  "id": "E021",
+  "name": "Chain Kite",
+  "home": "D06",
+  "level": 14,
+  "hp": 557,
+  "weakness": "ice",
+  "behavior": "Two light hits are one source action for counter limits."
+ },
+ {
+  "id": "E022",
+  "name": "Gust Viper",
+  "home": "D06",
+  "level": 14,
+  "hp": 557,
+  "weakness": "earth",
+  "behavior": "Dodges melee slightly; ranged and magical counters remain reliable."
+ },
+ {
+  "id": "E023",
+  "name": "Ballast Golem",
+  "home": "D06",
+  "level": 14,
+  "hp": 752,
+  "weakness": "storm",
+  "behavior": "High DEF, low RES; attacks slowly with a visible windup."
+ },
+ {
+  "id": "E024",
+  "name": "Sky Tick",
+  "home": "D06",
+  "level": 14,
+  "hp": 557,
+  "weakness": "fire",
+  "behavior": "Applies Slow to one target, then rests."
+ },
+ {
+  "id": "E025",
+  "name": "Ivory Sentinel",
+  "home": "D07",
+  "level": 16,
+  "hp": 671,
+  "weakness": "shadow",
+  "behavior": "Alternates physical guard and magic guard, visibly changing sigils."
+ },
+ {
+  "id": "E026",
+  "name": "Seal Leech",
+  "home": "D07",
+  "level": 16,
+  "hp": 671,
+  "weakness": "light",
+  "behavior": "Removes one party buff; never steals permanent learned abilities."
+ },
+ {
+  "id": "E027",
+  "name": "Frost Runner",
+  "home": "D07",
+  "level": 16,
+  "hp": 671,
+  "weakness": "fire",
+  "behavior": "Fast ice bite, low HP; no unavoidable opening burst."
+ },
+ {
+  "id": "E028",
+  "name": "Binding Hound",
+  "home": "D07",
+  "level": 16,
+  "hp": 671,
+  "weakness": "storm",
+  "behavior": "Brief one-target Stun; respects hard-control recovery protection."
+ },
+ {
+  "id": "E029",
+  "name": "Memory Shard",
+  "home": "D08",
+  "level": 19,
+  "hp": 864,
+  "weakness": "shadow",
+  "behavior": "Echoes a normal Attack once, using its own stats."
+ },
+ {
+  "id": "E030",
+  "name": "Pale Singer",
+  "home": "D08",
+  "level": 19,
+  "hp": 864,
+  "weakness": "physical",
+  "behavior": "Heals one enemy at 50% power before repeating a weak light spell."
+ },
+ {
+  "id": "E031",
+  "name": "Glass Widow",
+  "home": "D08",
+  "level": 19,
+  "hp": 864,
+  "weakness": "earth",
+  "behavior": "Telegraphed Bleed; cleanse or switch to magic/Item to reduce its cost."
+ },
+ {
+  "id": "E032",
+  "name": "Absent Knight",
+  "home": "D08",
+  "level": 19,
+  "hp": 864,
+  "weakness": "light",
+  "behavior": "Strong front-row melee; low accuracy and explicit undead affinity."
+ },
+ {
+  "id": "E033",
+  "name": "Crown Relay",
+  "home": "D09",
+  "level": 22,
+  "hp": 1085,
+  "weakness": "storm",
+  "behavior": "Empowers one ally by 10%; duplicate relays do not stack buffs."
+ },
+ {
+  "id": "E034",
+  "name": "Ash Lancer",
+  "home": "D09",
+  "level": 22,
+  "hp": 1085,
+  "weakness": "ice",
+  "behavior": "Charges for one full opportunity, then strikes a marked row."
+ },
+ {
+  "id": "E035",
+  "name": "Threshold Wisp",
+  "home": "D09",
+  "level": 22,
+  "hp": 1085,
+  "weakness": "water",
+  "behavior": "Fire spell followed by a self-exposing recovery period."
+ },
+ {
+  "id": "E036",
+  "name": "Edict Shell",
+  "home": "D09",
+  "level": 22,
+  "hp": 1465,
+  "weakness": "shadow",
+  "behavior": "Weaken seal on one target, then slow physical strike."
+ },
+ {
+  "id": "E037",
+  "name": "Broken Seraph",
+  "home": "D10",
+  "level": 35,
+  "hp": 2352,
+  "weakness": "shadow",
+  "behavior": "Warns before light area damage; physically fragile."
+ },
+ {
+  "id": "E038",
+  "name": "Cinder Automaton",
+  "home": "D10",
+  "level": 35,
+  "hp": 2352,
+  "weakness": "ice",
+  "behavior": "Rotates defense and pressure without invulnerable phases."
+ },
+ {
+  "id": "E039",
+  "name": "Hollow Choirling",
+  "home": "D10",
+  "level": 35,
+  "hp": 2352,
+  "weakness": "physical",
+  "behavior": "Schedules a two-action Doom warning; player has cleanse and damage options."
+ },
+ {
+  "id": "E040",
+  "name": "Crown Remnant",
+  "home": "D10",
+  "level": 35,
+  "hp": 2352,
+  "weakness": "light",
+  "behavior": "Cycles attack families to teach the final boss; no unique stolen keys."
+ }
+]

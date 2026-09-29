@@ -1,0 +1,150 @@
+# CH03 — A Road Without Banners. Rootward, Nera, the Rootbound Stag.
+
+@scene D03_NERA_MEET once
+say nera | Stop there. That's the only dry road for thirty families.
+say dain | We're following a transport route. Heartglass, through the Rootward sluices.
+say nera | I know your armour. Crown Guard escorted the convoys that took our farms for the regulator lines.
+say dain | Yes.
+say nera | Yes? That's it?
+say dain | I escorted them. I didn't ask where the farmers went. I'm asking now.
+say nera | ...The irrigation network's broken. The upper camp is starving, the lower one is flooding. Someone opened the wrong sluices to rush cargo through.
+say nera | Fix the Three Sluices and you'll see the route you're chasing. I'm not guiding you. I'm watching you.
+say oriel | That seems fair.
+objective nera | Repair the irrigation at the Three Sluices, north of the Root Ford.
+@end
+
+@scene D03_CAMP_ELDER
+say elder | We were told the regulator line would pay for our fields. It paid for a fence.
+@end
+
+@scene D03_CAMP_MOTHER
+if flag:d03_sluices after
+say farmer | The upper camp has no water. The lower camp has too much. Somebody decided which of us mattered less.
+end
+label after
+say farmer | Water reached the upper channel. My children drank from a cup, not a puddle.
+@end
+
+@scene D03_CAMP_CHILD
+say child | Nera made me a map of where it's safe to play. It has a picture of a frog on it.
+@end
+
+@scene D03_CAMP_CARTER
+say worker | These wagons carried grain for the Crown once. Now they carry us.
+@end
+
+@scene D03_SHORTCUT
+say narr | The ford sluice. Opening it would drain the crossing in seconds.
+if party:C05 nera
+say narr | A painted arrow on the gate points uphill: 'UPPER CAMP'.
+say tessa | Drain the ford here, and the water goes... uphill? No. Water goes where you send it. It'd flood the upper camp.
+say dain | Leave it shut. We'll wade.
+end
+label nera
+say nera | That drains the ford by flooding the upper camp. It's how the convoys got through.
+say dain | We wade.
+@end
+
+@scene D03_VALVE_A
+call D03_VALVE_LOGIC_A
+@end
+
+@scene D03_VALVE_LOGIC_A
+if flag:d03_sluices done
+if var:sluice==1 ok
+call D03_WRONG
+end
+label ok
+sfx FX010
+setvar sluice 2
+say narr | The left valve turns. Water swings through the left field channel - you can hear it on the stones.
+end
+label done
+say narr | The valve is set. Water runs where the mural says.
+@end
+
+@scene D03_VALVE_B
+if flag:d03_sluices done
+if var:sluice==2 ok
+call D03_WRONG
+end
+label ok
+sfx FX010
+setvar sluice 3
+set d03_sluices
+shake 0.5
+say narr | The middle valve opens. The channel fills, and all through the grove the old roots lift out of the water like bridges.
+say tessa | Hydraulics! Someone designed the forest to hold its own bridges up. That's beautiful.
+say oriel | And somebody broke it to move cargo faster.
+objective | Follow the raised root bridges to the Hollow Grove.
+end
+label done
+say narr | The valve is set. Water runs where the mural says.
+@end
+
+@scene D03_VALVE_C
+if flag:d03_sluices done
+if var:sluice==0 ok
+call D03_WRONG
+end
+label ok
+sfx FX010
+setvar sluice 1
+say narr | The right valve opens first, as the mural shows. Water leaves the hill.
+end
+label done
+say narr | The valve is set. Water runs where the mural says.
+@end
+
+@scene D03_WRONG
+sfx FX004
+setvar sluice 0
+say narr | Water surges the wrong way, toward the lower camp. You close every valve again before it gets there.
+say narr | (The mural above still shows the order: right, then left, then middle.)
+@end
+
+@scene D03_STAG once
+music silence
+say narr | Roots tighten across the grove floor. A great stag stands in the centre, antlers wrapped in red-veined growth.
+say nera | It's been tearing the valves out. I thought it was mad.
+say oriel | Look at the growth on it. That isn't the stag's. Something is forcing it to grow.
+say tessa | Extraction residue. It's coming down the channel from the regulator line. The stag's fighting a seal someone put on its grove.
+say dain | Then we break the seal, not the stag.
+battle B03 noflee
+set b03_done
+music M021
+say narr | The red growth splits and falls away. The stag stands, shaking, then lowers its head to drink.
+say narr | Something green and quiet settles beside it - a Vestige, the grove's own guardian, freed from the seal.
+say "Rootstag" | You broke the binding and let the stag live. I will come when you call. I will leave when I choose.
+vestige V02
+xp 120
+call CH03_CAMP
+@end
+
+@scene CH03_CAMP once
+fade out 0.5
+say narr | The party spends the evening helping the camp move its wagons to higher, drier ground.
+say narr | Dain carries water barrels until his shoulders ache. He does not ask anyone for anything.
+fade in 0.5
+say narr | Later, a cookfire. Barley stew, and a stubborn flat bread Nera insists is traditional.
+say tessa | This is the first thing I've eaten in three days that wasn't paperwork.
+say oriel | You have not eaten paperwork.
+say tessa | Metaphorically, Sister, I've eaten nothing else.
+say nera | You carried barrels all night, Captain. You didn't once ask me to say it was all right.
+say dain | It isn't all right.
+say nera | No. It isn't.
+say nera | The transport route runs north, to Cinder Reach. The ministry closed the northern road, but I know the way around the barricade.
+say nera | I'll guide you. Not for you. For the next camp that route runs through.
+join C05
+say narr | Nera's Hunt marks targets, reveals weaknesses and scouts what enemies will do next.
+@end
+
+@scene CH03_VERGE once
+say nera | The northern road. The barricade is further down; we'll go around it.
+say dain | Cinder Reach.
+say nera | Furnace country. Everyone there works for the regulators, one way or another.
+chapter CH03
+objective nera | Take the northern road to Cinderwake in Cinder Reach.
+discover L_T03
+level_floor 8
+@end

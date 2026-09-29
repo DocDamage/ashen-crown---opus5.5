@@ -1,0 +1,157 @@
+# CH15 — Light in the Flood. Bellharbor upper gallery: clear the upper route, move the residents, SC09.
+
+@scene CH15_ARRIVE once
+say narr | The upper gallery of the old archive annex. The roof sags over a shelter of families - held up by a lattice of white light.
+say narr | Beneath it, standing in knee-deep water, Tessa. Her hands are raised. They are shaking.
+say nera | Tess!
+say tessa | Don't come under the edge. The roof goes when I stop.
+say jori | She's been holding it for three days. We bring her water. She won't sit.
+say oriel | Then we get everyone out from under it first. The walkway above - is it passable?
+say jori | Bales came down across it in the first quake. There are winches, but nobody's had the hands.
+objective oriel | Clear the upper walkway with the two winches (west side passage), then lead the three families out along it.
+@end
+
+@scene CH15_TESSA
+if flag:t04g_res1,flag:t04g_res2,flag:t04g_res3 ready
+say tessa | Not yet. There are still people under here. Don't ask me to stop.
+end
+label ready
+say tessa | ...Is that everyone?
+@end
+
+@scene CH15_JORI
+say jori | Kids are ringing the alarm with a cooking pot since the ministry took the bells. Loudest thing in town.
+@end
+
+@scene CH15_WINCH1
+if flag:t04g_clear1 done
+sfx FX010
+set t04g_clear1
+say narr | The winch creaks. The first mass of rope-bales lifts off the walkway and swings clear.
+end
+label done
+say narr | The west winch is holding the bales clear.
+@end
+
+@scene CH15_WINCH2
+if flag:t04g_clear2 done
+sfx FX010
+set t04g_clear2
+say narr | The second winch lifts the last bales. The walkway runs clear to the east stair.
+end
+label done
+say narr | The east winch is holding the bales clear.
+@end
+
+@scene CH15_RES1
+if flag:t04g_clear1,flag:t04g_clear2 go
+say elder | The walkway's blocked. We tried. We'll wait for the young woman to finish whatever she's doing.
+end
+label go
+say elder | Up the gap and along the walkway? At my age? ...Yes. Yes, all right. Take my arm.
+fade out 0.3
+set t04g_res1
+fade in 0.3
+call CH15_COUNT
+@end
+
+@scene CH15_RES2
+if flag:t04g_clear1,flag:t04g_clear2 go
+say survivor | We can't go through the water - my son can't swim. And the walkway's full of bales.
+end
+label go
+say survivor | The walkway's clear? Then we're going. Thank you. Thank her.
+fade out 0.3
+set t04g_res2
+fade in 0.3
+call CH15_COUNT
+@end
+
+@scene CH15_RES3
+if flag:t04g_clear1,flag:t04g_clear2 go
+say child | I'm not scared. I'm waiting. It's different.
+end
+label go
+say child | Is the lady going to be okay? ...Okay. I'll go if you count me.
+say oriel | One. There. You are counted.
+fade out 0.3
+set t04g_res3
+fade in 0.3
+call CH15_COUNT
+@end
+
+@scene CH15_COUNT
+if flag:t04g_res1,flag:t04g_res2,flag:t04g_res3 all
+say narr | (Some families are still under the roof.)
+end
+label all
+objective oriel | Everyone is out along the walkway. Go to Tessa.
+@end
+
+@scene CH15_SC09 once
+say tessa | The roof goes when I stop.
+say nera | Nobody is under it now.
+say tessa | There could be -
+say oriel | We counted them. Twice.
+say dain | Let it go.
+say tessa | I do not know what happens after.
+say jori | We light the lamps.
+music silence
+wait 0.4
+flash #ffffff
+say narr | Tessa lowers her hands. The lattice goes out. The roof comes down into empty water with a long, tired sound.
+fade out 0.8
+wait 0.6
+say narr | Darkness. Then, one by one along the walkway, ordinary lanterns - held by the families she was protecting.
+fade in 0.8
+music M003
+say tessa | ...Oh.
+say tessa | They did that. Not me.
+say nera | You can sit down now, Tess.
+say tessa | I can sit down.
+say tessa | Ivo. We have to find Ivo. I want to see a machine that runs without someone pretending to be its fuel.
+join C02
+chapter CH15
+objective dain | Travel to Cinderwake (north-west, beyond Rootward) and find Ivo.
+rumor | Cinderwake crews are rotating heat between workshops with waterwheels. Someone says Ivo is in the old assembly yard.
+level_floor 27
+@end
+
+# ---------------------------------------------------------------- Bellharbor upper town (post)
+@scene T04U_JORI
+if ch:CH15 after
+say jori | Tessa's in the upper gallery. She won't let go of the roof. Please - she'll listen to you before she listens to me.
+end
+label after
+if ch:CH20 q
+say jori | The lower streets are gone, but the ropewalks make good roads. We're painting names on every door that has someone behind it.
+end
+label q
+say jori | Pip - if you see him - tell him I have people who need their names fixed. The right way this time.
+@end
+
+@scene T04U_POT
+say child | CLANG! That's the alarm. They took the bells so I use the pot. CLANG! That one was for practice.
+@end
+
+@scene T04U_CHAPEL
+say monk | The tide chapel is an evacuation station now. We ring for boats, not for prayers. Both get answered about as often.
+@end
+
+@scene T04U_SHOP
+say keeper | Charts! Old charts, useless. New charts, useful but wrong. Buy both and average them.
+shop SHOP_T04
+@end
+
+@scene T04U_ROPE
+say worker | The ropewalks were for making rope. Now they're the only roads above water. Rope's still useful, mind.
+@end
+
+@scene T04U_SAILOR
+say sailor | Manifests used to list refugees as 'cargo'. Now we list cargo as 'refugees' so nobody steals it. Joke. Mostly.
+@end
+
+@scene T04U_INN
+say monk | Hammocks in the chapel loft. Free for anyone who pulls a shift on the pumps. You look like you'd pull a shift.
+inn 0
+@end

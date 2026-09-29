@@ -1,0 +1,114 @@
+[
+ {
+  "id": "poison",
+  "name": "Poison",
+  "type": "negative",
+  "duration_text": "3 target actions",
+  "effect": "Lose 4% max HP after acting; can KO; ends after battle."
+ },
+ {
+  "id": "burn",
+  "name": "Burn",
+  "type": "negative",
+  "duration_text": "3 target actions",
+  "effect": "Lose 3% max HP after acting and physical damage dealt x0.90."
+ },
+ {
+  "id": "bleed",
+  "name": "Bleed",
+  "type": "negative",
+  "duration_text": "3 target actions",
+  "effect": "Lose 5% max HP after a physical action; nonphysical action still consumes one duration."
+ },
+ {
+  "id": "silence",
+  "name": "Silence",
+  "type": "negative",
+  "duration_text": "2 target actions",
+  "effect": "Blocks spells and summons, not Item, Attack, Defend or physical skills."
+ },
+ {
+  "id": "sleep",
+  "name": "Sleep",
+  "type": "negative",
+  "duration_text": "1 target action opportunity",
+  "effect": "Skip one readiness opportunity; direct damage wakes immediately."
+ },
+ {
+  "id": "stun",
+  "name": "Stun",
+  "type": "negative",
+  "duration_text": "1 target action opportunity",
+  "effect": "Skip one readiness opportunity; reapplication cannot extend until target has acted."
+ },
+ {
+  "id": "slow",
+  "name": "Slow",
+  "type": "negative",
+  "duration_text": "3 target actions",
+  "effect": "ATB fill x0.75; bosses x0.90; mutually exclusive with Haste."
+ },
+ {
+  "id": "haste",
+  "name": "Haste",
+  "type": "positive",
+  "duration_text": "3 target actions",
+  "effect": "ATB fill x1.25; mutually exclusive with Slow."
+ },
+ {
+  "id": "barrier",
+  "name": "Barrier",
+  "type": "positive",
+  "duration_text": "3 target actions",
+  "effect": "Direct damage received x0.75; not poison or HP transfers."
+ },
+ {
+  "id": "regen",
+  "name": "Regen",
+  "type": "positive",
+  "duration_text": "3 target actions",
+  "effect": "Restore 5% max HP after acting; cannot revive."
+ },
+ {
+  "id": "mark",
+  "name": "Mark",
+  "type": "negative",
+  "duration_text": "4 target actions",
+  "effect": "Direct physical damage received x1.10 and eligible skill synergies."
+ },
+ {
+  "id": "guardbreak",
+  "name": "Guardbreak",
+  "type": "negative",
+  "duration_text": "3 target actions",
+  "effect": "DEF x0.80; no stacking."
+ },
+ {
+  "id": "blind",
+  "name": "Blind",
+  "type": "negative",
+  "duration_text": "2 target actions",
+  "effect": "Physical hit chance reduced by 25 percentage points, minimum 50%."
+ },
+ {
+  "id": "doom",
+  "name": "Doom",
+  "type": "negative",
+  "duration_text": "3 target action opportunities",
+  "effect": "Visible countdown; KO on expiry; boss immunity; cleansable and never random on the first tutorial boss."
+ },
+ {
+  "id": "weaken",
+  "name": "Weaken",
+  "type": "negative",
+  "duration_text": "3 target actions",
+  "effect": "ATK and MAG x0.85; temporary derived stats only."
+ },
+ {
+  "id": "focus",
+  "name": "Focus",
+  "type": "positive",
+  "duration_text": "3 target actions",
+  "effect": "Accuracy +10 percentage points and critical chance +5 points, within caps."
+ }
+]

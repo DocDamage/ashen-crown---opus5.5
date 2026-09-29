@@ -1,0 +1,195 @@
+# CH08 — Traitor's Edge. Whitebone Redoubt, Sable, the Ivory Adjudicator.
+
+@scene D07_SABLE_GATE once
+say sable | Stop. I'm alone and I'm not armed for you. Sable Renn, binding officer. Until this morning.
+say dain | You wrote the warrants.
+say sable | I wrote the seals. The warrants were written above me. That distinction won't matter to you and it shouldn't.
+say sable | The prisoners inside are bound by my seals. I can walk you to them. In return, safe conduct out of the Basin.
+say oriel | No. We will not trade one set of prisoners for another bargain. We go in to free them properly.
+say sable | Properly?
+say oriel | Each seal is keyed to a warrant number. Replace it with a key the person inside actually gives us. Their name. Their consent.
+say sable | ...That's slower.
+say oriel | Yes.
+say sable | Fine. I'll show you the Names Hall. You won't like how little is written there.
+say narr | (The Barracks lead north to the Names Hall and east to the Binding Cells. Read each seal; ask each prisoner.)
+objective oriel | Record each prisoner's own consent key: read their seal in the Names Hall, ask them in the Binding Cells.
+@end
+
+@scene D07_SEAL1
+if flag:d07_name1 read
+set d07_name1
+say narr | Seal 4471. A warrant number, a date, and in a smaller hand at the edge: 'Hallen - weaver.'
+end
+label read
+say narr | Seal 4471: Hallen, weaver.
+@end
+
+@scene D07_SEAL2
+if flag:d07_name2 read
+set d07_name2
+say narr | Seal 4472. No name at all. Scratched into the stone beneath it: 'Ysa'.
+end
+label read
+say narr | Seal 4472: Ysa.
+@end
+
+@scene D07_SEAL3
+if flag:d07_name3 read
+set d07_name3
+say narr | Seal 4473. 'Dragonborn, unit of the Cinder line.' Beside it, in chalk, a child's letters: 'CORVIN'.
+end
+label read
+say narr | Seal 4473: Corvin.
+@end
+
+@scene D07_PRISONER1
+if flag:d07_open1 free
+if flag:d07_consent1 given
+say survivor | Hallen. I weave. Wove. Are you here to move me to another cell?
+say oriel | We're here to ask whether you want to leave. If you do, your name opens the lock.
+say survivor | ...Yes. Hallen. I want to leave.
+set d07_consent1
+end
+label given
+say survivor | Hallen. I said yes. I'll keep saying it.
+end
+label free
+say survivor | Thank you is too small. I'll find a bigger word later.
+@end
+
+@scene D07_PRISONER2
+if flag:d07_open2 free
+if flag:d07_consent2 given
+say survivor | Don't open it yet. Not until you've asked the others. I won't be first out and leave them.
+say oriel | We'll ask each of them. What is your name?
+say survivor | Ysa. And yes. After them, or with them. Not before.
+set d07_consent2
+end
+label given
+say survivor | Ysa. Yes - with the others.
+end
+label free
+say survivor | Together. Good.
+@end
+
+@scene D07_PRISONER3
+if flag:d07_open3 free
+if flag:d07_consent3 given
+say survivor | They call me by the seal number. I've started calling myself by it too. That's the worst part.
+say dain | The Names Hall says Corvin.
+say survivor | Someone wrote that? ...Corvin. Yes. That's me. Let me out.
+set d07_consent3
+end
+label given
+say survivor | Corvin. Say it again when you open it.
+end
+label free
+say survivor | Corvin. Out loud. I'll get used to it.
+@end
+
+@scene D07_LOCK1
+call D07_LOCK_TEMPLATE_1
+@end
+
+@scene D07_LOCK_TEMPLATE_1
+if flag:d07_open1 done
+if !flag:d07_name1 noname
+if !flag:d07_consent1 noconsent
+sfx FX024
+set d07_open1
+say narr | The binding sigil dims. In its place, a new key glows with a single word: HALLEN. The door opens.
+call D07_SABLE_TEACH
+end
+label noname
+say narr | The seal is keyed to a warrant number. Read the name in the Names Hall first.
+end
+label noconsent
+say narr | You have the name, but not the person's answer. Ask the one inside.
+end
+label done
+say narr | The cell is open.
+@end
+
+@scene D07_LOCK2
+if flag:d07_open2 done
+if !flag:d07_name2 noname
+if !flag:d07_consent2 noconsent
+if !flag:d07_open1 wait
+sfx FX024
+set d07_open2
+say narr | YSA. The second door opens, after the first, as she asked.
+end
+label wait
+say narr | Ysa asked to leave with the others, not before them.
+end
+label noname
+say narr | The seal is keyed to a warrant number. Read the name in the Names Hall first.
+end
+label noconsent
+say narr | You have the name, but not the person's answer. Ask the one inside.
+end
+label done
+say narr | The cell is open.
+@end
+
+@scene D07_LOCK3
+if flag:d07_open3 done
+if !flag:d07_name3 noname
+if !flag:d07_consent3 noconsent
+sfx FX024
+set d07_open3
+say narr | CORVIN. The last sigil gives way.
+end
+label noname
+say narr | The seal is keyed to a warrant number. Read the name in the Names Hall first.
+end
+label noconsent
+say narr | You have the name, but not the person's answer. Ask the one inside.
+end
+label done
+say narr | The cell is open.
+@end
+
+@scene D07_SABLE_TEACH once
+say sable | That's my seal design you just replaced. I built it so no one could change the key without the warrant office.
+say sable | You did it with a name and a question.
+say sable | If I'm going to be useful: my blade takes an infusion - fire, ice or storm - and my runes strip what enemies are wearing. One infusion at a time.
+join C07
+say narr | Sable's Runes infuse her blade and unseal enemy protections. All eight companions are now known; Formation lets you choose any four at safe points.
+objective sable | Free all three prisoners, then face whatever holds the Tribunal Ring.
+@end
+
+@scene D07_ADJUDICATOR once
+music silence
+say narr | The Tribunal Ring. An ivory figure holds a warrant bearing Dain's description - and a ward seal meant for a dragonborn.
+say "Adjudicator" | HOST LOCATED. TRANSFER OF WARD TO SUBJECT ASHWARD. AUTHORISED BY OFFICER RENN.
+say dain | Sable.
+say sable | I authorised a transfer template. Years ago. I didn't know it would ever be you.
+say "Adjudicator" | OFFICER RENN. APPLY YOUR SEAL. COMPLETE THE TRANSFER.
+say narr | Sable raises her officer's seal. For a moment it could go either way. Then she breaks it across her knee.
+say sable | Transfer refused.
+say oriel | Its sigil shows whether the next seal targets skills or strength. Alternate commands; Attack and Defend are never both locked.
+battle B07 noflee
+set b07_done
+music M020
+say narr | The Adjudicator's ivory cracks into plain chalk. The ward template it carried dissolves with it.
+xp 320
+@end
+
+@scene CH08_SNOW once
+say narr | The Snow Exit. The freed prisoners walk out first, blinking in the white.
+say survivor | You broke your seal instead of using it.
+say sable | Yes.
+say survivor | That was useful. It's not forgiveness.
+say sable | I know.
+say survivor | Nacre keeps a hearing house. Send your testimony there. Your name, in your own hand.
+say sable | I will. And I'll come back to answer it. When this is done - whatever this is.
+say dain | You'll travel with us until then.
+say sable | Under that understanding. Yes.
+chapter CH08
+say rook | Now the Memory Vault. North of Nacre. Everything the relays remember is kept there.
+objective rook | Go to Nacre (east of Whitebone), then north to the Memory Vault.
+discover L_T06
+discover L_D08
+level_floor 17
+@end

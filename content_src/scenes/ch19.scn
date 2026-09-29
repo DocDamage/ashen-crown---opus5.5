@@ -1,0 +1,146 @@
+# CH19 — The Hand That Wrote the Seal. Whitebone sanctuary: cells opened by consent, SC10.
+
+@scene CH19_ARRIVE once
+say narr | Whitebone's snow gate. The redoubt's cells are a sanctuary now - doors propped open, blankets on the bunks. Except three.
+say oriel | Sable?
+say sable | Here. Don't come in with weapons out. Some of them flinch.
+say sable | Three people still wear bindings I wrote. I can't take them off alone. If I get the key wrong, the seal repeats its command. I won't risk that on someone else's body.
+say sable | I've already sent my name and testimony to Nacre. Whatever they decide, I'll answer it. But first - these three.
+objective oriel | Open the three sealed cells one by one. Ask each person for their own consent key, then use it at their lock.
+@end
+
+@scene CH19_KEEPER
+say monk | The sanctuary keeps no records of who is 'guilty'. Only who needs a blanket.
+@end
+
+@scene CH19_SURVIVOR_GATE
+say survivor | You're with her? ...I'll watch. That's all.
+@end
+
+@scene CH19_SABLE
+if flag:d07p_open1,flag:d07p_open2,flag:d07p_open3 done
+say sable | Ask them. Not me. I only know the command I wrote. They know who they are.
+end
+label done
+say sable | That's all three. I - thank you. No. That's not for me to say.
+@end
+
+@scene CH19_CELL1
+if flag:d07p_key1 given
+say survivor | You want my key? It was a number, once. Warrant 4-11.
+say survivor | ...My name is Hesk. That's the key. Hesk. Say it right.
+set d07p_key1
+end
+label given
+say survivor | Hesk. Go on. The lock's outside.
+@end
+
+@scene CH19_CELL2
+if flag:d07p_key2 given
+say elder | Seventy years I've had this seal. I'm not sure I remember my own name.
+say oriel | Then choose one. It doesn't have to be old to be yours.
+say elder | ...Wren. Old woman, new name. Wren.
+set d07p_key2
+end
+label given
+say elder | Wren. I like how it sounds in someone else's mouth when they ask.
+@end
+
+@scene CH19_CELL3
+if flag:d07p_key3 given
+say patient | I don't want it off yet.
+say oriel | Then it stays on until you do.
+wait 0.5
+say patient | ...That's the first time anyone's said that. All right. Now. Key's 'Tamsin'. Now.
+set d07p_key3
+end
+label given
+say patient | Tamsin. Quickly, before I change my mind. Or don't - I'm allowed to change it.
+@end
+
+@scene CH19_LOCK1
+if flag:d07p_open1 done
+if !flag:d07p_key1 nokey
+sfx FX024
+say narr | The seal hears 'Hesk', spoken the way he asked, and lets go. The cell door swings wide.
+set d07p_open1
+call CH19_CELLS
+end
+label nokey
+say narr | The lock waits for a key. Only the person inside can give it.
+end
+label done
+say narr | The cell is open.
+@end
+
+@scene CH19_LOCK2
+if flag:d07p_open2 done
+if !flag:d07p_key2 nokey
+sfx FX024
+say narr | 'Wren.' The seal hesitates, as if surprised to hear a name it has never known, then releases.
+set d07p_open2
+call CH19_CELLS
+end
+label nokey
+say narr | The lock waits for a key. Only the person inside can give it.
+end
+label done
+say narr | The cell is open.
+@end
+
+@scene CH19_LOCK3
+if flag:d07p_open3 done
+if !flag:d07p_key3 nokey
+sfx FX024
+say narr | 'Tamsin.' The binding unwinds. The door opens. Tamsin stays inside for a moment, then walks out on her own.
+set d07p_open3
+call CH19_CELLS
+end
+label nokey
+say narr | The lock waits for a key. Only the person inside can give it.
+end
+label done
+say narr | The cell is open.
+@end
+
+@scene CH19_CELLS
+if flag:d07p_open1,flag:d07p_open2,flag:d07p_open3 all
+end
+label all
+objective oriel | All three cells are open. Walk Sable out to the sanctuary exit.
+@end
+
+@scene CH19_SC10 once
+show surv10 19 20 up survivor
+say survivor | You wrote my number.
+say sable | Yes.
+say survivor | You remember it.
+say sable | Yes.
+say survivor | Do you know my name?
+say sable | Not yet.
+say survivor | Then start there.
+say sable | May I write it down?
+wait 0.8
+say survivor | ...Ilse. With an s.
+say narr | Sable writes it. The survivor watches her do it, and does not say thank you, and walks away.
+hide surv10
+say sable | Before I go back to Nacre for the hearing - Voss's network. If there's any way to stop it from compelling anyone again, I want to help.
+say oriel | The survivors decide that.
+say narr | In the sanctuary hall, the survivors talk it over without her. They come back with a single page: a limited agreement. She may help. They keep a copy of her account.
+set sable_agreement
+if party:C03 correnline
+goto correndone
+label correnline
+say corren | You let someone else hold the lever. Took me years to learn that.
+label correndone
+if party:C08 pipline
+goto pipdone
+label pipline
+say pip | Blank forms and a proper seal. Welcome to paperwork that doesn't hurt anyone.
+label pipdone
+join C07
+chapter CH19
+objective dain | Sable is back, under the survivors' agreement.
+call REUNION_CHECK
+level_floor 29
+@end

@@ -1,0 +1,150 @@
+# CH11 — Below the Coronation. Sable Conduit: relays, lifts, Soldiers' Walk, Marshal Bridge (B09).
+
+@scene D09_ENTER once
+music M020
+say narr | The old aqueduct under Veyr. The water is gone; cable runs where it used to flow. Somewhere above, bells are ringing for a coronation nobody announced.
+say nera | Eight of us, one tunnel. We can't all fight in a corridor this narrow.
+say oriel | Four in front, four behind carrying the lamps and watching the flank. We swap when someone is tired. Not when someone is spent.
+say sable | Voss has three relay stations feeding the dais. South relay, north lift relay, and the bridge itself.
+say ivo | And the lifts. The evacuation lifts run on a separate feed. Whatever we cut, we don't cut those.
+say pip | There are people in those lifts. Ministry clerks, conscripts, families from the lower wards. Voss called it 'relocation'.
+say narr | (All eight travel together. Choose your active four with Formation in the menu at any time outside battle.)
+formation
+objective sable | Release the south relay (west) and reroute the north lift relay (east) without cutting lift power.
+@end
+
+@scene D09_LIFT_CREW
+if flag:d09_relay_s,flag:d09_relay_n both
+say worker | Lift's still running. Whatever you're doing down there, keep doing it that way.
+end
+label both
+say worker | Both relays quiet and the lift never dropped. I've been doing this nineteen years. First time anyone asked me before touching the feed.
+@end
+
+@scene D09_RELAY_S
+if flag:d09_relay_s done
+say narr | A synchronization relay, singing the coronation note. Its housing matches the trial relay at Nacre.
+say ivo | Same trick as the trial. Spread the load, don't slam it off.
+say oriel | And stop if it answers no.
+choice | Release it slowly (the Nacre method) -> slow | Smash the housing -> smash | Leave it -> leave
+label smash
+sfx FX004
+shake 0.4
+say narr | Tessa's hand is on the housing before anyone else moves - then she stops.
+say tessa | No. If it's somebody in there, I'm not doing to them what Rook wants to do to everyone.
+say narr | (The relay is still singing. Try the slow release.)
+end
+label slow
+sfx FX024
+wait 0.4
+say narr | The note bends, then settles, then goes out like a lamp being turned down rather than blown. Somewhere far above, one bell misses its beat.
+set d09_relay_s
+say ivo | South relay is resting. It will wake if somebody asks it to.
+objective sable | South relay released. Reroute the north lift relay (east from the aqueduct), then head north to the Soldiers' Walk.
+end
+label done
+say narr | The south relay is dim and quiet.
+label leave
+@end
+
+@scene D09_LIFT_RIDERS
+say survivor | The lift stopped between floors, then came down here. They said the ministry needs the power. We're not going anywhere until someone turns the lift back on.
+@end
+
+@scene D09_LIFT_SAFE
+say survivor | It moved! It's taking the next group up to the river gate. Thank you - whoever you are.
+@end
+
+@scene D09_RELAY_N
+if flag:d09_relay_n done
+say narr | The north relay feeds both the dais line and the occupied lift. A lever can switch the lift to the old aqueduct feed.
+say ivo | Lift first. Then the relay. The other order drops a car full of people.
+choice | Switch the lift to the aqueduct feed, then quiet the relay -> right | Quiet the relay first -> wrong | Leave it -> leave
+label wrong
+sfx FX004
+say narr | The lift lights flicker as the load wavers. You stop at once. The lift holds - barely. (Lift first.)
+end
+label right
+sfx FX010
+wait 0.3
+say narr | The lift cable shudders, catches the old feed, and starts to climb. Only then does the relay go dark.
+set d09_relay_n
+say pip | That's the ministry's own lift, carrying the ministry's own clerks out. Nobody's going to write that down.
+say sable | I will.
+objective sable | North relay rerouted. Go north to the Soldiers' Walk.
+end
+label done
+say narr | The north relay is dark. The lift runs on the aqueduct feed.
+label leave
+@end
+
+@scene D09_SOLDIERS
+say soldier | Don't - we're not fighting. The ceiling came down on the barracks when the bells started. Three of us are pinned.
+choice | Help them out -> help | Not now -> later
+label help
+fade out 0.4
+say narr | It takes all eight of you and a borrowed crowbar. Nobody is badly hurt.
+fade in 0.4
+set d09_rescue
+say soldier | Voss told us the dais would 'end the instability'. He didn't say what he meant by it.
+say soldier | Take this. Field kit. We're going up with the lift.
+give I003 2
+give I023 1
+end
+label later
+say soldier | ...We'll be here.
+@end
+
+@scene D09_SOLDIERS_AFTER
+say soldier | We'll get the others moving to the lift. If you see the Marshal - he isn't going to stop.
+@end
+
+@scene D09_WARNING once
+say narr | Beyond the Soldiers' Walk the corridor opens onto the Marshal Bridge. Past it, the Crown Dais.
+say oriel | Listen. Whatever happens past this door, some of it will not be undone.
+say dain | Then we write down where we were before it.
+backup pre_dais
+say narr | (A protected backup has been written: "Before the Crown Dais". It is separate from your save slots and can be loaded from Load at any time.)
+say narr | (This is the last point where you can freely leave the Conduit. Rest and save at the lamp if you need to.)
+objective sable | Cross the Marshal Bridge (north) and stop Voss before he takes the network.
+@end
+
+@scene D09_VOSS once
+music silence
+show voss 19 14 down voss
+say voss | Stop there. You are standing on the only bridge that holds this country together.
+say sable | You're holding it together with people's names, Marshal.
+say voss | I am replacing a hundred unstable relays with one stable authority. No more outages. No more hosts deciding they would rather not.
+say oriel | That last part is the point for you. Not the outages.
+say voss | Order is a kindness to people who cannot afford chaos.
+say pip | You signed my forgeries' death certificates yourself, sir. Twice. I checked.
+say voss | Then you know I read everything I sign. Guards - protect the Marshal.
+say narr | Voss raises the command baton and points at a protector.
+battle B09 noflee
+set b09_done
+music M020
+say narr | Voss staggers back against the bridge relay. The baton cracks.
+say voss | You think you have won something. Rook is already at the dais. He does not need my authority. He wants none at all.
+say narr | Voss retreats into the central apparatus below the bridge. The hatch seals behind him.
+hide voss
+say dain | Let him go. Rook first.
+say ivo | The bridge relay is exposed now. Quiet it and the dais door opens.
+chapter CH11
+xp 520
+level_floor 23
+objective dain | Quiet the bridge relay, then climb to the Crown Dais.
+@end
+
+@scene D09_RELAY_B
+if flag:d09_relay_b done
+say narr | The bridge relay. The third synchronization line.
+sfx FX024
+say narr | Ivo and Oriel release it the way they did in Nacre. It goes dim. The dais door groans open.
+set d09_relay_b
+say ivo | Three visible relays. All dark.
+say oriel | Visible.
+objective dain | Climb to the Crown Dais.
+end
+label done
+say narr | The bridge relay is dark.
+@end

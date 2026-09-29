@@ -1,0 +1,879 @@
+# Optional quests Q01-Q12 (all require CH20; none permanently missable).
+# State machine: NOT_STARTED -> ACTIVE -> RESOLUTION_READY -> COMPLETED; completion transactions are `once` scenes.
+
+# ================================================================ Q01 A Shield Nobody Asked For (Dain; T01 -> D01)
+@scene Q01_HOOK
+if q:Q01 done
+if q:Q01:RESOLUTION_READY resolve
+if q:Q01:ACTIVE active
+say mara | Dain. The quarry ledger only kept numbers. I want names on the memorial - every worker it erased.
+say mara | Three name-records survived: one at the memorial stones, one in the salvage route by the rubble, one by the old gate. And the families should be asked.
+say dain | I'll find them.
+quest Q01 ACTIVE found0
+journal | Q01: Recover three named records at the quarry's surface memorial and speak to the families. Then return to Mara in Brackenford.
+end
+label active
+say mara | Three records at the surface memorial, and the families. Then we'll choose the words.
+end
+label resolve
+call Q01_DECISION
+end
+label done
+say mara | The names are cut. People stop and read them. That's all a memorial is for.
+@end
+
+@scene Q01_RECORD1
+if flag:q01_r1 done
+set q01_r1
+say narr | Under a memorial stone, wrapped in oilcloth: a shift roster with names written beside the numbers.
+call Q01_CHECK
+end
+label done
+say narr | You've taken this record.
+@end
+
+@scene Q01_RECORD2
+if flag:q01_r2 done
+set q01_r2
+say narr | In the rubble of the salvage route: a pay envelope with a name on it, never collected.
+call Q01_CHECK
+end
+label done
+say narr | You've taken this record.
+@end
+
+@scene Q01_RECORD3
+if flag:q01_r3 done
+set q01_r3
+say narr | By the sealed gate, a tin box of letters addressed to 'the lads on shift four'. Every lad signed.
+call Q01_CHECK
+end
+label done
+say narr | You've taken this record.
+@end
+
+@scene Q01_FAMILY
+if q:Q01:ACTIVE ask
+say elder | I come to read the stones. Most of them still say numbers.
+end
+label ask
+set q01_family
+say elder | You're asking us? ...My brother's name was Aled. Not 4-409. Aled. Put that.
+call Q01_CHECK
+@end
+
+@scene Q01_CHECK
+if flag:q01_r1,flag:q01_r2,flag:q01_r3,flag:q01_family ready
+end
+label ready
+quest Q01 RESOLUTION_READY records
+key K_MEMORIAL_RECORDS
+objective dain | Bring the named records back to Mara in Brackenford.
+@end
+
+@scene Q01_DECISION once
+say mara | These are the names. Thank you.
+say dain | Could I - there's room at the bottom. I could add a line. What I did. What the Crown did through me.
+say mara | No.
+say mara | Not on this stone. This stone is theirs. It isn't a stage for anyone's redemption. Not even a sincere one.
+say mara | But there's a book at the shelter. For the things people need to say. Write it there. I'll keep it.
+say dain | ...That's fair.
+say narr | Mara chooses the inscription: 'They were counted by name.'
+say ilyr | Dain. I want us to write something too. Between us. That either of us can end this - out loud, at any time.
+say dain | Yes. Written down. Where we can both read it.
+take K_MEMORIAL_RECORDS 1
+give W006 1
+quest Q01 COMPLETED
+set q01_done
+say narr | (Dain received Open Hand. His final technique is now available.)
+@end
+
+# ================================================================ Q02 A Lantern Left Burning (Tessa; T04 -> D05)
+@scene Q02_HOOK
+if q:Q02 done
+if q:Q02:ACTIVE active
+say apprentice | Tessa? I - I used to sweep your workshop. Could you teach me the light? A version that doesn't cost what yours cost you.
+say tessa | ...I don't know one. Let's find one.
+quest Q02 ACTIVE start
+journal | Q02: Collect observations at the three inhabited lantern stations in the Drowned Archive, then test a low-power circuit with the apprentice.
+end
+label active
+say apprentice | Three lantern stations at the archive. The keepers know how their lamps behave. I'll meet you by the old circuit.
+end
+label done
+say apprentice | The workshop's open! Your name's on the door. So's mine. Mine's bigger. You insisted.
+@end
+
+@scene Q02_STATION1
+if !q:Q02:ACTIVE plain
+set q02_s1
+say keeper | This lamp? Runs on a slow cell. Dim but steady. It's never gone out, because it never tries to be bright.
+call Q02_CHECK
+end
+label plain
+say keeper | Lantern station one. Staffed and lit.
+@end
+
+@scene Q02_STATION2
+if !q:Q02:ACTIVE plain
+set q02_s2
+say monk | We light three small lamps instead of one large one. When one fails, the others hold. Nobody panics.
+call Q02_CHECK
+end
+label plain
+say monk | Lantern station two. Mind the step.
+@end
+
+@scene Q02_STATION3
+if !q:Q02:ACTIVE plain
+set q02_s3
+say worker | Trick is resting it. Two hours on, one off. The lamp lasts years. So does the keeper.
+call Q02_CHECK
+end
+label plain
+say worker | Station three. We're fine, thanks.
+@end
+
+@scene Q02_CHECK
+if flag:q02_s1,flag:q02_s2,flag:q02_s3 ready
+end
+label ready
+quest Q02 ACTIVE observed
+objective tessa | Three observations: slow cells, many small lights, rest. Test the low-power circuit with the apprentice.
+@end
+
+@scene Q02_APPRENTICE
+if qs:Q02:observed ready
+say apprentice | Collect what the keepers know first. I want to build from what already works.
+end
+label ready
+say apprentice | Ready when you are. It's by the machine.
+@end
+
+@scene Q02_CIRCUIT once
+say narr | The low-power circuit: three slow cells, wired so each can rest. The apprentice connects it. It flickers. It fails.
+say tessa | Let me just -
+say oriel | Tessa.
+wait 0.5
+say tessa | ...Right. It's your circuit. What do you think it needs?
+say apprentice | The second cell's backwards. I think. I - yes. It's backwards.
+sfx FX024
+say narr | The apprentice flips the cell. The lamp comes on, dim and steady, and stays on.
+say tessa | You did that. I didn't touch it.
+key K_LOW_CIRCUIT
+give W012 1
+quest Q02 COMPLETED
+set q02_done
+say narr | (Tessa received Ash Without Fire. Her final technique is now available.)
+@end
+
+# ================================================================ Q03 The Returners' Wall (Corren; T05 -> D06)
+@scene Q03_HOOK
+if q:Q03 done
+if q:Q03:RESOLUTION_READY resolve
+if q:Q03:ACTIVE active
+say edda | I want a record of rescues. Not deaths. There's a flight recorder in the wreck by the mooring, a survivor who remembers, and a landing marker that needs fixing.
+say edda | Corren. You'll have to hear the account of the cable you cut. The whole thing.
+say corren | ...I know.
+quest Q03 ACTIVE start
+journal | Q03: At the Skyspine mooring: find the flight recorder, interview the survivor, repair the landing marker. Then return to Edda.
+end
+label active
+say edda | Recorder, survivor, landing marker. All at the broken chain mooring.
+end
+label resolve
+call Q03_DECISION
+end
+label done
+say edda | The wall's up. People keep adding names. Good ones.
+@end
+
+@scene Q03_RECORDER
+if flag:q03_rec done
+set q03_rec
+key K_FLIGHT_RECORDER
+say narr | The flight recorder is dented but whole. Its tape is intact.
+call Q03_CHECK
+end
+label done
+say narr | The recorder's cradle is empty.
+@end
+
+@scene Q03_SURVIVOR
+if !q:Q03:ACTIVE plain
+set q03_int
+say survivor | I was on the basket the day Corren cut the cable. The one they said he cut to save himself.
+say survivor | He cut it because the second line would have pulled us all over. I'll say that on the record. All of it, including the part where it was still terrible.
+call Q03_CHECK
+end
+label plain
+say survivor | We're waiting for the platform. Nobody's going to jump.
+@end
+
+@scene Q03_MARKER
+if flag:q03_marker done
+sfx FX010
+set q03_marker
+say narr | The crew helps reset the landing marker. It's painted in rescue orange now.
+call Q03_CHECK
+end
+label done
+say narr | The landing marker glows orange.
+@end
+
+@scene Q03_CHECK
+if flag:q03_rec,flag:q03_int,flag:q03_marker ready
+end
+label ready
+quest Q03 RESOLUTION_READY
+objective corren | Take the recorder and testimony back to Edda at High Aerie.
+@end
+
+@scene Q03_DECISION once
+say edda | Here's the unedited account. Recorder and testimony.
+say narr | Corren reads it. All of it. The cut, the fall, the names.
+say edda | Do you want me to add your rescues underneath? Balance it out?
+say corren | No. Leave it as it is. The rescues go on the other wall. This one doesn't need balancing. It needs reading.
+set q03_wall
+take K_FLIGHT_RECORDER 1
+give W018 1
+quest Q03 COMPLETED
+set q03_done
+say narr | (Corren received Unbound Descent. His final technique is now available.)
+@end
+
+# ================================================================ Q04 The Unborrowed Engine (Ivo; T03 -> D04)
+@scene Q04_HOOK
+if q:Q04 done
+if q:Q04:ACTIVE active
+say pell | The new engine in the Spine works. Only while Ivo's standing beside it. I've seen it twice. That's not an engine, that's a pet.
+say ivo | ...It shouldn't need me.
+say pell | Then prove it. Three of my crew, your manual, a cold restart.
+quest Q04 ACTIVE start
+journal | Q04: At the Furnace Spine's waterwheel engine house, have three workers follow the manual and find where it fails.
+end
+label active
+say pell | Three workers, one manual, no Ivo hands. Engine house, east of here.
+end
+label done
+say pell | Cold restart, no Ivo. The notes are in every town now. That's a revolution I'll sign.
+@end
+
+@scene Q04_MANUAL
+say narr | Ivo's engine manual. Clear, clever, and assuming the reader is Ivo.
+@end
+
+@scene Q04_WORKER1
+if !q:Q04:ACTIVE plain
+set q04_w1
+say worker | Page four says 'bleed the line until it sounds right'. Sounds right to who?
+call Q04_CHECK
+end
+label plain
+say worker | Engine's humming. We're not touching it.
+@end
+
+@scene Q04_WORKER2
+if !q:Q04:ACTIVE plain
+set q04_w2
+say worker | Step nine is missing a valve. Ivo always opens it without thinking. It's not written down.
+call Q04_CHECK
+end
+label plain
+say worker | Engine house crew.
+@end
+
+@scene Q04_WORKER3
+if !q:Q04:ACTIVE plain
+set q04_w3
+say apprentice | It says 'use the usual wrench'. There are six wrenches.
+call Q04_CHECK
+end
+label plain
+say apprentice | Learning the engine. Slowly.
+@end
+
+@scene Q04_CHECK
+if flag:q04_w1,flag:q04_w2,flag:q04_w3 ready
+end
+label ready
+say ivo | 'Sounds right'. A missing valve. 'The usual wrench'. ...It's not a manual. It's my memory with page numbers.
+fade out 0.4
+say narr | Ivo revises it with the crew at the lectern. Measurements instead of sounds. Every valve. Every wrench, labelled.
+fade in 0.4
+key K_REVISED_MANUAL
+quest Q04 ACTIVE revised
+objective ivo | The manual is revised. Have the crew attempt a cold restart at the engine lever - with Ivo only watching.
+@end
+
+@scene Q04_RESTART once
+say ivo | I'm going to stand over here. With my hands in my pockets.
+say worker | Page one. Cold channels open.
+say worker | Page two. Bleed until the gauge reads four. Not 'sounds right'. Four.
+say worker | Page nine. Valve nine-A. It's written down now.
+sfx FX031
+shake 0.4
+say narr | The engine turns over, catches, and runs. Ivo hasn't moved.
+say ivo | It doesn't need me.
+say pell | It never should have.
+take K_REVISED_MANUAL 1
+give W024 1
+quest Q04 COMPLETED
+set q04_done
+say narr | (Ivo received Unborrowed Engine. His final technique is now available.)
+@end
+
+@scene D04P_CREW
+say worker | The Spine runs on waterwheels now. Loud. Honest.
+@end
+
+# ================================================================ Q05 Every Road a Promise (Nera; T01 -> D03)
+@scene Q05_HOOK
+if q:Q05 done
+if qs:Q05:surveyed sched
+if q:Q05:ACTIVE active
+say farmer | West camp needs the mill road. East camp needs the clinic road. One crew, one season. Nera - you know the Rootward. Choose.
+say nera | I'm not choosing. We survey all three crossings and then everyone chooses together.
+quest Q05 ACTIVE start
+journal | Q05: Survey the three crossings in the flooded Rootward, uncover the route Nera once concealed, then draft a shared schedule.
+end
+label active
+say farmer | Three crossings at the Rootward. And Nera says there's a fourth she never talks about.
+end
+label sched
+call Q05_SCHEDULE
+end
+label done
+say farmer | Shared schedule's on the wall. Mill road Mondays, clinic road every day. Everybody grumbles equally. That's fair.
+@end
+
+@scene Q05_SURVEY
+if !q:Q05:ACTIVE plain
+if flag:q05_survey done
+set q05_survey
+say narr | You survey the three crossings: west (short, floods at spring tide), middle (sturdy, far from the clinic), east (clinic-side, narrow).
+say nera | And there's a fourth. Behind the camp. I hid it. Years ago. I sold that route's secret to a smuggler, and a family that trusted me took the long way and lost everything.
+say nera | It goes straight to the clinic. It's been there the whole time.
+set q05_concealed
+quest Q05 ACTIVE surveyed
+objective nera | Nera's concealed route is revealed. Draft the shared schedule with both camps at Brackenford.
+end
+label done
+say narr | Four crossings, all surveyed.
+end
+label plain
+say narr | Nera's chalk on a stump: three crossings, three sluice levers.
+@end
+
+@scene Q05_SCHEDULE once
+say nera | West camp, east camp. Four crossings, not three. The fourth was mine to hide. It shouldn't have been.
+say farmer | You're the one who sold the route to the smugglers.
+say nera | Yes.
+say farmer | ...We lost a winter on that.
+say nera | I know. I'm not asking you to make me feel better about it.
+wait 0.5
+say farmer | Good. Because I won't. But I'll use the road.
+say narr | The camps build the schedule together: mill and clinic on alternating days on the middle crossing, the old concealed route for the clinic every day. Warnings in the margins. The keeper of each crossing named.
+key K_ROUTE_SCHEDULE
+give W030 1
+quest Q05 COMPLETED
+set q05_done
+say narr | (Nera received Many Paths. Her final technique is now available.)
+@end
+
+@scene Q05_CAMP
+if qs:Q05:surveyed sched
+say worker | Clinic road first.
+end
+label sched
+call Q05_SCHEDULE
+@end
+
+# ================================================================ Q06 The Right to Refuse (Oriel; T06 -> D08)
+@scene Q06_HOOK
+if q:Q06 done
+if q:Q06:ACTIVE active
+say patient | This order says I'm to have a 'vision-guided treatment'. It has your signature on it, Oriel. From before.
+say oriel | ...It does. I signed a stack of them. I believed my visions meant I knew better.
+say patient | I don't want it. I want someone to hear me say that.
+quest Q06 ACTIVE start
+journal | Q06: In the Memory Vault's prognosis room: read the original authorization, hear the patient, dismantle the automatic seal.
+end
+label active
+say patient | The prognosis room is in the vault. I'll meet you there. I'd like to watch.
+end
+label done
+say patient | I said no. It stayed no. Then I changed my mind and said yes to something else. That was mine too.
+@end
+
+@scene Q06_AUTH
+if !q:Q06:ACTIVE plain
+set q06_auth
+key K_AUTHORIZATION
+say narr | The original authorization: 'Prognosis by approved visionary supersedes patient preference.' Oriel's signature at the bottom.
+end
+label plain
+say narr | Shelves of old treatment orders. Nacre is sorting them.
+@end
+
+@scene Q06_PATIENT
+if !flag:q06_auth first
+set q06_heard
+say patient | The seal reads the order and applies it whether I agree or not. That's the whole machine. It never asks.
+say oriel | Then it goes. And you decide what happens instead. Even if I'm afraid of what you'll choose.
+end
+label first
+say patient | Read the authorization first. I want you to know what you signed.
+@end
+
+@scene Q06_SEAL once
+if !flag:q06_heard wait
+sfx FX024
+say narr | Oriel pries the automatic seal from its housing. The order-reader goes quiet.
+say oriel | Your treatment. Your decision. I'll tell you what I see, if you want it. It's advice. Nothing more.
+say patient | Then I'll take the advice. And maybe ignore it.
+say oriel | That's the right.
+say narr | Nacre's sanctuary changes its practice that week. Oriel's admission is added to the public record, in her own words.
+take K_AUTHORIZATION 1
+give W036 1
+quest Q06 COMPLETED
+set q06_done
+say narr | (Oriel received Borrowed Dawn. Her final technique is now available.)
+end
+label wait
+say narr | The patient hasn't been heard yet.
+@end
+
+# ================================================================ Q07 What the Hand Remembers (Sable; T06 -> D07)
+@scene Q07_HOOK
+if q:Q07 done
+if q:Q07:ACTIVE active
+say survivor | I don't want your apology, Sable. I want to know where the other binding site is. The deep one, under Whitebone.
+say sable | The deep seals. Three still in use - by choice, now. They'd need to consent to an inspection.
+quest Q07 ACTIVE start
+journal | Q07: In the deep seals under the Whitebone sanctuary, inspect three seals with their occupants, record the design, remove the repeat-command mechanism.
+end
+label active
+say survivor | The deep seals. Under the sanctuary. North stair.
+end
+label done
+say survivor | You answered the question. The hearing goes on. That's how it should be.
+@end
+
+@scene Q07_OCC1
+say survivor | You can look at the seal. Ask before you touch it.
+set q07_o1
+@end
+
+@scene Q07_OCC2
+say elder | I chose to keep mine until the hearing's done. You can study it. Not remove it.
+set q07_o2
+@end
+
+@scene Q07_OCC3
+say patient | Look. Write it down. Then I'll decide.
+set q07_o3
+@end
+
+@scene Q07_SEAL1
+if !flag:q07_o1 ask
+set q07_s1
+say narr | A repeat-command seal. The command loops every hour, renewing itself.
+call Q07_CHECK
+end
+label ask
+say narr | Ask the person beside it first.
+@end
+
+@scene Q07_SEAL2
+if !flag:q07_o2 ask
+set q07_s2
+say narr | The same design, but the loop is fed from somewhere below - a repeater mechanism.
+call Q07_CHECK
+end
+label ask
+say narr | Ask the person beside it first.
+@end
+
+@scene Q07_SEAL3
+if !flag:q07_o3 ask
+set q07_s3
+say narr | The third seal carries Sable's own mark. She writes down the design exactly as it is.
+call Q07_CHECK
+end
+label ask
+say narr | Ask the person beside it first.
+@end
+
+@scene Q07_CHECK
+if flag:q07_s1,flag:q07_s2,flag:q07_s3 ready
+end
+label ready
+key K_SEAL_DESIGN
+quest Q07 ACTIVE recorded
+objective sable | The design is recorded. Remove the repeat-command mechanism beneath the chamber.
+@end
+
+@scene Q07_REPEATER once
+sfx FX024
+say narr | Sable dismantles the repeater with her bare hands and a borrowed screwdriver. The loops stop renewing. The seals are just seals now - removable, whenever their bearers choose.
+say narr | At the hearing, Sable comes without her sword. A survivor asks: 'Did you know what the repeater did when you built it?' She answers: 'Yes.' Nothing else.
+give W042 1
+quest Q07 COMPLETED
+set q07_done
+say narr | (Sable received Unwritten Law. Her final technique is now available.)
+@end
+
+# ================================================================ Q08 The Names We Keep (Pip; T02 -> D02)
+@scene Q08_HOOK
+if q:Q08 done
+if qs:Q08:sealed fix
+if q:Q08:ACTIVE active
+say clerk | Jori's brought people whose recovered legal names aren't the names they use now. The registry can't amend without the official seal - and the seal's in the safe chamber off the canals.
+say pip | I could just - make a seal. I'm very good.
+say jori | Pip.
+say pip | ...I'll fetch the real one.
+quest Q08 ACTIVE start
+journal | Q08: Recover the official seal from the safe chamber off Veyr's canals, then offer chosen-name corrections at the registry.
+end
+label active
+say clerk | The safe chamber is east off the canals. The clerk who set the dials left a note.
+end
+label fix
+call Q08_CORRECTIONS
+end
+label done
+say clerk | Amendments open. Every change records who asked for it. Including the ones Pip asked for.
+@end
+
+@scene Q08_DIAL1
+say narr | Dial 1. It clicks between three engraved words.
+choice | RIVER -> r | CROWN -> c | LEDGER -> l
+label r
+setvar q08_d1 1
+end
+label c
+setvar q08_d1 2
+end
+label l
+setvar q08_d1 3
+@end
+
+@scene Q08_DIAL2
+say narr | Dial 2. It clicks between three engraved words.
+choice | RIVER -> r | CROWN -> c | LEDGER -> l
+label r
+setvar q08_d2 1
+end
+label c
+setvar q08_d2 2
+end
+label l
+setvar q08_d2 3
+@end
+
+@scene Q08_DIAL3
+say narr | Dial 3. It clicks between three engraved words.
+choice | RIVER -> r | CROWN -> c | LEDGER -> l
+label r
+setvar q08_d3 1
+end
+label c
+setvar q08_d3 2
+end
+label l
+setvar q08_d3 3
+@end
+
+@scene Q08_SAFE
+if item:K_OFFICIAL_SEAL have
+if var:q08_d1==1,var:q08_d2==2,var:q08_d3==3 try
+sfx FX004
+say narr | The safe stays shut. The dials can be reset and tried again. (A note on the west wall mentions an order.)
+end
+label try
+say narr | The safe clicks and opens. Inside: the official registry seal. Real.
+key K_OFFICIAL_SEAL
+quest Q08 ACTIVE sealed
+objective pip | Take the official seal to the registry clerk and offer the corrections.
+end
+label have
+say narr | The seal safe stands open.
+@end
+
+@scene Q08_CORRECTIONS once
+say pip | Here's the seal. The real one. And - I could've made the corrections perfect. Technically accurate. Every one.
+say jori | And decided them for everyone.
+say pip | ...Yes. A forgery can be perfect and still be someone else deciding. I get it. I get it now.
+say narr | The residents make their own amendments. Pip holds the ink. Every entry records who asked for it.
+give W048 1
+quest Q08 COMPLETED
+set q08_done
+say narr | (Pip received False Crown. His final technique is now available.)
+@end
+
+# ================================================================ Q09 The Winter Without Sleep (world; T06 -> D11)
+@scene Q09_HOOK
+if q:Q09 done
+if q:Q09:ACTIVE active
+say monk | An island north of Nacre. Its lantern burns every night and nobody in the village ever wakes. Somebody should go. Carefully.
+say narr | (A substantial optional challenge. Wayfarer can land there - the storm around it has thinned since the Accord.)
+quest Q09 ACTIVE start
+journal | Q09: Fly Wayfarer to the winter island far north of Nacre. Warm the shelters and learn why the village sleeps.
+end
+label active
+say monk | The winter island, north. Take warm clothes. And patience.
+end
+label done
+say monk | The village woke. They're very confused and very hungry. Good problems.
+@end
+
+@scene Q09_CAUSEWAY once
+say narr | The White Causeway. Snow that never melts, and at the far end a lantern that never goes out.
+say oriel | The sleepers first. Make sure they're alive, and warm them.
+objective oriel | Check on the sleepers, then light the warmth channels to thaw the way to the sanctum.
+@end
+
+@scene Q09_SLEEPER1
+set q09_sl1
+say narr | An old man, breathing slowly. Alive. Dreaming - his lips move with a song.
+@end
+
+@scene Q09_SLEEPER2
+set q09_sl2
+say narr | A woman, frost in her hair, warm to the touch. Alive.
+@end
+
+@scene Q09_SLEEPER3
+set q09_sl3
+say narr | A child, curled up, smiling. Alive.
+@end
+
+@scene Q09_HEAT1
+if flag:d11_heat1 lit
+sfx FX022
+set d11_heat1
+say narr | The first brazier catches. Warm air runs down the channel toward the Sleeping House.
+call Q09_HEATCHECK
+end
+label lit
+say narr | The brazier burns steadily. It doesn't need fuel - the old channel feeds it.
+@end
+
+@scene Q09_HEAT2
+if flag:d11_heat2 lit
+sfx FX022
+set d11_heat2
+say narr | The second brazier lights. Frost drips from the ceiling.
+call Q09_HEATCHECK
+end
+label lit
+say narr | The brazier burns steadily.
+@end
+
+@scene Q09_HEAT3
+if flag:d11_heat3 lit
+sfx FX022
+set d11_heat3
+say narr | The third brazier roars. Somewhere, ice cracks like a gunshot.
+call Q09_HEATCHECK
+end
+label lit
+say narr | The brazier burns steadily.
+@end
+
+@scene Q09_HEATCHECK
+if flag:d11_heat1,flag:d11_heat2,flag:d11_heat3 all
+end
+label all
+set d11_thaw
+say narr | The ice over the north door slumps and runs away as water. The way to the sanctum is open.
+@end
+
+@scene Q09_B13 once
+music silence
+say narr | The Lantern Cradle. A creature made of cold light and a single burning wick sways over the sleeping village's heat.
+say narr | (This is an optional, substantial challenge. You can leave and prepare.)
+choice | Face it -> fight | Not yet -> leave
+label fight
+battle B13
+set b13_done
+say narr | The Lantern Eater gutters and goes out. Behind it, a window of pale dawn.
+end
+label leave
+say narr | You step back from the Cradle.
+warp D11_R04 from_r05 down
+@end
+
+@scene Q09_HIND once
+say narr | At the Dawn Window, a white deer with frost for antlers waits in the light.
+say hind | I kept them asleep. The winter was killing them. I thought - if they dream, they don't freeze.
+say oriel | The winter ended. Years ago.
+say hind | ...I didn't know how to stop. Nobody asked me to.
+say dain | We're asking. Let them wake.
+say hind | Then they wake. And I would like to go somewhere that is not a promise to keep someone from waking.
+set v07_given
+vestige V07
+quest Q09 COMPLETED
+set q09_done
+say narr | Down on the causeway, the village lights its first cooking fire in years.
+@end
+
+# ================================================================ Q10 The Sea That Keeps Its Dead (world; T07 -> D12)
+@scene Q10_HOOK
+if q:Q10 done
+if q:Q10:ACTIVE active
+say child | The bell! Listen - it's ringing the departure pattern. Two long, three short. That's the Marisol. The Marisol sank before I was born.
+say narr | (A substantial optional challenge in the Starless Reef, south of the Crown Heart. Every sound cue there has a matching light.)
+quest Q10 ACTIVE start
+journal | Q10: Fly to the Starless Reef south of the Crown Heart. Follow the beacons (lights and bells) and find why the bell repeats.
+end
+label active
+say child | Two long, three short. Every night. The reef's south of the Crown Heart.
+end
+label done
+say child | The bell stopped doing the Marisol. Now it just rings the tide. I kind of miss it. Kind of.
+@end
+
+@scene Q10_MOORING once
+say narr | Blackwater Mooring. The reef is black; the only light is the beacon lamps, flashing with each bell.
+say nera | Light and sound together. Follow either one. You don't need both.
+objective nera | Follow the beacons through the reef. Keep the return beacon lit.
+@end
+
+@scene Q10_REFLECTOR
+if flag:d12_reflector done
+sfx FX010
+set d12_reflector
+say narr | You swing the reflector east. The second beacon's light lances into the black channel - and the return beacon, behind you, stays lit.
+end
+label done
+say narr | The reflector points east. The return beacon still burns.
+@end
+
+@scene Q10_REGISTER
+if item:K_PASSENGER_REGISTER done
+say narr | The wreck library. Waterlogged ledgers of the Marisol's passengers, painstakingly dried page by page by someone - or something.
+key K_PASSENGER_REGISTER
+say narr | (You restore the passenger register - every name, every berth.)
+end
+label done
+say narr | The shelves are empty. The register is with you.
+@end
+
+@scene Q10_B14 once
+music silence
+say narr | The Night Trench. Something vast circles in the dark, and every few breaths the whole trench replays a ship tearing apart.
+say narr | (This is an optional, substantial challenge. You can leave and prepare.)
+choice | Face it -> fight | Not yet -> leave
+label fight
+battle B14
+set b14_done
+say narr | The Heartless Leviathan sinks into the trench. The replay stops mid-scream. The water goes still.
+end
+label leave
+warp D12_R04 from_r05 down
+@end
+
+@scene Q10_LEVIATHAN once
+say narr | In the Open Current, a second leviathan - smaller, older, eyes like lamps - rises beside the party.
+say leviathan | The other was made to repeat the wreck's last instant. For them. For their families. Forever. As a memorial.
+say oriel | A memorial that can't stop isn't a memorial.
+say dain | Keep the record. End the repetition.
+say leviathan | The register is theirs. Take it home. And I will go where the current goes, if you'll have me.
+set v08_given
+vestige V08
+take K_PASSENGER_REGISTER 1
+quest Q10 COMPLETED
+set q10_done
+say narr | (The Marisol's passenger register goes to Hearthward's harbor office. Families come to read it.)
+@end
+
+# ================================================================ Q11 No More Crowns (world; T02 -> D02)
+@scene Q11_HOOK
+if q:Q11 done
+if q:Q11:ACTIVE active
+say ansel | Under the canals, a ministry automaton is still issuing Voss's orders. Into an empty room. It's been doing it since the bell.
+say ansel | I'd like it to stop. I'd also like its ledger kept. Evidence.
+quest Q11 ACTIVE start
+journal | Q11: Open the echo chamber off Veyr's canals (west), read the command ledger, and disable the automaton without obeying its prompts.
+end
+label active
+say ansel | West off the canals. The door's been unbolted since the Accord.
+end
+label done
+say ansel | The ledger's in the archive now. The machine's a very expensive hatstand.
+@end
+
+@scene Q11_LEDGER
+if !q:Q11:ACTIVE plain
+if item:K_COMMAND_LEDGER have
+key K_COMMAND_LEDGER
+say narr | The Command Ledger: every order the automaton has issued since the bell. Hundreds. All addressed to units that no longer exist.
+end
+label have
+say narr | You've taken the command ledger.
+end
+label plain
+say narr | A dusty ledger stand.
+@end
+
+@scene Q11_ECHO once
+if !item:K_COMMAND_LEDGER wait
+music silence
+say echo | CITIZEN. REPORT FOR REASSIGNMENT. OBEDIENCE WILL BE REWARDED.
+say pip | It's offering us a reward. How generous.
+say oriel | Its prompts are just words. Ignore them. The screen will name each edict before it lands.
+battle B15 noflee
+set b15_done
+say narr | The Regent's Echo sputters. Its voice box repeats 'REWARD' once more, very quietly, and stops.
+show officer 18 12 up guard
+say officer | Wait. Don't wreck it. A machine like that could keep order. Benevolently, this time.
+say sable | Its authority function comes out. The evidence stays.
+say narr | The party pulls the authority core and leaves the ledger and the rest of the machine for the archive.
+hide officer
+give A023 1
+quest Q11 COMPLETED
+set q11_done
+say narr | (Received Broken Diadem.)
+end
+label wait
+say narr | The automaton drones on. Read its command ledger first - you'll want to know what it's been ordering.
+@end
+
+# ================================================================ Q12 A Song Nobody Owns (world; T06 -> D10)
+@scene Q12_HOOK
+if q:Q12 done
+if q:Q12:ACTIVE active
+say monk | In the listening pool there's a voice nobody claims. Not dragon, not human. Excluded from both testimonies.
+say monk | The listeners taught me a phrase that lets you hear it without taking from it. Here - it's yours. It's in the Crown Heart, they say. A silent alcove off the Concord Bridge.
+key K_LISTENING_PHRASE
+quest Q12 ACTIVE start
+journal | Q12: Carry the listening phrase to the silent alcove on the Crown Heart's Concord Bridge (reachable before the final commitment).
+end
+label active
+say monk | The alcove off the Concord Bridge. Say the phrase. Then listen.
+end
+label done
+say monk | The pool has one more voice in it now. It doesn't belong to anyone. It sounds happier.
+@end
+
+@scene Q12_CANTOR once
+music silence
+say narr | The silent alcove. A figure of folded light, singing without a sound. Its beat shows as pulses of colour on the walls.
+say cantor | Everyone who came here wanted to use me. As a weapon, as a key, as a proof.
+say cantor | I want only to be heard. You will have to earn the quiet to hear it.
+say narr | (Optional challenge. Watch the beat windows on the walls.)
+choice | Listen -> fight | Not yet -> leave
+label fight
+battle B16
+set b16_done
+say cantor | ...You heard. You didn't take. That is all.
+give A024 1
+quest Q12 COMPLETED
+set q12_done
+say narr | (Received Unowned Song.)
+end
+label leave
+warp D10_R04 from_alcove right
+@end

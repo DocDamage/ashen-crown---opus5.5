@@ -1,0 +1,293 @@
+#! D07 Whitebone
+=== D07_R01
+name: Whitebone Redoubt - White Gate
+encounters: none
+save: true
+tileset: whitebone
+music: M020
+zone: D07
+region: R05
+location: L_D07
+grid:
+#################++++++#################
+#################++++++#################
+###############..++++++..###############
+###############..........###############
+###############..........###############
+###############..........###############
+###############..........###############
+###############..........###############
+#############u#..........#u#############
+###############..........###############
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##qqqqqqqqqqqqqqqqq..qqqqqqqqqqqqqqqqq##
+##################q..q##################
+##################qqqq##################
+entities:
+spawn world 19 26 up
+spawn from_r02 19 3 down
+spawn default 19 26 up
+exit 18..21 27 WORLD l_d07
+exit 17..22 0 D07_R02 from_r01 if=event:D07_SABLE_GATE
+npc sable_gate 20 12 down sprite=C07 talk=D07_SABLE_GATE if=!event:D07_SABLE_GATE
+trigger 17..22 14..15 scene=D07_SABLE_GATE if=!event:D07_SABLE_GATE
+save 8 20
+
+=== D07_R02
+name: Whitebone Redoubt - Barracks
+encounters: D07
+rate: 0.7
+tileset: whitebone
+music: M020
+zone: D07
+region: R05
+location: L_D07
+grid:
+##############....##############
+##############....##############
+##............................##
+##............................##
+##..BB.BB.BB........BB.BB.BB..##
+##............................##
+##............................##
+##............................##
+##..BB.BB.BB........BB.BB.BB..##
+##............................##
+##............................##
+##............................##
+##..BB.BB.BB........BB.BB.BB..##
+##............................##
+##..............................
+##..............................
+##..BB.BB.BB........BB.BB.BB....
+##..............................
+##............................##
+##............................##
+##..BB.BB.BB........BB.BB.BB..##
+##............................##
+##............................##
+##............................##
+##..BB.BB.BB........BB.BB.BB..##
+##............................##
+##............................##
+##............................##
+##............................##
+##............................##
+##############....##############
+##############....##############
+entities:
+read 7 6 "Identical grey uniforms on every bunk. Under one pillow: a child's drawing of a boat."
+read 23 14 "A footlocker: regulation kit, and a pressed flower nobody issued."
+read 7 22 "A bunk card: 'Warden 3'. Scratched beside it: 'Tam'."
+chest D07_C_R02 26 26 I007 2
+spawn from_r01 15 29 up
+spawn from_r03 15 1 down
+spawn from_r04 30 15 left
+exit 14..17 31 D07_R01 from_r02
+exit 14..17 0 D07_R03 from_r02
+exit 31 14..17 D07_R04 from_r02
+
+=== D07_R03
+name: Whitebone Redoubt - Names Hall
+encounters: D07
+rate: 0.5
+tileset: whitebone
+music: M020
+zone: D07
+region: R05
+location: L_D07
+grid:
+########################################
+########################################
+########################################
+##....................................##
+##......8..........8..........8.......##
+##......S..........S..........S.......##
+##....................................##
+##....................................##
+##....................................##
+##......................................
+##......................................
+##......................................
+##..kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk....
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##################....##################
+##################....##################
+##################....##################
+entities:
+read 8 5 scene=D07_SEAL1 "x"
+read 19 5 scene=D07_SEAL2 "x"
+read 30 5 scene=D07_SEAL3 "x"
+read 30 16 "A standing order: 'Seals are keyed to warrant numbers. Names are not required.'"
+spawn from_r02 19 22 up
+spawn from_r04 38 10 left
+exit 18..21 23 D07_R02 from_r03
+exit 39 9..12 D07_R04 from_r03
+
+=== D07_R04
+name: Whitebone Redoubt - Binding Cells
+encounters: none
+save: true
+tileset: whitebone
+music: M020
+zone: D07
+region: R05
+location: L_D07
+grid:
+################################
+################################
+##............................##
+##..#######..#######..#######.##
+##..#,,,,,#..#,,,,,#..#,,,,,#.##
+##..#,,,,,#..#,,,,,#..#,,,,,#.##
+##..#,,,,,#..#,,,,,#..#,,,,,#.##
+##..#,,,,,#..#,,,,,#..#,,,,,#.##
+##..###{###..###{###..###{###.##
+##............................##
+##............................##
+##............................##
+..............................##
+..............................##
+..............................##
+..............................##
+##......................########
+##......................#....###
+##...........................###
+##......................########
+..............................##
+..............................##
+..............................##
+..............................##
+##............................##
+##............................##
+##############....##############
+##############....##############
+entities:
+tileset_over 7 8 floor if=flag:d07_open1
+npc prisoner1 7 6 down sprite=survivor talk=D07_PRISONER1
+switch lock1 6 9 flag=d07_open1 scene=D07_LOCK1
+tileset_over 16 8 floor if=flag:d07_open2
+npc prisoner2 16 6 down sprite=survivor talk=D07_PRISONER2
+switch lock2 15 9 flag=d07_open2 scene=D07_LOCK2
+tileset_over 25 8 floor if=flag:d07_open3
+npc prisoner3 25 6 down sprite=survivor talk=D07_PRISONER3
+switch lock3 24 9 flag=d07_open3 scene=D07_LOCK3
+chest D07_C_R04 26 22 G010 1
+chest D07_SECRET_CHEST 27 17 A007 1 acq=D07_SECRET
+read 20 20 "Guard roster: 'Night token in the post's back locker. Return by dawn.'"
+save 6 22
+heal 8 22
+spawn from_r03 1 13 right
+spawn from_r02 1 21 right
+spawn from_r05 15 26 up
+exit 0 12..15 D07_R03 from_r04
+exit 0 20..23 D07_R02 from_r04
+exit 14..17 27 D07_R05 from_r04 if=flag:d07_open1,flag:d07_open2,flag:d07_open3 locked="Sable: Not until every cell is open. That was the agreement."
+
+=== D07_R05
+name: Whitebone Redoubt - Tribunal Ring
+encounters: none
+tileset: whitebone
+music: M020
+zone: D07
+region: R05
+location: L_D07
+grid:
+##################....##################
+##################....##################
+##################....##################
+##################....##################
+#################.......################
+#############...............############
+###########...................##########
+##########.....................#########
+#########.u...................u.########
+########.........qqqqqqq.........#######
+#######........qqqqqqqqqqq........######
+######........qqqqqqqqqqqqq........#####
+######.......qqqqqqqqqqqqqqq.......#####
+######......qqqqqqqqqqqqqqqqq......#####
+#####......qqqqqqqqqqqqqqqqqqq..........
+#####......qqqqqqqqqqqqqqqqqqq..........
+#####......qqqqqqqqqqqqqqqqqqq..........
+#####......qqqqqqqqqqqqqqqqqqq..........
+#####......qqqqqqqqqqqqqqqqqqq......####
+######......qqqqqqqqqqqqqqqqq......#####
+######.......qqqqqqqqqqqqqqq.......#####
+######........qqqqqqqqqqqqq........#####
+#######........qqqqqqqqqqq........######
+########.........qqqqqqq.........#######
+#########.u...................u.########
+##########.....................#########
+###########...................##########
+#############...............############
+#################.......################
+########################################
+########################################
+########################################
+entities:
+trigger 14..25 10 scene=D07_ADJUDICATOR if=!flag:b07_done
+spawn from_r04 19 1 down
+spawn from_r06 38 15 left
+exit 18..21 0 D07_R04 from_r05
+exit 39 14..17 D07_R06 from_r05 if=flag:b07_done
+
+=== D07_R06
+name: Whitebone Redoubt - Snow Exit
+encounters: none
+tileset: whitebone
+music: M020
+zone: D07
+region: R05
+location: L_D07
+grid:
+################################
+################################
+################################
+################################
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqTqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqTqqqqqTqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqTqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+...qqqqqqqqqqqqqqqqqTqqqqqqqqqqq
+...qqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+...qqTqqqqqqqqqqqqqqqqqqqqqqqqqq
+...qqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qTqqqqqTqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqTqqqqqqqqqqqTqTqqTTqqqqqqqqT
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqTqqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqTqqqqqqqT
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqTqqqqTqTqqqqqqqqqqqTTq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+qqqqqqqqqqTqqqqqTqqqqqqqqqqqqqqq
+qqqqqqqqqqqqTqqqqqqqqqqqTqqqqqqq
+entities:
+trigger 3..5 10..13 scene=CH08_SNOW if=!ch:CH08
+spawn from_r05 1 11 right
+exit 0 10..13 D07_R05 from_r06
+exit 14..17 23 WORLD l_d07 if=ch:CH08

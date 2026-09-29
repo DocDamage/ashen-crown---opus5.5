@@ -1,0 +1,142 @@
+#! T01 Brackenford — quarry workers' river town. Scene maps: rail platform (outdoor town), shared bakery, miners' bunkhouse.
+=== T01_PLATFORM
+name: Brackenford
+tileset: town_r01
+music: M010
+zone: T01
+location: L_T01
+region: R01
+save: false
+grid:
+TTTTTTTTTTTTTTTTT^^^::^^^TTTTTTTTTTTTTTT
+TT"""""""T""""""^^^^::^^^^""""""T""""""T
+T"""RRRRR""""l""^^^^::^^^^"""l"""RRRRR"T
+T""4RRRRR""ggg""""""::""""""ggg""RRRRR"T
+T"""WQDQW""ggg"""""":::"""""ggg""WQDQW"T
+T"""::::::::::::::::::::::::::::::::::"T
+T"cr::1"""""""""""":::""""""""""""1"::"T
+T"""::""3333"""""""":::"""""""3333""::"T
+|||||||||||||||||||===||||||||||||||||||
+|||||||||||||||||||===||||||||||||||||||
+T..........b.....l...S....l.....b......T
+T...2............................2.....T
+T::::::::::::::::::::::::::::::::::::::T
+T"""RRRRRRR""":::"""aaaaa""::"RRRRRRRR"T
+T"""RRRRRRR""":::"""ccnrr""::"RRRRRRRR"T
+T"""WQWDWQW""":::""":::::""::"WQWWDWQW"T
+T""""::::::::::::::::::::::::::::::::"TT
+T"1""""""""O"""""::"""""""""""""f"f"f""T
+T""ggggg"""""""""::""""""""""""""gggg""T
+T""ggggg""""""""":::"""""""""T"""gggg""T
+TT""""""""T"""""""::"""""""""""""""""""T
+T~~~~~~~~~~~~~~~~~==~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~==~~~~~~~~~~~~~~~~~~~~
+T"""""T"""""""""""::""""""""""T""""""""T
+TTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTT
+entities:
+spawn start 19 11 up
+spawn world 19 23 up
+spawn from_quarry 20 1 down
+spawn from_bakery 7 16 down
+spawn from_bunk 34 16 down
+spawn from_left 3 4 down
+spawn from_right 35 5 down
+exit 20..21 0 D01_R01 from_town if=flag:sc00_done locked="Holt: The inspection waits for no one, Captain. Talk to the crew first."
+exit 18..19 24 WORLD t01 if=ch:CH01 locked="Mara: Not before the lift. People are down there."
+door 7 15 T01_BAKERY entry sfx=FX008
+door 34 15 T01_BUNKHOUSE entry sfx=FX008
+door 6 4 T01_HOUSE_W entry sfx=FX008
+door 35 4 T01_HOUSE_E entry sfx=FX008
+npc inspector 20 10 down sprite=inspector talk=T01_INSPECTOR if=!event:OPENING
+npc worker_list 14 10 down sprite=worker talk=T01_WORKER_LIST if=!ch:CH01
+npc keeper 22 13 down sprite=keeper talk=T01_KEEPER solid=1
+npc child 30 6 left sprite=child talk=T01_CHILD wander=1
+npc farmer 5 18 right sprite=farmer talk=T01_FARMER
+npc elder 11 10 down sprite=elder talk=T01_ELDER
+npc laundress 11 6 down sprite=noble talk=T01_LAUNDRESS
+npc guard_t 27 11 left sprite=guard talk=T01_GUARD if=!ch:CH01
+npc mara_town 21 16 down sprite=mara talk=T01_MARA_AFTER if=ch:CH01
+npc cartman 33 11 left sprite=worker talk=T01_CARTMAN
+shop 22 14 SHOP_T01
+sign 21 10 "Brackenford Halt. Crown Quarry: north road. Veyr: south over the river."
+=== T01_BAKERY
+name: Brackenford - Shared Bakery
+tileset: interior
+music: M010
+zone: T01
+location: L_T01
+grid:
+################
+#kkk#nnnnn#kkkk#
+#...#.....#....#
+#t.........t...#
+#t....tt.......#
+#.....tt....bb.#
+#r.............#
+#rr.....c....t.#
+#######DD#######
+entities:
+spawn entry 7 7 up
+exit 7..8 8 T01_PLATFORM from_bakery
+npc baker 7 2 down sprite=baker talk=T01_BAKER
+npc worker_b1 12 5 left sprite=worker talk=T01_BAKERY_WORKER
+npc child_b 3 4 right sprite=child talk=T01_BAKERY_CHILD if=!ch:CH01
+=== T01_BUNKHOUSE
+name: Brackenford - Miners' Bunkhouse
+tileset: interior
+music: M010
+zone: T01
+location: L_T01
+save: true
+grid:
+##################
+#BB.BB.BB.#kk.BB.#
+#.........#......#
+#.........+......#
+#t..tt....#..t...#
+#.........#......#
+#r...............#
+########DD########
+entities:
+spawn entry 8 6 up
+exit 8..9 7 T01_PLATFORM from_bunk
+npc bunk_keeper 13 2 down sprite=elder talk=T01_BUNK_INN
+npc sleeper 2 2 down sprite=worker talk=T01_SLEEPER
+save 16 5
+inn 13 1 scene=T01_BUNK_INN
+=== T01_HOUSE_W
+name: Brackenford - Forewoman's House
+tileset: interior
+music: M010
+zone: T01
+location: L_T01
+grid:
+############
+#kk..BB..kk#
+#..........#
+#.t.....t..#
+#..........#
+#####DD#####
+entities:
+spawn entry 5 4 up
+exit 5..6 5 T01_PLATFORM from_left
+npc mara_home 3 2 down sprite=elder talk=T01_MARA_MOTHER
+chest T01_C_HOUSE 9 2 I001 2
+=== T01_HOUSE_E
+name: Brackenford - Clerk's Rooms
+tileset: interior
+music: M010
+zone: T01
+location: L_T01
+grid:
+############
+#??..tt..kk#
+#..........#
+#.t........#
+#..........#
+#####DD#####
+entities:
+spawn entry 5 4 up
+exit 5..6 5 T01_PLATFORM from_right
+npc tally 8 3 left sprite=clerk talk=T01_TALLY
+chest T01_C_CLERK 1 3 I009 2

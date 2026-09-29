@@ -1,0 +1,191 @@
+# CH02 — Orders in Ashes. Veyr and the Underways. SC03 is the authored key scene.
+
+@scene VEYR_WANTED
+say narr | Veyr's south gate is doubled with guards. Dain's description is nailed to the post beside Tessa's.
+say tessa | They spelled my name right this time. Progress.
+@end
+
+@scene T02_HERALD
+say "Herald" | Hear it! Crown Quarry reopened by ministry inspection! Production restored! Heartglass to every lamp by winter!
+say dain | That is not what happened.
+say "Herald" | It's what's written, sir. I only read it.
+@end
+
+@scene T02_GUARDS
+say guard | My family can't eat loyalty. That's all I'm saying.
+say "Soldier" | Then say it quieter. Loyalty's what we're paid in this month.
+say guard | Paid? We're paid in lamp oil and promises.
+@end
+
+@scene T02_VENDOR1
+say keeper | Celebration prices! Everything's dearer because we're all very happy.
+@end
+
+@scene T02_VENDOR2
+say baker | Crown loaves, stamped with the oath. Same bread as last week. Twice the price.
+@end
+
+@scene T02_LAMPMAN
+say worker | Public heartglass lamps. Lovely warm light. Buzzes at night like a trapped wasp.
+say worker | I'm told that's pressure.
+@end
+
+@scene T02_CHILD
+say child | Are you the knight who stopped the quarry? The herald says a knight reopened it.
+say dain | The herald is wrong.
+say child | Can you tell him? He's very loud.
+@end
+
+@scene T02_CLERK_M
+say clerk | Records open to the public? No. Records are open to the ministry, which is the public, in a sense.
+@end
+
+@scene T02_PILGRIM
+say "Pilgrim" | I walked from Nacre to see the Oath Statue. It's smaller than the songs.
+rumor | A pilgrim came from Nacre, north across the salt: 'a sanctuary where water remembers.'
+@end
+
+@scene T02_SMITH
+say keeper | Blades and plate. The good stock goes to the Marshal's men first.
+shop SHOP_T02
+@end
+
+@scene T02_AIDE
+say "Ministry Aide" | Captain Ashward! The Marshal's office has your commendation ready. Step up to the oath square.
+@end
+
+@scene T02_GUARD_S
+say guard | Oath Square, Captain. Stand where the aide shows you.
+@end
+
+@scene T02_ANSEL_SQ
+say ansel | Clerk Ansel, gate records. You're the quarry captain.
+say ansel | I refused a death certificate last month. Man was sitting in front of me. Alive. They found another clerk.
+@end
+
+@scene T02_WIDOW
+say elder | My husband went to the quarry in a ministry cart. The ledger says he retired. I'd like to know where.
+@end
+
+@scene T02_ARCHIVIST
+say scholar | The lower hall survives everything. That's what lower halls are for.
+@end
+
+@scene CH02_ARREST once
+music M011
+face player up
+say "Ministry Aide" | Captain Dain Ashward. For the successful reopening of Crown Quarry, the Marshal's office commends -
+say dain | The quarry did not reopen. I refused the restart. Seven workers were trapped below the lift.
+say "Ministry Aide" | The report says -
+say dain | The report is wrong. Correct it.
+say "Ministry Aide" | ...Guards.
+shake 0.3
+say tessa | And that's why you don't correct a ministry in its own square.
+say narr | The commendation ceremony ends early. The guards are polite about it.
+fade out 0.6
+warp D02_R01 cell right
+fade in 0.6
+music M020
+say narr | Veyr Underways. Intake Hall. The cell smells of lamp oil and old paper.
+say tessa | Relay tampering, for me. For you: 'insubordination and interference with production.'
+say tessa | We're a matched set.
+objective | Find a way out of the Intake Hall.
+@end
+
+@scene D02_JAILER
+say guard | Sister Oriel's coming down to certify the apprentice. Mental fitness. Formality.
+@end
+
+@scene D02_ORIEL once
+say oriel | Tessa Vale. I am here to certify whether you are fit to stand trial.
+say tessa | Am I?
+say oriel | I have not examined you yet. I have examined this.
+say oriel | Your charge sheet is dated two days before the inspection. They wrote the charge before you did anything.
+say dain | They knew.
+say oriel | They knew what they intended to call it. That is not quite the same thing, but it is close enough to frighten me.
+say oriel | There is a service door behind the ledger stacks.
+say dain | Then we go.
+say oriel | We take the records first. If you only run, you are fugitives. If you carry the ledgers, you are witnesses.
+say tessa | I like being a witness. Witnesses get to talk.
+set d02_oriel
+join C06
+say narr | Oriel's Prayer heals, cleanses and reveals what enemies have committed to. She cannot see what they have not chosen.
+objective oriel | Take the ledgers from the Ledger Stacks, then leave by the canal.
+@end
+
+@scene D02_SC03 once
+say narr | The ledger stacks. Rows of transport orders, each signed and countersigned.
+say tessa | This one was signed before we reached the quarry.
+say dain | They knew it would happen.
+say oriel | They knew what they intended to call it.
+say tessa | And this older one?
+say oriel | Mine.
+say dain | You did not know what they meant.
+say oriel | I knew I had not asked.
+say oriel | Take the ledger. All of it.
+key K_LEDGER
+say narr | The ledger names a transport origin: heartglass routed via the Rootward sluices, north of Veyr.
+journal | Transport orders route heartglass via the Rootward sluices, north of Veyr.
+objective oriel | Leave the Underways by the canal. The ledger points to Rootward.
+@end
+
+@scene D02_BELL
+sfx FX031
+if flag:d02_bell back
+set d02_bell
+say narr | The signal bell rings. Down the junction, two guards look up, check their chalk marks, and walk toward the echo in the south corridor.
+end
+label back
+unset d02_bell
+say narr | The bell rings again. The guards grumble and trudge back to the north corridor.
+@end
+
+@scene D02_PATROL
+say guard | Post orders, whoever you are. We hold here until the bell says otherwise.
+@end
+
+@scene D02_DROP once
+say narr | The walkway ends at a ledge above the cistern floor. There's a ladder further east - but this is quicker.
+choice | Drop down -> drop | Stay up -> stay
+label drop
+move player down down down down
+set d02_dropped
+label stay
+@end
+
+@scene D02_BAILIFF once
+music silence
+say narr | A brass machine unfolds in the seal chamber, stamping a warrant against its own chest.
+say "Brass Bailiff" | UNAUTHORIZED READERS. PRESENT YOUR WARRANT.
+say tessa | We're more of a 'no warrant' household.
+say oriel | It names its next target before it restrains them. Watch the paper.
+battle B02 noflee
+set b02_done
+music M020
+say narr | The Bailiff's stamp arm locks. Its warrants flutter to the floor, every one of them blank.
+say oriel | It was built to arrest. It had nothing to arrest us for.
+xp 80
+objective | Reach the canal exit east of the seal chamber.
+@end
+
+@scene D02_ANSEL
+say ansel | The canal gate. I was checking the latch. It seems I forgot to check it.
+say ansel | If anyone asks, I was doing inventory.
+@end
+
+@scene CH02_CANAL once
+say ansel | Go. The boat's old but it floats. I'll say you overpowered me. Nobody will believe it, but they'll write it down.
+say dain | Thank you.
+say ansel | Don't. Just - make it worth the inventory.
+say oriel | Where does the ledger send us?
+say tessa | Rootward. North of the city, where the irrigation sluices are. Whatever they're moving, it goes through there.
+fade out 0.6
+chapter CH02
+set wanted
+say narr | The boat slides out under the walls. Behind them, Veyr's bells ring for a commendation nobody attended.
+warp WORLD l_d03 down
+fade in 0.6
+objective oriel | Follow the ledger to the Rootward sluices, just north.
+discover L_D03
+level_floor 6
+@end

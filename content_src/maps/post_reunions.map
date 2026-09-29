@@ -1,0 +1,492 @@
+#! Post-state reunions and the Ash Accord
+=== D06P_R01
+name: Skyspine - Broken Chain Mooring
+tileset: sky
+music: M014
+zone: D06P
+region: R04
+location: L_D06
+encounters: D06P
+rate: 0.5
+save: true
+phase: post
+legend: _=void }=chain 7=cable
+grid:
+____________________________________________
+____________________________________________
+____________________________________________
+______________________________......._______
+____________________________..........._____
+___________________________...]]..]]....____
+_______...________________...............___
+______.....______________..r..............__
+_____......._____________.......r.........__
+_____.......===============...........r...__
+_____.......===============...r..........___
+______..==.________________.............____
+_______.==__________________..........._____
+________==____________________..==..._______
+________==______________________==__________
+________==______________________==__________
+________==...___________________==__________
+_____...........________________==__________
+____...r.........______________.==..________
+___...............___________.........______
+___...............__________..........._____
+__...............============.....}}....____
+__...............============...........____
+__.................________.............____
+___.x.............__________.....r....._____
+___...............___________.........______
+____.............______________.....________
+_____...........____________________________
+________....._______________________________
+________....._______________________________
+entities:
+hazard 20..25 21..22 period=4 on=1.2 phase=0
+hazard 32..33 14..17 period=3.6 on=1.2 phase=1.5
+hazard 14..22 9..10 period=4 on=1.3 phase=2.5
+switch anchor1 8 8 flag=d06p_a1 scene=CH17_ANCHOR1
+switch anchor2 38 7 flag=d06p_a2 scene=CH17_ANCHOR2
+switch anchor3 37 23 flag=d06p_a3 scene=CH17_ANCHOR3
+sign 12 20 "Pennants lift before each gust. Cross between them. Each ballast anchor steadies the mooring a little more."
+trigger 6..14 23..25 scene=CH17_ARRIVE if=ch:CH16,!event:CH17_ARRIVE
+npc corren_m 33 22 right sprite=C03 talk=CH17_CORREN if=!ch:CH17
+npc edda_m 30 23 right sprite=edda talk=CH17_EDDA if=!ch:CH17
+npc evac1 29 8 down sprite=child talk=CH17_EVAC
+npc evac2 36 9 left sprite=elder talk=CH17_EVAC
+npc crew_m 12 22 up sprite=pilot talk=CH17_CREW
+save 6 20
+read 5 24 "Wreckage from a rescue basket." scene=Q03_RECORDER
+npc q3_survivor 36 10 left sprite=survivor talk=Q03_SURVIVOR if=q:Q03:ACTIVE
+switch marker 14 24 scene=Q03_MARKER if=q:Q03:ACTIVE
+spawn world 10 28 up
+spawn default 10 28 up
+exit 8..12 29 WORLD_POST l_d06
+
+=== T05_POST
+name: High Aerie - Windmill Court
+tileset: town_r04
+music: M014
+zone: T05
+region: R04
+location: L_T05
+phase: post
+legend: _=void }=chain 7=cable
+grid:
+____________________________________________
+____________________________________________
+____________________________________________
+____________________________________________
+__::::::::::::::::::::::::::::::::::::::::__
+__::RR4RRRRR::::::::::::::::RRRRRRR:::::::__
+__::RRRRRRRR::::::::::::::::RRRRRRR:::::::__
+__::WQWQDQWQ::::::::::::::::WQWDWQW:::::::__
+__:::::::::::::l::<::<::<:l:::::::::::::::__
+__::::::::::::::::::::::::::::::::::::::::__
+__:::::::::::::::::::::::::::c::::::::::::__
+__:l::::::::::::::::::::::::::::::::::::::__
+__:::b::::::y:8:::::::::::::::::::::::::::__
+__::::::::::::::::::::::::::::::::::::::::__
+__::::::::::::::::::::::::::::::::::::::::__
+__::::::::::::::::::::::::::::::::::::::::__
+__::::::::::::::::::::b::::::::::RRRRRRRR:__
+__::::::c:::::::::l::::::::::::::RRRRRRRR:__
+__::::c::::::::::::::::::::::::::WQWQDQWQ:__
+__::::::::::::::b::b::::::::::::::::::::::__
+__:::1::::::::l:::::::::::::l:::::::::::::__
+__:::::::l::::::::::::::::::::::::::::::::__
+__::::::::::::::::::::::::::::::::::::::c:__
+__:::::::::::::::::::::::::::l::::::::::::__
+__:::::::::::::::::::::::::::::::::::::1::__
+__::::::::::::::::::::::::::::::::::::::::__
+___________________::::::___________________
+___________________::::::___________________
+___________________::::::___________________
+___________________::::::___________________
+entities:
+tileset_over 14 12 floor if=!flag:q03_wall
+spawn world 21 28 up
+spawn default 21 28 up
+exit 19..24 29 WORLD_POST l_t05
+inn 7 10 scene=T05P_INN
+npc hall_p 9 10 down sprite=elder talk=T05P_INN
+npc edda_p 18 13 down sprite=edda talk=T05P_EDDA
+npc pilot_p 13 14 left sprite=pilot talk=T05P_PILOT
+npc windmill 22 11 down sprite=worker talk=T05P_WIND
+npc kid_p 30 21 left sprite=child talk=T05P_KID wander=1
+npc trader_p 26 18 up sprite=keeper talk=T05P_SHOP
+shop 26 17 SHOP_T05
+npc survivor_p 36 13 left sprite=survivor talk=T05P_SURVIVOR
+read 12 13 "The memorial: a long wall of names. Every one of them fell."
+read 14 13 "The Returners' Wall." scene=T05P_RETURN_WALL
+save 20 22
+
+=== T02_SQUARE_POST
+name: Veyr - Distribution Square
+tileset: capital
+music: M011
+zone: T02
+region: R01
+location: L_T02
+save: true
+phase: post
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~xx~~~~~~~~~~~~~~~~~~x~~~~~~~~~~~~~
+~~~~::::::::::::::::::::::::::::::::::::::::
+~~~~:::::::::::::::c::::::::::::::::::::::::
+~~~~::RRRRRRR:::l:::::x:::::r:RRRRRRRR::::::
+~~~~::RRRRRRR:::::::::::::::::RRRRRRRR::::::
+~~~~::WQWDWQW::r::::2:::::::l:WQWDWQWQ::::::
+~~~~::::::::::::::::::::::::::::::::::::::::
+~~~~:::::::::::::::::::::::x::::::::::::::::
+~~~~::::::::::::::::::::::::::::::::::::::::
+~~~~::::::::::::aaaaaaaaaaaa:::::::l::::::::
+~~~~:::::::r::::nnnnnnnnnnnn::::::::::::::::
+~~~~:::]::::::::::::::::::::::::::::::::::::
+~~~~::::::::::::::::::::::::::::::::::::::::
+~~~~:::::::::::::::::::::::::::::::::::2::::
+~~~~::::::::::::l::::::::::l:::c:::::::::x::
+~~~~:::::::::::::::::y::::::::::::::::::::::
+~~~~::::::::::]::::::::::::::::::::::::::2::
+~~~~::::::::::::::::::::::::::::::::::::::::
+~~~~::RRRRRRRR::::::::::::::::::::::::::::::
+~~~~::RRRRRRRR:::r::::::::::c:RRRRRRRR::::::
+~~~~::WQWQDQWQ::::::::::::::::RRRRRRRR::r:::
+~~~~::::::::::::::::::::::::::WQWDWQWQ::::::
+~~~~::::::::::::::::::::::::::::::::::::::::
+~~~~:::::::::::::::::::::::::::::::::::::2::
+~~~~::::::::::::::::::::::::::::::::::::::::
+~~~~:2:::::::::x::::::L:::::::::l:::::::::::
+~~~~::::::::::::::::::::::::::::::::::::::::
+~~~~:::::::::::]:::::2:::::::r::::::::::::::
+~~~~::::::::::::::::::::::::::::::::::::::::
+entities:
+spawn world 42 15 left
+spawn from_canals 22 27 up
+spawn default 42 15 left
+exit 43 14..17 WORLD_POST l_t02
+exit 22 28 T02_CANALS from_square
+npc ansel_p 20 15 up sprite=ansel talk=T02P_ANSEL
+npc guard_p1 14 16 right sprite=guard talk=T02P_GUARDS
+npc guard_p2 15 16 left sprite=soldier talk=T02P_GUARDS
+npc jori_v 26 20 left sprite=jori talk=CH18_JORI if=ch:CH16,!ch:CH18
+npc dist_worker 24 15 up sprite=worker talk=T02P_DIST
+npc refugee_v 9 17 right sprite=survivor talk=T02P_REFUGEE
+npc market_v 34 18 left sprite=keeper talk=T02P_SHOP
+shop 34 17 SHOP_T02
+inn 9 25 scene=T02P_INN
+npc inn_v 10 26 left sprite=keeper talk=T02P_INN
+save 36 26
+
+=== T02_CANALS
+name: Veyr - Changed Canals
+tileset: underways
+music: M011
+zone: D02P
+region: R01
+location: L_T02
+encounters: D02P
+rate: 0.7
+phase: post
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~ddddd~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~ddddd~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~ddddd~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~ddddd~~~~~~~~~~~~~~~~~~~
+~~dddddddddddddddddddddddddddddddddddddddd~~
+~~dddddddddddddddddddddddddddddddddddddddd~~
+~~dddddddddddddddddddddddddddddddddddddddd~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~dddd~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~dddd~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~dddd~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~dddd~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~dddddddddddddddddddddddddddddddddddddddd~~
+~~dddddddddddddddddddddddddddddddddddddddd~~
+~~dddddddddddddddddddddddddddddddddddddddd~~
+~~dddd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~dddd~~
+~~dddd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~dddd~~
+~~dddd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~dddd~~
+~~dddd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~dddd~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~dddd~~
+entities:
+tileset_over 8..9 8..19 bridge if=flag:t02c_gate1
+switch gate1 11 6 flag=t02c_gate1 scene=CH18_GATE1
+tileset_over 22..23 8..19 bridge if=flag:t02c_gate2
+switch gate2 25 6 flag=t02c_gate2 scene=CH18_GATE2
+tileset_over 36..37 8..19 bridge if=flag:t02c_gate3
+switch gate3 39 6 flag=t02c_gate3 scene=CH18_GATE3
+read 12 5 "Canal sign, repainted: 'LOCK GATES RAISE CROSSINGS. OPEN ONE, THE WATER SHIFTS.'"
+chest T02C_C1 40 6 I003 2
+spawn from_square 22 2 down
+spawn from_registry 39 26 up
+spawn from_echo 3 25 up
+exit 22 1 T02_SQUARE_POST from_canals
+exit 38..41 27 T02_REGISTRY_POST from_canals
+spawn from_seals 40 9 left
+exit 41 8..11 D02P_SEALS from_canals if=ch:CH20 locked="A clerk's door, bolted from inside. The registrar has the key - after the Accord."
+exit 2..5 26 D02P_ECHO from_canals if=ch:CH20 locked="A sealed service door. Behind it, a machine is reading orders to no one."
+
+=== T02_REGISTRY_POST
+name: Veyr - Lower Registry
+tileset: interior_stone
+music: M009
+zone: T02
+region: R01
+location: L_T02
+save: true
+phase: post
+grid:
+################################
+################################
+##............................##
+##.kkkkk.kkkkk.kkkkk..........##
+##............................##
+##............................##
+##............................##
+##.kkkkk.kkkkk.kkkkk..........##
+##............................##
+##............................##
+##............................##
+##............................##
+##............................##
+##............................##
+##........tttt................##
+##............................##
+##............................##
+##............................##
+##............................##
+##............................##
+##............................##
+##............................##
+##############....##############
+##############....##############
+entities:
+trigger 12..19 18..19 scene=CH18_REMNANTS if=ch:CH16,!flag:t02r_clear
+npc pip_r 15 11 down sprite=C08 talk=CH18_PIP if=!ch:CH18
+npc resident1 6 12 right sprite=survivor talk=CH18_RES
+npc resident2 24 12 left sprite=elder talk=CH18_RES
+npc registrar 12 15 up sprite=clerk talk=T02R_REGISTRAR if=ch:CH18
+read 11 14 "The original ledgers." scene=CH18_LEDGERS
+save 26 19
+spawn from_canals 15 22 up
+spawn default 15 22 up
+exit 14..17 23 T02_CANALS from_registry
+
+=== D02P_ECHO
+name: Veyr Underways - Echo Chamber
+tileset: underways
+music: M025
+zone: D02P
+region: R01
+location: L_T02
+encounters: none
+save: true
+phase: post
+grid:
+############################
+############################
+############################
+###......................###
+###........m.m.m.........###
+###......................###
+###......................###
+###......................###
+###......................###
+###......................###
+###......................###
+###......................###
+###......................###
+###......................###
+###......................###
+###......................###
+###......................###
+############....############
+############....############
+############....############
+entities:
+read 9 4 "The Command Ledger." scene=Q11_LEDGER
+trigger 10..17 8..9 scene=Q11_ECHO if=q:Q11,!flag:b15_done
+save 5 14
+spawn from_canals 13 18 up
+spawn default 13 18 up
+exit 12..15 19 T02_CANALS from_echo
+
+=== D07P_R01
+name: Whitebone Sanctuary - Gate
+tileset: whitebone
+music: M008
+zone: D07P
+region: R05
+location: L_D07
+encounters: none
+save: true
+phase: post
+grid:
+qqqqqqqqqqqqqqqqq......qqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqq......qqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqq......qqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqq......qqqqqqqqqqqqqqqqq
+qqqq................................qqqq
+qqqq.........r......................qqqq
+qqqq..]].]].............c...........qqqq
+qqqq.........................!......qqqq
+qqqq...........r....................qqqq
+qqqq................................qqqq
+qqqq........................!.......qqqq
+qqqq................................qqqq
+qqqq..................r.............qqqq
+qqqq................................qqqq
+qqqq...............c................qqqq
+qqqq................................qqqq
+qqqq....................!...........qqqq
+qqqq.........r...................]..qqqq
+qqqq...r....................!.......qqqq
+qqqq................................qqqq
+qqqq................................qqqq
+qqqq................................qqqq
+qqqq.c..............................qqqq
+qqqq................................qqqq
+qqqqqqqqqqqqqqqqq......qqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqq......qqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqq......qqqqqqqqqqqqqqqqq
+qqqqqqqqqqqqqqqqq......qqqqqqqqqqqqqqqqq
+entities:
+spawn world 19 26 up
+spawn from_r02 19 1 down
+spawn default 19 26 up
+exit 17..22 27 WORLD_POST l_d07
+exit 17..22 0 D07P_R02 from_r01 if=event:CH19_ARRIVE
+trigger 16..23 18..20 scene=CH19_ARRIVE if=ch:CH16,!event:CH19_ARRIVE
+npc sanct_keeper 26 18 right sprite=monk talk=CH19_KEEPER
+npc survivor_w 12 12 down sprite=survivor talk=CH19_SURVIVOR_GATE
+save 8 20
+heal 10 20
+
+=== D07P_R02
+name: Whitebone Sanctuary - The Cells
+tileset: whitebone
+music: M008
+zone: D07P
+region: R05
+location: L_D07
+encounters: none
+phase: post
+grid:
+#################################....###
+#################################....###
+##....................................##
+##....................................##
+##....#######...#######...#######.....##
+##....#,,,,,#...#,,,,,#...#,,,,,#.....##
+##....#,,,,,#...#,,,,,#...#,,,,,#.....##
+##....#,,,,,#...#,,,,,#...#,,,,,#.....##
+##....#,,,,,#...#,,,,,#...#,,,,,#.....##
+##....###G###...###G###...###G###.....##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+##....................................##
+#################......#################
+#################......#################
+entities:
+tileset_over 9 9 doorway if=flag:d07p_open1
+npc cell1 9 8 down sprite=survivor talk=CH19_CELL1
+switch lock1 9 11 scene=CH19_LOCK1
+tileset_over 19 9 doorway if=flag:d07p_open2
+npc cell2 19 8 down sprite=elder talk=CH19_CELL2
+switch lock2 19 11 scene=CH19_LOCK2
+tileset_over 29 9 doorway if=flag:d07p_open3
+npc cell3 29 8 down sprite=patient talk=CH19_CELL3
+switch lock3 29 11 scene=CH19_LOCK3
+npc sable_s 30 18 left sprite=C07 talk=CH19_SABLE if=!ch:CH19
+spawn from_r03 34 1 down
+exit 33..36 0 D07P_R03 from_r02 if=ch:CH20 locked="A sealed stair to the deep cells. The sanctuary keeps it shut until the Accord is signed."
+trigger 17..22 22..23 scene=CH19_SC10 if=flag:d07p_open1,flag:d07p_open2,flag:d07p_open3,!ch:CH19
+spawn from_r01 19 26 up
+spawn default 19 26 up
+exit 17..22 27 D07P_R01 from_r02
+
+=== T06_POST
+name: Nacre - The Assembly
+tileset: town_r05
+music: M015
+zone: T06
+region: R05
+location: L_T06
+save: true
+phase: post
+grid:
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+NN::::::::::::::::::::::::::::::::::::::::NN
+NN:RRRRRRRR:::::::1:::*::::::::RRRRRRR4R::NN
+NN:RRRRRRRR:::::1:::::::::1::::RRRRRRRRR::NN
+NN:WQWDWQWQ::::::::::1:::::::::WQWQDQWQW::NN
+NN::::::::::l:::::::::::::::::::::::::::::NN
+NN:::::::::::::::::99999*9::::::::::::::::NN
+NN:::::::::::::::99999999999:::::::::::y::NN
+NN::g:::::::::::9999999999999:::::::::::::NN
+NN::::::::::::::9999999999999:::::::::::::NN
+NN::::::::::1:::9999999999999:::::::::1:::NN
+NN::::::::*::::::99999999999::::::*:::::::NN
+NN:::::1:::::::::::9999999:::g::::::::::::NN
+NN::::::::::::::::::::::::::::::::::::::::NN
+NN::::::::::::::::::::::::::::::::::::::::NN
+NN:RRRRRRR::::::l:::::::::1::y::::l:::::::NN
+NN:RRRRRRR::::::::::::::::::::::::::::g:::NN
+NN:WQWDWQW::::::bbbbbbbbbbbb::::::::::::::NN
+NN:::::::::g::::::::::::::::::::::::l:::::NN
+NN:::::::::::::g::::::::::::::::::::::::::NN
+NN::::::::::::::::::::::::::::::::::::::::NN
+NN::::::::::::::::::::::::::::::::::::::::NN
+NN::::::::::*:::::::::::::::::::::::::::::NN
+NN:::::::::::::::::::::::::::::::b::::::::NN
+NN::::::::::::::::::::::::::::::::::::::::NN
+NNNNNNNNNNNNNNNNNNN::::::NNNNNNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNNNNNN::::::NNNNNNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNNNNNN::::::NNNNNNNNNNNNNNNNNNN
+entities:
+spawn world 21 28 up
+spawn default 21 28 up
+exit 19..24 29 WORLD_POST l_t06
+inn 34 8 scene=T06P_INN
+npc house_keeper 36 9 left sprite=monk talk=T06P_INN
+npc sen_p 22 16 down sprite=sen talk=T06P_SEN
+npc family_p1 12 16 right sprite=elder talk=T06P_FAMILY
+npc family_p2 13 17 up sprite=survivor talk=T06P_FAMILY
+npc gardener_p 8 22 up sprite=farmer talk=T06P_GARDENER
+npc salt_p 28 22 left sprite=keeper talk=T06P_SHOP
+shop 28 21 SHOP_T06
+npc listener_p 30 12 left sprite=scholar talk=T06P_LISTENER
+npc patient_p 6 10 right sprite=patient talk=Q06_HOOK if=ch:CH20
+npc survivor_n 38 20 left sprite=survivor talk=Q07_HOOK if=ch:CH20
+npc winter_pilgrim 38 16 left sprite=monk talk=Q09_HOOK if=ch:CH20
+npc pool_voice 22 14 down sprite=monk talk=Q12_HOOK if=ch:CH20
+trigger 16..27 23..24 scene=CH20_ACCORD if=ch:CH17,ch:CH18,ch:CH19,!ch:CH20
+save 38 24
