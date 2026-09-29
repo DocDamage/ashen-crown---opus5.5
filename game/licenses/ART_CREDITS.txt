@@ -16,6 +16,12 @@ game only; the raw files are not redistributed. Per-asset sources and licences: 
   - NPC animations: child, elder, guard, farmer, baker, monk field sprites
   - Future Fantasy treasure chests
 
+[World map and extra props]
+  - Winlu Fantasy Tileset - Overworld by WinLu (https://winlu.itch.io/fantasy-overworld), "Other Engines"
+    edition: mountains, settlements, dungeon/ruin/gate markers, rowboats. Commercial use allowed; reduced to 16px.
+  - CraftPix.net free 2D top-down pixel dungeon asset pack: braziers, ladders (https://craftpix.net/file-licenses/).
+  - SakPix stage assets (https://sakpix.itch.io): altar and hand-cart, reduced to game scale.
+
 [Battle: enemies and backdrops]
   - Ansimuz Legacy Collection by ansimuz (https://ansimuz.itch.io/gothicvania-patreon-collection)
     TinyRPG battle monsters, Gothicvania / Warped characters and parallax environments.

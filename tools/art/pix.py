@@ -193,6 +193,14 @@ LICENSES = {
          "Pixel monster packs (Stone Golem, Huge Knight, Headless Horseman, Cerberus, Gargoyle, Gryphon, Imp, Witch) - "
                   "per-pack License.txt: 'You can use this asset in any game project, personal or commercial'; "
                   "no resale/redistribution as a game asset, no NFTs",
+    "Fantasy_Overworld_-_Other_Engines.zip": "Winlu Fantasy Tileset - Overworld by WinLu (winlu.itch.io/fantasy-overworld), "
+               "'Other Engines' edition - 'can be used in commercial projects', may be edited; no redistribution/resale; "
+               "credit appreciated. 48px art reduced to 16px",
+    "RPGMAKERASSETS/craftpix-net-169442-free-2d-top-down-pixel-dungeon-asset-pack.zip":
+               "CraftPix.net free 2D top-down pixel dungeon pack - CraftPix file licence (craftpix.net/file-licenses): "
+               "use in commercial games; no redistribution of the raw files",
+    "SakPix": "SakPix Stage Assets (sakpix.itch.io) - owner-stated as usable; the store pages state no explicit licence "
+              "(the SakPix character packs ship a CC0 licence); AI-assisted art, reduced to 16px scale. OWNER TO CONFIRM",
     "haydeos": "Factory Monster Pack 1 by Haydeos (haydeos.itch.io/factory-monster-pack-1) - 'You may use these assets in "
                "any commercial or non-commercial game project'; any engine; credit appreciated",
 }
@@ -206,9 +214,16 @@ _lib_cache = {}
 
 
 def lib_img(rel):
-    """Load a library image as RGBA (cached). Raises FileNotFoundError when the library is not installed."""
+    """Load a library image as RGBA (cached). Raises FileNotFoundError when the library is not installed.
+    A path through an archive ("pack.zip/inner/file.png") is read from inside the zip without extracting it."""
     if rel not in _lib_cache:
-        _lib_cache[rel] = Image.open(lib_path(rel)).convert("RGBA")
+        if ".zip/" in rel:
+            import io, zipfile
+            zp, inner = rel.split(".zip/", 1)
+            with zipfile.ZipFile(lib_path(zp + ".zip")) as zf:
+                _lib_cache[rel] = Image.open(io.BytesIO(zf.read(inner))).convert("RGBA")
+        else:
+            _lib_cache[rel] = Image.open(lib_path(rel)).convert("RGBA")
     return _lib_cache[rel]
 
 

@@ -1,0 +1,6 @@
+WORLD from default (blocks closed): ['L_D01', 'L_D03', 'L_D04', 'L_D05', 'L_D06', 'L_D07', 'L_D08', 'L_D09', 'L_T01', 'L_T02', 'L_T03', 'L_T04', 'L_T05', 'L_T06']
+WORLD_POST from l_t07 (blocks closed): ['L_D01', 'L_D03', 'L_D04', 'L_D06', 'L_D07', 'L_D08', 'L_T01', 'L_T02', 'L_T03', 'L_T04', 'L_T05', 'L_T06', 'L_T07']
+  landing zones without walkable ground: none
+WORLD_POST from l_t07 (blocks open): ['L_D01', 'L_D03', 'L_D04', 'L_D06', 'L_D07', 'L_D08', 'L_D11', 'L_D12', 'L_T01', 'L_T02', 'L_T03', 'L_T04', 'L_T05', 'L_T06', 'L_T07']
+  landing zones without walkable ground: none
+post locations unreachable from any landing/Hearthward: none

@@ -94,9 +94,16 @@ unchanged (`e528220ab0ff6194`); only presentation code and art changed.
   world-map mountains are composed in code from library pixels (no ready-made piece exists in the library).
   Mountains are FF6-style peaks with a lit left flank, variants per cell and a snow-capped inner peak.
   The party is drawn at 2x in battle on a wider diagonal (FF6 weight next to the large enemies).
-- **Open**: licence confirmations for the Time Fantasy "Elements" kit and ansimuz packs (owner). Still generated:
-  carts, boats, murals, sluices, lifts, braziers, altars, anvils, vines, cables, tall pipes and the world-map
-  town/dungeon markers.
+- **Whole-library sweep (same day)**: the remaining generated props now come from the library too. World map:
+  WinLu Fantasy Overworld mountains, towns, city, dungeon/cave, ruins and gate markers (48px art reduced to 16px by
+  exact nearest thirds). Field: braziers (CraftPix), anvils (Time Fantasy blacksmith kit), vines, murals (ruins /
+  cloud-city plaques), tall pipes, chains, cables, ladders, gates, sluices and lifts (Time Fantasy sewers /
+  steampunk), flowers, benches, rowboats (WinLu), altars and carts (SakPix, reduced by dominant-colour sampling).
+  The composed peaks from the first pass were replaced by the WinLu mountains. Re-verified: tests 57/57,
+  reachability 0, world audit OK, CHAIN PASS (`reports/evidence/library_sweep_chain/`).
+- **Open**: licence confirmations for the Time Fantasy "Elements" kit, the ansimuz packs and the SakPix stage
+  assets used for altars and carts (their store pages state no licence; AI-assisted). Still generated: wells (3
+  cells), fences (3), one hole, and the world-map bridges.
 
 ## Known limitations
 

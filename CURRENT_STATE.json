@@ -30,6 +30,7 @@
   "fallback": "generated art in game/assets (committed)",
   "review": "godot --path game -- --qa-gallery[-set field|battle|ui|map:ALL] --qa-out <dir>",
   "props_pass": "2026-09-29: tents/awnings/statues/pillars/signs/counters/bells/grates from library; rails, laundry, world mountains composed from library pixels; party 2x in battle",
-  "still_generated": "carts, boats, murals, sluices, lifts, braziers, altars, anvils, vines, cables, tall pipes, world-map town/dungeon markers"
+  "still_generated": "wells, fences, one hole, world-map bridges",
+  "library_sweep": "2026-09-29: whole library inventoried; WinLu overworld (world map), CraftPix braziers/ladders, more Time Fantasy pieces, SakPix altars/carts (licence to confirm)"
  }
 }

@@ -1,0 +1,32 @@
+[1.10] route b1 content e528220ab0ff6194 engine 4.7.2-stable (official)
+[1.13] capture /tmp/claude-0/chain2/b1_00_title.png
+[4.08] capture /tmp/claude-0/chain2/b1_01_brackenford.png
+[4.12] walk (19, 11) -> (14, 10) next (18, 11) dir left busy=false top=Field:<Node2D#75765909025>
+[11.59] entered D01_R01
+[15.85] battle start: D01_T at D01_R01 (19, 10) meter=0.0 grace=8
+[17.78] battle end: victory
+[18.36] capture /tmp/claude-0/chain2/b1_02_gatehouse.png
+[25.76] entered D01_R02
+[43.01] entered D01_R03
+[43.02] capture /tmp/claude-0/chain2/b1_03_flooded_spur.png
+[50.58] walk (20, 7) -> (34, 5) next (20, 8) dir down busy=false top=Field:<Node2D#75765909025>
+[50.99] battle start: D01_4 at D01_R03 (20, 9) meter=0.0 grace=6
+[66.14] battle end: victory
+[79.64] entered D01_R04
+[88.27] battle start: D01_3 at D01_R04 (26, 19) meter=0.0 grace=6
+[97.07] battle end: victory
+[109.28] milestone before_r05
+[112.38] entered D01_R05
+[114.93] walk (14, 19) -> (4, 18) next (13, 19) dir left busy=false top=Field:<Node2D#75765909025>
+[121.16] battle start: B01 at D01_R05 (17, 18) meter=50.4 grace=8
+[131.95] capture /tmp/claude-0/chain2/b1_boss_tell_B01.png
+[162.60] battle end: victory
+[163.70] capture /tmp/claude-0/chain2/b1_05_after_b01.png
+[169.82] entered D01_R06
+[178.31] capture /tmp/claude-0/chain2/b1_06_town_after.png
+[178.31] milestone ch01_done
+[183.61] entered T01_BUNKHOUSE
+[186.19] saved: gold=668 items={ "I001": 4, "I004": 2, "I006": 2, "I015": 1, "I016": 1, "K_WORKER_LIST": 1, "A001": 1 } chests=2 lv=6
+[187.84] capture /tmp/claude-0/chain2/b1_07_reloaded.png
+[187.84] reload matches: chapters=["CH01"] objective=Report to the ministry in Veyr, south across the river.
+[187.84] ROUTE PASS: b1 battles=4 steps=517

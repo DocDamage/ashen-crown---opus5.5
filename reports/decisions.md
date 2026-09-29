@@ -70,3 +70,10 @@ handoff and the kickoff prompt were supplied. Everything below was decided durin
   world-map mountains have no library piece and are composed from library pixels (tools/art/tiles.py `Fn`);
   the world map's ground fallback under mountain masses is "plains". Battle party drawn at 2x (nearest) on a
   diagonal from (206,96) to (284,150) so it holds its own against the large painted enemies.
+- 2026-09-29 whole-library sweep (owner: "check this entire folder"): inventoried all 60+ top folders and 200+ zip
+  archives. Adopted: WinLu Fantasy Overworld "Other Engines" zip (commercial use allowed, read in place from the
+  zip, 48px -> 16px), CraftPix free dungeon pack (CraftPix file licence allows commercial games), SakPix stage
+  sheets for altars and carts (owner-stated usable; no licence on the store pages; flagged). Rejected: The
+  Fan-tasy Tileset free version (non-commercial only), Winlu .rar (RPG Maker edition of the same art; the zip is
+  used instead), Super Retro World and Nemo (as before). `lib_img` reads "pack.zip/inner.png" paths; `Src` sheets
+  ending "@3x" are reduced by exact nearest thirds.

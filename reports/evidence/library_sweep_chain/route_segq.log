@@ -1,0 +1,236 @@
+[1.04] route segq content e528220ab0ff6194 engine 4.7.2-stable (official)
+[1.05] RESUMED FIXTURE ch20_done (debug only)
+[1.51] CHAIN: segment segq starts from milestone ch20_done (written by the previous normal-input segment)
+[1.56] walk (49, 9) -> (50, 10) next (49, 10) dir down busy=false top=Field:<Node2D#75765909025>
+[2.13] entered T06_POST via L_T06
+[26.60] entered WORLD_POST
+[28.90] entered D08P_R01 via L_D08
+[43.79] entered WORLD_POST
+[44.27] walk (56, 6) -> (38, 7) next (56, 7) dir down busy=false top=Field:<Node2D#75765909025>
+[47.80] entered D07P_R01 via L_D07
+[52.64] entered D07P_R02
+[59.86] entered D07P_R03
+[76.08] entered D07P_R02
+[82.87] entered D07P_R01
+[84.13] walk (19, 8) -> (17, 27) next (19, 9) dir down busy=false top=Field:<Node2D#75765909025>
+[88.12] entered WORLD_POST
+[88.12] milestone q_nacre
+[98.92] entered T07_MARKET via L_T07
+[103.15] shop open: page=shop lists=2 items=117 top=@Control@191:<Control#336383182548>
+[114.73] bought; gold now 1246, items { "A001": 1, "A002": 1, "A003": 1, "A004": 1, "A005": 1, "A006": 1, "A007": 1, "A008": 1, "A009": 1, "I002": 13, "I004": 15, "I006": 7, "I007": 2, "K_ACCORD_NOTES": 1, "K_CONFISCATED": 1, "K_LEDGER": 1, "K_MANIFEST": 1, "K_MANUAL": 1, "K_ROOK_EVIDENCE": 1, "K_ROUTE_DIAGRAMS": 1, "K_WORKER_LIST": 1, "K_LISTENING_PHRASE": 1, "W036": 1, "K_SEAL_DESIGN": 1, "W042": 1, "I003": 2, "W004": 1, "W010": 1, "W028": 1 }
+[134.96] optimized equipment for available members
+[139.00] entered WORLD_POST
+[147.48] entered T01_POST via L_T01
+[153.45] walk (3, 14) -> (0, 13) next (3, 13) dir up busy=false top=Field:<Node2D#75765909025>
+[154.65] entered WORLD_POST
+[156.26] entered D01_MEMORIAL via L_D01
+[171.13] entered WORLD_POST
+[173.53] entered T01_POST via L_T01
+[178.75] entered WORLD_POST
+[187.63] entered D03P_R01 via L_D03
+[193.15] entered D03P_R02
+[197.48] walk (15, 27) -> (24, 31) next (16, 27) dir right busy=false top=Field:<Node2D#75765909025>
+[199.91] entered D03P_R01
+[205.38] entered WORLD_POST
+[213.25] battle start: OWP_1 at WORLD_POST (29, 58) meter=0.0 grace=6
+[223.39] battle end: victory
+[224.49] entered T01_POST via L_T01
+[230.83] entered WORLD_POST
+[230.83] milestone q_brackenford
+[242.62] entered T04_UPPER via L_T04
+[247.38] walk (25, 24) -> (30, 24) next (26, 24) dir right busy=false top=Field:<Node2D#75765909025>
+[254.89] entered WORLD_POST
+[258.70] entered D05P_R01 via L_D05
+[287.02] walk (24, 27) -> (17, 27) next (23, 27) dir left busy=false top=Field:<Node2D#75765909025>
+[288.05] entered WORLD_POST
+[295.91] entered T05_POST via L_T05
+[303.29] entered WORLD_POST
+[308.36] entered D06P_R01 via L_D06
+[316.51] battle start: D06P_2 at D06P_R01 (32, 18) meter=0.0 grace=6
+[328.87] battle end: victory
+[337.30] walk (20, 22) -> (14, 24) next (19, 22) dir left busy=false top=Field:<Node2D#75765909025>
+[340.86] entered WORLD_POST
+[346.10] entered T05_POST via L_T05
+[354.00] entered WORLD_POST
+[365.82] entered T03_POST via L_T03
+[369.71] entered WORLD_POST
+[371.90] entered D04P_R01 via L_D04
+[377.05] walk (12, 13) -> (31, 12) next (13, 13) dir right busy=false top=Field:<Node2D#75765909025>
+[391.24] entered WORLD_POST
+[391.24] milestone q_personal_7
+[402.63] entered D11_R01 via L_D11
+[407.83] entered D11_R02
+[417.23] walk (21, 10) -> (31, 14) next (21, 11) dir down busy=false top=Field:<Node2D#75765909025>
+[419.82] entered D11_R03
+[429.99] entered D11_R04
+[437.58] battle start: D11_4 at D11_R04 (29, 21) meter=0.0 grace=6
+[459.52] battle end: victory
+[459.84] grind: 1 battles, Dain Lv 30
+[485.31] walk (30, 20) -> (30, 21) next (30, 21) dir down busy=false top=Field:<Node2D#75765909025>
+[501.78] battle start: D11_3 at D11_R04 (30, 20) meter=0.0 grace=6
+[518.05] battle end: victory
+[518.36] grind: 1 battles, Dain Lv 30
+[550.06] walk (29, 21) -> (30, 21) next (30, 21) dir right busy=false top=Field:<Node2D#75765909025>
+[553.98] battle start: D11_4 at D11_R04 (29, 21) meter=0.0 grace=6
+[570.90] battle end: victory
+[571.22] grind: 1 battles, Dain Lv 31
+[611.51] battle start: D11_2 at D11_R04 (30, 21) meter=0.0 grace=6
+[623.82] battle end: victory
+[623.92] grind: 1 battles, Dain Lv 31
+[628.05] walk (30, 20) -> (30, 21) next (30, 21) dir down busy=false top=Field:<Node2D#75765909025>
+[655.21] battle start: D11_4 at D11_R04 (30, 20) meter=0.0 grace=6
+[672.19] battle end: victory
+[672.51] grind: 1 battles, Dain Lv 31
+[693.57] walk (29, 21) -> (30, 21) next (30, 21) dir right busy=false top=Field:<Node2D#75765909025>
+[718.96] battle start: D11_3 at D11_R04 (30, 21) meter=0.0 grace=6
+[740.61] battle end: victory
+[740.71] grind: 1 battles, Dain Lv 31
+[763.77] walk (29, 21) -> (30, 21) next (30, 21) dir right busy=false top=Field:<Node2D#75765909025>
+[776.92] battle start: D11_1 at D11_R04 (30, 20) meter=0.0 grace=6
+[797.14] battle end: victory
+[797.46] grind: 1 battles, Dain Lv 32
+[832.57] walk (30, 20) -> (30, 21) next (30, 21) dir down busy=false top=Field:<Node2D#75765909025>
+[835.74] battle start: D11_3 at D11_R04 (30, 21) meter=0.0 grace=6
+[858.11] battle end: victory
+[858.21] grind: 1 battles, Dain Lv 32
+[903.60] walk (29, 21) -> (30, 21) next (30, 21) dir right busy=false top=Field:<Node2D#75765909025>
+[904.35] battle start: D11_1 at D11_R04 (30, 21) meter=0.0 grace=6
+[921.32] battle end: victory
+[921.41] grind: 1 battles, Dain Lv 32
+[955.30] battle start: D11_4 at D11_R04 (30, 21) meter=0.0 grace=6
+[975.91] battle end: victory
+[976.00] grind: 1 battles, Dain Lv 33
+[990.02] walk (30, 20) -> (30, 21) next (30, 21) dir down busy=false top=Field:<Node2D#75765909025>
+[1019.81] battle start: D11_3 at D11_R04 (30, 21) meter=0.0 grace=6
+[1042.51] battle end: victory
+[1042.61] grind: 1 battles, Dain Lv 33
+[1061.24] walk (30, 20) -> (30, 21) next (30, 21) dir down busy=false top=Field:<Node2D#75765909025>
+[1071.42] battle start: D11_4 at D11_R04 (29, 21) meter=0.0 grace=6
+[1094.04] battle end: victory
+[1094.36] grind: 1 battles, Dain Lv 33
+[1128.49] battle start: D11_3 at D11_R04 (30, 20) meter=0.0 grace=6
+[1148.45] battle end: victory
+[1148.77] grind: 1 battles, Dain Lv 33
+[1152.42] walk (29, 21) -> (30, 21) next (30, 21) dir right busy=false top=Field:<Node2D#75765909025>
+[1190.87] battle start: D11_2 at D11_R04 (30, 21) meter=0.0 grace=6
+[1199.79] battle end: victory
+[1199.89] grind: 1 battles, Dain Lv 33
+[1209.82] walk (30, 20) -> (30, 21) next (30, 21) dir down busy=false top=Field:<Node2D#75765909025>
+[1241.75] battle start: D11_4 at D11_R04 (30, 20) meter=0.0 grace=6
+[1262.53] battle end: victory
+[1262.85] grind: 1 battles, Dain Lv 34
+[1279.08] walk (29, 21) -> (30, 21) next (30, 21) dir right busy=false top=Field:<Node2D#75765909025>
+[1305.70] battle start: D11_1 at D11_R04 (30, 20) meter=0.0 grace=6
+[1321.41] battle end: victory
+[1321.72] grind: 1 battles, Dain Lv 34
+[1343.26] walk (30, 20) -> (30, 21) next (30, 21) dir down busy=false top=Field:<Node2D#75765909025>
+[1354.14] battle start: D11_2 at D11_R04 (30, 21) meter=0.0 grace=6
+[1361.94] battle end: victory
+[1362.04] grind: 1 battles, Dain Lv 34
+[1399.52] walk (29, 21) -> (30, 21) next (30, 21) dir right busy=false top=Field:<Node2D#75765909025>
+[1403.90] battle start: D11_1 at D11_R04 (30, 20) meter=0.0 grace=6
+[1421.52] battle end: victory
+[1421.84] grind: 1 battles, Dain Lv 34
+[1452.58] battle start: D11_3 at D11_R04 (29, 21) meter=0.0 grace=6
+[1478.32] battle end: victory
+[1478.63] grind: 1 battles, Dain Lv 34
+[1491.48] walk (30, 20) -> (30, 21) next (30, 21) dir down busy=false top=Field:<Node2D#75765909025>
+[1509.65] battle start: D11_2 at D11_R04 (30, 21) meter=0.0 grace=6
+[1517.55] battle end: victory
+[1517.65] grind: 1 battles, Dain Lv 34
+[1547.88] walk (30, 20) -> (30, 21) next (30, 21) dir down busy=false top=Field:<Node2D#75765909025>
+[1560.70] battle start: D11_3 at D11_R04 (30, 21) meter=0.0 grace=6
+[1586.06] battle end: victory
+[1586.16] grind: 1 battles, Dain Lv 34
+[1617.15] battle start: D11_1 at D11_R04 (30, 21) meter=0.0 grace=6
+[1634.25] battle end: victory
+[1634.35] grind: 1 battles, Dain Lv 35
+[1637.58] walk (13, 19) -> (6, 18) next (13, 18) dir up busy=false top=Field:<Node2D#75765909025>
+[1644.64] entered D11_R05
+[1647.28] battle start: B13 at D11_R05 (19, 17) meter=18.5 grace=8
+[1669.83] capture /tmp/claude-0/chain2/segq_boss_tell_B13.png
+[1690.85] battle end: victory
+[1694.25] entered D11_R06
+[1700.12] entered D11_R05
+[1705.18] entered D11_R04
+[1709.76] entered D11_R02
+[1715.19] entered D11_R01
+[1720.08] entered WORLD_POST
+[1720.08] milestone q_winter
+[1720.63] walk (49, 3) -> (50, 3) next (50, 3) dir right busy=false top=Field:<Node2D#75765909025>
+[1729.31] entered T07_MARKET via L_T07
+[1744.39] entered WORLD_POST
+[1750.29] entered D12_R01 via L_D12
+[1755.44] entered D12_R02
+[1756.85] walk (15, 22) -> (14, 0) next (15, 21) dir up busy=false top=Field:<Node2D#75765909025>
+[1761.20] entered D12_R03
+[1769.63] battle start: D12_1 at D12_R03 (20, 12) meter=0.0 grace=6
+[1785.43] battle end: victory
+[1785.75] grind: 1 battles, Dain Lv 36
+[1818.17] battle start: D12_1 at D12_R03 (20, 11) meter=0.0 grace=6
+[1831.85] battle end: victory
+[1831.95] grind: 1 battles, Dain Lv 36
+[1832.97] walk (20, 11) -> (20, 12) next (20, 12) dir down busy=false top=Field:<Node2D#75765909025>
+[1856.63] battle start: D12_1 at D12_R03 (20, 11) meter=0.0 grace=6
+[1872.50] battle end: victory
+[1872.60] grind: 1 battles, Dain Lv 36
+[1897.32] walk (20, 11) -> (19, 11) next (19, 11) dir left busy=false top=Field:<Node2D#75765909025>
+[1911.32] battle start: D12_2 at D12_R03 (20, 11) meter=0.0 grace=6
+[1927.75] battle end: victory
+[1927.85] grind: 1 battles, Dain Lv 36
+[1962.22] battle start: D12_2 at D12_R03 (20, 11) meter=0.0 grace=6
+[1977.53] battle end: victory
+[1977.63] grind: 1 battles, Dain Lv 36
+[1977.68] walk (20, 11) -> (20, 12) next (20, 12) dir down busy=false top=Field:<Node2D#75765909025>
+[2011.98] battle start: D12_3 at D12_R03 (20, 11) meter=0.0 grace=6
+[2033.08] battle end: victory
+[2033.18] grind: 1 battles, Dain Lv 36
+[2047.25] walk (20, 11) -> (19, 11) next (19, 11) dir left busy=false top=Field:<Node2D#75765909025>
+[2068.28] battle start: D12_1 at D12_R03 (20, 12) meter=0.0 grace=6
+[2090.86] battle end: victory
+[2091.18] grind: 1 battles, Dain Lv 36
+[2118.29] walk (20, 11) -> (20, 12) next (20, 12) dir down busy=false top=Field:<Node2D#75765909025>
+[2128.91] battle start: D12_4 at D12_R03 (20, 11) meter=0.0 grace=6
+[2155.83] battle end: victory
+[2155.93] grind: 1 battles, Dain Lv 37
+[2159.50] entered D12_R04
+[2169.75] entered D12_R05
+[2172.39] battle start: B14 at D12_R05 (19, 17) meter=6.6 grace=8
+[2199.29] capture /tmp/claude-0/chain2/segq_boss_tell_B14.png
+[2257.69] battle end: victory
+[2261.12] entered D12_R06
+[2266.89] entered D12_R05
+[2271.95] entered D12_R04
+[2273.51] walk (15, 10) -> (14, 27) next (15, 11) dir down busy=false top=Field:<Node2D#75765909025>
+[2277.05] entered D12_R02
+[2282.24] entered D12_R01
+[2287.12] entered WORLD_POST
+[2287.12] milestone q_reef
+[2294.57] entered T02_SQUARE_POST via L_T02
+[2301.75] entered T02_CANALS
+[2308.84] entered T02_REGISTRY_POST
+[2309.06] walk (15, 21) -> (12, 15) next (15, 20) dir up busy=false top=Field:<Node2D#75765909025>
+[2312.97] entered T02_CANALS
+[2317.22] entered D02P_SEALS
+[2328.94] entered T02_CANALS
+[2332.85] entered T02_REGISTRY_POST
+[2337.57] entered T02_CANALS
+[2344.83] entered D02P_ECHO
+[2349.67] walk (9, 13) -> (5, 14) next (9, 14) dir down busy=false top=Field:<Node2D#75765909025>
+[2354.12] battle start: B15 at D02P_ECHO (10, 8) meter=36.8 grace=8
+[2403.60] capture /tmp/claude-0/chain2/segq_boss_tell_B15.png
+[2436.45] battle end: victory
+[2440.22] entered T02_CANALS
+[2447.64] entered T02_SQUARE_POST
+[2454.12] entered WORLD_POST
+[2454.12] milestone q_veyr
+[2460.64] entered D10_R01 via L_D10
+[2474.66] walk (2, 14) -> (7, 15) next (3, 14) dir right busy=false top=Field:<Node2D#75765909025>
+[2479.00] battle start: D10_1 at D10_R03 (13, 5) meter=0.0 grace=6
+[2491.08] battle end: victory
+[2509.96] entered D10_ALCOVE
+[2512.39] battle start: B16 at D10_ALCOVE (14, 8) meter=18.6 grace=8
+[2514.01] capture /tmp/claude-0/chain2/segq_boss_tell_B16.png
+[2679.43] battle end: victory
+[2680.57] milestone q_all
+[2680.57] ROUTE PASS: segq battles=37 steps=7513

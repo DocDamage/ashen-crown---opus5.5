@@ -882,6 +882,9 @@ RU = FB + "16/tf_"
 AS = FB + "1x/tf_"
 
 
+_third = {}
+
+
 class Src:
     """A rectangular region of a library sheet, optionally recoloured (fn: Image->Image)."""
     def __init__(self, sheet, x, y, w, h, fn=None):
@@ -894,6 +897,11 @@ class Src:
         src = lib_img(self.sheet.split("@")[0])
         if self.sheet.endswith("@2x"):      # RPG Maker VX (2x) sheet of 1x art: exact nearest halving
             src = src.resize((src.width // 2, src.height // 2), Image.NEAREST)
+        elif self.sheet.endswith("@3x"):    # 48px (RPG Maker MZ-scale) art -> 16px grid: nearest third
+            key = self.sheet + "#third"
+            if key not in _third:
+                _third[key] = src.resize((src.width // 3, src.height // 3), Image.NEAREST)
+            src = _third[key]
         im = src.crop((self.x, self.y, self.x + self.w, self.y + self.h))
         return self.fn(im) if self.fn else im
 
@@ -1508,5 +1516,134 @@ for _fam, _spec in LIB_TILESETS.items():
     for _k, _r in list(PROPS2.items()) + list(FAMILY_PROPS.get(_fam, {}).items()):
         if _k not in _spec or _fam in FAMILY_PROPS and _k in FAMILY_PROPS[_fam]:
             _spec[_k] = _r
-LIB_TILESETS["world"]["mountain"] = _mountains(False)
-LIB_TILESETS["world_post"]["mountain"] = _mountains(True)
+
+
+# ---- props pass 3 (2026-09-29): whole-library sweep -------------------------------------------------------------
+# World map: WinLu Fantasy Overworld ("Other Engines" edition, 48px) reduced to 16px by exact nearest thirds.
+# Field: more Time Fantasy pieces (sewers, steampunk dungeon, cloud city, ruins, fairy forest, NPC blacksmith kit),
+# a CraftPix dungeon brazier/ladder, and two SakPix objects reduced by dominant-colour sampling (licence to confirm).
+FO = "Fantasy_Overworld_-_Other_Engines.zip/Fantasy Overworld - Other Engines/"
+FO_M, FO_BLD, FO_VEH = FO + "Fantasy_World_Mountains.png@3x", FO + "Fantasy_World_Buildings.png@3x", FO + "Objects/Fantasy_Vehicle.png@3x"
+CPX = "RPGMAKERASSETS/craftpix-net-169442-free-2d-top-down-pixel-dungeon-asset-pack.zip/PNG/"
+SAK = "SakPix/Stage Assets/"
+SMITH = FB + "npc-animations/blacksmith_updated/blacksmith_updated_1.png"
+MUSH = FF + "B_mushroomvillage.png"
+
+
+def _shrink(sheet, x, y, w, h, out_h):
+    """Reduce a large pseudo-pixel-art object to game scale: each target pixel takes the dominant opaque colour
+    of the centre of its source block (keeps hard pixel edges instead of blurring)."""
+    from collections import Counter
+    src = lib_img(sheet).crop((x, y, x + w, y + h))
+    s = h / out_h
+    W, H = max(1, round(w / s)), out_h
+    out = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    px = src.load()
+    for j in range(H):
+        for i in range(W):
+            x0, x1 = int(i * s), max(int(i * s) + 1, int((i + 1) * s))
+            y0, y1 = int(j * s), max(int(j * s) + 1, int((j + 1) * s))
+            qx, qy = (x1 - x0) // 4, (y1 - y0) // 4
+            cols = [px[a, b] for a in range(x0 + qx, max(x1 - qx, x0 + qx + 1)) for b in range(y0 + qy, max(y1 - qy, y0 + qy + 1))
+                    if a < w and b < h]
+            op = [c for c in cols if c[3] >= 100]
+            if not op or len(op) * 2 < len(cols):
+                continue
+            q = Counter((c[0] >> 3, c[1] >> 3, c[2] >> 3) for c in op).most_common(1)[0][0]
+            m = [c for c in op if (c[0] >> 3, c[1] >> 3, c[2] >> 3) == q]
+            out.putpixel((i, j), tuple(sum(c[k] for c in m) // len(m) for k in range(3)) + (255,))
+    return out
+
+
+def _solid(img, thr=200):
+    """Drop soft glow / shadow pixels (alpha below thr)."""
+    out = img.copy()
+    px = out.load()
+    for y in range(out.height):
+        for x in range(out.width):
+            if px[x, y][3] < thr:
+                px[x, y] = (0, 0, 0, 0)
+    return out
+
+
+def _nine_slice(sheet, x, y, w, h, b=5):
+    """3x3 16px pieces (TL,T,TR,L,C,R,BL,B,BR) cut from a framed panel: corners keep the frame, edges and centre
+    repeat its middle strips, so any rectangle of the kind reads as one platform."""
+    pan = Src(sheet, x, y, w, h).image()
+
+    def piece(cx, cy):
+        out = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+        for oy in range(16):
+            for ox in range(16):
+                if cx == 0:
+                    sx = ox if ox < b else b + (ox - b) % (w - 2 * b)
+                elif cx == 2:
+                    sx = w - 16 + ox if ox >= 16 - b else b + ox % (w - 2 * b)
+                else:
+                    sx = b + ox % (w - 2 * b)
+                if cy == 0:
+                    sy = oy if oy < b else b + (oy - b) % (h - 2 * b)
+                elif cy == 2:
+                    sy = h - 16 + oy if oy >= 16 - b else b + oy % (h - 2 * b)
+                else:
+                    sy = b + oy % (h - 2 * b)
+                out.putpixel((ox, oy), pan.getpixel((sx, sy)))
+        return out
+    return [Fn(f"nine_{sheet.split('/')[-1]}_{x}_{y}_{cx}{cy}", (lambda cx=cx, cy=cy: piece(cx, cy)), [sheet])
+            for cy in range(3) for cx in range(3)]
+
+
+BRAZIER = Fn("brazier_cpx", lambda: _solid(Src(CPX + "fire_animation.png", 133, 4, 35, 35).image().crop((7, 3, 29, 33))), [CPX + "fire_animation.png"])
+ALTAR = Fn("altar_candles", lambda: _shrink(SAK + "Ancient Greek Mythology/10. Altars and offering.png", 990, 176, 164, 214, 22),
+           [SAK + "Ancient Greek Mythology/10. Altars and offering.png"])
+CART = Fn("cart_barrow", lambda: _shrink(SAK + "Cozy Farming Village Asset Pack/7. Farming tools.png", 555, 481, 290, 193, 20),
+          [SAK + "Cozy Farming Village Asset Pack/7. Farming tools.png"])
+ANVIL = Src(SMITH, 3, 164, 28, 16)
+VINE = Src(RU_B1, 35, 160, 11, 32)
+VINE2 = Src(RU_B1, 50, 160, 11, 32)
+PLAQUE = Src(CL_B, 18, 104, 28, 21)
+PLAQUE1 = Src(CL_B, 0, 104, 16, 21)
+PIPE_T = Src(SP_D, 5, 176, 22, 48)
+LADDER = Src(CPX + "Objects.png", 98, 1, 12, 49)
+BOAT = Src(FO_VEH, 0, 16, 16, 16)
+LIFT9 = _nine_slice(SW_B, 136, 8, 32, 34)
+FLOWERS = [Src(MUSH, 17, 19, 14, 11), Src(MUSH, 49, 19, 14, 11), Src(MUSH, 81, 19, 14, 12), Src(MUSH, 113, 19, 14, 12)]
+STONE_BENCH = Src(CL_B, 4, 145, 24, 8)
+
+PROPS3 = {
+    "brazier": stamp(BRAZIER, tall=True, under="@"), "altar": stamp(ALTAR, tall=True, under="@"),
+    "cart": stamp(CART, under="@"), "anvil": stamp(ANVIL, under="@"),
+    "vine": stamp(VINE, tall=True, under="@", alts=[VINE2]), "mural": pair(PLAQUE, PLAQUE1),
+    "pipe_tall": stamp(PIPE_T, tall=True, under="@"), "chain": tile(t16(SP_D, 14, 13), under="void"),
+    "cable": tile(t16(SP_C1, 6, 0), under="void"), "sluice": tile(t16(SW_B, 0, 2), under="@"),
+    "gate": tile(t16(SW_B, 0, 3), under="@"), "ladder": stamp(LADDER, tall=True, under="@"),
+    "lift": grid9(LIFT9, g="lift"), "boat": stamp(BOAT, under="water"),
+    "flower": stamp(FLOWERS[0], under="@", alts=FLOWERS[1:]), "bench": stamp(STONE_BENCH, under="@"),
+    "bridge": WOOD_DECK, "floor": auto(a2(SP_A2, 1, 0)),
+    "window": tile(t16(SP_C2, 14, 4), under="wall", casts=True),
+    "door": stamp(Src(SP_C2, 64, 96, 16, 32), under="@"),
+}
+for _fam, _spec in LIB_TILESETS.items():
+    if _fam.startswith("world"):
+        continue
+    for _k, _r in PROPS3.items():
+        if _k not in _spec:
+            _spec[_k] = _r
+LIB_TILESETS["harbor"].update(roofs(SP_C2))
+
+# world map: WinLu overworld mountains / settlements / rowboat
+_FO_M = {"a": [(1, 44, 31, 20), (33, 40, 31, 24), (66, 43, 29, 21)], "p": [(1, 76, 31, 20), (33, 72, 31, 24), (66, 75, 29, 21)]}
+for _fam, _k in (("world", "a"), ("world_post", "p")):
+    (c1, pk, c2) = [Src(FO_M, *r) for r in _FO_M[_k]]
+    LIB_TILESETS[_fam].update({
+        "mountain": stamp(pk, tall=True, under="@", alts=[c1, pk, c2], inner=pk, g="mountain"),
+        "town_mark": stamp(Src(FO_BLD, 16, 32, 15, 16), tall=True, under="@"),
+        "city": stamp(Src(FO_BLD, 33, 80, 31, 32), tall=True, under="@"),
+        "dungeon_mark": stamp(Src(FO_BLD, 224, 230, 19, 21), tall=True, under="@"),
+        "cave": stamp(Src(FO_BLD, 224, 230, 19, 21), tall=True, under="@"),
+        "ruin": stamp(Src(FO_BLD, 17, 138, 14, 20), tall=True, under="@"),
+        "gate": stamp(Src(FO_BLD, 113, 176, 14, 16), tall=True, under="@"),
+        "rubble": stamp(Src(AS_B, 35, 34, 11, 11), under="@"),
+        "reef": stamp(Src(AS_B, 100, 34, 23, 12), under="@"),
+        "boat": stamp(BOAT, under="water"),
+    })
