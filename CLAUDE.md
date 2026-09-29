@@ -17,4 +17,4 @@ Pipelines (run from repo root; Python 3.10+):
 - Normal-input routes: `godot --path game -- --qa-route <b1|...> --qa-capture --qa-out <dir> [--qa-speed 4]` (needs a display).
 
 Rules: never edit story flags, HP or positions to get a route past a failure; fix the game. Keep the full campaign scope.
-Do not claim unverified results; record evidence in `reports/`. No remote push, paid services or large downloads.
+Do not claim unverified results; record evidence in `reports/`. No paid services or large downloads. Pushing to the GitHub remote is allowed when the owner asks (owner, 2026-09-29).
