@@ -139,15 +139,7 @@ func run_gallery(p_main: Node, which: String) -> void:
 		await _g_shot("ui_dialogue")
 		main.dialogue.visible = false
 		main.router.pop(main.dialogue)
-		var m = GameMenu.new()
-		m.main = main
-		main.ui.add_child(m)
-		main.router.push(m)
-		m.open("main", {})
-		await _g_frames(10)
-		await _g_shot("ui_menu")
-		main.router.pop(m)
-		m.queue_free()
+		await _g_ui_screens()
 	if which in ["battle", "all"]:
 		for cid in ["C02", "C03", "C04"]:
 			if Content.data["characters"].has(cid):
@@ -165,6 +157,106 @@ func run_gallery(p_main: Node, which: String) -> void:
 			bs.queue_free()
 			await _g_frames(2)
 	get_tree().quit(0)
+
+func _g_menu(kind: String, data: Dictionary, name: String, drive: Callable = Callable()) -> void:
+	var m = GameMenu.new()
+	m.main = main
+	main.ui.add_child(m)
+	m.open(kind, data)
+	if drive.is_valid():
+		drive.call(m)
+	await _g_frames(10)
+	await _g_shot(name)
+	for l in m.lists:
+		main.router.pop(l)
+	main.router.pop(m)
+	m.queue_free()
+	await _g_frames(2)
+
+func _g_top_menu() -> MenuList:
+	for i in range(main.ui.get_child_count() - 1, -1, -1):
+		var c = main.ui.get_child(i)
+		if c is MenuList:
+			return c
+	return null
+
+func _g_ui_screens() -> void:
+	await _g_menu("main", {}, "ui_menu_solo")
+	for cid in ["C02", "C03", "C05"]:
+		Game.recruit(cid)
+	Game.S["party"]["roster"].append("C04")
+	for iid in ["I001", "I002", "I003", "I004", "I005", "W002", "W008"]:
+		Game.add_item(iid, 3)
+	Game.add_gold(1234)
+	if Content.data["vestiges"].has("V01"):
+		Game.grant_vestige("V01")
+		Game.link_vestige("V01", "C02")
+	var leader: String = Game.active()[0]
+	await _g_menu("main", {}, "ui_menu")
+	await _g_menu("main", {}, "ui_menu_items", func(m): m._items_menu())
+	await _g_menu("main", {}, "ui_menu_pick", func(m): m._items_menu(); m._pick_member(func(_c): pass, "Use on whom?"))
+	await _g_menu("main", {}, "ui_menu_equip", func(m): m._equip_menu(leader))
+	await _g_menu("main", {}, "ui_menu_equip_pick", func(m): m._equip_menu(leader); m._equip_pick(leader, "weapon", func(): pass))
+	await _g_menu("main", {}, "ui_menu_abilities", func(m): m._abilities_menu("C02"))
+	await _g_menu("main", {}, "ui_menu_formation", func(m): m._formation_menu())
+	await _g_menu("main", {}, "ui_menu_vestiges", func(m): m._vestige_menu())
+	await _g_menu("main", {}, "ui_menu_journal", func(m): m._journal())
+	await _g_menu("main", {}, "ui_menu_worldmap", func(m): m._worldmap())
+	await _g_menu("main", {}, "ui_menu_bestiary", func(m): m._bestiary())
+	await _g_menu("settings", {}, "ui_settings")
+	await _g_menu("main", {}, "ui_save", func(m): m._save_menu(false))
+	await _g_menu("main", {}, "ui_confirm", func(m): m._save_menu(false); m._confirm("Overwrite slot 1?", func(): pass))
+	await _g_menu("shop", {"id": "SHOP_T01"}, "ui_shop", func(m): m._shop_list("SHOP_T01", true))
+	await _g_menu("shop", {"id": "SHOP_T01"}, "ui_shop_gear", func(m): m._shop_list("SHOP_T01", true); m.lists[-1].index = m.lists[-1].items.size() - 1; m.lists[-1]._fix_scroll())
+	await _g_menu("inn", {"price": 20}, "ui_inn")
+	var old_theme = Settings.v.get("window_color", "blue")
+	Settings.v["window_color"] = "crimson"
+	await _g_menu("main", {}, "ui_menu_theme_crimson")
+	Settings.v["window_color"] = old_theme
+	# dialogue with a choice
+	main.say("Tessa", "Do we take the flooded gate, or wait for the pumps?", "C02")
+	main.choose(["Take the gate", "Wait for the pumps"])
+	await _g_frames(40)
+	await _g_shot("ui_choice")
+	var cm = _g_top_menu()
+	if cm:
+		cm.handle("confirm")
+	main.dialogue.visible = false
+	main.router.pop(main.dialogue)
+	await _g_frames(4)
+	main.toast("Obtained Tonic x3.")
+	main.field.show_banner("Brackenford")
+	main.field.banner_t = 2.0
+	await _g_frames(6)
+	await _g_shot("ui_toast_banner")
+	main.toasts.clear()
+	main.toast_box.queue_redraw()
+	main.field.banner_t = 0.0
+	var d = DocView.new()
+	d.setup("Quarry Ledger", "Third bell: the lower gate took water at dawn. Pumps two and three seized. Foreman Hale ordered the crews up the east stair and sent word to the relay office. No one answered. The water is still rising, slowly, and it smells of copper.")
+	main.ui.add_child(d)
+	await _g_frames(4)
+	await _g_shot("ui_doc")
+	d.queue_free()
+	main.paused_overlay.visible = true
+	main.paused_overlay.queue_redraw()
+	await _g_frames(4)
+	await _g_shot("ui_paused")
+	main.paused_overlay.visible = false
+	main.defeat_menu()
+	await _g_frames(10)
+	await _g_shot("ui_defeat")
+	var dm = _g_top_menu()
+	if dm:
+		dm.handle("confirm")
+	await _g_frames(4)
+	var cr = CreditsView.new()
+	main.ui.add_child(cr)
+	cr.t = 6.0
+	await _g_frames(4)
+	await _g_shot("ui_credits")
+	cr.queue_free()
+	await _g_frames(2)
 
 func _g_frames(n: int) -> void:
 	for i in range(n):

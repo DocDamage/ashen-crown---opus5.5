@@ -99,6 +99,10 @@ func flash_msg(t: String) -> void:
 func _process(d: float) -> void:
 	if msg_t > 0:
 		msg_t -= d
+	# the command column belongs to the main screen; sub-screens take the whole view
+	for l in lists:
+		if l.memory_key == "main_menu":
+			l.visible = page == "main" or page == "pick"
 	queue_redraw()
 
 # ======================================================================
@@ -144,61 +148,74 @@ func _on_main_choice(_i: int, it: Dictionary) -> void:
 		"Close": _close_all()
 
 func _draw() -> void:
-	draw_rect(Rect2(0, 0, 320, 240), Color(0, 0, 0, 0.35))
+	draw_rect(Rect2(0, 0, 320, 240), Color(0.02, 0.02, 0.08, 0.45))
 	if page == "main" or page == "pick":
 		_draw_party_panel(Rect2(4, 4, 224, 196))
+		# time / money box under the command column
+		UI.win(self, Rect2(232, 150, 84, 50))
+		UI.label(self, Vector2(239, 154), "Time")
+		UI.text_right(self, 309, 164, Game.fmt_time(Game.S.get("playtime", 0.0)))
+		UI.label(self, Vector2(239, 176), "Crowns")
+		UI.text_right(self, 309, 186, str(Game.gold()))
+		# location strip
 		UI.win(self, Rect2(4, 204, 312, 32))
-		UI.text(self, Vector2(10, 208), "%d crowns" % Game.gold(), UI.C_GOLD)
-		UI.text(self, Vector2(10, 220), Game.fmt_time(Game.S.get("playtime", 0.0)), UI.C_DIM)
-		UI.text_right(self, 310, 208, main.field.map.get("name", ""), UI.C_TEXT)
-		UI.text_right(self, 310, 220, Game.current_chapter(), UI.C_DIM)
+		UI.text(self, Vector2(11, 208), main.field.map.get("name", ""))
+		UI.text(self, Vector2(11, 220), Game.current_chapter(), UI.C_LABEL)
 	if info_draw.is_valid():
 		info_draw.call()
 	if msg_t > 0 and msg != "":
-		var w = UI.width(msg) + 16
-		UI.win(self, Rect2((320 - w) / 2.0, 108, w, 18))
-		UI.text_center(self, 160, 112, msg, UI.C_HI)
+		var w = UI.width(msg) + 20
+		UI.win(self, Rect2(round((320 - w) / 2.0), 106, w, 22))
+		UI.text_center(self, 160, 111, msg, UI.C_TEXT)
 
 func _draw_party_panel(r: Rect2) -> void:
 	UI.win(self, r)
-	var y = r.position.y + 5
+	var y = r.position.y + 6
 	var act = Game.active()
 	for cid in act:
 		_draw_member_line(cid, Vector2(r.position.x + 6, y), true)
 		y += 34
 	var res = Game.S["party"]["roster"].filter(func(c): return not act.has(c))
 	if not res.is_empty():
-		UI.text(self, Vector2(r.position.x + 8, y), "Reserve / away", UI.C_DIM)
+		UI.label(self, Vector2(r.position.x + 9, y), "Reserve / away")
 		y += 11
-		var x = r.position.x + 8
+		var x = r.position.x + 13
 		for cid in res:
 			var st = "" if Game.is_available(cid) else " (away)"
 			UI.text(self, Vector2(x, y), Content.ch(cid)["short"] + st, UI.C_TEXT if Game.is_available(cid) else UI.C_DIM)
 			y += 10
-			if y > r.end.y - 10:
+			if y > r.end.y - 12:
 				x += 100
-				y = r.end.y - 30
+				y = r.end.y - 32
 
 func _draw_member_line(cid: String, p: Vector2, full: bool) -> void:
 	var m = Game.member(cid)
 	var s = Game.stats(cid)
+	var back = Game.row(cid) == "back"
 	var t: Texture2D = main.field.sprite_tex(cid)
 	if t:
 		var cw = t.get_width() / 6
 		var chh = t.get_height() / 5
-		draw_texture_rect_region(t, Rect2(p + Vector2(12 - cw / 2, 30 - chh), Vector2(cw, chh)), Rect2(0, 0, cw, chh))
+		# back-row members stand a little to the right, as in the classic party screen
+		draw_texture_rect_region(t, Rect2(p + Vector2(12 - cw / 2 + (4 if back else 0), 30 - chh), Vector2(cw, chh)), Rect2(0, 0, cw, chh))
 	var hp = int(m["hp"]) if int(m["hp"]) >= 0 else s["mhp"]
 	var mp = int(m["mp"]) if int(m["mp"]) >= 0 else s["mmp"]
-	UI.text(self, p + Vector2(28, 0), Content.ch(cid)["name"], UI.C_GOLD)
-	UI.text(self, p + Vector2(130, 0), "Lv %d" % m["level"], UI.C_TEXT)
-	UI.text(self, p + Vector2(170, 0), "[" + Game.row(cid).substr(0, 1).to_upper() + "]", UI.C_DIM)
-	UI.text(self, p + Vector2(28, 11), "HP %d/%d" % [hp, s["mhp"]], UI.C_TEXT if hp > 0 else UI.C_RED)
-	UI.text(self, p + Vector2(118, 11), "MP %d/%d" % [mp, s["mmp"]], UI.C_BLUE)
+	var x = p.x + 32
+	UI.text(self, Vector2(x, p.y), Content.ch(cid)["name"])
+	UI.label(self, Vector2(p.x + 134, p.y), "LV")
+	UI.text_right(self, p.x + 162, p.y, str(m["level"]))
+	UI.text(self, Vector2(p.x + 170, p.y), "[" + Game.row(cid).substr(0, 1).to_upper() + "]", UI.C_DIM)
+	var hpc = UI.C_TEXT if hp > s["mhp"] / 4 else (UI.C_HI if hp > 0 else UI.C_RED)
+	UI.label(self, Vector2(x, p.y + 11), "HP")
+	UI.text_right(self, p.x + 122, p.y + 11, "%d/%d" % [hp, s["mhp"]], hpc)
+	UI.label(self, Vector2(x, p.y + 21), "MP")
+	UI.text_right(self, p.x + 122, p.y + 21, "%d/%d" % [mp, s["mmp"]])
 	var need = F.xp_total_for_level(int(m["level"]) + 1) - int(m["xp"])
-	UI.text(self, p + Vector2(28, 21), "Next %d" % maxi(0, need), UI.C_DIM)
+	UI.label(self, Vector2(p.x + 134, p.y + 11), "Next")
+	UI.text_right(self, p.x + 210, p.y + 11, str(maxi(0, need)))
 	var link = Game.link_of(cid)
 	if link != "":
-		UI.text(self, p + Vector2(118, 21), Content.data["vestiges"][link]["name"], Color8(240, 150, 220))
+		UI.text(self, Vector2(p.x + 134, p.y + 21), Content.data["vestiges"][link]["name"], Color8(240, 170, 230))
 
 func _pick_member(cb: Callable, title: String, only_available: bool = true) -> void:
 	var items = []
@@ -213,7 +230,7 @@ func _pick_member(cb: Callable, title: String, only_available: bool = true) -> v
 # ======================================================================
 func _items_menu() -> void:
 	page = "items"
-	var m = _menu([], Rect2(4, 4, 200, 196), 16, "Items")
+	var m = _menu([], Rect2(4, 42, 200, 194), 15, "Items")
 	var refresh = func(mm: MenuList):
 		var items = []
 		var ids: Array = Game.S["inventory"]["items"].keys()
@@ -249,27 +266,44 @@ func _items_menu() -> void:
 			Audio.ui("FX004"))
 
 func _item_info(m: MenuList) -> void:
-	UI.win(self, Rect2(208, 4, 108, 196))
+	# description strip on top, details on the right (classic item screen)
+	UI.win(self, Rect2(4, 4, 312, 34))
+	UI.win(self, Rect2(208, 42, 108, 194))
 	var it = m.current()
 	if it.is_empty():
 		return
+	if it.get("value", "") == "__delivery":
+		UI.text(self, Vector2(11, 9), "Items sent on by couriers. Confirm to claim.")
+		return
 	var d = Content.item(it.get("value", ""))
-	var y = 8
-	UI.text(self, Vector2(214, y), d.get("kind", "").capitalize(), UI.C_GOLD)
+	var dl = UI.wrap(d.get("desc", ""), 296)
+	for i in range(mini(2, dl.size())):
+		UI.text(self, Vector2(11, 9 + i * 11), dl[i])
+	var y = 47
+	UI.label(self, Vector2(215, y), d.get("kind", "").capitalize())
 	y += 12
-	for ln in UI.wrap(d.get("desc", ""), 96):
-		UI.text(self, Vector2(214, y), ln)
-		y += 11
+	UI.label(self, Vector2(215, y), "Owned")
+	UI.text_right(self, 308, y, str(Game.count(it.get("value", ""))))
+	y += 11
 	if d.get("kind", "") in ["weapon", "armor"]:
 		y += 4
 		if d.has("atk"):
-			UI.text(self, Vector2(214, y), "ATK %d  MAG %d" % [d["atk"], d["mag"]])
+			UI.stat(self, Vector2(215, y), "ATK", str(int(d["atk"])), 250)
+			UI.stat(self, Vector2(258, y), "MAG", str(int(d["mag"])), 308)
 			y += 11
 		if d.has("def"):
-			UI.text(self, Vector2(214, y), "DEF %d  RES %d" % [d["def"], d["res"]])
+			UI.stat(self, Vector2(215, y), "DEF", str(int(d["def"])), 250)
+			UI.stat(self, Vector2(258, y), "RES", str(int(d["res"])), 308)
+			y += 11
+	if dl.size() > 2:
+		y += 4
+		for ln in UI.wrap(" ".join(dl.slice(2)), 94).slice(0, 6):
+			UI.text(self, Vector2(215, y), ln, UI.C_DIM)
 			y += 11
 	if d.get("kind", "") == "consumable" and not d.get("field", false):
-		UI.text(self, Vector2(214, 186), "Battle only", UI.C_DIM)
+		UI.text(self, Vector2(215, 220), "Battle only", UI.C_DIM)
+	elif d.get("kind", "") == "consumable":
+		UI.text(self, Vector2(215, 220), "Usable now", UI.C_GREEN)
 
 func _use_item_field(iid: String, done: Callable) -> void:
 	var d = Content.item(iid)
@@ -343,7 +377,7 @@ const SLOTS := ["weapon", "offhand", "head", "body", "acc1", "acc2"]
 func _equip_menu(cid: String) -> void:
 	sel_member = cid
 	page = "equip"
-	var m = _menu([], Rect2(4, 4, 150, 95), 7, Content.ch(cid)["name"])
+	var m = _menu([], Rect2(4, 4, 168, 98), 7, Content.ch(cid)["name"])
 	var refresh = func(mm: MenuList):
 		var items = []
 		var eq: Dictionary = Game.member(cid)["equip"]
@@ -377,7 +411,7 @@ func _equip_pick(cid: String, slot: String, done: Callable) -> void:
 	for iid in Game.S["inventory"]["items"]:
 		if Game.can_equip(cid, slot, iid)["ok"]:
 			items.append({"text": Content.item_name(iid), "right": str(Game.count(iid)), "value": iid})
-	var m = _menu(items, Rect2(4, 92, 150, 108), 8, "")
+	var m = _menu(items, Rect2(4, 104, 168, 132), 11, "")
 	sel_slot = slot
 	m.moved.connect(func(_i): preview_item = m.current().get("value", ""))
 	preview_item = m.current().get("value", "")
@@ -391,7 +425,7 @@ func _equip_pick(cid: String, slot: String, done: Callable) -> void:
 			flash_msg(r["reason"]))
 
 func _equip_info(cid: String, m: MenuList) -> void:
-	UI.win(self, Rect2(158, 4, 158, 196))
+	UI.win(self, Rect2(176, 4, 140, 232))
 	var cur = Game.stats(cid)
 	var prev = cur
 	var has_prev = lists.size() > 0 and lists[-1] != m and preview_item != null
@@ -406,31 +440,31 @@ func _equip_info(cid: String, m: MenuList) -> void:
 		prev = F.member_stats(mem, Content.ch(cid), Content.data["items"])
 	var y = 10
 	for k in [["mhp", "Max HP"], ["mmp", "Max MP"], ["atk", "Attack"], ["matk", "Magic"], ["def", "Defense"], ["res", "Resist"], ["spd", "Speed"]]:
-		UI.text(self, Vector2(166, y), k[1], UI.C_DIM)
+		UI.label(self, Vector2(183, y), k[1])
 		UI.text_right(self, 262, y, str(cur[k[0]]))
 		if has_prev:
 			var nv: int = prev[k[0]]
 			var col = UI.C_TEXT if nv == cur[k[0]] else (UI.C_GREEN if nv > cur[k[0]] else UI.C_RED)
-			UI.text(self, Vector2(266, y), "→", UI.C_DIM)
+			UI.text(self, Vector2(266, y), "→", UI.C_LABEL)
 			UI.text_right(self, 308, y, str(nv), col)
 		y += 12
 	y += 4
 	var grants: Array = prev["grants"] if has_prev else cur["grants"]
 	for g in grants:
-		UI.text(self, Vector2(166, y), "Grants " + Content.ability(g)["name"], UI.C_GOLD)
+		UI.text(self, Vector2(183, y), "Grants " + Content.ability(g)["name"], UI.C_GOLD)
 		y += 11
 	var pas: Dictionary = prev["passives"] if has_prev else cur["passives"]
 	for k in pas:
-		UI.text(self, Vector2(166, y), _passive_label(k, pas[k]), Color8(210, 190, 250))
+		UI.text(self, Vector2(183, y), _passive_label(k, pas[k]), Color8(210, 190, 250))
 		y += 11
-		if y > 186:
+		if y > 170:
 			break
 	if has_prev and preview_item != "":
 		var d = Content.item(preview_item)
-		var lines = UI.wrap(d.get("desc", ""), 146)
-		var yy = 188 - lines.size() * 11
-		for ln in lines.slice(0, 3):
-			UI.text(self, Vector2(166, yy), ln, UI.C_DIM)
+		var lines = UI.wrap(d.get("desc", ""), 124).slice(0, 4)
+		var yy = 226 - lines.size() * 11
+		for ln in lines:
+			UI.text(self, Vector2(183, yy), ln, UI.C_DIM)
 			yy += 11
 
 func _passive_label(k: String, v) -> String:
@@ -453,19 +487,19 @@ func _abilities_menu(cid: String) -> void:
 	for l in Content.ch(cid)["learn"]:
 		var a = Content.ability(l["id"])
 		var has = learned.has(l["id"])
-		items.append({"text": a["name"] if has else "Lv %d: ???" % l["level"], "right": str(a["mp"]) if has else "", "value": l["id"], "enabled": has and a.get("field", false), "reason": "Battle technique" if has else "Not yet learned", "desc": a["desc"] if has else ""})
+		items.append({"text": a["name"] if has else "Lv %d: ???" % l["level"], "right": str(int(a["mp"])) if has else "", "value": l["id"], "enabled": has and a.get("field", false), "reason": "Battle technique" if has else "Not yet learned", "desc": a["desc"] if has else ""})
 	var ult = Content.ch(cid).get("ultimate")
 	if ult != null:
 		var has2 = learned.has(ult)
 		items.append({"text": Content.ability(ult)["name"] if has2 else "Personal story: ???", "value": ult, "enabled": false, "reason": "Battle technique" if has2 else "Resolve their personal story", "desc": Content.ability(ult)["desc"] if has2 else ""})
 	for g in st["grants"]:
-		items.append({"text": Content.ability(g)["name"] + " (acc.)", "right": str(Content.ability(g)["mp"]), "value": g, "enabled": Content.ability(g).get("field", false), "reason": "Granted while equipped", "desc": Content.ability(g)["desc"]})
+		items.append({"text": Content.ability(g)["name"] + " (acc.)", "right": str(int(Content.ability(g)["mp"])), "value": g, "enabled": Content.ability(g).get("field", false), "reason": "Granted while equipped", "desc": Content.ability(g)["desc"]})
 	var m = _menu(items, Rect2(4, 4, 200, 150), 12, Content.ch(cid)["name"])
 	info_draw = func():
 		var it = m.current()
 		UI.win(self, Rect2(4, 158, 312, 78))
 		var y = 162
-		UI.text(self, Vector2(10, y), "MP %d/%d" % [Game.member(cid)["mp"], st["mmp"]], UI.C_BLUE)
+		UI.stat(self, Vector2(11, y), "MP", "%d/%d" % [Game.member(cid)["mp"], st["mmp"]], 80)
 		y += 12
 		for ln in UI.wrap(it.get("desc", it.get("reason", "")), 296).slice(0, 5):
 			UI.text(self, Vector2(10, y), ln)
@@ -645,9 +679,10 @@ func _worldmap() -> void:
 			items.append({"text": Content.data["locations"][lid]["name"], "value": lid, "enabled": true})
 	if items.is_empty():
 		items.append({"text": "(nothing charted)", "enabled": false})
-	var m = _menu(items, Rect2(4, 4, 120, 200), 17, "Discovered")
+	var m = _menu(items, Rect2(4, 4, 120, 200), 16, "Discovered")
 	info_draw = func():
 		UI.win(self, Rect2(128, 4, 188, 200))
+		UI.inset(self, Rect2(130, 7, 184, 194))
 		var wm = Content.map("WORLD_POST" if Game.S["world_phase"] == "post" else "WORLD")
 		if wm.is_empty():
 			return
@@ -741,6 +776,7 @@ const SETTING_DEFS := [
 	["vol_sfx", "Sound volume", [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]],
 	["pause_on_focus_loss", "Pause on focus loss", [true, false]],
 	["fullscreen", "Fullscreen", [false, true]],
+	["window_color", "Window colour", ["blue", "ash", "crimson", "verdant", "violet"]],
 ]
 
 func _setting_label(k: String, v) -> String:
@@ -881,10 +917,11 @@ func _save_menu(at_point: bool) -> void:
 			_confirm("Overwrite slot %d?" % it["value"], do_save))
 
 func _confirm(q: String, yes: Callable) -> void:
-	var m = _menu([{"text": "No", "value": 0}, {"text": "Yes", "value": 1}], Rect2(110, 170, 100, 36), 2, "")
+	var m = _menu([{"text": "No", "value": 0}, {"text": "Yes", "value": 1}], Rect2(120, 170, 80, 36), 2, "")
 	info_draw = func():
-		UI.win(self, Rect2(60, 150, 200, 18))
-		UI.text_center(self, 160, 154, q, UI.C_HI)
+		var qw = maxf(120.0, UI.width(q) + 28)
+		UI.win(self, Rect2(round(160 - qw / 2), 144, qw, 22))
+		UI.text_center(self, 160, 149, q)
 	m.chosen.connect(func(_i, it):
 		_pop_list()
 		if it["value"] == 1:
@@ -954,7 +991,7 @@ func _shop_menu() -> void:
 	page = "shop"
 	var sid: String = data["id"]
 	var sh: Dictionary = Content.data["shops"].get(sid, {"name": "Shop"})
-	var m = _menu([{"text": "Buy", "value": "buy"}, {"text": "Sell", "value": "sell"}, {"text": "Leave", "value": "leave"}], Rect2(4, 4, 90, 46), 3, sh["name"])
+	var m = _menu([{"text": "Buy", "value": "buy"}, {"text": "Sell", "value": "sell"}, {"text": "Leave", "value": "leave"}], Rect2(4, 4, 96, 52), 3, sh["name"])
 	info_draw = func(): _shop_info(null)
 	m.chosen.connect(func(_i, it):
 		if it["value"] == "buy":
@@ -965,7 +1002,7 @@ func _shop_menu() -> void:
 			_close_all())
 
 func _shop_list(sid: String, buying: bool) -> void:
-	var m = _menu([], Rect2(4, 54, 190, 150), 12, "")
+	var m = _menu([], Rect2(4, 60, 196, 176), 15, "")
 	var refresh = func(mm: MenuList):
 		var items = []
 		if buying:
@@ -1001,36 +1038,57 @@ func _shop_list(sid: String, buying: bool) -> void:
 		refresh.call(m))
 
 func _shop_info(m) -> void:
-	UI.win(self, Rect2(198, 4, 118, 200))
-	UI.text(self, Vector2(204, 8), "%d crowns" % Game.gold(), UI.C_GOLD)
+	UI.win(self, Rect2(104, 4, 212, 52))
+	UI.label(self, Vector2(111, 8), "Crowns")
+	UI.text_right(self, 308, 8, str(Game.gold()), UI.C_TEXT)
+	UI.win(self, Rect2(204, 60, 112, 176))
 	if m == null:
+		UI.text(self, Vector2(111, 22), "Welcome. Take a look.", UI.C_TEXT)
 		return
 	var it: Dictionary = m.current()
 	if it.is_empty():
 		return
 	var d = Content.item(it["value"])
-	var y = 22
-	UI.text(self, Vector2(204, y), "Owned %d  Eq %d" % [Game.count(it["value"]), Game.equipped_count(it["value"])], UI.C_DIM)
-	y += 12
-	if d.get("kind", "") in ["weapon", "armor", "accessory"]:
-		var who = []
-		for cid in d.get("allowed", []):
-			if Game.is_recruited(cid):
-				who.append(Content.ch(cid)["short"])
-		for ln in UI.wrap("Can equip: " + ", ".join(who), 106):
-			UI.text(self, Vector2(204, y), ln, UI.C_TEXT)
-			y += 11
-		if d.has("atk"):
-			UI.text(self, Vector2(204, y), "ATK %d MAG %d" % [d["atk"], d["mag"]])
-			y += 11
-		if d.has("def"):
-			UI.text(self, Vector2(204, y), "DEF %d RES %d" % [d["def"], d["res"]])
-			y += 11
-	for ln in UI.wrap(d.get("desc", ""), 106):
-		UI.text(self, Vector2(204, y), ln, UI.C_DIM)
+	var dl = UI.wrap(d.get("desc", ""), 196)
+	for i in range(mini(2, dl.size())):
+		UI.text(self, Vector2(111, 20 + i * 11), dl[i])
+	var y = 65
+	UI.stat(self, Vector2(211, y), "Owned", str(Game.count(it["value"])), 308)
+	y += 11
+	UI.stat(self, Vector2(211, y), "Equipped", str(Game.equipped_count(it["value"])), 308)
+	y += 14
+	if d.has("atk"):
+		UI.stat(self, Vector2(211, y), "ATK", str(int(d["atk"])), 250)
+		UI.stat(self, Vector2(258, y), "MAG", str(int(d["mag"])), 308)
 		y += 11
-		if y > 196:
-			break
+	if d.has("def"):
+		UI.stat(self, Vector2(211, y), "DEF", str(int(d["def"])), 250)
+		UI.stat(self, Vector2(258, y), "RES", str(int(d["res"])), 308)
+		y += 11
+	if d.get("kind", "") in ["weapon", "armor", "accessory"]:
+		# who can wear it: party sprites, dimmed when they cannot
+		y += 4
+		UI.label(self, Vector2(211, y), "Can equip")
+		y += 12
+		var allowed: Array = d.get("allowed", [])
+		var k = 0
+		for cid in Game.S["party"]["roster"]:
+			var t: Texture2D = main.field.sprite_tex(cid)
+			if t == null:
+				continue
+			var cw = t.get_width() / 6
+			var chh = t.get_height() / 5
+			var px = 210 + (k % 4) * 26
+			var py = y + (k / 4) * (chh + 2)
+			var ok = allowed.has(cid)
+			draw_texture_rect_region(t, Rect2(px + 12 - cw / 2, py, cw, chh), Rect2(0, 0, cw, chh), Color.WHITE if ok else Color(0.25, 0.25, 0.4, 0.8))
+			k += 1
+			if k >= 8:
+				break
+	elif dl.size() > 2:
+		for ln in UI.wrap(" ".join(dl.slice(2)), 98).slice(0, 8):
+			UI.text(self, Vector2(211, y), ln, UI.C_DIM)
+			y += 11
 
 func _inn_menu() -> void:
 	page = "inn"

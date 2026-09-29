@@ -67,9 +67,9 @@ func _ready() -> void:
 	paused_overlay.size = Vector2(320, 240)
 	paused_overlay.visible = false
 	paused_overlay.draw.connect(func():
-		paused_overlay.draw_rect(Rect2(0, 0, 320, 240), Color(0, 0, 0, 0.55))
-		UI.win(paused_overlay, Rect2(110, 104, 100, 32))
-		UI.text_center(paused_overlay, 160, 114, "Paused", UI.C_GOLD))
+		paused_overlay.draw_rect(Rect2(0, 0, 320, 240), Color(0.02, 0.02, 0.08, 0.6))
+		UI.win(paused_overlay, Rect2(116, 106, 88, 28))
+		UI.text_center(paused_overlay, 160, 114, "Paused"))
 	overlay.add_child(paused_overlay)
 	Game.notify.connect(toast)
 	get_window().min_size = Vector2i(320, 240)
@@ -257,14 +257,14 @@ func _draw_toasts() -> void:
 		return
 	var t: Dictionary = toasts[0]
 	var lines: Array = UI.wrap(t["text"], 284.0)
-	var w = 16.0
+	var w = 24.0
 	for l in lines:
-		w = maxf(w, UI.width(l) + 16)
-	w = minf(300.0, w)
-	var r = Rect2(Vector2((320 - w) / 2.0, 36), Vector2(w, 6 + 11 * lines.size()))
+		w = maxf(w, UI.width(l) + 22)
+	w = minf(312.0, w)
+	var r = Rect2(Vector2(round((320 - w) / 2.0), 34), Vector2(w, 12 + 11 * lines.size()))
 	UI.win(toast_box, r)
 	for i in range(lines.size()):
-		UI.text(toast_box, r.position + Vector2(8, 3 + 11 * i), lines[i])
+		UI.text_center(toast_box, 160, r.position.y + 5 + 11 * i, lines[i])
 
 func fade(out: bool, dur: float) -> void:
 	var target = 1.0 if out else 0.0
@@ -426,9 +426,12 @@ func defeat_menu() -> int:
 	var bg = Control.new()
 	bg.size = Vector2(320, 240)
 	bg.draw.connect(func():
-		bg.draw_rect(Rect2(0, 0, 320, 240), Color8(8, 6, 12))
-		UI.text_center(bg, 160, 80, "The party has fallen.", UI.C_RED)
-		UI.text_center(bg, 160, 94, "Retry restores the checkpoint and its supplies.", UI.C_DIM))
+		bg.draw_rect(Rect2(0, 0, 320, 240), Color8(4, 2, 8))
+		for i in range(10):
+			bg.draw_rect(Rect2(0, 150 + i * 9, 320, 9), Color8(20 + i * 3, 4 + i, 10 + i, 255))
+		UI.text_center(bg, 160, 70, "The party has fallen.", UI.C_RED)
+		UI.win(bg, Rect2(24, 88, 272, 22))
+		UI.text_center(bg, 160, 94, "Retry restores the checkpoint and its supplies.", UI.C_TEXT))
 	ui.add_child(bg)
 	Audio.music("silence")
 	var idx = await choose(["Retry from Checkpoint", "Load Save"])

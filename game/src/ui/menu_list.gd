@@ -18,6 +18,8 @@ var framed = true
 var active = true
 var allow_cancel = true
 var show_reason = true
+var show_ghost = true      # dimmed hand on the remembered entry while a sub-menu has focus
+var text_x = 20
 var memory_key = ""
 static var memory = {}
 
@@ -102,7 +104,7 @@ func _draw() -> void:
 		UI.win(self, r)
 	var y0 = 5
 	if title != "":
-		UI.text(self, Vector2(8, 4), title, UI.C_GOLD)
+		UI.label(self, Vector2(8, 4), title)
 		y0 += 12
 	var total_lines = (items.size() + cols - 1) / cols
 	for i in range(items.size()):
@@ -110,18 +112,20 @@ func _draw() -> void:
 		if line < scroll or line >= scroll + rows:
 			continue
 		var it: Dictionary = items[i]
-		var x = 14 + (i % cols) * col_w
+		var x = text_x + (i % cols) * col_w
 		var y = y0 + (line - scroll) * UI.LINE_H
 		var en: bool = it.get("enabled", true)
-		if i == index and active:
-			draw_rect(Rect2(x - 3, y, col_w - 8 if cols > 1 else size.x - x - 4, UI.LINE_H), UI.C_SEL)
-			UI.cursor(self, Vector2(x - 11, y))
+		if i == index:
+			if active:
+				UI.cursor(self, Vector2(x - 8, y))
+			elif show_ghost:
+				UI.cursor(self, Vector2(x - 8, y), false, true)
 		var col: Color = it.get("color", UI.C_TEXT) if en else UI.C_DIM
 		UI.text(self, Vector2(x, y), it.get("text", ""), col)
 		if it.has("right"):
 			var rx = x + col_w - 12 if cols > 1 else size.x - 8
 			UI.text_right(self, rx, y, str(it["right"]), col)
 	if scroll > 0:
-		UI.text(self, Vector2(size.x - 12, y0 - 7), "↑", UI.C_GOLD)
+		UI.arrow(self, Vector2(round(size.x / 2 - 3), 0), -1)
 	if scroll + rows < total_lines:
-		UI.text(self, Vector2(size.x - 12, size.y - 12), "↓", UI.C_GOLD)
+		UI.arrow(self, Vector2(round(size.x / 2 - 3), size.y - 5), 1)

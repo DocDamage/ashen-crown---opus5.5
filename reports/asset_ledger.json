@@ -3771,15 +3771,15 @@
  },
  {
   "path": "game/assets/ui/title.png",
-  "w": 240,
-  "h": 80,
+  "w": 300,
+  "h": 112,
   "kind": "ui",
-  "frames": "240x80 wordmark from project font",
+  "frames": "300x112 crown + serif wordmark (EPX 2x), metallic ramp",
   "palette": "",
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "933aa1bd5df2",
+  "sha": "0ea365fcee01",
   "note": ""
  }
 ]

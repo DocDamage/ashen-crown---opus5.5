@@ -77,17 +77,18 @@ func is_complete() -> bool:
 
 func _draw() -> void:
 	UI.win(self, BOX)
-	var tx = BOX.position.x + 8
+	var tx = BOX.position.x + 9
 	if _has_portrait():
 		var t = _portrait()
 		var col = {"neutral": 0, "concern": 1, "determined": 2}.get(expr, 0)
 		var fw = 40
 		if t.get_width() < 120:
 			col = 0
-		draw_rect(Rect2(BOX.position + Vector2(6, 6), Vector2(42, 42)), Color8(10, 12, 24))
-		draw_texture_rect_region(t, Rect2(BOX.position + Vector2(7, 7), Vector2(fw, fw)), Rect2(col * fw, 0, fw, fw))
-		tx += 46
-	var ty = BOX.position.y + 4
+		var pr = Rect2(BOX.position + Vector2(7, 7), Vector2(fw + 4, fw + 4))
+		UI.inset(self, pr, Color8(20, 26, 70))
+		draw_texture_rect_region(t, Rect2(pr.position + Vector2(2, 2), Vector2(fw, fw)), Rect2(col * fw, 0, fw, fw))
+		tx += 48
+	var ty = BOX.position.y + 5
 	if speaker != "":
 		UI.text(self, Vector2(tx, ty), speaker, UI.C_GOLD)
 		ty += 12
@@ -96,5 +97,5 @@ func _draw() -> void:
 	for ln in vis.split("\n"):
 		UI.text(self, Vector2(tx, yy), ln)
 		yy += 11
-	if is_complete() and int(Time.get_ticks_msec() / 300) % 2 == 0:
-		UI.text(self, BOX.end - Vector2(12, 12), "▼", UI.C_HI)
+	if is_complete():
+		UI.arrow(self, BOX.end - Vector2(15, 11), 1)

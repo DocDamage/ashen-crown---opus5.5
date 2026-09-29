@@ -859,11 +859,12 @@ func _draw() -> void:
 	if tint.a > 0:
 		draw_rect(Rect2(Vector2.ZERO, VIEW), tint)
 	if banner_t > 0 and banner_text != "":
-		var a = clampf(banner_t, 0.0, 1.0)
-		var w = UI.width(banner_text) + 20
-		var r = Rect2(Vector2((320 - w) / 2.0, 12), Vector2(w, 16))
-		draw_rect(r, Color(0.05, 0.06, 0.12, 0.8 * a))
-		UI.text(self, r.position + Vector2(10, 3), banner_text, Color(UI.C_GOLD, a))
+		# location name window; slides up out of view during its last half second
+		var a = clampf(banner_t / 0.5, 0.0, 1.0)
+		var w = UI.width(banner_text) + 28
+		var r = Rect2(Vector2(round((320 - w) / 2.0), round(10 - (1.0 - a) * 34)), Vector2(w, 22))
+		UI.win(self, r)
+		UI.text(self, r.position + Vector2(14, 6), banner_text)
 
 func _outdoor() -> bool:
 	return not String(map.get("tileset", "")).begins_with("interior")

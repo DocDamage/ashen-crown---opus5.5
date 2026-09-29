@@ -26,6 +26,7 @@ var v = {
 	"encounters": "normal",    # normal | reduced | off
 	"pause_on_focus_loss": true,
 	"window_scale": 4,
+	"window_color": "blue",   # UI window gradient theme (UI.THEMES)
 	"fullscreen": false,
 	"bindings": {},            # action -> [keycodes]
 }

@@ -90,9 +90,13 @@ func _draw() -> void:
 	_draw_credits()
 
 func _draw_credits() -> void:
-	draw_rect(Rect2(0, 0, 320, 240), Color8(8, 8, 14))
+	# deep night gradient in hard bands, ember glow low on the horizon (matches the title screen)
+	for i in range(24):
+		var f = i / 23.0
+		var c = Color8(4, 4, 16).lerp(Color8(26, 14, 44), f) if f < 0.8 else Color8(26, 14, 44).lerp(Color8(70, 22, 30), (f - 0.8) / 0.2)
+		draw_rect(Rect2(0, i * 10, 320, 10), c)
 	var y = 240 - t * 18
 	for l in lines:
 		if y > -12 and y < 244:
-			UI.text_center(self, 160, y, l[0], UI.C_GOLD if l[1] == 1 else UI.C_TEXT)
+			UI.text_center(self, 160, y, l[0], UI.C_LABEL if l[1] == 1 else UI.C_TEXT)
 		y += 13
