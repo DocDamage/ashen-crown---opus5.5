@@ -64,3 +64,9 @@ handoff and the kickoff prompt were supplied. Everything below was decided durin
   pines and forest edges low bushes so rivers/paths above them stay visible. Unmapped kinds use the generated atlas.
 - UI: FF6-style blue gradient windows, bevelled border, hand cursor and a Window colour setting (blue/ash/crimson/
   verdant/violet). Battle: panoramic backdrops, party staggered on the right, split enemy/party windows.
+- 2026-09-29 props pass: remaining generated props replaced with library pieces where the library has one
+  (tents, awnings, statues, pillars, signs, counters, bells, grates). Two-cell objects use a new "pair" rule
+  (field.gd) so tent/awning runs read as whole objects instead of one sprite per cell. Rails, laundry lines and
+  world-map mountains have no library piece and are composed from library pixels (tools/art/tiles.py `Fn`);
+  the world map's ground fallback under mountain masses is "plains". Battle party drawn at 2x (nearest) on a
+  diagonal from (206,96) to (284,150) so it holds its own against the large painted enemies.

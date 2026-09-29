@@ -83,13 +83,20 @@ unchanged (`e528220ab0ff6194`); only presentation code and art changed.
 - **Renderer**: library ground is composited per 16x16-cell chunk into textures (animation frames pre-baked),
   one quad per chunk; overhanging objects are y-sorted. Field frame time is at or below the old generated renderer.
 - **Evidence** (`reports/evidence/art_chain/`): runtime tests 57/57; reachability 0 problems; world audit OK;
-  normal-input chain b1 → seg2..seg7 → seg8 ∥ segq = **CHAIN PASS** on this art (seg8 13 battles, segq 37).
+  normal-input chain b1 → seg2..seg7 → seg8 ∥ segq = **CHAIN PASS** on this art (seg8 13 battles, segq 37);
+  re-run after the props pass: CHAIN PASS again (`reports/evidence/props_chain/`), tests 57/57.
   A first chain run exposed a frame-rate regression (airship legs overshooting at `--qa-speed 4`); fixed by the
   chunk renderer, then the full chain was re-run from New Game.
 - **Review tools**: `--qa-gallery` (title/menus/field/battles), `--qa-gallery-set map:ALL` (stitched maps),
   `--qa-gallery-set perf:IDS` (field frame time). Dev-only; never gameplay evidence.
-- **Open**: licence confirmations for the Time Fantasy "Elements" kit and ansimuz packs (owner); some small props
-  (tents, rails, laundry, statues, signs, awnings) still use generated art; party battlers are small (FF6 scale).
+- **Props pass (same day)**: tents, awnings (two-cell "pair" rule: a run pairs up from its left end), statues,
+  pillars, signs, counters, bells and floor grates now come from Time Fantasy pieces; rails, laundry lines and
+  world-map mountains are composed in code from library pixels (no ready-made piece exists in the library).
+  Mountains are FF6-style peaks with a lit left flank, variants per cell and a snow-capped inner peak.
+  The party is drawn at 2x in battle on a wider diagonal (FF6 weight next to the large enemies).
+- **Open**: licence confirmations for the Time Fantasy "Elements" kit and ansimuz packs (owner). Still generated:
+  carts, boats, murals, sluices, lifts, braziers, altars, anvils, vines, cables, tall pipes and the world-map
+  town/dungeon markers.
 
 ## Known limitations
 

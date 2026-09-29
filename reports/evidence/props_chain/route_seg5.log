@@ -1,0 +1,23 @@
+[1.04] route seg5 content e528220ab0ff6194 engine 4.7.2-stable (official)
+[1.05] RESUMED FIXTURE ch10_done (debug only)
+[1.44] CHAIN: segment seg5 starts from milestone ch10_done (written by the previous normal-input segment)
+[1.58] walk (49, 9) -> (46, 41) next (49, 10) dir down busy=false top=Field:<Node2D#75765909025>
+[8.93] entered D09_R01 via L_D09
+[17.57] entered D09_R02
+[25.30] entered D09_R04
+[31.04] entered D09_R03
+[37.75] entered D09_R04
+[43.47] walk (16, 8) -> (20, 8) next (17, 8) dir right busy=false top=Field:<Node2D#75765909025>
+[48.48] entered D09_R05
+[51.27] battle start: B09 at D09_R05 (19, 21) meter=61.8 grace=8
+[93.77] capture /tmp/claude-0/chain/seg5_boss_tell_B09.png
+[111.94] battle end: victory
+[113.75] milestone ch11_done
+[118.32] entered D09_R06
+[121.12] battle start: B10 at D09_R06 (15, 14) meter=61.8 grace=8
+[129.56] capture /tmp/claude-0/chain/seg5_boss_tell_B10.png
+[217.10] battle end: victory
+[220.07] capture /tmp/claude-0/chain/seg5_escape.png
+[232.73] capture /tmp/claude-0/chain/seg5_hearthward_wake.png
+[232.73] milestone ch12_done
+[232.73] ROUTE PASS: seg5 battles=2 steps=310

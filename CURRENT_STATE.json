@@ -28,6 +28,8 @@
   "direction": "FF6-inspired (docs/11 revision 2026-09-29)",
   "library": "owner-licensed packs via tools/gen_art.py library -> game/assets/ext (git-ignored); set ASHEN_LIB",
   "fallback": "generated art in game/assets (committed)",
-  "review": "godot --path game -- --qa-gallery[-set field|battle|ui|map:ALL] --qa-out <dir>"
+  "review": "godot --path game -- --qa-gallery[-set field|battle|ui|map:ALL] --qa-out <dir>",
+  "props_pass": "2026-09-29: tents/awnings/statues/pillars/signs/counters/bells/grates from library; rails, laundry, world mountains composed from library pixels; party 2x in battle",
+  "still_generated": "carts, boats, murals, sluices, lifts, braziers, altars, anvils, vines, cables, tall pipes, world-map town/dungeon markers"
  }
 }

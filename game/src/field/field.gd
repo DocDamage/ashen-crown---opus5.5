@@ -957,6 +957,8 @@ func _ground_near(x: int, y: int) -> String:
 		var nr: Dictionary = ext_rules.get(nk, {})
 		if nr.get("type", "") == "auto" and not nr.get("casts", false) and not (nr.get("g", nk) in ["water", "void", "deep", "ember", "shallow", "pool"]):
 			return nk
+	if not ext_rules.has("floor") and ext_rules.has("plains"):
+		return "plains"      # world map: mountain masses fall back to grassland
 	return ext_rules.get("_ground", {}).get("kind", "floor")
 
 ## Returns true when the cell was handled by a library rule.
@@ -1035,6 +1037,18 @@ func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
 			elif not l and not rr:
 				v = tl[3] if tl.size() > 3 else tl[1]
 			_put(ext_tex, ext_img, Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)), pos)
+		"pair":
+			# two-cell objects (tents, awnings): runs pair up from their left end; a leftover cell draws "one"
+			var n = 0
+			while n < 64 and _same(g, x - 1 - n, y) and x - 1 - n >= 0:
+				n += 1
+			if n % 2 == 0:
+				var two = _same(g, x + 1, y) and x + 1 < W
+				var pr: Array = r["r"] if two else r["one"]
+				var prect = Rect2(pr[0], pr[1], pr[2], pr[3])
+				var cxo = TS if two else 8
+				var ppos = pos + Vector2(cxo - prect.size.x / 2.0, TS - prect.size.y + r.get("dy", 0))
+				talls.append([y * TS + 15, "ext", prect, ppos])
 		"stamp":
 			var st: Array = r["r"]
 			if r.has("inner") and _same(g, x, y - 1):
@@ -1051,7 +1065,7 @@ func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
 				talls.append([y * TS + 15, "ext", rect, dpos])
 			else:
 				_put(ext_tex, ext_img, rect, dpos)
-	if r["type"] != "stamp" and not r.get("casts", false):
+	if not (r["type"] in ["stamp", "pair"]) and not r.get("casts", false):
 		# FF-style soft drop shadow cast onto the ground right of a wall/structure
 		var lk = _kind_c(x - 1, y)
 		if ext_rules.get(lk, {}).get("casts", false):

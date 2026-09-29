@@ -1,0 +1,32 @@
+[0.97] route seg7 content e528220ab0ff6194 engine 4.7.2-stable (official)
+[0.98] RESUMED FIXTURE ch16_done (debug only)
+[1.38] CHAIN: segment seg7 starts from milestone ch16_done (written by the previous normal-input segment)
+[1.79] walk (19, 17) -> (59, 45) next (19, 18) dir down busy=false top=Field:<Node2D#75765909025>
+[21.28] capture /tmp/claude-0/chain/seg7_helm.png
+[26.66] entered D06P_R01 via L_D06
+[43.41] battle start: D06P_2 at D06P_R01 (36, 23) meter=0.0 grace=6
+[60.34] battle end: victory
+[65.28] walk (26, 22) -> (8, 29) next (25, 22) dir left busy=false top=Field:<Node2D#75765909025>
+[69.83] entered WORLD_POST
+[69.83] milestone ch17_done
+[79.44] entered T02_SQUARE_POST via L_T02
+[86.44] entered T02_CANALS
+[99.00] entered T02_REGISTRY_POST
+[100.02] battle start: D02P_2 at T02_REGISTRY_POST (15, 19) meter=17.8 grace=8
+[129.80] battle end: victory
+[137.77] walk (14, 19) -> (14, 23) next (14, 20) dir down busy=false top=Field:<Node2D#75765909025>
+[138.66] entered T02_CANALS
+[145.92] entered T02_SQUARE_POST
+[152.37] entered WORLD_POST
+[152.37] milestone ch18_done
+[160.48] entered D07P_R01 via L_D07
+[166.36] entered D07P_R02
+[176.31] walk (27, 10) -> (29, 9) next (28, 10) dir right busy=false top=Field:<Node2D#75765909025>
+[185.71] entered D07P_R01
+[190.82] entered WORLD_POST
+[190.82] milestone ch19_done
+[194.03] entered T06_POST via L_T06
+[199.56] capture /tmp/claude-0/chain/seg7_ash_accord.png
+[201.11] entered WORLD_POST
+[201.11] milestone ch20_done
+[201.11] ROUTE PASS: seg7 battles=2 steps=685

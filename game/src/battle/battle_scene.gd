@@ -7,7 +7,8 @@ signal finished(result: String)
 
 ## FF6-style staging: the party stands in a staggered column on the right, facing left; enemies own the left/centre
 ## of the ground plane. Foot anchors (x zig-zags so neighbouring sprites never overlap).
-const PARTY_ANCHORS := [Vector2(240, 80), Vector2(272, 102), Vector2(240, 124), Vector2(272, 146)]
+const PARTY_ANCHORS := [Vector2(206, 96), Vector2(232, 114), Vector2(258, 132), Vector2(284, 150)]
+const PARTY_SCALE := 2          # library battlers are ~16x32; drawn 2x (nearest) so the party reads at FF6 weight
 const ARENA_H := 168
 const ENEMY_BOX := Rect2(4, 6, 208, 160)   # enemies (and their frames) stay inside this box
 const FRAMES := {"idle": [0, 4], "attack": [4, 6], "cast": [10, 4], "hurt": [14, 2], "guard": [16, 2], "victory": [18, 4], "ko": [22, 1], "step": [23, 4]}
@@ -405,7 +406,7 @@ func _battler_pos(id: String) -> Vector2:
 		return Vector2(160, 80)
 	if b.side == 0:
 		var i = model.party_ids.find(id)
-		return PARTY_ANCHORS[i] + Vector2(0, -20)
+		return PARTY_ANCHORS[i] + Vector2(0, -20 * PARTY_SCALE)
 	return enemy_pos.get(id, Vector2(88, 110)) + Vector2(0, -minf(_enemy_size(id).y * 0.55, 48))
 
 # ======================================================================
@@ -697,9 +698,9 @@ func _draw() -> void:
 		if b.state == "AIRBORNE":
 			continue
 		if tx:
-			draw_texture_rect_region(tx, Rect2(base - Vector2(24, 62), Vector2(48, 64)), Rect2(fr * 48, 0, 48, 64))
+			draw_texture_rect_region(tx, Rect2(base - Vector2(24, 62) * PARTY_SCALE, Vector2(48, 64) * PARTY_SCALE), Rect2(fr * 48, 0, 48, 64))
 		if selecting == b:
-			UI.text(self, base + Vector2(-3, -72), "▼", UI.C_HI)
+			UI.text(self, base + Vector2(-3, -76), "▼", UI.C_HI)
 	# target cursor
 	if target_mode != "" and not target_list.is_empty():
 		var sel: Array = target_list if target_mode in ["enemy_all", "ally_all"] else [target_list[target_idx]]

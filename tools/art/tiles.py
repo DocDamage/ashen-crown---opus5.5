@@ -980,6 +980,35 @@ def grid9(tiles9, under=None, g=None, casts=False):
     return dict(type="grid9", src=list(tiles9), under=under, g=g, casts=casts)
 
 
+class Fn:
+    """A region composed in code from library pixels (fn() -> RGBA image). `srcs`: library sheets it reads."""
+    def __init__(self, name, fn, srcs):
+        self.name, self.fn, self.srcs = name, fn, list(srcs)
+        self._im = None
+
+    def key(self):
+        return ("fn", self.name)
+
+    def image(self):
+        if self._im is None:
+            self._im = self.fn()
+        return self._im
+
+    @property
+    def w(self):
+        return self.image().width
+
+    @property
+    def h(self):
+        return self.image().height
+
+
+def pair(src, single=None, under="@", g=None, dy=0):
+    """Two-cell object (tent, awning): a horizontal run of this kind is split into pairs from its left end; each
+    pair draws `src` centred over both cells, a leftover single cell draws `single` (default: `src`)."""
+    return dict(type="pair", src=src, one=single or src, under=under, g=g, dy=dy)
+
+
 LIB_TILESETS = {}   # family -> {kind: rule}; filled per family below
 
 
@@ -1013,12 +1042,14 @@ def build_family(name):
             regions.append((k, s.image()))
             if isinstance(s, Synth):
                 sources.update(n.sheet.split("@")[0] for n in s.nine)
+            elif isinstance(s, Fn):
+                sources.update(x.split("@")[0] for x in s.srcs)
             else:
                 sources.add(s.sheet.split("@")[0])
         return k
 
     for kind, r in spec.items():
-        for key in ("src", "top", "face", "alts", "inner"):
+        for key in ("src", "top", "face", "alts", "inner", "one"):
             v = r.get(key)
             if v is None:
                 continue
@@ -1042,6 +1073,10 @@ def build_family(name):
         elif r["type"] == "wall":
             o["top"] = [list(pos[r["top"].key()])]
             o["face"] = [list(pos[r["face"].key()])]
+        elif r["type"] == "pair":
+            s, o1 = r["src"], r["one"]
+            o["r"] = list(pos[s.key()]) + [s.w, s.h]
+            o["one"] = list(pos[o1.key()]) + [o1.w, o1.h]
         elif r["type"] == "stamp":
             s = r["src"]
             o["r"] = list(pos[s.key()]) + [s.w, s.h]
@@ -1317,3 +1352,161 @@ LIB_TILESETS["harbor"] = {"dock": WOOD_DECK, "water": W_OPEN(), "floor2": auto(a
                           **room_kit()}
 LIB_TILESETS["world"] = _world(False)
 LIB_TILESETS["world_post"] = _world(True)
+
+
+# ---- props pass 2 (2026-09-29): remaining generated props -> library pieces ------------------------------------
+# Sources are whole library objects (Time Fantasy winter tent, ruins statues/pillars, cloud-city angel and bells,
+# Future Fantasy awnings, ashlands signposts). Rails, laundry lines and world-map mountains have no ready-made
+# piece in the library, so they are composed in code from library pixels (steampunk fence posts/beams, awning
+# fabric, fairy-forest cliff rock) — see _rail_img / _laundry_img / _mountain_img.
+M2 = FU + "modern_tileB_outside2.png"
+ST_B = FF + "B_stone.png"
+RU_B1 = RU + "B_ruins1.png"
+TENT = Src(W_B, 128, 120, 46, 56)
+TENT_SNOW = Src(W_B, 175, 120, 46, 56)
+AWN = {c: Src(M2, x, y, 34, 17) for c, (x, y) in
+       {"green": (7, 102), "red": (55, 102), "blue": (7, 134), "yellow": (55, 134)}.items()}
+ANGEL = Src(CL_B, 66, 134, 28, 38)
+PILLAR = Src(RU_B1, 98, 1, 12, 46)
+OBELISK = Src(ST_B, 168, 64, 16, 44)
+SIGN = Src(AS_B, 16, 0, 16, 16)
+SIGN_SNOW = Src(W_B, 0, 16, 16, 16)
+BELL = Src(CL_B, 96, 224, 14, 15)
+COUNTER = hrow(t16(SP_I1, 0, 8), t16(SP_I1, 1, 8), t16(SP_I1, 2, 8), under="@")
+
+
+def _crop(sheet, x, y, w, h):
+    return Src(sheet, x, y, w, h).image()
+
+
+def _rail_img():
+    """Track cell (one rail pair per row, sleepers across): steampunk fence posts as sleepers, its beam
+    re-tinted to steel for the rails."""
+    out = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+    post = _crop(SP_C1, 138, 164, 5, 12)
+    for x in (1, 9):
+        out.alpha_composite(post, (x, 2))
+    beam = tint("1a1c24", "4a5060", "8a94a4", "d0d8e0", keep=0.1)(_crop(SP_C1, 132, 155, 16, 5))
+    for y in (3, 9):
+        out.alpha_composite(beam.crop((0, 0, 16, 4)), (0, y))
+    return out
+
+
+def _laundry_img(left=False, right=False):
+    """Clothes line: a sagging cord with cloth cut from the awning fabrics; run ends get a steampunk fence post."""
+    out = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+    cord = _crop(SP_C1, 138, 170, 1, 1).getpixel((0, 0))
+    for x in range(16):
+        out.putpixel((x, 3 + (1 if 4 <= x <= 11 else 0)), cord)
+    cloths = [(M2, 9, 104), (M2, 58, 104), (M2, 11, 136)]
+    xs = [x for x in (1, 6, 11) if not (left and x == 1) and not (right and x == 11)]
+    for i, x in enumerate(xs):
+        sh, sx, sy = cloths[(x // 5) % 3]
+        pc = _crop(sh, sx + i * 4, sy + 1, 5, 8 + (x // 5 % 2) * 2)
+        out.alpha_composite(pc, (x, 4 + (1 if 4 <= x <= 11 else 0)))
+    post = _crop(SP_C1, 138, 164, 5, 13)
+    if left:
+        out.alpha_composite(post, (0, 2))
+    if right:
+        out.alpha_composite(post, (11, 2))
+    return out
+
+
+def _mountain_img(w, h, seed, ramp_stops, snow=False):
+    """World-map peak (FF6-style): fairy-forest cliff rock gradient-mapped to an earth ramp, cut to a jagged
+    peak, lit from the left with a shaded right flank and a dark outline."""
+    import random
+    rnd_ = random.Random(seed)
+    tex = tint(*ramp_stops, keep=0.15)(_crop(FF_A5, 16, 176, 48, 32))
+    big = Image.new("RGBA", (w, h))
+    for oy in range(0, h, 32):
+        for ox in range(0, w, 48):
+            big.paste(tex, (ox, oy))
+    cx = w / 2 + rnd_.uniform(-2, 2)
+    mask = [[False] * w for _ in range(h)]
+    ridge = []
+    lj = rj = 0.0
+    for y in range(h):
+        t = (y + 1) / h
+        half = max(1.0, t * (w / 2 - 1))
+        lj = max(-1.5, min(1.5, lj + rnd_.uniform(-0.8, 0.8)))
+        rj = max(-1.5, min(1.5, rj + rnd_.uniform(-0.8, 0.8)))
+        x0, x1 = int(round(cx - half + lj)), int(round(cx + half + rj))
+        rx = int(round(cx + (0.5 - t) * 3 + rnd_.uniform(-0.6, 0.6)))
+        ridge.append(rx)
+        for x in range(max(0, x0), min(w, x1 + 1)):
+            mask[y][x] = True
+    out = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    px, bp = out.load(), big.load()
+    for y in range(h):
+        for x in range(w):
+            if not mask[y][x]:
+                continue
+            r, g, b, _ = bp[x, y]
+            f = 1.18 if x < ridge[y] else 0.68
+            if x == ridge[y]:
+                f = 1.35
+            if snow and y < h * 0.28 + rnd_.uniform(-1, 1):
+                r, g, b = (236, 240, 248) if x < ridge[y] else (168, 180, 206)
+                f = 1.0
+            px[x, y] = (min(255, int(r * f)), min(255, int(g * f)), min(255, int(b * f)), 255)
+    edge = (28, 18, 16, 255)
+    for y in range(h):
+        for x in range(w):
+            if mask[y][x] and (y == 0 or x == 0 or x == w - 1 or not mask[y - 1][x] or not mask[y][x - 1]
+                               or not mask[y][x + 1]):
+                px[x, y] = edge
+    return out
+
+
+def _statue_img():
+    """Ruins statue: its head sits on the sheet between other loose heads, so clear the neighbours' pixels."""
+    im = _crop(RU_B1, 12, 100, 24, 41)
+    px = im.load()
+    for y in range(12):
+        for x in range(24):
+            if x < 5 or x > 16:
+                px[x, y] = (0, 0, 0, 0)
+    return im
+
+
+STATUE_R = Fn("ruins_statue", _statue_img, [RU_B1])
+RAIL = Fn("rail_track", _rail_img, [SP_C1])
+LAUNDRY = [Fn(f"laundry_{n}", (lambda l=l, r=r: _laundry_img(l, r)), [SP_C1, M2])
+           for n, l, r in (("l", True, False), ("m", False, False), ("r", False, True), ("1", True, True))]
+EARTH = ("20140e", "5a3c24", "9a7446", "dcc08a")
+ASHEN = ("1a1014", "4a2c2a", "84564a", "c8a088")
+
+
+def _mountains(post):
+    st = ASHEN if post else EARTH
+    mk = lambda n, w, h, sd, sn=False: Fn(f"mtn_{'p' if post else 'a'}_{n}", lambda: _mountain_img(w, h, sd, st, sn), [FF_A5])
+    return stamp(mk("a", 28, 24, 11), tall=True, under="@", alts=[mk("b", 24, 22, 12), mk("c", 30, 26, 13)],
+                 inner=mk("big", 34, 32, 14, not post), g="mountain")
+
+
+PROPS2 = {
+    "tent": pair(TENT), "rail": tile(RAIL, under="path"), "laundry": hrow(*LAUNDRY, under="@"),
+    "statue": stamp(ANGEL, tall=True, under="@"), "sign": stamp(SIGN, under="@"), "pillar": stamp(PILLAR, tall=True, under="@"),
+    "counter": COUNTER, "bell": stamp(BELL, under="@"), "grate": tile(t16(SP_A5D, 6, 1)),
+    "awning": pair(AWN["red"], under="@"),
+}
+FAMILY_PROPS = {
+    "town_r01": {"awning": pair(AWN["green"], under="@")},
+    "town_r03": {"awning": pair(AWN["blue"], under="@")},
+    "town_r04": {"awning": pair(AWN["yellow"], under="@")},
+    "town_r05": {"awning": pair(AWN["blue"], under="@")},
+    "quarry": {"statue": stamp(STATUE_R, tall=True, under="@")},
+    "winter": {"statue": stamp(STATUE_R, tall=True, under="@")},
+    "whitebone": {"tent": pair(TENT_SNOW), "sign": stamp(SIGN_SNOW, under="@")},
+    "crown": {"pillar": stamp(OBELISK, tall=True, under="@", g="pillar")},
+    "conduit": {"pillar": stamp(OBELISK, tall=True, under="@", g="pillar")},
+}
+for _fam, _spec in LIB_TILESETS.items():
+    if _fam.startswith("world"):
+        continue
+    for _k, _r in list(PROPS2.items()) + list(FAMILY_PROPS.get(_fam, {}).items()):
+        if _k not in _spec or _fam in FAMILY_PROPS and _k in FAMILY_PROPS[_fam]:
+            _spec[_k] = _r
+LIB_TILESETS["world"]["mountain"] = _mountains(False)
+LIB_TILESETS["world_post"]["mountain"] = _mountains(True)

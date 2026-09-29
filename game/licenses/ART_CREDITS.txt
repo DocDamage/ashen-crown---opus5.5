@@ -7,6 +7,9 @@ game only; the raw files are not redistributed. Per-asset sources and licences: 
   Used under the owner's Time Fantasy licence; credit finalbossblues.
   - Field tilesets: Steampunk, Sewers, Ruins, Ashlands, Winter, Fairy Forest, Cloud City, Atlantis,
     Future Fantasy (tiles recoloured and assembled into autotile atlases by tools/art/tiles.py)
+  - Field props: Winter tents and signposts, Ruins statues and pillars, Cloud City angel statues and bells,
+    Fairy Forest obelisks, Future Fantasy awnings, Ashlands signposts; rails, laundry lines and world-map
+    mountains are composed by tools/art/tiles.py from Steampunk, Future Fantasy and Fairy Forest pixels
   - "Elements" character kit: hero and NPC field sprites and battle sprites
     (pieces recoloured and assembled by tools/art/world_sprites.py and tools/art/battle.py)
   - Beast Tribes: Dain's field sprite, emotes and side-view battler (recoloured)
