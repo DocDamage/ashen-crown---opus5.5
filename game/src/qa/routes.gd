@@ -1115,9 +1115,10 @@ func r_seg8() -> bool:
 	if not await seg_resume("ch20_done", "seg8"): return false
 	var steps = [
 		["airship", "board"], ["airship", "fly", 57, 44], ["airship", "land"], ["loc", "L_T07"],
-		["buy", "npc:stall", [["I002", 10], ["I004", 10], ["I006", 5], ["I003", 2], ["W004", 1], ["W010", 1], ["W028", 1]]],
-		["optimize"], ["exit", "WORLD_POST"],
-		["airship", "board"], ["airship", "fly", 62, 37], ["airship", "land"], ["loc", "L_D10"],
+		["buy", "npc:stall", [["I002", 8], ["I004", 8], ["I006", 4], ["W004", 1], ["W010", 1], ["W034", 1], ["W028", 1]]],
+		["optimize"], ["exit", "WORLD_POST"], ["go", 43, 45], ["grind_to", 31, 45],
+		["loc", "L_T02"], ["buy", "npc:market_v", [["G016", 1], ["G004", 1], ["G008", 1], ["G023", 2]]], ["optimize"],
+		["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly", 62, 37], ["airship", "land"], ["loc", "L_D10"],
 		["go", 19, 18], ["check", "event:D10_DOCK"], ["use", "switch", "split"], ["wait_map", "D10_R02"],
 		["check", "flag:d10_split"], ["grind_to", 33, 30], ["use", "switch", "lockA"], ["choice", [0]], ["use", "switch", "swapbell"],
 		["wait_map", "D10_R03"], ["use", "switch", "lockA"], ["choice", [0]], ["use", "switch", "swapbell"], ["wait_map", "D10_R02"],
@@ -1142,6 +1143,10 @@ func r_segq() -> bool:
 		["loc", "L_D07"], ["exit", "D07P_R02"], ["exit", "D07P_R03"], ["npc", "q7occ1"], ["tile", 7, 7], ["npc", "q7occ2"],
 		["tile", 15, 7], ["npc", "q7occ3"], ["tile", 23, 7], ["use", "switch", "repeater"], ["check", "q:Q07"],
 		["exit", "D07P_R02"], ["exit", "D07P_R01"], ["exit", "WORLD_POST"], ["ms", "q_nacre"],
+		# supplies at Hearthward
+		["airship", "board"], ["airship", "fly", 57, 44], ["airship", "land"], ["loc", "L_T07"],
+		["buy", "npc:stall", [["I002", 10], ["I004", 10], ["I006", 5], ["I003", 2], ["W004", 1], ["W010", 1], ["W028", 1]]],
+		["optimize"], ["exit", "WORLD_POST"],
 		# Brackenford (Q01, Q05)
 		["airship", "board"], ["airship", "fly", 26, 57], ["airship", "land"], ["loc", "L_T01"], ["npc", "forewoman"],
 		["npc", "camp_west"], ["check", "q:Q01:ACTIVE,q:Q05:ACTIVE"], ["exit", "WORLD_POST"], ["loc", "L_D01"],
@@ -1165,6 +1170,20 @@ func r_segq() -> bool:
 		["airship", "board"], ["airship", "fly", 22, 20], ["airship", "land"], ["loc", "L_T03"], ["npc", "pell_p"],
 		["exit", "WORLD_POST"], ["loc", "L_D04"], ["npc", "q4w1"], ["npc", "q4w2"], ["npc", "q4w3"], ["use", "switch", "restart"],
 		["check", "q:Q04"], ["exit", "WORLD_POST"], ["ms", "q_personal_7"],
+		# Winter island (Q09)
+		["airship", "board"], ["airship", "fly", 50, 1], ["airship", "land"], ["loc", "L_D11"], ["go", 19, 20],
+		["exit", "D11_R02"], ["npc", "sleeper1"], ["npc", "sleeper2"], ["npc", "sleeper3"], ["exit", "D11_R03"],
+		["use", "switch", "heat1"], ["use", "switch", "heat2"], ["use", "switch", "heat3"], ["check", "flag:d11_thaw"],
+		["exit", "D11_R04"], ["grind_to", 35, 40], ["save", 3], ["heal"], ["exit", "D11_R05"], ["choice", [0]], ["go", 19, 16],
+		["check", "flag:b13_done"], ["exit", "D11_R06"], ["go", 15, 10], ["check", "q:Q09"], ["exit", "D11_R05"], ["exit", "D11_R04"],
+		["exit", "D11_R02"], ["exit", "D11_R01"], ["exit", "WORLD_POST"], ["ms", "q_winter"],
+		# Starless Reef (Q10)
+		["airship", "board"], ["airship", "fly", 57, 44], ["airship", "land"], ["loc", "L_T07"], ["npc", "bell_child"],
+		["check", "q:Q10:ACTIVE"], ["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly", 72, 59], ["airship", "land"],
+		["loc", "L_D12"], ["go", 19, 20], ["exit", "D12_R02"], ["exit", "D12_R03"], ["use", "switch", "reflector"],
+		["grind_to", 37, 40], ["exit", "D12_R04"], ["tile", 11, 12], ["save", 3], ["exit", "D12_R05"], ["choice", [0]], ["go", 19, 16],
+		["check", "flag:b14_done"], ["exit", "D12_R06"], ["go", 15, 10], ["check", "q:Q10"], ["exit", "D12_R05"], ["exit", "D12_R04"],
+		["exit", "D12_R02"], ["exit", "D12_R01"], ["exit", "WORLD_POST"], ["ms", "q_reef"],
 		# Veyr (Q08, Q11)
 		["airship", "board"], ["airship", "fly", 42, 46], ["airship", "land"], ["loc", "L_T02"], ["npc", "ansel_p"],
 		["exit", "T02_CANALS"], ["exit", "T02_REGISTRY_POST"], ["npc", "registrar"], ["exit", "T02_CANALS"], ["exit", "D02P_SEALS"],
@@ -1172,22 +1191,15 @@ func r_segq() -> bool:
 		["tile", 13, 11], ["check", "qs:Q08:sealed"], ["exit", "T02_CANALS"], ["exit", "T02_REGISTRY_POST"], ["npc", "registrar"],
 		["check", "q:Q08"], ["exit", "T02_CANALS"], ["exit", "D02P_ECHO"], ["tile", 9, 4], ["save", 3], ["go", 13, 8],
 		["check", "q:Q11"], ["exit", "T02_CANALS"], ["exit", "T02_SQUARE_POST"], ["exit", "WORLD_POST"], ["ms", "q_veyr"],
-		# Winter island (Q09)
-		["airship", "board"], ["airship", "fly", 50, 1], ["airship", "land"], ["loc", "L_D11"], ["go", 19, 20],
-		["exit", "D11_R02"], ["npc", "sleeper1"], ["npc", "sleeper2"], ["npc", "sleeper3"], ["exit", "D11_R03"],
-		["use", "switch", "heat1"], ["use", "switch", "heat2"], ["use", "switch", "heat3"], ["check", "flag:d11_thaw"],
-		["exit", "D11_R04"], ["save", 3], ["heal"], ["exit", "D11_R05"], ["choice", [0]], ["go", 19, 16], ["check", "flag:b13_done"],
-		["exit", "D11_R06"], ["go", 15, 10], ["check", "q:Q09"], ["exit", "D11_R05"], ["exit", "D11_R04"], ["exit", "D11_R02"],
-		["exit", "D11_R01"], ["exit", "WORLD_POST"], ["ms", "q_winter"],
-		# Starless Reef (Q10)
-		["airship", "board"], ["airship", "fly", 57, 44], ["airship", "land"], ["loc", "L_T07"], ["npc", "bell_child"],
-		["check", "q:Q10:ACTIVE"], ["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly", 72, 58], ["airship", "land"],
-		["loc", "L_D12"], ["go", 19, 20], ["exit", "D12_R02"], ["exit", "D12_R03"], ["use", "switch", "reflector"],
-		["exit", "D12_R04"], ["tile", 11, 12], ["save", 3], ["exit", "D12_R05"], ["choice", [0]], ["go", 19, 16],
-		["check", "flag:b14_done"], ["exit", "D12_R06"], ["go", 15, 10], ["check", "q:Q10"], ["ms", "q_reef"],
+		# Q12: the silent alcove, before the final commitment
+		["airship", "board"], ["airship", "fly", 62, 37], ["airship", "land"], ["loc", "L_D10"], ["go", 19, 18],
+		["use", "switch", "split"], ["wait_map", "D10_R02"], ["use", "switch", "lockA"], ["choice", [0]], ["use", "switch", "swapbell"],
+		["wait_map", "D10_R03"], ["use", "switch", "lockA"], ["choice", [0]], ["use", "switch", "swapbell"], ["wait_map", "D10_R02"],
+		["use", "switch", "lockB"], ["choice", [0]], ["use", "switch", "swapbell"], ["wait_map", "D10_R03"], ["grind_to", 38, 40],
+		["use", "switch", "lockB"], ["wait_map", "D10_R04"], ["go", 15, 18], ["save", 3], ["heal"], ["exit", "D10_ALCOVE"], ["choice", [0]],
+		["go", 10, 8], ["check", "q:Q12"], ["ms", "q_all"],
 	]
 	return await run_steps(steps)
-
 
 func r_shoptest() -> bool:
 	if not await seg_resume("ch12_done", "shoptest"): return false

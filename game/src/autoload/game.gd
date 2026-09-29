@@ -231,12 +231,12 @@ func heal_all(include_ko: bool = true) -> void:
 		m["mp"] = s["mmp"]
 
 ## Catch-up growth: members below the story's recommended band (last level floor + 4) earn extra battle XP,
-## up to x3. Transparent, deterministic, never removes XP; it only shortens the gap for direct-route play.
+## up to x4. Transparent, deterministic, never removes XP; it only shortens the gap for direct-route play.
 func catch_up_mult(level: int) -> float:
 	var target = var_get("story_floor") + 4
 	if var_get("story_floor") <= 0 or level >= target:
 		return 1.0
-	return minf(3.0, 1.0 + 0.25 * float(target - level))
+	return minf(4.0, 1.0 + 0.35 * float(target - level))
 
 func award_xp(amount: int) -> Array:
 	## 100% XP to every recruited member, active, reserve or unavailable (docs/07).

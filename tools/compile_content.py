@@ -609,6 +609,13 @@ def main():
     content["maps"] = parse_maps()
     check_maps(content["maps"], content["scenes"], content["items"], content["formations"])
     check_scene_refs(content["scenes"], content["maps"], content["items"], content["formations"], content["characters"])
+    dumped = json.dumps(content, ensure_ascii=False).replace("“", '\\"').replace("”", '\\"')
+    content = json.loads(plain(dumped))   # every display string uses the Ashen8 glyph set
+    fnt = open(os.path.join(ROOT, "game", "assets", "fonts", "ashen8.fnt"), encoding="utf-8").read()
+    glyphs = {int(x) for x in re.findall(r"char id=(\d+)", fnt)}
+    missing = sorted({ch for ch in json.dumps(content, ensure_ascii=False) if ord(ch) >= 32 and ord(ch) not in glyphs and ch not in '{}\\'})
+    if missing:
+        err("characters without a font glyph: " + "".join(missing))
     blob = json.dumps(content, sort_keys=True, ensure_ascii=False)
     content["content_hash"] = hashlib.sha256(blob.encode()).hexdigest()[:16]
     stats = {k: len(v) for k, v in content.items() if isinstance(v, dict)}

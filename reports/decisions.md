@@ -52,3 +52,4 @@ handoff and the kickoff prompt were supplied. Everything below was decided durin
 - Save lamps were added before every boss room that lacked one (D03P_R02, D04_R03/R04, D08_R03/R04, D09_R05).
 - B11 Ash-Tide Warden is fought by the two-person recovery party: no escort add, attack/magic x0.72 (seed HP kept). Found by seg6 trace: three consecutive defeats at Lv24 with two members.
 - Catch-up XP: after each story level floor, members below floor+4 earn up to x3 battle XP (1 + 0.25 per level below). Direct-route traces reached CH16 at Lv24 against a Lv28 floor and the Lv34-42 final dungeon band.
+- Catch-up XP tuned to +35% per level below band, cap x4 (seg8 trace: Lv25 party in starter gear could not hold the Lv35 final-dungeon groups).

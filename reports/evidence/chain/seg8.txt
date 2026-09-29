@@ -1,0 +1,558 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5727:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ERROR: Condition "status < 0" is true. Returning: ERR_CANT_OPEN
+   at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:97)
+WARNING: All audio drivers failed, falling back to the dummy driver.
+     at: initialize (servers/audio/audio_server.cpp:258)
+
+QA [0.89] route seg8 content 9489a85db07ba94d engine 4.7.2-stable (official)
+QA [0.92] RESUMED FIXTURE ch20_done (debug only)
+QA [0.99] CHAIN: segment seg8 starts from milestone ch20_done (written by the previous normal-input segment)
+QA [1.09] walk (49, 9) -> (40, 11) next (49, 10) dir down busy=false top=Field:<Node2D#70715967009>
+QA [11.37] entered T07_MARKET via L_T07
+QA [16.08] shop open: page=shop lists=2 items=117 top=@Control@26:<Control#109689439883>
+QA [28.52] bought; gold now 112, items { "A001": 1, "A002": 1, "A003": 1, "A004": 1, "A005": 1, "A006": 1, "A007": 1, "A008": 1, "A009": 1, "I002": 9, "I004": 12, "I006": 6, "I007": 1, "K_ACCORD_NOTES": 1, "K_CONFISCATED": 1, "K_LEDGER": 1, "K_MANIFEST": 1, "K_MANUAL": 1, "K_ROOK_EVIDENCE": 1, "K_ROUTE_DIAGRAMS": 1, "K_WORKER_LIST": 1, "W004": 1, "W010": 1, "W034": 1, "W028": 1 }
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+QA [51.49] optimized equipment for available members
+QA [55.76] entered WORLD_POST
+QA [86.40] battle start: OWP_1 at WORLD_POST (43, 44) meter=0.0 grace=6
+QA [102.43] battle end: victory
+QA [102.84] grind: 1 battles, Dain Lv 25
+QA [105.39] walk (43, 44) -> (43, 45) next (43, 45) dir down busy=false top=Field:<Node2D#70715967009>
+QA [126.06] battle start: OWP_1 at WORLD_POST (43, 45) meter=0.0 grace=6
+QA [145.49] battle end: victory
+QA [145.62] grind: 1 battles, Dain Lv 26
+QA [174.96] battle start: OWP_3 at WORLD_POST (43, 45) meter=0.0 grace=6
+QA [195.22] battle end: victory
+QA [195.32] grind: 1 battles, Dain Lv 26
+QA [205.01] walk (43, 44) -> (43, 45) next (43, 45) dir down busy=false top=Field:<Node2D#70715967009>
+QA [223.87] battle start: OWP_2 at WORLD_POST (43, 45) meter=0.0 grace=6
+QA [236.89] battle end: victory
+QA [236.99] grind: 1 battles, Dain Lv 27
+QA [264.33] battle start: OWP_1 at WORLD_POST (43, 44) meter=0.0 grace=6
+QA [284.58] battle end: victory
+QA [284.98] grind: 1 battles, Dain Lv 27
+QA [298.56] walk (43, 44) -> (43, 45) next (43, 45) dir down busy=false top=Field:<Node2D#70715967009>
+QA [316.40] battle start: OWP_2 at WORLD_POST (42, 45) meter=0.0 grace=6
+QA [331.28] battle end: victory
+QA [331.73] grind: 1 battles, Dain Lv 27
+QA [366.28] battle start: OWP_2 at WORLD_POST (42, 45) meter=0.0 grace=6
+QA [380.66] battle end: victory
+QA [381.02] grind: 1 battles, Dain Lv 27
+QA [388.99] walk (43, 44) -> (43, 45) next (43, 45) dir down busy=false top=Field:<Node2D#70715967009>
+QA [407.80] battle start: OWP_1 at WORLD_POST (43, 45) meter=0.0 grace=6
+QA [433.68] battle end: victory
+QA [433.81] grind: 1 battles, Dain Lv 28
+QA [461.67] battle start: OWP_2 at WORLD_POST (42, 45) meter=0.0 grace=6
+QA [473.78] battle end: victory
+QA [474.09] grind: 1 battles, Dain Lv 28
+QA [489.60] walk (42, 45) -> (43, 45) next (43, 45) dir right busy=false top=Field:<Node2D#70715967009>
+QA [504.34] battle start: OWP_1 at WORLD_POST (43, 44) meter=0.0 grace=6
+QA [523.49] battle end: victory
+QA [523.87] grind: 1 battles, Dain Lv 29
+QA [555.58] battle start: OWP_1 at WORLD_POST (43, 44) meter=0.0 grace=6
+QA [574.70] battle end: victory
+QA [575.12] grind: 1 battles, Dain Lv 29
+QA [589.07] walk (42, 45) -> (43, 45) next (43, 45) dir right busy=false top=Field:<Node2D#70715967009>
+QA [598.32] battle start: OWP_1 at WORLD_POST (43, 44) meter=0.0 grace=6
+QA [616.90] battle end: victory
+QA [617.30] grind: 1 battles, Dain Lv 29
+QA [652.28] battle start: OWP_1 at WORLD_POST (43, 44) meter=0.0 grace=6
+QA [671.02] battle end: victory
+QA [671.41] grind: 1 battles, Dain Lv 30
+QA [687.20] walk (42, 45) -> (43, 45) next (43, 45) dir right busy=false top=Field:<Node2D#70715967009>
+QA [704.38] battle start: OWP_2 at WORLD_POST (43, 44) meter=0.0 grace=6
+QA [716.73] battle end: victory
+QA [717.16] grind: 1 battles, Dain Lv 30
+QA [750.72] battle start: OWP_1 at WORLD_POST (42, 45) meter=0.0 grace=6
+QA [767.48] battle end: victory
+QA [767.90] grind: 1 battles, Dain Lv 30
+QA [774.83] walk (43, 44) -> (43, 45) next (43, 45) dir down busy=false top=Field:<Node2D#70715967009>
+QA [803.19] battle start: OWP_3 at WORLD_POST (43, 45) meter=0.0 grace=6
+QA [821.81] battle end: victory
+QA [821.95] grind: 1 battles, Dain Lv 30
+QA [848.38] battle start: OWP_3 at WORLD_POST (43, 45) meter=0.0 grace=6
+QA [867.76] battle end: victory
+QA [867.87] grind: 1 battles, Dain Lv 31
+QA [868.70] entered T02_SQUARE_POST via L_T02
+QA [871.27] shop open: page=shop lists=2 items=117 top=@Control@469:<Control#1686244427472>
+QA [883.52] bought; gold now 530, items { "A001": 1, "A002": 1, "A003": 1, "A004": 1, "A005": 1, "A006": 1, "A007": 1, "A008": 1, "A009": 1, "I002": 9, "I004": 12, "I006": 6, "I007": 2, "K_ACCORD_NOTES": 1, "K_CONFISCATED": 1, "K_LEDGER": 1, "K_MANIFEST": 1, "K_MANUAL": 1, "K_ROOK_EVIDENCE": 1, "K_ROUTE_DIAGRAMS": 1, "K_WORKER_LIST": 1, "W001": 1, "W007": 1, "W031": 1, "W025": 1, "G016": 1 }
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:156)
+QA [903.31] optimized equipment for available members
+QA [904.08] walk (35, 14) -> (43, 14) next (36, 14) dir right busy=false top=Field:<Node2D#70715967009>
+QA [905.69] entered WORLD_POST
+QA [914.30] entered D10_R01 via L_D10
+QA [941.42] battle start: D10_5 at D10_R02 (30, 15) meter=0.0 grace=6
+QA [1012.45] battle end: victory
+QA [1012.55] grind: 1 battles, Dain Lv 31
+QA [1026.43] walk (30, 15) -> (30, 14) next (30, 14) dir up busy=false top=Field:<Node2D#70715967009>
+QA [1038.19] battle start: D10_5 at D10_R02 (30, 15) meter=0.0 grace=6
+QA [1093.08] battle end: victory
+QA [1093.18] grind: 1 battles, Dain Lv 32
+QA [1130.80] walk (30, 15) -> (30, 14) next (30, 14) dir up busy=false top=Field:<Node2D#70715967009>
+QA [1132.05] battle start: D10_4 at D10_R02 (30, 14) meter=0.0 grace=6
+QA [1173.75] battle end: victory
+QA [1174.07] grind: 1 battles, Dain Lv 32
+QA [1207.24] battle start: D10_3 at D10_R02 (29, 15) meter=0.0 grace=6
+QA [1241.76] battle end: victory
+QA [1242.08] grind: 1 battles, Dain Lv 32
+QA [1256.37] walk (30, 15) -> (29, 15) next (29, 15) dir left busy=false top=Field:<Node2D#70715967009>
+QA [1273.30] battle start: D10_5 at D10_R02 (29, 15) meter=0.0 grace=6
+QA [1333.23] battle end: victory
+QA [1333.56] grind: 1 battles, Dain Lv 33
+QA [1361.44] walk (10, 13) -> (8, 12) next (9, 13) dir left busy=false top=Field:<Node2D#70715967009>
+QA [1363.60] milestone ch22_before_vessel
+QA [1366.70] entered D10_R05
+QA [1369.94] battle start: B12 at D10_R05 (19, 17) meter=48.6 grace=8
+QA [1409.56] capture /tmp/qa/seg8_boss_tell_B12.png
+QA [1520.97] battle end: victory
+QA [1525.05] entered D10_R06
+QA [1530.05] capture /tmp/qa/seg8_after.png
+QA [1530.68] entered T07_HEARTH
+QA [1539.09] entered T07_MARKET
+QA [1548.44] entered T07_BERTH
+QA [1553.80] capture /tmp/qa/seg8_lamp_three.png
+QA [1558.10] scene save prompt: wrote slot 3
+QA [1569.21] capture /tmp/qa/seg8_post_clear.png
+QA [1569.21] milestone post_clear
+QA [1569.21] ROUTE PASS: seg8 battles=23 steps=2774

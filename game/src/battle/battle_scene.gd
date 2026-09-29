@@ -728,7 +728,7 @@ func _draw_ui() -> void:
 			var e = model.battlers[eid]
 			if not e.alive() or e.tags.has("part"):
 				continue
-			UI.text(c, Vector2(8, y), e.name.substr(0, 16), UI.C_TEXT)
+			UI.text(c, Vector2(8, y), (e.name.split(",")[0]).substr(0, 16), UI.C_TEXT)
 			var bi: Dictionary = Game.S["bestiary"].get(Content.enemy(e.ref).get("variant_of", e.ref), {})
 			if bi.get("affinity", false) or bi.get("weak", []).size() > 0:
 				var wk = []
