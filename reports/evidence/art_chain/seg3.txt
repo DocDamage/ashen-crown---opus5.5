@@ -1,0 +1,44 @@
+QA [1.55] route seg3 content e528220ab0ff6194 engine 4.7.2-stable (official)
+QA [1.57] RESUMED FIXTURE ch04_done (debug only)
+QA [1.76] CHAIN: segment seg3 starts from milestone ch04_done (written by the previous normal-input segment)
+QA [1.85] walk (40, 6) -> (19, 31) next (40, 7) dir down busy=false top=Field:<Node2D#75765909025>
+QA [14.23] entered WORLD
+QA [54.56] entered T04_QUAY via L_T04
+QA [54.58] capture /tmp/qa_art3/seg3_bellharbor.png
+QA [65.77] entered T04_CUSTOMS
+QA [68.09] walk (4, 5) -> (3, 5) next (3, 5) dir left busy=false top=Field:<Node2D#75765909025>
+QA [78.21] entered T04_QUAY
+QA [84.10] entered T04_LANE
+QA [90.04] milestone ch05_done
+QA [93.47] entered T04_QUAY
+QA [99.40] entered WORLD
+QA [102.89] entered D05_R01 via L_D05
+QA [108.49] entered D05_R02
+QA [111.37] battle start: D05_3 at D05_R02 (11, 18) meter=0.0 grace=6
+QA [124.58] battle end: victory
+QA [125.91] walk (11, 11) -> (8, 7) next (11, 10) dir up busy=false top=Field:<Node2D#75765909025>
+QA [137.86] entered D05_R03
+QA [147.51] battle start: D05_2 at D05_R03 (1, 18) meter=0.0 grace=6
+QA [154.99] battle end: victory
+QA [156.05] maintain: used I001 on C01 (hp now 754)
+QA [156.74] entered D05_R05
+QA [160.44] battle start: B05 at D05_R05 (25, 14) meter=0.0 grace=8
+QA [185.03] capture /tmp/qa_art3/seg3_boss_tell_B05.png
+QA [221.65] battle end: victory
+QA [228.40] entered D05_R06
+QA [233.36] milestone ch06_done
+QA [234.53] walk: moved by a scene from (89, 44) to (89, 22); stopping
+QA [239.28] entered D06_R01 via L_D06
+QA [245.29] walk (27, 12) -> (39, 10) next (28, 12) dir right busy=false top=Field:<Node2D#75765909025>
+QA [248.12] entered D06_R02
+QA [257.14] entered D06_R03
+QA [264.27] entered D06_R04
+QA [272.08] entered D06_R05
+QA [275.20] battle start: B06 at D06_R05 (19, 19) meter=49.6 grace=8
+QA [295.41] capture /tmp/qa_art3/seg3_boss_tell_B06.png
+QA [318.27] battle end: victory
+QA [324.22] entered D06_R06
+QA [325.97] capture /tmp/qa_art3/seg3_high_landing.png
+QA [330.39] entered WORLD
+QA [330.39] milestone ch07_done
+QA [330.39] ROUTE PASS: seg3 battles=4 steps=788

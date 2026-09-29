@@ -68,6 +68,29 @@ what a player would have.
 B11 is fought by the two-person recovery party (no escort add, x0.72 attack); catch-up XP after each story level
 floor (+35 % per level below floor+4, cap x4); Hearthward supplies give Ethers; CH20 floor 33.
 
+## Visual pass 2026-09-29 (FF6-inspired, owner request)
+
+Commits after `66f6be5`: groundwork, character art, battle art, UI, field tiles, render caching. Content hash
+unchanged (`e528220ab0ff6194`); only presentation code and art changed.
+
+- **Look**: SNES Final Fantasy VI conventions (docs/11 revision): blue-gradient bevelled windows with a hand cursor
+  and a Window colour setting; autotiled 16x16 field tiles with shorelines, cliffs, walls with dark tops and
+  cast shadows, forests of tall pines; Time Fantasy field sprites recoloured to the character bible; side-view
+  party in battle against large relit enemies on panoramic backdrops; new title screen and logo.
+- **Art source**: owner-licensed library packs assembled by `python tools/gen_art.py library` into git-ignored
+  `game/assets/ext/` (licences allow game use, not raw redistribution); the committed generated art remains the
+  fallback. Credits: `game/licenses/ART_CREDITS.txt`; per-asset sources/licences: `reports/asset_ledger.json`.
+- **Renderer**: library ground is composited per 16x16-cell chunk into textures (animation frames pre-baked),
+  one quad per chunk; overhanging objects are y-sorted. Field frame time is at or below the old generated renderer.
+- **Evidence** (`reports/evidence/art_chain/`): runtime tests 57/57; reachability 0 problems; world audit OK;
+  normal-input chain b1 → seg2..seg7 → seg8 ∥ segq = **CHAIN PASS** on this art (seg8 13 battles, segq 37).
+  A first chain run exposed a frame-rate regression (airship legs overshooting at `--qa-speed 4`); fixed by the
+  chunk renderer, then the full chain was re-run from New Game.
+- **Review tools**: `--qa-gallery` (title/menus/field/battles), `--qa-gallery-set map:ALL` (stitched maps),
+  `--qa-gallery-set perf:IDS` (field frame time). Dev-only; never gameplay evidence.
+- **Open**: licence confirmations for the Time Fantasy "Elements" kit and ansimuz packs (owner); some small props
+  (tents, rails, laundry, statues, signs, awnings) still use generated art; party battlers are small (FF6 scale).
+
 ## Known limitations
 
 - **Windows launch not verified on Windows.** The build was exported and its checksum verified after copying to

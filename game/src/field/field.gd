@@ -1067,7 +1067,11 @@ func _active_overs() -> Array:
 
 func _draw_chunk_tex(node: Node2D) -> void:
 	var frames: Array = node.get_meta("frames", [])
-	var t = frames[_chunk_fi] if frames.size() == 3 else node.get_meta("tex", null)
+	var t = null
+	if frames.size() == 3:
+		t = frames[_chunk_fi]
+	elif node.has_meta("tex"):
+		t = node.get_meta("tex")
 	if t != null:
 		var c: Vector3i = node.get_meta("c")
 		node.draw_texture(t, Vector2(c.x * CHUNK * TS - CHUNK_M, c.y * CHUNK * TS - CHUNK_M))

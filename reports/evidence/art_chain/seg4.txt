@@ -1,0 +1,64 @@
+QA [1.40] route seg4 content e528220ab0ff6194 engine 4.7.2-stable (official)
+QA [1.41] RESUMED FIXTURE ch07_done (debug only)
+QA [1.93] CHAIN: segment seg4 starts from milestone ch07_done (written by the previous normal-input segment)
+QA [2.00] walk (69, 21) -> (66, 12) next (69, 20) dir up busy=false top=Field:<Node2D#75765909025>
+QA [5.16] walk: moved by a scene from (67, 12) to (61, 12); stopping
+QA [11.15] entered D07_R01 via L_D07
+QA [18.11] entered D07_R02
+QA [23.50] entered D07_R03
+QA [38.60] entered D07_R04
+QA [47.41] walk (16, 9) -> (25, 6) next (16, 10) dir down busy=false top=Field:<Node2D#75765909025>
+QA [60.91] entered D07_R05
+QA [64.03] battle start: B07 at D07_R05 (19, 10) meter=67.8 grace=8
+QA [65.56] capture /tmp/qa_art3/seg4_boss_tell_B07.png
+QA [122.08] battle end: victory
+QA [127.28] entered D07_R06
+QA [134.16] entered WORLD
+QA [134.16] milestone ch08_done
+QA [138.55] entered D08_R01 via L_D08
+QA [144.45] entered D08_R02
+QA [146.60] battle start: D08_3 at D08_R02 (9, 24) meter=0.0 grace=6
+QA [159.34] battle end: victory
+QA [164.54] walk (7, 11) -> (0, 14) next (7, 12) dir down busy=false top=Field:<Node2D#75765909025>
+QA [166.46] entered D08_R03
+QA [178.58] entered D08_R02
+QA [186.91] entered D08_R04
+QA [197.38] entered D08_R02
+QA [201.71] battle start: D08_4 at D08_R02 (16, 7) meter=0.0 grace=6
+QA [227.75] battle end: victory
+QA [230.71] walk (15, 13) -> (31, 14) next (15, 12) dir up busy=false top=Field:<Node2D#75765909025>
+QA [236.17] entered D08_R04
+QA [241.09] entered D08_R05
+QA [246.25] battle start: B08 at D08_R05 (23, 14) meter=17.4 grace=8
+QA [255.31] capture /tmp/qa_art3/seg4_boss_tell_B08.png
+QA [315.80] battle end: victory
+QA [320.65] entered D08_R06
+QA [324.50] capture /tmp/qa_art3/seg4_still_pool.png
+QA [324.50] milestone ch09_done
+QA [326.04] entered D08_R05
+QA [333.22] entered D08_R04
+QA [338.05] entered D08_R02
+QA [341.90] walk (22, 29) -> (14, 31) next (21, 29) dir left busy=false top=Field:<Node2D#75765909025>
+QA [343.36] entered D08_R01
+QA [348.84] entered WORLD
+QA [351.35] entered T06_MARKET via L_T06
+QA [360.39] entered WORLD
+QA [370.34] entered T03_TOWN via L_T03
+QA [382.02] entered T03_GARDEN
+QA [386.89] entered T03_TOWN
+QA [387.37] walk (3, 9) -> (19, 31) next (3, 10) dir down busy=false top=Field:<Node2D#75765909025>
+QA [398.08] entered WORLD
+QA [405.03] battle start: OW5_2 at WORLD (33, 12) meter=0.0 grace=6
+QA [413.69] battle end: victory
+QA [421.16] walk: moved by a scene from (61, 12) to (67, 12); stopping
+QA [424.21] entered T05_COURT via L_T05
+QA [429.39] entered WORLD
+QA [432.54] walk: moved by a scene from (67, 12) to (61, 12); stopping
+QA [435.17] entered T06_MARKET via L_T06
+QA [442.66] entered T06_POOL
+QA [443.25] walk (30, 13) -> (24, 16) next (30, 14) dir down busy=false top=Field:<Node2D#75765909025>
+QA [448.17] capture /tmp/qa_art3/seg4_smaller_accord.png
+QA [450.99] entered T06_MARKET
+QA [457.67] entered WORLD
+QA [457.67] milestone ch10_done
+QA [457.67] ROUTE PASS: seg4 battles=5 steps=1257

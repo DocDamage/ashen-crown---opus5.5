@@ -1,0 +1,32 @@
+QA [1.74] route seg7 content e528220ab0ff6194 engine 4.7.2-stable (official)
+QA [1.75] RESUMED FIXTURE ch16_done (debug only)
+QA [2.63] CHAIN: segment seg7 starts from milestone ch16_done (written by the previous normal-input segment)
+QA [3.21] walk (19, 17) -> (59, 45) next (19, 18) dir down busy=false top=Field:<Node2D#75765909025>
+QA [26.99] capture /tmp/qa_art3/seg7_helm.png
+QA [32.47] entered D06P_R01 via L_D06
+QA [50.33] battle start: D06P_2 at D06P_R01 (36, 23) meter=0.0 grace=6
+QA [68.73] battle end: victory
+QA [74.63] walk (23, 22) -> (8, 29) next (22, 22) dir left busy=false top=Field:<Node2D#75765909025>
+QA [78.88] entered WORLD_POST
+QA [78.88] milestone ch17_done
+QA [88.44] entered T02_SQUARE_POST via L_T02
+QA [95.83] entered T02_CANALS
+QA [108.88] entered T02_REGISTRY_POST
+QA [109.93] battle start: D02P_2 at T02_REGISTRY_POST (15, 19) meter=17.8 grace=8
+QA [141.60] battle end: victory
+QA [150.81] entered T02_CANALS
+QA [151.93] walk (39, 20) -> (22, 1) next (38, 20) dir left busy=false top=Field:<Node2D#75765909025>
+QA [158.47] entered T02_SQUARE_POST
+QA [165.78] entered WORLD_POST
+QA [165.78] milestone ch18_done
+QA [173.51] entered D07P_R01 via L_D07
+QA [179.89] entered D07P_R02
+QA [198.61] walk (22, 22) -> (19, 22) next (21, 22) dir left busy=false top=Field:<Node2D#75765909025>
+QA [200.41] entered D07P_R01
+QA [205.86] entered WORLD_POST
+QA [205.86] milestone ch19_done
+QA [209.43] entered T06_POST via L_T06
+QA [215.01] capture /tmp/qa_art3/seg7_ash_accord.png
+QA [217.18] entered WORLD_POST
+QA [217.18] milestone ch20_done
+QA [217.18] ROUTE PASS: seg7 battles=2 steps=664

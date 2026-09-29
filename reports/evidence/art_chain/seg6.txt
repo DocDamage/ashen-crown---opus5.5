@@ -1,0 +1,43 @@
+QA [1.46] route seg6 content e528220ab0ff6194 engine 4.7.2-stable (official)
+QA [1.47] RESUMED FIXTURE ch12_done (debug only)
+QA [1.65] CHAIN: segment seg6 starts from milestone ch12_done (written by the previous normal-input segment)
+QA [1.70] walk (8, 6) -> (12, 10) next (9, 6) dir right busy=false top=Field:<Node2D#75765909025>
+QA [24.48] capture /tmp/qa_art3/seg6_hearth.png
+QA [29.47] entered T07_MARKET
+QA [29.49] capture /tmp/qa_art3/seg6_market.png
+QA [37.35] entered WORLD_POST
+QA [37.35] milestone ch13_done
+QA [46.10] entered D03P_R01 via L_D03
+QA [51.64] walk (24, 13) -> (24, 0) next (24, 12) dir up busy=false top=Field:<Node2D#75765909025>
+QA [54.19] entered D03P_R02
+QA [70.43] entered D03P_R03
+QA [73.10] battle start: B11 at D03P_R03 (17, 13) meter=79.2 grace=8
+QA [108.62] capture /tmp/qa_art3/seg6_boss_tell_B11.png
+QA [150.74] battle end: victory
+QA [156.81] entered D03P_R02
+QA [158.80] battle start: D03P_1 at D03P_R02 (19, 11) meter=0.0 grace=6
+QA [177.15] battle end: victory
+QA [181.99] entered D03P_R01
+QA [188.25] entered WORLD_POST
+QA [188.25] milestone ch14_done
+QA [193.67] walk (41, 39) -> (59, 45) next (41, 40) dir down busy=false top=Field:<Node2D#75765909025>
+QA [198.70] entered T07_MARKET via L_T07
+QA [208.49] entered T04_UPPER via L_T04
+QA [220.21] entered T04_GALLERY
+QA [234.35] walk (15, 7) -> (7, 7) next (14, 7) dir left busy=false top=Field:<Node2D#75765909025>
+QA [253.41] capture /tmp/qa_art3/seg6_lanterns.png
+QA [256.34] entered T04_UPPER
+QA [269.30] entered WORLD_POST
+QA [269.30] milestone ch15_done
+QA [278.39] walk (14, 13) -> (0, 13) next (13, 13) dir left busy=false top=Field:<Node2D#75765909025>
+QA [281.55] entered WORLD_POST
+QA [302.83] entered T03_POST via L_T03
+QA [314.83] entered T03_YARD
+QA [327.67] walk (29, 3) -> (36, 3) next (30, 3) dir right busy=false top=Field:<Node2D#75765909025>
+QA [337.89] battle start: D04P_1 at T03_YARD (11, 22) meter=83.2 grace=8
+QA [355.05] battle end: victory
+QA [371.39] capture /tmp/qa_art3/seg6_launch.png
+QA [378.28] entered T03_POST
+QA [390.13] entered WORLD_POST
+QA [390.13] milestone ch16_done
+QA [390.14] ROUTE PASS: seg6 battles=3 steps=1200

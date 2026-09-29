@@ -1,0 +1,54 @@
+QA [2.14] route seg2 content e528220ab0ff6194 engine 4.7.2-stable (official)
+QA [2.16] RESUMED FIXTURE ch01_done (debug only)
+QA [2.30] CHAIN: segment seg2 starts from milestone ch01_done (written by the previous normal-input segment)
+QA [2.37] walk (20, 1) -> (18, 24) next (20, 2) dir down busy=false top=Field:<Node2D#75765909025>
+QA [8.15] entered WORLD
+QA [15.64] entered T02_MARKET via L_T02
+QA [15.66] capture /tmp/qa_art3/seg2_veyr.png
+QA [21.70] entered T02_SQUARE
+QA [33.12] entered D02_R02
+QA [41.56] entered D02_R03
+QA [50.04] walk (29, 9) -> (18, 0) next (28, 9) dir left busy=false top=Field:<Node2D#75765909025>
+QA [53.38] entered D02_R05
+QA [55.70] battle start: B02 at D02_R05 (19, 20) meter=67.6 grace=8
+QA [65.36] capture /tmp/qa_art3/seg2_boss_tell_B02.png
+QA [106.89] battle end: victory
+QA [112.67] entered D02_R06
+QA [117.24] milestone ch02_done
+QA [117.98] entered D03_R01 via L_D03
+QA [126.81] entered D03_R02
+QA [130.95] battle start: D03_3 at D03_R02 (14, 3) meter=0.0 grace=6
+QA [139.25] battle end: victory
+QA [140.05] entered D03_R03
+QA [155.09] walk (29, 9) -> (39, 9) next (30, 9) dir right busy=false top=Field:<Node2D#75765909025>
+QA [157.09] entered D03_R04
+QA [162.31] entered D03_R05
+QA [165.24] battle start: B03 at D03_R05 (19, 12) meter=57.0 grace=8
+QA [179.69] capture /tmp/qa_art3/seg2_boss_tell_B03.png
+QA [195.51] battle end: victory
+QA [199.17] capture /tmp/qa_art3/seg2_after_b03.png
+QA [203.53] entered D03_R06
+QA [210.19] entered WORLD
+QA [210.19] milestone ch03_done
+QA [213.66] battle start: OW5_2 at WORLD (31, 20) meter=0.0 grace=6
+QA [240.74] battle end: victory
+QA [243.59] entered T03_TOWN via L_T03
+QA [248.49] entered T03_SHOP
+QA [254.76] entered T03_TOWN
+QA [262.17] walk (34, 6) -> (43, 5) next (35, 6) dir right busy=false top=Field:<Node2D#75765909025>
+QA [264.17] entered D04_R01
+QA [272.73] entered D04_R02
+QA [277.85] entered D04_R03
+QA [284.48] entered D04_R02
+QA [290.06] entered D04_R04
+QA [299.35] entered D04_R05
+QA [303.84] battle start: B04 at D04_R05 (14, 14) meter=65.0 grace=8
+QA [339.18] capture /tmp/qa_art3/seg2_boss_tell_B04.png
+QA [349.95] battle end: victory
+QA [351.86] maintain: used I001 on C01 (hp now 718)
+QA [353.36] maintain: used I001 on C06 (hp now 575)
+QA [354.25] walk (17, 14) -> (19, 14) next (18, 14) dir right busy=false top=Field:<Node2D#75765909025>
+QA [358.34] entered D04_R06
+QA [361.27] capture /tmp/qa_art3/seg2_cinderwake_after.png
+QA [361.27] milestone ch04_done
+QA [361.27] ROUTE PASS: seg2 battles=5 steps=824
