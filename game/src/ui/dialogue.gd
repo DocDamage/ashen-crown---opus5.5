@@ -38,7 +38,7 @@ func _has_portrait() -> bool:
 func _portrait() -> Texture2D:
 	var path = "res://assets/sprites/portraits/%s.png" % portrait_key
 	if not portrait_cache.has(path):
-		portrait_cache[path] = load(path) if ResourceLoader.exists(path) else null
+		portrait_cache[path] = Content.load_art(path)
 	return portrait_cache[path]
 
 func _page_text() -> String:

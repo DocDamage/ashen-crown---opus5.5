@@ -6,7 +6,7 @@ Status labels: 'generated' (programmatic, self-reviewed only). Nothing here is c
 import hashlib, json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from PIL import Image
-from art.pix import GEN_VERSION
+from art.pix import GEN_VERSION, LICENSES, pack_of, lib_available
 from art import figures, world_sprites, tiles
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,8 +24,38 @@ def save(img, rel, kind, frames="", palette="", note=""):
                    "status": "generated", "sha": h, "note": note})
 
 
+def save_ext(img, rel, kind, sources, frames="", note=""):
+    """Library-derived asset -> game/assets/ext/<rel> (git-ignored). `sources`: library-relative source paths."""
+    path = os.path.join(A, "ext", rel)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    if isinstance(img, (dict, list)):
+        json.dump(img, open(path, "w"), indent=1)
+    else:
+        img.save(path)
+    h = hashlib.sha256(open(path, "rb").read()).hexdigest()[:12]
+    packs = sorted({pack_of(s) for s in sources})
+    ledger.append({"path": "game/assets/ext/" + rel, "w": getattr(img, "width", 0), "h": getattr(img, "height", 0),
+                   "kind": kind, "frames": frames, "palette": "", "source": "; ".join(sorted(set(sources))),
+                   "license": " | ".join(LICENSES.get(p, p + " (licence not recorded)") for p in packs),
+                   "status": "library", "sha": h, "note": note})
+
+
+def build_library(only=None):
+    """Assemble ext/ assets from the owner's library. Each tools/art module may define build_library(save_ext)."""
+    if not lib_available():
+        print("library not found (set ASHEN_LIB); ext/ left unchanged")
+        return
+    for mod in only or ["tiles", "world_sprites", "battle", "portraits", "enemies", "bgs", "ui"]:
+        m = __import__(f"art.{mod}", fromlist=["x"])
+        if hasattr(m, "build_library"):
+            m.build_library(save_ext)
+
+
 def build(only=None):
     todo = only or ["world", "tiles", "battle", "portraits", "enemies", "bgs", "ui", "creatures"]
+    if todo and todo[0] == "library":
+        build_library(todo[1:] or None)
+        todo = []
     if "world" in todo:
         for cid, f in list(figures.FIG.items()) + list(figures.NPCS.items()):
             save(world_sprites.sheet(f), f"sprites/world/{cid}.png", "world_sprite",
@@ -47,8 +77,10 @@ def build(only=None):
     os.makedirs(os.path.join(ROOT, "reports"), exist_ok=True)
     lp = os.path.join(ROOT, "reports", "asset_ledger.json")
     old = []
-    if only and os.path.exists(lp):
-        old = [e for e in json.load(open(lp)) if e["path"] not in {x["path"] for x in ledger}]
+    if os.path.exists(lp):
+        new = {x["path"] for x in ledger}
+        keep_all = bool(only) or not todo          # partial or library-only runs keep everything else
+        old = [e for e in json.load(open(lp)) if e["path"] not in new and (keep_all or e["status"] == "library")]
     json.dump(sorted(old + ledger, key=lambda e: e["path"]), open(lp, "w"), indent=1)
     print("assets:", len(ledger), "ledger total:", len(old) + len(ledger))
 

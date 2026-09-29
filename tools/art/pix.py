@@ -171,3 +171,37 @@ def dither(x, y, t):
     """Ordered 2x2 dither threshold."""
     m = [[0.25, 0.75], [1.0, 0.5]]
     return t >= m[y % 2][x % 2]
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Owner's licensed 2D library (not redistributable: outputs go to git-ignored game/assets/ext/).
+# ASHEN_LIB points at a mirror of "G:\All 2D Assets Stay Here" (same relative layout).
+import os as _os
+
+LIB_ROOT = _os.environ.get("ASHEN_LIB", "/home/claude/lib/root")
+LICENSES = {
+    "finalbossblues": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, "
+                      "raw files not redistributed; credit finalbossblues",
+}
+
+
+def lib_path(rel):
+    return _os.path.join(LIB_ROOT, *rel.replace("\\", "/").split("/"))
+
+
+_lib_cache = {}
+
+
+def lib_img(rel):
+    """Load a library image as RGBA (cached). Raises FileNotFoundError when the library is not installed."""
+    if rel not in _lib_cache:
+        _lib_cache[rel] = Image.open(lib_path(rel)).convert("RGBA")
+    return _lib_cache[rel]
+
+
+def lib_available(rel="finalbossblues"):
+    return _os.path.exists(lib_path(rel))
+
+
+def pack_of(rel):
+    return rel.replace("\\", "/").split("/")[0]

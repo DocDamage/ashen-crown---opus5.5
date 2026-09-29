@@ -12,7 +12,7 @@ var logo: Texture2D
 
 func _ready() -> void:
 	size = Vector2(320, 240)
-	logo = load("res://assets/ui/title.png") if ResourceLoader.exists("res://assets/ui/title.png") else null
+	logo = Content.load_art("res://assets/ui/title.png")
 	_find_latest()
 	menu = MenuList.new()
 	menu.position = Vector2(110, 148)

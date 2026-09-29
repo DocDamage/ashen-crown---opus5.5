@@ -184,7 +184,9 @@ func _draw_member_line(cid: String, p: Vector2, full: bool) -> void:
 	var s = Game.stats(cid)
 	var t: Texture2D = main.field.sprite_tex(cid)
 	if t:
-		draw_texture_rect_region(t, Rect2(p + Vector2(0, -2), Vector2(24, 32)), Rect2(0, 0, 24, 32))
+		var cw = t.get_width() / 6
+		var chh = t.get_height() / 5
+		draw_texture_rect_region(t, Rect2(p + Vector2(12 - cw / 2, 30 - chh), Vector2(cw, chh)), Rect2(0, 0, cw, chh))
 	var hp = int(m["hp"]) if int(m["hp"]) >= 0 else s["mhp"]
 	var mp = int(m["mp"]) if int(m["mp"]) >= 0 else s["mmp"]
 	UI.text(self, p + Vector2(28, 0), Content.ch(cid)["name"], UI.C_GOLD)
@@ -696,7 +698,7 @@ func _bestiary() -> void:
 			return
 		var e = Content.enemy(it["value"])
 		var b: Dictionary = Game.S["bestiary"].get(it["value"], {})
-		var tx: Texture2D = load("res://assets/sprites/enemies/%s.png" % it["value"]) if ResourceLoader.exists("res://assets/sprites/enemies/%s.png" % it["value"]) else null
+		var tx: Texture2D = Content.load_art("res://assets/sprites/enemies/%s.png" % it["value"])
 		var y = 8
 		if tx:
 			var fw = tx.get_width() / 4

@@ -18,6 +18,7 @@ var speed = 1.0
 var watchdog = 900
 var finished = false
 var tests = false
+var gallery = ""
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -31,6 +32,13 @@ func _ready() -> void:
 			"--qa-tests":
 				tests = true
 				active = true
+			"--qa-gallery":
+				gallery = "all"
+				active = true
+			"--qa-gallery-set":
+				gallery = args[i + 1]
+				active = true
+				i += 1
 			"--qa-capture":
 				capture = true
 			"--qa-out":
@@ -91,3 +99,71 @@ func finish(ok: bool, summary: String) -> void:
 		f.store_string("\n".join(log_lines) + "\n")
 		f.close()
 	get_tree().quit(0 if ok else 1)
+
+# ---------------------------------------------------------------- dev-only visual gallery
+## --qa-gallery / --qa-gallery-set field|battle|ui|all: loads maps and battles directly and screenshots them for
+## art review. It edits state freely, so it is never gameplay evidence (routes are).
+const GALLERY_MAPS := ["T01_PLATFORM", "T01_BAKERY", "D01_R01", "D02_R01", "D03_R02", "T03_TOWN", "D04_R02", "T04_QUAY",
+	"D05_R01", "D06_R01", "T05_COURT", "T06_MARKET", "D07_R01", "D08_R01", "D09_R01", "D10_R01", "T07_MARKET",
+	"D11_R01", "D12_R01", "WORLD", "T02_SQUARE", "W_DECK"]
+const GALLERY_FORMS := ["D01_4", "D03_2", "B01", "B05", "D07_2", "B08", "OW1_1", "D09_4", "B12", "D12_2"]
+
+
+func run_gallery(p_main: Node, which: String) -> void:
+	main = p_main
+	DirAccess.make_dir_recursive_absolute(out_dir)
+	await _g_frames(10)
+	if which in ["ui", "all"]:
+		await _g_shot("ui_title")
+	Game.new_game()
+	if main.title_screen:
+		main.router.pop(main.title_screen)
+		main.title_screen.queue_free()
+		main.title_screen = null
+	if which in ["field", "all", "ui"]:
+		for m in GALLERY_MAPS:
+			if not Content.data["maps"].has(m):
+				continue
+			main.enter_field(m, "default")
+			main.field.banner_t = 0.0
+			await _g_frames(8)
+			await _g_shot("field_" + m)
+	if which in ["ui", "all"]:
+		main.enter_field("T01_PLATFORM", "default")
+		main.field.banner_t = 0.0
+		main.say("Tessa", "The quarry bell rang twice at dawn. That only happens when the lower gate floods.", "C02")
+		await _g_frames(40)
+		await _g_shot("ui_dialogue")
+		main.dialogue.visible = false
+		main.router.pop(main.dialogue)
+		var m = GameMenu.new()
+		m.main = main
+		main.ui.add_child(m)
+		main.router.push(m)
+		m.open("main", {})
+		await _g_frames(10)
+		await _g_shot("ui_menu")
+		main.router.pop(m)
+		m.queue_free()
+	if which in ["battle", "all"]:
+		for f in GALLERY_FORMS:
+			var bs = BattleScene.new()
+			bs.main = main
+			main.world.add_child(bs)
+			main.field.visible = false
+			bs.setup(f, 1234, {})
+			await _g_frames(90)
+			await _g_shot("battle_" + f)
+			bs.queue_free()
+			await _g_frames(2)
+	get_tree().quit(0)
+
+func _g_frames(n: int) -> void:
+	for i in range(n):
+		await get_tree().process_frame
+
+func _g_shot(name: String) -> void:
+	await RenderingServer.frame_post_draw
+	var img = get_viewport().get_texture().get_image()
+	img.save_png("%s/%s.png" % [out_dir, name])
+	print("GALLERY ", name)

@@ -75,7 +75,7 @@ func setup(form_id: String, seed_value: int, opts: Dictionary) -> void:
 func _t(path: String) -> Texture2D:
 	if tex.has(path):
 		return tex[path]
-	var r: Texture2D = load(path) if ResourceLoader.exists(path) else null
+	var r: Texture2D = Content.load_art(path)
 	tex[path] = r
 	return r
 

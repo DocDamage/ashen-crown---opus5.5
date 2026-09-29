@@ -88,7 +88,7 @@ func _ready() -> void:
 func _tex(path: String) -> Texture2D:
 	if tex_cache.has(path):
 		return tex_cache[path]
-	var t: Texture2D = load(path) if ResourceLoader.exists(path) else null
+	var t: Texture2D = Content.load_art(path)
 	tex_cache[path] = t
 	return t
 
@@ -881,7 +881,9 @@ func _draw_char(sprite: String, dir: String, frame: int, pos: Vector2) -> void:
 	if dir.begins_with("pose"):
 		row = 4
 		col = int(dir.substr(4))
-	draw_texture_rect_region(t, Rect2(pos + Vector2(-4, -16), Vector2(24, 32)), Rect2(col * 24, row * 32, 24, 32))
+	var cw = t.get_width() / 6
+	var chh = t.get_height() / 5
+	draw_texture_rect_region(t, Rect2(pos + Vector2(8 - cw / 2, 16 - chh), Vector2(cw, chh)), Rect2(col * cw, row * chh, cw, chh))
 
 func _draw_ship(pos: Vector2) -> void:
 	var t = _tex("res://assets/sprites/wayfarer.png")

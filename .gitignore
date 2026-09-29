@@ -3,3 +3,4 @@ build/
 dist/
 *.tmp
 __pycache__/
+game/assets/ext/

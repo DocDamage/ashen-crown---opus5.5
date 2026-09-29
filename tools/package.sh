@@ -8,6 +8,8 @@ DIST=$ROOT/dist; REL=$ROOT/reports/evidence/release
 CLEAN=/tmp/ashen_clean_$REV
 rm -rf "$DIST" "$CLEAN"; mkdir -p "$DIST/AshenCrown_Windows" "$CLEAN" "$REL"
 (cd "$ROOT" && git archive HEAD) | tar -x -C "$CLEAN"
+# Licensed library art is not in git (no redistribution of raw files): ship it inside the exported .pck only.
+if [ -d "$ROOT/game/assets/ext" ]; then cp -r "$ROOT/game/assets/ext" "$CLEAN/game/assets/ext"; echo "ext assets: $(find "$ROOT/game/assets/ext" -name '*.png' | wc -l) png" > "$REL/ext_assets.txt"; fi
 cd "$CLEAN/game"
 "$G" --headless --path . --import > "$REL/clean_import.txt" 2>&1 || true
 "$G" --headless --path . --import > "$REL/clean_import_second_pass.txt" 2>&1

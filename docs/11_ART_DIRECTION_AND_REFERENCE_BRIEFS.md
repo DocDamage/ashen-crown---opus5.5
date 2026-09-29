@@ -41,6 +41,58 @@ An agent may generate deterministic simple sprites, tiles, icons and effects in 
 
 Do not secretly replace the game with colored rectangles to satisfy a screenshot-count test. Development placeholders must be labelled in the asset ledger and removed or explicitly retained as an outstanding limitation. Reusing shapes and palettes is encouraged; copying copyrighted sprite sheets, maps, portraits or title treatments is not part of this brief.
 
+## Revision 2026-09-29 — FF6-inspired direction (owner request)
+
+This section supersedes the size numbers above where they differ.
+
+Target: the look and feel of a mid-90s Square SNES RPG (Final Fantasy VI as the reference), with **original** or
+properly-licensed art. No FF6 assets, characters, logos or UI graphics are copied — only the conventions below.
+
+### Screen and grid
+- Internal viewport stays 320x240 (FF6 is 256x224); 16x16 tiles; integer scaling, nearest filtering.
+- Field camera 3/4 top-down, light from the upper left.
+
+### Colour
+- Every material uses a 3–5 step ramp. Shadows shift cool (violet/blue), highlights shift warm (cream/yellow).
+- No pure black except character outlines and void. Mid-saturation, earthy base, with a few saturated accents
+  (red cloth, gold trim, magic light). Night/interior scenes lean blue-violet.
+- Texture is made from 2–4 px clusters, never single-pixel noise. Dithering only in skies and large gradients.
+
+### Terrain (field)
+- Transitions are autotiled: grass overhangs dirt with a tufted fringe and a dark under-lip; water has a light
+  foam line and a darker depth band at shorelines; paths have soft ragged edges.
+- Cliffs: bright top lip, vertical striated face in 3 tones, dark contact shadow at the base.
+- Buildings and tall props cast a soft dark shadow onto the ground to the right/below.
+- Towns: timber/stone/brick walls with visible courses, steep roofs with shingle rows and ridge caps, lit windows.
+
+### Characters
+- Field sprites use the Time Fantasy frame (26x36 canvas, ~16x28 visible, big head, dark outline) when library
+  art is installed; the generated fallback is 16x24 in the same proportions.
+- Walk cycle: stand / step / stand / step. Idle breathing optional.
+- Battle: party in side view on the right facing left; ready, attack, cast, hurt, KO, victory poses.
+
+### Enemies and battle
+- Enemies are large and painterly compared to the party (48–96 px; bosses up to 160 px), rich ramps, no hard
+  outline (dark selective edge only), lit from the upper left.
+- Backdrops: painted panorama — sky/ceiling band, silhouette layers, a detailed midground, and a textured ground
+  plane with perspective. 16–32 colours each.
+
+### UI
+- Windows: vertical blue gradient fill (light royal blue at top to deep navy at bottom), rounded 2 px bevelled
+  silver/white border. White text with a dark drop shadow; grey for disabled; pale blue labels (HP/MP/LV).
+- Pointing-hand cursor. Battle HUD: bottom window split into enemy names (left) and party name/HP/ATB (right).
+- Dialogue box full-width at top or bottom with portrait at left.
+
+### Asset sources
+- Base look: the owner's licensed Time Fantasy (finalbossblues) packs — steampunk, sewers, ruins, ashlands,
+  winter, fairy forest, jungle, beach, cloud, Future Fantasy, dark dimension, final tower, monsters.
+- Those packs forbid redistributing raw files, so they are never committed. `python tools/gen_art.py library`
+  copies/assembles them from the owner's library (`ASHEN_LIB`) into `game/assets/ext/` (git-ignored); the
+  runtime prefers `ext/` and falls back to the programmatic art in `tools/art/`, so the public repo still runs.
+- Every imported asset is recorded in `reports/asset_ledger.json` with source pack and licence. Packs licensed
+  only for RPG Maker, or based on third-party IP (Batman, Spider-Man, X-Men, Street Fighter, Fantastic Four),
+  are not used. Credits for used packs go in `game/licenses/`.
+
 ## Six visual reference prompts
 
 These are **reference-image prompts**, not generated images or runtime assets. Their role is to establish composition and art direction. Their labels are for the asset workflow and should not be drawn as visible annotations unless requested.

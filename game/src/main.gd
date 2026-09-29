@@ -79,6 +79,8 @@ func _ready() -> void:
 	to_title()
 	if QA.tests:
 		QA.run_tests(self)
+	elif QA.gallery != "":
+		QA.run_gallery(self, QA.gallery)
 	elif QA.route != "":
 		QA.start(self)
 

@@ -19,6 +19,19 @@ func load_content(path: String = "res://content/content.json") -> void:
 	data = parsed
 	hash = data.get("content_hash", "")
 
+## Library art override: res://assets/X resolves to res://assets/ext/X when the owner's licensed library art has
+## been installed by `python tools/gen_art.py library` (git-ignored); otherwise the generated original is used.
+func art(path: String) -> String:
+	if path.begins_with("res://assets/") and not path.begins_with("res://assets/ext/"):
+		var e = "res://assets/ext/" + path.substr(13)
+		if ResourceLoader.exists(e):
+			return e
+	return path
+
+func load_art(path: String) -> Texture2D:
+	var p = art(path)
+	return load(p) if ResourceLoader.exists(p) else null
+
 func ch(id: String) -> Dictionary: return data["characters"].get(id, {})
 func item(id: String) -> Dictionary: return data["items"].get(id, {})
 func ability(id: String) -> Dictionary: return data["abilities"].get(id, {})
