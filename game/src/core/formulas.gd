@@ -54,7 +54,7 @@ static func combine_reductions(mults: Array) -> float:
 
 ## Derived stats for a party member. `member` is save-owned state, `cdef` the character
 ## definition, `items` the content item table.
-static func member_stats(member: Dictionary, cdef: Dictionary, items: Dictionary) -> Dictionary:
+static func member_stats(member: Dictionary, cdef: Dictionary, items: Dictionary, upgrades: Dictionary = {}, step: float = 0.08) -> Dictionary:
 	var lv: int = int(member.get("level", 1))
 	var n = lv - 1
 	var b: Dictionary = cdef["base"]
@@ -78,11 +78,13 @@ static func member_stats(member: Dictionary, cdef: Dictionary, items: Dictionary
 		if iid == null or iid == "" or not items.has(iid):
 			continue
 		var it: Dictionary = items[iid]
-		s["def"] += int(it.get("def", 0))
-		s["res"] += int(it.get("res", 0))
+		# smith upgrades (+step per level to the piece's own stats; weapons and body armour only)
+		var up = 1.0 + step * float(upgrades.get(iid, 0))
+		s["def"] += int(round(float(it.get("def", 0)) * up))
+		s["res"] += int(round(float(it.get("res", 0)) * up))
 		if slot == "weapon":
-			s["atk"] += int(it.get("atk", 0))
-			s["matk"] += int(it.get("mag", 0))
+			s["atk"] += int(round(float(it.get("atk", 0)) * up))
+			s["matk"] += int(round(float(it.get("mag", 0)) * up))
 			s["ranged"] = bool(it.get("ranged", false))
 			s["two_handed"] = bool(it.get("two_handed", false))
 		if it.has("grants"):
@@ -107,8 +109,12 @@ static func member_stats(member: Dictionary, cdef: Dictionary, items: Dictionary
 	if passives.has("mmp_mult"):
 		s["mmp"] = int(floor(s["mmp"] * float(passives["mmp_mult"])))
 	s["acc_bonus"] = int(passives.get("acc_bonus", 0))
+	if passives.has("weapon_element"):
+		s["weapon_element"] = str(passives["weapon_element"])
 	s["atk"] += s["str"]
 	s["matk"] += s["mag"]
+	if passives.has("mag_bonus"):
+		s["matk"] = int(floor(s["matk"] * (1.0 + float(passives["mag_bonus"]))))
 	return s
 
 ## Level floor for an initial recruit or a returning character.

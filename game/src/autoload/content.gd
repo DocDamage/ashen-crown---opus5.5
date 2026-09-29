@@ -40,5 +40,8 @@ func map(id: String) -> Dictionary: return data["maps"].get(id, {})
 func scene(id: String) -> Dictionary: return data["scenes"].get(id, {})
 func formation(id: String) -> Dictionary: return data["formations"]["formations"].get(id, {})
 func group(id: String) -> Array: return data["formations"]["groups"].get(id, [])
-func item_name(id: String) -> String: return item(id).get("name", id)
+func item_name(id: String) -> String:
+	var n: String = item(id).get("name", id)
+	var up = Game.upgrade_level(id) if Game.S.has("upgrades") else 0
+	return n + (" +%d" % up if up > 0 else "")
 func speaker(id: String) -> Array: return data["speakers"].get(id, [id.capitalize(), ""])

@@ -250,6 +250,14 @@ func _g_ui_screens() -> void:
 	await _g_menu("main", {}, "ui_confirm", func(m): m._save_menu(false); m._confirm("Overwrite slot 1?", func(): pass))
 	await _g_menu("shop", {"id": "SHOP_T01"}, "ui_shop", func(m): m._shop_list("SHOP_T01", true))
 	await _g_menu("shop", {"id": "SHOP_T01"}, "ui_shop_gear", func(m): m._shop_list("SHOP_T01", true); m.lists[-1].index = m.lists[-1].items.size() - 1; m.lists[-1]._fix_scroll())
+	# expansion Phase 2: regional stock at Veyr, the smith at Cinderwake
+	Game.complete_chapter("CH01")
+	Game.complete_chapter("CH03")
+	Game.add_item("M001", 4)
+	Game.add_item("W101", 1)
+	await _g_menu("shop", {"id": "SHOP_T02"}, "ui_shop_regional", func(m): m._shop_list("SHOP_T02", true); m.lists[-1].index = m.lists[-1].items.size() - 3; m.lists[-1]._fix_scroll())
+	await _g_menu("shop", {"id": "SHOP_T03"}, "ui_shop_smith_menu")
+	await _g_menu("shop", {"id": "SHOP_T03"}, "ui_smith", func(m): m._smith_list())
 	await _g_menu("inn", {"price": 20}, "ui_inn")
 	var old_theme = Settings.v.get("window_color", "blue")
 	Settings.v["window_color"] = "crimson"

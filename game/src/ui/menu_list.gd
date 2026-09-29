@@ -121,7 +121,10 @@ func _draw() -> void:
 			elif show_ghost:
 				UI.cursor(self, Vector2(x - 8, y), false, true)
 		var col: Color = it.get("color", UI.C_TEXT) if en else UI.C_DIM
-		UI.text(self, Vector2(x, y), it.get("text", ""), col)
+		var tx = x
+		if it.has("icon") and UI.icon(self, Vector2(x, y), str(it["icon"]), 11, not en):
+			tx += 13
+		UI.text(self, Vector2(tx, y), it.get("text", ""), col)
 		if it.has("right"):
 			var rx = x + col_w - 12 if cols > 1 else size.x - 8
 			UI.text_right(self, rx, y, str(it["right"]), col)

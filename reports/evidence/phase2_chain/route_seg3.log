@@ -1,0 +1,44 @@
+[1.00] route seg3 content 4ba609eefb875f89 engine 4.7.2-stable (official)
+[1.01] RESUMED FIXTURE ch04_done (debug only)
+[1.09] CHAIN: segment seg3 starts from milestone ch04_done (written by the previous normal-input segment)
+[1.16] walk (40, 6) -> (19, 31) next (40, 7) dir down busy=false top=Field:<Node2D#79003911713>
+[12.20] entered WORLD
+[41.17] entered T04_QUAY via L_T04
+[41.18] capture /tmp/claude-0/chain3/seg3_bellharbor.png
+[51.27] entered T04_CUSTOMS
+[53.48] walk (4, 5) -> (3, 5) next (3, 5) dir left busy=false top=Field:<Node2D#79003911713>
+[62.89] entered T04_QUAY
+[68.03] entered T04_LANE
+[73.70] milestone ch05_done
+[76.79] entered T04_QUAY
+[81.99] entered WORLD
+[84.98] entered D05_R01 via L_D05
+[90.36] entered D05_R02
+[93.01] battle start: D05_3 at D05_R02 (11, 18) meter=0.0 grace=6
+[105.04] battle end: victory
+[106.26] walk (11, 11) -> (8, 7) next (11, 10) dir up busy=false top=Field:<Node2D#79003911713>
+[117.81] entered D05_R03
+[126.30] battle start: D05_2 at D05_R03 (1, 18) meter=0.0 grace=6
+[132.88] battle end: victory
+[133.69] maintain: used I001 on C01 (hp now 754)
+[134.34] entered D05_R05
+[137.75] battle start: B05 at D05_R05 (25, 14) meter=0.0 grace=8
+[159.47] capture /tmp/claude-0/chain3/seg3_boss_tell_B05.png
+[188.04] battle end: victory
+[194.68] entered D05_R06
+[199.24] milestone ch06_done
+[200.14] walk: moved by a scene from (89, 44) to (89, 22); stopping
+[204.13] entered D06_R01 via L_D06
+[210.05] walk (27, 12) -> (39, 10) next (28, 12) dir right busy=false top=Field:<Node2D#79003911713>
+[212.60] entered D06_R02
+[221.02] entered D06_R03
+[227.80] entered D06_R04
+[235.13] entered D06_R05
+[238.24] battle start: B06 at D06_R05 (19, 19) meter=49.6 grace=8
+[257.49] capture /tmp/claude-0/chain3/seg3_boss_tell_B06.png
+[277.89] battle end: victory
+[283.58] entered D06_R06
+[285.23] capture /tmp/claude-0/chain3/seg3_high_landing.png
+[289.32] entered WORLD
+[289.32] milestone ch07_done
+[289.32] ROUTE PASS: seg3 battles=4 steps=789

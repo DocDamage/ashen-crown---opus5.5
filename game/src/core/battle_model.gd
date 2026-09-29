@@ -160,6 +160,7 @@ func setup(party: Array, enemies: Array, inv: Dictionary, seed_value: int, opts:
 		b.spd = int(st["spd"])
 		b.acc_bonus = int(st.get("acc_bonus", 0))
 		b.passives = st.get("passives", {})
+		b.weapon_element = str(st.get("weapon_element", "physical"))
 		b.ranged = bool(st.get("ranged", false))
 		b.two_handed = bool(st.get("two_handed", false))
 		b.row = p.get("row", "front")
@@ -301,6 +302,8 @@ func step() -> void:
 		match b.state:
 			"FILLING":
 				var rate = F.atb_rate(b.spd, speed, b.has("haste"), b.has("slow"), b.is_boss())
+				if b.side == 0 and b.passives.has("atb_mult"):
+					rate *= float(b.passives["atb_mult"])
 				b.atb = minf(F.ATB_MAX, b.atb + rate * DT)
 				if b.atb >= F.ATB_MAX:
 					_on_ready(b)
@@ -721,6 +724,10 @@ func _after_action(b: Battler, act: Dictionary, ctx: Dictionary) -> void:
 		tick_ops.append(["bleed", int(ceil(b.mhp * 0.05)), true])
 	if b.has("regen"):
 		tick_ops.append(["regen", int(floor(b.mhp * 0.05)), false])
+	if b.side == 0 and b.passives.has("mp_regen") and b.mp < b.mmp:
+		var mr = mini(int(b.passives["mp_regen"]), b.mmp - b.mp)
+		b.mp += mr
+		ctx["ev"]["results"].append({"id": b.id, "kind": "mp", "amount": mr, "status": "mp_regen"})
 	for t in tick_ops:
 		if not b.alive():
 			break
@@ -1377,6 +1384,8 @@ func _do_damage(src: Battler, t: Battler, op: Dictionary, ctx: Dictionary) -> vo
 		t.feather = false
 	if physical and t.passives.has("phys_reduce"):
 		red.append(1.0 - float(t.passives["phys_reduce"]))
+	if t.side == 0 and t.passives.has("lowhp_guard") and t.mhp > 0 and float(t.hp) / t.mhp < 0.4:
+		red.append(1.0 - float(t.passives["lowhp_guard"]))
 	if not physical and t.mirror_charge:
 		red.append(0.7)
 		t.mirror_charge = false
@@ -1449,6 +1458,11 @@ func _do_damage(src: Battler, t: Battler, op: Dictionary, ctx: Dictionary) -> vo
 		t.mercy_used = true
 		t.statuses["barrier"] = {"dur": 3}
 		ev["results"].append({"id": t.id, "kind": "status+", "status": "barrier"})
+	if t.hp == 0 and t.side == 0 and t.passives.has("auto_revive") and not t.once.has("auto_revive"):
+		# Returner's Cord: once per battle a fatal blow leaves 1 HP
+		t.once["auto_revive"] = true
+		t.hp = 1
+		ev["msgs"].append("%s holds on!" % t.name)
 	if t.hp == 0:
 		_ko(t, ctx)
 	else:

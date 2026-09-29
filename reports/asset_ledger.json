@@ -767,6 +767,32 @@
   "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
  },
  {
+  "path": "game/assets/ext/sprites/icons_11.png",
+  "w": 352,
+  "h": 88,
+  "kind": "item_icons",
+  "frames": "",
+  "palette": "",
+  "source": "HoriHori Assets/#4 - MegaPack  HoriHori Assets - Characters, Backgrounds, Portraits, Items!/Icons/64/; HoriHori Assets/#5 - MegaPack  HoriHori Assets - Characters, Backgrounds, Portraits, Items!/Icons/64/; seveneves/100+ RPG Hat Sprites Pixel Art Pack/hats-1.png; seveneves/400+ RPG Gear Icons Pixel Art Pack/ammies.png; seveneves/400+ RPG Gear Icons Pixel Art Pack/potions.png; seveneves/500+ RPG Icons Pixel Art Pack/icons-2.png; seveneves/500+ RPG Icons Pixel Art Pack/icons-3.png; use this/20000 Icons RPG + Recolors - Full version/",
+  "license": "HoriHori megapacks (horihoripixel.itch.io) - commercial use allowed; 'Don't resell or reupload the assets as-is'; AI-assisted | Seveneves.ai packs (sevenevesai.itch.io) - 'Free for personal and commercial use. No attribution required. You may modify the assets'; no redistribution as standalone assets; AI-assisted | HoriHori 20000 Icons RPG, full version (horihoripixel.itch.io/20000-icons-rpg) - 'Use it in commercial or personal projects'; no redistribution; AI-assisted",
+  "status": "library",
+  "sha": "2c0219c7134e",
+  "note": "11px item icons, 32/row, cell = item.icon"
+ },
+ {
+  "path": "game/assets/ext/sprites/icons_24.png",
+  "w": 768,
+  "h": 192,
+  "kind": "item_icons",
+  "frames": "",
+  "palette": "",
+  "source": "HoriHori Assets/#4 - MegaPack  HoriHori Assets - Characters, Backgrounds, Portraits, Items!/Icons/64/; HoriHori Assets/#5 - MegaPack  HoriHori Assets - Characters, Backgrounds, Portraits, Items!/Icons/64/; seveneves/100+ RPG Hat Sprites Pixel Art Pack/hats-1.png; seveneves/400+ RPG Gear Icons Pixel Art Pack/ammies.png; seveneves/400+ RPG Gear Icons Pixel Art Pack/potions.png; seveneves/500+ RPG Icons Pixel Art Pack/icons-2.png; seveneves/500+ RPG Icons Pixel Art Pack/icons-3.png; use this/20000 Icons RPG + Recolors - Full version/",
+  "license": "HoriHori megapacks (horihoripixel.itch.io) - commercial use allowed; 'Don't resell or reupload the assets as-is'; AI-assisted | Seveneves.ai packs (sevenevesai.itch.io) - 'Free for personal and commercial use. No attribution required. You may modify the assets'; no redistribution as standalone assets; AI-assisted | HoriHori 20000 Icons RPG, full version (horihoripixel.itch.io/20000-icons-rpg) - 'Use it in commercial or personal projects'; no redistribution; AI-assisted",
+  "status": "library",
+  "sha": "af70d2d5b892",
+  "note": "24px item icons, 32/row, cell = item.icon"
+ },
+ {
   "path": "game/assets/ext/sprites/objects.png",
   "w": 128,
   "h": 16,

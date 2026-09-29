@@ -243,7 +243,7 @@ func _items_menu() -> void:
 		for iid in ids:
 			var it = Content.item(iid)
 			var usable: bool = it.get("kind", "") == "consumable" and it.get("field", false)
-			items.append({"text": it["name"], "right": str(Game.count(iid)), "value": iid, "enabled": true, "color": UI.C_TEXT if usable or it["kind"] != "consumable" else UI.C_DIM})
+			items.append({"icon": iid, "text": Content.item_name(iid), "right": str(Game.count(iid)), "value": iid, "enabled": true, "color": UI.C_TEXT if usable or it["kind"] != "consumable" else UI.C_DIM})
 		var dl: Array = Game.S["inventory"]["delivery"]
 		if not dl.is_empty():
 			items.append({"text": "Delivery chest (%d)" % dl.size(), "value": "__delivery"})
@@ -280,6 +280,7 @@ func _item_info(m: MenuList) -> void:
 	for i in range(mini(2, dl.size())):
 		UI.text(self, Vector2(11, 9 + i * 11), dl[i])
 	var y = 47
+	UI.icon(self, Vector2(284, 46), it.get("value", ""), 24)
 	UI.label(self, Vector2(215, y), d.get("kind", "").capitalize())
 	y += 12
 	UI.label(self, Vector2(215, y), "Owned")
@@ -410,7 +411,7 @@ func _equip_pick(cid: String, slot: String, done: Callable) -> void:
 	var items = [{"text": "(remove)", "value": ""}]
 	for iid in Game.S["inventory"]["items"]:
 		if Game.can_equip(cid, slot, iid)["ok"]:
-			items.append({"text": Content.item_name(iid), "right": str(Game.count(iid)), "value": iid})
+			items.append({"icon": iid, "text": Content.item_name(iid), "right": str(Game.count(iid)), "value": iid})
 	var m = _menu(items, Rect2(4, 104, 168, 132), 11, "")
 	sel_slot = slot
 	m.moved.connect(func(_i): preview_item = m.current().get("value", ""))
@@ -437,7 +438,7 @@ func _equip_info(cid: String, m: MenuList) -> void:
 			mem["equip"][sel_slot] = preview_item
 			if sel_slot == "weapon" and Content.item(preview_item).get("two_handed", false):
 				mem["equip"].erase("offhand")
-		prev = F.member_stats(mem, Content.ch(cid), Content.data["items"])
+		prev = Game.stats_for(cid, mem)
 	var y = 10
 	for k in [["mhp", "Max HP"], ["mmp", "Max MP"], ["atk", "Attack"], ["matk", "Magic"], ["def", "Defense"], ["res", "Resist"], ["spd", "Speed"]]:
 		UI.label(self, Vector2(183, y), k[1])
@@ -468,8 +469,29 @@ func _equip_info(cid: String, m: MenuList) -> void:
 			yy += 11
 
 func _passive_label(k: String, v) -> String:
+	match k:
+		"lowhp_guard":
+			return "Guard below 40% HP"
+		"mp_regen":
+			return "MP +%s per action" % str(v)
+		"atb_mult":
+			return "Faster readiness"
+		"mag_bonus":
+			return "Magic up"
+		"reserve_scale":
+			return "Stronger with reserves"
+		"auto_revive":
+			return "Survives one fatal blow"
+		"elem_resist":
+			var names = []
+			if typeof(v) == TYPE_DICTIONARY:
+				for e in v:
+					names.append(str(e))
+			return "Resists " + ", ".join(PackedStringArray(names))
+		"weapon_element":
+			return "Weapon: " + str(v)
 	return {"phys_reduce": "Physical damage -10%", "reveal_affinity": "Reveals affinities", "immune": "Immune: " + str(v),
-		"acc_bonus": "Accuracy +%s" % str(v), "heal_mult": "Healing x1.15", "mmp_mult": "Max MP +15%", "mhp_mult": "Max HP +15%",
+		"acc_bonus": "Accuracy +%s" % str(v), "heal_mult": "Healing up", "mmp_mult": "Max MP up", "mhp_mult": "Max HP up",
 		"counter": "Counterattack", "twohand_mult": "Two-handed x1.15", "mercy_barrier": "Barrier below 30% HP", "start_atb": "Quick start",
 		"encounter_mult": "Fewer encounters", "dispel_ward": "Wards first dispel", "concord_bonus": "Concord +2"}.get(k, k.capitalize().replace("_", " "))
 
@@ -967,17 +989,19 @@ func shop_stock(shop_id: String) -> Array:
 		if Game.chapter_done("CH16"):
 			out.append_array(rules["late"])
 	var items: Dictionary = Content.data["items"]
+	var ids: Array = items.keys()
+	ids.sort()
 	if "weapons" in sh["kinds"]:
-		for iid in items:
+		for iid in ids:
 			var it: Dictionary = items[iid]
-			if it["kind"] == "weapon" and int(it["tier"]) <= 5:
+			if it["kind"] == "weapon" and int(it["tier"]) <= 5 and not it.has("line"):
 				var ch: String = rules["weapon_tier_chapter"][str(int(it["tier"]))]
 				if (ch == "CH01" or Game.chapter_done(ch)) and Game.is_recruited(it["owner"]):
 					out.append(iid)
 	if "armor" in sh["kinds"]:
-		for iid in items:
+		for iid in ids:
 			var it: Dictionary = items[iid]
-			if it["kind"] == "armor":
+			if it["kind"] == "armor" and not it.has("line"):
 				var ch2: String = rules["armor_tier_chapter"][str(int(it["tier"]))]
 				if ch2 == "CH01" or Game.chapter_done(ch2):
 					out.append(iid)
@@ -985,21 +1009,119 @@ func shop_stock(shop_id: String) -> Array:
 		for aid in rules["accessory_chapter"]:
 			if Game.chapter_done(rules["accessory_chapter"][aid]):
 				out.append(aid)
+	# regional line: this town's specialist stock (docs expansion design, Phase 2)
+	for iid in ids:
+		var it3: Dictionary = items[iid]
+		if it3.get("shop_town", "") == sh.get("town", "") and Game.chapter_done(it3["chapter"]):
+			if it3["kind"] != "weapon" or Game.is_recruited(it3["owner"]):
+				out.append(iid)
+	# ore at the smiths
+	var g: Dictionary = Content.data.get("gear", {})
+	if g.get("smith_shops", []).has(shop_id):
+		for oid in g.get("ore_stock", {}):
+			var ch3: String = g["ore_stock"][oid]
+			if ch3 == "CH01" or Game.chapter_done(ch3):
+				out.append(oid)
 	return out
+
+func is_smith(shop_id: String) -> bool:
+	return Content.data.get("gear", {}).get("smith_shops", []).has(shop_id)
 
 func _shop_menu() -> void:
 	page = "shop"
 	var sid: String = data["id"]
 	var sh: Dictionary = Content.data["shops"].get(sid, {"name": "Shop"})
-	var m = _menu([{"text": "Buy", "value": "buy"}, {"text": "Sell", "value": "sell"}, {"text": "Leave", "value": "leave"}], Rect2(4, 4, 96, 52), 3, sh["name"])
+	var opts = [{"text": "Buy", "value": "buy"}, {"text": "Sell", "value": "sell"}]
+	if is_smith(sid):
+		opts.append({"text": "Upgrade", "value": "smith"})
+	opts.append({"text": "Leave", "value": "leave"})
+	var m = _menu(opts, Rect2(4, 4, 96, 22 + 11 * opts.size()), opts.size(), sh["name"])
 	info_draw = func(): _shop_info(null)
 	m.chosen.connect(func(_i, it):
 		if it["value"] == "buy":
 			_shop_list(sid, true)
 		elif it["value"] == "sell":
 			_shop_list(sid, false)
+		elif it["value"] == "smith":
+			_smith_list()
 		else:
 			_close_all())
+
+## Blacksmith: raise a weapon or body armour +1..+3 (ore + crowns). Upgrades apply to every copy of that item.
+func _smith_list() -> void:
+	var m = _menu([], Rect2(4, 60, 196, 176), 15, "")
+	var refresh = func(mm: MenuList):
+		var items = []
+		var seen = {}
+		var ids: Array = Game.S["inventory"]["items"].keys()
+		for cid in Game.S["party"]["roster"]:
+			for sl in Game.member(cid)["equip"]:
+				ids.append(Game.member(cid)["equip"][sl])
+		ids.sort()
+		for iid in ids:
+			if iid == "" or seen.has(iid):
+				continue
+			seen[iid] = true
+			var it = Content.item(iid)
+			if not (it.get("kind", "") == "weapon" or (it.get("kind", "") == "armor" and it.get("slot", "") == "body")):
+				continue
+			var c = Game.upgrade_cost(iid)
+			items.append({"icon": iid, "text": Content.item_name(iid), "right": str(c["gold"]) if not c.is_empty() else "MAX", "value": iid,
+				"enabled": not c.is_empty(), "reason": "Fully upgraded"})
+		mm.items = items
+		mm.index = clampi(mm.index, 0, maxi(0, items.size() - 1))
+		info_draw = func(): _smith_info(mm)
+	refresh.call(m)
+	m.set_meta("refresh", refresh)
+	m.chosen.connect(func(_i, it):
+		var r = Game.upgrade(it["value"])
+		if r["ok"]:
+			Audio.sfx("FX006")
+			flash_msg("%s is now +%d." % [Content.item(it["value"])["name"], r["level"]])
+		else:
+			flash_msg(r["reason"])
+		refresh.call(m))
+
+func _smith_info(m) -> void:
+	UI.win(self, Rect2(104, 4, 212, 52))
+	UI.label(self, Vector2(111, 8), "Crowns")
+	UI.text_right(self, 308, 8, str(Game.gold()), UI.C_TEXT)
+	UI.text(self, Vector2(111, 22), "Each upgrade adds 8% to its stats.", UI.C_TEXT)
+	UI.win(self, Rect2(204, 60, 112, 176))
+	var it: Dictionary = m.current()
+	if it.is_empty():
+		UI.text(self, Vector2(211, 66), "Nothing to upgrade.", UI.C_DIM)
+		return
+	var iid: String = it["value"]
+	UI.icon(self, Vector2(211, 66), iid, 24)
+	var d = Content.item(iid)
+	var y = 94
+	var c = Game.upgrade_cost(iid)
+	var lv = Game.upgrade_level(iid)
+	UI.stat(self, Vector2(211, y), "Level", "+%d" % lv, 308)
+	y += 13
+	var step = float(Content.data["gear"]["step"])
+	for k in [["atk", "ATK"], ["mag", "MAG"], ["def", "DEF"], ["res", "RES"]]:
+		if d.has(k[0]):
+			var now = int(round(float(d[k[0]]) * (1.0 + step * lv)))
+			var nxt = int(round(float(d[k[0]]) * (1.0 + step * (lv + 1))))
+			UI.label(self, Vector2(211, y), k[1])
+			UI.text_right(self, 262, y, str(now))
+			if not c.is_empty():
+				UI.text(self, Vector2(266, y), "→", UI.C_LABEL)
+				UI.text_right(self, 308, y, str(nxt), UI.C_GREEN if nxt > now else UI.C_TEXT)
+			y += 11
+	if not c.is_empty():
+		y += 6
+		UI.label(self, Vector2(211, y), "Needs")
+		y += 12
+		var have = Game.count(c["ore"])
+		UI.icon(self, Vector2(211, y), c["ore"], 11)
+		UI.text(self, Vector2(225, y), "%s x%d" % [Content.item(c["ore"])["name"], c["n"]], UI.C_TEXT if have >= c["n"] else UI.C_RED)
+		y += 11
+		UI.text(self, Vector2(225, y), "(have %d)" % have, UI.C_DIM)
+		y += 11
+		UI.text(self, Vector2(225, y), "%d crowns" % c["gold"], UI.C_TEXT if Game.gold() >= c["gold"] else UI.C_RED)
 
 func _shop_list(sid: String, buying: bool) -> void:
 	var m = _menu([], Rect2(4, 60, 196, 176), 15, "")
@@ -1010,12 +1132,12 @@ func _shop_list(sid: String, buying: bool) -> void:
 				var it = Content.item(iid)
 				var price = int(it["price"])
 				var ok = Game.gold() >= price and Game.count(iid) < Game.STACK_CAP
-				items.append({"text": it["name"], "right": str(price), "value": iid, "enabled": ok, "reason": "Not enough crowns" if Game.gold() < price else "Stack full"})
+				items.append({"icon": iid, "text": it["name"], "right": str(price), "value": iid, "enabled": ok, "reason": "Not enough crowns" if Game.gold() < price else "Stack full"})
 		else:
 			for iid in Game.S["inventory"]["items"]:
 				var it2 = Content.item(iid)
 				var ok2: bool = it2.get("sellable", false)
-				items.append({"text": it2["name"], "right": str(int(it2.get("price", 0)) / 2), "value": iid, "enabled": ok2, "reason": "Cannot be sold"})
+				items.append({"icon": iid, "text": Content.item_name(iid), "right": str(int(it2.get("price", 0)) / 2), "value": iid, "enabled": ok2, "reason": "Cannot be sold"})
 		mm.items = items
 		mm.index = clampi(mm.index, 0, maxi(0, items.size() - 1))
 		info_draw = func(): _shop_info(mm)
@@ -1048,15 +1170,19 @@ func _shop_info(m) -> void:
 	var it: Dictionary = m.current()
 	if it.is_empty():
 		return
-	var d = Content.item(it["value"])
+	var iid: String = it["value"]
+	var d = Content.item(iid)
 	var dl = UI.wrap(d.get("desc", ""), 196)
 	for i in range(mini(2, dl.size())):
 		UI.text(self, Vector2(111, 20 + i * 11), dl[i])
 	var y = 65
-	UI.stat(self, Vector2(211, y), "Owned", str(Game.count(it["value"])), 308)
+	var ix = 211
+	if UI.icon(self, Vector2(211, 65), iid, 24):
+		ix = 239
+	UI.stat(self, Vector2(ix, y), "Owned", str(Game.count(iid)), 308)
 	y += 11
-	UI.stat(self, Vector2(211, y), "Equipped", str(Game.equipped_count(it["value"])), 308)
-	y += 14
+	UI.stat(self, Vector2(ix, y), "Worn", str(Game.equipped_count(iid)), 308)
+	y = 94
 	if d.has("atk"):
 		UI.stat(self, Vector2(211, y), "ATK", str(int(d["atk"])), 250)
 		UI.stat(self, Vector2(258, y), "MAG", str(int(d["mag"])), 308)
@@ -1066,25 +1192,42 @@ func _shop_info(m) -> void:
 		UI.stat(self, Vector2(258, y), "RES", str(int(d["res"])), 308)
 		y += 11
 	if d.get("kind", "") in ["weapon", "armor", "accessory"]:
-		# who can wear it: party sprites, dimmed when they cannot
-		y += 4
-		UI.label(self, Vector2(211, y), "Can equip")
+		# per-member comparison against what each one wears now (FF-style arrows)
+		y += 3
+		UI.label(self, Vector2(211, y), "Party")
 		y += 12
-		var allowed: Array = d.get("allowed", [])
-		var k = 0
+		var slot: String = "weapon" if d["kind"] == "weapon" else ("acc1" if d["kind"] == "accessory" else str(d.get("slot", "body")))
 		for cid in Game.S["party"]["roster"]:
-			var t: Texture2D = main.field.sprite_tex(cid)
-			if t == null:
-				continue
-			var cw = t.get_width() / 6
-			var chh = t.get_height() / 5
-			var px = 210 + (k % 4) * 26
-			var py = y + (k / 4) * (chh + 2)
-			var ok = allowed.has(cid)
-			draw_texture_rect_region(t, Rect2(px + 12 - cw / 2, py, cw, chh), Rect2(0, 0, cw, chh), Color.WHITE if ok else Color(0.25, 0.25, 0.4, 0.8))
-			k += 1
-			if k >= 8:
+			if y > 222:
 				break
+			var nm: String = Content.ch(cid)["name"].split(" ")[0]
+			var can: bool = d.get("allowed", []).has(cid) and (d["kind"] != "weapon" or d.get("owner", cid) == cid)
+			UI.text(self, Vector2(211, y), nm, UI.C_TEXT if can else UI.C_DIM)
+			if not can:
+				UI.text_right(self, 308, y, "-", UI.C_DIM)
+			else:
+				var mem = Game.member(cid).duplicate(true)
+				var worn: String = mem["equip"].get(slot, "")
+				if worn == iid:
+					UI.text_right(self, 308, y, "worn", UI.C_LABEL)
+				else:
+					var cur = Game.stats(cid)
+					mem["equip"][slot] = iid
+					if slot == "weapon" and d.get("two_handed", false):
+						mem["equip"].erase("offhand")
+					var nw = Game.stats_for(cid, mem)
+					var keys = [["atk", "ATK"], ["matk", "MAG"]] if d["kind"] == "weapon" else [["def", "DEF"], ["res", "RES"]]
+					var best = keys[0]
+					if abs(int(nw[keys[1][0]]) - int(cur[keys[1][0]])) > abs(int(nw[keys[0][0]]) - int(cur[keys[0][0]])):
+						best = keys[1]
+					var dv: int = int(nw[best[0]]) - int(cur[best[0]])
+					if d["kind"] == "accessory":
+						UI.text_right(self, 308, y, "can wear", UI.C_TEXT)
+					elif dv == 0:
+						UI.text_right(self, 308, y, "%s =" % best[1], UI.C_TEXT)
+					else:
+						UI.text_right(self, 308, y, "%s %s%d" % [best[1], "+" if dv > 0 else "", dv], UI.C_GREEN if dv > 0 else UI.C_RED)
+			y += 11
 	elif dl.size() > 2:
 		for ln in UI.wrap(" ".join(dl.slice(2)), 98).slice(0, 8):
 			UI.text(self, Vector2(211, y), ln, UI.C_DIM)

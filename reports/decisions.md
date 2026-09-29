@@ -77,3 +77,18 @@ handoff and the kickoff prompt were supplied. Everything below was decided durin
   Fan-tasy Tileset free version (non-commercial only), Winlu .rar (RPG Maker edition of the same art; the zip is
   used instead), Super Retro World and Nemo (as before). `lib_img` reads "pack.zip/inner.png" paths; `Src` sheets
   ending "@3x" are reduced by exact nearest thirds.
+- 2026-09-29 expansion Phase 2 (equipment), from the owner-approved design doc: six regional gear lines (Oathguard,
+  Furnace, Tideglass, Returner, Boneglass, Salvage; 15 pieces each, `tools/content/gear.py`) sit between the
+  existing tiers as sidegrades with one passive each (new passives: lowhp_guard, mp_regen, atb_mult, mag_bonus,
+  reserve_scale, auto_revive, weapon_element). Each line is stocked only by its region's town shop once the chapter
+  before it is done. Smith upgrades (+1..+3, +8% of the piece's own stats per level, ore + crowns) apply per item
+  id, not per copy, and are offered at Brackenford, Cinderwake and Hearthward, which also sell Iron / Heartsteel /
+  Starmetal Ore. Every item has an icon (Seveneves.ai + HoriHori packs; bows drawn in code because no library pack
+  has one); the shop shows each member's ATK/MAG or DEF/RES change. Raven Fantasy Icons were not used: their free
+  version is non-commercial.
+- 2026-09-29 full scan of haydeos, CuteSCKR, seveneves and "use this" (52,764 files; contact sheets of every pack).
+  Owner decisions: use every pack found; beast-folk (frog, insect, rat tribes) are people of the world, some kind,
+  some hostile, some indifferent. The modern and sci-fi packs appear only as ruins of the builder civilization that
+  made the relays and the Dragonborn arrangements: sealed vaults in existing side areas and a fourth Ember Sea
+  area, the Drowned Undercity, exposed by the fault. The "use this" Spells and Cards folders match HoriHori's
+  Massive Pack (itch.io: commercial use, no credit required, no raw resale); owner does not recall the source.

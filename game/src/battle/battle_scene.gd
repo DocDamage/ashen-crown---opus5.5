@@ -501,7 +501,7 @@ func _open_sub_items(b) -> void:
 			continue
 		var it = Content.item(iid)
 		var v = model.validate(b, {"type": "item", "id": iid})
-		items.append({"text": it["name"], "right": str(model.inventory[iid]), "value": iid, "enabled": v["ok"], "reason": v.get("reason", ""), "desc": it.get("desc", "")})
+		items.append({"icon": iid, "text": it["name"], "right": str(model.inventory[iid]), "value": iid, "enabled": v["ok"], "reason": v.get("reason", ""), "desc": it.get("desc", "")})
 	if items.is_empty():
 		items.append({"text": "(no items)", "enabled": false, "reason": "Inventory empty", "value": ""})
 	_open_sub(items, "item")

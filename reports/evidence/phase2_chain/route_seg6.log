@@ -1,0 +1,44 @@
+[1.01] route seg6 content 4ba609eefb875f89 engine 4.7.2-stable (official)
+[1.02] RESUMED FIXTURE ch12_done (debug only)
+[1.11] CHAIN: segment seg6 starts from milestone ch12_done (written by the previous normal-input segment)
+[1.16] walk (8, 6) -> (12, 10) next (9, 6) dir right busy=false top=Field:<Node2D#79003911713>
+[21.40] capture /tmp/claude-0/chain3/seg6_hearth.png
+[25.85] entered T07_MARKET
+[25.86] capture /tmp/claude-0/chain3/seg6_market.png
+[32.69] entered WORLD_POST
+[32.69] milestone ch13_done
+[39.87] entered D03P_R01 via L_D03
+[45.11] walk (24, 13) -> (24, 0) next (24, 12) dir up busy=false top=Field:<Node2D#79003911713>
+[47.49] entered D03P_R02
+[62.70] entered D03P_R03
+[65.22] battle start: B11 at D03P_R03 (17, 13) meter=79.2 grace=8
+[98.15] capture /tmp/claude-0/chain3/seg6_boss_tell_B11.png
+[138.58] battle end: victory
+[144.37] entered D03P_R02
+[146.18] battle start: D03P_1 at D03P_R02 (19, 11) meter=0.0 grace=6
+[163.47] battle end: victory
+[167.90] entered D03P_R01
+[173.31] entered WORLD_POST
+[173.32] milestone ch14_done
+[177.68] walk (41, 39) -> (59, 45) next (41, 40) dir down busy=false top=Field:<Node2D#79003911713>
+[182.03] entered T07_MARKET via L_T07
+[191.00] entered T04_UPPER via L_T04
+[202.11] entered T04_GALLERY
+[215.91] walk (15, 7) -> (7, 7) next (14, 7) dir left busy=false top=Field:<Node2D#79003911713>
+[234.15] capture /tmp/claude-0/chain3/seg6_lanterns.png
+[236.92] entered T04_UPPER
+[248.65] entered WORLD_POST
+[248.65] milestone ch15_done
+[256.22] walk (15, 13) -> (0, 13) next (14, 13) dir left busy=false top=Field:<Node2D#79003911713>
+[259.21] entered WORLD_POST
+[276.13] entered T03_POST via L_T03
+[287.25] entered T03_YARD
+[299.36] walk (28, 3) -> (36, 3) next (29, 3) dir right busy=false top=Field:<Node2D#79003911713>
+[309.02] battle start: D04P_1 at T03_YARD (11, 22) meter=83.2 grace=8
+[325.19] battle end: victory
+[340.86] capture /tmp/claude-0/chain3/seg6_launch.png
+[347.53] entered T03_POST
+[357.92] walk (19, 30) -> (19, 31) next (19, 31) dir down busy=false top=Field:<Node2D#79003911713>
+[358.62] entered WORLD_POST
+[358.62] milestone ch16_done
+[358.62] ROUTE PASS: seg6 battles=3 steps=1201

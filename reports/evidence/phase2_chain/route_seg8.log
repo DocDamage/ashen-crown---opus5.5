@@ -1,0 +1,75 @@
+[1.01] route seg8 content 4ba609eefb875f89 engine 4.7.2-stable (official)
+[1.02] RESUMED FIXTURE ch20_done (debug only)
+[1.45] CHAIN: segment seg8 starts from milestone ch20_done (written by the previous normal-input segment)
+[1.53] walk (49, 9) -> (40, 11) next (49, 10) dir down busy=false top=Field:<Node2D#79003911713>
+[12.25] entered T07_MARKET via L_T07
+[16.39] shop open: page=shop lists=2 items=135 top=@Control@63:<Control#130207975074>
+[28.61] bought; gold now 66, items { "A001": 1, "A002": 1, "A003": 1, "A004": 1, "A005": 1, "A006": 1, "A007": 1, "A008": 1, "A009": 1, "I002": 11, "I004": 13, "I006": 6, "I007": 2, "K_ACCORD_NOTES": 1, "K_CONFISCATED": 1, "K_LEDGER": 1, "K_MANIFEST": 1, "K_MANUAL": 1, "K_ROOK_EVIDENCE": 1, "K_ROUTE_DIAGRAMS": 1, "K_WORKER_LIST": 1, "W004": 1, "W010": 1, "W034": 1, "W028": 1 }
+[47.67] optimized equipment for available members
+[51.75] entered WORLD_POST
+[73.93] walk (43, 45) -> (43, 44) next (43, 44) dir up busy=false top=Field:<Node2D#79003911713>
+[76.12] battle start: OWP_1 at WORLD_POST (43, 44) meter=0.0 grace=6
+[86.82] battle end: victory
+[87.14] grind: 1 battles, Dain Lv 29
+[113.81] battle start: OWP_1 at WORLD_POST (43, 45) meter=0.0 grace=6
+[128.71] battle end: victory
+[128.81] grind: 1 battles, Dain Lv 29
+[148.21] walk (43, 45) -> (43, 44) next (43, 44) dir up busy=false top=Field:<Node2D#79003911713>
+[154.48] battle start: OWP_1 at WORLD_POST (43, 45) meter=0.0 grace=6
+[169.22] battle end: victory
+[169.32] grind: 1 battles, Dain Lv 30
+[196.50] battle start: OWP_1 at WORLD_POST (43, 45) meter=0.0 grace=6
+[208.95] battle end: victory
+[209.05] grind: 1 battles, Dain Lv 30
+[224.10] walk (43, 45) -> (42, 45) next (42, 45) dir left busy=false top=Field:<Node2D#79003911713>
+[232.35] battle start: OWP_1 at WORLD_POST (43, 45) meter=0.0 grace=6
+[249.31] battle end: victory
+[249.41] grind: 1 battles, Dain Lv 30
+[275.40] battle start: OWP_1 at WORLD_POST (42, 45) meter=0.0 grace=6
+[289.36] battle end: victory
+[289.67] grind: 1 battles, Dain Lv 31
+[290.47] entered T02_SQUARE_POST via L_T02
+[292.85] shop open: page=shop lists=2 items=132 top=@Control@261:<Control#772993451805>
+[305.62] bought; gold now 510, items { "A001": 1, "A002": 1, "A003": 1, "A004": 1, "A005": 1, "A006": 1, "A007": 1, "A008": 1, "A009": 1, "I002": 10, "I004": 13, "I006": 6, "I007": 3, "K_ACCORD_NOTES": 1, "K_CONFISCATED": 1, "K_LEDGER": 1, "K_MANIFEST": 1, "K_MANUAL": 1, "K_ROOK_EVIDENCE": 1, "K_ROUTE_DIAGRAMS": 1, "K_WORKER_LIST": 1, "W001": 1, "W007": 1, "W031": 1, "W025": 1, "G023": 1 }
+[325.00] optimized equipment for available members
+[327.60] entered WORLD_POST
+[333.78] walk (59, 37) -> (62, 37) next (60, 37) dir right busy=false top=Field:<Node2D#79003911713>
+[335.07] entered D10_R01 via L_D10
+[361.67] battle start: D10_3 at D10_R02 (30, 15) meter=0.0 grace=6
+[399.40] battle end: victory
+[399.50] grind: 1 battles, Dain Lv 31
+[422.29] walk (30, 15) -> (29, 15) next (29, 15) dir left busy=false top=Field:<Node2D#79003911713>
+[438.76] battle start: D10_4 at D10_R02 (30, 15) meter=0.0 grace=6
+[474.93] battle end: victory
+[475.03] grind: 1 battles, Dain Lv 31
+[505.56] battle start: D10_3 at D10_R02 (30, 15) meter=0.0 grace=6
+[551.00] battle end: victory
+[551.10] grind: 1 battles, Dain Lv 32
+[552.60] walk (30, 15) -> (29, 15) next (29, 15) dir left busy=false top=Field:<Node2D#79003911713>
+[583.59] battle start: D10_5 at D10_R02 (30, 15) meter=0.0 grace=6
+[636.28] battle end: victory
+[636.38] grind: 1 battles, Dain Lv 32
+[653.83] walk (30, 15) -> (30, 14) next (30, 14) dir up busy=false top=Field:<Node2D#79003911713>
+[674.88] battle start: D10_1 at D10_R02 (29, 15) meter=0.0 grace=6
+[693.76] battle end: victory
+[694.07] grind: 1 battles, Dain Lv 32
+[721.69] walk (30, 15) -> (30, 14) next (30, 14) dir up busy=false top=Field:<Node2D#79003911713>
+[722.90] battle start: D10_5 at D10_R02 (30, 14) meter=0.0 grace=6
+[787.09] battle end: victory
+[787.40] grind: 1 battles, Dain Lv 33
+[816.51] milestone ch22_before_vessel
+[819.43] entered D10_R05
+[822.66] battle start: B12 at D10_R05 (19, 17) meter=48.6 grace=8
+[865.49] capture /tmp/claude-0/chain3/seg8_boss_tell_B12.png
+[972.12] battle end: victory
+[976.22] entered D10_R06
+[981.08] capture /tmp/claude-0/chain3/seg8_after.png
+[981.69] entered T07_HEARTH
+[982.75] walk (16, 6) -> (17, 14) next (16, 7) dir down busy=false top=Field:<Node2D#79003911713>
+[989.78] entered T07_MARKET
+[998.03] entered T07_BERTH
+[1003.09] capture /tmp/claude-0/chain3/seg8_lamp_three.png
+[1007.14] scene save prompt: wrote slot 3
+[1018.46] capture /tmp/claude-0/chain3/seg8_post_clear.png
+[1018.47] milestone post_clear
+[1018.47] ROUTE PASS: seg8 battles=13 steps=1910

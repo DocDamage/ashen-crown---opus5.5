@@ -1,0 +1,85 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5727:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ERROR: Condition "status < 0" is true. Returning: ERR_CANT_OPEN
+   at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:97)
+WARNING: All audio drivers failed, falling back to the dummy driver.
+     at: initialize (servers/audio/audio_server.cpp:258)
+
+QA [1.00] route seg4 content 4ba609eefb875f89 engine 4.7.2-stable (official)
+QA [1.00] RESUMED FIXTURE ch07_done (debug only)
+QA [1.38] CHAIN: segment seg4 starts from milestone ch07_done (written by the previous normal-input segment)
+QA [1.44] walk (69, 21) -> (66, 12) next (69, 20) dir up busy=false top=Field:<Node2D#79003911713>
+QA [4.08] walk: moved by a scene from (67, 12) to (61, 12); stopping
+QA [9.49] entered D07_R01 via L_D07
+QA [16.26] entered D07_R02
+QA [21.34] entered D07_R03
+QA [35.91] entered D07_R04
+QA [44.48] walk (16, 9) -> (25, 6) next (16, 10) dir down busy=false top=Field:<Node2D#79003911713>
+QA [57.24] entered D07_R05
+QA [60.30] battle start: B07 at D07_R05 (19, 10) meter=67.8 grace=8
+QA [61.75] capture /tmp/claude-0/chain3/seg4_boss_tell_B07.png
+QA [113.17] battle end: victory
+QA [118.26] entered D07_R06
+QA [124.72] entered WORLD
+QA [124.72] milestone ch08_done
+QA [128.65] entered D08_R01 via L_D08
+QA [134.25] entered D08_R02
+QA [136.21] battle start: D08_3 at D08_R02 (9, 24) meter=0.0 grace=6
+QA [144.33] battle end: victory
+QA [149.36] walk (7, 11) -> (0, 14) next (7, 12) dir down busy=false top=Field:<Node2D#79003911713>
+QA [151.21] entered D08_R03
+QA [162.90] entered D08_R02
+QA [170.96] entered D08_R04
+QA [180.94] entered D08_R02
+QA [185.08] battle start: D08_4 at D08_R02 (16, 7) meter=0.0 grace=6
+QA [208.53] battle end: victory
+QA [211.52] walk (15, 13) -> (31, 14) next (15, 12) dir up busy=false top=Field:<Node2D#79003911713>
+QA [216.85] entered D08_R04
+QA [221.43] entered D08_R05
+QA [226.06] battle start: B08 at D08_R05 (23, 14) meter=17.4 grace=8
+QA [234.06] capture /tmp/claude-0/chain3/seg4_boss_tell_B08.png
+QA [287.31] battle end: victory
+QA [291.93] entered D08_R06
+QA [295.79] capture /tmp/claude-0/chain3/seg4_still_pool.png
+QA [295.79] milestone ch09_done
+QA [297.20] entered D08_R05
+QA [304.11] entered D08_R04
+QA [308.67] entered D08_R02
+QA [312.39] walk (22, 29) -> (14, 31) next (21, 29) dir left busy=false top=Field:<Node2D#79003911713>
+QA [313.76] entered D08_R01
+QA [318.44] entered WORLD
+QA [320.73] entered T06_MARKET via L_T06
+QA [329.36] entered WORLD
+QA [337.57] entered T03_TOWN via L_T03
+QA [348.38] entered T03_GARDEN
+QA [353.06] entered T03_TOWN
+QA [353.49] walk (3, 9) -> (19, 31) next (3, 10) dir down busy=false top=Field:<Node2D#79003911713>
+QA [363.42] entered WORLD
+QA [368.93] battle start: OW5_2 at WORLD (33, 12) meter=0.0 grace=6
+QA [376.38] battle end: victory
+QA [382.64] walk: moved by a scene from (61, 12) to (67, 12); stopping
+QA [385.33] entered T05_COURT via L_T05
+QA [390.14] entered WORLD
+QA [393.03] walk: moved by a scene from (67, 12) to (61, 12); stopping
+QA [395.49] entered T06_MARKET via L_T06
+QA [402.17] entered T06_POOL
+QA [403.05] walk (30, 15) -> (24, 16) next (30, 16) dir down busy=false top=Field:<Node2D#79003911713>
+QA [407.58] capture /tmp/claude-0/chain3/seg4_smaller_accord.png
+QA [410.14] entered T06_MARKET
+QA [416.38] entered WORLD
+QA [416.39] milestone ch10_done
+QA [416.39] ROUTE PASS: seg4 battles=5 steps=1255
+WARNING: 8 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 4 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)

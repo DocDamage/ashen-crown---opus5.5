@@ -45,7 +45,7 @@ def build_library(only=None):
     if not lib_available():
         print("library not found (set ASHEN_LIB); ext/ left unchanged")
         return
-    for mod in only or ["tiles", "world_sprites", "battle", "portraits", "enemies", "bgs", "ui"]:
+    for mod in only or ["tiles", "world_sprites", "battle", "portraits", "enemies", "bgs", "ui", "icons"]:
         m = __import__(f"art.{mod}", fromlist=["x"])
         if hasattr(m, "build_library"):
             m.build_library(save_ext)

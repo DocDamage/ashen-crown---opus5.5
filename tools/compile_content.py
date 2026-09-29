@@ -10,6 +10,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from content import abilities as AB, enemies as EN, tables as TB  # noqa: E402
 from content import formations as FM  # noqa: E402
+from content import gear as GR  # noqa: E402
 
 SUPPORTED_OPS = {"damage", "heal", "mp", "full_restore", "revive", "status", "cleanse", "dispel_positive", "atb", "oath",
                  "arm_overcast", "heat_exchange", "leap", "ground", "mine", "decoy", "steal", "protect", "lethal_guard",
@@ -581,6 +582,11 @@ def main():
     content["characters"] = build_characters(cat["characters"])
     content["abilities"] = build_abilities(cat["abilities"])
     content["items"] = build_items(cat["weapons"], cat["armor"], cat["accessories"], cat["consumables"])
+    GR.build(content["items"])
+    for i, iid in enumerate(sorted(content["items"])):
+        content["items"][iid]["icon"] = i          # cell in assets/ext/sprites/icons_*.png (tools/art/icons.py)
+    content["gear"] = {"upgrade": {str(k): list(v) for k, v in GR.UPGRADE.items()}, "step": GR.UPGRADE_STEP,
+                       "smith_shops": GR.SMITH_SHOPS, "ore_stock": GR.ORE_STOCK, "lines": GR.LINE_ORDER}
     content["statuses"] = {s["id"]: {"id": s["id"], "name": s["name"], "type": s["type"], "duration": TB.STATUS_DURATION[s["id"]],
                                      "desc": plain(s["effect"])} for s in cat["statuses"]}
     content["enemies"] = build_enemies(cat["enemies"], cat["bosses"])

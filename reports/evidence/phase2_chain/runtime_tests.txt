@@ -1,0 +1,88 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: String formatting error: unsupported format character.
+   at: validated_evaluate (core/variant/variant_op.h:770)
+   GDScript backtrace (most recent call first):
+       [0] test_nera_mark_bonus_not_multiplied (res://tests/unit/test_battle_roles.gd:122)
+       [1] run_all (res://tests/test_runner.gd:32)
+       [2] run_tests (res://src/autoload/qa.gd:74)
+       [3] _ready (res://src/main.gd:81)
+ERROR: Parse JSON failed. Error at line 0: Expected key
+   at: parse_string (core/io/json.cpp:629)
+   GDScript backtrace (most recent call first):
+       [0] _read_payload (res://src/autoload/game.gd:793)
+       [1] load_from (res://src/autoload/game.gd:806)
+       [2] test_corrupt_primary_offers_backup (res://tests/unit/test_campaign.gd:94)
+       [3] run_all (res://tests/test_runner.gd:32)
+       [4] run_tests (res://src/autoload/qa.gd:74)
+       [5] _ready (res://src/main.gd:81)
+PASS test_battle_core::test_loot_rng_isolated
+PASS test_battle_core::test_fixed_step_determinism
+PASS test_battle_core::test_wait_vs_active
+PASS test_battle_core::test_mp_reservation
+PASS test_battle_core::test_item_reservation_last_phoenix
+PASS test_battle_core::test_fallen_target_retarget
+PASS test_battle_core::test_revive_refund_when_no_fallen
+PASS test_battle_core::test_actor_ko_while_casting_refunds
+PASS test_battle_core::test_simultaneous_wipe_defeat_priority
+PASS test_battle_core::test_status_durations_and_hard_control
+PASS test_battle_core::test_haste_slow_exclusive
+PASS test_battle_core::test_boss_immunities_and_delay_cap
+PASS test_battle_core::test_defense_stacking_cap
+PASS test_battle_core::test_counter_no_recursion
+PASS test_battle_core::test_concord_accounting
+PASS test_battle_core::test_escape_meter_and_boss_block
+PASS test_battle_core::test_boss_phase_threshold_once
+PASS test_battle_core::test_part_weakens_telegraphed_hit
+PASS test_battle_roles::test_dain_oaths_exclusive_and_sacrifice_caps
+PASS test_battle_roles::test_shelter_intercepts_low_ally_once
+PASS test_battle_roles::test_tessa_overcast_costs_and_nonlethal
+PASS test_battle_roles::test_heat_exchange_limits
+PASS test_battle_roles::test_corren_airborne_no_softlock
+PASS test_battle_roles::test_ivo_mine_and_decoy
+PASS test_battle_roles::test_nera_mark_bonus_not_multiplied
+PASS test_battle_roles::test_oriel_omen_reads_only_committed
+PASS test_battle_roles::test_sable_single_infusion
+PASS test_battle_roles::test_pip_steal_caps
+PASS test_battle_roles::test_accessory_spell_removed_with_accessory
+PASS test_campaign::test_shop_boundaries
+PASS test_campaign::test_unique_overflow_goes_to_delivery
+PASS test_campaign::test_unique_acquisition_once
+PASS test_campaign::test_two_handed_swap_returns_offhand
+PASS test_campaign::test_vestige_unique_links
+PASS test_campaign::test_reserve_growth_and_reunion
+PASS test_campaign::test_save_round_trip
+PASS test_campaign::test_corrupt_primary_offers_backup
+PASS test_campaign::test_future_schema_rejected
+PASS test_campaign::test_crash_during_write_keeps_complete_state
+PASS test_campaign::test_catastrophe_transaction_preserves_ownership
+PASS test_campaign::test_salvage_forwarding_once
+PASS test_campaign::test_quest_state_never_regresses_or_double_awards
+PASS test_formulas::test_xp_curve
+PASS test_formulas::test_damage_formulas
+PASS test_formulas::test_reduction_cap
+PASS test_formulas::test_atb_rate
+PASS test_formulas::test_join_level
+PASS test_formulas::test_member_stats_growth
+PASS test_formulas::test_equipment_change_does_not_regrow
+PASS test_gear::test_regional_lines_complete
+PASS test_gear::test_every_item_has_icon_cell
+PASS test_gear::test_weapon_element_and_mag_bonus
+PASS test_gear::test_upgrade_costs_ore_and_raises_stats
+PASS test_gear::test_reserve_scale_counts_reserves
+PASS test_gear::test_auto_revive_once
+PASS test_gear::test_specialist_stock
+PASS test_post_state::test_catastrophe_scene_commits_post_state
+PASS test_post_state::test_reunion_orders_all_six
+PASS test_post_state::test_personal_quest_reward_once
+PASS test_post_state::test_team_locks_alternate_without_trapping
+PASS test_post_state::test_landing_needs_marked_field
+PASS test_post_state::test_every_shop_lists_stock_at_every_stage
+PASS test_story::test_skip_equivalence
+PASS test_story::test_once_scene_not_reapplied
+
+TOTAL 64 passed, 0 failed (content 4ba609eefb875f89, engine 4.7.2-stable (official))
+WARNING: 16 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 6 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)

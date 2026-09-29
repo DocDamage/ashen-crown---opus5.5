@@ -66,6 +66,28 @@ static func stat(ci: CanvasItem, pos: Vector2, lbl: String, value: String, right
 	label(ci, pos, lbl)
 	text_right(ci, right_x, pos.y, value, col)
 
+## Item icons (library build only: assets/ext/sprites/icons_11.png / icons_24.png, 32 per row, cell = item["icon"]).
+static var _icons = {}
+
+static func icon_tex(px: int) -> Texture2D:
+	if not _icons.has(px):
+		var path = "res://assets/ext/sprites/icons_%d.png" % px
+		_icons[px] = load(path) if ResourceLoader.exists(path) else null
+	return _icons[px]
+
+## Draws an item's icon at `pos` (top-left). Returns false when no icon art is installed.
+static func icon(ci: CanvasItem, pos: Vector2, iid: String, px: int = 11, dim: bool = false) -> bool:
+	var t = icon_tex(px)
+	if t == null or iid == "":
+		return false
+	var it: Dictionary = Content.item(iid)
+	if not it.has("icon"):
+		return false
+	var i: int = int(it["icon"])
+	ci.draw_texture_rect_region(t, Rect2(round(pos.x), round(pos.y), px, px), Rect2((i % 32) * px, (i / 32) * px, px, px),
+		Color(1, 1, 1, 0.45) if dim else Color.WHITE)
+	return true
+
 static func width(s: String) -> float:
 	return font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, 10).x
 

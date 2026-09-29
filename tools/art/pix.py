@@ -199,6 +199,12 @@ LICENSES = {
     "RPGMAKERASSETS/craftpix-net-169442-free-2d-top-down-pixel-dungeon-asset-pack.zip":
                "CraftPix.net free 2D top-down pixel dungeon pack - CraftPix file licence (craftpix.net/file-licenses): "
                "use in commercial games; no redistribution of the raw files",
+    "seveneves": "Seveneves.ai packs (sevenevesai.itch.io) - 'Free for personal and commercial use. No attribution required. "
+                 "You may modify the assets'; no redistribution as standalone assets; AI-assisted",
+    "HoriHori Assets": "HoriHori megapacks (horihoripixel.itch.io) - commercial use allowed; 'Don't resell or reupload the "
+                       "assets as-is'; AI-assisted",
+    "use this/20000 Icons RPG + Recolors - Full version": "HoriHori 20000 Icons RPG, full version (horihoripixel.itch.io/20000-icons-rpg)"
+                       " - 'Use it in commercial or personal projects'; no redistribution; AI-assisted",
     "SakPix": "SakPix Stage Assets (sakpix.itch.io) - owner-stated as usable; the store pages state no explicit licence "
               "(the SakPix character packs ship a CC0 licence); AI-assisted art, reduced to 16px scale. OWNER TO CONFIRM",
     "haydeos": "Factory Monster Pack 1 by Haydeos (haydeos.itch.io/factory-monster-pack-1) - 'You may use these assets in "

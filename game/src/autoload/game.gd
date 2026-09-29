@@ -31,7 +31,7 @@ func new_game() -> void:
 		"save_id": "", "timestamp": "", "playtime": 0.0, "world_phase": "pre", "chapters": [], "flags": {},
 		"vars": {}, "events": [], "quests": {}, "party": {"roster": [], "available": {}, "active": [], "rows": {}, "members": {}, "locked": false},
 		"inventory": {"gold": 300, "items": {}, "delivery": []}, "acquired": [], "chests": [], "discovered": [],
-		"bestiary": {}, "vehicle": {"mode": "foot", "ship_map": "", "ship_x": 0, "ship_y": 0, "ferry": false, "cable": false, "ship": false},
+		"bestiary": {}, "upgrades": {}, "vehicle": {"mode": "foot", "ship_map": "", "ship_x": 0, "ship_y": 0, "ferry": false, "cable": false, "ship": false},
 		"location": {"map": "T01_PLATFORM", "spawn": "start", "x": -1, "y": -1, "dir": "down"},
 		"rng": {"combat": 12345, "loot": 777, "enc": 4242}, "play_settings": {"encounters": Settings.get_v("encounters")},
 		"journal": {"objective": "", "clue": "", "destination": "", "source": "", "rumors": [], "log": []},
@@ -151,7 +151,49 @@ func active() -> Array:
 	return S["party"]["active"].filter(func(c): return is_available(c))
 
 func stats(cid: String) -> Dictionary:
-	return F.member_stats(member(cid), Content.ch(cid), Content.data["items"])
+	return stats_for(cid, member(cid))
+
+## Derived stats for a member dict (the real one, or a preview copy with other equipment).
+func stats_for(cid: String, mem: Dictionary) -> Dictionary:
+	var st = F.member_stats(mem, Content.ch(cid), Content.data["items"], S.get("upgrades", {}), float(Content.data.get("gear", {}).get("step", 0.08)))
+	var rs = float(st["passives"].get("reserve_scale", 0.0))
+	if rs > 0.0:
+		# Salvage line: stronger for every recruited, available member waiting in reserve
+		var reserve = 0
+		for c in S["party"]["roster"]:
+			if c != cid and is_available(c) and not S["party"]["active"].has(c):
+				reserve += 1
+		var k = 1.0 + rs * reserve
+		st["atk"] = int(floor(st["atk"] * k))
+		st["def"] = int(floor(st["def"] * k))
+	return st
+
+## Smith upgrades: level of an item (applies to every copy you own).
+func upgrade_level(iid: String) -> int:
+	return int(S.get("upgrades", {}).get(iid, 0))
+
+func upgrade_cost(iid: String) -> Dictionary:
+	var lv = upgrade_level(iid) + 1
+	var g: Dictionary = Content.data.get("gear", {})
+	if not g.get("upgrade", {}).has(str(lv)):
+		return {}
+	var u: Array = g["upgrade"][str(lv)]
+	return {"level": lv, "ore": u[0], "n": int(u[1]), "gold": maxi(80, int(round(float(Content.item(iid).get("price", 0)) * float(u[2]) / 10.0)) * 10)}
+
+func upgrade(iid: String) -> Dictionary:
+	var c = upgrade_cost(iid)
+	if c.is_empty():
+		return {"ok": false, "reason": "Fully upgraded"}
+	if count(c["ore"]) < c["n"]:
+		return {"ok": false, "reason": "Needs %d %s" % [c["n"], Content.item(c["ore"])["name"]]}
+	if gold() < c["gold"]:
+		return {"ok": false, "reason": "Not enough crowns"}
+	spend_gold(c["gold"])
+	remove_item(c["ore"], c["n"])
+	if not S.has("upgrades"):
+		S["upgrades"] = {}
+	S["upgrades"][iid] = c["level"]
+	return {"ok": true, "level": c["level"]}
 
 func recruit(cid: String) -> Array:
 	## Initial recruit or reunion. Returns messages. Idempotent for equipment and growth.
@@ -788,6 +830,10 @@ func _sanitize(st: Dictionary) -> Dictionary:
 	for k in st["inventory"]["items"].keys():
 		st["inventory"]["items"][k] = int(st["inventory"]["items"][k])
 	st["inventory"]["gold"] = int(st["inventory"]["gold"])
+	if not st.has("upgrades"):
+		st["upgrades"] = {}
+	for k in st["upgrades"].keys():
+		st["upgrades"][k] = int(st["upgrades"][k])
 	for k in st["rng"]:
 		st["rng"][k] = int(st["rng"][k])
 	return st

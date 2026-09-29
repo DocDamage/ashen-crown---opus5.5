@@ -105,6 +105,24 @@ unchanged (`e528220ab0ff6194`); only presentation code and art changed.
   assets used for altars and carts (their store pages state no licence; AI-assisted). Still generated: wells (3
   cells), fences (3), one hole, and the world-map bridges.
 
+## Expansion Phase 2: equipment (2026-09-29, owner-approved design doc)
+
+Content hash `4ba609eefb875f89` (244 items).
+
+- **Regional gear lines**: six lines, one per region (Oathguard, Furnace, Tideglass, Returner, Boneglass, Salvage):
+  48 weapons W101–W148, 24 armor pieces G101–G124, 18 accessories A101–A118 (`tools/content/gear.py`). Each piece
+  sits between two existing tiers and carries a passive (low-HP guard, weapon element, MP regen, faster readiness,
+  magic bonus, status immunities, reserve scaling, once-per-battle survival). Stocked only in the region's own town,
+  after that region's chapter.
+- **Smiths**: Brackenford, Cinderwake and Hearthward shops gain an Upgrade menu: +1..+3 with Iron / Heartsteel /
+  Starmetal ore plus crowns, +8% of the main stat per level; names show "+N".
+- **Item icons**: every item has its own icon (11px in lists, 24px in detail panels) from the Seveneves and
+  HoriHori packs (`tools/art/icons.py`). Shops show a per-member comparison (ATK/MAG or DEF/RES change, "worn", "-").
+- **Evidence** (`reports/evidence/phase2_chain/`): runtime tests 64/64 (new `test_gear.gd`: lines complete, unique
+  icon cells, weapon element and magic bonus, upgrade needs ore, reserve scaling, auto-revive once, specialist
+  stock); reachability 0 problems; world audit OK; full normal-input chain New Game → credits → post-clear plus all
+  12 quests = **CHAIN PASS** (seg8 13 battles, segq 37). UI shots of the regional shop and smith: `gallery/`.
+
 ## Known limitations
 
 - **Windows launch not verified on Windows.** The build was exported and its checksum verified after copying to

@@ -1,0 +1,54 @@
+[1.00] route seg2 content 4ba609eefb875f89 engine 4.7.2-stable (official)
+[1.01] RESUMED FIXTURE ch01_done (debug only)
+[1.12] CHAIN: segment seg2 starts from milestone ch01_done (written by the previous normal-input segment)
+[1.18] walk (20, 1) -> (18, 24) next (20, 2) dir down busy=false top=Field:<Node2D#79003911713>
+[5.71] entered WORLD
+[11.68] entered T02_MARKET via L_T02
+[11.69] capture /tmp/claude-0/chain3/seg2_veyr.png
+[17.02] entered T02_SQUARE
+[28.01] entered D02_R02
+[35.69] entered D02_R03
+[43.57] walk (29, 9) -> (18, 0) next (28, 9) dir left busy=false top=Field:<Node2D#79003911713>
+[46.59] entered D02_R05
+[48.86] battle start: B02 at D02_R05 (19, 20) meter=67.6 grace=8
+[57.09] capture /tmp/claude-0/chain3/seg2_boss_tell_B02.png
+[102.89] battle end: victory
+[108.16] entered D02_R06
+[112.35] milestone ch02_done
+[112.93] entered D03_R01 via L_D03
+[120.69] entered D03_R02
+[124.49] battle start: D03_3 at D03_R02 (14, 3) meter=0.0 grace=6
+[132.50] battle end: victory
+[133.24] entered D03_R03
+[147.31] walk (29, 9) -> (39, 9) next (30, 9) dir right busy=false top=Field:<Node2D#79003911713>
+[149.15] entered D03_R04
+[153.90] entered D03_R05
+[156.71] battle start: B03 at D03_R05 (19, 12) meter=57.0 grace=8
+[169.40] capture /tmp/claude-0/chain3/seg2_boss_tell_B03.png
+[182.91] battle end: victory
+[186.48] capture /tmp/claude-0/chain3/seg2_after_b03.png
+[190.42] entered D03_R06
+[195.83] entered WORLD
+[195.83] milestone ch03_done
+[198.41] battle start: OW5_2 at WORLD (31, 20) meter=0.0 grace=6
+[222.55] battle end: victory
+[225.02] entered T03_TOWN via L_T03
+[229.46] entered T03_SHOP
+[235.40] entered T03_TOWN
+[242.12] walk (34, 6) -> (43, 5) next (35, 6) dir right busy=false top=Field:<Node2D#79003911713>
+[243.97] entered D04_R01
+[252.00] entered D04_R02
+[256.90] entered D04_R03
+[263.29] entered D04_R02
+[268.70] entered D04_R04
+[277.56] entered D04_R05
+[281.89] battle start: B04 at D04_R05 (14, 14) meter=65.0 grace=8
+[312.46] capture /tmp/claude-0/chain3/seg2_boss_tell_B04.png
+[322.09] battle end: victory
+[323.67] maintain: used I001 on C01 (hp now 718)
+[324.95] maintain: used I001 on C06 (hp now 575)
+[325.74] walk (17, 14) -> (19, 14) next (18, 14) dir right busy=false top=Field:<Node2D#79003911713>
+[329.63] entered D04_R06
+[332.51] capture /tmp/claude-0/chain3/seg2_cinderwake_after.png
+[332.51] milestone ch04_done
+[332.51] ROUTE PASS: seg2 battles=5 steps=824
