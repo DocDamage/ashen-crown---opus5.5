@@ -145,4 +145,4 @@ func _draw() -> void:
 		var s2 = "%s  %s  Lv%d  %s" % [latest_info["location"], Game.fmt_time(latest_info["playtime"]), latest_info["level"], str(latest_info["date"]).replace("T", " ").substr(0, 16)]
 		UI.text_center(self, 160, 124, s, UI.C_TEXT)
 		UI.text_center(self, 160, 135, s2, UI.C_LABEL)
-	UI.text_right(self, 316, 229, "v0.1  original work", UI.C_DIM)
+	UI.text_right(self, 316, 229, "v0.2", UI.C_DIM)

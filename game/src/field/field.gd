@@ -34,6 +34,13 @@ var ext_tex: Texture2D = null
 var ext_rules: Dictionary = {}     # kind -> {type: tile|auto|wall|stamp, ...}
 var ext_group: Dictionary = {}     # kind -> autotile connection group
 var _kc: Dictionary = {}           # per-draw kind cache (Vector2i -> kind)
+var _ci: CanvasItem = null         # current draw target (self, or a cached ground layer)
+var ground_static: Node2D          # whole-map ground recorded once (re-recorded when conditional tiles change)
+var ground_anim: Node2D            # visible animated cells (water etc.), re-recorded on animation ticks
+var ext_anim: Dictionary = {}
+var _static_talls: Array = []
+var _bake_sig = ""
+var _anim_sig = ""
 
 # player
 var p_tile = Vector2i(0, 0)
@@ -89,6 +96,15 @@ func _ready() -> void:
 	for s in tile_rules["tall"]:
 		tall_set[s] = true
 	objects_tex = _tex("res://assets/sprites/objects.png")
+	_ci = self
+	ground_static = Node2D.new()
+	ground_static.show_behind_parent = true
+	add_child(ground_static)
+	ground_static.draw.connect(_draw_static)
+	ground_anim = Node2D.new()
+	ground_anim.show_behind_parent = true
+	add_child(ground_anim)
+	ground_anim.draw.connect(_draw_anim)
 
 func _tex(path: String) -> Texture2D:
 	if tex_cache.has(path):
@@ -757,12 +773,12 @@ func _tile_kind_draw(x: int, y: int) -> String:
 func _draw_tile_kind(k: String, x: int, y: int, pos: Vector2) -> void:
 	var row: int = kinds_row.get(k, -1)
 	if row < 0 or atlas == null:
-		draw_rect(Rect2(pos, Vector2(TS, TS)), Color8(20, 16, 28))
+		_ci.draw_rect(Rect2(pos, Vector2(TS, TS)), Color8(20, 16, 28))
 		return
 	var v = _variant(x, y)
 	if k in ["water", "deep", "shallow", "puddle", "wheel", "boat"]:
 		v = int(time * 2.0 + (x + y) * 0.0) % 2 if k != "boat" else 0
-	draw_texture_rect_region(atlas, Rect2(pos, Vector2(TS, TS)), Rect2(v * TS, row * TS, TS, TS))
+	_ci.draw_texture_rect_region(atlas, Rect2(pos, Vector2(TS, TS)), Rect2(v * TS, row * TS, TS, TS))
 
 # ----------------------------------------------------------------------
 # Library tiles: RPG-Maker-style autotiles (A1/A2 32x48 blocks, A4 wall top + face) and plain/stamp tiles,
@@ -770,6 +786,9 @@ func _draw_tile_kind(k: String, x: int, y: int, pos: Vector2) -> void:
 func _load_ext(ts: String) -> void:
 	ext_rules = {}
 	ext_group = {}
+	ext_anim = {}
+	_static_talls = []
+	_bake_sig = ""
 	ext_tex = _tex("res://assets/tiles/%s_ext.png" % ts)
 	if ext_tex == null:
 		return
@@ -781,12 +800,35 @@ func _load_ext(ts: String) -> void:
 	ext_rules = d.get("rules", {})
 	for k in ext_rules:
 		ext_group[k] = ext_rules[k].get("g", k)
+	ext_anim = {}
+	for k in ext_rules:
+		var kk = k
+		for i in range(4):
+			var rr: Dictionary = ext_rules.get(kk, {})
+			if rr.has("fps"):
+				ext_anim[k] = true
+				break
+			kk = rr.get("under", "")
+			if kk == "" or kk == "@":
+				break
+	_bake_sig = ""
+	_anim_sig = ""
 
+var _overs: Array = []            # active tileset_over entities for this draw
+
+## kind_at() for drawing: same result, but conditions are evaluated once per frame instead of per call.
 func _kind_c(x: int, y: int) -> String:
 	var key = Vector2i(x, y)
-	if not _kc.has(key):
-		_kc[key] = kind_at(x, y)
-	return _kc[key]
+	if _kc.has(key):
+		return _kc[key]
+	var k := "void"
+	if x >= 0 and y >= 0 and x < W and y < H:
+		k = legend.get(String(grid[y][x]), "void")
+		for e in _overs:
+			if x >= e["x1"] and x <= e["x2"] and y >= e["y1"] and y <= e["y2"]:
+				k = e["tile"]
+	_kc[key] = k
+	return k
 
 func _same(g: String, x: int, y: int) -> bool:
 	if x < 0 or y < 0 or x >= W or y >= H:
@@ -828,7 +870,7 @@ func _auto_cell(b: Vector2, n: bool, s: bool, w: bool, e: bool, nw: bool, ne: bo
 			sx = 0 if qx == 0 else 3
 			sy = 2 if qy == 0 else 5
 		var src = b + Vector2(sx * 8, (sy - (2 if face else 0)) * 8)
-		draw_texture_rect_region(ext_tex, Rect2(pos + Vector2(qx * 8, qy * 8), Vector2(8, 8)), Rect2(src, Vector2(8, 8)))
+		_ci.draw_texture_rect_region(ext_tex, Rect2(pos + Vector2(qx * 8, qy * 8), Vector2(8, 8)), Rect2(src, Vector2(8, 8)))
 
 func _frame_of(r: Dictionary, key: String) -> Vector2:
 	var fr: Array = r[key]
@@ -885,7 +927,7 @@ func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
 			var v = vs[idx]
 			if r.has("fps"):
 				v = r["t"][int(time * float(r["fps"])) % vs.size()]
-			draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)))
+			_ci.draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)))
 		"auto":
 			var b = _frame_of(r, "b")
 			_auto_cell(b, _same(g, x, y - 1), _same(g, x, y + 1), _same(g, x - 1, y), _same(g, x + 1, y),
@@ -913,7 +955,7 @@ func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
 			elif not _same(g, x, y + 1):
 				cy = 2
 			var v9 = t9[cy * 3 + cx]
-			draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v9[0], v9[1]), Vector2(TS, TS)))
+			_ci.draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v9[0], v9[1]), Vector2(TS, TS)))
 		"hrow":
 			# one-row structure (house front, fence, counter): left end / middle / right end / single
 			var tl: Array = r["t"]
@@ -926,7 +968,7 @@ func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
 				v = tl[0]
 			elif not l and not rr:
 				v = tl[3] if tl.size() > 3 else tl[1]
-			draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)))
+			_ci.draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)))
 		"stamp":
 			var st: Array = r["r"]
 			if r.has("inner") and _same(g, x, y - 1):
@@ -942,26 +984,115 @@ func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
 			if r.get("tall", false):
 				talls.append([y * TS + 15, "ext", rect, dpos])
 			else:
-				draw_texture_rect_region(ext_tex, Rect2(dpos, rect.size), rect)
+				_ci.draw_texture_rect_region(ext_tex, Rect2(dpos, rect.size), rect)
 	if r["type"] != "stamp" and not r.get("casts", false):
 		# FF-style soft drop shadow cast onto the ground right of a wall/structure
 		var lk = _kind_c(x - 1, y)
 		if ext_rules.get(lk, {}).get("casts", false):
-			draw_rect(Rect2(pos, Vector2(6, TS)), Color(0.05, 0.03, 0.12, 0.3))
+			_ci.draw_rect(Rect2(pos, Vector2(6, TS)), Color(0.05, 0.03, 0.12, 0.3))
 	return true
+
+func _active_overs() -> Array:
+	var out = []
+	for e in map["entities"]:
+		if e["type"] == "tileset_over" and Game.eval_cond(e["cond"]):
+			out.append(e)
+	return out
+
+## Whole-map static ground (ext tilesets): recorded once per map/condition state; the layer is just moved by -cam.
+func _draw_static() -> void:
+	if map.is_empty() or ext_tex == null:
+		return
+	_ci = ground_static
+	_kc = {}
+	_overs = _active_overs()
+	_static_talls = []
+	ground_static.draw_rect(Rect2(Vector2(-TS * 2, -TS * 2), Vector2(W * TS + TS * 4, H * TS + TS * 4)), Color8(12, 10, 18))
+	for y in range(H):
+		for x in range(W):
+			var k = _kind_c(x, y)
+			if ext_anim.has(k):
+				continue
+			_draw_cell_any(k, x, y, Vector2(x * TS, y * TS), _static_talls)
+	for e in map["entities"]:
+		if e["type"] == "block" and Game.eval_cond(e["cond"]):
+			for by in range(e["y1"], e["y2"] + 1):
+				for bx in range(e["x1"], e["x2"] + 1):
+					if not _draw_ext(e["tile"], bx, by, Vector2(bx * TS, by * TS), _static_talls):
+						_draw_tile_kind(e["tile"], bx, by, Vector2(bx * TS, by * TS))
+	_ci = self
+
+## Visible animated cells only (water, lava, sky), re-recorded when the animation frame or view origin changes.
+func _draw_anim() -> void:
+	if map.is_empty() or ext_tex == null or ext_anim.is_empty():
+		return
+	_ci = ground_anim
+	_kc = {}
+	_overs = _active_overs()
+	var x0 = maxi(0, int(cam.x / TS) - 1)
+	var y0 = maxi(0, int(cam.y / TS) - 1)
+	var x1 = mini(W - 1, int((cam.x + VIEW.x) / TS) + 2)
+	var y1 = mini(H - 1, int((cam.y + VIEW.y) / TS) + 3)
+	var dummy = []
+	for y in range(y0, y1 + 1):
+		for x in range(x0, x1 + 1):
+			var k = _kind_c(x, y)
+			if ext_anim.has(k):
+				_draw_ext(k, x, y, Vector2(x * TS, y * TS), dummy)
+	_ci = self
+
+## Library rule or generated fallback for one cell (fallback tall props go to talls).
+func _draw_cell_any(k: String, x: int, y: int, pos: Vector2, talls: Array) -> void:
+	if _draw_ext(k, x, y, pos, talls):
+		return
+	var dk = _tile_kind_draw(x, y)
+	if tall_set.has(dk):
+		var under = "grass" if dk in ["tree", "tree2"] and kinds_row.has("grass") and _outdoor() else "floor"
+		if not _draw_ext(under, x, y, pos, talls):
+			_draw_tile_kind(under, x, y, pos)
+		talls.append([y * TS + 15, "prop", dk, pos])
+		return
+	_draw_tile_kind(dk, x, y, pos)
 
 func _draw() -> void:
 	if map.is_empty():
 		return
+	_ci = self
 	_kc = {}
+	_overs = []
+	for e in map["entities"]:
+		if e["type"] == "tileset_over" and Game.eval_cond(e["cond"]):
+			_overs.append(e)
 	var ox = -cam
 	var x0 = maxi(0, int(cam.x / TS) - 1)
 	var y0 = maxi(0, int(cam.y / TS) - 1)
 	var x1 = mini(W - 1, int((cam.x + VIEW.x) / TS) + 1)
 	var y1 = mini(H - 1, int((cam.y + VIEW.y) / TS) + 2)
 	var bg = Color8(12, 10, 18)
-	draw_rect(Rect2(Vector2.ZERO, VIEW), bg)
 	var talls = []
+	if ext_tex != null:
+		# cached ground layers (drawn behind this node); only moved by the camera
+		var sig = "%s|" % map_id
+		for e in map["entities"]:
+			if e["type"] in ["tileset_over", "block"] and Game.eval_cond(e["cond"]):
+				sig += "%d," % e.get("x1", 0) + "%d;" % e.get("y1", 0)
+		if sig != _bake_sig:
+			_bake_sig = sig
+			ground_static.queue_redraw()
+		var tick = int(time * 3.0) if ext_anim.size() > 0 else 0
+		var asig = "%s|%d|%d|%d" % [sig, tick, int(cam.x / TS), int(cam.y / TS)]
+		if asig != _anim_sig:
+			_anim_sig = asig
+			ground_anim.queue_redraw()
+		ground_static.position = ox
+		ground_anim.position = ox
+		for t in _static_talls:
+			var tp: Vector2 = t[3] + ox
+			if tp.x > -64 and tp.x < VIEW.x + 64 and tp.y > -64 and tp.y < VIEW.y + 96:
+				talls.append([t[0], t[1], t[2], tp])
+		y1 = y0 - 1   # skip the per-frame ground loop
+	else:
+		draw_rect(Rect2(Vector2.ZERO, VIEW), bg)
 	for y in range(y0, y1 + 1):
 		for x in range(x0, x1 + 1):
 			var pos = Vector2(x * TS, y * TS) + ox
@@ -980,6 +1111,8 @@ func _draw() -> void:
 					draw_rect(Rect2(pos, Vector2(TS, 1)), Color(1, 1, 1, 0.35))
 	# conditional blocks drawn as their tile
 	for e in map["entities"]:
+		if ext_tex != null:
+			break
 		if e["type"] == "block" and Game.eval_cond(e["cond"]):
 			for by in range(e["y1"], e["y2"] + 1):
 				for bx in range(e["x1"], e["x2"] + 1):
@@ -1023,7 +1156,7 @@ func _draw() -> void:
 				if props_tex:
 					draw_texture_rect_region(props_tex, Rect2(t[3] + Vector2(0, -16), Vector2(16, 32)), Rect2(col * 16, 0, 16, 32))
 			"ext":
-				draw_texture_rect_region(ext_tex, Rect2(t[3], t[2].size), t[2])
+				_ci.draw_texture_rect_region(ext_tex, Rect2(t[3], t[2].size), t[2])
 			"obj":
 				if objects_tex:
 					draw_texture_rect_region(objects_tex, Rect2(t[3], Vector2(16, 16)), Rect2(int(t[2]) * 16, 0, 16, 16))

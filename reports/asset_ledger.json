@@ -1254,10 +1254,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "d037d5e40488",
+  "sha": "fcdf26c7eb54",
   "note": ""
  },
  {
@@ -1267,10 +1267,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "a059b1d2ce7c",
+  "sha": "9bb25115d819",
   "note": ""
  },
  {
@@ -1280,10 +1280,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "cf7ce33a3dd3",
+  "sha": "062d83f9ce52",
   "note": ""
  },
  {
@@ -1293,10 +1293,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "68076de86e57",
+  "sha": "d079d4aa7ab6",
   "note": ""
  },
  {
@@ -1306,10 +1306,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2c.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2c.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "13cb9cbeefd7",
+  "sha": "520bcaab6c79",
   "note": ""
  },
  {
@@ -1319,10 +1319,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2c.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2c.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "2ec925e8b411",
+  "sha": "dc9b88bc8d16",
   "note": ""
  },
  {
@@ -1332,10 +1332,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "9253cb1aba47",
+  "sha": "b7eeee27e0ea",
   "note": ""
  },
  {
@@ -1345,10 +1345,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "2348fae62dc6",
+  "sha": "f372a870c1ac",
   "note": ""
  },
  {
@@ -1358,10 +1358,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "934bb1800e8f",
+  "sha": "e2bd3100aa9e",
   "note": ""
  },
  {
@@ -1371,10 +1371,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "228f789b4d36",
+  "sha": "39915d50507f",
   "note": ""
  },
  {
@@ -1384,10 +1384,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_A1_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_A1_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "f9ef3b0786e4",
+  "sha": "ba12a01eabf0",
   "note": ""
  },
  {
@@ -1397,10 +1397,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_A1_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_A1_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "8b0d32688e79",
+  "sha": "aa1e5f088808",
   "note": ""
  },
  {
@@ -1410,23 +1410,23 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "c65f5f454b77",
+  "sha": "f15fe2142a5c",
   "note": ""
  },
  {
   "path": "game/assets/ext/tiles/grove_ext.png",
   "w": 512,
-  "h": 87,
+  "h": 80,
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "4d89c4277740",
+  "sha": "ecc912be12e5",
   "note": ""
  },
  {
@@ -1436,10 +1436,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "d0f06fa9e4d7",
+  "sha": "668d21670c74",
   "note": ""
  },
  {
@@ -1449,10 +1449,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "2dd8ecad2d19",
+  "sha": "d8f5144d1d3d",
   "note": ""
  },
  {
@@ -1462,10 +1462,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "53d181caad95",
+  "sha": "f39eee981119",
   "note": ""
  },
  {
@@ -1475,10 +1475,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "58e1d69099f7",
+  "sha": "73fe2a14312a",
   "note": ""
  },
  {
@@ -1488,10 +1488,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "e16c071266fd",
+  "sha": "df3227738d0b",
   "note": ""
  },
  {
@@ -1501,10 +1501,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "0c0df71766ca",
+  "sha": "5238da10448b",
   "note": ""
  },
  {
@@ -1514,10 +1514,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "06fb43c30f57",
+  "sha": "f5d8c573d449",
   "note": ""
  },
  {
@@ -1527,10 +1527,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "8341565b6d10",
+  "sha": "be0c8d16d19d",
   "note": ""
  },
  {
@@ -1540,10 +1540,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_A2_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_A2_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "b569715985ac",
+  "sha": "6e38976897c0",
   "note": ""
  },
  {
@@ -1553,10 +1553,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_A2_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_A2_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "7b2f57314a55",
+  "sha": "89b3155a2b66",
   "note": ""
  },
  {
@@ -1566,10 +1566,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/RPGMAKER-100/tf_A2_atlantis.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/RPGMAKER-100/tf_A2_atlantis.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "742b54967a76",
+  "sha": "847e81cdea59",
   "note": ""
  },
  {
@@ -1579,10 +1579,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/RPGMAKER-100/tf_A2_atlantis.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/RPGMAKER-100/tf_A2_atlantis.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "1e15eb941d1c",
+  "sha": "3f7d63a4c328",
   "note": ""
  },
  {
@@ -1592,10 +1592,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "b27896c3c844",
+  "sha": "171770b5be6e",
   "note": ""
  },
  {
@@ -1605,10 +1605,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "2ef552f2afd2",
+  "sha": "39fcae551c7b",
   "note": ""
  },
  {
@@ -1618,10 +1618,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "1d47a5413704",
+  "sha": "b9fff0b9ca36",
   "note": ""
  },
  {
@@ -1631,10 +1631,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "d8a945e06e73",
+  "sha": "df55ecb65bea",
   "note": ""
  },
  {
@@ -1644,10 +1644,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "ac257ab4a8b5",
+  "sha": "ae19e1df6c7f",
   "note": ""
  },
  {
@@ -1657,10 +1657,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "8186eee2a378",
+  "sha": "e6044ab471d2",
   "note": ""
  },
  {
@@ -1670,10 +1670,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "f22d486dfd73",
+  "sha": "2db962148e1f",
   "note": ""
  },
  {
@@ -1683,10 +1683,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "8ab95e9ea036",
+  "sha": "e0640f3705ed",
   "note": ""
  },
  {
@@ -1696,10 +1696,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "bdebba205048",
+  "sha": "8b01b1e546d1",
   "note": ""
  },
  {
@@ -1709,10 +1709,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "cd9ceacfebb4",
+  "sha": "066417fa5750",
   "note": ""
  },
  {
@@ -1722,10 +1722,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "ae122fbb80f2",
+  "sha": "318ad3dd45f3",
   "note": ""
  },
  {
@@ -1735,10 +1735,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "1dac2e87bc33",
+  "sha": "d25d62bcce0e",
   "note": ""
  },
  {
@@ -1748,10 +1748,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "f1b87c265e7e",
+  "sha": "08db2d8d7d5e",
   "note": ""
  },
  {
@@ -1761,10 +1761,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "88c1950d2606",
+  "sha": "3f1c031a76ba",
   "note": ""
  },
  {
@@ -1774,10 +1774,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA1_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA1_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "b7b97ff616c0",
+  "sha": "8b3b23eb1849",
   "note": ""
  },
  {
@@ -1787,10 +1787,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA1_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA1_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "2cbc07a5b4e6",
+  "sha": "79c3d86d36bf",
   "note": ""
  },
  {
@@ -1800,10 +1800,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "9fed393e93fc",
+  "sha": "7ee292a17fe9",
   "note": ""
  },
  {
@@ -1813,10 +1813,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "a6765507771a",
+  "sha": "0ecbb26e1823",
   "note": ""
  },
  {
@@ -1826,10 +1826,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "9ff3282f52e2",
+  "sha": "b9e905cfc750",
   "note": ""
  },
  {
@@ -1839,10 +1839,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "38614ae9db2b",
+  "sha": "6d2915ab0b3d",
   "note": ""
  },
  {
@@ -1852,10 +1852,10 @@
   "kind": "tileset_rules",
   "frames": "",
   "palette": "",
-  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "a47235b0e9ef",
+  "sha": "c2327d767479",
   "note": ""
  },
  {
@@ -1865,10 +1865,10 @@
   "kind": "tileset_ext",
   "frames": "16x16 rules atlas",
   "palette": "",
-  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/modern_tileB_inside2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
   "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
   "status": "library",
-  "sha": "f4a31acd0f80",
+  "sha": "f0b71511549f",
   "note": ""
  },
  {

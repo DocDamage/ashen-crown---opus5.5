@@ -32,11 +32,23 @@ battle; Defend through telegraphed attacks. Equipment > Optimize equips your str
 ## Build from source
 
 ```
+set ASHEN_LIB=G:\All 2D Assets Stay Here   # owner's licensed art library (see below)
+python tools/gen_art.py library          # assemble library art -> game/assets/ext/ (git-ignored)
 python tools/compile_content.py          # data + maps + scenes -> game/content/content.json
 godot --headless --path game --import
 godot --headless --path game -- --qa-tests --qa-out /tmp/qa        # runtime tests
 godot --headless --path game --export-release "Windows Desktop" ../build/windows/AshenCrown.exe
 ```
+
+### Art: licensed library + generated fallback
+
+The FF6-inspired look uses the owner's licensed pixel-art packs (Time Fantasy, ansimuz, Haydeos and others;
+see `game/licenses/ART_CREDITS.txt`). Their licences allow use in the game but not redistribution of the raw
+files, so they are never committed: `tools/gen_art.py library` reads them from `ASHEN_LIB` and writes the
+assembled atlases/sheets to `game/assets/ext/`, which the game prefers at runtime (`Content.art`). Without the
+library the game still runs on the project's own generated art. `tools/package.sh` copies `ext/` into the
+clean export so the Windows build ships the full art. Dev screenshots:
+`godot --path game -- --qa-gallery --qa-out <dir>` (or `--qa-gallery-set map:ALL` for whole-map captures).
 
 Requires Godot 4.7.2-stable and its Windows release export template. See `CLAUDE.md` for every pipeline
 (art, audio, font generators, map scripts, reachability checks, route bots) and `reports/` for evidence,

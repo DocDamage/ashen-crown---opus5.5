@@ -123,6 +123,18 @@ func run_gallery(p_main: Node, which: String) -> void:
 		main.router.pop(main.title_screen)
 		main.title_screen.queue_free()
 		main.title_screen = null
+	if which.begins_with("perf:"):
+		# average field frame time (ms) per map: --qa-gallery-set perf:ID1,ID2
+		for m in which.substr(5).split(","):
+			main.enter_field(m, "default")
+			await _g_frames(30)
+			var t0 = Time.get_ticks_usec()
+			for i in range(120):
+				main.field.queue_redraw()
+				await RenderingServer.frame_post_draw
+			print("PERF %s %.2f ms/frame" % [m, (Time.get_ticks_usec() - t0) / 120000.0])
+		get_tree().quit(0)
+		return
 	if which.begins_with("map:"):
 		# whole-map stitched captures for tile review: --qa-gallery-set map:ID1,ID2 (or map:ALL)
 		var ids: Array = Array(which.substr(4).split(","))

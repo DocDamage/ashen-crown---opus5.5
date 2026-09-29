@@ -53,3 +53,14 @@ handoff and the kickoff prompt were supplied. Everything below was decided durin
 - B11 Ash-Tide Warden is fought by the two-person recovery party: no escort add, attack/magic x0.72 (seed HP kept). Found by seg6 trace: three consecutive defeats at Lv24 with two members.
 - Catch-up XP: after each story level floor, members below floor+4 earn up to x3 battle XP (1 + 0.25 per level below). Direct-route traces reached CH16 at Lv24 against a Lv28 floor and the Lv34-42 final dungeon band.
 - Catch-up XP tuned to +35% per level below band, cap x4 (seg8 trace: Lv25 party in starter gear could not hold the Lv35 final-dungeon groups).
+- 2026-09-29 (owner request) FF6-inspired visual pass. Art now comes from the owner's licensed 2D library where a
+  fitting, commercially-usable pack exists (Time Fantasy tiles/characters, ansimuz + Haydeos + characters/ monster
+  packs, ansimuz backdrops), assembled by `tools/gen_art.py library` into git-ignored `game/assets/ext/` because those
+  licences forbid redistributing raw files; `Content.art()` prefers ext/, generated art stays as the fallback.
+  Rejected: RPG Maker-only packs, third-party IP packs, Nemo (commercial use not stated), Super Retro World (bans
+  redistribution and "AI projects"). Generic "CC0" license.txt files found in the library folders are not relied on.
+- Field tiles use RPG Maker A1/A2/A4 autotile layouts rendered per map kind (auto/wall/grid9/hrow/tile/stamp rules
+  in `game/assets/ext/tiles/<family>_ext.json`); walls cast a soft shadow to the right; forest interiors use tall
+  pines and forest edges low bushes so rivers/paths above them stay visible. Unmapped kinds use the generated atlas.
+- UI: FF6-style blue gradient windows, bevelled border, hand cursor and a Window colour setting (blue/ash/crimson/
+  verdant/violet). Battle: panoramic backdrops, party staggered on the right, split enemy/party windows.

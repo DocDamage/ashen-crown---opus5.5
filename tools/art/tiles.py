@@ -1101,7 +1101,6 @@ def props_kit(ground="@"):
         "doorway": tile(t16(SP_C2, 1, 7)),
         "rubble": stamp(Src(AS_B, 35, 34, 11, 11), under=ground),
         "crystal": stamp(Src(W_B, 97, 66, 13, 14), under=ground),
-        "pillar": stamp(Src(SP_D, 129, 156, 14, 35), tall=True, under=ground),
     }
 
 
@@ -1213,7 +1212,8 @@ def room_kit(ground="@"):
     return {
         "shelf": stamp(Src(SP_I1, 208, 129, 16, 52), tall=True, under=ground),
         "book": stamp(Src(SP_I1, 96, 214, 15, 8), under=ground),
-        "bed": stamp(Src(SP_I2, 241, 197, 14, 42), tall=True, under=ground),
+        "bed": stamp(Src(FU + "modern_tileB_inside2.png", 128, 176, 16, 32), tall=True, under=ground,
+                     alts=[Src(FU + "modern_tileB_inside2.png", 128, 112, 16, 32)]),
         "table": stamp(Src(SP_I1, 195, 199, 26, 24), tall=True, under=ground),
         "bench": stamp(Src(SP_I1, 2, 100, 12, 24), tall=True, under=ground),
         "chest_deco": stamp(Src(SP_I2, 80, 224, 16, 15), under=ground),

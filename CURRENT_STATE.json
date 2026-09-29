@@ -1,23 +1,33 @@
 {
-  "project": "The Ashen Crown",
-  "engine": "Godot 4.7.2-stable (verified 4.7.2.stable.official.ed1daf0bf), Compatibility renderer, 320x240",
-  "updated": "2026-09-28",
-  "phase": "B6 complete except owner-side checks: full campaign implemented; final normal-input chain (New Game -> credits -> post-clear, plus Q01-Q12) PASS on revision 7428b37 / content e528220ab0ff6194; Windows build exported from a clean archive and delivered",
-  "content": {
-    "chapters": "CH01-CH24 authored (content_src/scenes/ch01..ch22.scn, quests.scn, gates.scn, travel.scn, ship.scn)",
-    "maps": 128,
-    "scenes": 440,
-    "post_state": "WORLD_POST, Hearthward (T07), post towns, D03P/D06P/D07P reunion rooms, quest rooms, D10-D12",
-    "airship": "Wayfarer: board/land/recall, deck (formation, stores, rest, CH21 crew board)"
-  },
-  "verification": {
-    "runtime_tests": "godot --headless --path game -- --qa-tests (57 tests, all passing at last run)",
-    "offline": ["python tools/compile_content.py", "python tools/check_reach.py (0 problems incl. strict arrival->exit pass)", "python tools/check_world.py"],
-    "routes": "b1 (New Game..CH01, save/reload) then chained segments seg2..seg8 + segq; each resumes the milestone written by the previous normal-input segment; logs in reports/evidence/final_chain/"
-  },
-  "known_open_items": [
-    "Windows launch on the owner's machine (AC065) and human play review (AC068)",
-    "Encounters-off campaign segment (AC063), audio listening review (AC061)"
+ "project": "The Ashen Crown",
+ "engine": "Godot 4.7.2-stable (verified 4.7.2.stable.official.ed1daf0bf), Compatibility renderer, 320x240",
+ "updated": "2026-09-29",
+ "phase": "B6 complete except owner-side checks: full campaign implemented; final normal-input chain (New Game -> credits -> post-clear, plus Q01-Q12) PASS on revision 7428b37 / content e528220ab0ff6194; Windows build exported from a clean archive and delivered",
+ "content": {
+  "chapters": "CH01-CH24 authored (content_src/scenes/ch01..ch22.scn, quests.scn, gates.scn, travel.scn, ship.scn)",
+  "maps": 128,
+  "scenes": 440,
+  "post_state": "WORLD_POST, Hearthward (T07), post towns, D03P/D06P/D07P reunion rooms, quest rooms, D10-D12",
+  "airship": "Wayfarer: board/land/recall, deck (formation, stores, rest, CH21 crew board)"
+ },
+ "verification": {
+  "runtime_tests": "godot --headless --path game -- --qa-tests (57 tests, all passing at last run)",
+  "offline": [
+   "python tools/compile_content.py",
+   "python tools/check_reach.py (0 problems incl. strict arrival->exit pass)",
+   "python tools/check_world.py"
   ],
-  "next_action": "Owner: launch The Ashen Crown/Windows/AshenCrown.exe on Windows and play the opening and finale (AC065/AC068). Agent: address feedback, then rerun tools/run_chain.sh, --qa-tests and tools/package.sh."
+  "routes": "b1 (New Game..CH01, save/reload) then chained segments seg2..seg8 + segq; each resumes the milestone written by the previous normal-input segment; logs in reports/evidence/final_chain/"
+ },
+ "known_open_items": [
+  "Windows launch on the owner's machine (AC065) and human play review (AC068)",
+  "Encounters-off campaign segment (AC063), audio listening review (AC061)"
+ ],
+ "next_action": "Owner: launch The Ashen Crown/Windows/AshenCrown.exe on Windows and play the opening and finale (AC065/AC068). Agent: address feedback, then rerun tools/run_chain.sh, --qa-tests and tools/package.sh.",
+ "art": {
+  "direction": "FF6-inspired (docs/11 revision 2026-09-29)",
+  "library": "owner-licensed packs via tools/gen_art.py library -> game/assets/ext (git-ignored); set ASHEN_LIB",
+  "fallback": "generated art in game/assets (committed)",
+  "review": "godot --path game -- --qa-gallery[-set field|battle|ui|map:ALL] --qa-out <dir>"
+ }
 }
