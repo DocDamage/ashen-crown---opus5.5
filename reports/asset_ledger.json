@@ -1,5 +1,109 @@
 [
  {
+  "path": "game/assets/ext/sprites/battle/C01.png",
+  "w": 1296,
+  "h": 64,
+  "kind": "battle_sprite",
+  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "palette": "",
+  "source": "finalbossblues/100/sv_battler/beast_hero_3_sv.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "705c8e658613",
+  "note": "TF Beast Tribes lizard side-view battler, recoloured"
+ },
+ {
+  "path": "game/assets/ext/sprites/battle/C02.png",
+  "w": 1296,
+  "h": 64,
+  "kind": "battle_sprite",
+  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/frontextra/frontextra8.png; characters/Elements Character Generator/assets/hair/hair11.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top4.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "26153564edda",
+  "note": "Time Fantasy Elements west-facing frames, recoloured"
+ },
+ {
+  "path": "game/assets/ext/sprites/battle/C03.png",
+  "w": 1296,
+  "h": 64,
+  "kind": "battle_sprite",
+  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair4.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top10.png; characters/Elements Character Generator/assets/weapon/spear1.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "f201bbf110d4",
+  "note": "Time Fantasy Elements west-facing frames, recoloured"
+ },
+ {
+  "path": "game/assets/ext/sprites/battle/C04.png",
+  "w": 1296,
+  "h": 64,
+  "kind": "battle_sprite",
+  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/frontextra/frontextra1.png; characters/Elements Character Generator/assets/hair/hair25.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top5.png; characters/Elements Character Generator/assets/weapon/hammer.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "96888be48932",
+  "note": "Time Fantasy Elements west-facing frames, recoloured"
+ },
+ {
+  "path": "game/assets/ext/sprites/battle/C05.png",
+  "w": 1296,
+  "h": 64,
+  "kind": "battle_sprite",
+  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backextra/backextra1.png; characters/Elements Character Generator/assets/backhair/backhair4.png; characters/Elements Character Generator/assets/bottom/bottom6.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top2.png; characters/Elements Character Generator/assets/weapon/bow1arrow1.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "6a76ed96894b",
+  "note": "Time Fantasy Elements west-facing frames, recoloured"
+ },
+ {
+  "path": "game/assets/ext/sprites/battle/C06.png",
+  "w": 1296,
+  "h": 64,
+  "kind": "battle_sprite",
+  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair7.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top8.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "112900c9ad84",
+  "note": "Time Fantasy Elements west-facing frames, recoloured"
+ },
+ {
+  "path": "game/assets/ext/sprites/battle/C07.png",
+  "w": 1296,
+  "h": 64,
+  "kind": "battle_sprite",
+  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backhair/backhair5.png; characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top4.png; characters/Elements Character Generator/assets/weapon/sword4.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "c0aeb435d790",
+  "note": "Time Fantasy Elements west-facing frames, recoloured"
+ },
+ {
+  "path": "game/assets/ext/sprites/battle/C08.png",
+  "w": 1296,
+  "h": 64,
+  "kind": "battle_sprite",
+  "frames": "48x64 x27: idle4 attack6 cast4 hurt2 guard2 victory4 ko1 step4 (facing left, feet row 62)",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair6.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top5.png; characters/Elements Character Generator/assets/weapon/daggers.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "4971d6a81d98",
+  "note": "Time Fantasy Elements west-facing frames, recoloured"
+ },
+ {
   "path": "game/assets/ext/sprites/bg/archive.png",
   "w": 320,
   "h": 168,
@@ -661,6 +765,1163 @@
   "status": "library",
   "sha": "5d4cff2b3d08",
   "note": "library battler, unified (shadow strip, integer scale, edge/grade/light pass)"
+ },
+ {
+  "path": "game/assets/ext/sprites/objects.png",
+  "w": 128,
+  "h": 16,
+  "kind": "objects",
+  "frames": "chest closed/open from Future Fantasy chests",
+  "palette": "",
+  "source": "finalbossblues/FutureFantasy/100/characters/chests.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "435d33fa25d5",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/sprites/world/C01.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "finalbossblues/100/beast_hero_3.png; finalbossblues/100/beast_hero_3_emote.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "81f45d28e0b0",
+  "note": "TF Beast Tribes lizard hero, recoloured"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/C02.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/frontextra/frontextra8.png; characters/Elements Character Generator/assets/hair/hair11.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top4.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "d327dc15aca0",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/C03.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair4.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top10.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "7ecde60d78e4",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/C04.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/frontextra/frontextra1.png; characters/Elements Character Generator/assets/hair/hair25.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top5.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "342c8596cbc5",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/C05.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backextra/backextra1.png; characters/Elements Character Generator/assets/backhair/backhair4.png; characters/Elements Character Generator/assets/bottom/bottom6.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top2.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "484cbf2c4e4d",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/C06.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair7.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top8.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "49a3d247bb39",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/C07.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backhair/backhair5.png; characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top4.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "2e7988451b67",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/C08.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair6.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top5.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "9c3b9e23feef",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/ansel.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair3.png; characters/Elements Character Generator/assets/head/head5.png; characters/Elements Character Generator/assets/top/top1.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "1bd736d25014",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/apprentice.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair10.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top4.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "411bc67487fb",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/baker.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "finalbossblues/npc-animations/individual_frames/household/chef_down (1).png; finalbossblues/npc-animations/individual_frames/household/chef_down (2).png; finalbossblues/npc-animations/individual_frames/household/chef_down (3).png; finalbossblues/npc-animations/individual_frames/household/chef_left (1).png; finalbossblues/npc-animations/individual_frames/household/chef_left (2).png; finalbossblues/npc-animations/individual_frames/household/chef_left (3).png; finalbossblues/npc-animations/individual_frames/household/chef_right (1).png; finalbossblues/npc-animations/individual_frames/household/chef_right (2).png; finalbossblues/npc-animations/individual_frames/household/chef_right (3).png; finalbossblues/npc-animations/individual_frames/household/chef_up (1).png; finalbossblues/npc-animations/individual_frames/household/chef_up (2).png; finalbossblues/npc-animations/individual_frames/household/chef_up (3).png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "4e760d7cec2a",
+  "note": "Time Fantasy NPC animations"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/child.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "finalbossblues/npc-animations/individual_frames/children/child1_down (1).png; finalbossblues/npc-animations/individual_frames/children/child1_down (2).png; finalbossblues/npc-animations/individual_frames/children/child1_down (3).png; finalbossblues/npc-animations/individual_frames/children/child1_left (1).png; finalbossblues/npc-animations/individual_frames/children/child1_left (2).png; finalbossblues/npc-animations/individual_frames/children/child1_left (3).png; finalbossblues/npc-animations/individual_frames/children/child1_right (1).png; finalbossblues/npc-animations/individual_frames/children/child1_right (2).png; finalbossblues/npc-animations/individual_frames/children/child1_right (3).png; finalbossblues/npc-animations/individual_frames/children/child1_up (1).png; finalbossblues/npc-animations/individual_frames/children/child1_up (2).png; finalbossblues/npc-animations/individual_frames/children/child1_up (3).png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "9dd7cb5e8e97",
+  "note": "Time Fantasy NPC animations"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/clerk.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head6.png; characters/Elements Character Generator/assets/top/top1.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "ecd91cde1aee",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/edda.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backhair/backhair5.png; characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top10.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "2bb917c022ee",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/elder.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "finalbossblues/npc-animations/individual_frames/elders/elder2_down (1).png; finalbossblues/npc-animations/individual_frames/elders/elder2_down (2).png; finalbossblues/npc-animations/individual_frames/elders/elder2_down (3).png; finalbossblues/npc-animations/individual_frames/elders/elder2_left (1).png; finalbossblues/npc-animations/individual_frames/elders/elder2_left (2).png; finalbossblues/npc-animations/individual_frames/elders/elder2_left (3).png; finalbossblues/npc-animations/individual_frames/elders/elder2_right (1).png; finalbossblues/npc-animations/individual_frames/elders/elder2_right (2).png; finalbossblues/npc-animations/individual_frames/elders/elder2_right (3).png; finalbossblues/npc-animations/individual_frames/elders/elder2_up (1).png; finalbossblues/npc-animations/individual_frames/elders/elder2_up (2).png; finalbossblues/npc-animations/individual_frames/elders/elder2_up (3).png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "769f419c818c",
+  "note": "Time Fantasy NPC animations"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/farmer.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "finalbossblues/npc-animations/individual_frames/farmer/farmer1_down (1).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_down (2).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_down (3).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_left (1).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_left (2).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_left (3).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_right (1).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_right (2).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_right (3).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_up (1).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_up (2).png; finalbossblues/npc-animations/individual_frames/farmer/farmer1_up (3).png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "57b6e4a57cca",
+  "note": "Time Fantasy NPC animations"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/guard.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "finalbossblues/npc-animations/individual_frames/knights/knight1_down (1).png; finalbossblues/npc-animations/individual_frames/knights/knight1_down (2).png; finalbossblues/npc-animations/individual_frames/knights/knight1_down (3).png; finalbossblues/npc-animations/individual_frames/knights/knight1_left (1).png; finalbossblues/npc-animations/individual_frames/knights/knight1_left (2).png; finalbossblues/npc-animations/individual_frames/knights/knight1_left (3).png; finalbossblues/npc-animations/individual_frames/knights/knight1_right (1).png; finalbossblues/npc-animations/individual_frames/knights/knight1_right (2).png; finalbossblues/npc-animations/individual_frames/knights/knight1_right (3).png; finalbossblues/npc-animations/individual_frames/knights/knight1_up (1).png; finalbossblues/npc-animations/individual_frames/knights/knight1_up (2).png; finalbossblues/npc-animations/individual_frames/knights/knight1_up (3).png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "fc40106242a3",
+  "note": "Time Fantasy NPC animations"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/ilyr.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backextra/tail2.png; characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/hair/hair4.png; characters/Elements Character Generator/assets/head/head20.png; characters/Elements Character Generator/assets/top/top2.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "6935943f870e",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/inspector.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/hat/hat11.png; characters/Elements Character Generator/assets/head/head7.png; characters/Elements Character Generator/assets/top/top3.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "c44ffe9864c5",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/jori.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/frontextra/frontextra8.png; characters/Elements Character Generator/assets/hair/hair6.png; characters/Elements Character Generator/assets/head/head2.png; characters/Elements Character Generator/assets/top/top1.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "d2515dcbd148",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/keeper.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair1.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top7.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "155cdcf26a28",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/mara.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backhair/backhair2.png; characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair5.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top7.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "0e21178662bc",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/monk.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "finalbossblues/npc-animations/individual_frames/townsfolk/folk3_down (1).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_down (2).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_down (3).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_left (1).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_left (2).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_left (3).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_right (1).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_right (2).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_right (3).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_up (1).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_up (2).png; finalbossblues/npc-animations/individual_frames/townsfolk/folk3_up (3).png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "2f553a6ed7fb",
+  "note": "Time Fantasy NPC animations"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/noble.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backhair/backhair10.png; characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair22.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top27.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "489b63dc853a",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/patient.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backhair/backhair1.png; characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair22.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top8.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "e9a60e2b205d",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/pell.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair1.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top7.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "8b0dd2b29540",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/pilot.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom8.png; characters/Elements Character Generator/assets/frontextra/frontextra3.png; characters/Elements Character Generator/assets/hair/hair3.png; characters/Elements Character Generator/assets/head/head2.png; characters/Elements Character Generator/assets/top/top10.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "a64d6b55b5a0",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/rook.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/frontextra/frontextra8.png; characters/Elements Character Generator/assets/hair/hair4.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top4.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "6d6a397f898e",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/sailor.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom1.png; characters/Elements Character Generator/assets/hair/hair3.png; characters/Elements Character Generator/assets/hat/hat11.png; characters/Elements Character Generator/assets/head/head2.png; characters/Elements Character Generator/assets/top/top25.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "a5777baf0c3e",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/scholar.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backhair/backhair2.png; characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/frontextra/frontextra8.png; characters/Elements Character Generator/assets/hair/hair22.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top8.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "2b9856b7fd97",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/sen.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backhair/backhair9.png; characters/Elements Character Generator/assets/bottom/bottom5.png; characters/Elements Character Generator/assets/hair/hair22.png; characters/Elements Character Generator/assets/head/head4.png; characters/Elements Character Generator/assets/top/top8.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "cf407ec8cb97",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/soldier.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom8.png; characters/Elements Character Generator/assets/hat/hat6.png; characters/Elements Character Generator/assets/head/head1.png; characters/Elements Character Generator/assets/top/top11.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "8eb075da3756",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/survivor.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/hair/hair7.png; characters/Elements Character Generator/assets/head/head3.png; characters/Elements Character Generator/assets/top/top2.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "d50e977c42f9",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/volunteer.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backextra/tail1.png; characters/Elements Character Generator/assets/bottom/bottom2.png; characters/Elements Character Generator/assets/hair/hair22.png; characters/Elements Character Generator/assets/head/head20.png; characters/Elements Character Generator/assets/top/top9.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "83c766bedb51",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/voss.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/backextra/backextra1.png; characters/Elements Character Generator/assets/bottom/bottom8.png; characters/Elements Character Generator/assets/hair/hair3.png; characters/Elements Character Generator/assets/head/head7.png; characters/Elements Character Generator/assets/top/top12.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "f41f26a7a99f",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/sprites/world/worker.png",
+  "w": 192,
+  "h": 180,
+  "kind": "world_sprite",
+  "frames": "32x36; rows down,left,right,up (idle + TF walk 0,1,2,1); row4 six poses",
+  "palette": "",
+  "source": "characters/Elements Character Generator/assets/bottom/bottom3.png; characters/Elements Character Generator/assets/hat/hat12.png; characters/Elements Character Generator/assets/head/head2.png; characters/Elements Character Generator/assets/top/top9.png",
+  "license": "Time Fantasy Elements character kit (finalbossblues / timefantasy.net) - owner-licensed; use in games in any engine allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "47ec908b4b3c",
+  "note": "Time Fantasy Elements pieces, palette-remapped to docs/03 colours"
+ },
+ {
+  "path": "game/assets/ext/tiles/archive_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "d037d5e40488",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/archive_ext.png",
+  "w": 512,
+  "h": 96,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "a059b1d2ce7c",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/basin_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "cf7ce33a3dd3",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/basin_ext.png",
+  "w": 512,
+  "h": 80,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "68076de86e57",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/capital_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2c.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "13cb9cbeefd7",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/capital_ext.png",
+  "w": 512,
+  "h": 88,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2c.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "2ec925e8b411",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/conduit_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "9253cb1aba47",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/conduit_ext.png",
+  "w": 512,
+  "h": 88,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "2348fae62dc6",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/crown_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "934bb1800e8f",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/crown_ext.png",
+  "w": 512,
+  "h": 80,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA4.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA5_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "228f789b4d36",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/furnace_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_A1_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "f9ef3b0786e4",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/furnace_ext.png",
+  "w": 512,
+  "h": 96,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_A1_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "8b0d32688e79",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/grove_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "c65f5f454b77",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/grove_ext.png",
+  "w": 512,
+  "h": 87,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "4d89c4277740",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/grove_flood_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "d0f06fa9e4d7",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/grove_flood_ext.png",
+  "w": 512,
+  "h": 64,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "2dd8ecad2d19",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/harbor_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "53d181caad95",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/harbor_ext.png",
+  "w": 512,
+  "h": 64,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "58e1d69099f7",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/interior_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "e16c071266fd",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/interior_ext.png",
+  "w": 512,
+  "h": 64,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "0c0df71766ca",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/interior_stone_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "06fb43c30f57",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/interior_stone_ext.png",
+  "w": 512,
+  "h": 72,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "8341565b6d10",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/quarry_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_A2_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "b569715985ac",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/quarry_ext.png",
+  "w": 512,
+  "h": 96,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/1x/tf_A2_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "7b2f57314a55",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/reef_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/RPGMAKER-100/tf_A2_atlantis.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "742b54967a76",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/reef_ext.png",
+  "w": 512,
+  "h": 96,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/RPGMAKER-100/tf_A2_atlantis.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "1e15eb941d1c",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/ship_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "b27896c3c844",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/ship_ext.png",
+  "w": 512,
+  "h": 64,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "2ef552f2afd2",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/sky_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "1d47a5413704",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/sky_ext.png",
+  "w": 512,
+  "h": 88,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "d8a945e06e73",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/town_r01_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "ac257ab4a8b5",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/town_r01_ext.png",
+  "w": 512,
+  "h": 80,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "8186eee2a378",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/town_r02_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "f22d486dfd73",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/town_r02_ext.png",
+  "w": 512,
+  "h": 96,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "8ab95e9ea036",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/town_r03_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "bdebba205048",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/town_r03_ext.png",
+  "w": 512,
+  "h": 80,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileA4.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "cd9ceacfebb4",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/town_r04_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "ae122fbb80f2",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/town_r04_ext.png",
+  "w": 512,
+  "h": 80,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/rpgmaker_1/cloud_tileA1_1.png; finalbossblues/rpgmaker_1/cloud_tileA2_1.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "1dac2e87bc33",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/town_r05_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "f1b87c265e7e",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/town_r05_ext.png",
+  "w": 512,
+  "h": 80,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "88c1950d2606",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/underways_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA1_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "b7b97ff616c0",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/underways_ext.png",
+  "w": 512,
+  "h": 80,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/FutureFantasy/100/tilesets/future_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA5_a.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA1_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA2_1.png; finalbossblues/tf_sewers/RPGMAKER_16x16/tfsewers_tileA4_1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "2cbc07a5b4e6",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/vault_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "9fed393e93fc",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/vault_ext.png",
+  "w": 512,
+  "h": 80,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A1_ruins.png; finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "a6765507771a",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/whitebone_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "9ff3282f52e2",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/whitebone_ext.png",
+  "w": 512,
+  "h": 80,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A2_ruins.png; finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "38614ae9db2b",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/winter_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "a47235b0e9ef",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/winter_ext.png",
+  "w": 512,
+  "h": 80,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/16/tf_A4_ruins.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_city2.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_dungeon.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int1.png; finalbossblues/tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tileB_int2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "f4a31acd0f80",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/world_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_A2_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "b948365d2084",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/world_ext.png",
+  "w": 512,
+  "h": 77,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_A2_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "632fd1a03d2c",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/world_post_ext.json",
+  "w": 0,
+  "h": 0,
+  "kind": "tileset_rules",
+  "frames": "",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_A2_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "c8be817dd0a4",
+  "note": ""
+ },
+ {
+  "path": "game/assets/ext/tiles/world_post_ext.png",
+  "w": 512,
+  "h": 77,
+  "kind": "tileset_ext",
+  "frames": "16x16 rules atlas",
+  "palette": "",
+  "source": "finalbossblues/1x/tf_A2_ashlands_1.png; finalbossblues/1x/tf_B_ashlands_1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA1.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileA2.png; finalbossblues/TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tileB.png; finalbossblues/tf_fairyforest_12.28.20/1x/tf_ff_tileA2.png",
+  "license": "Time Fantasy (finalbossblues / timefantasy.net) - owner-licensed; use in games allowed, raw files not redistributed; credit finalbossblues",
+  "status": "library",
+  "sha": "43a6609d6011",
+  "note": ""
  },
  {
   "path": "game/assets/sprites/battle/C01.png",
@@ -1881,7 +3142,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "3a1e9f8bc50f",
+  "sha": "30eef53ac974",
   "note": ""
  },
  {
@@ -1894,7 +3155,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "3a339307e6a1",
+  "sha": "38f58b2b1d07",
   "note": ""
  },
  {
@@ -1907,7 +3168,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "4c8d31758b9a",
+  "sha": "280fc2011b14",
   "note": ""
  },
  {
@@ -1920,7 +3181,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "f29b69786421",
+  "sha": "c3bf53cd8a62",
   "note": ""
  },
  {
@@ -1933,7 +3194,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "89df2bb79800",
+  "sha": "76f4282768bb",
   "note": ""
  },
  {
@@ -1946,7 +3207,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "9ba6a5107962",
+  "sha": "fe548e926a72",
   "note": ""
  },
  {
@@ -1959,7 +3220,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "51d86b866bc8",
+  "sha": "ba653e3841cc",
   "note": ""
  },
  {
@@ -1972,7 +3233,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1205a51013c1",
+  "sha": "26156e712d55",
   "note": ""
  },
  {
@@ -1985,7 +3246,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "c4f3d6f62b36",
+  "sha": "df0e37a57fae",
   "note": ""
  },
  {
@@ -1998,7 +3259,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "c5783096cda7",
+  "sha": "22fd46765f21",
   "note": ""
  },
  {
@@ -2011,7 +3272,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "28562c2f8538",
+  "sha": "318ce3274e9e",
   "note": ""
  },
  {
@@ -2024,7 +3285,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "85849857575f",
+  "sha": "9ddb243c22d2",
   "note": "derived from enemies/B16"
  },
  {
@@ -2037,7 +3298,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "b5a229fa3a1d",
+  "sha": "87a88e68aab2",
   "note": ""
  },
  {
@@ -2050,7 +3311,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "7597b305d3f8",
+  "sha": "84de1b3e5c87",
   "note": ""
  },
  {
@@ -2063,7 +3324,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "ed7db3ef94e2",
+  "sha": "2790ecef7f2d",
   "note": "derived from enemies/B15"
  },
  {
@@ -2076,7 +3337,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e31ff35a0e4f",
+  "sha": "5381cc3b3bb9",
   "note": ""
  },
  {
@@ -2089,7 +3350,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "da6a6265606b",
+  "sha": "537ff0f03cc1",
   "note": ""
  },
  {
@@ -2102,7 +3363,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "11c893957f69",
+  "sha": "2d8a6a5ca643",
   "note": ""
  },
  {
@@ -2128,7 +3389,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "df5c2082eb1a",
+  "sha": "8e1f50ded367",
   "note": ""
  },
  {
@@ -2154,7 +3415,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "9f3f39144bb7",
+  "sha": "efd087e48cc6",
   "note": ""
  },
  {
@@ -2167,7 +3428,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "2aa62265bb1d",
+  "sha": "4f61b12f6a49",
   "note": ""
  },
  {
@@ -2180,7 +3441,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "ec75e80469c0",
+  "sha": "5a11c990343e",
   "note": ""
  },
  {
@@ -2193,7 +3454,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "38cadb0e782d",
+  "sha": "df14fd07987f",
   "note": ""
  },
  {
@@ -2232,7 +3493,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e13d3affc803",
+  "sha": "e3989c1dce5c",
   "note": ""
  },
  {
@@ -2245,7 +3506,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "97d60dd5f288",
+  "sha": "3ca3e3a09c69",
   "note": ""
  },
  {
@@ -2271,7 +3532,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "98317460635d",
+  "sha": "e9a2b6c8ee01",
   "note": ""
  },
  {
@@ -2284,7 +3545,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "b4d996653dfa",
+  "sha": "9919c3a089ec",
   "note": ""
  },
  {
@@ -2297,7 +3558,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "18500d9ffa44",
+  "sha": "3df6fa8e859c",
   "note": ""
  },
  {
@@ -2310,7 +3571,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "aea5725160c5",
+  "sha": "4becb4eff2f0",
   "note": ""
  },
  {
@@ -2323,7 +3584,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "8010ead0b91c",
+  "sha": "2c7e8ec3d188",
   "note": ""
  },
  {
@@ -2336,7 +3597,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "fd70f5e4779e",
+  "sha": "b5ec210a44f1",
   "note": ""
  },
  {
@@ -2349,7 +3610,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "9913d70a79d2",
+  "sha": "667b416d5717",
   "note": ""
  },
  {
@@ -2362,7 +3623,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "117e246344b7",
+  "sha": "32a2f3e13ef0",
   "note": ""
  },
  {
@@ -2375,7 +3636,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "bb3249e63c42",
+  "sha": "7f121bb56259",
   "note": ""
  },
  {
@@ -2401,7 +3662,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "516bf6c20bd8",
+  "sha": "584102ba899b",
   "note": ""
  },
  {
@@ -2427,7 +3688,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e302be065c05",
+  "sha": "a1f6ceec96d1",
   "note": ""
  },
  {
@@ -2440,7 +3701,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "cec1f6e6b1da",
+  "sha": "45f33737a013",
   "note": ""
  },
  {
@@ -2466,7 +3727,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "cce37c60f9ad",
+  "sha": "bf9ab6456a30",
   "note": ""
  },
  {
@@ -3103,7 +4364,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "7b6cefb18934",
+  "sha": "3998448a6d03",
   "note": ""
  },
  {
@@ -3129,7 +4390,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "380b46fe56c5",
+  "sha": "2876f52badf1",
   "note": ""
  },
  {
@@ -3155,7 +4416,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "d3c6350b0d1d",
+  "sha": "4b450ff98f45",
   "note": ""
  },
  {
@@ -3181,7 +4442,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e23683b1ddc8",
+  "sha": "ecef2c7915a6",
   "note": ""
  },
  {
@@ -3207,7 +4468,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "e808c1d592ee",
+  "sha": "d1d9734fc3af",
   "note": ""
  },
  {
@@ -3233,7 +4494,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "fd97ec252e6b",
+  "sha": "8a12747aa02d",
   "note": ""
  },
  {
@@ -3259,7 +4520,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1e9d77422d5b",
+  "sha": "09667123f88a",
   "note": ""
  },
  {
@@ -3272,7 +4533,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "8d100ed8fb52",
+  "sha": "55ca20664588",
   "note": ""
  },
  {
@@ -3311,7 +4572,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "d934e2d678b4",
+  "sha": "66fb98c648ff",
   "note": ""
  },
  {
@@ -3337,7 +4598,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "b0965c1f9bb9",
+  "sha": "224639e312af",
   "note": ""
  },
  {
@@ -3363,7 +4624,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "b6d5aab66676",
+  "sha": "78e596793e2d",
   "note": ""
  },
  {
@@ -3389,7 +4650,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "33a91bb48d21",
+  "sha": "ed223b76d421",
   "note": ""
  },
  {
@@ -3415,7 +4676,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "9c22d5592fee",
+  "sha": "723eacedcc1f",
   "note": ""
  },
  {
@@ -3441,7 +4702,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "f49d03583c8d",
+  "sha": "710e5b533938",
   "note": ""
  },
  {
@@ -3467,7 +4728,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "66cbf3cdbeb0",
+  "sha": "fe2743997643",
   "note": ""
  },
  {
@@ -3493,7 +4754,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "1c4b8fe7bbdd",
+  "sha": "a7c7c115c271",
   "note": ""
  },
  {
@@ -3519,7 +4780,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "0166e2c4e617",
+  "sha": "36e56411d370",
   "note": ""
  },
  {
@@ -3545,7 +4806,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "bef1bc12658d",
+  "sha": "e5d6a1f206ef",
   "note": ""
  },
  {
@@ -3571,7 +4832,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "486697177c97",
+  "sha": "f82ba7a0f992",
   "note": ""
  },
  {
@@ -3597,7 +4858,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "380b46fe56c5",
+  "sha": "2876f52badf1",
   "note": ""
  },
  {
@@ -3623,7 +4884,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "5c8472851546",
+  "sha": "d0105631c5cd",
   "note": ""
  },
  {
@@ -3649,7 +4910,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "0f4bd0911295",
+  "sha": "0fd1bb2969e9",
   "note": ""
  },
  {
@@ -3675,7 +4936,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "abab6cef446e",
+  "sha": "b5c76737dd8a",
   "note": ""
  },
  {
@@ -3701,7 +4962,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "ec0108b670a3",
+  "sha": "ebc62e06103d",
   "note": ""
  },
  {
@@ -3727,7 +4988,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "29d52a31ccc9",
+  "sha": "5e525f729c9f",
   "note": ""
  },
  {
@@ -3740,7 +5001,7 @@
   "source": "tools/gen_art.py (ashen-art-1.0)",
   "license": "original (project-generated)",
   "status": "generated",
-  "sha": "75a5b1e98a7d",
+  "sha": "7ba03f2cc0af",
   "note": ""
  },
  {

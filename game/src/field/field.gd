@@ -29,6 +29,11 @@ var tile_rules: Dictionary = {}
 var solid_set = {}
 var enc_set = {}
 var tall_set = {}
+# Library tileset (owner's licensed art, installed into assets/ext by tools/gen_art.py library): per-kind rules
+var ext_tex: Texture2D = null
+var ext_rules: Dictionary = {}     # kind -> {type: tile|auto|wall|stamp, ...}
+var ext_group: Dictionary = {}     # kind -> autotile connection group
+var _kc: Dictionary = {}           # per-draw kind cache (Vector2i -> kind)
 
 # player
 var p_tile = Vector2i(0, 0)
@@ -113,6 +118,7 @@ func load_map(id: String, spawn: String = "default", pos: Vector2i = Vector2i(-1
 	H = int(map["h"])
 	atlas = _tex("res://assets/tiles/%s.png" % map["tileset"])
 	props_tex = _tex("res://assets/tiles/%s_props.png" % map["tileset"])
+	_load_ext(map["tileset"])
 	var sp = pos
 	var sdir = dir
 	if sp.x < 0:
@@ -707,8 +713,12 @@ func show_banner(t: String) -> void:
 func _snap_camera() -> void:
 	_update_camera()
 
+var cam_override = Vector2(-1, -1)    # dev gallery only
+
 func _update_camera() -> void:
 	var c = p_pos + Vector2(8, 8) - VIEW / 2.0
+	if cam_override.x >= 0:
+		c = cam_override + VIEW / 2.0 - VIEW / 2.0
 	var mw = W * TS
 	var mh = H * TS
 	c.x = (mw - VIEW.x) / 2.0 if mw <= VIEW.x else clampf(c.x, 0, mw - VIEW.x)
@@ -754,9 +764,196 @@ func _draw_tile_kind(k: String, x: int, y: int, pos: Vector2) -> void:
 		v = int(time * 2.0 + (x + y) * 0.0) % 2 if k != "boat" else 0
 	draw_texture_rect_region(atlas, Rect2(pos, Vector2(TS, TS)), Rect2(v * TS, row * TS, TS, TS))
 
+# ----------------------------------------------------------------------
+# Library tiles: RPG-Maker-style autotiles (A1/A2 32x48 blocks, A4 wall top + face) and plain/stamp tiles,
+# pre-assembled into one atlas per tileset family. Kinds without a rule use the generated atlas.
+func _load_ext(ts: String) -> void:
+	ext_rules = {}
+	ext_group = {}
+	ext_tex = _tex("res://assets/tiles/%s_ext.png" % ts)
+	if ext_tex == null:
+		return
+	var f = FileAccess.open(Content.art("res://assets/tiles/%s_ext.json" % ts), FileAccess.READ)
+	if f == null:
+		ext_tex = null
+		return
+	var d = JSON.parse_string(f.get_as_text())
+	ext_rules = d.get("rules", {})
+	for k in ext_rules:
+		ext_group[k] = ext_rules[k].get("g", k)
+
+func _kind_c(x: int, y: int) -> String:
+	var key = Vector2i(x, y)
+	if not _kc.has(key):
+		_kc[key] = kind_at(x, y)
+	return _kc[key]
+
+func _same(g: String, x: int, y: int) -> bool:
+	if x < 0 or y < 0 or x >= W or y >= H:
+		return true
+	return ext_group.get(_kind_c(x, y), "~") == g
+
+func _hash(x: int, y: int) -> int:
+	return absi((x * 73856093) ^ (y * 19349663) ^ 83492791)
+
+## Draw one 16x16 cell from an A2-layout block (32x48 at `b`) given the 8 neighbour flags.
+## face=true: a 32x32 block (A4 wall face) = the lower 2x2 part of an A2 block, no inner corners.
+func _auto_cell(b: Vector2, n: bool, s: bool, w: bool, e: bool, nw: bool, ne: bool, sw: bool, se: bool, pos: Vector2, face: bool = false) -> void:
+	var q = [[0, 0], [1, 0], [0, 1], [1, 1]]
+	for i in range(4):
+		var qx = q[i][0]
+		var qy = q[i][1]
+		var v = n if qy == 0 else s
+		var h = w if qx == 0 else e
+		var d = (nw if qx == 0 else ne) if qy == 0 else (sw if qx == 0 else se)
+		var sx = 0
+		var sy = 0
+		if v and h and d:
+			sx = 2 - qx
+			sy = 4 - qy
+		elif v and h and not d:
+			if face:
+				sx = 2 - qx
+				sy = 4 - qy
+			else:
+				sx = 2 + qx
+				sy = qy
+		elif v and not h:
+			sx = 0 if qx == 0 else 3
+			sy = 4 - qy
+		elif h and not v:
+			sx = 2 - qx
+			sy = 2 if qy == 0 else 5
+		else:
+			sx = 0 if qx == 0 else 3
+			sy = 2 if qy == 0 else 5
+		var src = b + Vector2(sx * 8, (sy - (2 if face else 0)) * 8)
+		draw_texture_rect_region(ext_tex, Rect2(pos + Vector2(qx * 8, qy * 8), Vector2(8, 8)), Rect2(src, Vector2(8, 8)))
+
+func _frame_of(r: Dictionary, key: String) -> Vector2:
+	var fr: Array = r[key]
+	if fr.size() == 0:
+		return Vector2.ZERO
+	var i = 0
+	if r.has("fps") and fr.size() > 1:
+		var n = fr.size()
+		var t = int(time * float(r["fps"]))
+		i = t % n if not r.get("pingpong", false) else [0, 1, 2, 1][t % 4] % n
+	var v = fr[i]
+	return Vector2(v[0], v[1])
+
+## Ground kind to draw beneath an object: the first neighbour whose rule is a ground (auto/tile) rule.
+func _ground_near(x: int, y: int) -> String:
+	for d in [Vector2i(-1, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(0, -1), Vector2i(-1, 1), Vector2i(1, 1)]:
+		var nk = _kind_c(x + d.x, y + d.y)
+		var nr: Dictionary = ext_rules.get(nk, {})
+		if nr.get("type", "") == "auto" and not nr.get("casts", false) and not (nr.get("g", nk) in ["water", "void", "deep", "ember", "shallow", "pool"]):
+			return nk
+	return ext_rules.get("_ground", {}).get("kind", "floor")
+
+## Returns true when the cell was handled by a library rule.
+func _draw_ext(k: String, x: int, y: int, pos: Vector2, talls: Array) -> bool:
+	var r: Dictionary = ext_rules.get(k, {})
+	if r.is_empty():
+		return false
+	var u: String = r.get("under", "")
+	if u == "@":
+		u = _ground_near(x, y)
+	if u != "" and u != k:
+		if not _draw_ext(u, x, y, pos, talls):
+			_draw_tile_kind(u, x, y, pos)
+	var g: String = ext_group.get(k, k)
+	match r["type"]:
+		"tile":
+			var vs: Array = r["t"]
+			var h = _hash(x, y)
+			var idx = 0
+			if vs.size() > 1:
+				var wts: Array = r.get("w", [])
+				if wts.size() == vs.size():
+					var tot = 0
+					for wv in wts:
+						tot += int(wv)
+					var roll = h % maxi(tot, 1)
+					for j in range(wts.size()):
+						roll -= int(wts[j])
+						if roll < 0:
+							idx = j
+							break
+				else:
+					idx = h % vs.size()
+			var v = vs[idx]
+			if r.has("fps"):
+				v = r["t"][int(time * float(r["fps"])) % vs.size()]
+			draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)))
+		"auto":
+			var b = _frame_of(r, "b")
+			_auto_cell(b, _same(g, x, y - 1), _same(g, x, y + 1), _same(g, x - 1, y), _same(g, x + 1, y),
+				_same(g, x - 1, y - 1), _same(g, x + 1, y - 1), _same(g, x - 1, y + 1), _same(g, x + 1, y + 1), pos)
+		"wall":
+			var below = _same(g, x, y + 1) and y + 1 < H
+			if below:
+				_auto_cell(_frame_of(r, "top"), _same(g, x, y - 1), true, _same(g, x - 1, y), _same(g, x + 1, y),
+					_same(g, x - 1, y - 1), _same(g, x + 1, y - 1), _same(g, x - 1, y + 1), _same(g, x + 1, y + 1), pos)
+			else:
+				var wl = _same(g, x - 1, y) and not _same(g, x - 1, y + 1)
+				var wr = _same(g, x + 1, y) and not _same(g, x + 1, y + 1)
+				_auto_cell(_frame_of(r, "face"), true, false, wl, wr, wl, wr, false, false, pos, true)
+		"grid9":
+			# 3x3 piece set chosen by same-group neighbours (no inner corners): cliffs, platforms, counters
+			var t9: Array = r["t"]
+			var cx = 1
+			var cy = 1
+			if not _same(g, x - 1, y):
+				cx = 0
+			elif not _same(g, x + 1, y):
+				cx = 2
+			if not _same(g, x, y - 1):
+				cy = 0
+			elif not _same(g, x, y + 1):
+				cy = 2
+			var v9 = t9[cy * 3 + cx]
+			draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v9[0], v9[1]), Vector2(TS, TS)))
+		"hrow":
+			# one-row structure (house front, fence, counter): left end / middle / right end / single
+			var tl: Array = r["t"]
+			var l = _same(g, x - 1, y)
+			var rr = _same(g, x + 1, y)
+			var v = tl[1]
+			if l and not rr:
+				v = tl[2]
+			elif rr and not l:
+				v = tl[0]
+			elif not l and not rr:
+				v = tl[3] if tl.size() > 3 else tl[1]
+			draw_texture_rect_region(ext_tex, Rect2(pos, Vector2(TS, TS)), Rect2(Vector2(v[0], v[1]), Vector2(TS, TS)))
+		"stamp":
+			var st: Array = r["r"]
+			if r.has("inner") and _same(g, x, y - 1):
+				st = r["inner"]
+			var vi = 0
+			if r.has("alt") and not (r.has("inner") and _same(g, x, y - 1)):
+				var alts: Array = r["alt"]
+				vi = _hash(x, y) % (alts.size() + 1)
+				if vi > 0:
+					st = alts[vi - 1]
+			var rect = Rect2(st[0], st[1], st[2], st[3])
+			var dpos = pos + Vector2(8 - rect.size.x / 2.0, TS - rect.size.y) + Vector2(r.get("dx", 0), r.get("dy", 0))
+			if r.get("tall", false):
+				talls.append([y * TS + 15, "ext", rect, dpos])
+			else:
+				draw_texture_rect_region(ext_tex, Rect2(dpos, rect.size), rect)
+	if r["type"] != "stamp" and not r.get("casts", false):
+		# FF-style soft drop shadow cast onto the ground right of a wall/structure
+		var lk = _kind_c(x - 1, y)
+		if ext_rules.get(lk, {}).get("casts", false):
+			draw_rect(Rect2(pos, Vector2(6, TS)), Color(0.05, 0.03, 0.12, 0.3))
+	return true
+
 func _draw() -> void:
 	if map.is_empty():
 		return
+	_kc = {}
 	var ox = -cam
 	var x0 = maxi(0, int(cam.x / TS) - 1)
 	var y0 = maxi(0, int(cam.y / TS) - 1)
@@ -767,8 +964,10 @@ func _draw() -> void:
 	var talls = []
 	for y in range(y0, y1 + 1):
 		for x in range(x0, x1 + 1):
-			var k = _tile_kind_draw(x, y)
 			var pos = Vector2(x * TS, y * TS) + ox
+			if ext_tex != null and _draw_ext(_kind_c(x, y), x, y, pos, talls):
+				continue
+			var k = _tile_kind_draw(x, y)
 			if tall_set.has(k):
 				var under = "grass" if k in ["tree", "tree2"] and kinds_row.has("grass") and _outdoor() else "floor"
 				_draw_tile_kind(under, x, y, pos)
@@ -784,7 +983,8 @@ func _draw() -> void:
 		if e["type"] == "block" and Game.eval_cond(e["cond"]):
 			for by in range(e["y1"], e["y2"] + 1):
 				for bx in range(e["x1"], e["x2"] + 1):
-					_draw_tile_kind(e["tile"], bx, by, Vector2(bx * TS, by * TS) + ox)
+					if ext_tex == null or not _draw_ext(e["tile"], bx, by, Vector2(bx * TS, by * TS) + ox, talls):
+						_draw_tile_kind(e["tile"], bx, by, Vector2(bx * TS, by * TS) + ox)
 	# objects
 	for e in map["entities"]:
 		if not e.has("x") or not Game.eval_cond(e["cond"]):
@@ -822,6 +1022,8 @@ func _draw() -> void:
 				var col: int = prop_col.get(t[2], 0)
 				if props_tex:
 					draw_texture_rect_region(props_tex, Rect2(t[3] + Vector2(0, -16), Vector2(16, 32)), Rect2(col * 16, 0, 16, 32))
+			"ext":
+				draw_texture_rect_region(ext_tex, Rect2(t[3], t[2].size), t[2])
 			"obj":
 				if objects_tex:
 					draw_texture_rect_region(objects_tex, Rect2(t[3], Vector2(16, 16)), Rect2(int(t[2]) * 16, 0, 16, 16))

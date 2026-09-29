@@ -864,3 +864,456 @@ def build_tileset(name):
     for i, k in enumerate(PROPS):
         props.paste(prop(k, p, i).image(), (i * 16, 0))
     return atlas, props
+
+
+# =================================================================================================================
+# Library tilesets (owner's licensed Time Fantasy packs) -> game/assets/ext/tiles/<family>_ext.png + .json
+# Rules per map kind are read by field.gd (_draw_ext). Specs below reference library-relative sheets; the builder
+# copies only the referenced regions into one atlas per family. Unlisted kinds fall back to the generated atlas.
+# =================================================================================================================
+from art.pix import lib_img
+
+FB = "finalbossblues/"
+FF = FB + "tf_fairyforest_12.28.20/1x/tf_ff_tile"
+SP = FB + "tf_steampunk/RPGMAKER_16x16/tileset/tfsteampunk_tile"
+SW = FB + "tf_sewers/RPGMAKER_16x16/tfsewers_tile"
+FU = FB + "FutureFantasy/100/tilesets/"
+RU = FB + "16/tf_"
+AS = FB + "1x/tf_"
+
+
+class Src:
+    """A rectangular region of a library sheet, optionally recoloured (fn: Image->Image)."""
+    def __init__(self, sheet, x, y, w, h, fn=None):
+        self.sheet, self.x, self.y, self.w, self.h, self.fn = sheet, x, y, w, h, fn
+
+    def key(self):
+        return (self.sheet, self.x, self.y, self.w, self.h, id(self.fn) if self.fn else 0)
+
+    def image(self):
+        src = lib_img(self.sheet.split("@")[0])
+        if self.sheet.endswith("@2x"):      # RPG Maker VX (2x) sheet of 1x art: exact nearest halving
+            src = src.resize((src.width // 2, src.height // 2), Image.NEAREST)
+        im = src.crop((self.x, self.y, self.x + self.w, self.y + self.h))
+        return self.fn(im) if self.fn else im
+
+
+def a2(sheet, i, j, fn=None):
+    """RPG Maker A2-layout autotile block (32x48) at block column i, row j."""
+    return Src(sheet, i * 32, j * 48, 32, 48, fn)
+
+
+def a1(sheet, j, cols=(0, 1, 2), fn=None):
+    """Animated A1 water: the same block in 3 frame columns."""
+    return [a2(sheet, c, j, fn) for c in cols]
+
+
+def a4(sheet, i, k, fn=None):
+    """A4 wall pair: (top 32x48, face 32x32) at column i, pair row k."""
+    return Src(sheet, i * 32, k * 80, 32, 48, fn), Src(sheet, i * 32, k * 80 + 48, 32, 32, fn)
+
+
+def t16(sheet, x, y, fn=None, w=1, h=1):
+    return Src(sheet, x * 16, y * 16, 16 * w, 16 * h, fn)
+
+
+class Synth:
+    """An A2-layout 32x48 block synthesised from a 3x3 blob of 16x16 tiles (TL,T,TR / L,C,R / BL,B,BR) and an
+    optional 2x2 inner-corner piece (32x32; the corners of the region are used as inner-corner quarters)."""
+    def __init__(self, nine, inner=None, face=False):
+        self.nine, self.inner, self.face = nine, inner, face
+
+    def key(self):
+        return ("synth", tuple(s.key() for s in self.nine), self.inner.key() if self.inner else None, self.face)
+
+    def image(self):
+        n = [s.image() for s in self.nine]
+        TL, T, TR, L, C, R, BL, B, BR = n
+        out = Image.new("RGBA", (32, 32 if self.face else 48), (0, 0, 0, 0))
+        oy = 0 if self.face else 16
+        if not self.face:
+            out.paste(C, (0, 0))
+            if self.inner is not None:
+                inn = self.inner.image()   # 32x32 showing a 'hole': its outer quarters are inner corners
+                out.paste(inn.crop((24, 24, 32, 32)), (16, 0))   # TL quarter inner corner: bottom-right of hole area
+                out.paste(inn.crop((0, 24, 8, 32)), (24, 0))
+                out.paste(inn.crop((24, 0, 32, 8)), (16, 8))
+                out.paste(inn.crop((0, 0, 8, 8)), (24, 8))
+            else:
+                out.paste(C, (16, 0))
+        # 2x2 island: TL|TR / BL|BR, with edge quarters taken from T/L/R/B and interior from C
+        quad = [[TL, T, T, TR], [L, C, C, R], [L, C, C, R], [BL, B, B, BR]]
+        for qy in range(4):
+            for qx in range(4):
+                src = quad[qy][qx]
+                sx = 0 if qx in (0, 2) else 8
+                sy = 0 if qy in (0, 2) else 8
+                out.paste(src.crop((sx, sy, sx + 8, sy + 8)), (qx * 8, oy + qy * 8))
+        return out
+
+
+def tile(*srcs, w=None, fps=None, under=None, casts=False, g=None):
+    return dict(type="tile", src=list(srcs), w=w, fps=fps, under=under, casts=casts, g=g)
+
+
+def auto(src, under=None, g=None, casts=False, fps=None, pingpong=False):
+    frames = src if isinstance(src, list) else [src]
+    return dict(type="auto", src=frames, under=under, g=g, casts=casts, fps=fps, pingpong=pingpong)
+
+
+def wall(pair, g=None, casts=True, under=None):
+    top, face = pair
+    return dict(type="wall", top=top, face=face, g=g, casts=casts, under=under)
+
+
+def hrow(l, m, r, single=None, under=None, g=None, casts=False):
+    return dict(type="hrow", src=[l, m, r, single or m], under=under, g=g, casts=casts)
+
+
+def stamp(src, tall=False, under=None, alts=(), dx=0, dy=0, inner=None, g=None):
+    """Object drawn bottom-centred on its cell. `inner`: variant used when the cell above is the same group
+    (e.g. tall pines inside a forest mass, lower trees at its edge so rivers/paths above stay visible)."""
+    return dict(type="stamp", src=src, alts=list(alts), tall=tall, under=under, dx=dx, dy=dy, inner=inner, g=g)
+
+
+def grid9(tiles9, under=None, g=None, casts=False):
+    return dict(type="grid9", src=list(tiles9), under=under, g=g, casts=casts)
+
+
+LIB_TILESETS = {}   # family -> {kind: rule}; filled per family below
+
+
+def _pack(regions):
+    """Shelf-pack regions (list of (key, image)) into an atlas; returns atlas and key->(x, y)."""
+    regions = sorted(regions, key=lambda r: (-r[1].height, -r[1].width))
+    W = 512
+    x = y = shelf = 0
+    pos = {}
+    for k, im in regions:
+        if x + im.width > W:
+            x, y, shelf = 0, y + shelf, 0
+        pos[k] = (x, y)
+        x += im.width
+        shelf = max(shelf, im.height)
+    atlas = Image.new("RGBA", (W, max(16, y + shelf)), (0, 0, 0, 0))
+    ims = dict(regions)
+    for k, (px, py) in pos.items():
+        atlas.paste(ims[k], (px, py))
+    return atlas, pos
+
+
+def build_family(name):
+    spec = LIB_TILESETS[name]
+    regions, seen, sources = [], set(), set()
+
+    def reg(s):
+        k = s.key()
+        if k not in seen:
+            seen.add(k)
+            regions.append((k, s.image()))
+            if isinstance(s, Synth):
+                sources.update(n.sheet.split("@")[0] for n in s.nine)
+            else:
+                sources.add(s.sheet.split("@")[0])
+        return k
+
+    for kind, r in spec.items():
+        for key in ("src", "top", "face", "alts", "inner"):
+            v = r.get(key)
+            if v is None:
+                continue
+            for s in (v if isinstance(v, list) else [v]):
+                reg(s)
+    atlas, pos = _pack(regions)
+    rules = {}
+    for kind, r in spec.items():
+        o = {"type": r["type"]}
+        for opt in ("under", "g", "fps", "w", "dx", "dy"):
+            if r.get(opt) not in (None, 0):
+                o[opt] = r[opt]
+        if r.get("casts"):
+            o["casts"] = True
+        if r.get("pingpong"):
+            o["pingpong"] = True
+        if r["type"] in ("tile", "hrow", "grid9"):
+            o["t"] = [list(pos[s.key()]) for s in r["src"]]
+        elif r["type"] == "auto":
+            o["b"] = [list(pos[s.key()]) for s in r["src"]]
+        elif r["type"] == "wall":
+            o["top"] = [list(pos[r["top"].key()])]
+            o["face"] = [list(pos[r["face"].key()])]
+        elif r["type"] == "stamp":
+            s = r["src"]
+            o["r"] = list(pos[s.key()]) + [s.w, s.h]
+            if r["alts"]:
+                o["alt"] = [list(pos[a.key()]) + [a.w, a.h] for a in r["alts"]]
+            if r["tall"]:
+                o["tall"] = True
+            if r.get("inner") is not None:
+                i = r["inner"]
+                o["inner"] = list(pos[i.key()]) + [i.w, i.h]
+        rules[kind] = o
+    return atlas, {"family": name, "rules": rules}, sorted(sources)
+
+
+def build_library(save_ext):
+    # field objects strip: TF treasure chests (closed/open) over the generated strip (save lamp, switch, spring kept)
+    import os
+    base = Image.open(os.path.join(os.path.dirname(__file__), "..", "..", "game", "assets", "sprites", "objects.png")).convert("RGBA")
+    ch = FB + "FutureFantasy/100/characters/chests.png"
+    for i, y in enumerate((136, 232)):
+        base.paste((0, 0, 0, 0), (i * 16, 0, i * 16 + 16, 16))
+        base.alpha_composite(lib_img(ch).crop((0, y, 16, y + 16)), (i * 16, 0))
+    save_ext(base, "sprites/objects.png", "objects", [ch], "chest closed/open from Future Fantasy chests")
+    for name in LIB_TILESETS:
+        atlas, rules, sources = build_family(name)
+        save_ext(atlas, f"tiles/{name}_ext.png", "tileset_ext", sources, "16x16 rules atlas")
+        save_ext(rules, f"tiles/{name}_ext.json", "tileset_rules", sources)
+
+
+# ---- shared sheets ---------------------------------------------------------------------------------------------
+WV = FB + "TimeFantasy_Winter/rpgmaker/RPGMAKER_VX/tf_winter_tile"      # 2x sheets -> "@2x"
+W_A1, W_A2, W_B = WV + "A1.png@2x", WV + "A2.png@2x", WV + "B.png@2x"
+FF_A1, FF_A2, FF_A5 = FF + "A1.png", FF + "A2.png", FF + "A5_a.png"
+SP_A2, SP_A4, SP_A5D, SP_A5I = SP + "A2.png", SP + "A4.png", SP + "A5_dungeon.png", SP + "A5_int.png"
+SP_C1, SP_C2, SP_I1, SP_I2, SP_D = SP + "B_city1.png", SP + "B_city2.png", SP + "B_int1.png", SP + "B_int2.png", SP + "B_dungeon.png"
+SW_A1, SW_A2, SW_A4, SW_A5, SW_B = SW + "A1_1.png", SW + "A2_1.png", SW + "A4_1.png", SW + "A5_1.png", SW + "B_1.png"
+RU_A1, RU_A2, RU_A4, RU_A5 = RU + "A1_ruins.png", RU + "A2_ruins.png", RU + "A4_ruins.png", RU + "A5_ruins1.png"
+AS_A1, AS_A2, AS_A5, AS_B = AS + "A1_ashlands_1.png", AS + "A2_ashlands_1.png", AS + "A5_ashlands_1.png", AS + "B_ashlands_1.png"
+FU_A1, FU_A2, FU_A4 = FU + "future_tileA1.png", FU + "future_tileA2.png", FU + "future_tileA4.png"
+CL = FB + "rpgmaker_1/cloud_tile"
+CL_A1, CL_A2, CL_A5, CL_B = CL + "A1_1.png", CL + "A2_1.png", CL + "A5_1.png", CL + "B_1.png"
+AT_A2 = FB + "RPGMAKER-100/tf_A2_atlantis.png"
+SP_C2B, SP_C2C = SP + "B_city2b.png", SP + "B_city2c.png"
+
+
+def nine(sheet, x, y, cols=(0, 1, 3), rows=(0, 1, 2)):
+    """3x3 tile coords from a rectangular piece: columns/rows offsets for left/mid/right and top/mid/bottom."""
+    return [t16(sheet, x + cx, y + ry) for ry in rows for cx in cols]
+
+
+# common street/room props (steampunk city/interior sets)
+def props_kit(ground="@"):
+    return {
+        "crate": stamp(Src(SP_C1, 48, 192, 16, 32), tall=True, under=ground, alts=[Src(SP_C1, 0, 192, 16, 32)]),
+        "barrel": stamp(Src(SP_C1, 48, 224, 16, 32), tall=True, under=ground, alts=[Src(SP_C1, 64, 224, 16, 32)]),
+        "lamp": stamp(Src(SP_C1, 16, 16, 16, 64), tall=True, under=ground),
+        "doorway": tile(t16(SP_C2, 1, 7)),
+        "rubble": stamp(Src(AS_B, 35, 34, 11, 11), under=ground),
+        "crystal": stamp(Src(W_B, 97, 66, 13, 14), under=ground),
+        "pillar": stamp(Src(SP_D, 129, 156, 14, 35), tall=True, under=ground),
+    }
+
+
+LIB_TILESETS["town_r01"] = {
+    "grass": auto(a2(FF_A2, 0, 1)),
+    "path": auto(a2(FF_A2, 2, 1)),
+    "garden": auto(a2(W_A2, 1, 0)),
+    "water": auto(a1(W_A1, 1), fps=3, pingpong=True),
+    "floor": auto(a2(SP_A2, 1, 0)),
+    "tree": stamp(Src(W_B, 227, 55, 26, 23), tall=True, under="grass", inner=Src(W_B, 4, 104, 40, 52)),
+    "cliff": grid9(nine(FF_A5, 0, 10, cols=(1, 1, 2), rows=(0, 1, 3)), casts=True),
+    "roof": auto(Synth(nine(SP_C2, 0, 1)), g="roof"),
+    "chimney": tile(t16(SP_C2, 2, 0), under="roof", g="roof"),
+    "house": hrow(t16(SP_C2, 0, 5), t16(SP_C2, 1, 5), t16(SP_C2, 3, 5), g="house", casts=True),
+    "window": tile(t16(SP_C2, 14, 4), under="house", g="house", casts=True),
+    "door": stamp(Src(SP_C2, 64, 96, 16, 32), under="house"),
+    **props_kit(),
+}
+
+
+# ---- more shared sheets -----------------------------------------------------------------------------------------
+
+_recol_cache = {}
+
+
+def recolor(hue=0.0, sat=1.0, val=1.0):
+    """Hue-rotate (turns) / saturation / value scale — returns a cached Image->Image function."""
+    key = (hue, sat, val)
+    if key in _recol_cache:
+        return _recol_cache[key]
+    import colorsys
+
+    def fn(im):
+        out = im.copy()
+        px = out.load()
+        for y in range(out.height):
+            for x in range(out.width):
+                r, g, b, a = px[x, y]
+                if a == 0:
+                    continue
+                h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+                r2, g2, b2 = colorsys.hsv_to_rgb((h + hue) % 1.0, min(1, s * sat), min(1, v * val))
+                px[x, y] = (int(r2 * 255), int(g2 * 255), int(b2 * 255), a)
+        return out
+    _recol_cache[key] = fn
+    return fn
+
+
+def tint(*stops, keep=0.25):
+    """Gradient-map by luminance onto hex colour stops (dark->light), keeping `keep` of the original colour so
+    texture and small accents survive. Cached Image->Image function."""
+    key = ("tint", stops, keep)
+    if key in _recol_cache:
+        return _recol_cache[key]
+    cs = [hexc(h)[:3] for h in stops]
+
+    def ramp(l):
+        t = l * (len(cs) - 1)
+        i = min(int(t), len(cs) - 2)
+        f = t - i
+        return tuple(cs[i][k] + (cs[i + 1][k] - cs[i][k]) * f for k in range(3))
+
+    def fn(im):
+        out = im.copy()
+        px = out.load()
+        for y in range(out.height):
+            for x in range(out.width):
+                r, g, b, a = px[x, y]
+                if a == 0:
+                    continue
+                l = (0.3 * r + 0.59 * g + 0.11 * b) / 255
+                m = ramp(l)
+                px[x, y] = tuple(int(m[k] * (1 - keep) + (r, g, b)[k] * keep) for k in range(3)) + (a,)
+        return out
+    _recol_cache[key] = fn
+    return fn
+
+
+# water flavours (A1 animated autotiles, 3 frames ping-pong)
+def water(sheet, row, cols=(0, 1, 2), fn=None, g="water"):
+    return auto(a1(sheet, row, cols, fn), fps=3, pingpong=True, g=g)
+
+
+W_GRASS = lambda: water(W_A1, 1)
+W_DIRT = lambda: water(W_A1, 3)
+W_STONE = lambda: water(W_A1, 3, (4, 5, 6))
+W_SNOW = lambda: water(W_A1, 1, (4, 5, 6))
+W_OPEN = lambda: water(W_A1, 0)
+TREE = stamp(Src(W_B, 227, 55, 26, 23), tall=True, under="grass", inner=Src(W_B, 4, 104, 40, 52), g="tree")
+TREE2 = stamp(Src(W_B, 4, 161, 39, 47), tall=True, under="grass", g="tree")
+PINE_SNOW = stamp(Src(W_B, 227, 87, 26, 23), tall=True, under="snow", inner=Src(W_B, 52, 104, 40, 52), g="tree")
+CLIFF = grid9(nine(FF_A5, 0, 10, cols=(1, 1, 2), rows=(0, 1, 3)), casts=True)
+WOOD_DECK = auto(a2(FU_A2, 0, 3))
+
+
+def roofs(sheet, fn=None):
+    """Roof autotile + house front/window/door + chimney from a steampunk city2-layout sheet."""
+    t = lambda x, y: t16(sheet, x, y, fn)
+    return {
+        "roof": auto(Synth([t(0, 1), t(1, 1), t(3, 1), t(0, 2), t(1, 2), t(3, 2), t(0, 3), t(1, 3), t(3, 3)]), g="roof"),
+        "chimney": tile(t(2, 0), under="roof", g="roof"),
+        "house": hrow(t(0, 5), t(1, 5), t(3, 5), g="house", casts=True),
+        "window": tile(t16(sheet, 14, 4, fn), under="house", g="house", casts=True),
+        "door": stamp(Src(sheet, 64, 96, 16, 32, fn), under="house"),
+    }
+
+
+def room_kit(ground="@"):
+    return {
+        "shelf": stamp(Src(SP_I1, 208, 129, 16, 52), tall=True, under=ground),
+        "book": stamp(Src(SP_I1, 96, 214, 15, 8), under=ground),
+        "bed": stamp(Src(SP_I2, 241, 197, 14, 42), tall=True, under=ground),
+        "table": stamp(Src(SP_I1, 195, 199, 26, 24), tall=True, under=ground),
+        "bench": stamp(Src(SP_I1, 2, 100, 12, 24), tall=True, under=ground),
+        "chest_deco": stamp(Src(SP_I2, 80, 224, 16, 15), under=ground),
+        "machine": stamp(Src(SP_D, 0, 32, 16, 32), tall=True, under=ground, alts=[Src(SP_D, 32, 32, 16, 32)]),
+        "gear": stamp(Src(SP_D, 240, 80, 16, 16), under=ground),
+        "wheel": stamp(Src(SP_D, 128, 0, 32, 32), tall=True, under=ground),
+        "pipe": tile(t16(SP_D, 0, 11), under=ground),
+        "vent": tile(t16(SP_D, 5, 14), under=ground),
+        **props_kit(ground),
+    }
+
+
+def dungeon(floor, wall_pair, floor2=None, water_rule=None, extra=None, ground="floor"):
+    d = {"floor": floor, "wall": wall(wall_pair)}
+    if floor2:
+        d["floor2"] = floor2
+    if water_rule:
+        d["water"] = water_rule
+    d.update(room_kit())
+    d.update(extra or {})
+    return d
+
+
+LIB_TILESETS["town_r01"].update({"tree": TREE, "tree2": TREE2, "cliff": CLIFF, "bridge": WOOD_DECK})
+
+LIB_TILESETS["capital"] = {
+    "path": auto(a2(SP_A2, 1, 0)), "floor": auto(a2(SP_A2, 0, 2)), "grass": auto(a2(FF_A2, 0, 1)),
+    "wall": wall(a4(SP_A4, 1, 0)), "water": W_STONE(), "stairs": tile(t16(FF_A5, 6, 10)),
+    **roofs(SP_C2C), **room_kit(),
+}
+LIB_TILESETS["quarry"] = dungeon(auto(a2(AS_A2, 3, 0)), a4(SW_A4, 0, 0), floor2=auto(a2(AS_A2, 0, 0)), water_rule=W_DIRT(),
+                                 extra={"path": auto(a2(FF_A2, 3, 1)), "rock": stamp(Src(AS_B, 100, 34, 23, 12), under="@"),
+                                        "rubble": stamp(Src(AS_B, 35, 34, 11, 11), under="@"), "grass": auto(a2(FF_A2, 0, 1)), "cliff": CLIFF,
+                                        "shallow": water(RU_A1, 0, (4, 5, 6), g="shallow"), **roofs(SP_C2)})
+LIB_TILESETS["underways"] = dungeon(auto(a2(SW_A2, 0, 0)), a4(SW_A4, 0, 0), floor2=auto(a2(SW_A2, 1, 0)),
+                                    water_rule=water(SW_A1, 0), extra={"dock": WOOD_DECK, "cliff": CLIFF})
+LIB_TILESETS["grove"] = {
+    "floor2": auto(a2(FF_A2, 1, 1)), "grass": auto(a2(FF_A2, 0, 1)), "path": auto(a2(FF_A2, 2, 1)), "floor": auto(a2(FF_A2, 3, 1)),
+    "wall": CLIFF, "water": W_GRASS(), "shallow": water(RU_A1, 1, (4, 5, 6), g="shallow"), "tree": TREE, "tree2": TREE2,
+    "hedge": stamp(Src(W_B, 227, 55, 26, 23), tall=True, under="grass"), "cliff": CLIFF, **props_kit(),
+}
+LIB_TILESETS["grove_flood"] = {
+    "water": water(W_A1, 2), "roots": auto(a2(FF_A2, 3, 1)), "shallow": water(RU_A1, 1, (4, 5, 6), g="shallow"),
+    "floor": auto(a2(FF_A2, 0, 0)), **props_kit(),
+}
+LIB_TILESETS["furnace"] = dungeon(auto(a2(SP_A2, 5, 1)), a4(SP_A4, 2, 0), floor2=auto(a2(SP_A2, 6, 1)),
+                                  extra={"grass": auto(a2(FF_A2, 0, 1)), "garden": auto(a2(W_A2, 1, 0)),
+                                         "ember": water(AS_A1, 2, g="ember"), "bridge": auto(a2(SP_A2, 7, 1)),
+                                         "path": auto(a2(SP_A2, 7, 0)), "pool": water(AS_A1, 2, g="ember")})
+LIB_TILESETS["town_r02"] = {
+    "path": auto(a2(SP_A2, 1, 0)), "wall": wall(a4(SP_A4, 0, 0)), "grass": auto(a2(FF_A2, 0, 1)), "tree": TREE,
+    "garden": auto(a2(W_A2, 1, 0)), "stairs": tile(t16(FF_A5, 6, 10)), "pool": W_STONE(), **roofs(SP_C2), **room_kit(),
+}
+LIB_TILESETS["archive"] = dungeon(auto(a2(RU_A2, 0, 0)), a4(RU_A4, 0, 0), floor2=auto(a2(RU_A2, 2, 0)), water_rule=water(RU_A1, 0),
+                                  extra={"shallow": water(RU_A1, 1, g="shallow"), "dock": WOOD_DECK, "pool": water(RU_A1, 1, g="pool"),
+                                         "bridge": WOOD_DECK, "puddle": water(RU_A1, 1, g="shallow")})
+TEAL = tint("10201e", "1e4a48", "3a8a84", "a8e0d8", keep=0.3)
+LIB_TILESETS["town_r03"] = {
+    "path": auto(a2(SP_A2, 0, 2)), "water": W_STONE(), "wall": wall(a4(SP_A4, 1, 0)), "dock": WOOD_DECK, "bridge": WOOD_DECK,
+    **roofs(SP_C2, TEAL), **room_kit(),
+}
+SKY_VOID = auto(a1(CL_A1, 0), fps=2, pingpong=True, g="void")
+LIB_TILESETS["sky"] = dungeon(auto(a2(CL_A2, 0, 0)), a4(RU_A4, 0, 0), extra={"void": SKY_VOID, "bridge": WOOD_DECK,
+                                                                           "path": auto(a2(CL_A2, 1, 0)), **roofs(SP_C2)})
+LIB_TILESETS["town_r04"] = {"path": auto(a2(CL_A2, 0, 0)), "void": SKY_VOID, "floor": auto(a2(CL_A2, 1, 0)),
+                            "stairs": tile(t16(FF_A5, 6, 10)), **roofs(SP_C2, tint("24160c", "7a4a1a", "c8943a", "f8e0a0", keep=0.3)), **room_kit()}
+LILAC = tint("2a2238", "7a6a98", "c8bce0", "f4f0fa")
+LIB_TILESETS["basin"] = dungeon(auto(a2(RU_A2, 0, 0, LILAC)), a4(RU_A4, 0, 0, LILAC), water_rule=water(RU_A1, 1),
+                                extra={"salt": auto(a2(W_A2, 0, 1, LILAC)), "pool": water(RU_A1, 1, g="pool")})
+LIB_TILESETS["town_r05"] = {"path": auto(a2(RU_A2, 0, 0, LILAC)), "salt": auto(a2(W_A2, 0, 1, LILAC)), "pool": water(RU_A1, 1, g="pool"),
+                            "garden": auto(a2(FF_A2, 0, 1)), **roofs(SP_C2, tint("1a1428", "4a3a6a", "8a78b0", "e0d8f0", keep=0.3)), **room_kit()}
+LIB_TILESETS["whitebone"] = dungeon(auto(a2(RU_A2, 0, 0)), a4(RU_A4, 0, 0), floor2=auto(a2(RU_A2, 1, 0)),
+                                    extra={"snow": auto(a2(W_A2, 2, 2)), "tree": PINE_SNOW})
+LIB_TILESETS["vault"] = dungeon(auto(a2(RU_A2, 0, 0, LILAC)), a4(RU_A4, 1, 0), floor2=auto(a2(RU_A2, 1, 0, LILAC)),
+                                extra={"pool": water(RU_A1, 1, g="pool")})
+DARK_VOID = tile(t16(SW_A5, 0, 0, tint("020206", "0a0a14", keep=0.0)), g="void")
+LIB_TILESETS["conduit"] = dungeon(auto(a2(FU_A2, 2, 2)), a4(FU_A4, 0, 2), floor2=auto(a2(FU_A2, 1, 2)),
+                                  water_rule=water(FU_A1, 0, (4, 5, 6)), extra={"bridge": auto(a2(FU_A2, 5, 1)), "lift": auto(a2(FU_A2, 4, 1)), "void": DARK_VOID})
+CROWN = tint("120c18", "3a2238", "6a3a50", "b0707a")
+LIB_TILESETS["crown"] = dungeon(auto(a2(SW_A2, 0, 0, CROWN)), a4(FU_A4, 5, 1), floor2=auto(a2(FU_A2, 7, 2, CROWN)),
+                                water_rule=water(RU_A1, 3), extra={"dock": auto(a2(SP_A2, 5, 1, tint("140c14", "4a2a34", "8a5048", "d8a070", keep=0.3))),
+                                       "bridge": auto(a2(SP_A2, 5, 1, tint("140c14", "4a2a34", "8a5048", "d8a070", keep=0.3))), "void": DARK_VOID})
+LIB_TILESETS["winter"] = dungeon(auto(a2(W_A2, 0, 1)), a4(RU_A4, 0, 0), water_rule=W_SNOW(),
+                                 extra={"snow": auto(a2(W_A2, 2, 2)), "ice": auto(a2(W_A2, 2, 3)), "rock": stamp(Src(W_B, 65, 48, 14, 15), under="snow")})
+LIB_TILESETS["reef"] = dungeon(auto(a2(AT_A2, 5, 1)), a4(SW_A4, 0, 0), floor2=auto(a2(AT_A2, 1, 1)), water_rule=W_OPEN(),
+                               extra={"reef": stamp(Src(AS_B, 100, 34, 23, 12, tint("2a0c1a", "8a2a4a", "e07a7a", "ffd0c0", keep=0.2)), under="@"),
+                                      "rock": stamp(Src(AS_B, 100, 34, 23, 12), under="@"),"deep": water(W_A1, 0, fn=tint("050a20", "10245a", "2a5aa0", "8ac0f0", keep=0.3), g="deep"), "dock": WOOD_DECK})
+LIB_TILESETS["interior"] = dungeon(auto(a2(SP_A2, 6, 0)), a4(SP_A4, 4, 0), extra={"counter": hrow(t16(SP_I1, 0, 8), t16(SP_I1, 1, 8), t16(SP_I1, 2, 8), under="floor")})
+LIB_TILESETS["interior_stone"] = dungeon(auto(a2(SP_A2, 1, 0)), a4(SP_A4, 1, 0), floor2=auto(a2(SP_A2, 0, 2)),
+                                         extra={"stairs": tile(t16(FF_A5, 6, 10)), "garden": auto(a2(FF_A2, 0, 1))})
+LIB_TILESETS["ship"] = dungeon(auto(a2(FU_A2, 0, 3)), a4(SP_A4, 0, 1))
+_world = lambda post: {
+    "plains": auto(a2(FF_A2, 0, 1 if not post else 3)), "water": W_GRASS(), "deep": water(W_A1, 0, g="deep"),
+    "path": auto(a2(FF_A2, 2, 1)), "sand": auto(a2(FF_A2, 5, 1)), "snow": auto(a2(W_A2, 2, 2)), "salt": auto(a2(W_A2, 0, 1, LILAC)),
+    "ash": auto(a2(AS_A2, 1, 0)),
+    "hills": auto(a2(FF_A2, 0, 0 if not post else 2)),
+    "mountain": stamp(Src(AS_B, 53, 68, 24, 25), tall=True, under="plains", inner=Src(AS_B, 84, 64, 40, 31), g="mountain"),
+    "forest": stamp(Src(W_B, 227, 55, 26, 23), tall=True, under="plains", inner=Src(W_B, 4, 104, 40, 52), g="forest"),
+}
+LIB_TILESETS["harbor"] = {"dock": WOOD_DECK, "water": W_OPEN(), "floor2": auto(a2(SP_A2, 1, 0)), "floor": auto(a2(SP_A2, 1, 0)),
+                          **room_kit()}
+LIB_TILESETS["world"] = _world(False)
+LIB_TILESETS["world_post"] = _world(True)

@@ -123,6 +123,36 @@ func run_gallery(p_main: Node, which: String) -> void:
 		main.router.pop(main.title_screen)
 		main.title_screen.queue_free()
 		main.title_screen = null
+	if which.begins_with("map:"):
+		# whole-map stitched captures for tile review: --qa-gallery-set map:ID1,ID2 (or map:ALL)
+		var ids: Array = Array(which.substr(4).split(","))
+		if ids == ["ALL"]:
+			ids = Content.data["maps"].keys()
+		for m in ids:
+			main.enter_field(m, "default")
+			main.field.banner_t = 0.0
+			var mw = main.field.W * 16
+			var mh = main.field.H * 16
+			var full = Image.create(maxi(mw, 320), maxi(mh, 240), false, Image.FORMAT_RGBA8)
+			var cy = 0
+			while cy < mh:
+				var cx = 0
+				while cx < mw:
+					var ox = mini(cx, maxi(mw - 320, 0))
+					var oy = mini(cy, maxi(mh - 240, 0))
+					main.field.cam_override = Vector2(ox, oy)
+					await _g_frames(3)
+					await RenderingServer.frame_post_draw
+					var img = get_viewport().get_texture().get_image()
+					img.convert(Image.FORMAT_RGBA8)
+					full.blit_rect(img, Rect2i(0, 0, 320, 240), Vector2i(ox, oy))
+					cx += 320
+				cy += 240
+			main.field.cam_override = Vector2(-1, -1)
+			full.save_png("%s/map_%s.png" % [out_dir, m])
+			print("GALLERY map_", m)
+		get_tree().quit(0)
+		return
 	if which in ["field", "all", "ui"]:
 		for m in GALLERY_MAPS:
 			if not Content.data["maps"].has(m):
