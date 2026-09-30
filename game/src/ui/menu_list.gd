@@ -124,6 +124,8 @@ func _draw() -> void:
 		var tx = x
 		if it.has("icon") and UI.icon(self, Vector2(x, y), str(it["icon"]), 11, not en):
 			tx += 13
+		elif it.has("spell") and UI.spell_icon(self, Vector2(x, y), str(it["spell"]), not en):
+			tx += 13
 		UI.text(self, Vector2(tx, y), it.get("text", ""), col)
 		if it.has("right"):
 			var rx = x + col_w - 12 if cols > 1 else size.x - 8

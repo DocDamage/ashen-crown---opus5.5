@@ -511,13 +511,16 @@ func _abilities_menu(cid: String) -> void:
 	for l in Content.ch(cid)["learn"]:
 		var a = Content.ability(l["id"])
 		var has = learned.has(l["id"])
-		items.append({"text": a["name"] if has else "Lv %d: ???" % l["level"], "right": str(int(a["mp"])) if has else "", "value": l["id"], "enabled": has and a.get("field", false), "reason": "Battle technique" if has else "Not yet learned", "desc": a["desc"] if has else ""})
+		items.append({"spell": l["id"] if has else "", "text": a["name"] if has else "Lv %d: ???" % l["level"], "right": str(int(a["mp"])) if has else "", "value": l["id"], "enabled": has and a.get("field", false), "reason": "Battle technique" if has else "Not yet learned", "desc": a["desc"] if has else ""})
 	var ult = Content.ch(cid).get("ultimate")
 	if ult != null:
 		var has2 = learned.has(ult)
 		items.append({"text": Content.ability(ult)["name"] if has2 else "Personal story: ???", "value": ult, "enabled": false, "reason": "Battle technique" if has2 else "Resolve their personal story", "desc": Content.ability(ult)["desc"] if has2 else ""})
+	for vk in Game.S.get("vknown", {}).get(cid, []):
+		var va = Content.ability(vk)
+		items.append({"spell": vk, "text": va["name"], "right": str(int(va["mp"])), "value": vk, "enabled": va.get("field", false), "reason": "Battle magic", "desc": va["desc"] + " (Vestige magic)"})
 	for g in st["grants"]:
-		items.append({"text": Content.ability(g)["name"] + " (acc.)", "right": str(int(Content.ability(g)["mp"])), "value": g, "enabled": Content.ability(g).get("field", false), "reason": "Granted while equipped", "desc": Content.ability(g)["desc"]})
+		items.append({"spell": g, "text": Content.ability(g)["name"] + " (acc.)", "right": str(int(Content.ability(g)["mp"])), "value": g, "enabled": Content.ability(g).get("field", false), "reason": "Granted while equipped", "desc": Content.ability(g)["desc"]})
 	var m = _menu(items, Rect2(4, 4, 200, 150), 12, Game.char_name(cid))
 	info_draw = func():
 		var it = m.current()

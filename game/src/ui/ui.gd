@@ -113,6 +113,25 @@ static func icon(ci: CanvasItem, pos: Vector2, iid: String, px: int = 11, dim: b
 		Color(1, 1, 1, 0.45) if dim else Color.WHITE)
 	return true
 
+## Spell icons (owner's spell icon pack, one per ability): assets/ext/sprites/spell_icons_32.png + spell_icons.json.
+static var _sp_meta = null
+static var _sp_tex: Texture2D = null
+
+static func spell_icon(ci: CanvasItem, pos: Vector2, aid: String, dim: bool = false) -> bool:
+	if _sp_meta == null:
+		var jp = "res://assets/ext/sprites/spell_icons.json"
+		_sp_meta = JSON.parse_string(FileAccess.get_file_as_string(jp)) if FileAccess.file_exists(jp) else {}
+		var tp = "res://assets/ext/sprites/spell_icons_32.png"
+		_sp_tex = load(tp) if ResourceLoader.exists(tp) else null
+	if _sp_tex == null or not _sp_meta.get("index", {}).has(aid):
+		return false
+	var i = int(_sp_meta["index"][aid])
+	var c = int(_sp_meta["cols"])
+	native_begin(ci, (pos * U).round() / U)
+	ci.draw_texture_rect_region(_sp_tex, Rect2(0, -1, 32, 32), Rect2((i % c) * 32, (i / c) * 32, 32, 32), Color(1, 1, 1, 0.45) if dim else Color.WHITE)
+	native_end(ci)
+	return true
+
 static func width(s: String) -> float:
 	return font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, FONT_PX).x / U
 

@@ -585,7 +585,7 @@ func _open_sub_abilities(b, magic: bool = false) -> void:
 		var a = Content.ability(aid)
 		var v = model.validate(b, {"type": "ability", "id": aid})
 		var cost = model.mp_cost(b, a)
-		items.append({"text": a["name"], "right": str(cost) if cost > 0 else "", "value": aid, "enabled": v["ok"], "reason": v.get("reason", ""), "desc": a.get("desc", "")})
+		items.append({"spell": aid, "text": a["name"], "right": str(cost) if cost > 0 else "", "value": aid, "enabled": v["ok"], "reason": v.get("reason", ""), "desc": a.get("desc", "")})
 	_open_sub(items, "role")
 
 func _open_sub_items(b) -> void:

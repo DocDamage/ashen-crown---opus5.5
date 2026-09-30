@@ -257,7 +257,63 @@ def vestiges():
     print("vestiges:", n, "sheets")
 
 
-SECTIONS = {"arenas": arenas, "audio": audio, "vfx": vfx, "vestiges": vestiges}
+# ---------------------------------------------------------------- spell icons
+ELEM_ICON = {"fire": "Fire", "ice": "Water", "water": "Water", "storm": "Air", "light": "Light", "shadow": "Dark",
+             "earth": "Fire", "none": "Light", "physical": "Air", "poison": "Dark"}
+
+
+def spell_icons():
+    """One 64px icon per ability from Assets/VFX/spell-fx/Spells (owner's map first, then by element), reduced to 32px
+    by 2x2 box averaging (done once here) for menu lines; 64px kept for the battle command window."""
+    from PIL import Image
+    base = os.path.join(ASSETS, "VFX", "spell-fx", "Spells")
+    imap = json.load(open(os.path.join(base, "spell_icon_map.json")))
+    content = json.load(open(os.path.join(REPO, "game", "content", "content.json"), encoding="utf-8"))
+    pools = {e: sorted(os.listdir(os.path.join(base, e))) for e in os.listdir(base) if os.path.isdir(os.path.join(base, e))}
+    used = set()
+    pick = {}
+    for k, v in imap.items():
+        if k.startswith("S") and isinstance(v, str) and "/" in v and not v.startswith("("):
+            pick[k.split()[0]] = v
+            used.add(v)
+    pick["S012"] = "Fire/Eruption"
+    used.add("Fire/Eruption")
+    for aid, a in sorted(content["abilities"].items()):
+        if aid in pick:
+            continue
+        el = a.get("element", "none")
+        if a.get("kind") in ("heal", "revive"):
+            el = "light"
+        fam = ELEM_ICON.get(el, "Light")
+        free = [f"{fam}/{n}" for n in pools[fam] if f"{fam}/{n}" not in used]
+        choice = free[0] if free else f"{fam}/{pools[fam][hash(aid) % len(pools[fam])]}"
+        pick[aid] = choice
+        used.add(choice)
+    ids = sorted(pick)
+    cols = 32
+    rows = (len(ids) + cols - 1) // cols
+    at64 = Image.new("RGBA", (cols * 64, rows * 64), (0, 0, 0, 0))
+    at32 = Image.new("RGBA", (cols * 32, rows * 32), (0, 0, 0, 0))
+    index = {}
+    for i, aid in enumerate(ids):
+        f = os.path.join(base, pick[aid], "1.png")
+        im = Image.open(f).convert("RGBA").resize((64, 64), Image.NEAREST)
+        if aid == "S012":
+            import numpy as np
+            a = np.array(im).astype(float)
+            a[..., 0] *= 0.75; a[..., 1] *= 0.6; a[..., 2] *= 0.35
+            im = Image.fromarray(a.clip(0, 255).astype("uint8"))
+        at64.paste(im, ((i % cols) * 64, (i // cols) * 64))
+        at32.paste(im.resize((32, 32), Image.BOX), ((i % cols) * 32, (i // cols) * 32))
+        index[aid] = i
+    os.makedirs(os.path.join(EXT, "sprites"), exist_ok=True)
+    at64.save(os.path.join(EXT, "sprites", "spell_icons_64.png"))
+    at32.save(os.path.join(EXT, "sprites", "spell_icons_32.png"))
+    json.dump({"cols": cols, "index": index, "source": pick}, open(os.path.join(EXT, "sprites", "spell_icons.json"), "w"), indent=0)
+    print("spell icons:", len(ids))
+
+
+SECTIONS = {"arenas": arenas, "audio": audio, "vfx": vfx, "vestiges": vestiges, "icons": spell_icons}
 
 if __name__ == "__main__":
     for s in (sys.argv[1:] or SECTIONS.keys()):
