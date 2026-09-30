@@ -41,6 +41,7 @@ var target_list: Array = []
 var enemy_pos = {}
 var flashes = {}
 var vfx: Array = []
+var sfx_sprites: Array = []   # sprite effects {name, pos, t, [from, to, travel]}
 var summon_fx = {}
 var pause_open = false
 var hint = ""
@@ -172,6 +173,9 @@ func _process(delta: float) -> void:
 	for v in vfx:
 		v["t"] -= delta
 	vfx = vfx.filter(func(v): return v["t"] > 0)
+	for fx in sfx_sprites:
+		fx["t"] += delta
+	sfx_sprites = sfx_sprites.filter(func(fx): return fx["t"] < fx["len"])
 	if banner_t > 0:
 		banner_t -= delta
 	if hint_t > 0:
@@ -293,6 +297,7 @@ func _present_action(ev: Dictionary, sk: bool) -> void:
 		"item": sfx = "FX002"
 		"summon": sfx = "FX030"
 	Audio.sfx(sfx)
+	var fxspec: Dictionary = _action_fx_cast(ev) if not sk else {}
 	if ev.has("summon"):
 		await _summon_fx(ev["summon"], sk)
 	elif b.side == 0 and HeroArt.has_battle(b.ref):
@@ -301,6 +306,16 @@ func _present_action(ev: Dictionary, sk: bool) -> void:
 	else:
 		await _wait(0.22 if not sk else 0.02)
 	# effects on targets
+	if fxspec.get("bolt", "") != "":
+		var tgt = ""
+		for r in ev["results"]:
+			if model.battlers.has(str(r.get("id", ""))):
+				tgt = r["id"]
+				break
+		if tgt != "":
+			_fx_bolt(fxspec["bolt"], _battler_pos(ev["actor"]), _battler_pos(tgt), 0.25)
+			await _wait(0.25)
+	_action_fx_hit(ev, fxspec)
 	var any_hit = false
 	for r in ev["results"]:
 		_result_popup(r, elem, ev)
@@ -321,6 +336,49 @@ func _present_action(ev: Dictionary, sk: bool) -> void:
 	for r in ev["results"]:
 		if r["kind"] == "ko":
 			Audio.sfx("FX025" if r["id"].begins_with("A") else "FX026")
+
+func _fx(name: String, pos: Vector2, delay: float = 0.0) -> void:
+	if name == "" or not BattleFX.has(name):
+		return
+	sfx_sprites.append({"name": name, "pos": pos, "t": -delay, "len": BattleFX.length(name)})
+
+func _fx_bolt(name: String, from: Vector2, to: Vector2, travel: float) -> void:
+	if name == "" or not BattleFX.has(name):
+		return
+	sfx_sprites.append({"name": name, "pos": from, "from": from, "to": to, "travel": travel, "t": 0.0, "len": travel})
+
+## Effects for an action: cast effects at the actor while the animation plays; bolt; hit effects on targets.
+func _action_fx_cast(ev: Dictionary) -> Dictionary:
+	var spec: Dictionary = BattleFX.for_ability(ev.get("ability", "")) if ev.has("ability") else {}
+	if spec.is_empty() and ev.get("anim", "") in ["attack", "shoot"]:
+		var el = str(ev.get("element", "physical"))
+		spec = {"cast": [], "bolt": "", "hit": [({"light": "holy"}.get(el, el) + "_impact") if el not in ["physical", "none", ""] else "white_shine"], "mode": "each"}
+	for c in spec.get("cast", []):
+		_fx(c, _battler_pos(ev["actor"]) + Vector2(0, 6))
+	return spec
+
+func _action_fx_hit(ev: Dictionary, spec: Dictionary) -> void:
+	if spec.is_empty():
+		return
+	var ids = []
+	for r in ev["results"]:
+		var rid = str(r.get("id", ""))
+		if rid != "" and rid != "DECOY" and model.battlers.has(rid) and not ids.has(rid) and r["kind"] in ["damage", "heal", "status+", "revive", "miss", "absorb", "mp", "status-"]:
+			ids.append(rid)
+	if ids.is_empty():
+		return
+	var hits: Array = spec.get("hit", [])
+	if spec.get("mode", "each") == "center":
+		var c = Vector2.ZERO
+		for i in ids:
+			c += _battler_pos(i)
+		c /= ids.size()
+		for h in hits:
+			_fx(h, c)
+	else:
+		for i in ids:
+			for h in hits:
+				_fx(h, _battler_pos(i))
 
 func _summon_fx(vid: String, sk: bool) -> void:
 	var short: bool = Settings.get_v("short_summons") or sk
@@ -369,6 +427,7 @@ func _result_popup(r: Dictionary, elem: String, ev: Dictionary) -> void:
 			col = UI.C_GREEN
 		"status+":
 			txt = r["status"].capitalize()
+			_fx(BattleFX.for_status(str(r["status"])), _battler_pos(id))
 			col = Color8(220, 170, 255)
 			Audio.sfx("FX023")
 		"status-":
@@ -743,8 +802,18 @@ func _draw() -> void:
 				UI.cursor(self, tp + Vector2(-_enemy_size(tid).x / 2.0 - 10, -4))
 			else:
 				UI.cursor(self, tp + Vector2(-36, 4))
-	# vfx
+	# sprite effects (library packs)
+	for fx in sfx_sprites:
+		if fx["t"] < 0:
+			continue
+		var fp: Vector2 = fx["pos"]
+		if fx.has("to"):
+			fp = (fx["from"] as Vector2).lerp(fx["to"], clampf(fx["t"] / fx["travel"], 0, 1))
+		BattleFX.draw(self, fx["name"], fmod(fx["t"], maxf(0.01, BattleFX.length(fx["name"]))) if fx.has("to") else fx["t"], fp)
+	# vfx (fallback particles when the effect packs are not installed)
 	for v in vfx:
+		if BattleFX.ok():
+			break
 		var k: float = 1.0 - v["t"] / v["dur"]
 		var col = UI.elem_color(v["elem"])
 		var rad = 4.0 + k * 10.0

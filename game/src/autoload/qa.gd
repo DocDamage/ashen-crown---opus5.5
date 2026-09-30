@@ -182,6 +182,34 @@ func run_gallery(p_main: Node, which: String) -> void:
 		main.dialogue.visible = false
 		main.router.pop(main.dialogue)
 		await _g_ui_screens()
+	if which == "fx" or which == "cast":
+		# overhaul review: all heroes in battle poses and spell effects mid-play
+		var groups = [["C01", "C02", "C03", "C04", "C05"], ["C06", "C07", "C08", "C09", "C10"], ["C11", "C12", "C13", "C14", "C15"], ["C16", "C17", "C01", "C02", "C03"]]
+		var fxn = [["fire_impact", "ice_area", "storm_pillar", "holy_nova"], ["shadow_nova", "earth_pillar", "water_area", "poison_aura"], ["green_heal", "gold_levelup", "blue_shield", "arcane_rune"], ["red_statdown", "white_shine", "purple_stun", "gold_buff"]]
+		for gi in range(groups.size()):
+			Game.S["party"]["active"] = []
+			for cid in groups[gi]:
+				Game.recruit(cid)
+			Game.S["party"]["active"] = groups[gi].slice(0, 5)
+			var bs = BattleScene.new()
+			bs.main = main
+			main.world.add_child(bs)
+			main.field.visible = false
+			bs.setup("D01_1", 1234, {})
+			await _g_frames(20)
+			var anims = ["idle", "attack", "cast", "victory", "hurt"]
+			for i in range(bs.model.party_ids.size()):
+				bs.anim[bs.model.party_ids[i]] = {"name": anims[i % anims.size()], "t": 0.35}
+			var k = 0
+			for nm in fxn[gi]:
+				bs._fx(nm, Vector2(60 + k * 45, 110))
+				k += 1
+			await _g_frames(12)
+			await _g_shot("cast_%d" % gi)
+			bs.queue_free()
+			await _g_frames(2)
+		get_tree().quit(0)
+		return
 	if which in ["battle", "all"]:
 		for cid in ["C02", "C03", "C04"]:
 			if Content.data["characters"].has(cid):

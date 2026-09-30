@@ -142,7 +142,81 @@ def audio():
               open(os.path.join(EXT, "audio", "audio_map.json"), "w"), indent=1)
 
 
-SECTIONS = {"arenas": arenas, "audio": audio}
+# ---------------------------------------------------------------- vfx
+ELEM_FX = {"fire": "fire", "ice": "ice", "storm": "storm", "earth": "earth", "water": "water", "light": "holy",
+           "shadow": "shadow", "poison": "poison", "arcane": "arcane"}
+
+
+def vfx():
+    import glob as G, re
+    src = os.path.join(PROC, "vfx")
+    out = os.path.join(EXT, "vfx")
+    effects = {}
+    n = 0
+    for sub in ("spell-fx", "buff-fx"):
+        meta = json.load(open(os.path.join(src, sub, "effects.json")))["effects"]
+        for e in meta:
+            f = os.path.join(src, sub, e["file"])
+            if not os.path.exists(f):
+                continue
+            n += copy(f, os.path.join(out, e["name"] + ".png"))
+            from PIL import Image
+            w, h = Image.open(f).size
+            effects[e["name"]] = {"frames": e["frames"], "fps": e["fps"], "loop": e["loop"], "cols": e["columns"],
+                                  "rows": e["rows"], "cell": [w // e["columns"], h // e["rows"]], "anchor": e["anchor"],
+                                  "shape": e["shape"]}
+    fxmap = json.load(open(os.path.join(src, "fx_map.json")))
+    content = json.load(open(os.path.join(REPO, "game", "content", "content.json"), encoding="utf-8"))
+    status_fx = {k: v.split(" ")[0] for k, v in fxmap["statuses"].items()}
+    explicit = {}
+    for k, steps in fxmap["spells"].items():
+        m = re.match(r"(S\d+)", k)
+        if m:
+            explicit[m.group(1)] = steps
+    abil = {}
+    for aid, a in content["abilities"].items():
+        elem = ELEM_FX.get(a.get("element", "none"), "")
+        aoe = a.get("target", "").endswith("_all")
+        if aid in explicit:
+            steps = [x.split(" ")[0] for x in explicit[aid]]
+            steps = [x for x in steps if x in effects]
+            if not steps:
+                continue
+            cast = [x for x in steps if x.endswith("_cast")]
+            bolt = [x for x in steps if x.endswith("_bolt")]
+            hit = [x for x in steps if not x.endswith("_cast") and not x.endswith("_bolt")] or steps[-1:]
+            abil[aid] = {"cast": cast, "bolt": bolt[0] if bolt else "", "hit": hit, "mode": "center" if any(h.endswith(("_area", "_nova")) for h in hit) and aoe else "each"}
+            continue
+        kind = a.get("kind", "")
+        fam = a.get("family", "")
+        hit, cast = [], []
+        if kind == "summon":
+            hit = [(elem or "arcane") + "_nova"]
+        elif kind == "heal":
+            cast, hit = ["holy_cast"], ["green_heal"]
+        elif kind == "revive":
+            cast, hit = ["holy_cast"], ["gold_levelup"]
+        elif kind == "physical":
+            hit = [elem + "_impact"] if elem else ["white_shine"]
+        elif kind == "magical":
+            cast = [(elem or "arcane") + "_cast"]
+            hit = [(elem or "arcane") + ("_area" if aoe else "_impact")]
+        else:
+            sts = [o["id"] for o in a.get("ops", []) if o.get("op") == "status"]
+            hit = [status_fx[sts[0]]] if sts and sts[0] in status_fx else (["arcane_rune"] if fam == "spell" else ["white_shine"])
+            if fam == "spell":
+                cast = ["arcane_cast"]
+        hit = [h for h in hit if h in effects]
+        cast = [c for c in cast if c in effects]
+        abil[aid] = {"cast": cast, "bolt": "", "hit": hit, "mode": "center" if aoe and hit and hit[0].endswith(("_area", "_nova")) else "each"}
+    json.dump({"effects": effects, "abilities": abil, "statuses": {k: v for k, v in status_fx.items() if v in effects},
+               "attack": "white_shine", "events": {"heal": "green_heal", "revive": "gold_levelup", "level_up": "gold_levelup",
+               "save": "blue_beam", "concord": "gold_powerup"}},
+              open(os.path.join(out, "fx.json"), "w"), indent=1)
+    print("vfx:", n, "sheets,", len(effects), "effects,", len(abil), "abilities mapped")
+
+
+SECTIONS = {"arenas": arenas, "audio": audio, "vfx": vfx}
 
 if __name__ == "__main__":
     for s in (sys.argv[1:] or SECTIONS.keys()):
