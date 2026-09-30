@@ -12,7 +12,8 @@ static func _load(path: String) -> Texture2D:
 	return _cache[path]
 
 static func hero_tex(key: String) -> Texture2D:
-	return _load("res://assets/heroes/%s/portrait.png" % key)
+	var t = _load("res://assets/heroes/%s/portrait.png" % key)
+	return t if t != null else _load("res://assets/portraits/%s.png" % key)
 
 static func old_tex(key: String) -> Texture2D:
 	return _load("res://assets/sprites/portraits/%s.png" % key)

@@ -175,6 +175,8 @@ func _process(delta: float) -> void:
 	vfx = vfx.filter(func(v): return v["t"] > 0)
 	for fx in sfx_sprites:
 		fx["t"] += delta
+	if not summon_fx.is_empty():
+		summon_fx["t"] += delta
 	sfx_sprites = sfx_sprites.filter(func(fx): return fx["t"] < fx["len"])
 	if banner_t > 0:
 		banner_t -= delta
@@ -350,6 +352,8 @@ func _fx_bolt(name: String, from: Vector2, to: Vector2, travel: float) -> void:
 ## Effects for an action: cast effects at the actor while the animation plays; bolt; hit effects on targets.
 func _action_fx_cast(ev: Dictionary) -> Dictionary:
 	var spec: Dictionary = BattleFX.for_ability(ev.get("ability", "")) if ev.has("ability") else {}
+	if ev.has("summon"):
+		spec = BattleFX.for_ability(str(Content.data["vestiges"].get(ev["summon"], {}).get("summon", "")))
 	if spec.is_empty() and ev.get("anim", "") in ["attack", "shoot"]:
 		var el = str(ev.get("element", "physical"))
 		spec = {"cast": [], "bolt": "", "hit": [({"light": "holy"}.get(el, el) + "_impact") if el not in ["physical", "none", ""] else "white_shine"], "mode": "each"}
@@ -382,7 +386,13 @@ func _action_fx_hit(ev: Dictionary, spec: Dictionary) -> void:
 
 func _summon_fx(vid: String, sk: bool) -> void:
 	var short: bool = Settings.get_v("short_summons") or sk
-	summon_fx = {"id": vid, "t": 0.0, "dur": 0.6 if short else 1.6}
+	var vm = BattleFX.vestige(vid)
+	var full = 1.6
+	if not vm.is_empty():
+		full = BattleFX.tag_length(vm, "appear") + 1.2 + BattleFX.tag_length(vm, "vanish")
+	summon_fx = {"id": vid, "t": 0.0, "dur": 0.6 if short else full}
+	var el = str(Content.data["vestiges"].get(vid, {}).get("element", "arcane"))
+	_fx({"light": "holy", "none": "arcane"}.get(el, el) + "_rune", Vector2(262, 150))
 	await _wait(summon_fx["dur"])
 	summon_fx = {}
 
@@ -489,6 +499,10 @@ func _open_commands(b) -> void:
 	var items = [
 		{"text": "Attack", "value": "attack"},
 		{"text": cdef["role_command"], "value": "role", "enabled": _role_list(b).size() > 0, "reason": "No techniques"},
+	]
+	if not _magic_list(b).is_empty():
+		items.append({"text": "Magic", "value": "magic"})
+	items += [
 		{"text": "Item", "value": "item"},
 		{"text": "Defend", "value": "defend"},
 	]
@@ -523,7 +537,17 @@ func _role_list(b) -> Array:
 	var out = []
 	for aid in b.abilities:
 		var a = Content.ability(aid)
-		if a.is_empty() or a.get("kind", "") == "summon":
+		if a.is_empty() or a.get("kind", "") == "summon" or str(a.get("owner", "")) != b.ref:
+			continue
+		out.append(aid)
+	return out
+
+## Spells a Vestige taught (and accessory spells): anything the hero knows that is not their own technique.
+func _magic_list(b) -> Array:
+	var out = []
+	for aid in b.abilities:
+		var a = Content.ability(aid)
+		if a.is_empty() or a.get("kind", "") == "summon" or str(a.get("owner", "")) == b.ref:
 			continue
 		out.append(aid)
 	return out
@@ -547,15 +571,17 @@ func _on_cmd(_i: int, it: Dictionary) -> void:
 			_confirm_summon(a)
 		"role":
 			_open_sub_abilities(b)
+		"magic":
+			_open_sub_abilities(b, true)
 		"item":
 			_open_sub_items(b)
 
 func _confirm_summon(a: Dictionary) -> void:
 	_commit({"type": "summon"})
 
-func _open_sub_abilities(b) -> void:
+func _open_sub_abilities(b, magic: bool = false) -> void:
 	var items = []
-	for aid in _role_list(b):
+	for aid in (_magic_list(b) if magic else _role_list(b)):
 		var a = Content.ability(aid)
 		var v = model.validate(b, {"type": "ability", "id": aid})
 		var cost = model.mp_cost(b, a)
@@ -823,10 +849,11 @@ func _draw() -> void:
 			draw_rect(Rect2(pp.round(), Vector2(2, 2)), col)
 	if not summon_fx.is_empty():
 		var k2 = clampf((t * 1.0), 0, 1)
-		var st = _t("res://assets/sprites/vestiges/%s.png" % summon_fx["id"])
 		draw_rect(Rect2(0, 0, 320, 168), Color(0, 0, 0, 0.45))
-		if st:
-			draw_texture(st, Vector2(96 - st.get_width() / 2.0, 150 - st.get_height()))
+		if not BattleFX.draw_vestige(self, summon_fx["id"], summon_fx["t"], summon_fx["dur"], Vector2(110, 162)):
+			var st = _t("res://assets/sprites/vestiges/%s.png" % summon_fx["id"])
+			if st:
+				draw_texture(st, Vector2(96 - st.get_width() / 2.0, 150 - st.get_height()))
 	# popups
 	for p in popups:
 		var yoff: float = (1.0 - p["t"]) * 10.0

@@ -79,9 +79,9 @@ level_floor 15
 @end
 
 @scene T05_SHRINE once
-say narr | At the wind shrine the cloths stream east. Something wide and dark glides out of the cloud: a manta of storm and sky.
-say "Sky Manta" | The Roc is free. It hunted me from this shrine for years, chained. I was never the anchor. You unchained the anchor.
-say "Sky Manta" | I will ride your wind when you call.
+say narr | At the wind shrine the cloths stream east. Something winged and fierce dives out of the cloud: a griffon of storm and sky.
+say manta | The Roc is free. It hunted me from this shrine for years, chained. I was never the anchor. You unchained the anchor.
+say manta | I will ride your wind when you call.
 vestige V04
 @end
 

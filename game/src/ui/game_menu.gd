@@ -620,18 +620,36 @@ func _vestige_menu() -> void:
 			var holder = ""
 			for k in Game.S["links"]:
 				if k == vid:
-					holder = Content.ch(Game.S["links"][k])["short"]
+					holder = Game.short_name(Game.S["links"][k])
 			items.append({"text": v["name"], "right": holder if holder != "" else "-", "value": vid})
 		mm.items = items
 		info_draw = func():
 			var it = mm.current()
 			if it.is_empty():
 				return
-			UI.win(self, Rect2(4, 128, 312, 60))
-			var a = Content.ability(Content.data["vestiges"][it["value"]]["summon"])
+			var vd: Dictionary = Content.data["vestiges"][it["value"]]
+			UI.win(self, Rect2(4, 128, 312, 108))
+			UI.inset(self, Rect2(268, 186, 44, 44))
+			Portraits.draw(self, {"V01": "moth", "V02": "stag", "V03": "whale", "V04": "manta", "V05": "fox", "V06": "tortoise", "V07": "hind", "V08": "leviathan", "V09": "colossus", "V10": "thorn", "V11": "wyrm", "V12": "wraith"}.get(it["value"], ""), Rect2(270, 188, 40, 40))
+			var a = Content.ability(vd["summon"])
 			var y = 132
 			for ln in UI.wrap(a["desc"] + " Costs 100 Concord; once per battle.", 296):
 				UI.text(self, Vector2(10, y), ln)
+				y += 11
+			UI.text(self, Vector2(10, y), "Level-up bonus: " + str(vd.get("bonus_text", "-")), UI.C_GOLD)
+			y += 12
+			var holder_id = ""
+			for k in Game.S["links"]:
+				if k == it["value"]:
+					holder_id = Game.S["links"][k]
+			UI.label(self, Vector2(10, y), "Teaches" + (" (" + Game.short_name(holder_id) + ")" if holder_id != "" else ""))
+			y += 11
+			for t in vd.get("teach", []):
+				var an = Content.ability(t[0]).get("name", t[0])
+				var pr = Game.vestige_progress(holder_id, t[0]) if holder_id != "" else 0
+				UI.text(self, Vector2(16, y), an, UI.C_TEXT)
+				UI.text_right(self, 200, y, "x%d" % int(t[1]), UI.C_DIM)
+				UI.text_right(self, 250, y, ("%d%%" % pr) if holder_id != "" else "-", UI.C_HI if pr >= 100 else UI.C_TEXT)
 				y += 11
 	refresh.call(m)
 	m.set_meta("refresh", refresh)

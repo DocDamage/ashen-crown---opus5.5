@@ -57,3 +57,59 @@ static func draw(ci: CanvasItem, name: String, t: float, pos: Vector2, scale: fl
 	ci.draw_texture_rect_region(tx, dst, src)
 	UI.native_end(ci)
 	return true
+
+## Vestige summon art (assets/ext/vestiges/Vxx.png/.json: appear / idle / vanish tags), drawn on the 2x layer.
+static var _ves = {}
+
+static func vestige(vid: String) -> Dictionary:
+	if not _ves.has(vid):
+		var jp = "res://assets/ext/vestiges/%s.json" % vid
+		var tp = "res://assets/ext/vestiges/%s.png" % vid
+		if FileAccess.file_exists(jp) and ResourceLoader.exists(tp):
+			var m: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(jp))
+			m["tex"] = load(tp)
+			_ves[vid] = m
+		else:
+			_ves[vid] = {}
+	return _ves[vid]
+
+static func _tag_frame(m: Dictionary, tag: String, t: float, loop: bool) -> int:
+	var r: Array = m["tags"].get(tag, [0, 0])
+	var total = 0.0
+	for i in range(int(r[0]), int(r[1]) + 1):
+		total += float(m["durations"][i]) / 1000.0
+	var tt = fmod(t, total) if loop else minf(t, total - 0.001)
+	for i in range(int(r[0]), int(r[1]) + 1):
+		tt -= float(m["durations"][i]) / 1000.0
+		if tt < 0:
+			return i
+	return int(r[1])
+
+static func tag_length(m: Dictionary, tag: String) -> float:
+	var r: Array = m["tags"].get(tag, [0, 0])
+	var total = 0.0
+	for i in range(int(r[0]), int(r[1]) + 1):
+		total += float(m["durations"][i]) / 1000.0
+	return total
+
+## t: seconds since the summon started; dur: total time on screen. Feet at `foot` (units).
+static func draw_vestige(ci: CanvasItem, vid: String, t: float, dur: float, foot: Vector2) -> bool:
+	var m = vestige(vid)
+	if m.is_empty():
+		return false
+	var ap = tag_length(m, "appear")
+	var vn = tag_length(m, "vanish")
+	var f: int
+	if t < ap:
+		f = _tag_frame(m, "appear", t, false)
+	elif t < dur - vn:
+		f = _tag_frame(m, "idle", t - ap, true)
+	else:
+		f = _tag_frame(m, "vanish", t - (dur - vn), false)
+	var cw = float(m["cell"][0])
+	var chh = float(m["cell"][1])
+	var fr: Array = m["frames"][f]
+	UI.native_begin(ci, (foot * UI.U).round() / UI.U)
+	ci.draw_texture_rect_region(m["tex"], Rect2(-cw, -chh * 2.0, cw * 2.0, chh * 2.0), Rect2(fr[0], fr[1], cw, chh))
+	UI.native_end(ci)
+	return true

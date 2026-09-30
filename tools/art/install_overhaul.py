@@ -216,7 +216,48 @@ def vfx():
     print("vfx:", n, "sheets,", len(effects), "effects,", len(abil), "abilities mapped")
 
 
-SECTIONS = {"arenas": arenas, "audio": audio, "vfx": vfx}
+# ---------------------------------------------------------------- vestiges
+VESTIGE_KEYS = {"V01": "moth", "V02": "stag", "V03": "whale", "V04": "manta", "V05": "fox", "V06": "tortoise",
+                "V07": "hind", "V08": "leviathan", "V09": "colossus", "V10": "thorn", "V11": "wyrm", "V12": "wraith"}
+
+
+def vestiges():
+    import glob as G
+    import numpy as np
+    from PIL import Image
+    src = os.path.join(PROC, "vestiges")
+    n = 0
+    for vid, key in VESTIGE_KEYS.items():
+        hits = G.glob(os.path.join(src, vid + "_*.json"))
+        if not hits:
+            print("vestige missing", vid)
+            continue
+        base = hits[0][:-5]
+        n += copy(base + ".png", os.path.join(EXT, "vestiges", vid + ".png"))
+        meta = json.load(open(base + ".json"))
+        fr = meta["frames"]
+        tags = {t["name"]: [t["from"], t["to"]] for t in meta["meta"]["frameTags"]}
+        info = {"cell": [fr[0]["frame"]["w"], fr[0]["frame"]["h"]], "frames": [[f["frame"]["x"], f["frame"]["y"]] for f in fr],
+                "durations": [f["duration"] for f in fr], "tags": tags}
+        json.dump(info, open(os.path.join(EXT, "vestiges", vid + ".json"), "w"))
+        # portrait: 120x120 native crop around the head (top of the idle pose)
+        sheet = Image.open(base + ".png").convert("RGBA")
+        i0 = tags.get("idle", [0, 0])[0]
+        x, y = fr[i0]["frame"]["x"], fr[i0]["frame"]["y"]
+        cell = sheet.crop((x, y, x + fr[i0]["frame"]["w"], y + fr[i0]["frame"]["h"]))
+        a = np.array(cell)[..., 3]
+        ys, xs = np.nonzero(a > 0)
+        top = ys.min()
+        row = np.nonzero(a[min(top + 30, a.shape[0] - 1)] > 0)[0]
+        cx = int(row.mean()) if len(row) else int(xs.mean())
+        side = 120
+        box = (max(0, cx - side // 2), max(0, top - 6), max(0, cx - side // 2) + side, max(0, top - 6) + side)
+        os.makedirs(os.path.join(EXT, "portraits"), exist_ok=True)
+        cell.crop(box).save(os.path.join(EXT, "portraits", key + ".png"))
+    print("vestiges:", n, "sheets")
+
+
+SECTIONS = {"arenas": arenas, "audio": audio, "vfx": vfx, "vestiges": vestiges}
 
 if __name__ == "__main__":
     for s in (sys.argv[1:] or SECTIONS.keys()):

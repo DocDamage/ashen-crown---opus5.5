@@ -71,6 +71,12 @@ static func member_stats(member: Dictionary, cdef: Dictionary, items: Dictionary
 		"atk": 0, "matk": 0, "acc_bonus": 0, "passives": {}, "grants": [], "ranged": false, "two_handed": false,
 		"weapon_element": "physical",
 	}
+	# Vestige level-up bonuses (permanent, accumulated when a linked hero gains levels)
+	var vb: Dictionary = member.get("vbonus", {})
+	for k in vb:
+		var sk = {"hp": "mhp", "mp": "mmp"}.get(k, k)
+		if s.has(sk):
+			s[sk] += int(vb[k])
 	var eq: Dictionary = member.get("equip", {})
 	var passives = {}
 	for slot in ["weapon", "offhand", "head", "body", "acc1", "acc2"]:

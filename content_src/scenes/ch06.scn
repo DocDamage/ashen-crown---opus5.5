@@ -97,8 +97,8 @@ say oriel | You can ignore them.
 say rook | Not if we act.
 say dain | We're going to see the chamber. That's all.
 say narr | Rook agrees quickly. Too quickly, Nera thinks. She doesn't say so yet.
-say narr | Something large and gentle rises under the pier: a whale-shaped Vestige, humming the harbor bell's note.
-say "Bell Whale" | You rang the old bells and did not seal the doors again. I will answer your call.
+say narr | Something long and gentle rises under the pier: a serpent-shaped Vestige, humming the harbor bell's note.
+say whale | You rang the old bells and did not seal the doors again. I will answer your call.
 vestige V03
 chapter CH06
 set rook_ally

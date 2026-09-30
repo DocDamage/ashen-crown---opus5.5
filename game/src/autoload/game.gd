@@ -298,6 +298,9 @@ func learned_abilities(cid: String) -> Array:
 	var ult = Content.ch(cid).get("ultimate")
 	if ult != null and quest_state(Content.ch(cid)["quest"]) == "COMPLETED":
 		out.append(ult)
+	for aid in S.get("vknown", {}).get(cid, []):
+		if not out.has(aid):
+			out.append(aid)
 	return out
 
 func battle_party() -> Array:
@@ -339,6 +342,13 @@ func award_xp(amount: int) -> Array:
 		var nl = F.level_for_xp(int(m["xp"]))
 		if nl > before:
 			var s0 = stats(cid)
+			var vl = link_of(cid)
+			if vl != "" and Content.data["vestiges"].has(vl):
+				var vb: Dictionary = m.get("vbonus", {})
+				var bon: Dictionary = Content.data["vestiges"][vl].get("bonus", {})
+				for k in bon:
+					vb[k] = int(vb.get(k, 0)) + int(bon[k]) * (nl - before)
+				m["vbonus"] = vb
 			m["level"] = nl
 			var s1 = stats(cid)
 			if int(m["hp"]) > 0:
@@ -677,8 +687,46 @@ func apply_battle_victory(model: BattleModel) -> Array:
 		add_item(st, 1)
 		msgs.append("Kept stolen %s." % Content.item_name(st))
 	msgs.append_array(award_xp(int(r["xp"])))
+	msgs.append_array(vestige_learning(3 if model.is_boss_battle else 1))
 	emit_signal("state_changed")
 	return msgs
+
+## FF6-style Esper learning: every active, conscious hero with a linked Vestige gains progress (rate x AP) on
+## each spell it teaches; at 100 the spell is learned for good.
+func vestige_learning(ap: int) -> Array:
+	var msgs = []
+	if not S.has("vlearn"):
+		S["vlearn"] = {}
+	if not S.has("vknown"):
+		S["vknown"] = {}
+	for cid in active():
+		var vid = link_of(cid)
+		if vid == "" or not Content.data["vestiges"].has(vid):
+			continue
+		if int(member(cid)["hp"]) == 0:
+			continue
+		var prog: Dictionary = S["vlearn"].get(cid, {})
+		var known: Array = S["vknown"].get(cid, [])
+		for t in Content.data["vestiges"][vid].get("teach", []):
+			var aid: String = t[0]
+			if known.has(aid) or learned_abilities(cid).has(aid):
+				continue
+			var p = int(prog.get(aid, 0)) + int(t[1]) * ap
+			if p >= 100:
+				known.append(aid)
+				prog.erase(aid)
+				msgs.append("%s learned %s." % [short_name(cid), Content.ability(aid)["name"]])
+			else:
+				prog[aid] = p
+		S["vlearn"][cid] = prog
+		S["vknown"][cid] = known
+	return msgs
+
+## Learning progress (0-100, or 100 when known) of spell `aid` for hero `cid`.
+func vestige_progress(cid: String, aid: String) -> int:
+	if S.get("vknown", {}).get(cid, []).has(aid) or learned_abilities(cid).has(aid):
+		return 100
+	return int(S.get("vlearn", {}).get(cid, {}).get(aid, 0))
 
 func apply_battle_flee(model: BattleModel) -> void:
 	for st in model.stolen_items:

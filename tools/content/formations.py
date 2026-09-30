@@ -169,8 +169,14 @@ SPEAKERS = {
     "sign": ["", ""], "apprentice": ["Apprentice", "apprentice"], "patient": ["Patient", "patient"], "officer": ["Officer", "guard"],
     "hind": ["Winter Hind", "hind"], "leviathan": ["Night Leviathan", "leviathan"], "cantor": ["Null Cantor", "cantor"],
     "echo": ["Regent's Echo", "echo"], "stag": ["Rootstag", "stag"], "moth": ["Ember Moth", "moth"],
-    "whale": ["Bell Whale", "whale"], "manta": ["Sky Manta", "manta"], "fox": ["Lumen Fox", "fox"], "tortoise": ["Iron Tortoise", "tortoise"],
+    "whale": ["Tide Serpent", "whale"], "manta": ["Sky Griffon", "manta"], "fox": ["Lumen Fox", "fox"], "tortoise": ["Iron Tortoise", "tortoise"],
     "baker": ["Baker", "baker"], "keeper": ["Storekeeper", "keeper"], "sailor": ["Sailor", "sailor"],
+    # overhaul: new Vestiges and heroes (portraits: assets/portraits/<key>.png, heroes/<cid>/portrait.png)
+    "colossus": ["Grove Colossus", "colossus"], "thorn": ["Thorn Queen", "thorn"], "wyrm": ["Ash Wyrm", "wyrm"],
+    "wraith": ["Winter Wraith", "wraith"],
+    "kitsune": ["Kitsune", "C09"], "archangel": ["Archangel", "C10"], "inferna": ["Inferna", "C11"], "corvus": ["Corvus", "C12"],
+    "lich": ["Lich King", "C13"], "maldrath": ["Maldrath", "C14"], "velkhar": ["Velkhar", "C15"], "kael": ["Kael-09", "C16"],
+    "rider": ["Night Rider", "C17"], "namer": ["Name-Keeper", "namer"],
 }
 
 # Stable location IDs shared by both overworld states.
