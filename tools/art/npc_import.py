@@ -51,12 +51,117 @@ def bbox(a):
     return (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1) if len(xs) else None
 
 
+def clean(f):
+    """Drop pixels that spilled in from the neighbouring cell: keep the largest blob and anything touching its box."""
+    from scipy import ndimage
+    a = f[..., 3] > 0
+    lab, n = ndimage.label(a, structure=np.ones((3, 3)))
+    if n <= 1:
+        return f
+    sizes = ndimage.sum(a, lab, range(1, n + 1))
+    main = int(np.argmax(sizes)) + 1
+    ys, xs = np.nonzero(lab == main)
+    x0, x1, y0, y1 = xs.min() - 3, xs.max() + 3, ys.min() - 3, ys.max() + 3
+    keep = np.zeros_like(a)
+    for i, sl in enumerate(ndimage.find_objects(lab), start=1):
+        if sl is None:
+            continue
+        cy0, cy1, cx0, cx1 = sl[0].start, sl[0].stop, sl[1].start, sl[1].stop
+        touches_edge = cx0 == 0 or cx1 == a.shape[1]
+        inside = cx1 >= x0 and cx0 <= x1 and cy1 >= y0 and cy0 <= y1
+        if i == main or (inside and not (touches_edge and sizes[i - 1] < sizes[main - 1] * 0.25)):
+            keep |= lab == i
+    g = f.copy()
+    g[~keep] = 0
+    return g
+
+
+def _segments(profile, gap, min_len):
+    segs, start, empty = [], None, 0
+    for i, v in enumerate(profile):
+        if v:
+            if start is None:
+                start = i
+            empty = 0
+            end = i
+        elif start is not None:
+            empty += 1
+            if empty >= gap:
+                segs.append([start, end + 1]); start = None
+    if start is not None:
+        segs.append([start, end + 1])
+    # merge slivers into their nearest neighbour
+    out = []
+    for sgm in segs:
+        if out and (sgm[1] - sgm[0] < min_len or out[-1][1] - out[-1][0] < min_len):
+            out[-1][1] = sgm[1]
+        else:
+            out.append(sgm)
+    return out
+
+
+def blob_frames(im):
+    """Frames found from the art itself: 4 row bands, then figures separated by empty columns (the sheets are not all
+    on the same grid, so a fixed 129px cut takes pieces of the neighbours)."""
+    a = np.array(im)[..., 3] > 0
+    bands = _segments(a.any(axis=1), 3, 20)
+    if len(bands) != 4:
+        return None
+    frames = {}
+    for (d, r), (y0, y1) in zip(ROWS, bands):
+        sub = a[y0:y1]
+        cols = _segments(sub.any(axis=0), 4, 14)
+        frames[d] = []
+        for x0, x1 in cols:
+            f = np.zeros((y1 - y0 + 8, x1 - x0 + 8, 4), np.uint8)
+            f[4:-4, 4:-4] = np.array(im)[y0:y1, x0:x1]
+            frames[d].append(f)
+    n = min(len(v) for v in frames.values())
+    if n < 2:
+        return None
+    return {d: v[:n] for d, v in frames.items()}
+
+
+def _center(frames):
+    """Pad every frame to one size with the figure's feet on the bottom row and its body centred."""
+    boxes = {id(f): bbox(f) for fs in frames.values() for f in fs}
+    w = max(b[2] - b[0] for b in boxes.values() if b) + 4
+    h = max(b[3] - b[1] for b in boxes.values() if b) + 2
+    out = {}
+    for d, fs in frames.items():
+        out[d] = []
+        for f in fs:
+            b = boxes[id(f)]
+            g = np.zeros((h, w, 4), np.uint8)
+            if b:
+                piece = f[b[1]:b[3], b[0]:b[2]]
+                ox = (w - piece.shape[1]) // 2
+                g[h - 1 - piece.shape[0]:h - 1, ox:ox + piece.shape[1]] = piece
+            out[d].append(g)
+    return out, w, h
+
+
 def build(stem):
     im = Image.open(os.path.join(SRC, stem + ".png")).convert("RGBA")
+    bf = blob_frames(im)
+    if bf is not None:
+        frames, cw, ch = _center(bf)
+        cw, ch = int(cw), int(ch)
+        cols = len(frames["down"])
+        sheet = Image.new("RGBA", (cw * cols, ch * 4), (0, 0, 0, 0))
+        for d, r in ROWS:
+            for c, f in enumerate(frames[d]):
+                sheet.paste(Image.fromarray(f), (c * cw, r * ch))
+        dst = os.path.join(OUT, stem.replace("/", "__"))
+        os.makedirs(dst, exist_ok=True)
+        sheet.save(os.path.join(dst, "field.png"))
+        json.dump({"cell": [cw, ch], "foot": [cw // 2, ch - 1], "fps": 7,
+                   "rows": {d: {"row": r, "n": cols - 1} for d, r in ROWS}}, open(os.path.join(dst, "field.json"), "w"))
+        return
     cols = im.width // CELL
     frames = {}
     for d, r in ROWS:
-        frames[d] = [np.array(im.crop((c * CELL, r * CELL, (c + 1) * CELL, (r + 1) * CELL))) for c in range(cols)]
+        frames[d] = [clean(np.array(im.crop((c * CELL, r * CELL, (c + 1) * CELL, (r + 1) * CELL)))) for c in range(cols)]
     boxes = [bbox(f) for fs in frames.values() for f in fs if bbox(f)]
     x0 = min(b[0] for b in boxes) - 1
     x1 = max(b[2] for b in boxes) + 1
@@ -79,9 +184,17 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     stems = sorted({s for v in MAP.values() for s in v})
     for s in stems:
-        build(s)
+        try:
+            build(s)
+        except Exception as ex:   # keep going; report
+            print("FAIL", s, ex)
     json.dump({k: [s.replace("/", "__") for s in v] for k, v in MAP.items()}, open(os.path.join(OUT, "npc_map.json"), "w"), indent=1)
     print("npcs:", len(stems), "sheets,", len(MAP), "sprite keys")
+    import cutclean
+    for png, cells in cutclean.targets("npcs"):
+        im, k = cutclean.clean_sheet(png, cells)
+        if k:
+            Image.fromarray(im).save(png)
 
 
 if __name__ == "__main__":

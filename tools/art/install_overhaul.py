@@ -443,6 +443,22 @@ def enemies():
 
 SECTIONS = {"enemies": enemies, "vehicles": vehicles, "common": common_sheets, "arenas": arenas, "audio": audio, "vfx": vfx, "vestiges": vestiges, "icons": spell_icons, "field_anim": field_anims}
 
+def _clean(kind):
+    import cutclean
+    from PIL import Image
+    n = 0
+    for png, cells in cutclean.targets(kind):
+        im, k = cutclean.clean_sheet(png, cells)
+        if k:
+            Image.fromarray(im).save(png)
+            n += k
+    print("  cutclean %s: %d stray/halo pixels removed" % (kind, n))
+
+
+CLEAN_AFTER = {"vestiges": "vestiges", "vehicles": "vehicles", "enemies": "enemies"}
+
 if __name__ == "__main__":
     for s in (sys.argv[1:] or SECTIONS.keys()):
         SECTIONS[s]()
+        if s in CLEAN_AFTER:
+            _clean(CLEAN_AFTER[s])
