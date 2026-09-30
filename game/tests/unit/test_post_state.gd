@@ -60,9 +60,10 @@ func test_reunion_orders_all_six() -> void:
 			check(Game.S["chapters"].has("CH%d" % ch), "CH%d completes in order %s" % [ch, str(p)])
 			var obj: String = Game.S["journal"]["objective"]
 			if n < 3:
-				check(obj.find("All eight") < 0, "not reunited after %d in %s" % [n, str(p)])
-		eq(Game.available_members().size(), 8, "all eight available in order %s" % str(p))
-		check(String(Game.S["journal"]["objective"]).find("All eight") >= 0, "accord objective after %s" % str(p))
+				check(obj.find("together again") < 0, "not reunited after %d in %s" % [n, str(p)])
+		eq(Game.available_members().filter(func(c): return c <= "C08").size(), 8, "all eight originals available in order %s" % str(p))
+		check(Game.is_available("C09") and Game.is_available("C10"), "Kitsune and Archangel back in order %s" % str(p))
+		check(String(Game.S["journal"]["objective"]).find("together again") >= 0, "accord objective after %s" % str(p))
 
 func test_personal_quest_reward_once() -> void:
 	_post_after_ch16()

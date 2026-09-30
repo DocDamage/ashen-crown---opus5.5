@@ -145,6 +145,16 @@ zone 0..30 0..33 enc=OW2
 zone 60..95 30..71 enc=OW3
 zone 66..95 0..29 enc=OW4
 zone 31..63 0..29 enc=OW5
+landing 25..27 56..58 name="Brackenford" #! ov:wayfarer
+landing 41..43 45..47 name="Veyr" #! ov:wayfarer
+landing 33..35 28..29 name="Rootward" #! ov:wayfarer
+landing 21..23 19..21 name="Cinderwake" #! ov:wayfarer
+landing 76..78 42..44 name="Bellharbor" #! ov:wayfarer
+landing 81..83 14..16 name="High Aerie" #! ov:wayfarer
+landing 51..53 11..13 name="Nacre" #! ov:wayfarer
+landing 39..41 8..9 name="Whitebone" #! ov:wayfarer
+landing 68..70 23..24 name="Skychain" #! ov:wayfarer
+landing 56..58 6..7 name="Vault Road" #! ov:wayfarer
 === WORLD_POST
 name: The Ember Sea
 tileset: world_post

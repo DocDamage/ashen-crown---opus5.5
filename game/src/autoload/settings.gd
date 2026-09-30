@@ -17,6 +17,7 @@ const DEFAULT_PAD := {
 var v = {
 	"text_speed": 2,          # 0 slow, 1 normal, 2 fast, 3 instant
 	"run_toggle": false,
+	"ride_mount": true,        # ride the Brackhorn on the world map once the party has it
 	"battle_mode": "wait",     # wait | active
 	"battle_speed": 1.0,       # 0.75, 1.0, 1.25
 	"reduced_flash": false,

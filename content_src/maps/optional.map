@@ -47,6 +47,7 @@ npc q4w3 20 17 up sprite=apprentice talk=Q04_WORKER3
 switch restart 24 9 scene=Q04_RESTART if=qs:Q04:revised
 npc crew_d4 5 20 right sprite=worker talk=D04P_CREW
 save 34 20
+npc ov_rider 20 13 left sprite=C17 talk=OV_RIDER if=ch:CH16,!recruited:C17 #! ov:rider
 
 === D05P_R01
 name: Drowned Archive - Lantern Stations
@@ -142,6 +143,7 @@ spawn world 15 22 up
 spawn default 15 22 up
 exit 14..17 23 WORLD_POST l_d08
 save 26 18
+npc ov_kael 16 12 down sprite=C16 talk=OV_KAEL if=ch:CH16,!recruited:C16 #! ov:kael
 
 === D07P_R03
 name: Whitebone Sanctuary - Deep Seals
@@ -186,6 +188,7 @@ switch repeater 15 13 scene=Q07_REPEATER if=qs:Q07:recorded
 spawn from_r02 15 20 up
 spawn default 15 20 up
 exit 14..17 21 D07P_R02 from_r03
+npc ov_velkhar 16 11 down sprite=C15 talk=OV_VELKHAR if=ch:CH19,!recruited:C15 #! ov:velkhar
 
 === D02P_SEALS
 name: Veyr Underways - Seal Chamber
@@ -428,6 +431,7 @@ exit 14..17 27 D11_R02 from_r04
 exit 31 20..23 D11_R03 from_r04
 exit 14..17 0 D11_R05 from_r04
 save 6 18
+npc ov_v12 16 24 down sprite=vestige:V12 talk=OV_V12 if=!flag:ov_v12 #! ov:v12
 
 === D11_R05
 name: Cradle of Winter - Lantern Cradle
@@ -477,6 +481,7 @@ spawn from_r04 19 29 up
 spawn from_r06 19 2 down
 exit 18..21 31 D11_R04 from_r05
 exit 18..21 0 D11_R06 from_r05 if=flag:b13_done
+npc ov_lich 20 13 down sprite=C13 talk=OV_LICH if=q:Q09,!recruited:C13 #! ov:lich
 
 === D11_R06
 name: Cradle of Winter - Dawn Window

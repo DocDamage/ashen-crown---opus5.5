@@ -27,7 +27,7 @@ SCENE_CMDS = {"say", "choice", "label", "goto", "if", "set", "unset", "give", "t
               "title", "rumor", "discover", "shop", "inn", "formation", "save_prompt", "event", "xp", "level_floor",
               "vehicle", "tint", "end", "split_party", "setvar", "addvar", "equip", "portrait", "lights", "salvage",
               "call", "clear_save", "epilogue", "ship_travel", "sprite", "row", "note", "lock_party", "unlock_party",
-              "ending", "journal", "backup", "airship", "team"}
+              "ending", "journal", "backup", "airship", "team", "name", "rename"}
 
 errors = []
 pending = []

@@ -113,3 +113,18 @@ static func draw_vestige(ci: CanvasItem, vid: String, t: float, dur: float, foot
 	ci.draw_texture_rect_region(m["tex"], Rect2(-cw, -chh * 2.0, cw * 2.0, chh * 2.0), Rect2(fr[0], fr[1], cw, chh))
 	UI.native_end(ci)
 	return true
+
+
+## Field version: the idle loop only, scale in native pixels per source pixel (battle uses 2.0).
+static func draw_vestige_idle(ci: CanvasItem, vid: String, t: float, foot: Vector2, scale: float = 0.5) -> bool:
+	var m = vestige(vid)
+	if m.is_empty():
+		return false
+	var f = _tag_frame(m, "idle", t, true)
+	var cw = float(m["cell"][0])
+	var chh = float(m["cell"][1])
+	var fr: Array = m["frames"][f]
+	UI.native_begin(ci, (foot * UI.U).round() / UI.U)
+	ci.draw_texture_rect_region(m["tex"], Rect2(-cw * scale / 2.0, -chh * scale, cw * scale, chh * scale), Rect2(fr[0], fr[1], cw, chh))
+	UI.native_end(ci)
+	return true

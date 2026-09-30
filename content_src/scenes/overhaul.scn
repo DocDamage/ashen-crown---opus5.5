@@ -1,0 +1,222 @@
+# Overhaul: the nine new heroes (C09-C17), the four new Vestiges (V09-V12), the Namer, and vehicles
+# (Brackhorn mount CH03, pre-fault Wayfarer CH10-CH12; the post-fault Lanternwake is in ch16/travel).
+# Story joins are called from mandatory chapter scenes so skipped scenes give the same state.
+
+# ---------------------------------------------------------------- Brackhorn (CH03, after Elowen joins)
+@scene OV_BRACKHORN
+say narr | At the grove's edge a shaggy brackhorn noses at Elowen's pack, saddle and all.
+say nera | This is Bramble. She carried grove supplies before the grove burned. She'll carry us now.
+say nera | Brackhorns don't spook. Wolves take one look at those horns and find other roads.
+vehicle mount true
+say narr | (The Brackhorn carries the party on the world map: faster, and no monsters give chase. Settings: Ride Brackhorn.)
+@end
+
+# ---------------------------------------------------------------- C10 Archangel (CH07, High Landing)
+@scene OV_ARCHANGEL
+say narr | On the High Landing's last anchor stands a figure in white-gold armour, wings folded, sword point-down in the rock.
+say archangel | Travellers. My host was ordered to hold this sky road. The host stopped answering thirty years ago.
+say archangel | I held it anyway. Today a maintenance crew held it better than I did, and nobody had to fall.
+say corren | You watched the whole crossing?
+say archangel | I judged it. I was wrong about what it needed. I would like to learn how you knew.
+say dain | Walk with us, then. You can judge by what you see.
+join C10
+say narr | (The Archangel Commander's Judgment techniques punish enemies that strike his allies.)
+@end
+
+# ---------------------------------------------------------------- C09 Kitsune (CH10, Nacre)
+@scene OV_KITSUNE
+say narr | When the hearing ends, a woman in crimson silk rises from the back bench. Nine pale tails fan out behind her, then fade.
+say kitsune | I sat through the whole hearing as an old archivist. Nobody asked me who I was. Nobody told me what to want.
+say kitsune | The fox court exiled me for ruling through illusions. They were right. I would like to try the other way.
+say sen | She's been our guest for a year. She pays in stories.
+say oriel | What do you want from us?
+say kitsune | To be seen as I am, by people who have no reason to flatter me. You seem ideal.
+join C09
+say narr | (The Crimson Kitsune Empress's Foxfire techniques confuse and blind.)
+@end
+
+# ---------------------------------------------------------------- pre-fault Wayfarer (end of CH10)
+@scene OV_WAYFARER
+say narr | Back at Nacre's landing field, High Aerie's crew has lashed a patched envelope over an old basin barge.
+say edda | The Accord's thank-you. She's slow, she leaks, and she flies. We call her the Wayfarer.
+say ivo | I rebuilt the burner from spare cable parts. Please don't dive in her.
+airship wayfarer
+say narr | (The Wayfarer waits on Nacre's landing field. Step onto her to take the helm; land on marked fields by towns and ruins.)
+@end
+
+@scene OV_WAYFARER_LOST
+if vehicle:ship lost
+end
+label lost
+say narr | Moored on the dais terrace, the Wayfarer tears loose from her ropes and falls with the stone.
+@end
+
+# ---------------------------------------------------------------- C12 Corvus (CH13, Hearthward)
+@scene OV_CORVUS
+say narr | A tall figure in a beaked mask moves between the cots, pouring something bitter into every cup.
+say corvus | Sit still. You've swallowed half the Ember Sea. This will make you hate me for an hour.
+say oriel | You're a plague doctor. The ministry used your order to carry sickness into the quarry towns.
+say corvus | I was sent to carry it. I carried the cure instead, and taught the cooks to brew it. Now nobody needs me here.
+say dain | We will. Somewhere past this harbour.
+say corvus | Then I'll come. And I'll teach you to do it without me.
+join C12
+say narr | (Corvus, Harbinger of Pestilence, heals with Physic - and turns sickness back on the enemy.)
+@end
+
+# ---------------------------------------------------------------- C11 Inferna (CH14, flooded Rootward)
+@scene OV_INFERNA
+say narr | Where the Warden sank, a woman in blackened wings wades out of the current, dragging a raft of survivors behind her.
+say inferna | These twelve were marked for the abyss. I was sent to carry them down. I carried them up instead.
+say inferna | The bargains I enforced still have names on them. I mean to undo them, one name at a time.
+say nera | Twelve is a start.
+say inferna | Then let me start with you. Your road is going where the bargains were made.
+join C11
+say narr | (Inferna, Abyssal Valkyrie, trades her own health for Hellbrand's fire.)
+@end
+
+# ---------------------------------------------------------------- reunions (CH17 Archangel, CH19 Kitsune)
+@scene OV_ARCHANGEL_BACK
+say narr | A familiar shape glides down onto the rescue platform, wings scorched but whole.
+say archangel | I held the cable towers through the fall. No order told me to. I judged they needed holding.
+join C10
+@end
+
+@scene OV_KITSUNE_BACK
+say narr | Among the survivors, an old woman smiles and becomes a fox-eared empress in crimson.
+say kitsune | I've been hiding as a grandmother. They fed me far too much. Take me with you, please.
+join C09
+@end
+
+# ---------------------------------------------------------------- the Namer (Brackenford, Hearthward)
+@scene OV_NAMER
+say namer | I keep names. Proper ones, chosen ones, the ones you'd rather be called.
+say namer | Whose name shall I change?
+rename
+say namer | Written down. Nobody gets to take it back but them.
+@end
+
+# ---------------------------------------------------------------- secret recruits (post-fault)
+@scene OV_LICH
+say narr | Beneath the thawed cradle, a throne of rime. A crowned skeleton in frost-white robes turns its head.
+say lich | The lantern is out. My sleepers wake. You have ended a winter I kept for three hundred years.
+say lich | My people died of cold long before the Crown. I kept their dead because I could not bear an empty court.
+say lich | Show me the living are worth letting them go.
+choice | Face the court -> fight | Not yet -> leave
+label fight
+battle OV_LICH noflee
+say lich | ...Enough. They may rest. I have nothing left to rule.
+say lich | Then I will serve something. Not a crown. Take me with you.
+join C13
+say narr | (The Frost Lich King Emperor joins. Dominion bends foes to his will.)
+end
+label leave
+say lich | I have waited centuries. I can wait for you.
+@end
+
+@scene OV_MALDRATH
+say narr | Among the flooded graves stands a knight in a broken crown, reading the names on the stones aloud.
+say maldrath | I wore the old Crown before Voss wore its shadow. I sent people into that quarry. I am reading their names.
+say maldrath | I will answer for it. But first I would help break the crown that is left. Test me. My knights insist.
+choice | Face the fallen knights -> fight | Not yet -> leave
+label fight
+battle OV_MALDRATH noflee
+say maldrath | Good. They can lie down now. So can I, when this is over.
+join C14
+say narr | (Maldrath, the Fallen King, joins. Kingsblade techniques cleave through armour.)
+end
+label leave
+say maldrath | The names will keep. So will I.
+@end
+
+@scene OV_VELKHAR
+say narr | In the deep seals, the dead stand shoulder to shoulder, holding the cracked vault doors shut. A robed lord conducts them.
+say velkhar | Do not be alarmed. They volunteered. The fault opened these crypts and something below wants out.
+say velkhar | I have held it with the dead. I would rather the living held it, and the dead could rest. Prove the living can.
+choice | Take the dead's place -> fight | Not yet -> leave
+label fight
+battle OV_VELKHAR noflee
+say velkhar | The seal holds with your wards. Sleep, all of you. Thank you.
+join C15
+say narr | (Velkhar, Lord of the Dead, joins. Necromancy raises fallen foes to fight for him.)
+end
+label leave
+say velkhar | They will hold a little longer.
+@end
+
+@scene OV_KAEL
+say narr | A sealed capsule in the vault hisses open. A figure in black plating and neon lines steps out, blade humming.
+say kael | Operative Kael-09. Orders: hold this vault until relieved. Current date... unknown. Relief... overdue.
+say kael | Your clearance is invalid. Your intent is unclear. Standard procedure: combat evaluation.
+choice | Accept the evaluation -> fight | Back away -> leave
+label fight
+battle OV_KAEL noflee
+say kael | Evaluation complete. You are not my makers. My makers are gone.
+say kael | New orders required. I will choose them myself. Request: travel with you until I do.
+join C16
+say narr | (Kael-09, Neon Blade Operative, joins. Overdrive trades defence for blinding speed.)
+end
+label leave
+say kael | Standing by.
+@end
+
+@scene OV_RIDER
+say narr | Something roars through the engine house - a rider on a machine of black steel and red light, circling the stopped wheel.
+say rider | This was a road. Six lanes, lights all night. I patrol it. Nobody's told me it's gone.
+say rider | You look like trouble on my road. Let's settle it the old way.
+choice | Race him down -> fight | Stay off the road -> leave
+label fight
+battle OV_RIDER noflee
+say rider | ...You ride well for people on foot. Fine. Show me a road worth riding now.
+join C17
+say narr | (The Night Rider joins. Throttle builds speed each turn he keeps moving.)
+end
+label leave
+say rider | The road will be here.
+@end
+
+# ---------------------------------------------------------------- new Vestiges (post-fault)
+@scene OV_V09
+say narr | Moss-covered stones stir in the drowned grove and stand: a colossus of root and rock, water pouring from its shoulders.
+say colossus | THE GROVE DROWNED. I SLEPT UNDER IT. WHO WALKS HERE NOW, AND WHY?
+say nera | People who want it to grow back.
+say colossus | THEN SHOW ME YOU CAN KEEP WHAT GROWS.
+battle OV_V09 noflee
+say colossus | GOOD. CALL, AND I WILL STAND.
+vestige V09
+set ov_v09
+@end
+
+@scene OV_V10
+say narr | Thorned vines knot across the crossing into a throne. Sitting on it, a queen with briar hair watches you, amused.
+say thorn | The flood fed my garden. Everything that falls here feeds it. Are you falling, or are you passing?
+choice | Passing - through her garden -> fight | Falling back -> leave
+label fight
+battle OV_V10 noflee
+say thorn | Passing, then. Pleasant change. Take a cutting - call me when something needs to wither.
+vestige V10
+set ov_v10
+end
+label leave
+say thorn | Don't be long. Gardens grow.
+@end
+
+@scene OV_V11
+say narr | In the silent alcove, ash drifts upward. It gathers into a long, smouldering wyrm, coiled around the Crown's cold heart.
+say wyrm | The Crown burned me into its engines. Now the engines are quiet and I am... loose.
+say wyrm | I will not be anyone's furnace again. But I would burn for someone who asks.
+say dain | Then we're asking. Not ordering.
+battle OV_V11 noflee
+say wyrm | Asked. Remember the difference, and I will come.
+vestige V11
+set ov_v11
+@end
+
+@scene OV_V12
+say narr | The rime gallery's mirrors all show the same pale shape, just behind your shoulder. Then it steps out.
+say wraith | I was the cradle's cold. The lantern burned and I kept the sleepers still. Now I am only... cold.
+say wraith | Give me a reason to be something else.
+battle OV_V12 noflee
+say wraith | A shield of frost. For the living. Yes. I can be that.
+vestige V12
+set ov_v12
+@end

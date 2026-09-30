@@ -139,6 +139,7 @@ label pipline
 say pip | Blank forms and a proper seal. Welcome to paperwork that doesn't hurt anyone.
 label pipdone
 join C07
+call OV_KITSUNE_BACK
 chapter CH19
 objective dain | Oni is back, under the survivors' agreement.
 call REUNION_CHECK

@@ -40,7 +40,7 @@ func new_game() -> void:
 		"save_id": "", "timestamp": "", "playtime": 0.0, "world_phase": "pre", "chapters": [], "flags": {},
 		"vars": {}, "events": [], "quests": {}, "party": {"roster": [], "available": {}, "active": [], "rows": {}, "members": {}, "locked": false},
 		"inventory": {"gold": 300, "items": {}, "delivery": []}, "acquired": [], "chests": [], "discovered": [],
-		"bestiary": {}, "upgrades": {}, "vehicle": {"mode": "foot", "ship_map": "", "ship_x": 0, "ship_y": 0, "ferry": false, "cable": false, "ship": false},
+		"bestiary": {}, "upgrades": {}, "vehicle": {"mode": "foot", "ship_map": "", "ship_x": 0, "ship_y": 0, "ferry": false, "cable": false, "ship": false, "mount": false},
 		"location": {"map": "T01_PLATFORM", "spawn": "start", "x": -1, "y": -1, "dir": "down"},
 		"rng": {"combat": 12345, "loot": 777, "enc": 4242}, "play_settings": {"encounters": Settings.get_v("encounters")},
 		"journal": {"objective": "", "clue": "", "destination": "", "source": "", "rumors": [], "log": []},
@@ -774,6 +774,9 @@ func catastrophe_transaction() -> void:
 	n["vehicle"]["mode"] = "foot"
 	n["vehicle"]["ferry"] = false
 	n["vehicle"]["cable"] = false
+	# the pre-fault Wayfarer is lost with the Crown Dais; the Lanternwake is a new ship (CH16)
+	n["vehicle"]["ship"] = false
+	n["vehicle"]["ship_map"] = ""
 	if not n["events"].has("EV_CATASTROPHE"):
 		n["events"].append("EV_CATASTROPHE")
 	# salvage: unique pre-state rewards the player never collected

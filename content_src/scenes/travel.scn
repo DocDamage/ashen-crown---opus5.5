@@ -51,7 +51,12 @@ label stay
 
 # ---------------------------------------------------------------- Lanternwake (after CH16)
 @scene SHIP_BOARD
+if phase:post post
+choice | Take the helm -> helm | Stay ashore -> stay
+goto chosen
+label post
 choice | Take the helm -> helm | Go below deck -> below | Stay ashore -> stay
+label chosen
 label helm
 airship board
 end
@@ -62,7 +67,12 @@ label stay
 @end
 
 @scene SHIP_HELM
+if phase:post post
+choice | Land here -> land | Stay aloft -> stay
+goto chosen
+label post
 choice | Land here -> land | Go below deck -> below | Stay aloft -> stay
+label chosen
 label land
 airship land
 end
@@ -73,9 +83,17 @@ label stay
 @end
 
 @scene SHIP_RECALL
-say narr | A marked landing field. Lanternwake can be called down here.
-choice | Call Lanternwake -> call | Not now -> stay
+if phase:post post
+say narr | A marked landing field. The Wayfarer can be called down here.
+choice | Call the Wayfarer -> call | Not now -> stay
 label call
+airship recall
+say narr | The Wayfarer drifts down onto the field, its envelope creaking.
+end
+label post
+say narr | A marked landing field. Lanternwake can be called down here.
+choice | Call Lanternwake -> call2 | Not now -> stay
+label call2
 airship recall
 say narr | Lanternwake settles onto the field, engines ticking as they cool.
 label stay

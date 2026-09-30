@@ -102,6 +102,7 @@ say dain | Come with us?
 say nera | Someone's got to find Morwen. She never could read a map.
 hide nera_s
 join C05
+call OV_INFERNA
 chapter CH14
 set brackenford_routes
 objective dain | Brackenford's new crossings are open. Take the repaired ferry from Hearthward east to Bellharbor to find Morwen.

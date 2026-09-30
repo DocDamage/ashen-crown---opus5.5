@@ -77,6 +77,7 @@ var banner_t = 0.0
 var vehicle = "foot"            # foot | ship
 var ship_pos = Vector2i(-1, -1)
 const HOME_BERTH := Vector2i(57, 45)   # Hearthward landing field on WORLD_POST
+const WAYFARER_BERTH := Vector2i(52, 12)   # Nacre landing field on WORLD (pre-fault Wayfarer)
 var steps = 0
 var last_step_blocked = false
 var tex_cache = {}
@@ -282,6 +283,8 @@ func _process(delta: float) -> void:
 		var spd = RUN if (_running() or vehicle == "ship") else WALK
 		if vehicle == "ship":
 			spd *= 1.5
+		elif riding():
+			spd = RUN * 1.35
 		var tgt = Vector2(p_target * TS)
 		p_pos = p_pos.move_toward(tgt, spd * 60.0 * delta)
 		p_anim += delta * (10.0 if _running() else 7.0)
@@ -382,7 +385,7 @@ func _on_arrive() -> void:
 	_encounter_step()
 
 func _encounter_step() -> void:
-	if vehicle == "ship":
+	if vehicle == "ship" or riding():
 		return
 	var group: String = map.get("encounters", "")
 	for e in map["entities"]:
@@ -626,6 +629,13 @@ func ship_op(op: String) -> bool:
 			return true
 		"below":
 			vs["mode"] = "deck"
+			return true
+		"wayfarer":
+			# pre-fault Wayfarer (CH10): parked on the Nacre landing field of the pre-fault world
+			vs["ship"] = true
+			vs["ship_map"] = "WORLD"
+			vs["ship_x"] = WAYFARER_BERTH.x
+			vs["ship_y"] = WAYFARER_BERTH.y
 			return true
 		"home":
 			vs["ship"] = true
@@ -1325,7 +1335,21 @@ func _draw() -> void:
 				var fr = 0
 				if p_moving:
 					fr = 1 + int(p_anim) % 4
-				_draw_char(p_sprite, p_dir, fr, t[3])
+				if riding() and VehicleArt.has("brackhorn"):
+					var d8 = VehicleArt.DIR8.get(p_dir, "south")
+					var foot = t[3] + Vector2(8, 16)
+					var gf = int(time * VehicleArt.fps("brackhorn")) if p_moving else 0
+					var row = d8 if p_moving else "walk_" + d8
+					draw_rect(Rect2(t[3] + Vector2(0, 13), Vector2(16, 3)), Color(0, 0, 0, 0.25))
+					var bob = Vector2(0, -10 - (1 if p_moving and gf % 2 == 1 else 0))
+					if p_dir == "up":
+						VehicleArt.draw(self, "brackhorn", row, gf, foot + Vector2(0, 4), 0.85)
+						_draw_char(p_sprite, p_dir, 0, t[3] + bob)
+					else:
+						_draw_char(p_sprite, p_dir, 0, t[3] + bob)
+						VehicleArt.draw(self, "brackhorn", row, gf, foot + Vector2(0, 4), 0.85)
+				else:
+					_draw_char(p_sprite, p_dir, fr, t[3])
 			"ship":
 				_draw_ship(t[3])
 	for e in map["entities"]:
@@ -1388,6 +1412,11 @@ func _outdoor() -> bool:
 const DIR_ROW := {"down": 0, "left": 1, "right": 2, "up": 3}
 
 func _draw_char(sprite: String, dir: String, frame: int, pos: Vector2, npc_id: String = "") -> void:
+	if sprite.begins_with("vestige:"):
+		# a waiting Vestige: its idle loop at half the battle size, feet on the tile
+		draw_rect(Rect2(pos + Vector2(-4, 13), Vector2(24, 4)), Color(0, 0, 0, 0.3))
+		BattleFX.draw_vestige_idle(self, sprite.substr(8), time, pos + Vector2(8, 16), 0.5)
+		return
 	if not HeroArt.has_field(sprite):
 		var nk = HeroArt.npc_key(sprite, npc_id)
 		if nk != "" and HeroArt.has_field(nk):
@@ -1410,7 +1439,26 @@ func _draw_char(sprite: String, dir: String, frame: int, pos: Vector2, npc_id: S
 	var chh = t.get_height() / 5
 	draw_texture_rect_region(t, Rect2(pos + Vector2(8 - cw / 2, 16 - chh), Vector2(cw, chh)), Rect2(col * cw, row * chh, cw, chh))
 
+func ship_key() -> String:
+	return "wayfarer" if map_id == "WORLD" else "lanternwake"
+
+func riding() -> bool:
+	## Brackhorn mount: on the world map, on foot, once the party has it (Settings can turn riding off)
+	return vehicle == "foot" and map.get("kind", "") == "world" and bool(Game.S["vehicle"].get("mount", false)) \
+		and Settings.get_v("ride_mount") != false and not hidden_actors.has("player")
+
 func _draw_ship(pos: Vector2) -> void:
+	var key = ship_key()
+	if VehicleArt.has(key):
+		var flying = vehicle == "ship"
+		var d = VehicleArt.DIR8.get(p_dir, "south") if flying else "south"
+		var mid = pos + Vector2(8, 8)
+		var fr = int(time * VehicleArt.fps(key)) if flying else 0
+		# shadow on the ground, hull lifted while aloft
+		VehicleArt.draw(self, key, "shadow_" + d, 0, mid + Vector2(0, 4), 0.7, Color(1, 1, 1, 0.3 if flying else 0.45), true)
+		var lift = (-18.0 + round(sin(time * 3.0))) if flying else -3.0
+		VehicleArt.draw(self, key, d, fr, mid + Vector2(0, lift), 0.7, Color.WHITE, true)
+		return
 	var t = _tex("res://assets/sprites/wayfarer.png")
 	if t:
 		var bob = round(sin(time * 3.0))

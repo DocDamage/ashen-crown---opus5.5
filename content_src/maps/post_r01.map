@@ -57,6 +57,7 @@ npc storekeeper 28 16 down sprite=keeper talk=T01P_STOREKEEPER
 npc salvager 38 9 left sprite=worker talk=T01P_SALVAGE if=ch:CH14
 read 10 23 "A memorial stone. The quarry ledger's numbers have been chiselled off; names are being cut in their place, one at a time."
 save 14 15
+npc ov_maldrath 18 15 down sprite=C14 talk=OV_MALDRATH if=ch:CH20,!recruited:C14 #! ov:maldrath
 
 === D01_MEMORIAL
 name: Crown Quarry - Surface Memorial
@@ -215,6 +216,7 @@ spawn from_r01 25 29 up
 spawn from_r03 19 1 down
 exit 24..27 31 D03P_R01 from_r02
 exit 18..21 0 D03P_R03 from_r02 if=flag:d03p_route1,flag:d03p_route2,flag:d03p_route3 locked="The current is too strong while any crossing is down. Raise all three walkways."
+npc ov_v10 20 22 down sprite=vestige:V10 talk=OV_V10 if=ch:CH14,!flag:ov_v10 #! ov:v10
 
 === D03P_R03
 name: Flooded Rootward - Warden's Current
@@ -260,3 +262,4 @@ trigger 12..23 18..19 scene=CH14_NERA if=flag:b11_done,!ch:CH14
 spawn from_r02 17 25 up
 spawn default 17 25 up
 exit 16..19 27 D03P_R02 from_r03
+npc ov_v09 18 9 down sprite=vestige:V09 talk=OV_V09 if=ch:CH14,!flag:ov_v09 #! ov:v09

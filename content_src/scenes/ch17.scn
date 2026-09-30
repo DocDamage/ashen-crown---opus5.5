@@ -94,6 +94,7 @@ label sableline
 say sable | Rescue roster. Write your own name on it. Nobody else should.
 label sabledone
 join C03
+call OV_ARCHANGEL_BACK
 chapter CH17
 set skyspine_anchor
 objective dain | Vespera is back. Skyspine's anchor is ready for the release protocol.
@@ -162,6 +163,6 @@ say narr | (Still missing: Oni, at the Whitebone sanctuary.)
 label c19
 end
 label all
-objective dain | All eight are together again. Take the evidence to Nacre's assembly for the Ash Accord.
+objective dain | Everyone is together again. Take the evidence to Nacre's assembly for the Ash Accord.
 rumor | Nacre is gathering every town's delegates by the listening pool.
 @end

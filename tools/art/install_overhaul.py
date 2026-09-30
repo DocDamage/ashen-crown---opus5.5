@@ -339,7 +339,50 @@ def common_sheets():
     print("common sheets:", n)
 
 
-SECTIONS = {"common": common_sheets, "arenas": arenas, "audio": audio, "vfx": vfx, "vestiges": vestiges, "icons": spell_icons, "field_anim": field_anims}
+DIRS8 = ["south", "southwest", "west", "northwest", "north", "northeast", "east", "southeast"]
+
+
+def _sheet(frames_by_dir, dst_png, dst_json, fps, extra=None):
+    """frames_by_dir: {dir: [png paths]} -> one sheet (row per direction) + json {cell, dirs: {dir: [row, n]}, fps}."""
+    from PIL import Image
+    ims = {d: [Image.open(f).convert("RGBA") for f in fs] for d, fs in frames_by_dir.items() if fs}
+    cw = max(i.width for v in ims.values() for i in v)
+    chh = max(i.height for v in ims.values() for i in v)
+    cols = max(len(v) for v in ims.values())
+    rows = list(ims.keys())
+    out = Image.new("RGBA", (cw * cols, chh * len(rows)), (0, 0, 0, 0))
+    meta = {"cell": [cw, chh], "fps": fps, "dirs": {}}
+    for r, d in enumerate(rows):
+        for c, im in enumerate(ims[d]):
+            out.alpha_composite(im, (c * cw + (cw - im.width) // 2, r * chh + (chh - im.height) // 2))
+        meta["dirs"][d] = [r, len(ims[d])]
+    meta.update(extra or {})
+    os.makedirs(os.path.dirname(dst_png), exist_ok=True)
+    out.save(dst_png)
+    json.dump(meta, open(dst_json, "w"), indent=1)
+
+
+def vehicles():
+    import glob
+    base = os.path.join(PROC, "airships")
+    for ship in ("wayfarer", "lanternwake"):
+        fr = {d: sorted(glob.glob(os.path.join(base, ship, "world", d, "frame_*.png"))) for d in DIRS8}
+        sh = {"shadow_" + d: [os.path.join(base, ship, "world", "shadow", d + ".png")] for d in DIRS8
+              if os.path.exists(os.path.join(base, ship, "world", "shadow", d + ".png"))}
+        fr.update(sh)
+        _sheet(fr, os.path.join(EXT, "vehicles", ship + ".png"), os.path.join(EXT, "vehicles", ship + ".json"), 8)
+    mb = os.path.join(PROC, "mount", "brackhorn_frames")
+    fr = {}
+    for d in DIRS8:
+        fr[d] = sorted(glob.glob(os.path.join(mb, "run_%s_*.png" % d)), key=lambda p: int(p.rsplit("_", 1)[1][:-4]))
+        fr["walk_" + d] = sorted(glob.glob(os.path.join(mb, "walk_%s_*.png" % d)), key=lambda p: int(p.rsplit("_", 1)[1][:-4]))
+    _sheet(fr, os.path.join(EXT, "vehicles", "brackhorn.png"), os.path.join(EXT, "vehicles", "brackhorn.json"), 12)
+    for f in glob.glob(os.path.join(base, "icons", "*_icon_*.png")):
+        copy(f, os.path.join(EXT, "vehicles", "icons", os.path.basename(f)))
+    print("vehicles: installed")
+
+
+SECTIONS = {"vehicles": vehicles, "common": common_sheets, "arenas": arenas, "audio": audio, "vfx": vfx, "vestiges": vestiges, "icons": spell_icons, "field_anim": field_anims}
 
 if __name__ == "__main__":
     for s in (sys.argv[1:] or SECTIONS.keys()):

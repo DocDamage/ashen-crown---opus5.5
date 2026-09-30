@@ -136,6 +136,7 @@ say nera | No. It isn't.
 say nera | The transport route runs north, to Cinder Reach. The ministry closed the northern road, but I know the way around the barricade.
 say nera | I'll guide you. Not for you. For the next camp that route runs through.
 join C05
+call OV_BRACKHORN
 say narr | Elowen's Hunt marks targets, reveals weaknesses and scouts what enemies will do next.
 @end
 

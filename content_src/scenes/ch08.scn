@@ -155,7 +155,7 @@ say sable | That's my seal design you just replaced. I built it so no one could 
 say sable | You did it with a name and a question.
 say sable | If I'm going to be useful: my blade takes an infusion - fire, ice or storm - and my runes strip what enemies are wearing. One infusion at a time.
 join C07
-say narr | Oni's Runes infuse his blade and unseal enemy protections. All eight companions are now known; Formation lets you choose any four at safe points.
+say narr | Oni's Runes infuse his blade and unseal enemy protections. Formation lets you choose your active five at safe points.
 objective sable | Free all three prisoners, then face whatever holds the Tribunal Ring.
 @end
 

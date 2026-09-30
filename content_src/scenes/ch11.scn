@@ -8,7 +8,7 @@ say oriel | Four in front, four behind carrying the lamps and watching the flank
 say sable | Voss has three relay stations feeding the dais. South relay, north lift relay, and the bridge itself.
 say ivo | And the lifts. The evacuation lifts run on a separate feed. Whatever we cut, we don't cut those.
 say pip | There are people in those lifts. Ministry clerks, conscripts, families from the lower wards. Voss called it 'relocation'.
-say narr | (All eight travel together. Choose your active four with Formation in the menu at any time outside battle.)
+say narr | (Everyone travels together. Choose your active five with Formation in the menu at any time outside battle.)
 formation
 objective sable | Release the south relay (west) and reroute the north lift relay (east) without cutting lift power.
 @end
@@ -83,7 +83,7 @@ say soldier | Don't - we're not fighting. The ceiling came down on the barracks 
 choice | Help them out -> help | Not now -> later
 label help
 fade out 0.4
-say narr | It takes all eight of you and a borrowed crowbar. Nobody is badly hurt.
+say narr | It takes all of you and a borrowed crowbar. Nobody is badly hurt.
 fade in 0.4
 set d09_rescue
 say soldier | Voss told us the dais would 'end the instability'. He didn't say what he meant by it.

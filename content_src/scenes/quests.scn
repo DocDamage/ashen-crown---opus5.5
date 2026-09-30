@@ -617,9 +617,9 @@ say narr | (Sak received False Crown. His final technique is now available.)
 if q:Q09 done
 if q:Q09:ACTIVE active
 say monk | An island north of Nacre. Its lantern burns every night and nobody in the village ever wakes. Somebody should go. Carefully.
-say narr | (A substantial optional challenge. Wayfarer can land there - the storm around it has thinned since the Accord.)
+say narr | (A substantial optional challenge. Lanternwake can land there - the storm around it has thinned since the Accord.)
 quest Q09 ACTIVE start
-journal | Q09: Fly Wayfarer to the winter island far north of Nacre. Warm the shelters and learn why the village sleeps.
+journal | Q09: Fly Lanternwake to the winter island far north of Nacre. Warm the shelters and learn why the village sleeps.
 end
 label active
 say monk | The winter island, north. Take warm clothes. And patience.

@@ -56,6 +56,7 @@ say narr | The Conduit gives way beneath Veyr.
 say narr | Coastlines fracture along old relay faults. Dormant dragon structures rise from the plains and the sea. The Crown's bell rings once, wrong, and every city hears it.
 say narr | The lift cable snaps. The party scatters into the dark.
 wait 1.0
+call OV_WAYFARER_LOST
 phase post
 music silence
 say narr | ...

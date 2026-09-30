@@ -59,6 +59,7 @@ npc mara_town 21 16 down sprite=mara talk=T01_MARA_AFTER if=ch:CH01
 npc cartman 33 11 left sprite=worker talk=T01_CARTMAN
 shop 22 14 SHOP_T01
 sign 21 10 "Brackenford Halt. Crown Quarry: north road. Veyr: south over the river."
+npc ov_namer 20 13 down sprite=scholar talk=OV_NAMER name="Name-Keeper" #! ov:namer_t01
 === T01_BAKERY
 name: Brackenford - Shared Bakery
 tileset: interior

@@ -26,6 +26,7 @@ say sable | Hearings with no officer in the room. The person speaks, the record 
 say oriel | And the answer can change later. That is what the old separation rite understood.
 say sen | Then we hold the first hearing tonight. One volunteer. One relay. No hurry.
 set accord_nacre
+call OV_KITSUNE
 say narr | (Nacre's guarantee: consent heard without institutional pressure.)
 call CH10_CHECK
 @end
@@ -73,6 +74,7 @@ say oriel | Then we watch for it.
 key K_ACCORD_NOTES
 set local_release_proven
 chapter CH10
+call OV_WAYFARER
 objective dain | Stop a forced mass awakening. Enter the Sable Conduit (old aqueduct north of Veyr).
 discover L_D09
 level_floor 22

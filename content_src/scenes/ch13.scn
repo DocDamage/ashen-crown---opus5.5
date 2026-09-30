@@ -109,6 +109,7 @@ say mara | News, since you're awake. A signal flare's been going up over the flo
 say dain | Elowen.
 say mara | Brackenford's west of here along the pontoon road. Rootward's north of it, where the forest used to be dry.
 say mara | And take the supplies in the hearth chest. You two can't fight the whole sea with borrowed spoons.
+call OV_CORVUS
 chapter CH13
 objective oriel | Follow Elowen's signal flares to the flooded Rootward (north-west, past Brackenford).
 rumor | Brackenford's bakery is a footbridge depot now. Mara says the bunkhouse became a shelter.

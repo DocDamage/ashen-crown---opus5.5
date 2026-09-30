@@ -814,6 +814,7 @@ const SETTING_DEFS := [
 	["text_speed", "Text speed", [0, 1, 2, 3]],
 	["run_toggle", "Run", [false, true]],
 	["encounters", "Encounters", ["normal", "reduced", "off"]],
+	["ride_mount", "Ride Brackhorn", [true, false]],
 	["reduced_flash", "Reduced flashes", [false, true]],
 	["shake", "Screen shake", [true, false]],
 	["short_summons", "Short summons", [false, true]],
@@ -1305,16 +1306,21 @@ func _split_menu() -> void:
 	page = "split"
 	split_teams = {"A": [], "B": []}
 	var avail = Game.available_members()
+	# teams of five (fewer if the roster is small); anyone else waits in reserve at the recovery point
+	var need: int = mini(Game.PARTY_MAX, avail.size() / 2)
 	for i in range(avail.size()):
-		split_teams["A" if i < Game.PARTY_MAX else "B"].append(avail[i])
+		if i < need:
+			split_teams["A"].append(avail[i])
+		elif i < need * 2:
+			split_teams["B"].append(avail[i])
 	var m = _menu([], Rect2(4, 4, 150, 150), 11, "West (A) / East (B)")
 	var refresh = func(mm: MenuList):
 		var items = []
 		for cid in avail:
-			var team = "A" if split_teams["A"].has(cid) else "B"
+			var team = "A" if split_teams["A"].has(cid) else ("B" if split_teams["B"].has(cid) else "-")
 			items.append({"text": Game.short_name(cid), "right": team, "value": cid})
-		var ok: bool = split_teams["A"].size() == 4 and split_teams["B"].size() == 4
-		items.append({"text": "Confirm teams", "value": "__ok", "enabled": ok, "reason": "Each team needs four"})
+		var ok: bool = split_teams["A"].size() == need and split_teams["B"].size() == need
+		items.append({"text": "Confirm teams", "value": "__ok", "enabled": ok, "reason": "Each team needs %d" % need})
 		mm.items = items
 		info_draw = func():
 			UI.win(self, Rect2(158, 4, 158, 150))
@@ -1342,11 +1348,13 @@ func _split_menu() -> void:
 			_close_all()
 			return
 		var cid: String = it["value"]
+		# cycle A -> B -> reserve -> A
 		if split_teams["A"].has(cid):
 			split_teams["A"].erase(cid)
 			split_teams["B"].append(cid)
-		else:
+		elif split_teams["B"].has(cid):
 			split_teams["B"].erase(cid)
+		else:
 			split_teams["A"].append(cid)
 		refresh.call(m))
 	m.allow_cancel = false

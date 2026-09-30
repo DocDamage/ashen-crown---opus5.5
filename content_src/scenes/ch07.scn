@@ -69,6 +69,7 @@ say dain | Which wall?
 say corren | The memorial. For nearly dying.
 say nera | You didn't nearly die. You did a maintenance shift.
 say corren | ...I don't know how to be thanked for that.
+call OV_ARCHANGEL
 chapter CH07
 set cable_open
 say narr | High Aerie's cable ferry now runs west across the chasm toward the Pale Basin and Nacre.

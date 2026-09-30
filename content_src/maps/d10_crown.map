@@ -247,6 +247,7 @@ trigger 8..14 8..9 scene=Q12_CANTOR if=!flag:b16_done
 spawn from_r04 22 8 left
 spawn default 22 8 left
 exit 23 7..10 D10_R04 from_alcove
+npc ov_v11 12 12 down sprite=vestige:V11 talk=OV_V11 if=!flag:ov_v11 #! ov:v11
 
 === D10_R05
 name: Crown Heart - Crown Vessel

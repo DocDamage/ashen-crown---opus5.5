@@ -124,9 +124,10 @@ inn 5 11 scene=T07_INN
 npc cot_keeper 5 12 up sprite=keeper talk=T07_INN
 trigger 12..22 13..15 scene=CH23_EPILOGUES if=ch:CH23,!event:CH23_EPILOGUES
 save 14 18
+npc ov_namer 18 10 down sprite=scholar talk=OV_NAMER name="Name-Keeper" #! ov:namer_t07
 
 === T07_BERTH
-name: Hearthward - Wayfarer Berth
+name: Hearthward - Airship Berth
 tileset: harbor
 music: M016
 zone: T07
@@ -174,7 +175,7 @@ npc lamp_w1 17 9 down sprite=worker talk=T07_LAMP_W if=flag:dawn
 npc lamp_w2 19 15 up sprite=worker talk=T07_LAMP_W if=flag:dawn
 
 === W_DECK
-name: Wayfarer - Common Deck
+name: Lanternwake - Common Deck
 tileset: ship
 music: M019
 zone: SHIP

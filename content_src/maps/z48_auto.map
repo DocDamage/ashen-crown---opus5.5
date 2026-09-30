@@ -846,6 +846,7 @@ spawn from_r01 25 29 up
 spawn from_r03 19 1 down
 exit 24..27 31 D03P_R01 from_r02
 exit 18..21 0 D03P_R03 from_r02 if=flag:d03p_route1,flag:d03p_route2,flag:d03p_route3 locked="The current is too strong while any crossing is down. Raise all three walkways."
+npc ov_v10 20 22 down sprite=vestige:V10 talk=OV_V10 if=ch:CH14,!flag:ov_v10 #! ov:v10
 === D03P_R03
 name: Flooded Rootward - Warden's Current
 encounters: none
@@ -891,6 +892,7 @@ trigger 12..23 18..19 scene=CH14_NERA if=flag:b11_done,!ch:CH14
 spawn from_r02 17 25 up
 spawn default 17 25 up
 exit 16..19 27 D03P_R02 from_r03
+npc ov_v09 18 9 down sprite=vestige:V09 talk=OV_V09 if=ch:CH14,!flag:ov_v09 #! ov:v09
 === D03_R01
 name: Rootward - Wagon Hollow
 encounters: none
@@ -1230,6 +1232,7 @@ npc q4w3 20 17 up sprite=apprentice talk=Q04_WORKER3
 switch restart 24 9 scene=Q04_RESTART if=qs:Q04:revised
 npc crew_d4 5 20 right sprite=worker talk=D04P_CREW
 save 34 20
+npc ov_rider 20 13 left sprite=C17 talk=OV_RIDER if=ch:CH16,!recruited:C17 #! ov:rider
 === D04_R01
 name: Furnace Spine - Shift Gate
 encounters: none
@@ -2310,6 +2313,7 @@ switch repeater 15 13 scene=Q07_REPEATER if=qs:Q07:recorded
 spawn from_r02 15 20 up
 spawn default 15 20 up
 exit 14..17 21 D07P_R02 from_r03
+npc ov_velkhar 16 11 down sprite=C15 talk=OV_VELKHAR if=ch:CH19,!recruited:C15 #! ov:velkhar
 === D07_R01
 name: Whitebone Redoubt - White Gate
 encounters: none
@@ -2647,6 +2651,7 @@ spawn world 15 22 up
 spawn default 15 22 up
 exit 14..17 23 WORLD_POST l_d08
 save 26 18
+npc ov_kael 16 12 down sprite=C16 talk=OV_KAEL if=ch:CH16,!recruited:C16 #! ov:kael
 === D08_R01
 name: Memory Vault - Listening Gate
 encounters: none
@@ -3288,6 +3293,7 @@ trigger 8..14 8..9 scene=Q12_CANTOR if=!flag:b16_done
 spawn from_r04 22 8 left
 spawn default 22 8 left
 exit 23 7..10 D10_R04 from_alcove
+npc ov_v11 12 12 down sprite=vestige:V11 talk=OV_V11 if=!flag:ov_v11 #! ov:v11
 === D10_R01
 name: Crown Heart - Accord Dock
 encounters: none
@@ -3794,6 +3800,7 @@ exit 14..17 27 D11_R02 from_r04
 exit 31 20..23 D11_R03 from_r04
 exit 14..17 0 D11_R05 from_r04
 save 6 18
+npc ov_v12 16 24 down sprite=vestige:V12 talk=OV_V12 if=!flag:ov_v12 #! ov:v12
 === D11_R05
 name: Cradle of Winter - Lantern Cradle
 encounters: none
@@ -3843,6 +3850,7 @@ spawn from_r04 19 29 up
 spawn from_r06 19 2 down
 exit 18..21 31 D11_R04 from_r05
 exit 18..21 0 D11_R06 from_r05 if=flag:b13_done
+npc ov_lich 20 13 down sprite=C13 talk=OV_LICH if=q:Q09,!recruited:C13 #! ov:lich
 === D11_R06
 name: Cradle of Winter - Dawn Window
 encounters: none
@@ -4675,7 +4683,7 @@ inn 5 1 scene=T06_INN
 npc listener 14 10 up sprite=scholar talk=T06_LISTENER
 save 17 10
 === W_DECK
-name: Wayfarer - Common Deck
+name: Lanternwake - Common Deck
 tileset: ship
 music: M019
 zone: SHIP

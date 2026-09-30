@@ -20,7 +20,7 @@ shop SHOP_SHIP
 
 @scene D10_SPLIT
 if flag:d10_split already
-say narr | Two teams of four. Same stores, same growth, same recovery point here. Any four can take either lung.
+say narr | Two teams of five. Same stores, same growth, same recovery point here. Anyone left over holds the recovery point.
 split_party
 set d10_split
 say narr | (Team A takes the west lung; Team B the east. West first.)

@@ -60,3 +60,4 @@ npc mara_town 20 16 down sprite=mara talk=T01_MARA_AFTER if=ch:CH01
 npc cartman 32 11 left sprite=worker talk=T01_CARTMAN
 shop 22 15 SHOP_T01
 sign 24 11 "Brackenford Halt. Crown Quarry: north road. Veyr: south over the river."
+npc ov_namer 20 13 down sprite=scholar talk=OV_NAMER name="Name-Keeper" #! ov:namer_t01

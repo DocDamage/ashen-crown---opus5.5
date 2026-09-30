@@ -120,6 +120,16 @@ FORMATIONS = {
     "B14": F(["B14"], "reef", "M026", True, hint="Beacons flash before the tide returns to the front row."),
     "B15": F(["B15"], "underways", "M026", True, hint="The screen names the edict - Defend or dispel."),
     "B16": F(["B16"], "crown", "M026", True, hint="Defend through silence; act through response."),
+    # overhaul: secret-recruit trials and new Vestige trials (scripted, content_src/scenes/overhaul.scn)
+    "OV_LICH": F([v("E027", 38), v("E039", 38), v("E040", 38)], "winter", "M026", True, "The Lich King's court shatters under fire."),
+    "OV_MALDRATH": F([v("E032", 40), v("E040", 40), v("E032", 40)], "field_post", "M026", True, "Fallen knights still guard their king."),
+    "OV_VELKHAR": F([v("E039", 36), v("E030", 36), v("E039", 36)], "whitebone", "M026", True, "Silence the singers first."),
+    "OV_KAEL": F([v("E038", 32), v("E036", 32), v("E038", 32)], "vault", "M026", True, "Builder machines: storm finds the seams."),
+    "OV_RIDER": F([v("E038", 31), v("E034", 31)], "furnace", "M026", True, "Stop the engine before it builds speed."),
+    "OV_V09": F([v("E009", 30), v("E010", 30), v("E011", 30)], "grove_flood", "M026", True, "The grove tests whether you can protect it."),
+    "OV_V10": F([v("E031", 30), v("E012", 30), v("E031", 30)], "grove_flood", "M026", True, "The Thorn Queen's brood: cure poison early."),
+    "OV_V11": F([v("E034", 40), v("E015", 40), v("E038", 40)], "crown", "M026", True, "Ice and water cool the wyrm's brood."),
+    "OV_V12": F([v("E027", 40), v("E030", 40), v("E027", 40)], "winter", "M026", True, "Light scatters the wraith's escort."),
 }
 
 GROUPS = {
@@ -154,7 +164,7 @@ SHOPS = {
     "SHOP_T05": {"name": "Cable Court Traders", "kinds": ["items", "weapons", "armor", "accessories"], "town": "T05"},
     "SHOP_T06": {"name": "Salt Market", "kinds": ["items", "weapons", "armor", "accessories"], "town": "T06"},
     "SHOP_T07": {"name": "Ponton Market", "kinds": ["items", "weapons", "armor", "accessories"], "town": "T07"},
-    "SHOP_SHIP": {"name": "Wayfarer Stores", "kinds": ["items"], "town": "SHIP"},
+    "SHOP_SHIP": {"name": "Lanternwake Stores", "kinds": ["items"], "town": "SHIP"},
 }
 
 # speaker id -> display name, portrait key (character id or npc sprite)

@@ -135,6 +135,59 @@ func run_gallery(p_main: Node, which: String) -> void:
 			print("PERF %s %.2f ms/frame" % [m, (Time.get_ticks_usec() - t0) / 120000.0])
 		get_tree().quit(0)
 		return
+	if which == "ov":
+		# overhaul review: vehicles on the world maps, and each new recruit / Vestige in its room
+		Game.S["vehicle"]["mount"] = true
+		for ch in ["CH14", "CH16", "CH19", "CH20"]:
+			Game.complete_chapter(ch)
+		Game.quest_set("Q09", "COMPLETED", "")
+		main.enter_field("WORLD", "default", Vector2i(30, 50), "down")
+		main.field.banner_t = 0.0
+		main.field.p_moving = false
+		await _g_frames(10)
+		await _g_shot("ov_ride_down")
+		main.field.p_dir = "right"
+		await _g_frames(4)
+		await _g_shot("ov_ride_right")
+		Game.S["vehicle"]["ship"] = true
+		Game.S["vehicle"]["ship_map"] = "WORLD"
+		Game.S["vehicle"]["ship_x"] = 32
+		Game.S["vehicle"]["ship_y"] = 50
+		main.enter_field("WORLD", "default", Vector2i(30, 50), "down")
+		main.field.banner_t = 0.0
+		await _g_frames(10)
+		await _g_shot("ov_wayfarer_parked")
+		main.field.ship_op("board")
+		main.field.p_dir = "left"
+		await _g_frames(10)
+		await _g_shot("ov_wayfarer_flying")
+		Game.S["world_phase"] = "post"
+		Game.S["vehicle"]["ship_map"] = "WORLD_POST"
+		Game.S["vehicle"]["mode"] = "foot"
+		main.enter_field("WORLD_POST", "default", Vector2i(30, 50), "down")
+		main.field.banner_t = 0.0
+		await _g_frames(10)
+		await _g_shot("ov_lanternwake_parked")
+		main.field.ship_op("board")
+		main.field.p_dir = "up"
+		await _g_frames(10)
+		await _g_shot("ov_lanternwake_flying")
+		main.field.vehicle = "foot"
+		Game.S["vehicle"]["mode"] = "foot"
+		for pair in [["T01_PLATFORM", "ov_namer"], ["D11_R05", "ov_lich"], ["T01_POST", "ov_maldrath"], ["D07P_R03", "ov_velkhar"],
+				["D08P_R01", "ov_kael"], ["D04P_R01", "ov_rider"], ["D03P_R03", "ov_v09"], ["D03P_R02", "ov_v10"],
+				["D10_ALCOVE", "ov_v11"], ["D11_R04", "ov_v12"]]:
+			var md: Dictionary = Content.data["maps"][pair[0]]
+			var at = Vector2i(-1, -1)
+			for e in md["entities"]:
+				if e["type"] == "npc" and e["id"] == pair[1]:
+					at = Vector2i(e["x"], e["y"] + 2)
+			main.enter_field(pair[0], "default", at, "up")
+			main.field.banner_t = 0.0
+			await _g_frames(12)
+			await _g_shot("ov_" + pair[0])
+		get_tree().quit(0)
+		return
 	if which.begins_with("map:"):
 		# whole-map stitched captures for tile review: --qa-gallery-set map:ID1,ID2 (or map:ALL)
 		var ids: Array = Array(which.substr(4).split(","))
