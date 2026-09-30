@@ -444,14 +444,17 @@ def seal_borders(w):
             print("ungated border crossing", key, c)
 
 
-def astar(w, a, b, noise, prefer_road=True):
-    """8-dir A* over terrain cost; river water can be crossed (becomes a bridge), sea cannot."""
+def astar(w, a, b, noise, prefer_road=True, mountain_cost=None):
+    """8-dir A* over terrain cost; river water can be crossed (becomes a bridge), sea cannot. With mountain_cost the
+    path may cut through ridges (a mountain pass)."""
     def cost(x, y):
         k = w.kind[y][x]
         if (x, y) in w.road:
             return 0.35
         if k in ("water",) and (x, y) in w.river:
             return 7.0
+        if k == "mountain" and mountain_cost:
+            return mountain_cost
         if k in SOLID_K:
             return None
         return COST.get(k, 1.5) * (0.7 + 0.8 * noise[y, x])
@@ -497,6 +500,35 @@ def astar(w, a, b, noise, prefer_road=True):
             out.append(s)
         out.append(p)
     return out
+
+
+# mountain passes: roads allowed to cut a ridge (story routes that must not detour through a later region)
+MOUNTAIN_PASSES = [
+    ("L_D06", (141, 60)),     # the Skyspine ferry landing to the Skychain Viaduct (CH07 goes by ferry, not the high road)
+]
+
+
+def mountain_passes(w):
+    noise = fbm(H, W, 778, (10, 5, 2))
+    for a, b in MOUNTAIN_PASSES:
+        pa = PLACES[a][:2] if isinstance(a, str) else a
+        pb = PLACES[b][:2] if isinstance(b, str) else b
+        path = astar(w, pa, pb, noise, mountain_cost=9.0)
+        if path is None:
+            print("NO PASS", a, b)
+            continue
+        cut = 0
+        for (x, y) in path:
+            k = w.get(x, y)
+            if k == "mountain":
+                w.set(x, y, "path")
+                cut += 1
+            elif (x, y) in w.river or k == "water":
+                w.set(x, y, "bridge")
+            elif (x, y) not in [pp[:2] for pp in PLACES.values()] and k not in ("road", "path", "bridge"):
+                w.set(x, y, "path")
+            w.road.add((x, y))
+        print("pass", a, b, "cut", cut)
 
 
 def place_roads(w, places, roads, passes):
@@ -667,6 +699,8 @@ def surface_entities(w, post=False):
             cond = (" if=ch:%s" % PREV[ch]) if (ch and PREV.get(ch)) else ""
             if post and key in POST_ONLY_OPENS:
                 cond = " if=ch:%s" % POST_ONLY_OPENS[key]
+            if lid in LAND_ONLY:
+                cond += " land=1"
             lines.append("location %s %d %d dest=%s spawn=world%s" % (lid, x, y, dest, cond))
         if kind != "sky":
             sx, sy = free_near(w, x, y, occupied)
@@ -697,7 +731,13 @@ def surface_entities(w, post=False):
             lines.append('block %d %d tile=gate if=!%s msg="%s"' % (e["x"], e["y"], e["cond"], e["msg"]))
         elif e["t"] == "line":
             lines.append(e["text"])
-    # landing fields near the towns (airships)
+    # sky places (the Shattered Choir): an arrival spawn on the peaks below them (field systems s3)
+    for lid, (x, y, kind, reg) in places.items():
+        if kind == "sky" and not (post and lid in LAND_ONLY):
+            sx, sy = free_near(w, x, y, occupied)
+            lines.append("spawn l_%s %d %d down" % (lid[2:].lower(), sx, sy))
+    # waystones (fast travel, field systems s3): a standing stone beside the place, and its arrival spawn
+    lines += waystone_lines(w, places, set(occupied), post)
     for lid in LANDINGS_POST if post else LANDINGS:
         if lid not in places:
             continue
@@ -718,6 +758,10 @@ def surface_entities(w, post=False):
             nm = LANDING_NAMES.get(lid, lid[2:])
             tag = "" if post else "  #! ov:wayfarer"
             lines.append('landing %d..%d %d..%d name="%s"%s' % (best[0], best[0] + 2, best[1], best[1] + 1, nm, tag))
+            if post and lid in LAND_ONLY:
+                # a sky isle: the airship lands on its dock (field.gd enters the land=1 location); walking out of
+                # the isle puts the party back beside the parked ship
+                lines.append("spawn l_%s %d %d down" % (lid[2:].lower(), best[0] + 2, best[1] + 1))
             # the airship's home berth (field.gd parks it here; "helm" boards it)
             if lid == ("L_T07" if post else "L_T06"):
                 lines.append("spawn berth %d %d down" % (best[0] + 1, best[1]))
@@ -769,7 +813,61 @@ FERRIES_POST = [
 ]
 LANDINGS_POST = ["L_N15", "L_T07", "L_T01", "L_T02", "L_D03", "L_T03", "L_T04", "L_T05", "L_T06", "L_D07", "L_D06", "L_D08",
                  "L_D10", "L_D11", "L_D12", "L_D05", "L_P01", "L_P02", "L_P05", "L_P09", "L_N22", "L_N28", "L_N32",
-                 "L_N14", "L_N35", "L_N36"]
+                 "L_N14", "L_N35", "L_N36", "L_N38"]
+
+# ================================================================ field systems (s3): waystones, sky isles, auger
+LAND_ONLY = {"L_N38"}      # sky isles entered only from the airship (or the sky cable scene), never on foot
+# waystone id -> (place, name, region); layer and phase follow the place's map
+WAYSTONES = [
+    ("WS_N02", "L_N02", "Gallowgate Toll", "R01"), ("WS_N41", "L_N41", "Oathstone Crossroads", "R01"),
+    ("WS_T03", "L_T03", "Cinderwake", "R02"), ("WS_T04", "L_T04", "Bellharbor", "R03"),
+    ("WS_T05", "L_T05", "High Aerie", "R04"), ("WS_T06", "L_T06", "Nacre", "R05"),
+    ("WS_N22", "L_N22", "Harrowfen", "R08"), ("WS_N27", "L_N27", "Kaminari Ford", "R07"),
+    ("WS_N32", "L_N32", "Rimeholt", "R09"), ("WS_T07", "L_T07", "Hearthward", "R06"),
+    ("WS_P09", "L_P09", "The Last Beacon", "R04"),
+    ("WS_U02", "L_U02", "Karag Dun", "U1"), ("WS_U17", "L_U17", "Meridian", "U2"),
+]
+
+
+def waystone_lines(w, places, occupied, post, deep=False):
+    """A waystone two to four cells from its place (walkable, off the place cell), plus its arrival spawn."""
+    out = []
+    for wid, lid, name, reg in WAYSTONES:
+        if lid not in places:
+            continue
+        x, y = places[lid][:2]
+        best = None
+        # in front of (south of) the landmark and off to one side, so its billboard never hides the stone
+        cands = sorted(((dx, dy) for dy in range(-6, 7) for dx in range(-6, 7) if 3 <= abs(dx) + abs(dy) <= 7),
+                       key=lambda d: (0 if d[1] >= 1 and abs(d[0]) >= 2 else 1, abs(d[0]) + abs(d[1]), d[1], d[0]))
+        for dx, dy in cands:
+            c = (x + dx, y + dy)
+            s = (c[0], c[1] + 1)
+            if w.walkable(*c) and w.walkable(*s) and c not in occupied and s not in occupied \
+                    and w.get(*c) not in ("bridge", "road", "path"):
+                best = (c, s)
+                break
+        if not best:
+            print("no waystone cell for", wid)
+            continue
+        (cx, cy), (sx, sy) = best
+        occupied.add((cx, cy))
+        layer = " layer=deep" if deep else ""
+        cond = ""
+        if deep and not post and DEEP_PLACES[lid][3] in DEEP_OPENS:
+            cond = " if=ch:%s" % DEEP_OPENS[DEEP_PLACES[lid][3]]
+        out.append('waystone %s %d %d name="%s" region=%s%s%s' % (wid, cx, cy, name, reg, layer, cond))
+        out.append("spawn %s %d %d down" % (wid.lower(), sx, sy))
+    return out
+
+
+def nearest_walkable(w, x, y, rmax=30):
+    for r in range(0, rmax):
+        for dy in range(-r, r + 1):
+            for dx in range(-r, r + 1):
+                if max(abs(dx), abs(dy)) == r and w.walkable(x + dx, y + dy):
+                    return (x + dx, y + dy)
+    return (x, y)
 
 
 def build_surface_post(pre):
@@ -1103,6 +1201,14 @@ def deep_entities(w, post=False):
     for e in w.ents:
         if e["t"] == "block":
             lines.append('block %d %d tile=gate if=!%s msg="%s"' % (e["x"], e["y"], e["cond"], e["msg"]))
+    # field systems (s3): waystones; the Lanternwake's auger shaft under the Aurora Pit (post)
+    dp = {k: v for k, v in DEEP_PLACES.items() if post or v[3] != "U3"}
+    lines += waystone_lines(w, dp, set(occupied), post, deep=True)
+    if post:
+        ax, ay = nearest_walkable(w, *PLACES["L_N36"][:2])
+        nx, ny = next(((ax + dx, ay + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)) if w.walkable(ax + dx, ay + dy)), (ax, ay))
+        lines.append("spawn auger %d %d down" % (ax, ay))
+        lines.append('npc auger_winch %d %d down sprite=worker talk=AUGER_WINCH name="Auger Winch" if=flag:lanternwake_auger' % (nx, ny))
     def grp(x, y):
         if not w.walkable(x, y):
             return None
@@ -1112,10 +1218,208 @@ def deep_entities(w, post=False):
     return lines
 
 
+# ================================================================ THE SEA FLOOR (UNDERSEA, post-fault, submarine only)
+UW, UH = 96, 72                  # same ratio as the surface: undersea cell = surface cell * 96 / 176
+SEA_PLACES = {   # id -> (x, y, kind, clearing ground)
+    "L_S01": (78, 46, "town", "ruin_floor"), "L_S02": (38, 47, "castle", "ruin_floor"),
+    "L_S03": (57, 66, "wreck", "sand"), "L_S04": (73, 61, "temple", "sand"),
+    "L_S05": (87, 66, "lair", "bone"), "L_S06": (90, 30, "throat", "sand"),
+}
+SEA_NAMES = {"L_S01": "Old Bellharbor", "L_S02": "The Drowned Crown", "L_S03": "The Wreck of the Tithe",
+             "L_S04": "The Reef Temple", "L_S05": "The Abyssal Cradle", "L_S06": "The Throat (sea end)"}
+SEA_DEST = {"L_S01": ("S3_OLDBELL", "world"), "L_S02": ("S3_DROWNED", "world"), "L_S03": ("S3_TITHE", "world"),
+            "L_S04": ("S3_REEF", "world"), "L_S05": ("S3_CRADLE", "world"), "L_S06": ("U40_R01", "from_sea")}
+SEA_TRENCH = [(52, 71), (62, 69), (74, 67), (87, 66), (95, 60)]
+SEA_SOLID = {"mountain", "lava", "wall_rock", "void"}
+
+
+class SeaWorld(World):
+    def __init__(self):
+        self.id, self.name, self.music, self.enc = "UNDERSEA", "The Sea Floor", "M023", "none"
+        self.kind = [["mountain"] * UW for _ in range(UH)]
+        self.region = [["SEA"] * UW for _ in range(UH)]
+        self.ents, self.road, self.keep_open, self.river = [], set(), set(), set()
+
+    def get(self, x, y):
+        return self.kind[y][x] if 0 <= x < UW and 0 <= y < UH else "mountain"
+
+    def set(self, x, y, k):
+        if 0 <= x < UW and 0 <= y < UH:
+            self.kind[y][x] = k
+
+    def walkable(self, x, y):
+        return self.get(x, y) not in SEA_SOLID
+
+
+def build_undersea(post):
+    """The sea floor under the World of Ruin: open ocean is seabed, coastal water is algae shelf, land is continental
+    rock except its sunken rim; a trench runs to the leviathan lair; every sunken place is channelled to the open sea."""
+    rng = random.Random(4471)
+    w = SeaWorld()
+    sea = np.zeros((UH, UW), bool)
+    coast = np.zeros((UH, UW), bool)
+    for uy in range(UH):
+        for ux in range(UW):
+            k = post.kind[min(H - 1, int((uy + 0.5) * H / UH))][min(W - 1, int((ux + 0.5) * W / UW))]
+            sea[uy, ux] = k == "deep"
+            coast[uy, ux] = k == "water"
+    from scipy import ndimage
+    dland = ndimage.distance_transform_edt(~(sea | coast))
+    nk = fbm(UH, UW, 4501, (8, 4, 2))
+    nd = fbm(UH, UW, 4502, (6, 3))
+    for y in range(UH):
+        for x in range(UW):
+            if sea[y, x]:
+                k = "sand"
+            elif coast[y, x]:
+                k = "olive"
+            elif dland[y, x] <= 1.5:
+                k = "hills"
+            else:
+                k = "mountain"
+            if k in ("sand", "olive") and nk[y, x] > 0.66:
+                k = "forest"            # kelp forest
+            elif k == "sand" and nd[y, x] > 0.70:
+                k = "hills"             # dunes
+            elif k == "sand" and nd[y, x] < 0.24:
+                k = "lava" if rng.random() < 0.25 else "rocky"   # vent fields and scree
+            w.kind[y][x] = k
+    for y in range(UH):
+        for x in (0, UW - 1):
+            w.kind[y][x] = "mountain"
+    for x in range(UW):
+        for y in (0, UH - 1):
+            w.kind[y][x] = "mountain"
+    # the abyssal trench (dark, passable) down to the Cradle
+    for (x, y) in line_cells(meander(SEA_TRENCH, 1.4, 4510, 2.5), 1.3, 0.5, 4511):
+        if 1 <= x < UW - 1 and 1 <= y < UH - 1:
+            w.kind[y][x] = "deep"
+    # sunken places: clearings
+    for lid, (x, y, kind, ground) in SEA_PLACES.items():
+        rad = 3 if kind in ("town", "castle") else 2
+        for yy in range(y - rad, y + rad + 1):
+            for xx in range(x - rad, x + rad + 1):
+                if 1 <= xx < UW - 1 and 1 <= yy < UH - 1 and (xx - x) ** 2 + (yy - y) ** 2 <= rad * rad + 1:
+                    w.kind[yy][xx] = ground
+        if kind == "lair":
+            for yy in range(y - 4, y + 5):
+                for xx in range(x - 4, x + 5):
+                    d = (xx - x) ** 2 + (yy - y) ** 2
+                    if 1 <= xx < UW - 1 and 1 <= yy < UH - 1 and 9 < d <= 17:
+                        w.kind[yy][xx] = "mountain" if (xx + yy) % 3 else "bone"   # ribs of the old leviathans
+    # channels: every place joined to the largest open basin
+    comp = _sea_components(w)
+    main_c = max(comp, key=len)
+    for lid, (x, y, kind, ground) in SEA_PLACES.items():
+        if (x, y) in main_c:
+            continue
+        path = _sea_channel(w, (x, y), main_c)
+        for (cx, cy) in path:
+            for dx, dy in ((0, 0), (1, 0), (0, 1)):
+                if 1 <= cx + dx < UW - 1 and 1 <= cy + dy < UH - 1 and not w.walkable(cx + dx, cy + dy):
+                    w.kind[cy + dy][cx + dx] = "sand"
+        main_c = max(_sea_components(w), key=len)
+    return w
+
+
+def _sea_components(w):
+    seen = set()
+    out = []
+    for y in range(UH):
+        for x in range(UW):
+            if (x, y) in seen or not w.walkable(x, y):
+                continue
+            comp, st = set(), [(x, y)]
+            seen.add((x, y))
+            while st:
+                c = st.pop()
+                comp.add(c)
+                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    n = (c[0] + dx, c[1] + dy)
+                    if n not in seen and w.walkable(*n):
+                        seen.add(n)
+                        st.append(n)
+            out.append(comp)
+    return out
+
+
+def _sea_channel(w, a, goal):
+    """Cheapest path from a to any goal cell; rock costs more than open floor, so channels follow the water."""
+    openh = [(0, a)]
+    g = {a: 0}
+    came = {}
+    end = None
+    while openh:
+        d, cur = heapq.heappop(openh)
+        if cur in goal:
+            end = cur
+            break
+        if d > g.get(cur, 1e9):
+            continue
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            n = (cur[0] + dx, cur[1] + dy)
+            if not (1 <= n[0] < UW - 1 and 1 <= n[1] < UH - 1):
+                continue
+            nd = d + (1 if w.walkable(*n) else 5)
+            if nd < g.get(n, 1e9):
+                g[n] = nd
+                came[n] = cur
+                heapq.heappush(openh, (nd, n))
+    path = []
+    c = end
+    while c is not None and c != a:
+        path.append(c)
+        c = came.get(c)
+    return path
+
+
+def undersea_entities(w):
+    lines = []
+    occupied = {(v[0], v[1]) for v in SEA_PLACES.values()}
+    for lid, (x, y, kind, ground) in SEA_PLACES.items():
+        dest, sp = SEA_DEST[lid]
+        lines.append('location %s %d %d dest=%s spawn=%s name="%s"' % (lid, x, y, dest, sp, SEA_NAMES[lid]))
+        sx, sy = free_near(w, x, y, occupied)
+        lines.append("spawn l_%s %d %d down" % (lid[2:].lower(), sx, sy))
+        if lid == "L_S06":
+            lines.append("spawn throat %d %d down" % (sx, sy))
+    dx, dy = nearest_walkable(w, 60, 62)
+    lines.append("spawn default %d %d down" % (dx, dy))
+    return lines
+
+
+def undersea_section(w, lines):
+    kinds = sorted({k for row in w.kind for k in row})
+    legend = {k: LEGEND_CHARS[i] for i, k in enumerate(kinds)}
+    out = ["=== UNDERSEA", "name: " + w.name, "tileset: reef", "music: " + w.music, "kind: world", "save: true",
+           "encounters: none", "rate: 0.9", "phase: post", "weather: none"]
+    out.append("legend: " + " ".join("%s=%s" % (c, k) for k, c in legend.items()))
+    out.append("grid:")
+    for row in w.kind:
+        out.append("".join(legend[k] for k in row))
+    out.append("entities:")
+    out += lines
+    return "\n".join(out) + "\n"
+
+
+def preview_sea(w, path, scale=6):
+    img = Image.new("RGB", (UW * scale, UH * scale))
+    d = ImageDraw.Draw(img)
+    cols = dict(COLORS, deep=(8, 20, 50), sand=(180, 170, 120), olive=(90, 130, 90), forest=(30, 90, 60),
+                ruin_floor=(140, 140, 150), bone=(170, 150, 170))
+    for y in range(UH):
+        for x in range(UW):
+            d.rectangle((x * scale, y * scale, x * scale + scale - 1, y * scale + scale - 1), fill=cols.get(w.kind[y][x], (255, 0, 255)))
+    for lid, (x, y, k, g) in SEA_PLACES.items():
+        d.rectangle((x * scale - 3, y * scale - 3, x * scale + scale + 2, y * scale + scale + 2), outline=(255, 0, 0), width=2)
+    img.save(path)
+
+
 def main():
     pre = build_surface_pre()
     add_places(pre, PLACES, {})
     place_roads(pre, PLACES, ROADS, PASSES)
+    mountain_passes(pre)
     seal_borders(pre)
     for pid, (x, y, kind, reg) in PLACES.items():
         if pre.region[y][x] != reg:
@@ -1132,10 +1436,13 @@ def main():
     txt += map_section(post, post_lines, ["phase: post"])
     txt += map_section(deep, deep_lines, [])
     txt += map_section(deepp, deepp_lines, ["phase: post"])
+    sea = build_undersea(post)
+    txt += undersea_section(sea, undersea_entities(sea))
     out = sys.argv[1] if len(sys.argv) > 1 else "world2.map"
     open(out, "w").write(txt)
     preview(pre, PLACES, "prev_pre.png"); preview(post, PLACES_POST, "prev_post.png")
     preview(deep, DEEP_PLACES, "prev_deep.png"); preview(deepp, DEEP_PLACES, "prev_deep_post.png")
+    preview_sea(sea, "prev_sea.png")
     r = reach_by_chapter(pre, pre_lines)
     prev = set()
     for ch, v in r.items():

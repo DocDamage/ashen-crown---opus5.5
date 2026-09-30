@@ -7,7 +7,10 @@ game/assets/ext/maps48/<MAP>.json + chunked ground PNGs + one billboard atlas:
   objects   upright landmark sprites for every place (towns, castles, towers, caves, shrines...), signposts at road
             forks and milestones along roads; [sheet, sx, sy, sw, sh, x, y, base, frames, place_id]
 The Mode-7 renderer draws the chunks as a ground plane and the objects as billboards.
-Usage: python tools/world2/bake.py [WORLD WORLD_POST DEEP DEEP_POST] [--preview]"""
+Usage: python tools/world2/bake.py [WORLD WORLD_POST DEEP DEEP_POST UNDERSEA] [--preview]
+UNDERSEA (the sea floor, field systems s3) uses the 'seabed' style: sand and algae ground, kelp as forest, dunes as
+hills, reef rock as peaks over a dark basalt mass, the trench as deep water, then a cold blue-green grade. It is not in
+the default list: bake it with `python tools/world2/bake.py UNDERSEA` (the billboard atlas is unchanged)."""
 import os, sys, json, random, hashlib, zlib
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
@@ -204,6 +207,8 @@ KIND = {
     "city_builder": ["smoke_city"], "factory": ["smoke_city"], "archive": ["temple"], "road": ["sign"], "vault": ["ziggurat"],
     "bridge": ["sign_b"], "palace": ["cath_dark"], "choir": ["tw_horn"], "heart": ["maw"], "throat": ["maw"], "camp": ["tents"],
     "ruin": ["columns", "tw_ruin"], "destroyed": ["tw_ruin_b", "tw_ruin"],
+    # the sea floor (UNDERSEA): sunken places reuse existing billboards, so the atlas layout never changes
+    "wreck": ["wreck"], "temple": ["temple"], "lair": ["maw"], "throat": ["whirl"], "town@SEA": ["town_b"],
 }
 
 
@@ -303,7 +308,8 @@ def bake(sec, post, deep):
         while len(r) < W:
             r.append("water")
     rng = random.Random(zlib.crc32(mid.encode()))
-    k = lambda x, y: grid[y][x] if 0 <= x < W and 0 <= y < H else ("wall_rock" if deep else "deep")
+    sea = mid == "UNDERSEA"
+    k = lambda x, y: grid[y][x] if 0 <= x < W and 0 <= y < H else ("wall_rock" if deep else ("mountain" if sea else "deep"))
     noise = wgen.value_noise(H, W, 5, 77 + len(mid))
     noise2 = wgen.value_noise(H, W, 3, 91 + len(mid))
 
@@ -346,6 +352,10 @@ def bake(sec, post, deep):
         # solid rock: dark basalt mass (the rim near open floor gets peaks later)
         rock = np.array([[grid[y][x] == "wall_rock" for x in range(W)] for y in range(H)])
         soft_fill(cv, rock, interior(GROUND["dark"]), W, H, 650, tint=(0.34, 0.28, 0.27))
+    if sea:
+        # continental rock under the landmasses: a dark basalt shelf (reef peaks only along open floor)
+        rock = np.array([[grid[y][x] == "mountain" for x in range(W)] for y in range(H)])
+        soft_fill(cv, rock, interior(GROUND["dark"]), W, H, 651, tint=(0.30, 0.34, 0.38))
     # 2) liquids as smooth bodies: blurred cell masks, foam and shallows at the edge (collision keeps the cells)
     cells_of = lambda ks: np.array([[grid[y][x] in ks for x in range(W)] for y in range(H)])
     wet = cells_of(("water", "deep", "bridge"))
@@ -391,7 +401,14 @@ def bake(sec, post, deep):
                     cv.alpha_composite(wheat[(y - py - dy) % 2], (x * T, y * T))
                 occupied.update(cells_p)
                 plots += 1
-    if not deep:
+    if sea:
+        # the sea floor's own litter: wrecks and bones scattered on the open sand
+        wrecks = [SHEETS["V"].crop((10 * T, 0, 11 * T, T)), SHEETS["V"].crop((9 * T, 7 * T, 10 * T, 8 * T))]
+        for y in range(1, H - 1):
+            for x in range(1, W - 1):
+                if grid[y][x] == "sand" and rng.random() < 0.012:
+                    cv.alpha_composite(rng.choice(wrecks), (x * T, y * T))
+    if not deep and not sea:
         wrecks = [SHEETS["V"].crop((10 * T, 0, 11 * T, T)), SHEETS["V"].crop((10 * T, 2 * T, 11 * T, 3 * T))]
         for y in range(1, H - 1):
             for x in range(1, W - 1):
@@ -410,10 +427,22 @@ def bake(sec, post, deep):
                 fo[(x, y)] = OVER[FOREST_BY_BASE.get(cb[(x, y)], "forest")]
     autolayer(cv, fo, W, H, lambda x, y: k(x, y) == "forest")
     # 6) mountains / cave rock
-    mountains(cv, grid, cb, W, H, deep, rng)
+    mountains(cv, grid, cb, W, H, deep, rng, sea)
     if mid == "WORLD_POST":
         grade_ruin(cv, W, H)
+    if sea:
+        grade_seabed(cv, W, H)
     return cv, W, H
+
+
+def grade_seabed(cv, W, H):
+    """The sea floor: cold blue-green light, darker with depth down the image (billboards keep their colours)."""
+    def fn(reg, ups, y0):
+        rgb = reg[..., :3]
+        lum = (rgb[..., 0] * 0.3 + rgb[..., 1] * 0.59 + rgb[..., 2] * 0.11)[..., None]
+        rgb[:] = (rgb * 0.45 + lum * 0.25) * np.array([0.62, 0.92, 1.0], dtype=np.float32) + np.array([6, 26, 40], dtype=np.float32)
+        return reg
+    strips(cv, W, H, [], fn)
 
 
 def grade_ruin(cv, W, H):
@@ -749,16 +778,16 @@ def bridges(cv, grid, W, H):
                 cv.alpha_composite(t2, (x * T + (T - t2.width) // 2, y * T))
 
 
-def mountains(cv, grid, cb, W, H, deep, rng):
+def mountains(cv, grid, cb, W, H, deep, rng, sea=False):
     MT = SHEETS["M"]
     solid = "wall_rock" if deep else "mountain"
     for y in range(H):
         for x in range(W):
             if grid[y][x] != solid:
                 continue
-            if deep:
+            if deep or sea:
                 # only the rock face near open floor gets peaks; deep rock stays dark mass
-                near = any(0 <= x + dx < W and 0 <= y + dy < H and grid[y + dy][x + dx] != "wall_rock"
+                near = any(0 <= x + dx < W and 0 <= y + dy < H and grid[y + dy][x + dx] != solid
                            for dx in (-2, -1, 0, 1, 2) for dy in (-2, -1, 0, 1, 2))
                 if not near:
                     continue
@@ -785,6 +814,8 @@ def places_for(mid):
         return wgen.PLACES, {}
     if mid == "WORLD_POST":
         return wgen.PLACES_POST, {k: wgen.PLACES[k] for k in wgen.DESTROYED}
+    if mid == "UNDERSEA":
+        return {k: (v[0], v[1], v[2], "SEA") for k, v in wgen.SEA_PLACES.items()}, {}
     return wgen.DEEP_PLACES, {}
 
 
@@ -882,7 +913,7 @@ def write_meta(mid):
     places, destroyed = places_for(mid)
     data["mini"] = mid + "_mini.png"
     data["mini_scale"] = MINI
-    data["places"] = [[pid, wgen.PLACE_NAMES.get(pid[2:], pid[2:]), v[0], v[1], v[2]] for pid, v in sorted(places.items())]
+    data["places"] = [[pid, wgen.SEA_NAMES.get(pid) or wgen.PLACE_NAMES.get(pid[2:], pid[2:]), v[0], v[1], v[2]] for pid, v in sorted(places.items())]
     json.dump(data, open(jp, "w"))
     print(mid, "meta", len(data["places"]), "places")
 

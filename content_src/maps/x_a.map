@@ -68,6 +68,10 @@ read 7 22 "The end of the dock. The water is brown and patient." scene=N01_FISH
 read 28 4 "The mill wheel. Its paddles are patched with three different colours of Crown crate." scene=N01_WHEEL
 read 11 17 "The well rope is new. The bucket is older than the Crown."
 chest N01_C_GARDEN 35 5 A102 1 hidden=1
+node 1 12 kind=herb table=herb_r01
+node 11 11 kind=herb table=herb_r01
+node 26 11 kind=herb table=herb_r01
+fish 9 22
 
 === N01_INN
 name: Hollins Mill - The Millstone Inn
@@ -533,7 +537,7 @@ door 6 0 N04_R01 from_r03 sfx=FX009
 switch n04_bar 7 1 scene=N04_BAR sprite=lever
 switch n04_bell_e 11 9 scene=N04_BELL_E sprite=lever
 chest N04_C_CLOISTER 1 18 I004 2
-chest N04_C_GARDEN 24 4 G104 1 hidden=1
+chest N04_C_GARDEN 24 4 GN02 1 hidden=1
 read 27 17 "A waterlogged roster nailed to a pillar: forty oath-knights, 'to hold the chapel until relieved'. No relief is listed."
 
 === N04_R04
@@ -600,7 +604,7 @@ spawn from_r04 13 13 up
 exit 12..15 14 N04_R04 from_r05
 npc hallam_n04 13 3 down sprite=guard talk=N04_BOSS name="Ser Hallam" if=!flag:n04_cleared
 trigger 12..15 10 scene=N04_BOSS if=!flag:n04_cleared
-chest N04_C_ALTAR 15 2 G101 1
+chest N04_C_ALTAR 15 2 GN01 1
 read 13 1 "The high altar, under a finger of water." scene=N04_ALTAR
 
 === N05_R01
@@ -717,6 +721,9 @@ read 12 1 "A sluice gate in the dam face. Water weeps around its edges like it h
 sign 16 25 "KETTLE ROW. Slag Guild of the Reach. The dam is INSPECTED. Do not stand under the sluices."
 save 23 11
 chest N06_C_SLAG 1 14 I011 2
+node 9 25 kind=mine table=mine_r02
+node 33 21 kind=mine table=mine_r02
+node 10 10 kind=mine table=mine_r02
 
 === N06_INN
 name: Kettle Row - The Slag and Kettle
@@ -936,7 +943,7 @@ exit 29 9..10 N07_R02 from_r03
 door 3 21 N07_R01 from_r03 sfx=FX009
 switch n07_vent2 14 10 scene=N07_VENT2 sprite=lever
 switch n07_chute 4 20 scene=N07_CHUTE sprite=lever
-chest N07_C_SHELF 15 13 A104 1
+chest N07_C_SHELF 15 13 AN01 1
 chest N07_C_HIDDEN 27 20 I002 2 hidden=1
 read 16 9 "A crucible the size of a house, cracked in half. Slag still drips from the lip, slow as honey."
 npc bones_n07 8 12 right sprite=survivor talk=N07_BONES name="Scorched Prospector"
@@ -1011,7 +1018,7 @@ entities:
 spawn from_r04 14 18 up
 exit 12..17 19 N07_R04 from_r05
 trigger 5..24 11 scene=N07_BOSS if=!flag:n07_cleared
-chest N07_C_CROWN 23 7 W109 1
+chest N07_C_CROWN 23 7 GN03 1
 read 14 3 "The source of the falls: a furnace flue from the Crown works above, pouring slag down the mountain day and night." scene=N07_FLUE
 
 === N08_R01
@@ -1428,7 +1435,7 @@ exit 31 3..4 N42_R03 from_r02
 block 15..16 8..11 tile=water if=!flag:n42_sluice1 msg="The walkway is under a fast black current."
 switch n42_sluice1 3 13 scene=N42_SLUICE1 sprite=lever
 chest N42_C_GALLERY 16 3 I002 2
-chest N42_C_HIDDEN 2 2 A106 1 hidden=1
+chest N42_C_HIDDEN 2 2 AN02 1 hidden=1
 read 10 13 "A painted notice: 'SLUICE ONE diverts the gallery race. Pull ONLY in an emergency.' Someone has added: 'it is one'."
 npc drowned_n42 25 14 left sprite=survivor talk=N42_DROWNED name="Drowned Guildsman"
 
@@ -1546,7 +1553,7 @@ spawn from_r04 14 16 up
 exit 13..16 17 N42_R04 from_r05
 npc sluicewife_n42 14 9 down sprite=patient talk=N42_BOSS name="The Sluicewife" if=!flag:n42_cleared
 trigger 10..19 11 scene=N42_BOSS if=!flag:n42_cleared
-chest N42_C_CROWN 27 10 A107 1
+chest N42_C_CROWN 27 10 GN04 1
 read 2 10 "The crest walk. Below you, very small, the roofs of Kettle Row."
 
 === P01_R01
@@ -1681,8 +1688,8 @@ block 14..17 1 tile=rubble if=!flag:p01_mem3 msg="The throat of the ribcage is s
 switch p01_mem3 15 12 scene=P01_MEM3 sprite=lever
 switch p01_short 4 21 scene=P01_SHORT sprite=lever
 door 3 22 P01_R01 from_r03 sfx=FX009
-chest P01_C_HOLLOW 22 6 G121 1
-chest P01_C_HIDDEN 28 21 W145 1 hidden=1
+chest P01_C_HOLLOW 22 6 GN17 1
+chest P01_C_HIDDEN 28 21 AN10 1 hidden=1
 read 22 5 "A fragment-crystal grown out of the bone, dark and cold. Nothing remembers in it anymore."
 npc scav_p01 8 6 right sprite=survivor talk=P01_SCAV name="Marrow-scavenger"
 
@@ -1897,8 +1904,8 @@ block 1..2 18 tile=gate if=!flag:p02_lift msg="A builder service lift. Its cage 
 read 6 4 "Traffic log, lane 1." scene=QC17_LOG1
 read 22 4 "Traffic log, lane 6." scene=QC17_LOG2
 read 14 13 "The dispatch relay: a console with a single lit key." scene=QC17_LOG3
-chest P02_C_CONTROL 27 3 W144 1
-chest P02_C_HIDDEN 2 3 G124 1 hidden=1
+chest P02_C_CONTROL 27 3 GN18 1
+chest P02_C_HIDDEN 2 3 AN11 1 hidden=1
 
 === P02_R04
 name: The Tessellate - Scaffold Landing
@@ -2045,6 +2052,10 @@ npc deserter_p05 31 11 left sprite=soldier talk=QW1_DESERTER if=flag:qw1_kell_in
 read 17 15 "The Rock's spring: a cracked cistern, barely wet." scene=P05_CISTERN
 sign 12 20 "REFUGE ROCK. All who walk out of the ruin are welcome. Work if you can. Eat either way."
 save 20 20
+node 29 7 kind=salvage table=salvage_wor
+node 6 3 kind=salvage table=salvage_wor
+node 16 25 kind=salvage table=salvage_wor
+fish 36 17
 
 === P05_R02
 name: Refuge Rock - The Tide Shelf

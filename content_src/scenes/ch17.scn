@@ -69,7 +69,7 @@ objective dain | All three anchors are set. Talk to Vespera at the mooring lever
 
 @scene CH17_CORREN
 if flag:d06p_a1,flag:d06p_a2,flag:d06p_a3 ready
-say corren | You came. Don't distract me. If this slips I've got about a second to cut.
+say corren | You came. Don't {m:fucking |}distract me. If this slips I've got about a second to cut.
 end
 label ready
 say corren | The line's steady.

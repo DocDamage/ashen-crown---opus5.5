@@ -43,7 +43,7 @@ say narr | The east crossing is up.
 
 @scene CH18_REMNANTS once
 say narr | Uniforms at the registry door, stripped of rank but not of habit. Voss's remnants.
-say guard | The ledgers are ministry property. Stand aside.
+say guard | The ledgers are ministry property. Stand aside{m:, you bastards|}.
 say dain | The ministry sank. The names didn't.
 battle D02P_2 noflee
 set t02r_clear
@@ -132,7 +132,7 @@ call Q11_HOOK
 @end
 
 @scene T02P_GUARDS
-say guard | Do you think our families can eat loyalty?
+say guard | Do you think our families can eat {m:your fucking |}loyalty?
 say soldier | Not anymore. They can eat the rations, though. So we hand out rations.
 @end
 

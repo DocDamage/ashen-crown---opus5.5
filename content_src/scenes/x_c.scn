@@ -258,7 +258,7 @@ say narr | Entry 7 is circled in the Master's own ink.
 say narr | "Mirewold Remedy. Formula surrendered by the Order to the Crown Ministry."
 say narr | "Supply to be held at the Leech Cathedral. Distribution: by tithe."
 say corvus | By tithe. Not by need.
-say corvus | The Abbot sold the cure and kept the disease, because the disease paid better.
+say corvus | The Abbot{m:, the holy bastard,|} sold the cure and kept the disease, because the disease paid better.
 say corvus | The formula will be in the cathedral with the stores. So will he.
 quest QC12 ACTIVE cathedral
 journal | QC12: The Remedy was sold by tithe. Go to the Leech Cathedral in the western fen and take it back from Abbot Lamprey.
@@ -377,8 +377,11 @@ say patient | He brings us water. He won't let us out. He says the order doesn't
 say ostrey | Stand where you are. This is a quarantine house under Cleansing Order Twelve.
 say ostrey | Upon breach of the wall, the Ward is to be purified. The wall is breached. I am purifying.
 say narr | The empty plague armours around him straighten, as if someone had called them to attention.
+if !mature qw3_m_end
+say narr | Behind him, through the smoke, the cots. Some of the shapes on them have stopped coughing. Ostrey has not covered their faces.
+label qw3_m_end
 battle POWX_N22_1 noflee
-say ostrey | ...You broke them. They were only suits. They were only following the order. So was I.
+say ostrey | ...You broke them. {m:God damn you. |}They were only suits. They were only following the order. So was I.
 say ostrey | I brought them water. Every day. Does that count for anything?
 choice | Give him to the survivors' judgment -> judge | Let him carry the sick out himself -> carry
 label judge
@@ -755,10 +758,13 @@ say narr | The abbot's sale book. "Mirewold Remedy, formula and all rights, to t
 say narr | "Price: the Order's tithe for life."
 say narr | Below, in a different ink: "Supply to be held here."
 say narr | "Release by tithe only. The Grey must not be ended; it must be managed."
+if !mature n25_m_end
+say narr | Pinned to the page, a tally of the dead by quarter, in the same neat hand. Beside the largest number, a note: "Satisfactory."
+label n25_m_end
 if recruited:C12 corvus
 end
 label corvus
-say corvus | Managed. He wrote down that he would let them sicken. He wrote it neatly.
+say corvus | Managed. {m:The bastard|He} wrote down that he would let them sicken. He wrote it neatly.
 @end
 
 @scene N25_GRILLE_A
@@ -842,7 +848,7 @@ say narr | The reliquary. On a dais of basins sits a gaunt man in a leech-grey r
 say narr | He sees Corvus, and his smile goes wider.
 say lamprey | Brother Corvus. My lost lamb.
 say lamprey | You carried the draught away and gave it to eel-wives. I forgave you. I let you run.
-say corvus | You sold the Remedy and kept the Grey. You kept a city sick for tithe.
+say corvus | You sold the Remedy and kept the Grey. You kept a city sick for {m:your fucking |}tithe.
 say lamprey | I kept a city. Sick is a manner of keeping.
 say lamprey | And you - you still want to be the one who heals them. We're not so different.
 say corvus | We are. I'm going to give it away.

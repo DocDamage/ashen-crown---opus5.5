@@ -15,7 +15,7 @@ for mid in ids:
         continue
     W, H, L = m["w"], m["h"], m["legend"]
     ents = m["entities"]
-    blk = {(e["x"], e["y"]) for e in ents if "x" in e and (e["type"] in ("switch", "chest", "save", "shop", "inn", "heal") or (e["type"] == "npc" and e.get("solid", True)))}
+    blk = {(e["x"], e["y"]) for e in ents if "x" in e and (e["type"] in ("switch", "chest", "save", "shop", "inn", "heal", "node") or (e["type"] == "npc" and e.get("solid", True)))}
     for variant in (False, True):
         kinds = [[L[m["grid"][y][x]] for x in range(W)] for y in range(H)]
         if variant:
@@ -34,7 +34,7 @@ for mid in ids:
                 if (nx, ny) not in seen and ok(nx, ny):
                     seen.add((nx, ny)); st.append((nx, ny))
         for e in ents:
-            if e["type"] in ("npc", "switch", "chest", "save", "shop", "inn", "heal", "sign", "read"):
+            if e["type"] in ("npc", "switch", "chest", "save", "shop", "inn", "heal", "sign", "read", "node", "fish"):
                 x, y = e["x"], e["y"]
                 if not any(n in seen for n in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1), (x, y))):
                     print("%s%s: %s %s at (%d,%d) unreachable" % (mid, " [overs]" if variant else "", e["type"], e.get("id", ""), x, y)); bad += 1

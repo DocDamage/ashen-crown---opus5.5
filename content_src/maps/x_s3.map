@@ -1,0 +1,336 @@
+#! Field and world systems (pass s3): the Crucible Isle arena (N38) and the sunken places of the sea floor (UNDERSEA).
+#! N38 is reached by the sky cable from the Ninefold Shrine (CABLE_CHOIR, after CH07) and by airship after the fault.
+#! N38_R01 Sky Dock: the cable house on the west rim, the airship field east, the road north to the Hall of Wagers.
+=== N38_R01
+name: The Crucible Isle - Sky Dock
+tileset: sky
+music: M019
+zone: N38
+region: SKY
+location: L_N38
+encounters: none
+save: true
+weather: fog
+grid:
+__________________________________
+__________________________________
+____________....RRRR....__________
+_________.......RRRR......._______
+_______....l....WDWW....l...._____
+______..........::::..........____
+_____...........::::...........___
+____....b.......::::.......{{{{{__
+7777==<.........::::.......{{{{{__
+7777==..........::::.......{{{{{__
+____...m........::::.......{{{{{__
+____....}.......::::.......{{{{{__
+_____...........::::.......{{{{___
+______.....l....::::....l......___
+_______.........::::..........____
+_________.......::::........______
+____________....::::....__________
+_______________.::::._____________
+_________________.._______________
+__________________________________
+__________________________________
+entities:
+spawn world 17 16 up
+spawn default 17 16 up
+spawn cable 6 9 right
+spawn dock 28 9 left
+spawn from_hall 17 5 down
+door 17 4 N38_ARENA entry sfx=FX008
+exit 4 8..9 WORLD cable_choir if=!phase:post
+trigger 3 8..9 scene=N38_CABLE_GONE if=phase:post touch=0
+exit 31 7..11 WORLD_POST l_n38 if=phase:post
+trigger 28..31 7..12 scene=N38_FIELD_PRE if=!phase:post touch=0
+trigger 15..18 14..16 scene=N38_ARRIVE once
+save 13 13
+sign 14 5 "THE CRUCIBLE. Hall of Wagers above. No weapons drawn on the dock. No sums owed carried off the isle."
+read 7 8 "The cable winch. The line runs down into the cloud, toward the Ninefold Shrine far below."
+npc n38_dockhand 9 12 right sprite=worker talk=N38_DOCKHAND name="Dock-Warden Hesper"
+npc n38_tout 21 7 down sprite=noble talk=N38_TOUT name="A Tout"
+npc n38_p_pilot 26 13 left sprite=pilot talk=N38_P_PILOT if=phase:post
+
+#! N38_ARENA Hall of Wagers: the Registrar (ladder) and the Bookmaker (bets) at the long counter, the beast pens east.
+=== N38_ARENA
+name: The Crucible Isle - Hall of Wagers
+tileset: sky
+music: M014
+zone: N38
+region: SKY
+location: L_N38
+encounters: none
+save: true
+weather: none
+grid:
+################################
+#!....y.......++.......y......!#
+#..............................#
+#..u....u....u..u....u....u....#
+#..............................#
+#nnnnnnnn..............nnnnnnnn#
+#..............................#
+#..............................#
+#..b..b..b...........|..|..|...#
+#....................|..|..|...#
+#..b..b..b.....................#
+#..............................#
+#!.............++.............!#
+################################
+entities:
+spawn entry 15 11 up
+spawn default 15 11 up
+spawn from_pit 14 2 down
+door 15..16 12 N38_R01 from_hall sfx=FX008
+door 14..15 1 N38_PIT entry sfx=FX008
+npc n38_registrar 4 4 down sprite=clerk talk=N38_REGISTRAR name="Registrar Omm"
+npc n38_bookie 26 4 down sprite=noble talk=N38_BOOKIE name="Bookmaker Sallow"
+npc n38_solo 10 7 right sprite=knight talk=N38_SOLO name="Ser Anneth, Solo Master"
+npc n38_beasts 25 10 left sprite=farmer talk=N38_BEASTS name="Pen-Keeper Rook"
+npc n38_crowd1 6 9 down sprite=worker talk=N38_CROWD1 wander=1
+npc n38_crowd2 18 8 up sprite=sailor talk=N38_CROWD2
+npc n38_crowd3 12 10 left sprite=survivor talk=N38_CROWD3 if=phase:post
+read 15 6 "The ladder board: ten ranks chalked in a column. The top line is always the same name: VARRO."
+read 29 6 "The odds slate. Every bet on it is against the house, and the house has never closed."
+chest N38_C_SIGIL 30 2 ZW01 2
+
+#! N38_PIT The Ring: a sand ring under open sky, the champion's gate north (the gauntlet herald).
+=== N38_PIT
+name: The Crucible Isle - The Ring
+tileset: sky
+music: M026
+zone: N38
+region: SKY
+location: L_N38
+encounters: none
+save: false
+weather: none
+grid:
+________________________________
+____________...GG...____________
+________................________
+______...|||||||||||||....______
+_____...|:::::::::::::|...._____
+_____...|:::::::::::::|...._____
+____....|:::::::::::::|.....____
+____....|:::::::::::::|.....____
+____....|:::::::::::::|.....____
+_____...|:::::::::::::|...._____
+_____...||||||::||||||....._____
+______......................____
+________.......++.......________
+________________________________
+entities:
+spawn entry 15 11 up
+spawn default 15 11 up
+door 15..16 12 N38_ARENA from_pit sfx=FX008
+block 15..16 1 tile=gate if=!flag:arena_champion msg="The champion's gate. Varro's colours hang over it. It opens for one fighter a year."
+npc n38_herald 17 2 down sprite=knight talk=N38_HERALD name="Herald of the Crucible"
+npc n38_varro 13 2 down sprite=knight talk=N38_VARRO name="Varro the Unbeaten" if=flag:arena_champion
+npc n38_ringwarden 25 7 left sprite=worker talk=N38_RINGWARDEN name="Ring-Warden"
+read 11 11 "Scratched in the rail: the names of every fighter who reached the top rank. The list is short. Most are crossed out."
+
+#! ---------------------------------------------------------------- the sea floor (UNDERSEA, post-fault)
+#! S3_OLDBELL Old Bellharbor: the harbor quarter that went down in the fault, held in an air bell the tide never took.
+=== S3_OLDBELL
+name: Old Bellharbor
+tileset: reef
+music: M013
+zone: S01
+region: SEA
+location: L_S01
+encounters: none
+save: true
+weather: none
+grid:
+##################################
+#ZZ~~~~~~~~~~~~~~~~~~~~~~~~~~~ZZZ#
+#Z~~~~~RRRR~~~~~~~~~~RRRR~~~~~~ZZ#
+#~~~~~~WWDW~~~~~~~~~~WDWW~~~~~~~Z#
+#~~~~~~..........j.........~~~~~~#
+#~~~~.........................~~~#
+#~~~.....y.............y.......~~#
+#~~.............................~#
+#~...ZZ.......l....l.......ZZ....#
+#~...ZZ....................ZZ....#
+#~......c.r..........r.c.........#
+#~~..............................#
+#~~~.......b.........b.........~~#
+#~~~~..........................~~#
+#~~~~~~~~~~~~~~..~~~~~~~~~~~~~~~~#
+##############....################
+entities:
+spawn world 16 13 up
+spawn default 16 13 up
+spawn from_hall 9 4 down
+spawn from_chapel 22 4 down
+exit 14..17 15 UNDERSEA l_s01
+door 9 3 S3_OLDBELL_HALL entry sfx=FX008
+read 22 3 "The bell chapel's door is barnacled shut. A bell rope hangs through the keyhole, and someone still rings it at the hours." scene=S3_OLDBELL_BELL
+save 3 11
+npc s3_bellringer 17 5 down sprite=elder talk=S3_BELLRINGER name="The Last Bellringer"
+npc s3_drowned_clerk 7 9 right sprite=clerk talk=S3_DROWNED_CLERK name="A Customs Clerk"
+npc s3_diver 26 11 left sprite=sailor talk=S3_DIVER name="Wreck-Diver Maud"
+read 16 7 "The old market cross. The tide marks go up past the top of it, and then stop."
+chest S3_C_OLDBELL 30 12 I005 2
+
+=== S3_OLDBELL_HALL
+name: Old Bellharbor - Tide Office
+tileset: interior
+music: M013
+zone: S01
+region: SEA
+location: L_S01
+encounters: none
+grid:
+##############
+#k?kk#k?kk?kk#
+#............#
+#.t....t.....#
+#.t....t...n.#
+#..........n.#
+#............#
+######++######
+entities:
+spawn entry 6 6 up
+spawn default 6 6 up
+door 6..7 7 S3_OLDBELL from_hall sfx=FX008
+npc s3_tidemaster 11 3 down sprite=scholar talk=S3_TIDEMASTER name="Tidemaster Orle"
+read 2 1 "Tide tables for a harbor that is no longer in the sea. They are kept up to date."
+chest S3_C_TIDE 12 2 A108 1
+
+#! S3_DROWNED The Drowned Crown (P04): a Veyr district that slid into the rift and kept its lamps lit.
+=== S3_DROWNED
+name: The Drowned Crown
+tileset: reef
+music: M011
+zone: S02
+region: SEA
+location: L_S02
+encounters: none
+save: true
+weather: none
+grid:
+################################
+#ZZZZ~~~~~~~~~~GG~~~~~~~~~~ZZZZ#
+#ZZ~~~~~~~~~~~....~~~~~~~~~~~ZZ#
+#Z~~~~~u.................u~~~~Z#
+#~~~~.......y......y.......~~~~#
+#~~~...........................#
+#~~....l........:.......l....~~#
+#~.....RRRR.....:.....RRRR....~#
+#~.....WWWW.....:.....WWWW....~#
+#~..............:.............~#
+#~~.............:............~~#
+#~~~~...........:..........~~~~#
+#~~~~~~~~~~~~~..:.~~~~~~~~~~~~~#
+##############....##############
+entities:
+spawn world 15 12 up
+spawn default 15 12 up
+exit 14..18 13 UNDERSEA l_s02
+block 15..16 1 tile=gate if=!flag:s3_drowned_gate msg="The Oath Gate of the old district. Its bars are rusted into the reef. Something on the far side is still standing guard."
+npc s3_lamplighter 12 6 down sprite=worker talk=S3_LAMPLIGHTER name="A Lamplighter"
+npc s3_magistrate 20 5 left sprite=noble talk=S3_MAGISTRATE name="Drowned Magistrate"
+read 8 8 "A Crown ministry office. The seal on the door reads: 'CLOSED FOR THE DURATION OF THE EMERGENCY.'"
+read 23 8 "A pawnbroker's. Everything in the window is labelled 'UNREDEEMED'."
+chest S3_C_CROWN 27 10 A117 1
+
+#! S3_TITHE The Wreck of the Tithe: the Crown treasure galleon, broken on the reef. The deck is the dungeon's mouth.
+=== S3_TITHE
+name: The Wreck of the Tithe - Upper Deck
+tileset: reef
+music: M023
+zone: S03
+region: SEA
+location: L_S03
+encounters: WP_SEA
+rate: 1.0
+save: false
+weather: none
+grid:
+##############################
+#ZZ~~~~~~~~~~~~~~~~~~~~~~~ZZZ#
+#Z~~~~~====================~Z#
+#~~~~~==..................==~#
+#~~~~==..m....c..r....m...==~#
+#~~~==....................=~~#
+#~~==....u.....ss......u..=~~#
+#~~==..........ss.........=~~#
+#~~~==.....c.......r.....==~~#
+#~~~~==.................==~~~#
+#~~~~~====....=====....==~~~~#
+#~~~~~~~~~~~..~~~~~~~~~~~~~~~#
+############....##############
+entities:
+spawn world 13 11 up
+spawn default 13 11 up
+exit 12..15 12 UNDERSEA l_s03
+block 15..16 6..7 tile=gate if=!flag:s3_tithe_hold msg="The main hatch to the treasure hold. Chained from below, and the chains are warm."
+read 16 5 "The Tithe's bell, green with salt. Its clapper has been tied silent with a customs seal."
+read 9 4 "A cannon, loaded, aimed at nothing. The powder has turned to stone."
+chest S3_C_TITHE1 24 4 I003 2
+chest S3_C_TITHE2 6 7 A013 1
+
+#! S3_REEF The Reef Temple: a coral shrine on the shelf; its inner sanctum is sealed until its keeper is answered.
+=== S3_REEF
+name: The Reef Temple - Coral Nave
+tileset: reef
+music: M023
+zone: S04
+region: SEA
+location: L_S04
+encounters: WP_SEA
+rate: 0.8
+save: false
+weather: none
+grid:
+############################
+#ZZZZZZZZZZZ@@ZZZZZZZZZZZZZ#
+#ZZ.........GG.........ZZZZ#
+#Z..u.......::.......u...ZZ#
+#Z..........::...........ZZ#
+#Z..y.......::.......y....Z#
+#Z..........::............Z#
+#Z..u.......::.......u....Z#
+#ZZ.........::...........ZZ#
+#ZZZZ.......::........ZZZZZ#
+############..##############
+entities:
+spawn world 12 9 up
+spawn default 12 9 up
+exit 12..13 10 UNDERSEA l_s04
+block 12..13 2 tile=gate if=!flag:s3_reef_sanctum msg="Coral has grown across the sanctum door in the shape of a closed hand."
+read 12 1 "Behind the coral: an altar, and on it a shell as large as a door, breathing."
+chest S3_C_REEF 23 7 I005 1
+
+#! S3_CRADLE The Abyssal Cradle: the leviathan lair at the bottom of the trench. Thalassar's inner lair stays sealed.
+=== S3_CRADLE
+name: The Abyssal Cradle - Threshold
+tileset: reef
+music: M027
+zone: S05
+region: SEA
+location: L_S05
+encounters: none
+save: false
+weather: none
+legend: -=bone
+grid:
+##########################
+#ZZZZZZZZZZ-GG-ZZZZZZZZZZ#
+#ZZZ~~~~~~~----~~~~~~~ZZZ#
+#ZZ~~~~~~~~----~~~~~~~~ZZ#
+#Z~~~-~~~~~----~~~~~-~~~Z#
+#Z~~~~~~~~~----~~~~~~~~~Z#
+#Z~~-~~~~~~----~~~~~~-~~Z#
+#ZZ~~~~~~~~----~~~~~~~~ZZ#
+#ZZZ~~~~~~~----~~~~~~~ZZZ#
+###########----###########
+entities:
+spawn world 12 8 up
+spawn default 12 8 up
+exit 11..14 9 UNDERSEA l_s05
+block 12..13 1 tile=gate msg="A gate of fused leviathan ribs. It is sealed from inside, and something vast is breathing behind it."
+read 11 2 "The ribs are carved, very old, in a script the builders borrowed: 'HERE THE SEA KEEPS WHAT IT LOVES.'" scene=S3_CRADLE_SEAL

@@ -73,6 +73,7 @@ npc brannock 24 11 down sprite=elder talk=QW3_HOOK name="Mother Brannock" if=pha
 npc ash_child 11 10 down sprite=child talk=N22P_ASH_CHILD if=phase:post
 npc ash_warden 19 22 right sprite=guard talk=N22P_DESERTER if=phase:post
 npc ash_boatman 5 11 up sprite=sailor talk=N22P_BOATMAN if=phase:post
+fish 16 27
 
 === N22_R02
 name: Harrowfen - Rookery Row
@@ -488,6 +489,9 @@ npc herb_boy 27 19 right sprite=child talk=N24_HERB_BOY
 npc post_refugee 22 4 left sprite=survivor talk=N24P_REFUGEE if=phase:post
 npc post_reaper 33 9 left sprite=farmer talk=N24P_REAPER if=phase:post
 npc holloway_post 21 6 down sprite=elder talk=QW4_HOOK name="Reeve Holloway" if=phase:post
+node 22 8 kind=herb table=herb_r08
+node 14 23 kind=herb table=herb_r08
+node 23 21 kind=herb table=herb_r08
 
 === N24_INN
 name: Sickle Hamlet - The Reapers' Rest
@@ -740,7 +744,7 @@ switch n25_sluice_e 2 9 scene=N25_SLUICE_E sprite=lever
 read 24 3 "The abbot's sale book. Mirewold Remedy, formula and all rights, to the Crown Ministry. Price: the Order's tithe for life." scene=N25_SALEBOOK
 read 24 7 "Tithe rolls. Harrowfen pays by the head of the sick. Every year there are more heads. Every year the Order is richer."
 read 2 17 "Novice's slate: The abbot has stopped eating. He says the leeches feed him now. I have asked to be moved."
-chest N25_C_SCRIPT 11 9 A114 1 hidden=1
+chest N25_C_SCRIPT 11 9 AN06 1 hidden=1
 chest N25_C_SCRIPT2 21 17 I023 2
 
 === N25_R04
@@ -790,7 +794,7 @@ block 27..28 8..9 tile=gate if=!flag:n25_grille_a msg="An iron grille. Somewhere
 block 8..9 3..4 tile=gate if=!flag:n25_grille_b msg="An iron grille across the north walk, locked from the far side."
 read 15 21 "Twin statues of the Saint, mouths open. Between them, carved small: THE KEY IS KEPT WHERE THE SAINT LAYS HIS HEAD."
 trigger 15..16 1 scene=N25_KEY touch=0 if=!flag:n25_key
-chest N25_C_CLOISTER 28 3 G118 1
+chest N25_C_CLOISTER 28 3 GN09 1
 
 === N25_R05
 name: Leech Cathedral - Choir Antechamber
@@ -864,7 +868,7 @@ spawn from_r05 14 19 up
 spawn from_well 21 14 left
 exit 13..16 21 N25_R05 from_r06
 trigger 11..18 8 scene=N25_BOSS if=!flag:n25_cleared
-chest N25_C_RELIC 14 7 W138 1
+chest N25_C_RELIC 14 7 GN10 1
 read 22 13 "The leech-well. It goes down further than a well should. The water in it is warm." scene=N25_WELL_LOOK
 exit 23 14..15 N25_WELL from_r06 if=flag:n25_abbot_fled,q:QC12:ACTIVE
 
@@ -1009,6 +1013,10 @@ npc hotaru 25 18 left sprite=noble talk=QW5_HOOK name="Lady Hotaru" if=phase:pos
 npc kiku_exile 12 18 right sprite=elder talk=N28_KIKU name="Old Kiku" if=phase:post
 npc exile_guard 29 10 left sprite=soldier talk=N27P_EXILE_GUARD if=phase:post
 npc exile_child 14 24 up sprite=child talk=N27P_EXILE_CHILD if=phase:post
+node 17 2 kind=herb table=herb_r07
+node 30 2 kind=herb table=herb_r07
+node 33 21 kind=herb table=herb_r07
+fish 36 16
 
 === N27_INN
 name: Kaminari Ford - The Lantern Wake Inn
@@ -1606,7 +1614,7 @@ switch n29_lamp 29 23 scene=N29_LAMP sprite=lever
 read 15 24 "A black fox statue, lamp dark. It stares east, deep into the maze, towards its white twin."
 read 28 23 "A white fox statue with an oil lamp in its paws. It looks north-west, very pointedly."
 chest N29_C_MAZE 1 1 I005 2
-chest N29_C_MAZE2 33 23 W125 1
+chest N29_C_MAZE2 33 23 GN11 1
 
 === N29_R03
 name: Thousand Gates - The Mirror Walk
@@ -1654,7 +1662,7 @@ block 6..7 7..9 tile=gate if=!flag:n29_mask_red msg="A fox gate barred with red 
 block 28..29 7..9 tile=gate if=!flag:n29_mask_white msg="A fox gate barred with white lacquer."
 block 0..1 11..12 tile=wall if=!flag:n29_mask_white msg="A painted gate. Only a painting - from this side."
 read 16 20 "Two statues back to back. One faces the red walk, one the white. Between them: WHAT THE COURT SEES IS WHAT THE COURT BELIEVES."
-chest N29_C_MIRROR 31 2 A012 1
+chest N29_C_MIRROR 31 2 AN07 1
 npc paper_clerk 20 12 left sprite=clerk talk=N29_PAPER_CLERK name="A paper clerk"
 
 === N29_R04
@@ -1777,7 +1785,7 @@ spawn from_r05 14 19 up
 exit 13..16 21 N29_R05 from_r06
 trigger 10..19 8 scene=N29_BOSS if=!flag:n29_cleared
 npc tsubaki_dock 6 6 right sprite=noble talk=N29_TSUBAKI name="The accused" if=!flag:n29_cleared
-chest N29_C_COURT 23 6 W039 1
+chest N29_C_COURT 23 6 GN12 1
 
 === N32_R01
 name: Rimeholt
@@ -1841,6 +1849,9 @@ npc crown_furs 14 16 left sprite=clerk talk=N32_FUR_TAX if=!phase:post
 npc pit_pilgrim 24 22 up sprite=monk talk=N32_PILGRIM if=!phase:post
 npc post_crack 24 22 up sprite=survivor talk=N32P_CRACK if=phase:post
 npc post_delver 14 16 left sprite=worker talk=N32P_DELVER if=phase:post
+node 16 2 kind=mine table=mine_r09
+node 20 19 kind=mine table=mine_r09
+node 32 22 kind=mine table=mine_r09
 
 === N32_INN
 name: Rimeholt - The Last Hearth
@@ -1973,6 +1984,7 @@ npc pepper 36 4 left sprite=child talk=N33_PEPPER name="Pepper (a sled dog)" if=
 npc post_crossers 25 20 up sprite=survivor talk=N33P_CROSSERS if=phase:post
 read 6 6 "The ice here is black and thin. A sled runner sticks out of it, and nothing else."
 chest N33_C_ICE 41 22 I016 3
+fish 41 15
 
 === N34_R01
 name: Glacier Spire - The Foot
@@ -2147,7 +2159,7 @@ spawn from_r05 21 1 down
 exit 5..8 21 N34_R03 from_r04
 exit 20..23 0 N34_R05 from_r04
 exit 29 14..16 N34_R01 from_chute msg="You sit, push off, and the chute takes you all the way down to the foot of the spire."
-chest N34_C_GALLERY 15 10 W143 1 hidden=1
+chest N34_C_GALLERY 15 10 GN14 1 hidden=1
 read 26 15 "A polished ice chute plunges down the outside of the spire. Going down would be quick. Coming back up would not."
 
 === N34_R05
@@ -2219,7 +2231,7 @@ entities:
 spawn from_r05 14 19 up
 exit 13..16 21 N34_R05 from_r06
 trigger 9..20 10 scene=N34_BOSS if=!flag:n34_cleared
-chest N34_C_HEART 24 16 A020 1
+chest N34_C_HEART 24 16 AN08 1
 
 === N36_R01
 name: The Aurora Pit

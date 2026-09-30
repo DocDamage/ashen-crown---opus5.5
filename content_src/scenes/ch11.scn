@@ -79,14 +79,14 @@ label leave
 @end
 
 @scene D09_SOLDIERS
-say soldier | Don't - we're not fighting. The ceiling came down on the barracks when the bells started. Three of us are pinned.
+say soldier | Don't - {m:for fuck's sake, |}we're not fighting. The ceiling came down on the barracks when the bells started. Three of us are pinned.
 choice | Help them out -> help | Not now -> later
 label help
 fade out 0.4
 say narr | It takes all of you and a borrowed crowbar. Nobody is badly hurt.
 fade in 0.4
 set d09_rescue
-say soldier | Voss told us the dais would 'end the instability'. He didn't say what he meant by it.
+say soldier | Voss told us the dais would 'end the instability'. He didn't say what the {m:bastard|man} meant by it.
 say soldier | Take this. Field kit. We're going up with the lift.
 give I003 2
 give I023 1

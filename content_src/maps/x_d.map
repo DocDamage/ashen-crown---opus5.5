@@ -653,8 +653,11 @@ read 7 12 "A humming crystal node." scene=U04_NODE1
 read 31 13 "A humming crystal node." scene=U04_NODE2
 read 24 23 "A humming crystal node." scene=U04_NODE3
 chest U04_C2 36 24 I018 2 hidden=1
-chest U04_C3 3 3 A114 1
+chest U04_C3 3 3 AN12 1
 npc lost_gatherer 21 20 left sprite=survivor talk=U04_LOST_GATHERER name="Lost Gatherer"
+node 19 9 kind=mine table=mine_u1
+node 36 5 kind=mine table=mine_u1
+node 9 4 kind=mine table=mine_u1
 
 === U04_R03
 name: The Geode Wood - Prism Hollow
@@ -1758,7 +1761,7 @@ switch u12_pt1 5 21 scene=U12_POINTS1 sprite=lever
 switch u12_pt2 34 16 scene=U12_POINTS2 sprite=lever
 read 18 22 "A chalked board of the gallery points." scene=U12_BOARD
 chest U12_C2 35 3 M002 1
-chest U12_C3 3 12 G117 1
+chest U12_C3 3 12 GN20 1
 
 === U12_R03
 name: Deepforge Mines - Heartsteel Seam
@@ -1803,8 +1806,11 @@ exit 0 11..13 U12_R02 from_r03
 read 9 5 "A seam of heartsteel in the rock." scene=U12_SEAM1
 read 29 17 "A seam of heartsteel in the rock." scene=U12_SEAM2
 read 14 20 "A seam of heartsteel in the rock." scene=U12_SEAM3
-chest U12_C4 31 8 A106 1 hidden=1
+chest U12_C4 31 8 AN13 1 hidden=1
 npc trapped_miner_u12 16 15 down sprite=worker talk=U12_TRAPPED_MINER_U12 name="Trapped Miner"
+node 22 12 kind=mine table=mine_u1b
+node 33 16 kind=mine table=mine_u1b
+node 20 23 kind=mine table=mine_u1b
 
 === U12_R04
 name: Deepforge Mines - Refuge Gallery
@@ -2163,6 +2169,9 @@ chest U15_C1 34 3 I007 3
 npc log_carrier 10 25 up sprite=worker talk=U15_LOG_CARRIER name="Log-Carrier"
 npc terrace_elder 23 4 left sprite=elder talk=U15_TERRACE_ELDER name="Terrace Elder"
 chest U15_C2 3 21 A102 1
+node 24 27 kind=herb table=herb_u1
+node 22 17 kind=herb table=herb_u1
+node 28 8 kind=herb table=herb_u1
 
 === U15_INN
 name: Fungal Terraces - The Dry Cap
@@ -2937,6 +2946,9 @@ chest U19_C1 36 24 I003 2
 npc car_grandson 22 7 left sprite=apprentice talk=U19_CAR_GRANDSON name="Driver's Grandson"
 npc lamp_buyer_u19 33 14 down sprite=worker talk=U19_LAMP_BUYER_U19 name="Lamp-Buyer"
 npc keeper_scholar_u19 7 15 right sprite=scholar talk=U19_KEEPER_SCHOLAR_U19 name="Rail Scholar"
+node 3 18 kind=salvage table=salvage_u2
+node 12 21 kind=salvage table=salvage_u2
+node 25 8 kind=salvage table=salvage_u2
 
 === U19_INN
 name: Railhead Nine - The Sleeper Car

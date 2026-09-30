@@ -69,6 +69,10 @@ npc n11_p_bailer 12 9 down sprite=worker talk=N11_P_BAILER if=phase:post
 npc n11_p_lamps 23 10 down sprite=apprentice talk=N11_P_LAMPS if=phase:post
 npc n11_p_saved1 16 20 right sprite=survivor talk=N11_P_SAVED1 if=q:QW7
 npc n11_p_saved2 5 21 up sprite=child talk=N11_P_SAVED2 if=q:QW7
+node 28 17 kind=salvage table=salvage_r03
+node 24 12 kind=salvage table=salvage_r03
+node 31 6 kind=salvage table=salvage_r03
+fish 19 24
 
 === N11_INN
 name: Tidewrack - The Keel and Lantern
@@ -462,7 +466,7 @@ block 6..7 12 tile=water if=!flag:n13_sluice_a msg="Seawater pours through the g
 block 14..17 6..8 tile=water if=!flag:n13_sluice_b msg="The channel runs deep with the tide. A second sluice must hold it back."
 switch sluice_a 26 15 scene=N13_SLUICE_A sprite=wheel
 switch sluice_b 4 10 scene=N13_SLUICE_B sprite=wheel
-chest N13_C_ALCOVE 5 9 W119 1
+chest N13_C_ALCOVE 5 9 GN05 1
 read 27 13 "A brass plate on the wheel housing: 'Sluice 1 of 2. Builder work, older than the Crown. Turn slowly.'"
 read 12 13 "Rope burns on the rock, and the scuffs of heavy crates dragged north. The smugglers came this way at low tide."
 
@@ -512,7 +516,7 @@ exit 11..14 0 N13_R04 from_r03
 block 11..14 1 tile=gate if=!flag:n13_key msg="An iron tide-gate, padlocked from this side. The smugglers kept the key on someone."
 read 20 5 "A drowned smuggler, wedged between the pools. A key on a cord round his neck." scene=N13_KEY
 chest N13_C_R03 22 21 I006 2
-chest N13_C_HIDDEN 4 20 A108 1 hidden=1
+chest N13_C_HIDDEN 4 20 AN03 1 hidden=1
 read 4 10 "Moss grows thick on the west wall. Below, in the flooded bay, something catches the light."
 
 === N13_R04
@@ -656,6 +660,12 @@ npc n14_taxman 10 9 right sprite=guard talk=N14_TAXMAN if=!phase:post
 npc n14_p_refugee 29 16 down sprite=survivor talk=N14_P_REFUGEE if=phase:post
 npc n14_p_watcher 10 9 right sprite=sailor talk=N14_P_WATCHER if=phase:post
 npc n14_ferryhand 23 21 down sprite=sailor talk=N14_FERRYHAND
+node 2 19 kind=salvage table=salvage_r06
+node 30 18 kind=salvage table=salvage_r06
+node 31 8 kind=salvage table=salvage_r06
+fish 4 24
+fish 30 24
+fish 33 21
 
 === N14_GUILD
 name: Saltwhistle Isle - Fishers' Guild Hall
@@ -850,6 +860,9 @@ npc n16_p_father 28 8 left sprite=survivor talk=N16_P_FATHER if=phase:post
 npc n16_p_widow 21 10 left sprite=survivor talk=N16_P_WIDOW if=phase:post
 npc n16_p_ysolde 12 16 down sprite=volunteer talk=N16_P_YSOLDE if=q:QW2
 npc n16_p_kin 5 21 right sprite=farmer talk=N16_P_KIN if=q:QW2
+node 8 5 kind=herb table=herb_r04
+node 30 23 kind=herb table=herb_r04
+node 24 25 kind=herb table=herb_r04
 
 === N16_STABLE
 name: Windrest - Harl's Brackhorn Stables
@@ -1163,7 +1176,7 @@ block 12..13 16 tile=gate if=!flag:n18_shutter1 msg="A wind-shutter of lashed ti
 block 12..13 5 tile=gate if=!flag:n18_shutter2 msg="A second wind-shutter, braced from the ledge on the far side of the chasm."
 switch shutter1 5 20 scene=N18_SHUTTER1
 switch shutter2 19 12 scene=N18_SHUTTER2
-chest N18_C_R02 17 3 W127 1
+chest N18_C_R02 17 3 GN06 1
 chest N18_C_RING 6 11 I005 1
 read 12 9 "The updraft: warm air pours up out of the chasm. Feathers ride it, turning, never falling."
 
@@ -1211,8 +1224,8 @@ block 14..17 1 tile=rubble if=!flag:n18_feather msg="A wall of woven branches an
 read 7 13 "A nest of four eggs, each the size of a barrel, warm as bread. One has a poacher's chalk mark on it."
 read 24 13 "An empty nest. Egg-shell and a snapped rope. Somebody got one out. Somebody didn't get far."
 read 22 5 "A great roc feather, gold at the root, stuck in the branches. The nest-wall smells of it." scene=N18_FEATHER
-chest N18_C_R03 9 5 G114 1
-chest N18_C_HIDDEN 27 12 A112 1 hidden=1
+chest N18_C_R03 9 5 GN07 1
+chest N18_C_HIDDEN 27 12 AN04 1 hidden=1
 npc n18_poacher 10 9 right sprite=survivor talk=N18_POACHER
 
 === N18_R04
@@ -1359,6 +1372,10 @@ npc n19_stick 27 23 right sprite=farmer talk=N19_STICK
 npc n19_p_digger 20 12 down sprite=worker talk=N19_P_DIGGER if=phase:post
 npc n19_p_forget 31 10 left sprite=patient talk=N19_P_FORGET if=phase:post
 npc n19_grandma 14 18 down sprite=elder talk=N19_GRANDMA
+node 9 14 kind=herb table=herb_r05
+node 8 25 kind=herb table=herb_r05
+node 12 18 kind=herb table=herb_r05
+fish 29 21
 
 === N19_INN
 name: Lilac Seep - The Resting Pool
@@ -1616,7 +1633,7 @@ block 14..17 4..8 tile=water if=!flag:n21_lamp2 msg="The causeway runs on under 
 switch lamp1 7 17 scene=N21_LAMP1 sprite=lamp
 switch lamp2 25 11 scene=N21_LAMP2 sprite=lamp
 read 7 9 "A drowned lamp-post, relit by someone once and gone out again. The names on the causeway stones stop halfway across."
-chest N21_C_R02 6 19 G118 1
+chest N21_C_R02 6 19 GN08 1
 read 16 14 "Names cut into the causeway, thousands of them. Every one the lake has taken. Most have been rubbed smooth by hands."
 
 === N21_R03
@@ -1667,7 +1684,7 @@ read 22 8 "A window. Through it: a cradle, floating. Empty. Rocking a little in 
 read 7 14 "Rubble where a wall was. On the lintel: 'Merrow's Bakery. Est. before anyone remembers.' Nobody remembers."
 read 21 14 "A shop sign, face-down in the shallows: 'Ferris and Daughters, Rope.' The lake took the town. It left the signs."
 chest N21_C_R03 4 9 W138 1
-chest N21_C_HIDDEN 26 10 A012 1 hidden=1
+chest N21_C_HIDDEN 26 10 AN05 1 hidden=1
 npc n21_drowned 10 10 down sprite=survivor talk=N21_DROWNED
 
 === N21_R04
@@ -1798,6 +1815,9 @@ npc n37_tout 21 12 left sprite=noble talk=N37_TOUT if=!phase:post
 npc n37_p_fieldkeeper 22 8 down sprite=pilot talk=N37_P_FIELDKEEPER if=phase:post
 npc n37_p_watcher 12 14 up sprite=survivor talk=N37_P_WATCHER if=phase:post
 npc n37_p_cleave 11 9 left sprite=pilot talk=N37_P_CLEAVE if=phase:post
+node 12 3 kind=mine table=mine_sky
+node 7 15 kind=mine table=mine_sky
+node 25 16 kind=mine table=mine_sky
 
 === N39_R01
 name: Seraphel - The Broken Gate
@@ -1941,8 +1961,8 @@ exit 14..19 0 N39_R04 from_r03
 npc sentinel_w 6 6 down sprite=guard talk=N39_SENTINEL name="Host Sentinel"
 npc sentinel_e 27 6 down sprite=guard talk=N39_SENTINEL name="Host Sentinel"
 npc sentinel_c 16 13 down sprite=guard talk=N39_SENTINEL name="Host Sentinel"
-chest N39_C_W 5 4 G121 1
-chest N39_C_HIDDEN 28 4 A117 1 hidden=1
+chest N39_C_W 5 4 GN15 1
+chest N39_C_HIDDEN 28 4 AN09 1 hidden=1
 exit 33 11 N40_R01 from_seraphel
 block 31..33 11 tile=void if=!flag:n39_boss msg="Far out on the wind, the wreck of something vast drifts on its chains. The chain-bridge to it is drawn up."
 read 16 9 "The walk narrows to a single span of white stone. Below it: cloud, and far below the cloud, the World of Ruin."
@@ -2069,5 +2089,5 @@ read 11 5 "A stop, pulled out, labelled in the host's script: HOLD."
 read 14 5 "A stop, pushed in, labelled: ANSWER. Someone pushed it in very hard; the knob is bent."
 read 17 5 "A stop, half out, labelled: DESCEND. Dust on it. Nobody has touched it in thirty years."
 chest N40_C_ORGAN 6 7 A017 1
-chest N40_C_BELLOWS 22 7 W148 1 hidden=1
+chest N40_C_BELLOWS 22 7 GN16 1 hidden=1
 

@@ -163,9 +163,19 @@ label stay
 @end
 
 @scene CABLE_CHOIR
+if phase:post gone
 if ch:CH07 run
 say narr | The sky cable runs up into the cloud toward Crucible Isle. The basket is chained; the shrine keepers say the line is not yet safe.
 end
 label run
-say narr | The cable to Crucible Isle hums in the wind. The Arena crews are still re-rigging the far anchor. Not today.
+say narr | The cable to Crucible Isle hums in the wind. A basket swings at the landing, and a board says ARENA - FIGHTERS AND WAGERS.
+choice | Ride up to the Crucible Isle -> up | Stay -> stay
+label up
+sfx FX031
+say narr | The basket climbs into the cloud. For a long time there is nothing but white, and the hum of the line.
+warp N38_R01 cable right
+label stay
+end
+label gone
+say narr | The cable to Crucible Isle ends in a frayed stump. The fault snapped it. Only an airship can reach the isle now.
 @end

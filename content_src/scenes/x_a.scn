@@ -172,7 +172,7 @@ say elder | He won't cross the bridge since she passed. Somebody should. Things 
 
 # ================================================================ N02 Gallowgate Toll (R01 landmark, CH02)
 @scene N02_TOLL
-say guard | Halt. Gallowgate Toll. Ten crowns a head, a Crown writ, or turn round and walk home.
+say guard | Halt. Gallowgate Toll. Ten crowns a head, a Crown writ, or turn round and {m:piss off|walk} home.
 if party:C08 sak
 choice | Show Raven's old commission -> writ | Turn back -> back
 label sak
@@ -227,7 +227,7 @@ say worker | You cleared the run. I'll raise the next litter kinder. Maybe. They
 @end
 
 @scene N02_BARRACKS
-say guard | Barracks. Crown personnel only. That includes me, barely. They lost my papers in Veyr.
+say guard | Barracks. Crown personnel only. That includes me, barely. They lost my {m:damn |}papers in Veyr.
 @end
 
 @scene N02_WEND
@@ -1526,7 +1526,7 @@ say rider | Volume zero. There was nobody on the road. They pulled everybody off
 call QC17_CHECK
 end
 label read
-say rider | Hold position pending relief. That's the last thing anyone told me.
+say rider | Hold position pending relief. That's the last {m:damn |}thing anyone told me.
 @end
 
 @scene QC17_LOG2
@@ -1537,7 +1537,7 @@ label quest
 if flag:qc17_log2 read
 set qc17_log2
 say narr | LANE 6, FINAL NIGHT: SURFACE DECK SEALED. TRAFFIC DIVERTED TO LOWER DECK - LATTICE CONNECTOR.
-say rider | Lower deck. The highway had a lower deck? They sent everything underground and left the surface to us.
+say rider | Lower deck. The highway had a lower deck? They sent everything underground and left the surface to us{m:. Bastards|}.
 call QC17_CHECK
 end
 label read
@@ -1758,7 +1758,7 @@ say guard | I was a toll guard. Now I'm a harpy guard. The pay's worse and I've 
 
 @scene QW1_AMBUSH once
 say narr | Halfway to the stair, the gulls stop circling. They fold their wings and drop. They are not gulls.
-say kell | Harpies! Fishers to the rocks - soldiers, form on me!
+say kell | {m:Shit - harpies|Harpies}! Fishers to the rocks - soldiers, form on me!
 battle POWX_R03_3
 set qw1_home
 say narr | The harpies break and scatter out to sea. Everyone climbs the stair together: fishers, soldiers, and a very proud lookout.

@@ -10,7 +10,7 @@ say sable | Properly?
 say oriel | Each seal is keyed to a warrant number. Replace it with a key the person inside actually gives us. Their name. Their consent.
 say sable | ...That's slower.
 say oriel | Yes.
-say sable | Fine. I'll show you the Names Hall. You won't like how little is written there.
+say sable | Fine. I'll show you the Names Hall. You won't like how {m:damned |}little is written there.
 say narr | (The Barracks lead north to the Names Hall and east to the Binding Cells. Read each seal; ask each prisoner.)
 objective oriel | Record each prisoner's own consent key: read their seal in the Names Hall, ask them in the Binding Cells.
 @end
@@ -151,7 +151,7 @@ say narr | The cell is open.
 @end
 
 @scene D07_SABLE_TEACH once
-say sable | That's my seal design you just replaced. I built it so no one could change the key without the warrant office.
+say sable | {m:Damn it. |}That's my seal design you just replaced. I built it so no one could change the key without the warrant office.
 say sable | You did it with a name and a question.
 say sable | If I'm going to be useful: my blade takes an infusion - fire, ice or storm - and my runes strip what enemies are wearing. One infusion at a time.
 join C07

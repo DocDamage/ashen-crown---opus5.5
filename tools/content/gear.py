@@ -80,7 +80,7 @@ PASSIVE_TEXT = {
     "auto_revive": "Once per battle, survives a fatal blow at 1 HP", "elem_resist": "Resists {elems}",
     "immune": "Immune to {elems}", "weapon_element": "Weapon attacks deal {v} damage", "heal_mult": "Healing received +{pct}%",
     "start_atb": "Starts battles ready", "mhp_mult": "Max HP +{pct}%", "mmp_mult": "Max MP +{pct}%", "acc_bonus": "Accuracy +{v}",
-    "phys_reduce": "Physical damage -{pct}%", "encounter_mult": "Fewer random encounters", "reveal_affinity": "Shows enemy weaknesses",
+    "phys_reduce": "Physical damage -{pct}%", "break_damage": "Breaks the 9,999 damage limit", "encounter_mult": "Fewer random encounters", "reveal_affinity": "Shows enemy weaknesses",
 }
 
 

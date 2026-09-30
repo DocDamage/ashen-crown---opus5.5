@@ -808,7 +808,7 @@ say survivor | The fault shook the lake up. Cinderlake's gone under. The channel
 @scene U06_FERRY
 if phase:post post
 say coll | Ferry's running. Where to? Mind, the Cinderlake crossing takes the long way round the rocks.
-choice | "Cinderlake Isles." -> isles | "Not today." -> no
+choice | "Every landing." -> board | "Cinderlake Isles." -> isles | "Not today." -> no
 label isles
 sfx FX031
 say coll | Bell's rung. Sit low and don't touch the sides. The sides are the lake.
@@ -819,7 +819,7 @@ end
 label post
 say coll | The isles are gone, friend. The lake came up and took them in a night. I ferried the last of them out.
 say coll | But the fault opened a channel west. Clean run to the Fungal Terraces now. Want it?
-choice | "The Fungal Terraces." -> ter | "Not today." -> no
+choice | "Every landing." -> board | "The Fungal Terraces." -> ter | "Not today." -> no
 label ter
 sfx FX031
 say coll | West it is. The channel's new, so it's full of things that don't know they're lava yet.
@@ -829,6 +829,9 @@ fade in 0.4
 end
 label no
 say coll | I'll be here. I'm always here. That's the job.
+end
+label board
+travel menu lava_u1
 @end
 
 @scene U07_EEL_SMOKER
@@ -1147,7 +1150,10 @@ say survivor | The builder doors in the east tunnel opened by themselves after t
 
 @scene U11_RAIL
 say dunmore | Vaultmouth. Every cart in Emberdeep turns on this table. Where are you bound?
-choice | "Karag Dun." -> kd | "Deepforge Mines." -> df | "Just looking." -> no
+choice | "Show me the board." -> board | "Karag Dun." -> kd | "Deepforge Mines." -> df | "Just looking." -> no
+label board
+travel menu rail_u1
+end
 label kd
 sfx FX010
 say dunmore | Hold on to something you'd miss.
@@ -1409,7 +1415,7 @@ say saelith | The gate stayed shut. Scaleward is safe. I don't sleep better. I d
 @scene U13_KESH
 if q:QUP2 done
 if qs:QUP2:heard hear
-say kesh | Warden Kesh. The gate is mine. If you're here, Emberwell vouched for you. Don't make me regret their word.
+say kesh | Warden Kesh. The gate is mine. If you're here, Emberwell vouched for you. Don't make me regret their {m:damned |}word.
 end
 label hear
 set qup2_kesh

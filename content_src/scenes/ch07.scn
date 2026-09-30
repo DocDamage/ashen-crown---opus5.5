@@ -9,7 +9,7 @@ say worker | Captain says it's a one-person job. Captain's sister volunteered. O
 say corren | Travellers. The Skychain's closed. Anchors failed in the last storm.
 say corren | I'm going up alone to reset them. One leap from the high anchor to the nest, a few turns of the capstan, and the span holds.
 say nera | And if you miss the leap?
-say corren | Then High Aerie adds a name to the memorial and sends the next one. It's an honourable way to fall.
+say corren | Then High Aerie adds a name to the memorial and sends the next one. It's an honourable way to fall.{m: That's the shit they tell you.|}
 say nera | There's room on those anchors for a whole maintenance crew. Why is it a one-person job?
 say corren | ...Because it always has been.
 say dain | We're crossing anyway. Come with us. Bring the crew.
@@ -46,7 +46,7 @@ music silence
 say narr | The Chain Nest. A great grey bird is chained to the anchor ring, its wings holding the whole span level.
 say corren | The Chain Roc. They tethered it here as a stabiliser. It's been holding the bridge up for years.
 say tessa | A living anchor. Of course it is. Everything here is somebody's body holding something up.
-say corren | If I cut the tether mid-leap, the span drops. If I don't, it keeps screaming.
+say corren | If I cut the tether mid-leap, the span drops. If I don't, {m:the damned thing|it} keeps screaming.
 say nera | Or the crew holds the alternate cable while you cut. Like we discussed. Like adults.
 say narr | The Roc strains against its chain. A shadow sweeps across the front row.
 battle B06 noflee

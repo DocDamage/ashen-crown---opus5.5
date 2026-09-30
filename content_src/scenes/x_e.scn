@@ -227,7 +227,7 @@ say narr | (The undersea approach begins here. Bring the Lanternwake's diving hu
 
 @scene U21_BARGE
 say oona | Glasswater barge. I pole it across to the mag-rail terminus. The water doesn't reflect you. Don't be alarmed.
-choice | Ride to the Mag-rail Terminus -> go | Not now -> bye
+choice | Ride to the Mag-rail Terminus -> go | Other landings -> board | Not now -> bye
 label go
 fade out
 say narr | The barge slides over water so clear it seems to be floating on nothing.
@@ -235,6 +235,9 @@ warp U26_R01 from_barge up
 end
 label bye
 say oona | I'll be here. The lake doesn't go anywhere. It tried once, in the fault. We talked it down.
+end
+label board
+travel menu lake_u2
 @end
 
 @scene U21_DIVER
@@ -735,7 +738,7 @@ say mave | Don't wake anyone who asked not to be woken. It's written right there
 # ================================================================ U26 Mag-rail Terminus
 @scene U26_RAIL
 say coyle | Mag-rail Terminus. The rails are live again since the Lattice woke. I don't ask who's paying for the power.
-choice | Railhead Nine -> rh | Meridian -> mer | Prime Relay spur -> pr | Glasswater barge dock -> gw | Stay -> bye
+choice | The full board -> board | Railhead Nine -> rh | Meridian -> mer | Prime Relay spur -> pr | Glasswater barge dock -> gw | Stay -> bye
 label rh
 fade out
 warp DEEP_POST l_u19 down
@@ -754,6 +757,9 @@ warp U21_R01 from_barge up
 end
 label bye
 say coyle | Mind the gap. There's a real one on line four. It goes a long way down.
+end
+label board
+travel menu mag_u2
 @end
 
 @scene U26_BOARD
@@ -819,7 +825,7 @@ objective inferna | Find Aveline Marsh, Hobb Tanner's kin, and Edric Garrow; the
 @scene U28_OARSMAN
 if qs:QUP4:ledger ledger
 say oarsman | Across the black water to Cenotaph. The living pay in coin. The dead pay in names. You pay in coin, I'm told.
-choice | Cross to Cenotaph -> go | Not yet -> bye
+choice | Cross to Cenotaph -> go | Other landings -> board | Not yet -> bye
 label go
 fade out
 say narr | The boat moves without a sound. The water doesn't show your reflection. It shows the boat, empty.
@@ -834,6 +840,9 @@ say oarsman | Here. The fare page. It says 'one coin, living' in my own hand. Sh
 quest QUP4 ACTIVE proof
 journal | QUP4: The Oarsman's fare page proves Tobin paid as a living passenger. Take it to the Registrar in Cenotaph's Hall of Names.
 objective | Cenotaph: show the fare page to the Registrar.
+end
+label board
+travel menu lake_u3
 @end
 
 @scene U28_PILGRIM
@@ -1306,7 +1315,12 @@ say narr | The lock's indicator glows amber. Somewhere above, a diving hull is c
 
 @scene U40_THROAT_END
 say narr | The lock is open. Seawater hangs in the tunnel beyond like a held breath, and the tunnel goes down to the sea floor.
-say narr | (The undersea route begins here. The Lanternwake's diving hull can pass.)
+choice | Take the diving hull down the Throat -> down | Not yet -> stay
+label down
+sfx FX031
+say narr | The Lanternwake's diving hull waits in the flooded lock. The hatch seals, and the Throat takes you down.
+travel undersea throat
+label stay
 @end
 
 @scene U40_LOCKKEEPER
@@ -1710,7 +1724,7 @@ objective maldrath | First Crown's Tomb: walk the Processional of Kings; face th
 @end
 
 @scene U33_KNIGHT
-say soldier | I stand guard over the regalia. The First Crown's orders. He said nobody would ever come to steal it. He was right.
+say soldier | I stand guard over the regalia. The First Crown's orders. He said nobody would ever come to steal it. He was {m:bloody |}right.
 say soldier | The cases must be set right before the sceptre-gate opens. The orb on its cushion. The sceptre on its rest. He liked things in order.
 @end
 

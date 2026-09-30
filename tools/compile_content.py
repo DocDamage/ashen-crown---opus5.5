@@ -16,12 +16,17 @@ from content import vestiges as VES  # noqa: E402
 from content import bestiary2 as BX  # noqa: E402
 from content import bosses2 as BS  # noqa: E402
 from content import places as PL  # noqa: E402
+from content import limits as LIM, battle_sys as BSYS  # noqa: E402  (expansion battle systems, branch s1)
+from content import gear2 as G2, crafting as CR  # noqa: E402  (systems s2: tiers, sets, crafting, bestiary)
+from content import field_s3 as FS3  # noqa: E402
+from content import fishing as FSH, achievements as ACH, mature as MAT  # noqa: E402  (sys s4)
 
 SUPPORTED_OPS = {"self_hp", "damage", "heal", "mp", "full_restore", "revive", "status", "cleanse", "dispel_positive", "atb", "oath",
                  "arm_overcast", "heat_exchange", "leap", "ground", "mine", "decoy", "steal", "protect", "lethal_guard",
                  "bramble", "flee", "evasion", "infuse", "resist", "reveal", "omen", "mirror", "feather", "quick_hands",
                  "witness", "status_ward", "row_back", "remove_hard", "cancel_charge", "concord", "steal_gold",
-                 "buff_ally", "guard_self", "mp_drain", "once_per_battle", "wingbeat", "msg"}
+                 "buff_ally", "guard_self", "mp_drain", "once_per_battle", "wingbeat", "msg", "scan_foe"}
+SUPPORTED_OPS |= {"capture"}
 TARGET_RULES = {"random", "all", "self", "ally_lowest", "ally_random", "row_front", "row_back", "front_lowest",
                 "highest_mp", "marked", "lowest_hp", "protector", "allies"}
 SCENE_CMDS = {"say", "choice", "label", "goto", "if", "set", "unset", "give", "take", "gold", "key", "unkey", "join",
@@ -30,7 +35,7 @@ SCENE_CMDS = {"say", "choice", "label", "goto", "if", "set", "unset", "give", "t
               "title", "rumor", "discover", "shop", "inn", "formation", "save_prompt", "event", "xp", "level_floor",
               "vehicle", "tint", "end", "split_party", "setvar", "addvar", "equip", "portrait", "lights", "salvage",
               "call", "clear_save", "epilogue", "ship_travel", "sprite", "row", "note", "lock_party", "unlock_party",
-              "ending", "journal", "backup", "airship", "team", "name", "rename"}
+              "ending", "journal", "backup", "airship", "team", "name", "rename", "craft", "travel", "arena"}
 
 errors = []
 pending = []
@@ -340,6 +345,9 @@ def compile_map(m, fp):
            "phase": m["props"].get("phase", ""), "w": m["w"], "h": m["h"], "grid": m["grid"], "legend": {},
            "entities": [], "save_ok": m["props"].get("save", "false") == "true", "bg": m["props"].get("battlebg", ""),
            "location": m["props"].get("location", "")}
+    for k in ("encounters_post", "rate_post", "weather"):   # field systems s3: phase encounters, weather
+        if k in m["props"]:
+            out[k] = float(m["props"][k]) if k == "rate_post" else m["props"][k]
     used = set("".join(m["grid"]))
     for ch in used:
         if ch not in legend:
@@ -409,6 +417,16 @@ def compile_map(m, fp):
                            phase=float(kv.get("phase", "0")))
             elif t == "vehicle":
                 ent.update(kind=a[0], x=int(a[1]), y=int(a[2]))
+            elif t == "node":
+                # gathering node: node x y kind=mine|herb|salvage table=<id>  (systems s2)
+                ent.update(id="%s@%s,%s" % (m["id"], a[0], a[1]), x=int(a[0]), y=int(a[1]), kind=kv["kind"], table=kv["table"])
+            elif t == "waystone":
+                # waystone ID x y name="..." region=R01 [layer=deep]  (fast travel, field systems s3)
+                ent.update(id=a[0], x=int(a[1]), y=int(a[2]), name=plain(kv.get("name", a[0])), region=kv.get("region", ""),
+                           layer=kv.get("layer", "surface"))
+            elif t == "fish":
+                # fishing spot (sys s4): fish X Y [table=<id>]  - a walkable cell beside water
+                ent.update(x=int(a[0]), y=int(a[1]), table=kv.get("table", ""))
             elif t == "zone":
                 xs, ys = a[0], a[1]
                 x1, x2 = (int(xs.split("..")[0]), int(xs.split("..")[1])) if ".." in xs else (int(xs), int(xs))
@@ -453,6 +471,8 @@ def check_maps(maps, scenes, items, forms):
         enc = m.get("encounters", "")
         if enc and enc != "none" and enc not in forms["groups"]:
             err(f"{mid}: unknown encounter group {enc}")
+        FS3.check_map(mid, m, forms, err)
+    FS3.check_travel(maps, err)
 
 
 # ---------------------------------------------------------------- scenes
@@ -592,6 +612,7 @@ def main():
     GR.build(content["items"])
     for i, iid in enumerate(sorted(content["items"])):
         content["items"][iid]["icon"] = i          # cell in assets/ext/sprites/icons_*.png (tools/art/icons.py)
+    content["gear2"] = G2.build(content, CR, check_ops, len(content["items"]))   # cells after the base atlas (tools/art/icons_gear2.py)
     content["gear"] = {"upgrade": {str(k): list(v) for k, v in GR.UPGRADE.items()}, "step": GR.UPGRADE_STEP,
                        "smith_shops": GR.SMITH_SHOPS, "ore_stock": GR.ORE_STOCK, "lines": GR.LINE_ORDER}
     content["statuses"] = {s["id"]: {"id": s["id"], "name": s["name"], "type": s["type"], "duration": TB.STATUS_DURATION[s["id"]],
@@ -600,6 +621,7 @@ def main():
     BX.apply_formations(FM)
     BX.apply_world_groups(FM)
     BS.apply(cat["bosses"], EN, TB, FM)
+    G2.apply_enemies(EN)
     content["enemies"] = build_enemies(cat["enemies"], cat["bosses"])
     for eid, e in content["enemies"].items():
         e["lore"] = BX.LORE.get(eid, BS.LORE.get(eid, e.get("lore", "")))
@@ -624,12 +646,21 @@ def main():
     content["tile_rules"] = {"solid": sorted(SOLID), "enc": sorted(ENCOUNTER_TERRAIN),
                              "tall": ["tree", "tree2", "lamp", "pillar", "statue", "shelf", "banner", "crystal_tall", "pipe_tall", "mast", "totem", "lantern_post"],
                              "passable_extra": ["door", "doorway", "stairs", "bridge", "ladder", "dock", "carpet", "grate"]}
+    FS3.apply(content, err)
     CAST.apply(content, check_ops)
     VES.apply(content, check_ops)
+    LIM.apply(content, check_ops)
+    BSYS.apply(content, check_ops)
     content["scenes"] = parse_scenes()
     content["maps"] = parse_maps()
+    for e_ in G2.finish(content, BX.ROWS, cat["bosses"], CR):
+        err(e_)
     check_maps(content["maps"], content["scenes"], content["items"], content["formations"])
     check_scene_refs(content["scenes"], content["maps"], content["items"], content["formations"], content["characters"])
+    FSH.apply(content, err)       # sys s4: fish, tables, reward items, Waylamp shops, fish spots
+    FSH.boss_rooms(content)
+    ACH.apply(content)            # sys s4: achievements
+    MAT.check(content["scenes"], err)   # sys s4: {m:strong|mild} markup
     dumped = json.dumps(content, ensure_ascii=False).replace("“", '\\"').replace("”", '\\"')
     content = json.loads(plain(dumped))   # every display string uses the Ashen8 glyph set
     fnt = open(os.path.join(ROOT, "game", "assets", "fonts", "ashen8.fnt"), encoding="utf-8").read()

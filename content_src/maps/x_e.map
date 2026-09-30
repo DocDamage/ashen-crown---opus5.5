@@ -205,7 +205,7 @@ spawn from_r04 14 14 up
 exit 14..15 15 U20_R04 from_r05
 trigger 10..20 10 scene=U20_INDEX if=!flag:bx19_done
 read 15 8 "The Index's reading terminal, low enough to reach from the floor." scene=QBM1_TERMINAL
-chest U20_C_INDEX 27 3 A017 1
+chest U20_C_INDEX 27 3 AN14 1
 
 === U21_R01
 name: Glasswater Reservoir
@@ -255,6 +255,7 @@ npc u21_gauger 31 4 down sprite=scholar talk=U21_GAUGER name="Gauge-Keeper Thral
 read 5 3 "A builder gauge: GLASSWATER LEVEL 94%. The needle has not moved since the fault. It is correct."
 chest U21_C_ISLE 9 10 G024 1
 save 20 18
+fish 25 13 table=deep
 
 === U22_R01
 name: The Highway That Was - On-Ramp
@@ -421,7 +422,7 @@ read 4 3 "Capsule K-03: empty. The label is scratched out and rewritten by hand:
 read 26 7 "Capsule K-07: empty, frosted inside. The frost has the shape of someone sitting up."
 read 13 9 "Capsule K-09: empty. The cable to its order-port has been cut cleanly." scene=U23_K09
 chest U23_C_ROWS 2 12 I005 2
-chest U23_C_CAPSULE 30 2 W046 1 hidden=1
+chest U23_C_CAPSULE 30 2 GN22 1 hidden=1
 npc u23_maint 9 10 right sprite=keeper talk=U23_MAINT name="Maintenance Unit"
 
 === U23_R03
@@ -850,6 +851,9 @@ chest U27_C_BED1 5 5 I020 2
 chest U27_C_BED2 29 5 I020 2
 chest U27_C_VAULT 16 3 I024 1 hidden=1
 chest U27_C_ROOTS 3 13 A012 1
+node 11 4 kind=herb table=herb_u2
+node 24 10 kind=herb table=herb_u2
+node 20 15 kind=herb table=herb_u2
 
 === U28_R01
 name: Styx Landing
@@ -893,6 +897,7 @@ npc u28_boy 8 5 right sprite=child talk=U28_BOY
 read 18 4 "A black stone post, worn smooth by hands: 'THE LIVING PAY IN COIN. THE DEAD PAY IN NAMES. NOBODY RIDES FREE.'"
 chest U28_C_TENT 12 3 I006 3
 save 16 8
+fish 19 14 table=deep
 
 === U29_R01
 name: Cenotaph - Gate of Wreaths
@@ -1445,6 +1450,9 @@ sign 21 11 "Smithy. Picks mended. Lamps filled. Names engraved on handles, free.
 chest U37_C_FACE 7 4 M003 2
 chest U37_C_CART 33 18 I003 2 hidden=1
 save 12 18
+node 34 15 kind=mine table=mine_u3
+node 2 13 kind=mine table=mine_u3
+node 23 20 kind=mine table=mine_u3
 
 === U37_INN
 name: Weeping Mines - Bunkhouse
@@ -1601,6 +1609,7 @@ entities:
 spawn world 17 14 up
 spawn default 17 14 up
 exit 16..19 15 DEEP_POST l_u40
+spawn from_sea 17 3 down
 block 15..18 2 tile=gate if=!flag:lanternwake_diving msg="The Throat's lock. Seawater hangs behind it like a held breath. Only a diving hull could go through."
 trigger 15..18 2 scene=U40_THROAT_END touch=0 if=flag:lanternwake_diving
 read 14 1 "A lock-wheel of green bronze, taller than a person. Builder script and, scratched below it in dead-letter: 'TO THE SEA FLOOR. HOLD YOUR BREATH.'" scene=U40_LOCK
@@ -2277,7 +2286,7 @@ switch u33_sceptre 31 8 scene=U33_SCEPTRE
 read 5 3 "A regalia case: a sword with no edge. 'THE FIRST SWORD. FOR SHOW.'"
 read 13 3 "A regalia case: a ledger, bound in gold. 'THE FIRST TAX. NOT FOR SHOW.'"
 read 21 3 "A regalia case: an empty cushion shaped for a crown. The crown is below."
-chest U33_C_CASE 33 2 G028 1
+chest U33_C_CASE 33 2 GN25 1
 npc u33_knight 10 11 right sprite=soldier talk=U33_KNIGHT name="A Tomb-Knight"
 
 === U33_R03
@@ -2581,7 +2590,7 @@ spawn from_r04 16 14 up
 exit 16..17 15 U35_R04 from_r05
 trigger 9..24 6 scene=U35_MOURNING_COURT if=!flag:bx25_done
 read 17 3 "The under-throne. A second crown lies on it, smaller than the Lich King's, frozen to the seat." scene=U35_QC13_THRONE
-chest U35_C_THRONE 24 4 W022 1
+chest U35_C_THRONE 24 4 GN26 1
 
 === U36_R01
 name: Velkhar's Crypt-Gate - The Crypt Road

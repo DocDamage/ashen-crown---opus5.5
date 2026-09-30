@@ -103,14 +103,14 @@ say guard | Nobody past the counter.
 if flag:t04_distracted fine
 end
 label fine
-say guard | ...the tide's doing WHAT? Stay here. Don't touch anything.
+say guard | ...the tide's doing WHAT? {m:Shit. |}Stay here. Don't touch anything.
 @end
 
 @scene T04_TAKE_LEDGER once
 say narr | Behind the counter: the confiscation shelf. A thick ledger, chain unlocked.
 key K_CONFISCATED
 set t04_ledger
-say guard | Hey! That's evidence!
+say guard | Hey! That's {m:fucking |}evidence!
 say pip | Run. Back alleys. Follow me and don't be where the guards are standing.
 warp T04_CHASE start right
 say narr | (Being caught only sends you back to the alley mouth. The guards never leave their posts.)

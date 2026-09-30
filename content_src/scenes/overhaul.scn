@@ -161,7 +161,7 @@ say kael | Standing by.
 
 @scene OV_RIDER
 say narr | Something roars through the engine house - a rider on a machine of black steel and red light, circling the stopped wheel.
-say rider | This was a road. Six lanes, lights all night. I patrol it. Nobody's told me it's gone.
+say rider | This was a road. Six lanes, lights all night. I patrol it. Nobody's told me {m:the damn thing's|it's} gone.
 say rider | You look like trouble on my road. Let's settle it the old way.
 choice | Race him down -> fight | Stay off the road -> leave
 label fight

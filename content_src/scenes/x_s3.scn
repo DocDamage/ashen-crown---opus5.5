@@ -1,0 +1,182 @@
+# Field and world systems (pass s3): waystones, vehicles, roaming wyrms, the Crucible Isle arena, the sea floor.
+# Commands `travel ...` and `arena ...` are run by src/field/field_cmds.gd and src/story/arena.gd.
+
+# ================================================================ waystones
+@scene WAYSTONE
+if phase:post post
+say narr | A waystone. The rune under your palm is warm, and the roads it knows open behind your eyes.
+travel menu waystones
+end
+label post
+travel menu waystones
+@end
+
+@scene WAYSTONE_SIGIL
+say narr | The sigil's thread of light pulls toward every stone you have touched.
+travel menu waystones sigil
+@end
+
+# ================================================================ the Lanternwake's diving hull and auger
+@scene SUB_HELM
+say narr | The diving hull ticks under the pressure. Lamps show the sea floor a stone's throw in every direction.
+choice | Surface -> up | Stay below -> stay
+label up
+travel surface
+label stay
+@end
+
+@scene AUGER_WINCH
+say narr | The auger's cable hangs down the shaft from the Lanternwake, far above in the Aurora Pit. A winch-seat waits.
+choice | Ride the winch up to the ship -> up | Stay in the Deep -> stay
+label up
+sfx FX019
+travel auger_up
+label stay
+@end
+
+# ================================================================ roaming ancient wyrms (post-fault, after CH16)
+@scene WYRM_SB01
+say narr | The ground splits. Heat pours out of the crack, and then a head the size of a house.
+say narr | Cindermaw, the Surface Wyrm, has been waiting under the Reach since before there was a Crown.
+battle SB01 noflee
+set sb_SB01_down
+say narr | Cindermaw sinks back into the rock it came from. The cinders around it go out one by one.
+@end
+
+@scene WYRM_SB02
+say narr | The water heaves. Something longer than the ship rolls under it, and the sea goes dark with scales.
+say narr | Thalassar, the Sea Wyrm. It rises to see what dared its coast.
+battle SB02 noflee
+set sb_SB02_down
+say narr | Thalassar sinks without a ripple. Far below, something in the Abyssal Cradle stirs and is still.
+@end
+
+@scene WYRM_SB03
+say narr | The wind drops. The clouds ahead fold open like a hand, and a white wyrm comes out of them at the ship.
+say narr | Aerith-Vael, the Sky Wyrm. The lanes have been its own since the first ships learned to fly.
+battle SB03 noflee
+set sb_SB03_down
+say narr | Aerith-Vael falls away through the cloud, its long body turning slow as a feather. The wind comes back.
+@end
+
+@scene WYRM_SB04
+say narr | The cavern floor is breathing. The bones on it are not bones; they are a spine, and it is getting up.
+say narr | Ossathrax, the Deep Wyrm. The Hollow Throne's dead step out of its way.
+battle SB04 noflee
+set sb_SB04_down
+say narr | Ossathrax folds back into the dark. The dead come back to their places, as if nothing had walked there.
+@end
+
+# ================================================================ N38 The Crucible Isle
+@scene N38_ARRIVE once
+say narr | The Crucible Isle. A spar of rock in the sky, and on it the loudest building in the world.
+say Hesper | Fighters to the hall, sightseers to the rail. Nobody jumps. We had one jump last year and he's still falling.
+@end
+
+@scene N38_CABLE_GONE
+say narr | The cable winch is still here. The cable is not. It snapped in the fault, and the end of it hangs down into the cloud.
+@end
+
+@scene N38_FIELD_PRE
+say narr | A flat of scored rock with mooring rings. Airships used to land here, when the owners could still afford them.
+@end
+
+@scene N38_DOCKHAND
+if phase:post post
+say Hesper | Cable's the only way up, and the cable goes back down to the Ninefold Shrine. Mind the gap when the basket swings.
+end
+label post
+say Hesper | The cable's gone. The fighters who were up here when the sky broke never left. Airships are the only road now.
+@end
+
+@scene N38_TOUT
+say Tout | Rank's chalked, odds are slated, the Bookmaker's in a good mood. Which means someone is about to lose a great deal.
+say Tout | Varro's at the top. He always is. Twenty-two years unbeaten. They say he's never been hit. They're wrong; he's just never fallen.
+@end
+
+@scene N38_P_PILOT
+say pilot | I ran supplies up here before the fault. I still do. Fighters don't stop wanting to fight because the world ended.
+@end
+
+@scene N38_REGISTRAR
+say Registrar_Omm | The ladder. Ten ranks, one at a time, no skipping. Win a rank and it pays, once. Lose and your rank stands.
+arena board
+arena ladder
+@end
+
+@scene N38_BOOKIE
+say Bookmaker_Sallow | Put something on the table and the house puts up something better. Win it, or leave it with me.
+arena bet
+@end
+
+@scene N38_SOLO
+say Ser_Anneth | Solo bouts. One fighter, no friends, no excuses. Pick the fight, then pick who goes in.
+arena solo
+@end
+
+@scene N38_BEASTS
+say Pen-Keeper_Rook | Beast bouts. Your captured monster against one of ours. You watch; you don't fight. The stake's on the board.
+arena beasts
+@end
+
+@scene N38_HERALD
+say Herald | The champion's gauntlet. Five fights in a row, no rest, no retreat. At the end of it, Varro.
+arena gauntlet
+@end
+
+@scene N38_VARRO
+say Varro | Twenty-two years. I stopped counting the fights and started counting the fighters who came back. Keep the gate. I'm tired.
+@end
+
+@scene N38_RINGWARDEN
+say Ring-Warden | Rake the sand, wash the rail, mark the lines. The blood doesn't come out of the sand. We just turn it over.
+@end
+
+@scene N38_CROWD1
+say worker | I bet a month's wage on the Brass Pair and lost it on the second exchange. Worth it. Did you see the second exchange?
+@end
+
+@scene N38_CROWD2
+say sailor | The crowd's half fighters and half people who couldn't get down after the cable snapped. Both halves cheer.
+@end
+
+@scene N38_CROWD3
+say survivor | The world broke and they kept the ladder going. I don't know if that's brave or mad. I come every day.
+@end
+
+# ================================================================ the sea floor (UNDERSEA)
+@scene S3_OLDBELL_BELL
+say narr | The rope goes taut in your hand. Somewhere inside, under the water, a bell rings once. Nobody answers it.
+@end
+
+@scene S3_BELLRINGER
+say Bellringer | I ring the hours. Low tide, high tide. There is no tide down here, but the town listens for the bell.
+say Bellringer | When Bellharbor sank we kept the air bell and the bell rope. Everything else we let the sea have.
+@end
+
+@scene S3_DROWNED_CLERK
+say clerk | Customs. Declare any goods brought from the surface. Nobody has declared anything in a year. I still ask.
+@end
+
+@scene S3_DIVER
+say Maud | I dive the Wreck of the Tithe for the Crown's gold. The hold's chained from below. Something down there likes gold more than I do.
+@end
+
+@scene S3_TIDEMASTER
+say Tidemaster_Orle | I keep the tide tables for a harbour on the sea floor. Someone has to be ready for when the sea gives it back.
+say Tidemaster_Orle | East of here the floor drops away into the trench. The old leviathans went down there to die. One of them didn't.
+rumor | Old Bellharbor's tidemaster says a living leviathan keeps the Abyssal Cradle, at the bottom of the trench.
+@end
+
+@scene S3_LAMPLIGHTER
+say worker | I light the lamps of the old district every night. Down here it's always night. So I never stop.
+@end
+
+@scene S3_MAGISTRATE
+say Magistrate | This district is under emergency law. It has been since it sank. Nobody has repealed it, and nobody will.
+say Magistrate | The Oath Gate stays shut until the emergency ends. I don't know who would declare it over. They're all down here with me.
+@end
+
+@scene S3_CRADLE_SEAL
+say narr | Behind the rib-gate the dark goes on a long way down. Something breathes in it, slow as the tide. The gate does not open.
+@end

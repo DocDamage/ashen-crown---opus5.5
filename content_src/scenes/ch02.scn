@@ -12,9 +12,9 @@ say "Herald" | It's what's written, sir. I only read it.
 @end
 
 @scene T02_GUARDS
-say guard | My family can't eat loyalty. That's all I'm saying.
+say guard | My family can't eat {m:damned |}loyalty. That's all I'm saying.
 say "Soldier" | Then say it quieter. Loyalty's what we're paid in this month.
-say guard | Paid? We're paid in lamp oil and promises.
+say guard | Paid? We're paid in lamp oil and {m:bloody |}promises.
 @end
 
 @scene T02_VENDOR1
