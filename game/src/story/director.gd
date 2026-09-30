@@ -148,7 +148,10 @@ func _exec(c: Dictionary, labels: Dictionary):
 			var cid: String = a[0]
 			var first = not Game.is_recruited(cid)
 			var msgs = Game.recruit(cid)
-			Audio.sfx("FX028")
+			if first:
+				Audio.jingle("join", true)
+			else:
+				Audio.sfx("FX028")
 			main.field.update_leader()
 			for m in msgs:
 				await main.say("", m, "")

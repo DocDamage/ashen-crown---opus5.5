@@ -1268,9 +1268,12 @@ func _inn_menu() -> void:
 	m.chosen.connect(func(_i, it):
 		if it["value"] == 1 and Game.spend_gold(price):
 			Game.heal_all()
-			Audio.music("M029", 0.0)
+			var jl = Audio.jingle("inn")
+			if jl <= 0.0:
+				Audio.music("M029", 0.0)
 			flash_msg("The party rests.")
-			await get_tree().create_timer(1.2).timeout
+			await get_tree().create_timer(maxf(1.2, jl)).timeout
+			Audio.current_cue = ""
 			Audio.music(main.field.map.get("music", ""), 0.5)
 		_close_all())
 

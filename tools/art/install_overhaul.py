@@ -1,0 +1,149 @@
+"""Installs processed overhaul art from Assets/_processed into game/assets/ext (git-ignored, licensed art).
+Run after tools/art/hero_import.py. Each section is idempotent (copies only when the source is newer).
+Usage: python tools/art/install_overhaul.py [section ...]   sections: arenas
+"""
+import os, shutil, sys, json
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(HERE))
+ASSETS = os.environ.get("ASHEN_ASSETS", os.path.join(os.path.dirname(REPO), "Assets"))
+PROC = os.path.join(ASSETS, "_processed")
+EXT = os.path.join(REPO, "game", "assets", "ext")
+
+# battle backdrop key (formation "bg") -> arena number (Assets/_processed/battle_backgrounds/arena_NN_px.png)
+ARENAS = {
+    "quarry": 62, "archive": 28, "conduit": 45, "crown": 48, "crown_core": 2, "dais": 47, "field_post": 71,
+    "field_r01": 49, "field_r02": 50, "field_r03": 34, "field_r04": 40, "field_r05": 17, "furnace": 33, "grove": 26,
+    "grove_flood": 19, "reef": 11, "sky": 7, "underways": 36, "vault": 42, "whitebone": 15, "winter": 54,
+    "deck": "deck",
+}
+
+
+def copy(src, dst):
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    if not os.path.exists(dst) or os.path.getmtime(src) > os.path.getmtime(dst):
+        shutil.copy2(src, dst)
+        return 1
+    return 0
+
+
+def arenas():
+    n = 0
+    for key, num in ARENAS.items():
+        if num == "deck":
+            src = os.path.join(PROC, "airships", "deck", "deck_battle_px.png")
+        else:
+            src = os.path.join(PROC, "battle_backgrounds", "arena_%02d_px.png" % num)
+        if os.path.exists(src):
+            n += copy(src, os.path.join(EXT, "battle_bg", key + ".png"))
+    print("arenas:", n, "copied")
+
+
+# ---------------------------------------------------------------- audio
+# Music cues (content "music" ids) -> soundtrack files (owner's casting, brief decision 58; standard section 10).
+MUSIC = {
+    "M001": ("Echoes Below", "1. MAIN THEME"), "M002": ("Crimson Nocturne", "1. MAIN THEME"),
+    "M003": ("Arcane Chronicles", "1. MAIN THEME"), "M004": ("Frozen Echoes", "1. MAIN THEME"),
+    "M005": ("Echoes Below", "12. PUZZLE ROOM"), "M006": ("Echoes Below", "5. FOREST AREA"),
+    "M007": ("Astral Horizons", "7. ANCIENT TEMPLE"), "M008": ("Sakura no Yume", "12. MINI BOSS"),
+    "M009": ("Echoes Below", "10. FUNNY NPC"), "M010": ("Echoes Below", "3. PEACEFUL TOWN"),
+    "M011": ("Echoes Below", "4. PEACEFUL TOWN 2"), "M012": ("Arcane Chronicles", "5. ALCHEMY ROOM"),
+    "M013": ("DARK PIRATE", "3. PORT TOWN"), "M014": ("Frozen Echoes", "3. SNOW VILLAGE"),
+    "M015": ("Sands of Eternity", "3. DESERT TOWN"), "M016": ("Frozen Echoes", "10. SHOP THEME"),
+    "M017": ("DARK PIRATE", "5. OPEN SEA"), "M018": ("Arcane Chronicles", "16. SAD MEMORY"),
+    "M019": ("Neon Reverie", "7. SKY TRAIN"), "M020": ("Echoes Below", "9. RUINS THEME"),
+    "M021": ("Arcane Chronicles", "7. FOREST OF SPELLS"), "M022": ("Crimson Nocturne", "14. FINAL DUNGEON"),
+    "M023": ("Echoes Below", "8. WATER AREA"), "M024": ("Arcane Chronicles", "8. SECRET CHAMBER"),
+    "M025": ("Echoes Below", "14. BATTLE THEME"), "M026": ("Echoes Below", "15. MINI BOSS"),
+    "M027": ("Crimson Nocturne", "15. FINAL BOSS"), "M028": ("Echoes Below", "17. FINAL BOSS"),
+    "M029": ("Echoes Below", "3. PEACEFUL TOWN"), "M030": ("Echoes Below", "18. TRUE ENDING"),
+    # overhaul cues: regional battles and places (used by formations and maps from the overhaul on)
+    "M101": ("DARK PIRATE", "11. BATTLE THEME"), "M102": ("Frozen Echoes", "11. BATTLE THEME"),
+    "M103": ("Sands of Eternity", "11. BATTLE THEME"), "M104": ("Neon Reverie", "12. BATTLE THEME"),
+    "M105": ("Sakura no Yume", "11. BATTLE THEME"), "M106": ("Crimson Nocturne", "11. BATTLE THEME"),
+    "M107": ("Arcane Chronicles", "11. BATTLE THEME"), "M108": ("Echoes Below", "11. SHOP THEME"),
+    "M109": ("Neon Reverie", "14. SECRET AREA"), "M110": ("Midnight Velocity", "5. HIGHWAY CRUISE"),
+    "M111": ("Sakura no Yume", "4. SHRINE THEME"), "M112": ("Sakura no Yume", "3. BAMBOO FOREST"),
+    "M113": ("Frozen Echoes", "7. ICE CAVE"), "M114": ("Sands of Eternity", "7. ANCIENT RUINS"),
+    "M115": ("DARK PIRATE", "7. GHOST SHIP"), "M116": ("Crimson Nocturne", "3. CASTLE COURTYARD"),
+    "M117": ("Crimson Nocturne", "5. HAUNTED HALLWAY"), "M118": ("Astral Horizons", "5. OPEN SPACE"),
+    "M119": ("Echoes Below", "16. FINAL DUNGEON"), "M120": ("Arcane Chronicles", "3. MAGIC ACADEMY"),
+    "M121": ("Sands of Eternity", "5. OPEN DESERT"), "M122": ("Frozen Echoes", "5. FROZEN PLAINS"),
+    "M123": ("Echoes Below", "6. SNOW AREA"), "M124": ("Echoes Below", "7. DESERT AREA"),
+    "M125": ("Neon Reverie", "15. FINAL DUNGEON"), "M126": ("Echoes Below", "13. SECRET AREA"),
+}
+# Jingles (Assets/Fanfare, 3.7-6.6 s each). Owner can swap numbers here.
+JINGLES = {"victory": 9, "level_up": 17, "item": 11, "inn": 6, "save": 7, "join": 1, "quest": 3, "game_over": 20, "rare": 2}
+# Sound cues (content "sfx" ids plus overhaul cues FX040+) -> library files (first glob match).
+SFX = {
+    "FX001": "Fantasy UI*/**/click_select_01.wav", "FX002": "Fantasy UI*/**/confirm_accept_01.wav",
+    "FX003": "Fantasy UI*/**/cancel_back_01.wav", "FX004": "game_item/Inventory/ErrorInvalidActio1.mp3",
+    "FX005": "Kenney RPG Audio/Audio/bookFlip1.ogg", "FX006": "Fantasy UI*/**/magic_ui_03.wav",
+    "FX007": "Kenney RPG Audio/Audio/creak1.ogg", "FX008": "Kenney RPG Audio/Audio/doorOpen_1.ogg",
+    "FX009": "Kenney Foley Sounds/Audio/Rocks/stoneDrag1.ogg", "FX010": "Kenney RPG Audio/Audio/metalLatch.ogg",
+    "FX011": "Kenney RPG Audio/Audio/footstep00.ogg", "FX012": "Kenney RPG Audio/Audio/footstep05.ogg",
+    "FX013": "Kenney Foley Sounds/Audio/Water/drip1.ogg", "FX014": "Pixel_Combat*/**/sword_slash_light_v*.wav",
+    "FX015": "Pixel_Combat*/**/hit_creature_soft_v*.wav", "FX016": "Pixel_Combat*/**/shield_block_heavy_v*.wav",
+    "FX017": "Pixel_Combat*/**/bow_shot_light_v*.wav", "FX018": "Pixel_Combat*/**/bow_shot_heavy_v*.wav",
+    "FX019": "Pixel_Combat*/**/fire_cast_v*.wav", "FX020": "Pixel_Combat*/**/ice_shatter_v*.wav",
+    "FX021": "Pixel_Combat*/**/lightning_impact_v*.wav", "FX022": "Pixel_Combat*/**/heal_v*.wav",
+    "FX023": "Pixel_Combat*/**/debuff_stun_v*.wav", "FX024": "Fantasy UI*/**/magic_ui_05.wav",
+    "FX025": "Pixel_Combat*/**/player_death_v*.wav", "FX026": "Pixel_Combat*/**/enemy_death_small_v*.wav",
+    "FX027": "Fantasy UI*/**/rare_special_01.wav", "FX028": "Fantasy UI*/**/quest_notification_01.wav",
+    "FX029": "Fantasy UI*/**/rare_special_03.wav", "FX030": "Pixel_Combat*/**/magic_ultimate_v*.wav",
+    "FX031": "Fantasy UI*/**/quest_notification_05.wav", "FX032": "Kenney Foley Sounds/Audio/Woosh/woosh3.ogg",
+    "FX040": "Pixel_Combat*/**/holy_cast_v*.wav", "FX041": "Pixel_Combat*/**/dark_cast_v*.wav",
+    "FX042": "Pixel_Combat*/**/ice_cast_v*.wav", "FX043": "Pixel_Combat*/**/lightning_cast_v*.wav",
+    "FX044": "Pixel_Combat*/**/battle_start_v*.wav", "FX045": "Pixel_Combat*/**/attack_miss_v*.wav",
+    "FX046": "Pixel_Combat*/**/buff_defense_v*.wav", "FX047": "Kenney Foley Sounds/Audio/Woosh/woosh5.ogg",
+    "FX048": "Kenney Foley Sounds/Audio/Rocks/stonesHit1.ogg", "FX049": "Kenney Foley Sounds/Audio/Water/sinkWater1.ogg",
+    "FX050": "Pixel_Combat*/**/dark_impact_v*.wav", "FX051": "Pixel_Combat*/**/arcane_impact_v*.wav",
+    "FX052": "Pixel_Combat*/**/fireball_impact_v*.wav", "FX053": "Pixel_Combat*/**/sword_critical_hit_v*.wav",
+    "FX054": "Pixel_Combat*/**/blunt_critical_hit_v*.wav", "FX055": "Pixel_Combat*/**/arrow_hit_flesh_v*.wav",
+    "FX056": "Kenney RPG Audio/Audio/handleCoins.ogg", "FX057": "game_item/Equip/PotionDrinkGulps9.mp3",
+}
+
+
+def ffmpeg(src, dst, extra=()):
+    import subprocess
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    if os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src):
+        return 0
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, *extra, "-c:a", "libvorbis", "-q:a", "5", dst], check=True)
+    return 1
+
+
+def audio():
+    import glob as G
+    snd = os.path.join(ASSETS, "Soundtrack")
+    tracks = G.glob(os.path.join(snd, "**", "*.mp3"), recursive=True)
+    n = 0
+    for cue, (pack, prefix) in MUSIC.items():
+        hits = [t for t in tracks if pack.lower() in t.lower() and os.path.basename(t).startswith(prefix)]
+        if not hits:
+            print("music: no track for", cue, pack, prefix)
+            continue
+        n += copy(sorted(hits)[0], os.path.join(EXT, "audio", "music", cue + ".mp3"))
+    print("music:", n, "copied")
+    n = 0
+    for name, num in JINGLES.items():
+        n += ffmpeg(os.path.join(ASSETS, "Fanfare", "FANFARE %d.wav" % num), os.path.join(EXT, "audio", "jingle", name + ".ogg"))
+    print("jingles:", n, "converted")
+    n = 0
+    sroot = os.path.join(ASSETS, "SFX")
+    for cue, pat in SFX.items():
+        hits = sorted(G.glob(os.path.join(sroot, pat), recursive=True))
+        if not hits:
+            print("sfx: no file for", cue, pat)
+            continue
+        n += ffmpeg(hits[0], os.path.join(EXT, "audio", "sfx", cue + ".ogg"), ("-ac", "2", "-ar", "44100"))
+    print("sfx:", n, "converted")
+    json.dump({"music": {k: list(v) for k, v in MUSIC.items()}, "jingles": JINGLES, "sfx": SFX},
+              open(os.path.join(EXT, "audio", "audio_map.json"), "w"), indent=1)
+
+
+SECTIONS = {"arenas": arenas, "audio": audio}
+
+if __name__ == "__main__":
+    for s in (sys.argv[1:] or SECTIONS.keys()):
+        SECTIONS[s]()

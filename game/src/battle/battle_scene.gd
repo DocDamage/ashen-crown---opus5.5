@@ -7,7 +7,8 @@ signal finished(result: String)
 
 ## FF6-style staging: the party stands in a staggered column on the right, facing left; enemies own the left/centre
 ## of the ground plane. Foot anchors (x zig-zags so neighbouring sprites never overlap).
-const PARTY_ANCHORS := [Vector2(206, 96), Vector2(232, 114), Vector2(258, 132), Vector2(284, 150)]
+const PARTY_ANCHORS := [Vector2(240, 88), Vector2(262, 104), Vector2(240, 120), Vector2(262, 136), Vector2(240, 152)]
+## Overhaul heroes (HeroArt) stand on these anchors at native size; the old 16x32 battlers keep PARTY_SCALE.
 const PARTY_SCALE := 2          # library battlers are ~16x32; drawn 2x (nearest) so the party reads at FF6 weight
 const ARENA_H := 168
 const ENEMY_BOX := Rect2(4, 6, 208, 160)   # enemies (and their frames) stay inside this box
@@ -17,6 +18,7 @@ var main: Node
 var model: BattleModel
 var form: Dictionary
 var bg: Texture2D
+var bg_native = false     # 960x720 painted arena (Assets/_processed/battle_backgrounds), drawn full screen
 var acc = 0.0
 var t = 0.0
 var tex = {}
@@ -54,7 +56,10 @@ func setup(form_id: String, seed_value: int, opts: Dictionary) -> void:
 	model.setup(party, form["enemies"], Game.battle_inventory(), seed_value,
 		{"mode": Settings.get_v("battle_mode"), "speed": float(Settings.get_v("battle_speed")), "boss": form.get("boss", false),
 		 "encounter": form, "difficulty": Game.DIFFICULTY.get(Game.difficulty(), {}), "no_flee": opts.get("flags", []).has("noflee")})
-	bg = _t("res://assets/sprites/bg/%s.png" % form.get("bg", "quarry"))
+	bg = _t("res://assets/battle_bg/%s.png" % form.get("bg", "quarry"))
+	bg_native = bg != null
+	if bg == null:
+		bg = _t("res://assets/sprites/bg/%s.png" % form.get("bg", "quarry"))
 	for eid in model.enemy_ids:
 		Game.bestiary_seen(model.battlers[eid].ref, "seen")
 	_layout_enemies()
@@ -209,7 +214,8 @@ func _finish() -> void:
 	emit_signal("finished", model.result)
 
 func show_victory() -> void:
-	Audio.music("M029", 0.0)
+	if Audio.jingle("victory") <= 0.0:
+		Audio.music("M029", 0.0)
 	banner = "Victory"
 	banner_t = 1.6
 	await get_tree().create_timer(1.4).timeout
@@ -268,12 +274,13 @@ func _present_action(ev: Dictionary, sk: bool) -> void:
 		var a2 = "attack"
 		match an:
 			"cast", "summon", "item": a2 = "cast"
+			"ult": a2 = "ult"
 			"guard": a2 = "guard"
 			"shoot": a2 = "attack"
 			"leap": a2 = "attack"
 			"step": a2 = "step"
 		anim[b.id] = {"name": a2, "t": 0.0}
-		offsets[b.id] = Vector2(-10, 0)
+		offsets[b.id] = Vector2(-10, 0) if not HeroArt.has_battle(b.ref) else Vector2(-16, 0)
 	else:
 		offsets[b.id] = Vector2(8, 0)
 		flashes[b.id] = 0.15
@@ -288,6 +295,9 @@ func _present_action(ev: Dictionary, sk: bool) -> void:
 	Audio.sfx(sfx)
 	if ev.has("summon"):
 		await _summon_fx(ev["summon"], sk)
+	elif b.side == 0 and HeroArt.has_battle(b.ref):
+		# hit lands a little past the middle of the hero's own animation
+		await _wait(clampf(HeroArt.anim_length(b.ref, anim[b.id]["name"]) * 0.55, 0.2, 0.9) if not sk else 0.02)
 	else:
 		await _wait(0.22 if not sk else 0.02)
 	# effects on targets
@@ -372,7 +382,7 @@ func _result_popup(r: Dictionary, elem: String, ev: Dictionary) -> void:
 		"ko":
 			txt = ""
 			if id.begins_with("A"):
-				anim[id] = {"name": "ko", "t": 0.0}
+				anim[id] = {"name": "death", "t": 0.0}
 		"dot":
 			txt = str(r["amount"])
 			col = Color8(200, 140, 255)
@@ -407,7 +417,7 @@ func _battler_pos(id: String) -> Vector2:
 		return Vector2(160, 80)
 	if b.side == 0:
 		var i = model.party_ids.find(id)
-		return PARTY_ANCHORS[i] + Vector2(0, -20 * PARTY_SCALE)
+		return PARTY_ANCHORS[i] + (Vector2(0, -12) if HeroArt.has_battle(b.ref) else Vector2(0, -20 * PARTY_SCALE))
 	return enemy_pos.get(id, Vector2(88, 110)) + Vector2(0, -minf(_enemy_size(id).y * 0.55, 48))
 
 # ======================================================================
@@ -642,7 +652,11 @@ func _close_menus() -> void:
 # Drawing
 # ======================================================================
 func _draw() -> void:
-	if bg:
+	if bg and bg_native:
+		UI.native_begin(self, Vector2.ZERO)
+		draw_texture(bg, Vector2.ZERO)
+		UI.native_end(self)
+	elif bg:
 		draw_texture(bg, Vector2.ZERO)
 	else:
 		draw_rect(Rect2(0, 0, 320, 168), Color8(40, 34, 46))
@@ -694,10 +708,28 @@ func _draw() -> void:
 			nm = "guard"
 		elif nm == "idle" and float(b.hp) / b.mhp < 0.25:
 			nm = "hurt"
-		var spec: Array = FRAMES[nm]
-		var fr: int = spec[0] + (int(a["t"] * 8) % spec[1] if nm not in ["attack", "cast", "victory"] else mini(int(a["t"] * 12), spec[1] - 1))
 		if b.state == "AIRBORNE":
 			continue
+		if HeroArt.has_battle(b.ref):
+			var hn: String = a["name"]
+			var ht: float = a["t"]
+			if not b.alive():
+				hn = "death" if hn == "death" and ht < HeroArt.anim_length(b.ref, "death") else "ko"
+			elif b.defending and hn == "idle":
+				hn = "guard"
+			elif hn == "idle" and float(b.hp) / b.mhp < 0.25:
+				hn = "hurt"
+				ht = 99.0
+			var mod = Color.WHITE
+			if flashes.get(bid, 0.0) > 0 and not Settings.get_v("reduced_flash"):
+				mod = Color(1.6, 1.6, 1.6)
+			draw_rect(Rect2(base + Vector2(-9, -1.5), Vector2(18, 3)), Color(0.05, 0.03, 0.1, 0.3))
+			HeroArt.draw_battle(self, b.ref, hn, ht, base, mod)
+			if selecting == b:
+				UI.text(self, base + Vector2(-3, -HeroArt.field_height(b.ref) - 12), "▼", UI.C_HI)
+			continue
+		var spec: Array = FRAMES[nm if FRAMES.has(nm) else "idle"]
+		var fr: int = spec[0] + (int(a["t"] * 8) % spec[1] if nm not in ["attack", "cast", "victory"] else mini(int(a["t"] * 12), spec[1] - 1))
 		if tx:
 			draw_texture_rect_region(tx, Rect2(base - Vector2(24, 62) * PARTY_SCALE, Vector2(48, 64) * PARTY_SCALE), Rect2(fr * 48, 0, 48, 64))
 		if selecting == b:
@@ -801,10 +833,11 @@ func _draw_ui() -> void:
 			if y > 226:
 				break
 	var px = 114
-	var py = 172
+	var py = 171
+	var pitch = 16 if model.party_ids.size() <= 4 else 13
 	for i in range(model.party_ids.size()):
 		var b = model.battlers[model.party_ids[i]]
-		var yy = py + i * 16
+		var yy = py + i * pitch
 		var ready = b.state in ["READY", "SELECTING"]
 		var ncol = UI.C_HI if selecting == b else (UI.C_TEXT if b.alive() else UI.C_RED)
 		UI.text(c, Vector2(px, yy), b.name, ncol)
@@ -813,14 +846,13 @@ func _draw_ui() -> void:
 			sl += st.substr(0, 2).capitalize()
 		if b.oath != "":
 			sl = "[" + b.oath.substr(0, 3).capitalize() + "]" + sl
-		if b.row == "back":
-			UI.text(c, Vector2(px + 38, yy), "B", UI.C_DIM)
-		UI.text(c, Vector2(px + 46, yy), sl.substr(0, 7), Color8(210, 170, 250))
+		if sl != "" and UI.width(b.name) < 60:
+			UI.text(c, Vector2(px + 64, yy), sl.substr(0, 5), Color8(210, 170, 250))
 		var hpc = UI.C_TEXT if float(b.hp) / b.mhp > 0.25 else UI.C_RED
-		UI.text_right(c, px + 138, yy, "%d/%d" % [b.hp, b.mhp], hpc)
+		UI.text_right(c, px + 140, yy, "%d/%d" % [b.hp, b.mhp], hpc)
 		UI.text_right(c, px + 160, yy, str(b.mp), UI.C_BLUE)
 		UI.gauge(c, Rect2(px + 164, yy + 2, 36, 6), b.atb / 1000.0, UI.C_GOLD if ready else Color8(90, 150, 220))
-		UI.gauge(c, Rect2(px, yy + 11, 160, 2), float(b.hp) / b.mhp, UI.C_GREEN if float(b.hp) / b.mhp > 0.25 else UI.C_RED)
+		UI.gauge(c, Rect2(px, yy + 10.67, 160, 1.34 if pitch < 16 else 2), float(b.hp) / b.mhp, UI.C_GREEN if float(b.hp) / b.mhp > 0.25 else UI.C_RED)
 	# Concord (and the shared escape meter) sit in slim tabs on the arena's bottom edge
 	UI.win(c, Rect2(232, 154, 88, 14))
 	UI.text(c, Vector2(236, 155), "Concord", UI.C_DIM)
