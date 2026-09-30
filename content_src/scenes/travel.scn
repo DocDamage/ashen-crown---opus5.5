@@ -107,3 +107,65 @@ say narr | The ferry crosses the Ember Sea to Hearthward's pontoons.
 warp T07_MARKET from_berth left
 label stay
 @end
+
+# ---------------------------------------------------------------- world v2 crossings
+@scene FERRY_BELLHARBOR_POST
+sfx FX031
+choice | Take the ferry to Bellharbor -> go | Stay -> stay
+label go
+say narr | The ferry noses out past the drowned breakwater. Bellharbor's bells are fewer now, and quieter.
+warp WORLD_POST ferry_bh
+label stay
+@end
+
+@scene FERRY_KAMINARI
+if ch:CH09 run
+say sailor | Nobody crosses the strait. The Fox Court turns boats around, and the ones it doesn't, it keeps.
+end
+label run
+sfx FX031
+choice | Cross the strait to Vermilion Reach -> go | Stay -> stay
+label go
+say narr | Lanterns drift on the current beside the hull. On the far shore the maples burn red, though it is not autumn.
+warp WORLD ferry_kam_e
+label stay
+@end
+
+@scene FERRY_KAMINARI_BACK
+sfx FX031
+choice | Cross back to the mainland -> go | Stay -> stay
+label go
+say narr | The ferryman does not look back at the shore. Neither, after a while, do you.
+warp WORLD ferry_kam
+label stay
+@end
+
+@scene FERRY_SALTWHISTLE
+if ch:CH05 run
+say sailor | Saltwhistle boats only. Come back when the guild's taking passengers.
+end
+label run
+sfx FX031
+choice | Sail out to Saltwhistle Isle -> go | Stay -> stay
+label go
+say narr | A fishing smack takes you aboard for a coin and a hand with the nets.
+warp WORLD ferry_salt_s
+label stay
+@end
+
+@scene FERRY_SALTWHISTLE_BACK
+sfx FX031
+choice | Sail back to the mainland -> go | Stay -> stay
+label go
+say narr | The smack runs home ahead of the weather, gulls screaming after the catch.
+warp WORLD ferry_salt
+label stay
+@end
+
+@scene CABLE_CHOIR
+if ch:CH07 run
+say narr | The sky cable runs up into the cloud toward Crucible Isle. The basket is chained; the shrine keepers say the line is not yet safe.
+end
+label run
+say narr | The cable to Crucible Isle hums in the wind. The Arena crews are still re-rigging the far anchor. Not today.
+@end

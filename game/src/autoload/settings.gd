@@ -2,22 +2,25 @@ extends Node
 ## Player settings persisted independently of save slots (docs/07 accessibility).
 
 const PATH := "user://settings.json"
-const ACTIONS := ["up", "down", "left", "right", "confirm", "cancel", "menu", "run", "page_l", "page_r", "skip"]
+const ACTIONS := ["up", "down", "left", "right", "confirm", "cancel", "menu", "run", "page_l", "page_r", "skip", "map"]
 const DEFAULT_KEYS := {
 	"up": [KEY_UP, KEY_W], "down": [KEY_DOWN, KEY_S], "left": [KEY_LEFT, KEY_A], "right": [KEY_RIGHT, KEY_D],
 	"confirm": [KEY_Z, KEY_ENTER, KEY_SPACE], "cancel": [KEY_X, KEY_ESCAPE, KEY_BACKSPACE], "menu": [KEY_C, KEY_TAB],
-	"run": [KEY_SHIFT], "page_l": [KEY_Q], "page_r": [KEY_E], "skip": [KEY_V],
+	"run": [KEY_SHIFT], "page_l": [KEY_Q], "page_r": [KEY_E], "skip": [KEY_V], "map": [KEY_M],
 }
 const DEFAULT_PAD := {
 	"up": [JOY_BUTTON_DPAD_UP], "down": [JOY_BUTTON_DPAD_DOWN], "left": [JOY_BUTTON_DPAD_LEFT], "right": [JOY_BUTTON_DPAD_RIGHT],
 	"confirm": [JOY_BUTTON_A], "cancel": [JOY_BUTTON_B], "menu": [JOY_BUTTON_Y], "run": [JOY_BUTTON_X],
 	"page_l": [JOY_BUTTON_LEFT_SHOULDER], "page_r": [JOY_BUTTON_RIGHT_SHOULDER], "skip": [JOY_BUTTON_BACK],
+	"map": [JOY_BUTTON_LEFT_STICK],
 }
 
 var v = {
 	"text_speed": 2,          # 0 slow, 1 normal, 2 fast, 3 instant
 	"run_toggle": false,
 	"ride_mount": true,        # ride the Brackhorn on the world map once the party has it
+	"world_view": "mode7",     # mode7 (tilted world map) | flat (top-down, for motion comfort)
+	"minimap": true,           # world-map minimap (top right)
 	"battle_mode": "wait",     # wait | active
 	"battle_speed": 1.0,       # 0.75, 1.0, 1.25
 	"reduced_flash": false,

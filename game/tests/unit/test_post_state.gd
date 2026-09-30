@@ -112,17 +112,24 @@ func test_landing_needs_marked_field() -> void:
 	_post_after_ch16()
 	var f = QA.main.field
 	Game.S["vehicle"]["ship_map"] = "WORLD_POST"
+	# a field away from any landing, then Brackenford's marked landing field (read from the map)
+	var bf = Vector2i(-1, -1)
+	for e in Content.data["maps"]["WORLD_POST"]["entities"]:
+		if e["type"] == "landing" and e.get("name", "") == "Brackenford":
+			bf = Vector2i(int(e["x1"]), int(e["y1"]))
+	check(bf.x >= 0, "Brackenford landing field exists")
 	Game.S["vehicle"]["ship_x"] = 30
-	Game.S["vehicle"]["ship_y"] = 40
+	Game.S["vehicle"]["ship_y"] = 70
 	QA.main.enter_field("WORLD_POST", "helm")
 	eq(f.vehicle, "ship", "boarded at the helm")
+	f.place_player(30, 70, "down")
 	check(not f.ship_op("land"), "landing refused away from a marked field")
 	eq(f.vehicle, "ship", "ship still flying after refusal")
-	f.place_player(25, 57, "down")
+	f.place_player(bf.x, bf.y, "down")
 	check(f.ship_op("land"), "landing allowed at Brackenford field")
 	eq(f.vehicle, "foot", "on foot after landing")
 	check(not f.solid_at(f.p_tile.x, f.p_tile.y), "landed on walkable ground")
-	eq(Vector2i(int(Game.S["vehicle"]["ship_x"]), int(Game.S["vehicle"]["ship_y"])), Vector2i(25, 57), "ship parked where it landed")
+	eq(Vector2i(int(Game.S["vehicle"]["ship_x"]), int(Game.S["vehicle"]["ship_y"])), bf, "ship parked where it landed")
 
 func test_every_shop_lists_stock_at_every_stage() -> void:
 	var gm = GameMenu.new()

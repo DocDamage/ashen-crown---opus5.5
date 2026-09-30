@@ -241,9 +241,10 @@ SOLID = {"block", "tree2", "banner", "crystal_tall", "pipe_tall", "mast", "totem
          "machine", "table", "pipe", "bed", "rubble", "crystal", "fence", "hedge", "counter", "pillar", "bell", "vent",
          "statue", "mountain", "deep", "reef", "window", "cart", "chimney", "anvil", "boat", "cable", "mural", "pool",
          "hole", "sluice", "altar", "brazier", "wheel", "gear", "chain", "shelter", "tent", "lever_deco", "well", "sign",
-         "bench", "island_block", "garden", "laundry", "chest_deco", "book", "awning_solid", "gate"}
+         "bench", "island_block", "garden", "laundry", "chest_deco", "book", "awning_solid", "gate", "wall_rock", "lava"}
 ENCOUNTER_TERRAIN = {"floor", "floor2", "path", "shallow", "grass", "sand", "snow", "ice", "ash", "salt", "moss",
-                     "roots", "plains", "forest", "hills", "puddle", "ember", "bridge", "stairs"}
+                     "roots", "plains", "forest", "hills", "puddle", "ember", "bridge", "stairs", "road", "rocky", "grass2",
+                     "olive", "swamp", "cave_floor", "ruin_floor", "bone", "crystal_floor"}
 
 
 def parse_cond(s):
@@ -594,6 +595,7 @@ def main():
                                      "desc": plain(s["effect"])} for s in cat["statuses"]}
     BX.apply(cat["enemies"], EN)
     BX.apply_formations(FM)
+    BX.apply_world_groups(FM)
     content["enemies"] = build_enemies(cat["enemies"], cat["bosses"])
     for eid, e in content["enemies"].items():
         e["lore"] = BX.LORE.get(eid, e.get("lore", ""))

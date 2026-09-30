@@ -762,6 +762,15 @@ func run_steps(steps: Array) -> bool:
 				ok = await talk(st[1], st[2])
 			"go":
 				ok = await walk_to(st[1], st[2])
+			"trig":
+				# walk onto the touch trigger that runs this scene on the current map (world ferries, cables)
+				var tp = Vector2i(-1, -1)
+				for e in main.field.map["entities"]:
+					if e["type"] == "trigger" and e.get("scene", "") == st[1]:
+						tp = Vector2i(e["x1"], e["y1"])
+				ok = tp.x >= 0 and await walk_to(tp.x, tp.y, false, 900.0)
+				if tp.x < 0:
+					fail("no trigger for %s on %s" % [st[1], main.field.map_id])
 			"exit":
 				ok = await exit_to(st[1])
 			"loc":
@@ -968,6 +977,12 @@ func airship_step(st: Array) -> bool:
 			return f.vehicle == "ship" or fail("did not board")
 		"fly":
 			return await walk_to(st[2], st[3], false, 900.0)
+		"fly_to":
+			# the named landing field of the current world map
+			for e in f.map["entities"]:
+				if e["type"] == "landing" and e.get("name", "") == st[2]:
+					return await walk_to(int(e["x1"]) + 1, int(e["y1"]), false, 1500.0)
+			return fail("no landing %s on %s" % [st[2], f.map_id])
 		"land":
 			choice_plan = [0]
 			await press("confirm")
@@ -1040,7 +1055,7 @@ func r_seg4b() -> bool:
 	return await run_steps(SEG4.slice(SEG4.find(["ms", "ch08_done"]) + 1))
 
 var SEG4 = [
-		["choice", [0]], ["go", 66, 12], ["settle"], ["loc", "L_D07"], ["go", 19, 15], ["check", "event:D07_SABLE_GATE"],
+		["choice", [0]], ["trig", "CABLE_AERIE"], ["settle"], ["loc", "L_D07"], ["go", 19, 15], ["check", "event:D07_SABLE_GATE"],
 		["exit", "D07_R02"], ["exit", "D07_R03"], ["tile", 8, 5], ["tile", 19, 5], ["tile", 30, 5],
 		["check", "flag:d07_name1,flag:d07_name2,flag:d07_name3"], ["exit", "D07_R04"], ["npc", "prisoner1"], ["use", "switch", "lock1"], ["npc", "prisoner2"],
 		["use", "switch", "lock2"], ["npc", "prisoner3"], ["use", "switch", "lock3"], ["check", "flag:d07_open1,flag:d07_open2,flag:d07_open3"],
@@ -1054,8 +1069,8 @@ var SEG4 = [
 		["exit", "D08_R05"], ["exit", "D08_R04"], ["exit", "D08_R02"], ["exit", "D08_R01"], ["exit", "WORLD"],
 		["loc", "L_T06"], ["npc", "sen"], ["check", "flag:accord_nacre"], ["exit", "WORLD"],
 		["loc", "L_T03"], ["exit", "T03_GARDEN"], ["use", "switch", "bypass"], ["check", "flag:accord_cinder"],
-		["exit", "T03_TOWN"], ["exit", "WORLD"], ["choice", [0]], ["go", 62, 12], ["settle"], ["loc", "L_T05"],
-		["use", "switch", "cable_brake"], ["check", "flag:accord_aerie"], ["exit", "WORLD"], ["choice", [0]], ["go", 66, 12],
+		["exit", "T03_TOWN"], ["exit", "WORLD"], ["choice", [0]], ["trig", "CABLE_NACRE"], ["settle"], ["loc", "L_T05"],
+		["use", "switch", "cable_brake"], ["check", "flag:accord_aerie"], ["exit", "WORLD"], ["choice", [0]], ["trig", "CABLE_AERIE"],
 		["settle"], ["loc", "L_T06"], ["exit", "T06_POOL"], ["go", 24, 16], ["check", "ch:CH10"], ["shot", "smaller_accord"],
 		["exit", "T06_MARKET"], ["exit", "WORLD"], ["ms", "ch10_done"],
 	]
@@ -1090,7 +1105,7 @@ func r_seg6() -> bool:
 		["exit", "T04_GALLERY"], ["go", 19, 23], ["check", "event:CH15_ARRIVE"], ["use", "switch", "winch1"],
 		["use", "switch", "winch2"], ["npc", "res1"], ["npc", "res2"], ["npc", "res3"], ["go", 19, 12], ["check", "ch:CH15"],
 		["check", "party:C02"], ["shot", "lanterns"], ["exit", "T04_UPPER"], ["exit", "WORLD_POST"], ["ms", "ch15_done"],
-		["choice", [0]], ["go", 77, 46], ["wait_map", "T07_MARKET"], ["exit", "WORLD_POST"], ["loc", "L_T03"],
+		["choice", [0]], ["trig", "FERRY_HEARTHWARD"], ["wait_map", "T07_MARKET"], ["exit", "WORLD_POST"], ["loc", "L_T03"],
 		["exit", "T03_YARD"], ["go", 4, 13], ["check", "event:CH16_YARD"], ["use", "switch", "channel1"],
 		["use", "switch", "channel2"], ["use", "switch", "channel3"], ["npc", "crew_y1"], ["check", "flag:t03y_clear"],
 		["npc", "tortoise"], ["check", "flag:v06_given"], ["npc", "pell_y"], ["check", "ch:CH16"], ["check", "party:C04"],
@@ -1102,15 +1117,15 @@ func r_seg6() -> bool:
 func r_seg7() -> bool:
 	if not await seg_resume("ch16_done", "seg7"): return false
 	var steps = [
-		["airship", "board"], ["shot", "helm"], ["airship", "fly", 69, 24], ["airship", "land"],
+		["airship", "board"], ["shot", "helm"], ["airship", "fly_to", "Skychain"], ["airship", "land"],
 		["loc", "L_D06"], ["go", 10, 24], ["check", "event:CH17_ARRIVE"], ["use", "switch", "anchor1"],
 		["use", "switch", "anchor2"], ["use", "switch", "anchor3"], ["npc", "corren_m"], ["check", "ch:CH17,party:C03"],
 		["exit", "WORLD_POST"], ["ms", "ch17_done"],
-		["airship", "board"], ["airship", "fly", 42, 46], ["airship", "land"], ["loc", "L_T02"], ["npc", "jori_v"],
+		["airship", "board"], ["airship", "fly_to", "Veyr"], ["airship", "land"], ["loc", "L_T02"], ["npc", "jori_v"],
 		["exit", "T02_CANALS"], ["use", "switch", "gate1"], ["use", "switch", "gate2"], ["use", "switch", "gate3"],
 		["exit", "T02_REGISTRY_POST"], ["go", 15, 18], ["check", "flag:t02r_clear"], ["npc", "pip_r"], ["tile", 11, 14],
 		["check", "ch:CH18,party:C08"], ["exit", "T02_CANALS"], ["exit", "T02_SQUARE_POST"], ["exit", "WORLD_POST"], ["ms", "ch18_done"],
-		["airship", "board"], ["airship", "fly", 40, 9], ["airship", "land"], ["loc", "L_D07"], ["go", 19, 19],
+		["airship", "board"], ["airship", "fly_to", "Whitebone"], ["airship", "land"], ["loc", "L_D07"], ["go", 19, 19],
 		["check", "event:CH19_ARRIVE"], ["exit", "D07P_R02"], ["tile", 9, 9], ["use", "switch", "lock1"], ["tile", 19, 9],
 		["use", "switch", "lock2"], ["tile", 29, 9], ["use", "switch", "lock3"], ["go", 19, 22], ["check", "ch:CH19,party:C07"],
 		["exit", "D07P_R01"], ["exit", "WORLD_POST"], ["ms", "ch19_done"],
@@ -1122,11 +1137,11 @@ func r_seg7() -> bool:
 func r_seg8() -> bool:
 	if not await seg_resume("ch20_done", "seg8"): return false
 	var steps = [
-		["airship", "board"], ["airship", "fly", 57, 44], ["airship", "land"], ["loc", "L_T07"],
+		["airship", "board"], ["airship", "fly_to", "Hearthward"], ["airship", "land"], ["loc", "L_T07"],
 		["buy", "npc:stall", [["I002", 8], ["I004", 8], ["I006", 4], ["W004", 1], ["W010", 1], ["W034", 1], ["W028", 1]]],
-		["optimize"], ["exit", "WORLD_POST"], ["go", 43, 45], ["grind_to", 31, 45],
+		["optimize"], ["exit", "WORLD_POST"], ["grind_to", 31, 45],
 		["loc", "L_T02"], ["buy", "npc:market_v", [["G016", 1], ["G004", 1], ["G008", 1], ["G023", 2]]], ["optimize"],
-		["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly", 62, 37], ["airship", "land"], ["loc", "L_D10"],
+		["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly_to", "Crown Heart"], ["airship", "land"], ["loc", "L_D10"],
 		["go", 19, 18], ["check", "event:D10_DOCK"], ["use", "switch", "split"], ["wait_map", "D10_R02"],
 		["check", "flag:d10_split"], ["grind_to", 33, 30], ["use", "switch", "lockA"], ["choice", [0]], ["use", "switch", "swapbell"],
 		["wait_map", "D10_R03"], ["use", "switch", "lockA"], ["choice", [0]], ["use", "switch", "swapbell"], ["wait_map", "D10_R02"],
@@ -1162,11 +1177,11 @@ var SEGQ = [
 		["tile", 15, 7], ["npc", "q7occ3"], ["tile", 23, 7], ["use", "switch", "repeater"], ["check", "q:Q07"],
 		["exit", "D07P_R02"], ["exit", "D07P_R01"], ["exit", "WORLD_POST"], ["ms", "q_nacre"],
 		# supplies at Hearthward
-		["airship", "board"], ["airship", "fly", 57, 44], ["airship", "land"], ["loc", "L_T07"],
+		["airship", "board"], ["airship", "fly_to", "Hearthward"], ["airship", "land"], ["loc", "L_T07"],
 		["buy", "npc:stall", [["I002", 10], ["I004", 10], ["I006", 5], ["I003", 2], ["W004", 1], ["W010", 1], ["W028", 1]]],
 		["optimize"], ["exit", "WORLD_POST"],
 		# Brackenford (Q01, Q05)
-		["airship", "board"], ["airship", "fly", 26, 57], ["airship", "land"], ["loc", "L_T01"], ["npc", "forewoman"],
+		["airship", "board"], ["airship", "fly_to", "Brackenford"], ["airship", "land"], ["loc", "L_T01"], ["npc", "forewoman"],
 		["npc", "camp_west"], ["check", "q:Q01:ACTIVE,q:Q05:ACTIVE"], ["exit", "WORLD_POST"], ["loc", "L_D01"],
 		["use", "switch", "record1"], ["use", "switch", "record2"], ["use", "switch", "record3"], ["npc", "family1"],
 		["check", "q:Q01:RESOLUTION_READY"], ["exit", "WORLD_POST"], ["loc", "L_T01"], ["npc", "forewoman"], ["check", "q:Q01"],
@@ -1174,43 +1189,43 @@ var SEGQ = [
 		["exit", "D03P_R01"], ["exit", "WORLD_POST"], ["loc", "L_T01"], ["npc", "camp_west"], ["check", "q:Q05"],
 		["exit", "WORLD_POST"], ["ms", "q_brackenford"],
 		# Glass Coast (Q02)
-		["airship", "board"], ["airship", "fly", 77, 43], ["airship", "land"], ["loc", "L_T04"], ["npc", "apprentice_u"],
-		["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly", 86, 52], ["airship", "land"], ["loc", "L_D05"],
+		["airship", "board"], ["airship", "fly_to", "Bellharbor"], ["airship", "land"], ["loc", "L_T04"], ["npc", "apprentice_u"],
+		["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly_to", "Archive Point"], ["airship", "land"], ["loc", "L_D05"],
 		["npc", "station1"], ["npc", "station2"], ["npc", "station3"], ["npc", "apprentice_q2"], ["use", "switch", "circuit"],
 		["check", "q:Q02"], ["exit", "WORLD_POST"],
 		# Skyspine (Q03)
-		["airship", "board"], ["airship", "fly", 82, 15], ["airship", "land"], ["loc", "L_T05"], ["npc", "edda_p"],
-		["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly", 69, 24], ["airship", "land"], ["loc", "L_D06"],
+		["airship", "board"], ["airship", "fly_to", "High Aerie"], ["airship", "land"], ["loc", "L_T05"], ["npc", "edda_p"],
+		["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly_to", "Skychain"], ["airship", "land"], ["loc", "L_D06"],
 		["tile", 5, 24], ["npc", "q3_survivor"], ["use", "switch", "marker"], ["check", "q:Q03:RESOLUTION_READY"],
-		["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly", 82, 15], ["airship", "land"], ["loc", "L_T05"],
+		["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly_to", "High Aerie"], ["airship", "land"], ["loc", "L_T05"],
 		["npc", "edda_p"], ["check", "q:Q03"], ["exit", "WORLD_POST"],
 		# Cinder Reach (Q04)
-		["airship", "board"], ["airship", "fly", 22, 20], ["airship", "land"], ["loc", "L_T03"], ["npc", "pell_p"],
+		["airship", "board"], ["airship", "fly_to", "Cinderwake"], ["airship", "land"], ["loc", "L_T03"], ["npc", "pell_p"],
 		["exit", "WORLD_POST"], ["loc", "L_D04"], ["npc", "q4w1"], ["npc", "q4w2"], ["npc", "q4w3"], ["use", "switch", "restart"],
 		["check", "q:Q04"], ["exit", "WORLD_POST"], ["ms", "q_personal_7"],
 		# Winter island (Q09)
-		["airship", "board"], ["airship", "fly", 50, 1], ["airship", "land"], ["loc", "L_D11"], ["go", 19, 20],
+		["airship", "board"], ["airship", "fly_to", "Winter Island"], ["airship", "land"], ["loc", "L_D11"], ["go", 19, 20],
 		["exit", "D11_R02"], ["npc", "sleeper1"], ["npc", "sleeper2"], ["npc", "sleeper3"], ["exit", "D11_R03"],
 		["use", "switch", "heat1"], ["use", "switch", "heat2"], ["use", "switch", "heat3"], ["check", "flag:d11_thaw"],
 		["exit", "D11_R04"], ["grind_to", 35, 40], ["save", 3], ["heal"], ["exit", "D11_R05"], ["choice", [0]], ["go", 19, 16],
 		["check", "flag:b13_done"], ["exit", "D11_R06"], ["go", 15, 10], ["check", "q:Q09"], ["exit", "D11_R05"], ["exit", "D11_R04"],
 		["exit", "D11_R02"], ["exit", "D11_R01"], ["exit", "WORLD_POST"], ["ms", "q_winter"],
 		# Starless Reef (Q10)
-		["airship", "board"], ["airship", "fly", 57, 44], ["airship", "land"], ["loc", "L_T07"], ["npc", "bell_child"],
-		["check", "q:Q10:ACTIVE"], ["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly", 72, 59], ["airship", "land"],
+		["airship", "board"], ["airship", "fly_to", "Hearthward"], ["airship", "land"], ["loc", "L_T07"], ["npc", "bell_child"],
+		["check", "q:Q10:ACTIVE"], ["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly_to", "Reef Shoal"], ["airship", "land"],
 		["loc", "L_D12"], ["go", 19, 20], ["exit", "D12_R02"], ["exit", "D12_R03"], ["use", "switch", "reflector"],
 		["grind_to", 37, 40], ["exit", "D12_R04"], ["tile", 11, 12], ["save", 3], ["exit", "D12_R05"], ["choice", [0]], ["go", 19, 16],
 		["check", "flag:b14_done"], ["exit", "D12_R06"], ["go", 15, 10], ["check", "q:Q10"], ["exit", "D12_R05"], ["exit", "D12_R04"],
 		["exit", "D12_R02"], ["exit", "D12_R01"], ["exit", "WORLD_POST"], ["ms", "q_reef"],
 		# Veyr (Q08, Q11)
-		["airship", "board"], ["airship", "fly", 42, 46], ["airship", "land"], ["loc", "L_T02"], ["npc", "ansel_p"],
+		["airship", "board"], ["airship", "fly_to", "Veyr"], ["airship", "land"], ["loc", "L_T02"], ["npc", "ansel_p"],
 		["exit", "T02_CANALS"], ["exit", "T02_REGISTRY_POST"], ["npc", "registrar"], ["exit", "T02_CANALS"], ["exit", "D02P_SEALS"],
 		["choice", [0]], ["use", "switch", "dial1"], ["choice", [1]], ["use", "switch", "dial2"], ["choice", [2]], ["use", "switch", "dial3"],
 		["tile", 13, 11], ["check", "qs:Q08:sealed"], ["exit", "T02_CANALS"], ["exit", "T02_REGISTRY_POST"], ["npc", "registrar"],
 		["check", "q:Q08"], ["exit", "T02_CANALS"], ["exit", "D02P_ECHO"], ["tile", 9, 4], ["save", 3], ["go", 13, 8],
 		["check", "q:Q11"], ["exit", "T02_CANALS"], ["exit", "T02_SQUARE_POST"], ["exit", "WORLD_POST"], ["ms", "q_veyr"],
 		# Q12: the silent alcove, before the final commitment
-		["airship", "board"], ["airship", "fly", 62, 37], ["airship", "land"], ["loc", "L_D10"], ["go", 19, 18],
+		["airship", "board"], ["airship", "fly_to", "Crown Heart"], ["airship", "land"], ["loc", "L_D10"], ["go", 19, 18],
 		["use", "switch", "split"], ["wait_map", "D10_R02"], ["use", "switch", "lockA"], ["choice", [0]], ["use", "switch", "swapbell"],
 		["wait_map", "D10_R03"], ["use", "switch", "lockA"], ["choice", [0]], ["use", "switch", "swapbell"], ["wait_map", "D10_R02"],
 		["use", "switch", "lockB"], ["choice", [0]], ["use", "switch", "swapbell"], ["wait_map", "D10_R03"], ["grind_to", 38, 40],

@@ -304,3 +304,30 @@ def apply_formations(FM):
             FM.FORMATIONS[fid] = FM.F([FM.v(e, lv[e]) for e in f], bg.get(home, "field_r01"))
             names.append(fid)
         FM.GROUPS["OWX_" + home] = names
+
+
+POST_LEVEL = {"R01": 28, "R02": 30, "R03": 32, "R04": 34, "R05": 36, "R06": 32, "R07": 34, "R08": 30, "R09": 38, "SKY": 38,
+              "U1": 32, "U2": 36, "U3": 42, "SEA": 38, "NIGHT": 34}
+OLD_GROUPS = {"R01": ["OW1"], "R02": ["OW2"], "R03": ["OW3"], "R04": ["OW4"], "R05": ["OW5"]}
+
+
+def apply_world_groups(FM):
+    """World zone groups: W_<region> (pre-fault) mixes the canon overworld group with the region's new enemies;
+    WP_<region> (post-fault) uses the region's enemies re-levelled to the post band plus the canon post group."""
+    lv = {r[0]: r[3] for r in ROWS}
+    for home in list(groups().keys()) + ["R01", "R02", "R03", "R04", "R05"]:
+        pre = []
+        for g in OLD_GROUPS.get(home, []):
+            pre += FM.GROUPS.get(g, [])
+        pre += FM.GROUPS.get("OWX_" + home, [])
+        if pre:
+            FM.GROUPS["W_" + home] = pre
+        post = list(FM.GROUPS.get("OWP", []))
+        for fid in FM.GROUPS.get("OWX_" + home, []):
+            f = FM.FORMATIONS[fid]
+            pf = dict(f)
+            pf["enemies"] = [FM.v(e["id"] if isinstance(e, dict) else e, max(POST_LEVEL.get(home, 30), lv.get(e["id"] if isinstance(e, dict) else e, 1)))
+                             for e in f["enemies"]]
+            FM.FORMATIONS["P" + fid] = pf
+            post.append("P" + fid)
+        FM.GROUPS["WP_" + home] = post

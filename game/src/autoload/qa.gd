@@ -135,6 +135,52 @@ func run_gallery(p_main: Node, which: String) -> void:
 			print("PERF %s %.2f ms/frame" % [m, (Time.get_ticks_usec() - t0) / 120000.0])
 		get_tree().quit(0)
 		return
+	if which == "m7":
+		# world v2 review: the Mode-7 world maps on foot, mounted and flying (turned), surface and the Deep
+		var shots = [["WORLD", "l_t01", "foot", 0.0], ["WORLD", "l_t02", "foot", 0.0], ["WORLD", "l_t03", "mount", 0.0],
+			["WORLD", "l_t04", "ship", 0.0], ["WORLD", "l_t02", "ship", 0.9], ["WORLD", "l_n28", "foot", 0.0],
+			["WORLD_POST", "l_t07", "foot", 0.0], ["WORLD_POST", "l_t02", "ship", -0.6], ["DEEP", "l_u02", "foot", 0.0],
+			["DEEP", "l_u14", "mount", 0.0], ["DEEP_POST", "l_u30", "foot", 0.0]]
+		for sh in shots:
+			var md: Dictionary = Content.data["maps"][sh[0]]
+			var at = Vector2i(-1, -1)
+			for e in md["entities"]:
+				if e["type"] == "spawn" and e["name"] == sh[1]:
+					at = Vector2i(e["x"], e["y"])
+			if at.x < 0:
+				continue
+			Game.S["vehicle"]["mount"] = sh[2] == "mount"
+			Game.S["vehicle"]["mode"] = "foot"
+			if sh[2] == "ship":
+				Game.S["vehicle"]["ship"] = true
+				Game.S["vehicle"]["ship_map"] = sh[0]
+				Game.S["vehicle"]["ship_x"] = at.x
+				Game.S["vehicle"]["ship_y"] = at.y
+			else:
+				Game.S["vehicle"]["ship"] = false
+			main.enter_field(sh[0], "default", at, "down")
+			main.field.banner_t = 0.0
+			if sh[2] == "ship":
+				main.field.ship_op("board")
+			await _g_frames(4)
+			if main.field.m7 != null:
+				main.field.m7.snap(main.field.p_pos + Vector2(8, 12), main.field.m7.profile_key(main.field.vehicle, main.field.riding()))
+				main.field.m7.yaw = sh[3]
+			await _g_frames(6)
+			await _g_shot("m7_%s_%s_%s" % [sh[0], sh[1], sh[2]])
+			if sh[1] == "l_t02" and sh[2] == "foot" or sh[0] == "WORLD" and sh[1] == "l_t02" and sh[2] == "ship":
+				for c in [["dusk", 1110.0], ["night", 1350.0]]:
+					Game.S["clock"] = c[1]
+					await _g_frames(4)
+					await _g_shot("m7_%s_%s_%s_%s" % [sh[0], sh[1], sh[2], c[0]])
+				Game.S["clock"] = 600.0
+				main.field.hud.reveal(Vector2i(70, 90), 40)
+				main.field.show_map = true
+				await _g_frames(8)
+				await _g_shot("m7_%s_fullmap" % sh[0])
+				main.field.show_map = false
+		get_tree().quit(0)
+		return
 	if which == "ov":
 		# overhaul review: vehicles on the world maps, and each new recruit / Vestige in its room
 		Game.S["vehicle"]["mount"] = true

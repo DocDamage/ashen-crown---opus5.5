@@ -5,6 +5,7 @@ extends TestCase
 func _state_digest() -> String:
 	var s = Game.S.duplicate(true)
 	s.erase("playtime")
+	s.erase("clock")   # the world clock runs with real time, like playtime
 	s.erase("timestamp")
 	s.erase("run_id")
 	s["location"] = {}

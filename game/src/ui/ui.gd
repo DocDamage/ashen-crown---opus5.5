@@ -57,11 +57,15 @@ static func font() -> Font:
 
 ## Native-resolution drawing inside a unit-scaled layer: sets the item's draw transform so that native pixels map
 ## 1:1 to the screen from `origin` (in units). Call native_end() afterwards.
+## `base` (normally identity) is composed in front: the Mode-7 world map sets it per sprite so that the regular
+## drawing code comes out scaled by depth around the sprite's foot.
+static var base := Transform2D.IDENTITY
+
 static func native_begin(ci: CanvasItem, origin: Vector2) -> void:
-	ci.draw_set_transform(origin, 0.0, INV)
+	ci.draw_set_transform_matrix(base * Transform2D(0.0, INV, 0.0, origin))
 
 static func native_end(ci: CanvasItem) -> void:
-	ci.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+	ci.draw_set_transform_matrix(base)
 
 static func text(ci: CanvasItem, pos: Vector2, s: String, col: Color = C_TEXT, shadow: bool = true) -> void:
 	var f = font()

@@ -31,6 +31,12 @@ var enc_set = {}
 var tall_set = {}
 # Library tileset (owner's licensed art, installed into assets/ext by tools/gen_art.py library): per-kind rules
 var art: Art48 = null              # native 48px map art (tools/maps48), replaces tile drawing when present
+var m7: Mode7 = null               # world maps: tilted ground plane + upright sprites (field/mode7.gd)
+var m7_node: Node2D = null
+var hud: WorldHud = null           # world maps: minimap, full map, fog of war
+var ov_node: Node2D = null
+var show_map := false
+var _white: ImageTexture = null
 var ext_tex: Texture2D = null
 var ext_rules: Dictionary = {}     # kind -> {type: tile|auto|wall|stamp, ...}
 var ext_group: Dictionary = {}     # kind -> autotile connection group
@@ -76,8 +82,13 @@ var banner_text = ""
 var banner_t = 0.0
 var vehicle = "foot"            # foot | ship
 var ship_pos = Vector2i(-1, -1)
-const HOME_BERTH := Vector2i(57, 45)   # Hearthward landing field on WORLD_POST
-const WAYFARER_BERTH := Vector2i(52, 12)   # Nacre landing field on WORLD (pre-fault Wayfarer)
+# airship berths: the "berth" spawn of each world map (Nacre's landing field on WORLD for the pre-fault Wayfarer,
+# Hearthward's on WORLD_POST for the Lanternwake), written by tools/world2/wgen.py
+static func berth(mid: String) -> Vector2i:
+	for e in Content.data["maps"].get(mid, {}).get("entities", []):
+		if e["type"] == "spawn" and e["name"] == "berth":
+			return Vector2i(int(e["x"]), int(e["y"]))
+	return Vector2i(1, 1)
 var steps = 0
 var last_step_blocked = false
 var tex_cache = {}
@@ -146,6 +157,22 @@ func load_map(id: String, spawn: String = "default", pos: Vector2i = Vector2i(-1
 	props_tex = _tex("res://assets/tiles/%s_props.png" % map["tileset"])
 	art = Art48.load_for(id)
 	_load_ext(map["tileset"] if art == null else "")
+	m7 = Mode7.make(art, id) if map.get("kind", "") == "world" else null
+	hud = WorldHud.make(art, id) if map.get("kind", "") == "world" else null
+	show_map = false
+	if m7 != null:
+		if m7_node == null:
+			m7_node = Node2D.new()
+			m7_node.name = "Mode7Ground"
+			m7_node.show_behind_parent = true
+			m7_node.material = Mode7.material()
+			add_child(m7_node)
+			m7_node.draw.connect(_draw_m7)
+		m7_node.visible = true
+	elif m7_node != null:
+		m7_node.visible = false
+	if m7 == null:
+		self_modulate = Color.WHITE
 	var sp = pos
 	var sdir = dir
 	if sp.x < 0:
@@ -191,6 +218,11 @@ func load_map(id: String, spawn: String = "default", pos: Vector2i = Vector2i(-1
 	if map.get("music", "") != "":
 		Audio.music(map["music"])
 	_snap_camera()
+	if hud != null:
+		hud.reveal(p_tile)
+	if m7 != null:
+		m7.snap(p_pos + Vector2(8, 12), m7.profile_key(vehicle, riding()))
+		m7.apply(m7_node.material)
 	emit_signal("map_entered", id)
 	queue_redraw()
 
@@ -306,9 +338,60 @@ func _process(delta: float) -> void:
 		else:
 			p_anim = 0.0
 	_update_camera()
+	_tick_clock(delta)
+	if hud != null:
+		hud.tick(delta)
+		if Input.is_action_just_pressed("g_map") and (can_move() or show_map):
+			show_map = not show_map
+			Audio.sfx("FX001")
+		elif show_map and Input.is_action_just_pressed("g_cancel"):
+			show_map = false
+	if m7 != null:
+		m7.tint = day_tint() if not m7.deep else Color.WHITE
+		self_modulate = m7.tint
+		var turn = 0.0
+		if vehicle == "ship" and can_move():
+			turn = Input.get_action_strength("g_page_r") - Input.get_action_strength("g_page_l")
+		m7.update(delta, p_pos + Vector2(8, 12), m7.profile_key(vehicle, riding()), turn)
+		m7.apply(m7_node.material)
+		m7_node.queue_redraw()
 	queue_redraw()
 
+func _draw_m7() -> void:
+	if _white == null:
+		var im = Image.create(1, 1, false, Image.FORMAT_RGBA8)
+		im.fill(Color.WHITE)
+		_white = ImageTexture.create_from_image(im)
+	m7_node.draw_texture_rect(_white, Rect2(Vector2.ZERO, VIEW), false)
+
+## World clock: one day passes in about 20 real minutes of field time (menus, scenes and battles stop it).
+func _tick_clock(delta: float) -> void:
+	if Game.S.is_empty() or not can_move():
+		return
+	Game.S["clock"] = fposmod(float(Game.S.get("clock", 480.0)) + delta * 1.2, 1440.0)
+
+static func hour() -> float:
+	return float(Game.S.get("clock", 480.0)) / 60.0
+
+static func is_night() -> bool:
+	var hr = hour()
+	return hr >= 20.0 or hr < 5.0
+
+## Light over the world map by the hour: day, amber dusk, blue night, grey dawn.
+static func day_tint() -> Color:
+	var hr = hour()
+	var keys = [[0.0, Color(0.42, 0.48, 0.78)], [4.5, Color(0.42, 0.48, 0.78)], [6.0, Color(0.85, 0.8, 0.86)],
+		[7.5, Color(1, 1, 1)], [16.5, Color(1, 1, 1)], [18.5, Color(1.0, 0.78, 0.62)], [20.0, Color(0.52, 0.52, 0.8)],
+		[24.0, Color(0.42, 0.48, 0.78)]]
+	for i in range(keys.size() - 1):
+		if hr >= keys[i][0] and hr <= keys[i + 1][0]:
+			var k = (hr - keys[i][0]) / maxf(0.001, keys[i + 1][0] - keys[i][0])
+			return (keys[i][1] as Color).lerp(keys[i + 1][1], k)
+	return Color.WHITE
+
 func can_move() -> bool:
+	if show_map:
+		return false
 	return active and not busy and main != null and main.router.top() == self
 
 func _running() -> bool:
@@ -322,7 +405,7 @@ func _input_dir() -> String:
 		return QA.forced_dir
 	for d in ["up", "down", "left", "right"]:
 		if Input.is_action_pressed("g_" + d):
-			return d
+			return m7.turn_dir(d) if m7 != null and vehicle == "ship" else d
 	return ""
 
 const DV := {"up": Vector2i(0, -1), "down": Vector2i(0, 1), "left": Vector2i(-1, 0), "right": Vector2i(1, 0)}
@@ -346,6 +429,8 @@ func _in_bounds_or_exit(t: Vector2i) -> bool:
 
 func _on_arrive() -> void:
 	steps += 1
+	if hud != null:
+		hud.reveal(p_tile, WorldHud.REVEAL + (3 if vehicle == "ship" else 0))
 	Game.S["location"]["x"] = p_tile.x
 	Game.S["location"]["y"] = p_tile.y
 	Game.S["location"]["dir"] = p_dir
@@ -640,14 +725,14 @@ func ship_op(op: String) -> bool:
 			# pre-fault Wayfarer (CH10): parked on the Nacre landing field of the pre-fault world
 			vs["ship"] = true
 			vs["ship_map"] = "WORLD"
-			vs["ship_x"] = WAYFARER_BERTH.x
-			vs["ship_y"] = WAYFARER_BERTH.y
+			vs["ship_x"] = berth("WORLD").x
+			vs["ship_y"] = berth("WORLD").y
 			return true
 		"home":
 			vs["ship"] = true
 			vs["ship_map"] = "WORLD_POST"
-			vs["ship_x"] = HOME_BERTH.x
-			vs["ship_y"] = HOME_BERTH.y
+			vs["ship_x"] = berth("WORLD_POST").x
+			vs["ship_y"] = berth("WORLD_POST").y
 			return true
 	return false
 
@@ -1230,7 +1315,11 @@ func _draw() -> void:
 	var y1 = mini(H - 1, int((cam.y + VIEW.y) / TS) + 2)
 	var bg = Color8(12, 10, 18)
 	var talls = []
-	if art != null:
+	if m7 != null:
+		for o in art.data.get("objects", []):
+			talls.append([float(o[7]) / UI.U, "a48", o, Vector2.ZERO])
+		y1 = y0 - 1
+	elif art != null:
 		draw_rect(Rect2(Vector2.ZERO, VIEW), bg)
 		art.draw_ground(self, cam)
 		art.collect(talls, cam, VIEW)
@@ -1315,8 +1404,13 @@ func _draw() -> void:
 	if vehicle == "ship" or ship_pos.x >= 0:
 		var sp = Vector2(ship_pos * TS) + ox if vehicle != "ship" else p_pos + ox
 		talls.append([sp.y + 15.6, "ship", null, sp])
+	if m7 != null:
+		talls = _m7_place(talls)
 	talls.sort_custom(func(a, b): return a[0] < b[0])
 	for t in talls:
+		if m7 != null:
+			UI.base = t[4]
+			draw_set_transform_matrix(UI.base)
 		match t[1]:
 			"prop":
 				var col: int = prop_col.get(t[2], 0)
@@ -1358,6 +1452,9 @@ func _draw() -> void:
 					_draw_char(p_sprite, p_dir, fr, t[3])
 			"ship":
 				_draw_ship(t[3])
+	if m7 != null:
+		UI.base = Transform2D.IDENTITY
+		draw_set_transform_matrix(UI.base)
 	for e in map["entities"]:
 		if e["type"] != "hazard" or not Game.eval_cond(e["cond"]):
 			continue
@@ -1380,13 +1477,29 @@ func _draw() -> void:
 		draw_rect(Rect2(Vector2.ZERO, VIEW), Color(0.02, 0.02, 0.08, 0.35))
 	if tint.a > 0:
 		draw_rect(Rect2(Vector2.ZERO, VIEW), tint)
+	if ov_node == null:
+		ov_node = Node2D.new()
+		ov_node.name = "FieldOverlay"
+		ov_node.z_index = 1
+		add_child(ov_node)
+		ov_node.draw.connect(_draw_overlay)
+	ov_node.queue_redraw()
+
+## Drawn on a child node so the world light (self_modulate at night) leaves the minimap and banners alone.
+func _draw_overlay() -> void:
+	var ci: CanvasItem = ov_node
+	if hud != null and not map.is_empty():
+		if show_map:
+			hud.draw_full(ci, Vector2(p_tile), time, str(map.get("name", "")))
+		elif Settings.get_v("minimap") != false and not busy:
+			hud.draw_mini(ci, Vector2(p_tile), m7.yaw if m7 != null else 0.0, time)
 	if banner_t > 0 and banner_text != "":
 		# location name window; slides up out of view during its last half second
 		var a = clampf(banner_t / 0.5, 0.0, 1.0)
 		var w = UI.width(banner_text) + 28
 		var r = Rect2(Vector2(round((320 - w) / 2.0), round(10 - (1.0 - a) * 34)), Vector2(w, 22))
-		UI.win(self, r)
-		UI.text(self, r.position + Vector2(14, 6), banner_text)
+		UI.win(ci, r)
+		UI.text(ci, r.position + Vector2(14, 6), banner_text)
 
 ## Native field objects: chests (dungeon pack), save points (blue beam effect), healing springs (green aura).
 var _chest_tex: Texture2D = null
@@ -1474,4 +1587,36 @@ func _draw_ship(pos: Vector2) -> void:
 		draw_texture(t, pos + Vector2(8 - t.get_width() / 2.0, 12 - t.get_height() + bob))
 
 func screen_pos_of(tile: Vector2i) -> Vector2:
+	if m7 != null:
+		var pr = m7.project(Vector2(tile * TS) + Vector2(8, 16))
+		return pr[0] - Vector2(8, 16)
 	return Vector2(tile * TS) - cam
+
+## Mode-7: every y-sorted sprite gets a depth key and a draw transform that scales it around its foot.
+func _m7_place(talls: Array) -> Array:
+	var keep = []
+	for t in talls:
+		var foot: Vector2
+		if t[1] == "a48":
+			var o = t[2]
+			foot = Vector2((float(o[5]) + float(o[3]) / 2.0) / UI.U, float(o[7]) / UI.U)
+		elif t[1] == "a48anim":
+			foot = Vector2(float(t[2][1]) / UI.U + 8, float(t[2][3]) / UI.U)
+		else:
+			foot = t[3] + cam + Vector2(8, 16)
+		var pr = m7.project(foot)
+		if pr[2] <= 8.0:
+			continue
+		var q: Vector2 = pr[0]
+		var sc: float = pr[1]
+		if q.x < -200 or q.x > 520 or q.y < -40 or q.y > 480:
+			continue
+		if absf(sc - 1.0) < 0.08:
+			sc = 1.0
+		var ff = foot - cam
+		t.append(Transform2D(0.0, Vector2(sc, sc), 0.0, (q - ff * sc).round()))
+		t[0] = -float(pr[2])
+		if t[1] == "ship" and vehicle == "ship":
+			t[0] = 1e9   # aloft: above every landmark
+		keep.append(t)
+	return keep
