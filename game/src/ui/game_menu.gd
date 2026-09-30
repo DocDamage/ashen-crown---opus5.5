@@ -192,7 +192,9 @@ func _draw_member_line(cid: String, p: Vector2, full: bool) -> void:
 	var m = Game.member(cid)
 	var s = Game.stats(cid)
 	var back = Game.row(cid) == "back"
-	var t: Texture2D = main.field.sprite_tex(cid)
+	var t: Texture2D = null if HeroArt.has_field(cid) else main.field.sprite_tex(cid)
+	if HeroArt.has_field(cid):
+		HeroArt.draw_field(self, cid, "down", false, p + Vector2(13 + (4 if back else 0), 31))
 	if t:
 		var cw = t.get_width() / 6
 		var chh = t.get_height() / 5

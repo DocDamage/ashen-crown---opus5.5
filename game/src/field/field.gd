@@ -1351,6 +1351,10 @@ func _outdoor() -> bool:
 const DIR_ROW := {"down": 0, "left": 1, "right": 2, "up": 3}
 
 func _draw_char(sprite: String, dir: String, frame: int, pos: Vector2) -> void:
+	if HeroArt.has_field(sprite):
+		draw_rect(Rect2(pos + Vector2(2, 14), Vector2(12, 2)), Color(0, 0, 0, 0.25))
+		HeroArt.draw_field(self, sprite, dir if not dir.begins_with("pose") else "down", frame > 0, pos + Vector2(8, 15.67))
+		return
 	var t = sprite_tex(sprite)
 	if t == null:
 		return

@@ -11,8 +11,9 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 from content import abilities as AB, enemies as EN, tables as TB  # noqa: E402
 from content import formations as FM  # noqa: E402
 from content import gear as GR  # noqa: E402
+from content import cast as CAST  # noqa: E402
 
-SUPPORTED_OPS = {"damage", "heal", "mp", "full_restore", "revive", "status", "cleanse", "dispel_positive", "atb", "oath",
+SUPPORTED_OPS = {"self_hp", "damage", "heal", "mp", "full_restore", "revive", "status", "cleanse", "dispel_positive", "atb", "oath",
                  "arm_overcast", "heat_exchange", "leap", "ground", "mine", "decoy", "steal", "protect", "lethal_guard",
                  "bramble", "flee", "evasion", "infuse", "resist", "reveal", "omen", "mirror", "feather", "quick_hands",
                  "witness", "status_ward", "row_back", "remove_hard", "cancel_charge", "concord", "steal_gold",
@@ -611,6 +612,7 @@ def main():
     content["tile_rules"] = {"solid": sorted(SOLID), "enc": sorted(ENCOUNTER_TERRAIN),
                              "tall": ["tree", "tree2", "lamp", "pillar", "statue", "shelf", "banner", "crystal_tall", "pipe_tall", "mast", "totem", "lantern_post"],
                              "passable_extra": ["door", "doorway", "stairs", "bridge", "ladder", "dock", "carpet", "grate"]}
+    CAST.apply(content, check_ops)
     content["scenes"] = parse_scenes()
     content["maps"] = parse_maps()
     check_maps(content["maps"], content["scenes"], content["items"], content["formations"])

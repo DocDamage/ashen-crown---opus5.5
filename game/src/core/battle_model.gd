@@ -1240,6 +1240,12 @@ func _apply_op(src: Battler, t: Battler, op: Dictionary, ctx: Dictionary) -> voi
 			if not t.extra.get("empowered", false):
 				t.extra["empowered"] = true
 				ev["results"].append({"id": t.id, "kind": "status+", "status": "empowered"})
+		"self_hp":
+			# Inferna: pay a share of max HP (never lethal)
+			var cost = mini(int(src.mhp * float(op.get("pct", 0.1))), src.hp - 1)
+			if cost > 0:
+				src.hp -= cost
+				ev["results"].append({"id": src.id, "kind": "damage", "amount": cost})
 		"guard_self":
 			t.defending = true
 			t.extra["shell"] = float(op.get("mult", 0.5))
@@ -1434,7 +1440,8 @@ func _do_damage(src: Battler, t: Battler, op: Dictionary, ctx: Dictionary) -> vo
 	t.hp = maxi(0, t.hp - amount)
 	t.hits_taken += 1
 	if op.get("drain", false) and src.alive():
-		var dr = mini(amount, src.mhp - src.hp)
+		var dfrac = float(op["drain"]) if typeof(op["drain"]) in [TYPE_FLOAT, TYPE_INT] and float(op["drain"]) < 1.0 else 1.0
+		var dr = mini(int(amount * dfrac), src.mhp - src.hp)
 		src.hp += dr
 		ev["results"].append({"id": src.id, "kind": "heal", "amount": dr})
 	if t.side == 1 and not physical and content["enemies"][t.ref].get("copy_element", false) and elem != "none":
