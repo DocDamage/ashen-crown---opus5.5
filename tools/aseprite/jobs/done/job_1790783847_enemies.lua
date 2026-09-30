@@ -1,0 +1,5 @@
+local A = dofile("F:/Ashen Crown/The Ashen Crown/Repo/tools/aseprite/lib_ashen.lua")
+local log, close = A.logger(A.OUT .. "_logs/enemies_v2_1790783847.txt")
+local M = dofile("F:/Ashen Crown/The Ashen Crown/Repo/tools/aseprite/enemy_v2.lua")
+M.run({"E001", "E009", "B06", "E027"}, log)
+close()

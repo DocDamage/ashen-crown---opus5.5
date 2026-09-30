@@ -151,11 +151,42 @@ func _enemy_size(eid: String) -> Vector2:
 		return Vector2(32, 32)
 	var art = _enemy_art(b)
 	if art:
+		var em = _enemy_meta(b)
+		if not em.is_empty():
+			return Vector2(float(em.get("w", 32)), float(em.get("h", 32))) / float(UI.U)
 		return Vector2(art.get_width(), art.get_height()) / float(UI.U)
 	var tx = _enemy_tex(b)
 	if tx == null:
 		return Vector2(32, 32)
 	return Vector2(tx.get_width() / 4, tx.get_height())
+
+## Frame strip metadata for enemy art v2 (cell, foot, tags idle/attack/cast/hurt); empty for single images.
+var _emeta = {}
+func _enemy_meta(b) -> Dictionary:
+	var key: String = str(Content.enemy(b.ref).get("sprite", b.ref)).split("@")[0]
+	if not _emeta.has(key):
+		var jp = "res://assets/ext/enemies/%s.json" % key
+		_emeta[key] = JSON.parse_string(FileAccess.get_file_as_string(jp)) if FileAccess.file_exists(jp) else {}
+		if _emeta[key] == null:
+			_emeta[key] = {}
+	return _emeta[key]
+
+## Which frame of the strip to show now.
+func _enemy_frame(eid: String, e, m: Dictionary) -> int:
+	var tags: Dictionary = m.get("tags", {})
+	var a: Dictionary = anim.get(eid, {})
+	if not a.is_empty() and float(a["t"]) < 0.55 and tags.has(a["name"]):
+		var r: Array = tags[a["name"]]
+		var n = int(r[1]) - int(r[0]) + 1
+		return int(r[0]) + mini(int(float(a["t"]) / 0.55 * n), n - 1)
+	if flashes.get(eid, 0.0) > 0 and tags.has("hurt"):
+		return int(tags["hurt"][0])
+	if e.state == "CASTING" and tags.has("cast"):
+		return int(tags["cast"][0]) + int(t * 4.0) % 2
+	var idle: Array = tags.get("idle", [0, 0])
+	var seq = [0, 1, 2, 1]
+	var k = seq[int(t * 3.0 + float(hash(eid) % 5)) % 4]
+	return int(idle[0]) + mini(k, int(idle[1]) - int(idle[0]))
 
 ## Native-resolution enemy art (assets/ext/enemies/<sprite>.png, installed by tools/art/install_overhaul.py enemies).
 func _enemy_art(b) -> Texture2D:
@@ -300,7 +331,10 @@ func _present_action(ev: Dictionary, sk: bool) -> void:
 		offsets[b.id] = Vector2(-10, 0) if not HeroArt.has_battle(b.ref) else Vector2(-16, 0)
 	else:
 		offsets[b.id] = Vector2(8, 0)
-		flashes[b.id] = 0.15
+		if _enemy_meta(b).is_empty():
+			flashes[b.id] = 0.15
+		else:
+			anim[b.id] = {"name": "cast" if an in ["cast", "summon", "item"] else "attack", "t": 0.0}
 	var elem: String = ev.get("element", "physical")
 	var sfx = "FX014"
 	match an:
@@ -766,6 +800,29 @@ func _draw() -> void:
 		var tx = _enemy_tex(e)
 		var p: Vector2 = enemy_pos.get(eid, Vector2(88, 110)) + offsets.get(eid, Vector2.ZERO)
 		var art = _enemy_art(e)
+		var em: Dictionary = _enemy_meta(e) if art else {}
+		if art and not em.is_empty():
+			# frame strip: idle breathing, attack/cast/hurt frames (tools/aseprite/enemy_v2.lua)
+			var cw = int(em["cell"][0])
+			var chh = int(em["cell"][1])
+			var fx = int(em["foot"][0])
+			var fy = int(em["foot"][1])
+			var fi = _enemy_frame(eid, e, em)
+			_draw_shadow(p, float(em.get("w", cw)) / float(UI.U))
+			var mod2 = Color.WHITE
+			if e.state == "CASTING":
+				var k2 = 0.5 + 0.5 * sin(t * 10.0)
+				mod2 = Color(1.0, 1.0 - 0.35 * k2, 1.0 - 0.35 * k2)
+			UI.native_begin(self, (p * UI.U).round() / UI.U)
+			var dst2 = Rect2(Vector2(-fx, -fy), Vector2(cw, chh))
+			var srcr = Rect2(fi * cw, 0, cw, chh)
+			draw_texture_rect_region(art, dst2, srcr, mod2)
+			if flashes.get(eid, 0.0) > 0 and not Settings.get_v("reduced_flash"):
+				draw_texture_rect_region(art, dst2, srcr, Color(3, 3, 3, 0.4))
+			UI.native_end(self)
+			if e.state == "CASTING":
+				UI.text(self, p + Vector2(-4, -float(em.get("h", chh)) / float(UI.U) - 12), "!", UI.C_RED if int(t * 4) % 2 == 0 else UI.C_HI)
+			continue
 		if art:
 			# painted/pixel art at native resolution: gentle breathing bob, red pulse while casting, white flash on hurt
 			var aw = art.get_width()
