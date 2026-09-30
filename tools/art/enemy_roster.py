@@ -18,3 +18,9 @@ ROSTER = {
     "B12": ("R:07", 116, 0), "B13": ("b81", 100, 0), "B13_P1": ("b145", 48, 0), "B14": ("R:12", 116, 0),
     "B15": ("G:1/Boss (2)", 120, 0), "B16": ("R:08", 124, 0),
 }
+
+# expansion bestiary (tools/content/bestiary2.py)
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "content"))
+import bestiary2 as _BX  # noqa: E402
+ROSTER.update(_BX.ROSTER)
