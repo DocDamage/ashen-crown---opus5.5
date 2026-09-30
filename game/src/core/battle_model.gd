@@ -9,6 +9,8 @@ const HARD_CONTROL := ["sleep", "stun"]
 const REMOVABLE_NEG := ["poison", "burn", "bleed", "silence", "sleep", "stun", "slow", "mark", "guardbreak", "blind", "doom", "weaken"]
 const REMOVABLE_POS := ["haste", "barrier", "regen", "focus"]
 const SPELL_KINDS := ["magical", "heal", "revive"]
+const LIMIT_MAX := 100.0
+const SWAP_ATB := 400.0      # a hero swapped in from the reserve enters with a partly filled gauge
 
 class Battler:
 	var id = ""
@@ -75,6 +77,13 @@ class Battler:
 	var mercy_used = false
 	var dispel_ward_used = false
 	var extra = {}
+	# expansion battle systems (limit breaks, blue magic, capture)
+	var limit = 0.0
+	var limits = []
+	var limit_used = []
+	var blue = []
+	var blue_rule = ""
+	var link = ""
 
 	func alive() -> bool:
 		return state != "KO"
@@ -102,6 +111,7 @@ var concord = 0
 var flee_meter = 0
 var can_flee = true
 var is_boss_battle = false
+var party_kos = 0            # sys s4: knockouts suffered by the party this battle (no-KO boss achievements)
 var mode = "wait"
 var speed = 1.0
 var menu_open = false
@@ -122,6 +132,11 @@ var seed_used = 0
 var ready_order = []    # player battlers waiting for input, ordered
 var stats = {"actions": 0}
 var stolen_items = []
+var reserve_ids = []    # up to 3 reserve heroes (battlers built at setup, outside party_ids until swapped in)
+var blue_new = {}       # blue ability id -> cid of the hero who learned it this battle
+var captured = []       # enemy content ids captured this battle
+var morph_items = []    # rare items from captures
+var limit_active = false
 
 func _init(p_content: Dictionary) -> void:
 	content = p_content
@@ -144,9 +159,35 @@ func setup(party: Array, enemies: Array, inv: Dictionary, seed_value: int, opts:
 	encounter = opts.get("encounter", {})
 	var i = 1
 	for p in party:
-		var b = Battler.new()
-		b.id = "A%d" % i
+		var b = _build_hero(p, "A%d" % i, opts)
 		i += 1
+		battlers[b.id] = b
+		party_ids.append(b.id)
+	for p in opts.get("reserves", []).slice(0, 3):
+		var rb = _build_hero(p, "A%d" % i, opts)
+		i += 1
+		battlers[rb.id] = rb
+		reserve_ids.append(rb.id)
+	var e = 1
+	for spec in enemies:
+		add_enemy(spec, e)
+		e += 1
+	is_boss_battle = opts.get("boss", false)
+	for eid in enemy_ids:
+		if battlers[eid].is_boss():
+			is_boss_battle = true
+	can_flee = not is_boss_battle and not opts.get("no_flee", false)
+	# initial readiness spread so identical speeds do not act on the same frame
+	for bid in party_ids + enemy_ids:
+		var b: Battler = battlers[bid]
+		if b.side == 1:
+			b.atb = float(rng.randi_range(0, 300))
+		else:
+			b.atb += float(rng.randi_range(100, 400))
+
+func _build_hero(p: Dictionary, bid: String, opts: Dictionary) -> Battler:
+		var b = Battler.new()
+		b.id = bid
 		b.side = 0
 		b.ref = p["cid"]
 		b.name = p["name"]
@@ -179,24 +220,12 @@ func setup(party: Array, enemies: Array, inv: Dictionary, seed_value: int, opts:
 			pass
 		if p.get("link", "") != "":
 			links[b.id] = p["link"]
-		battlers[b.id] = b
-		party_ids.append(b.id)
-	var e = 1
-	for spec in enemies:
-		add_enemy(spec, e)
-		e += 1
-	is_boss_battle = opts.get("boss", false)
-	for eid in enemy_ids:
-		if battlers[eid].is_boss():
-			is_boss_battle = true
-	can_flee = not is_boss_battle and not opts.get("no_flee", false)
-	# initial readiness spread so identical speeds do not act on the same frame
-	for bid in party_ids + enemy_ids:
-		var b: Battler = battlers[bid]
-		if b.side == 1:
-			b.atb = float(rng.randi_range(0, 300))
-		else:
-			b.atb += float(rng.randi_range(100, 400))
+		b.link = str(p.get("link", ""))
+		b.limit = clampf(float(p.get("limit", 0.0)), 0.0, LIMIT_MAX)
+		b.limits = p.get("limits", []).duplicate()
+		b.blue = p.get("blue", []).duplicate()
+		b.blue_rule = str(p.get("blue_rule", ""))
+		return b
 
 func add_enemy(spec, idx: int) -> Battler:
 	var eid: String = spec if typeof(spec) == TYPE_STRING else spec["id"]
@@ -371,9 +400,11 @@ func validate(b: Battler, cmd: Dictionary) -> Dictionary:
 			var a = ability(cmd.get("id", ""))
 			if a.is_empty():
 				return {"ok": false, "reason": "Unknown technique"}
-			if not b.abilities.has(a["id"]):
+			if not (b.abilities.has(a["id"]) or b.limits.has(a["id"]) or b.blue.has(a["id"])):
 				return {"ok": false, "reason": "Not learned"}
-			if b.has("silence") and a.get("family", "skill") == "spell":
+			if int(a.get("limit_tier", 0)) > 0 and b.limit < LIMIT_MAX:
+				return {"ok": false, "reason": "Limit %d%%" % int(b.limit)}
+			if b.has("silence") and a.get("family", "skill") in ["spell", "blue"]:
 				return {"ok": false, "reason": "Silenced"}
 			var cost = mp_cost(b, a)
 			if b.mp < cost:
@@ -382,6 +413,20 @@ func validate(b: Battler, cmd: Dictionary) -> Dictionary:
 			if not r["ok"]:
 				return r
 			return {"ok": true, "cost": cost}
+		"swap":
+			var rid: String = str(cmd.get("reserve", ""))
+			if reserve_ids.is_empty():
+				return {"ok": false, "reason": "No one in reserve"}
+			if rid == "":
+				for x in reserve_ids:
+					if battlers[x].alive():
+						return {"ok": true}
+				return {"ok": false, "reason": "The reserve cannot fight"}
+			if not reserve_ids.has(rid):
+				return {"ok": false, "reason": "Not in reserve"}
+			if not battlers[rid].alive():
+				return {"ok": false, "reason": "Unable to fight"}
+			return {"ok": true}
 		"summon":
 			var vid: String = links.get(b.id, "")
 			if vid == "":
@@ -458,6 +503,9 @@ func commit(b: Battler, cmd: Dictionary) -> Dictionary:
 			var cost: int = v["cost"]
 			b.mp -= cost
 			act["reserved_mp"] = cost
+			if int(a.get("limit_tier", 0)) > 0:
+				act["reserved_limit"] = b.limit
+				b.limit = 0.0
 			cast = float(a.get("cast", 0.0))
 			for op in a.get("ops", []):
 				if op["op"] == "leap":
@@ -621,6 +669,8 @@ func _refund(act: Dictionary) -> void:
 	if act.has("reserved_concord"):
 		concord += int(act["reserved_concord"])
 		summons_used.erase(act.get("vestige", ""))
+	if act.has("reserved_limit"):
+		b.limit = maxf(b.limit, float(act["reserved_limit"]))
 
 func _resolve(act: Dictionary) -> void:
 	var b: Battler = battlers[act["actor"]]
@@ -663,6 +713,8 @@ func _resolve(act: Dictionary) -> void:
 			b.row = "back" if b.row == "front" else "front"
 			ev["name"] = "Row: " + b.row
 			ev["anim"] = "step"
+		"swap":
+			_do_swap(b, act, ev)
 		"escape":
 			ev["name"] = "Escape"
 			ev["anim"] = "step"
@@ -676,7 +728,12 @@ func _resolve(act: Dictionary) -> void:
 			ev["anim"] = a.get("anim", "cast")
 			ev["element"] = a.get("element", "none")
 			ev["ability"] = a["id"]
+			if int(a.get("limit_tier", 0)) > 0:
+				ev["limit"] = true
+				b.limit_used.append(a["id"])
+				limit_active = true
 			_run_ability(b, a, act, ctx)
+			limit_active = false
 		"summon":
 			var vid: String = act["vestige"]
 			var sid: String = content["vestiges"][vid]["summon"]
@@ -721,11 +778,11 @@ func _after_action(b: Battler, act: Dictionary, ctx: Dictionary) -> void:
 	# damage/heal over time after an actual resolved action
 	var tick_ops = []
 	if b.has("poison"):
-		tick_ops.append(["poison", int(ceil(b.mhp * 0.04)), true])
+		tick_ops.append(["poison", mini(F.DAMAGE_CAP, int(ceil(b.mhp * 0.04))), true])
 	if b.has("burn"):
-		tick_ops.append(["burn", int(ceil(b.mhp * 0.03)), true])
+		tick_ops.append(["burn", mini(F.DAMAGE_CAP, int(ceil(b.mhp * 0.03))), true])
 	if b.has("bleed") and ctx.get("physical_action", false):
-		tick_ops.append(["bleed", int(ceil(b.mhp * 0.05)), true])
+		tick_ops.append(["bleed", mini(F.DAMAGE_CAP, int(ceil(b.mhp * 0.05))), true])
 	if b.has("regen"):
 		tick_ops.append(["regen", int(floor(b.mhp * 0.05)), false])
 	if b.side == 0 and b.passives.has("mp_regen") and b.mp < b.mmp:
@@ -1007,6 +1064,7 @@ func _resolve_enemy(b: Battler, act: Dictionary, ctx: Dictionary) -> void:
 		for t in tl:
 			_apply_op(b, t, o, ctx)
 	b.hits_taken = 0
+	_blue_observe(b, act["move"], targets)
 
 # ======================================================================
 # Operation handlers
@@ -1185,6 +1243,17 @@ func _apply_op(src: Battler, t: Battler, op: Dictionary, ctx: Dictionary) -> voi
 		"reveal":
 			ev["results"].append({"id": t.id, "kind": "reveal", "what": op.get("what", "affinity")})
 			_push_to(ev, "reveal", {"id": t.ref, "what": op.get("what", "affinity")})
+			if op.get("what", "") == "scan":
+				# Libra (systems s2): read the target aloud; the bestiary entry fills in battle_scene
+				var wk = []
+				for el in t.aff:
+					if t.aff[el] == "weak":
+						wk.append(str(el).capitalize())
+				ev["msgs"].append("%s  Lv %d  HP %d/%d" % [t.name, t.level, t.hp, t.mhp])
+				ev["msgs"].append("Weak: %s" % (", ".join(wk) if not wk.is_empty() else "nothing"))
+		"scan_foe":
+			# an enemy that reads the party (systems s2): a message, no effect
+			ev["msgs"].append("%s scans %s: HP %d/%d." % [src.name, t.name, t.hp, t.mhp])
 		"omen":
 			var nm = next_scheduled_move(t)
 			var mv: Dictionary = _enemy_def(t).get("moves", {}).get(nm, {})
@@ -1260,6 +1329,8 @@ func _apply_op(src: Battler, t: Battler, op: Dictionary, ctx: Dictionary) -> voi
 			pass
 		"wingbeat":
 			src.once["wingbeat_cycle"] = true
+		"capture":
+			_do_capture(src, t, ctx)
 		"msg":
 			ev["msgs"].append(op["text"])
 		_:
@@ -1416,6 +1487,7 @@ func _do_damage(src: Battler, t: Battler, op: Dictionary, ctx: Dictionary) -> vo
 			crit = true
 			dmg *= 1.5
 	var amount = maxi(1, int(floor(dmg)))
+	amount = mini(amount, damage_cap(src, op))
 	if t.tags.has("part"):
 		amount = mini(amount, t.hp - 1)
 		if amount <= 0:
@@ -1439,6 +1511,7 @@ func _do_damage(src: Battler, t: Battler, op: Dictionary, ctx: Dictionary) -> vo
 		return
 	t.hp = maxi(0, t.hp - amount)
 	t.hits_taken += 1
+	_limit_fill(src, t, amount)
 	if op.get("drain", false) and src.alive():
 		var dfrac = float(op["drain"]) if typeof(op["drain"]) in [TYPE_FLOAT, TYPE_INT] and float(op["drain"]) < 1.0 else 1.0
 		var dr = mini(int(amount * dfrac), src.mhp - src.hp)
@@ -1539,6 +1612,8 @@ func _dain_reactions(t: Battler, amount: int, ctx: Dictionary, op: Dictionary) -
 func _ko(t: Battler, ctx: Dictionary) -> void:
 	if t.state == "KO":
 		return
+	if t.side == 0:
+		party_kos += 1
 	t.hp = 0
 	t.state = "KO"
 	t.statuses = {}
@@ -1682,9 +1757,10 @@ func rewards() -> Dictionary:
 ## Party end-state for writing back to the campaign.
 func party_end_state() -> Array:
 	var out = []
-	for pid in party_ids:
+	for pid in party_ids + reserve_ids:
 		var b: Battler = battlers[pid]
-		out.append({"cid": b.ref, "hp": b.hp, "mp": b.mp, "row": b.row})
+		out.append({"cid": b.ref, "hp": b.hp, "mp": b.mp, "row": b.row, "limit": b.limit, "limit_used": b.limit_used.duplicate(),
+			"active": party_ids.has(pid)})
 	return out
 
 ## Hash of the authoritative state (for determinism tests).
@@ -1709,6 +1785,114 @@ func run_until_input(max_ticks: int = 100000) -> Battler:
 		step()
 		n += 1
 	return null
+
+# ======================================================================
+# Expansion battle systems (branch s1): damage cap, limit gauge, party swap, blue magic, capture
+# ======================================================================
+## 9,999 per hit; `uncapped` ops and heroes with the break_damage passive go to 99,999.
+func damage_cap(src: Battler, op: Dictionary) -> int:
+	if op.get("uncapped", false) or (src != null and src.side == 0 and src.passives.has("break_damage")):
+		return F.DAMAGE_BREAK_CAP
+	return F.DAMAGE_CAP
+
+## Gauge fills from damage taken (share of max HP) and dealt (per hit); only heroes with limits have a gauge.
+func _limit_fill(src: Battler, t: Battler, amount: int) -> void:
+	var cfg: Dictionary = content.get("limits", {})
+	if t.side == 0 and not t.limits.is_empty() and t.mhp > 0 and t.alive():
+		t.limit = minf(LIMIT_MAX, t.limit + float(cfg.get("fill_taken", 75.0)) * float(amount) / float(t.mhp))
+	if src != null and src.side == 0 and t.side == 1 and not src.limits.is_empty() and not limit_active:
+		src.limit = minf(LIMIT_MAX, src.limit + float(cfg.get("fill_dealt", 2.5)))
+
+func limit_ready(b: Battler) -> bool:
+	return b.side == 0 and not b.limits.is_empty() and b.limit >= LIMIT_MAX
+
+func reserves_alive() -> Array:
+	return reserve_ids.filter(func(x): return battlers[x].alive())
+
+## The acting hero steps back into the reserve; the chosen reserve takes the same slot with a partly filled gauge.
+func _do_swap(b: Battler, act: Dictionary, ev: Dictionary) -> void:
+	var rid: String = str(act.get("reserve", ""))
+	if rid == "" or not reserve_ids.has(rid) or not battlers[rid].alive():
+		rid = ""
+		for x in reserve_ids:
+			if battlers[x].alive():
+				rid = x
+				break
+	ev["anim"] = "step"
+	if rid == "":
+		ev["name"] = "Swap"
+		ev["msgs"].append("No one can take the place.")
+		return
+	var nb: Battler = battlers[rid]
+	var idx = party_ids.find(b.id)
+	party_ids[idx] = rid
+	reserve_ids[reserve_ids.find(rid)] = b.id
+	nb.state = "FILLING"
+	nb.atb = SWAP_ATB
+	nb.timer = 0.0
+	nb.pending = {}
+	nb.defending = false
+	b.defending = false
+	b.oath = ""
+	ev["name"] = "%s steps in" % nb.name
+	ev["swap"] = {"out": b.id, "in": rid}
+	ev["results"].append({"id": rid, "kind": "swap_in"})
+
+## Blue magic: a learnable enemy move resolving near a blue mage ("see": any use; "hit": the mage was a target).
+func _blue_observe(e: Battler, move: String, targets: Array) -> void:
+	var src: Dictionary = content.get("blue", {}).get("src", {})
+	if src.is_empty() or e.side != 1:
+		return
+	var bid: String = str(src.get(e.ref + ":" + move, ""))
+	if bid == "":
+		var base = str(_enemy_def(e).get("variant_of", ""))
+		if base != "":
+			bid = str(src.get(base + ":" + move, ""))
+	if bid == "" or blue_new.has(bid):
+		return
+	for pid in party_ids:
+		var p: Battler = battlers[pid]
+		if p.blue_rule == "" or not p.alive() or p.blue.has(bid):
+			continue
+		if p.blue_rule == "see" or (p.blue_rule == "hit" and targets.has(p)):
+			blue_new[bid] = p.ref
+			return
+
+## Capture (Sak): a weakened non-boss enemy leaves the battle and joins Game.S.captured; sometimes it morphs.
+func _do_capture(src: Battler, t: Battler, ctx: Dictionary) -> void:
+	var ev: Dictionary = ctx["ev"]
+	var cfg: Dictionary = content.get("capture", {})
+	if t.side != 1 or not t.alive():
+		return
+	if t.is_boss() or t.tags.has("part") or t.tags.has("superboss") or _enemy_def(t).get("no_capture", false):
+		ev["results"].append({"id": t.id, "kind": "immune"})
+		ev["msgs"].append("%s cannot be captured." % t.name)
+		return
+	var hf = float(cfg.get("hp_frac", 0.5))
+	var frac = float(t.hp) / float(maxi(1, t.mhp))
+	if frac > hf:
+		ev["results"].append({"id": t.id, "kind": "resist"})
+		ev["msgs"].append("%s is too strong to capture." % t.name)
+		return
+	var chance = minf(float(cfg.get("max", 95)), float(cfg.get("base", 35)) + (hf - frac) * float(cfg.get("slope", 120)))
+	if not rng.chance(chance):
+		ev["results"].append({"id": t.id, "kind": "miss"})
+		ev["msgs"].append("%s slips the net." % t.name)
+		return
+	captured.append(t.ref)
+	t.extra["captured"] = true
+	var msg = "Captured %s!" % t.name
+	if rng.chance(float(cfg.get("morph_chance", 25))):
+		var item = ""
+		for row in cfg.get("morph", []):
+			if t.level >= int(row[0]):
+				item = str(row[1])
+		if item != "" and content["items"].has(item):
+			morph_items.append(item)
+			msg = "Captured %s. It morphs into %s!" % [t.name, content["items"][item]["name"]]
+	ev["results"].append({"id": t.id, "kind": "capture"})
+	ev["msgs"].append(msg)
+	_ko(t, ctx)
 
 static func _push_to(d: Dictionary, key: String, v) -> void:
 	if not d.has(key):

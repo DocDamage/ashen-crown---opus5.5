@@ -49,6 +49,10 @@ var hint_t = 0.0
 var _victory_pose = false
 var intent_reveal = false
 var fast = false
+# sys s4: auto-battle ("attack" or "repeat" each hero's last command), toggled with Run during battle
+var auto_mode = "off"
+var auto_default = "off"
+var last_cmd = {}
 
 func setup(form_id: String, seed_value: int, opts: Dictionary) -> void:
 	form = Content.formation(form_id)
@@ -56,7 +60,8 @@ func setup(form_id: String, seed_value: int, opts: Dictionary) -> void:
 	var party = Game.battle_party()
 	model.setup(party, form["enemies"], Game.battle_inventory(), seed_value,
 		{"mode": Settings.get_v("battle_mode"), "speed": float(Settings.get_v("battle_speed")), "boss": form.get("boss", false),
-		 "encounter": form, "difficulty": Game.DIFFICULTY.get(Game.difficulty(), {}), "no_flee": opts.get("flags", []).has("noflee")})
+		 "encounter": form, "difficulty": Game.battle_difficulty(), "no_flee": opts.get("flags", []).has("noflee"),
+		 "reserves": Game.battle_reserve_party() if not opts.get("flags", []).has("noreserve") else []})
 	bg = _t("res://assets/battle_bg/%s.png" % form.get("bg", "quarry"))
 	bg_native = bg != null
 	if bg == null:
@@ -72,12 +77,14 @@ func setup(form_id: String, seed_value: int, opts: Dictionary) -> void:
 	layer.scale = Vector2(UI.U, UI.U)
 	add_child(layer)
 	layer.add_child(ui)
-	for bid in model.party_ids:
+	for bid in model.party_ids + model.reserve_ids:
 		anim[bid] = {"name": "idle", "t": randf()}
 	Audio.music(form.get("music", "M025"), 0.0)
 	hint = form.get("hint", "")
 	hint_t = 6.0 if hint != "" else 0.0
 	intent_reveal = false
+	auto_default = str(Settings.get_v("auto_battle")) if Settings.get_v("auto_battle") != null else "off"
+	auto_mode = auto_default if not QA.active else "off"
 	for bid in model.party_ids:
 		if model.battlers[bid].passives.has("reveal_affinity"):
 			for eid in model.enemy_ids:
@@ -247,7 +254,10 @@ func _process(delta: float) -> void:
 		if cmd_menu == null and target_mode == "" and sub_menu == null:
 			var w = model.awaiting_input()
 			if w != null:
-				_open_commands(w)
+				if auto_mode != "off" and _auto_command(w):
+					pass
+				else:
+					_open_commands(w)
 
 func _finish() -> void:
 	if done:
@@ -264,7 +274,7 @@ func _finish() -> void:
 func show_victory() -> void:
 	if Audio.jingle("victory") <= 0.0:
 		Audio.music("M029", 0.0)
-	banner = "Victory"
+	banner = T.s("battle.victory")
 	banner_t = 1.6
 	await get_tree().create_timer(1.4).timeout
 
@@ -506,10 +516,18 @@ func _result_popup(r: Dictionary, elem: String, ev: Dictionary) -> void:
 		"oath":
 			txt = "Oath: " + str(r["status"]).capitalize()
 			col = UI.C_GOLD
+		"capture":
+			txt = "CAPTURED"
+			col = UI.C_GOLD
+		"swap_in":
+			txt = "IN"
+			col = UI.C_HI
+			anim[id] = {"name": "idle", "t": 0.0}
 		"atb", "reveal", "spawn", "decoy", "doom":
 			txt = "" if r["kind"] != "doom" else "DOOM"
 	if txt != "":
-		popups.append({"text": txt, "pos": pos + Vector2(0, -8 * _stack_at(id)), "t": 1.0, "col": col, "id": id})
+		popups.append({"text": txt, "pos": pos + Vector2(0, -8 * _stack_at(id)), "t": 1.0, "col": col, "id": id,
+			"elem": elem if r["kind"] == "damage" and elem not in ["", "none", "physical"] else ""})
 
 func _stack_at(id: String) -> int:
 	var n = 0
@@ -542,22 +560,32 @@ func _open_commands(b) -> void:
 	model.begin_select(b)
 	var cdef = Content.ch(b.ref)
 	var items = [
-		{"text": "Attack", "value": "attack"},
-		{"text": cdef["role_command"], "value": "role", "enabled": _role_list(b).size() > 0, "reason": "No techniques"},
+		{"text": T.s("battle.attack"), "value": "attack"},
+		{"text": cdef["role_command"], "value": "role", "enabled": _role_list(b).size() > 0, "reason": T.s("battle.no_techniques")},
 	]
+	if model.limit_ready(b):
+		items.push_front({"text": "Limit", "value": "limit", "color": UI.C_GOLD, "desc": "The limit gauge is full."})
 	if not _magic_list(b).is_empty():
-		items.append({"text": "Magic", "value": "magic"})
+		items.append({"text": T.s("battle.magic"), "value": "magic"})
+	if b.blue_rule != "":
+		items.append({"text": "Lore", "value": "lore", "enabled": not b.blue.is_empty(), "reason": "No enemy lore learned yet"})
+	var cap_id = str(Content.data.get("capture", {}).get("id", ""))
+	if cap_id != "" and b.abilities.has(cap_id):
+		items.append({"text": "Capture", "value": "capture", "desc": Content.ability(cap_id).get("desc", "")})
 	items += [
-		{"text": "Item", "value": "item"},
-		{"text": "Defend", "value": "defend"},
+		{"text": T.s("battle.item"), "value": "item"},
+		{"text": T.s("battle.defend"), "value": "defend"},
 	]
 	var vid: String = model.links.get(b.id, "")
 	if vid != "":
 		var v = model.validate(b, {"type": "summon"})
-		items.append({"text": "Summon", "value": "summon", "enabled": v["ok"], "reason": v.get("reason", "")})
-	items.append({"text": "Row", "value": "row"})
+		items.append({"text": T.s("battle.summon"), "value": "summon", "enabled": v["ok"], "reason": v.get("reason", "")})
+	if not model.reserve_ids.is_empty():
+		var vs = model.validate(b, {"type": "swap"})
+		items.append({"text": "Swap", "value": "swap", "enabled": vs["ok"], "reason": vs.get("reason", "")})
+	items.append({"text": T.s("battle.row"), "value": "row"})
 	var ve = model.validate(b, {"type": "escape"})
-	items.append({"text": "Escape", "value": "escape", "enabled": ve["ok"], "reason": ve.get("reason", "")})
+	items.append({"text": T.s("battle.escape"), "value": "escape", "enabled": ve["ok"], "reason": ve.get("reason", "")})
 	cmd_menu = MenuList.new()
 	cmd_menu.position = Vector2(4, 170)
 	cmd_menu.size = Vector2(88, 68)
@@ -582,7 +610,7 @@ func _role_list(b) -> Array:
 	var out = []
 	for aid in b.abilities:
 		var a = Content.ability(aid)
-		if a.is_empty() or a.get("kind", "") == "summon" or str(a.get("owner", "")) != b.ref:
+		if a.is_empty() or a.get("kind", "") == "summon" or str(a.get("owner", "")) != b.ref or a.has("command"):
 			continue
 		out.append(aid)
 	return out
@@ -620,18 +648,37 @@ func _on_cmd(_i: int, it: Dictionary) -> void:
 			_open_sub_abilities(b, true)
 		"item":
 			_open_sub_items(b)
+		"limit":
+			_open_sub_abilities(b, false, b.limits)
+		"lore":
+			_open_sub_abilities(b, false, b.blue)
+		"capture":
+			pending_cmd = {"type": "ability", "id": str(Content.data["capture"]["id"])}
+			_begin_target("enemy_one")
+		"swap":
+			_open_sub_swap(b)
 
 func _confirm_summon(a: Dictionary) -> void:
 	_commit({"type": "summon"})
 
-func _open_sub_abilities(b, magic: bool = false) -> void:
+func _open_sub_abilities(b, magic: bool = false, only: Array = []) -> void:
 	var items = []
-	for aid in (_magic_list(b) if magic else _role_list(b)):
+	for aid in (only if not only.is_empty() else (_magic_list(b) if magic else _role_list(b))):
 		var a = Content.ability(aid)
 		var v = model.validate(b, {"type": "ability", "id": aid})
 		var cost = model.mp_cost(b, a)
 		items.append({"spell": aid, "text": a["name"], "right": str(cost) if cost > 0 else "", "value": aid, "enabled": v["ok"], "reason": v.get("reason", ""), "desc": a.get("desc", "")})
 	_open_sub(items, "role")
+
+## Swap: pick a reserve hero to take the acting hero's place.
+func _open_sub_swap(b) -> void:
+	var items = []
+	for rid in model.reserve_ids:
+		var r = model.battlers[rid]
+		var v = model.validate(b, {"type": "swap", "reserve": rid})
+		items.append({"text": r.name, "right": "%d/%d" % [r.hp, r.mhp], "value": rid, "enabled": v["ok"], "reason": v.get("reason", ""),
+			"desc": "%s steps back; %s enters with readiness partly filled." % [b.name, r.name]})
+	_open_sub(items, "swap")
 
 func _open_sub_items(b) -> void:
 	var items = []
@@ -657,6 +704,9 @@ func _open_sub(items: Array, kind: String) -> void:
 	main.router.push(sub_menu)
 	sub_menu.set_meta("kind", kind)
 	sub_menu.chosen.connect(func(_i, it):
+		if kind == "swap":
+			_commit({"type": "swap", "reserve": it["value"]})
+			return
 		if kind == "role":
 			var a = Content.ability(it["value"])
 			pending_cmd = {"type": "ability", "id": it["value"]}
@@ -766,6 +816,8 @@ func _commit(c: Dictionary) -> void:
 		banner = r["reason"]
 		banner_t = 1.2
 		return
+	if selecting != null:
+		last_cmd[selecting.ref] = c.duplicate(true)
 	_close_menus()
 
 func _close_menus() -> void:
@@ -949,6 +1001,18 @@ func _draw() -> void:
 	for p in popups:
 		var yoff: float = (1.0 - p["t"]) * 10.0
 		UI.text_center(self, p["pos"].x, p["pos"].y - yoff, p["text"], p["col"])
+		if str(p.get("elem", "")) != "" and UI.cues_on():
+			UI.elem_badge(self, Vector2(p["pos"].x - UI.width(p["text"]) / 2.0 - 18, p["pos"].y - yoff), p["elem"])
+
+## Limit gauge: a slim bar under the readiness gauge; pulses red/gold when full.
+func _draw_limit_gauge(c: CanvasItem, r: Rect2, b) -> void:
+	var k = clampf(b.limit / BattleModel.LIMIT_MAX, 0.0, 1.0)
+	c.draw_rect(r, Color8(30, 18, 30))
+	var col = Color8(220, 90, 150)
+	if k >= 1.0:
+		col = UI.C_GOLD if int(t * 6.0) % 2 == 0 else Color8(255, 90, 70)
+	if k > 0.0:
+		c.draw_rect(Rect2(r.position, Vector2(r.size.x * k, r.size.y)), col)
 
 ## Soft stepped contact shadow under a battler (keeps pale enemies grounded on bright floors).
 func _draw_shadow(p: Vector2, w: float) -> void:
@@ -1039,6 +1103,8 @@ func _draw_ui() -> void:
 		UI.text_right(c, px + 140, yy, "%d/%d" % [b.hp, b.mhp], hpc)
 		UI.text_right(c, px + 160, yy, str(b.mp), UI.C_BLUE)
 		UI.gauge(c, Rect2(px + 164, yy + 2, 36, 6), b.atb / 1000.0, UI.C_GOLD if ready else Color8(90, 150, 220))
+		if not b.limits.is_empty():
+			_draw_limit_gauge(c, Rect2(px + 164, yy + 9, 36, 2), b)
 		UI.gauge(c, Rect2(px, yy + 10.67, 160, 1.34 if pitch < 16 else 2), float(b.hp) / b.mhp, UI.C_GREEN if float(b.hp) / b.mhp > 0.25 else UI.C_RED)
 	# Concord (and the shared escape meter) sit in slim tabs on the arena's bottom edge
 	UI.win(c, Rect2(232, 154, 88, 14))
@@ -1072,7 +1138,79 @@ func _draw_ui() -> void:
 	if pause_open:
 		c.draw_rect(Rect2(0, 0, 320, 240), Color(0, 0, 0, 0.5))
 		UI.win(c, Rect2(96, 90, 128, 44))
-		UI.text_center(c, 160, 96, "Paused", UI.C_GOLD)
-		UI.text_center(c, 160, 110, "Mode: " + Settings.get_v("battle_mode").capitalize(), UI.C_TEXT)
+		UI.text_center(c, 160, 96, T.s("battle.paused"), UI.C_GOLD)
+		UI.text_center(c, 160, 110, T.f("battle.mode", [T.s("val." + str(Settings.get_v("battle_mode")))]), UI.C_TEXT)
 	if Settings.get_v("battle_mode") == "active" and cmd_menu != null:
 		UI.text(c, Vector2(282, 140), "ACTIVE", UI.C_RED)
+	# auto-battle tab (sys s4): Run toggles it for this battle
+	if auto_mode != "off" or auto_default != "off":
+		var lab = T.s("battle.auto") if auto_mode != "off" else T.s("common.off")
+		var w2 = UI.width(lab) + Glyphs.width("run") + 10
+		UI.win(c, Rect2(230 - w2, 154, w2, 14), Color8(20, 24, 50, 220))
+		var gx = 234 - w2
+		gx += Glyphs.draw(c, Vector2(gx, 156), "run")
+		UI.text(c, Vector2(gx + 1, 155), lab, UI.C_HI if auto_mode != "off" else UI.C_DIM)
+
+# ======================================================================
+# sys s4: auto-battle
+# ======================================================================
+func _unhandled_input(event: InputEvent) -> void:
+	if done or model == null or QA.active:
+		return
+	if event.is_action_pressed("g_run") and not event.is_echo():
+		auto_mode = ("attack" if auto_default == "off" else auto_default) if auto_mode == "off" else "off"
+		banner = T.s("battle.auto_on") if auto_mode != "off" else T.s("battle.auto_off")
+		banner_t = 1.0
+		Audio.ui("FX002")
+
+## Picks and commits a command for a ready hero without opening the menu. Returns false to fall back to the menu.
+func _auto_command(b) -> bool:
+	model.begin_select(b)
+	selecting = b
+	var c: Dictionary = {}
+	if auto_mode == "repeat" and last_cmd.has(b.ref):
+		c = _retarget(last_cmd[b.ref])
+	if c.is_empty() or not model.validate(b, c).get("ok", false):
+		c = _retarget({"type": "attack", "targets": []})
+	if c.is_empty():
+		model.cancel_select(b)
+		selecting = null
+		return false
+	var r = model.commit(b, c)
+	if not r.get("ok", false):
+		model.cancel_select(b)
+		selecting = null
+		auto_mode = "off"
+		return false
+	last_cmd[b.ref] = c.duplicate(true)
+	selecting = null
+	return true
+
+## Re-aims a remembered command at living targets (same side as before; lowest-HP ally, first enemy).
+func _retarget(c: Dictionary) -> Dictionary:
+	var out = c.duplicate(true)
+	var old: Array = out.get("targets", [])
+	var enemy_side = true
+	if not old.is_empty() and model.battlers.has(old[0]):
+		enemy_side = model.battlers[old[0]].side == 1
+	var alive = []
+	for bid in (model.enemy_ids if enemy_side else model.party_ids):
+		var tb = model.battlers[bid]
+		if (tb.targetable() if enemy_side else tb.alive()):
+			alive.append(bid)
+	if alive.is_empty():
+		return {}
+	if old.size() > 1:
+		out["targets"] = alive
+		return out
+	if not old.is_empty() and alive.has(old[0]):
+		return out
+	if enemy_side:
+		out["targets"] = [alive[0]]
+	else:
+		var lo = alive[0]
+		for bid in alive:
+			if float(model.battlers[bid].hp) / model.battlers[bid].mhp < float(model.battlers[lo].hp) / model.battlers[lo].mhp:
+				lo = bid
+		out["targets"] = [lo]
+	return out

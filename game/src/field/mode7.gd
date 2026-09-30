@@ -15,6 +15,7 @@ const PROFILE := {
 	"mount": {"pitch": 46.0, "dist": 285.0},
 	"ship": {"pitch": 27.0, "dist": 330.0},
 	"flat": {"pitch": 90.0, "dist": 240.0},
+	"sub": {"pitch": 38.0, "dist": 300.0},
 }
 
 static var _cache_id := ""
@@ -39,6 +40,8 @@ var fwd := Vector3.ZERO
 var right := Vector3.ZERO
 var up := Vector3.ZERO
 var tint := Color(1, 1, 1, 1)
+var sea := false              # the sea floor (UNDERSEA): murky blue sky and haze
+var chunk_units_v := 0.0      # > 0: ground texture covers this many units per layer (the grid fallback)
 
 static func make(art: Art48, id: String) -> Mode7:
 	if art == null or not art.data.get("mode7", false) or art.data.get("chunks", []).is_empty():
@@ -46,6 +49,7 @@ static func make(art: Art48, id: String) -> Mode7:
 	var m = Mode7.new()
 	m.map_id = id
 	m.deep = id.begins_with("DEEP")
+	m.sea = id == "UNDERSEA"
 	m.world_units = Vector2(float(art.data["w"]) * 16.0, float(art.data["h"]) * 16.0)
 	if not m._load(art):
 		return null
@@ -95,6 +99,57 @@ func _load(art: Art48) -> bool:
 	_cache_id = map_id
 	return true
 
+## Fallback when a world map has no baked art yet (UNDERSEA until bake.py has run on the owner's PC): the collision
+## grid drawn in flat colours, 8 px per cell with a little dither, as a single texture layer.
+const GRID_COLORS := {"sand": Color8(176, 164, 118), "olive": Color8(104, 132, 86), "forest": Color8(44, 96, 62),
+	"hills": Color8(150, 136, 96), "mountain": Color8(70, 60, 58), "rocky": Color8(128, 122, 108), "deep": Color8(12, 22, 48),
+	"water": Color8(40, 92, 160), "lava": Color8(214, 84, 24), "ruin_floor": Color8(136, 136, 146), "bone": Color8(160, 142, 168),
+	"plains": Color8(96, 160, 72), "snow": Color8(236, 240, 248), "ash": Color8(110, 96, 88), "salt": Color8(226, 220, 232),
+	"grass2": Color8(150, 150, 60), "swamp": Color8(70, 90, 70), "path": Color8(190, 150, 90), "road": Color8(196, 196, 196),
+	"bridge": Color8(160, 110, 60), "ice": Color8(170, 220, 240), "cave_floor": Color8(90, 70, 60), "wall_rock": Color8(34, 28, 26),
+	"crystal_floor": Color8(140, 90, 190)}
+
+static func make_grid(mp: Dictionary, id: String) -> Mode7:
+	if mp.is_empty() or int(mp.get("w", 0)) <= 0:
+		return null
+	var w = int(mp["w"])
+	var h = int(mp["h"])
+	var px = 8
+	var side = maxi(w, h) * px
+	var im = Image.create(side, side, false, Image.FORMAT_RGBA8)
+	var under = id == "UNDERSEA"
+	var edge = Color8(10, 16, 30) if under else Color8(18, 40, 96)
+	im.fill(edge)
+	for y in range(h):
+		var row = String(mp["grid"][y])
+		for x in range(w):
+			var k: String = mp["legend"].get(row[x], "void")
+			var c: Color = GRID_COLORS.get(k, Color8(60, 60, 70))
+			if under:
+				c = c.lerp(Color8(16, 70, 96), 0.35)
+			im.fill_rect(Rect2i(x * px, y * px, px, px), c)
+			var hsh = absi((x * 73856093) ^ (y * 19349663))
+			im.fill_rect(Rect2i(x * px + hsh % 6, y * px + (hsh / 7) % 6, 2, 1), c.darkened(0.12))
+			im.fill_rect(Rect2i(x * px + (hsh / 13) % 6, y * px + (hsh / 17) % 6, 1, 1), c.lightened(0.1))
+	im.generate_mipmaps()
+	var m = Mode7.new()
+	m.map_id = id
+	m.deep = id.begins_with("DEEP")
+	m.sea = under
+	m.world_units = Vector2(w * 16.0, h * 16.0)
+	var arr = Texture2DArray.new()
+	arr.create_from_images([im])
+	m.tex = arr
+	m.chunk_px = side
+	m.chunks_x = 1
+	m.chunks_y = 1
+	m.chunk_units_v = maxi(w, h) * 16.0
+	_cache_outside = edge
+	_cache_id = ""
+	_cache_tex = null
+	m._basis()
+	return m
+
 static func material() -> ShaderMaterial:
 	if _mat == null:
 		_mat = ShaderMaterial.new()
@@ -106,6 +161,8 @@ func profile_key(vehicle: String, riding: bool) -> String:
 		return "flat"
 	if vehicle == "ship":
 		return "ship"
+	if vehicle == "sub":
+		return "sub"
 	return "mount" if riding else "foot"
 
 ## Follows the focus; eases pitch/distance toward the vehicle's profile; turns only while flying.
@@ -175,10 +232,18 @@ func apply(mat: ShaderMaterial) -> void:
 	mat.set_shader_parameter("center", CENTER)
 	mat.set_shader_parameter("view", VIEW)
 	mat.set_shader_parameter("world_units", world_units)
-	mat.set_shader_parameter("chunk_units", float(chunk_px) / 3.0)
+	mat.set_shader_parameter("chunk_units", chunk_units_v if chunk_units_v > 0.0 else float(chunk_px) / 3.0)
 	mat.set_shader_parameter("chunks_x", chunks_x)
 	mat.set_shader_parameter("chunks_y", chunks_y)
-	if deep:
+	if sea:
+		mat.set_shader_parameter("outside", _cache_outside)
+		mat.set_shader_parameter("sky_top", Color(0.01, 0.04, 0.10))
+		mat.set_shader_parameter("sky_low", Color(0.06, 0.20, 0.30))
+		mat.set_shader_parameter("haze", Color(0.06, 0.22, 0.32))
+		mat.set_shader_parameter("haze_near", 380.0)
+		mat.set_shader_parameter("haze_far", 1300.0)
+		mat.set_shader_parameter("haze_max", 0.85)
+	elif deep:
 		mat.set_shader_parameter("outside", _cache_outside)
 		mat.set_shader_parameter("sky_top", Color(0.02, 0.01, 0.02))
 		mat.set_shader_parameter("sky_low", Color(0.10, 0.05, 0.05))

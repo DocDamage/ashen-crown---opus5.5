@@ -79,9 +79,10 @@ func _exec(c: Dictionary, labels: Dictionary):
 				nm = spk.replace("_", " ")
 			if info.size() > 1 and Game.CHAR_IDS.has(str(info[1])):
 				nm = Game.short_name(str(info[1]))
-			await main.say(nm, Game.sub_names(_interp(c["text"])), info[1] if info.size() > 1 else "", ex)
+			main.dialogue.voice_key = str(info[1]) if info.size() > 1 and str(info[1]).begins_with("C") else spk
+			await main.say(nm, Game.mature_filter(Game.sub_names(_interp(c["text"])), Game.mature()), info[1] if info.size() > 1 else "", ex)
 		"choice":
-			var idx: int = await main.choose(c["options"].map(func(o): return Game.sub_names(o["text"])))
+			var idx: int = await main.choose(c["options"].map(func(o): return Game.mature_filter(Game.sub_names(o["text"]), Game.mature())))
 			var tgt: String = c["options"][idx]["goto"]
 			if tgt != "" and labels.has(tgt):
 				return labels[tgt]
@@ -116,19 +117,19 @@ func _exec(c: Dictionary, labels: Dictionary):
 			else:
 				Game.add_item(a[0], n)
 			Audio.sfx("FX007")
-			await main.say("", "Received %s%s." % [Content.item_name(a[0]), " x%d" % n if n > 1 else ""], "")
+			await main.say("", T.f("sys.received", [Content.item_name(a[0]) + (" x%d" % n if n > 1 else "")]), "")
 		"take":
 			Game.remove_item(a[0], int(a[1]) if a.size() > 1 else 1)
 		"key":
 			if Game.count(a[0]) == 0:
 				Game.add_item(a[0], 1)
-				await main.say("", "Obtained: %s." % Content.item_name(a[0]), "")
+				await main.say("", T.f("sys.obtained", [Content.item_name(a[0])]), "")
 		"unkey":
 			Game.remove_item(a[0], Game.count(a[0]))
 		"gold":
 			Game.add_gold(int(a[0]))
 			if int(a[0]) > 0:
-				await main.say("", "Received %d crowns." % int(a[0]), "")
+				await main.say("", T.f("sys.crowns", [int(a[0])]), "")
 		"xp":
 			var msgs = Game.award_xp(int(a[0]))
 			for m in msgs:
@@ -260,6 +261,8 @@ func _exec(c: Dictionary, labels: Dictionary):
 			await main.open_shop(a[0])
 		"inn":
 			await main.open_inn(int(a[0]) if a.size() > 0 else -1)
+		"craft":
+			await main.open_menu_async("craft", {"id": a[0] if a.size() > 0 else ""})
 		"formation":
 			await main.open_menu_async("formation")
 		"save_prompt":
@@ -310,6 +313,10 @@ func _exec(c: Dictionary, labels: Dictionary):
 		"airship":
 			var ok = main.field.ship_op(a[0])
 			Game.S["vars"]["ship_ok"] = 1 if ok else 0
+		"travel":
+			await FieldCmds.run(main, a)
+		"arena":
+			await Arena.run(main, a)
 		_:
 			push_error("Unhandled scene command " + c["c"])
 	return -1

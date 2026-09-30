@@ -35,6 +35,31 @@ static func make(art: Art48, id: String) -> WorldHud:
 	hd._load_fog()
 	return hd
 
+## Fallback minimap from the collision grid (a world map without baked art, e.g. UNDERSEA before its bake);
+## places are the map's location entities with a name.
+static func make_grid(mp: Dictionary, id: String) -> WorldHud:
+	if mp.is_empty() or int(mp.get("w", 0)) <= 0:
+		return null
+	var hd = WorldHud.new()
+	hd.map_id = id
+	hd.w = int(mp["w"])
+	hd.h = int(mp["h"])
+	hd.scale = 3
+	var im = Image.create(hd.w * 3, hd.h * 3, false, Image.FORMAT_RGBA8)
+	for y in range(hd.h):
+		var row = String(mp["grid"][y])
+		for x in range(hd.w):
+			var c: Color = Mode7.GRID_COLORS.get(mp["legend"].get(row[x], "void"), Color8(60, 60, 70))
+			if id == "UNDERSEA":
+				c = c.lerp(Color8(16, 70, 96), 0.35)
+			im.fill_rect(Rect2i(x * 3, y * 3, 3, 3), c)
+	hd.tex = ImageTexture.create_from_image(im)
+	for e in mp.get("entities", []):
+		if e["type"] == "location":
+			hd.places.append([e["id"], e.get("name", "") if e.get("name", "") != "" else e["id"], e["x"], e["y"], "town"])
+	hd._load_fog()
+	return hd
+
 func _fog_key() -> String:
 	# the World of Ruin keeps the old world's knowledge of the land: pre and post share their fog
 	return map_id.replace("_POST", "")

@@ -218,7 +218,11 @@ def vfx():
 
 # ---------------------------------------------------------------- vestiges
 VESTIGE_KEYS = {"V01": "moth", "V02": "stag", "V03": "whale", "V04": "manta", "V05": "fox", "V06": "tortoise",
-                "V07": "hind", "V08": "leviathan", "V09": "colossus", "V10": "thorn", "V11": "wyrm", "V12": "wraith"}
+                "V07": "hind", "V08": "leviathan", "V09": "colossus", "V10": "thorn", "V11": "wyrm", "V12": "wraith",
+                # superboss Vestiges (tools/art/vestige_from_boss.py builds their sheets from the bosses' art)
+                "V13": "cinder_sovereign", "V14": "undertow_queen", "V15": "stormcrest", "V16": "deepcoil",
+                "V17": "curators_echo", "V18": "veiled_mother", "V19": "crucible_lion", "V20": "scale_of_taking",
+                "V21": "scale_of_giving", "V22": "remaining_choir", "V23": "last_verdict", "V24": "crown_unmade"}
 
 
 def vestiges():

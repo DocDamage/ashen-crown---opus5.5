@@ -7,7 +7,7 @@ signal notify(text: String)
 
 const SCHEMA := 1
 const SAVE_DIR := "user://saves"
-const SLOTS := 3
+const SLOTS := 12        # manual slots (sys s4: was 3; slot1..3 files load unchanged)
 const STACK_CAP := 99
 const GOLD_CAP := 9999999
 ## Hero ids come from content (C01-C08 originally; the overhaul cast adds C09-C17).
@@ -26,10 +26,17 @@ func _ready() -> void:
 	var ids: Array = Content.data.get("characters", {}).keys()
 	ids.sort()
 	CHAR_IDS = ids
+	state_changed.connect(func(): _meta_dirty = true)
 
 func _process(delta: float) -> void:
 	if playing and not S.is_empty() and not get_tree().paused:
 		S["playtime"] = float(S.get("playtime", 0.0)) + delta
+	# achievements: the generic evaluator runs at most twice a second after any state change
+	_meta_t -= delta
+	if _meta_dirty and _meta_t <= 0.0 and playing and not S.is_empty() and not fixture_label.begins_with("unit"):
+		_meta_dirty = false
+		_meta_t = 0.5
+		Achievements.evaluate()
 
 # ======================================================================
 # New game
@@ -46,7 +53,13 @@ func new_game() -> void:
 		"journal": {"objective": "", "clue": "", "destination": "", "source": "", "rumors": [], "log": []},
 		"links": {}, "salvage": [], "clear": false, "epilogue": {}, "last_town": "L_T01",
 		"difficulty": str(Settings.get_v("difficulty_default")), "names": {},
+		"blue": [], "captured": {},
+		"clock": 480.0, "day": 0, "waystones": [], "arena": {"rank": 0, "solo": [], "gauntlet": false, "bets": 0, "beasts": 0},
+		# sys s4: meta progress (counters for achievements, fish log, New Game+ cycle)
+		"stats": {}, "fish": {"log": {}, "tourney_best": 0.0}, "achievements": [], "ng": 0,
 	}
+	S.merge({"glearn": {}, "gknown": {}, "nodes": {}, "steps": 0, "battles": 0, "bestiary_claimed": []})   # systems s2
+	S["vehicle"]["mount_kind"] = "bramble"
 	for cid in CHAR_IDS:
 		S["party"]["members"][cid] = {"level": 1, "xp": 0, "hp": -1, "mp": -1, "equip": {}, "recruited": false, "starter_given": false}
 	add_item("I001", 6)
@@ -176,7 +189,18 @@ func _eval_one(c: String) -> bool:
 						"<": r = cur < n
 					break
 		"vehicle": r = bool(S["vehicle"].get(p[1], false))
+		# world clock (field systems s3): night = 20:00-05:00; hour:a-b wraps past midnight (hour:22-4)
+		"night": r = FieldSys.night()
+		"day": r = not FieldSys.night()
+		"hour": r = FieldSys.in_hours(p[1]) if p.size() > 1 else false
 		"clear": r = bool(S.get("clear", false))
+		# ---- sys s4: mature mode, New Game+, meta counters
+		"mature": r = bool(Settings.get_v("mature")) and bool(Settings.get_v("mature_ok"))
+		"ng": r = int(S.get("ng", 0)) >= (int(p[1]) if p.size() > 1 else 1)
+		"defeated": r = int(S.get("bestiary", {}).get(p[1], {}).get("defeated", 0)) > 0
+		"achv": r = has_achievement(p[1])
+		"stat", "meta":
+			r = Achievements.eval_meta(c)
 		_: push_error("Unknown condition " + c)
 	return r != neg
 
@@ -204,6 +228,7 @@ func stats(cid: String) -> Dictionary:
 ## Derived stats for a member dict (the real one, or a preview copy with other equipment).
 func stats_for(cid: String, mem: Dictionary) -> Dictionary:
 	var st = F.member_stats(mem, Content.ch(cid), Content.data["items"], S.get("upgrades", {}), float(Content.data.get("gear", {}).get("step", 0.08)))
+	st = apply_set_bonus(st, mem)
 	var rs = float(st["passives"].get("reserve_scale", 0.0))
 	if rs > 0.0:
 		# Salvage line: stronger for every recruited, available member waiting in reserve
@@ -301,6 +326,9 @@ func learned_abilities(cid: String) -> Array:
 	for aid in S.get("vknown", {}).get(cid, []):
 		if not out.has(aid):
 			out.append(aid)
+	for aid in S.get("gknown", {}).get(cid, []):
+		if not out.has(aid):
+			out.append(aid)
 	return out
 
 func battle_party() -> Array:
@@ -311,7 +339,8 @@ func battle_party() -> Array:
 		var hp = int(m["hp"]) if int(m["hp"]) >= 0 else int(s["mhp"])
 		out.append({"cid": cid, "name": short_name(cid), "stats": s, "hp": mini(hp, s["mhp"]),
 			"mp": mini(int(m["mp"]) if int(m["mp"]) >= 0 else int(s["mmp"]), s["mmp"]),
-			"row": row(cid), "abilities": learned_abilities(cid), "link": link_of(cid)})
+			"row": row(cid), "abilities": learned_abilities(cid), "link": link_of(cid),
+			"limits": limit_known(cid), "limit": float(m.get("limit_gauge", 0.0)), "blue": blue_for(cid), "blue_rule": blue_rule(cid)})
 	return out
 
 func heal_all(include_ko: bool = true) -> void:
@@ -339,7 +368,7 @@ func award_xp(amount: int) -> Array:
 		var before = int(m["level"])
 		var old_learn = learned_abilities(cid)
 		m["xp"] = int(m["xp"]) + int(round(amount * catch_up_mult(before)))
-		var nl = F.level_for_xp(int(m["xp"]))
+		var nl = F.level_for_xp(int(m["xp"]), level_cap())
 		if nl > before:
 			var s0 = stats(cid)
 			var vl = link_of(cid)
@@ -639,6 +668,10 @@ func bestiary_seen(eid: String, what: String = "seen") -> void:
 		"defeated": b["defeated"] = int(b["defeated"]) + 1
 		"affinity": b["affinity"] = true
 		"drops": b["drops"] = true
+		"scan":
+			b["affinity"] = true
+			b["drops"] = true
+			b["scanned"] = true
 		_:
 			if what.begins_with("weak:"):
 				var e = what.substr(5)
@@ -678,6 +711,7 @@ func apply_battle_victory(model: BattleModel) -> Array:
 		var e = model.battlers[eid]
 		if not e.tags.has("part"):
 			bestiary_seen(e.ref, "defeated")
+	_battle_stats(model)
 	add_gold(int(r["gold"]))
 	msgs.append("Gained %d XP and %d crowns." % [r["xp"], r["gold"]])
 	for d in r["drops"]:
@@ -686,8 +720,12 @@ func apply_battle_victory(model: BattleModel) -> Array:
 	for st in model.stolen_items:
 		add_item(st, 1)
 		msgs.append("Kept stolen %s." % Content.item_name(st))
+	msgs.append_array(expansion_victory(model))
 	msgs.append_array(award_xp(int(r["xp"])))
+	msgs.append_array(limit_learning())
 	msgs.append_array(vestige_learning(3 if model.is_boss_battle else 1))
+	msgs.append_array(gear_learning(3 if model.is_boss_battle else 1))
+	S["battles"] = int(S.get("battles", 0)) + 1
 	emit_signal("state_changed")
 	return msgs
 
@@ -729,6 +767,7 @@ func vestige_progress(cid: String, aid: String) -> int:
 	return int(S.get("vlearn", {}).get(cid, {}).get(aid, 0))
 
 func apply_battle_flee(model: BattleModel) -> void:
+	expansion_flee(model)
 	for st in model.stolen_items:
 		add_item(st, 1)
 	for iid in model.inventory:
@@ -807,11 +846,14 @@ func claim_salvage() -> Array:
 # ======================================================================
 # Save service: versioned payload, checksum, atomic replace, backups
 # ======================================================================
+## sys s4: the save folder can be redirected (tests, the dev gallery) so they never touch the player's saves.
+var save_root := SAVE_DIR
+
 func slot_path(slot: int) -> String:
-	return "%s/slot%d.json" % [SAVE_DIR, slot]
+	return "%s/slot%d.json" % [save_root, slot]
 
 func _ensure_dir() -> void:
-	DirAccess.make_dir_recursive_absolute(SAVE_DIR)
+	DirAccess.make_dir_recursive_absolute(save_root)
 
 func _payload() -> Dictionary:
 	S["timestamp"] = Time.get_datetime_string_from_system()
@@ -852,25 +894,21 @@ func save_to(path: String, fault_stage: String = "") -> Dictionary:
 
 func save_slot(slot: int) -> Dictionary:
 	S["save_id"] = "slot%d" % slot
+	if fixture_label == "":
+		stat_add("saves")
 	return save_to(slot_path(slot))
 
 func write_backup(tag: String) -> Dictionary:
 	return save_to(backup_path(tag))
 
 func backup_path(tag: String) -> String:
-	return "%s/backup_%s.json" % [SAVE_DIR, tag]
+	return "%s/backup_%s.json" % [save_root, tag]
 
 ## Protected backups: written by the story at fixed points, never by the slot menu. Load-only.
 const PROTECTED := [["pre_dais", "Protected: Before the Crown Dais"], ["pre_finale", "Protected: Before the Final Descent"]]
 
 func info_of(path: String) -> Dictionary:
-	var r = _read_payload(path)
-	if not r["ok"]:
-		return r
-	var s: Dictionary = r["state"]
-	var mp = Content.map(s["location"]["map"])
-	return {"ok": true, "chapter": _current_chapter_name(s), "location": mp.get("name", s["location"]["map"]),
-		"playtime": float(s["playtime"]), "date": s.get("timestamp", ""), "level": int(s["party"]["members"]["C01"]["level"])}
+	return path_info(path)
 
 func world_for_phase(map_id: String) -> String:
 	## Pre-state dungeons revisited after the catastrophe exit to the altered overworld (shared location IDs).
@@ -936,6 +974,15 @@ func _sanitize(st: Dictionary) -> Dictionary:
 		st["difficulty"] = "normal"
 	if not st.has("names"):
 		st["names"] = {}
+	# sys s4 fields (older saves): meta counters, fish log, achievements mirror, New Game+ cycle
+	for k in ["stats", "fish"]:
+		if typeof(st.get(k)) != TYPE_DICTIONARY:
+			st[k] = {}
+	if not st["fish"].has("log"):
+		st["fish"]["log"] = {}
+	if typeof(st.get("achievements")) != TYPE_ARRAY:
+		st["achievements"] = []
+	st["ng"] = int(st.get("ng", 0))
 	for cid in CHAR_IDS:
 		if not st["party"]["members"].has(cid):
 			st["party"]["members"][cid] = {"level": 1, "xp": 0, "hp": -1, "mp": -1, "equip": {}, "recruited": false, "starter_given": false}
@@ -946,18 +993,7 @@ func _sanitize(st: Dictionary) -> Dictionary:
 	return st
 
 func slot_info(slot: int) -> Dictionary:
-	var r = _read_payload(slot_path(slot))
-	if not r["ok"]:
-		return r
-	var s: Dictionary = r["state"]
-	var ch_name = "Prologue"
-	var last = ""
-	for c in s["chapters"]:
-		last = c
-	var cur_ch = _current_chapter_name(s)
-	var mp = Content.map(s["location"]["map"])
-	return {"ok": true, "chapter": cur_ch, "location": mp.get("name", s["location"]["map"]),
-		"playtime": float(s["playtime"]), "date": s.get("timestamp", ""), "level": int(s["party"]["members"]["C01"]["level"])}
+	return path_info(slot_path(slot))
 
 func _current_chapter_name(s: Dictionary) -> String:
 	var ids: Array = Content.data["chapters"].keys()
@@ -970,6 +1006,671 @@ func _current_chapter_name(s: Dictionary) -> String:
 func current_chapter() -> String:
 	return _current_chapter_name(S)
 
+# ======================================================================
+# Expansion battle systems (branch s1): level breaks, limit breaks, reserves, blue magic, capture, superbosses
+# ======================================================================
+## Current level cap: 99, raised by the level-break flags (set by superboss victories).
+func level_cap() -> int:
+	var caps: Dictionary = Content.data.get("level_breaks", {}).get("caps", {})
+	for k in ["levelbreak_3", "levelbreak_2", "levelbreak_1"]:
+		if flag(k):
+			return int(caps.get(k, F.LEVEL_CAP))
+	return int(caps.get("default", F.LEVEL_CAP))
+
+## Flag set when superboss `id` (SB01..SB12) falls.
+func sb_flag(id: String) -> String:
+	return "sb_%s_down" % id.to_lower()
+
+func superboss_down(id: String) -> bool:
+	return flag(sb_flag(id))
+
+## Re-derives the level-break flags from the superboss flags (first wyrm: 120, all four: 150, the Unmade Crown: 200).
+func update_level_breaks() -> Array:
+	var msgs = []
+	var lb: Dictionary = Content.data.get("level_breaks", {})
+	var n = 0
+	for w in lb.get("wyrms", []):
+		if superboss_down(w):
+			n += 1
+	var want = []
+	if n >= 1:
+		want.append("levelbreak_1")
+	if n >= 4 and lb.get("wyrms", []).size() > 0:
+		want.append("levelbreak_2")
+	if superboss_down(str(lb.get("finale", "SB12"))):
+		want.append("levelbreak_3")
+	for k in want:
+		if not flag(k):
+			var before = level_cap()
+			set_flag(k)
+			if level_cap() > before:
+				msgs.append("The level limit rises to %d." % level_cap())
+	return msgs
+
+## Superboss rewards: flag, Vestige (VESTIGE_OF), level breaks. Called from the victory transaction.
+func superboss_victory(bid: String) -> Array:
+	var msgs = []
+	if not bid.begins_with("SB") or not Content.enemy(bid).get("tags", []).has("superboss"):
+		return msgs
+	set_flag(sb_flag(bid))
+	for vid in Content.data["vestiges"]:
+		if str(Content.data["vestiges"][vid].get("source", "")) == bid and not has_vestige(vid):
+			grant_vestige(vid)
+			msgs.append("The Vestige %s answers. (Link it from the menu.)" % Content.data["vestiges"][vid]["name"])
+	msgs.append_array(update_level_breaks())
+	return msgs
+
+func expansion_victory(model: BattleModel) -> Array:
+	var msgs = []
+	_expansion_end_state(model)
+	for cid in model.captured:
+		msgs.append("%s is kept for the Arena." % Content.enemy(cid).get("name", cid))
+	for iid in model.morph_items:
+		add_item(iid, 1)
+		msgs.append("Morphed: %s." % Content.item_name(iid))
+	var ends = {}
+	for ps in model.party_end_state():
+		ends[ps["cid"]] = ps
+	for bid in model.blue_new:
+		var who: String = model.blue_new[bid]
+		if int(ends.get(who, {}).get("hp", 0)) <= 0 or S.get("blue", []).has(bid):
+			continue
+		if not S.has("blue"):
+			S["blue"] = []
+		S["blue"].append(bid)
+		msgs.append("%s learned the lore %s." % [short_name(who), Content.ability(bid).get("name", bid)])
+	var seen = {}
+	for eid in model.enemy_ids:
+		var ref: String = model.battlers[eid].ref
+		if not seen.has(ref):
+			seen[ref] = true
+			msgs.append_array(superboss_victory(ref))
+	return msgs
+
+func expansion_flee(model: BattleModel) -> void:
+	_expansion_end_state(model)
+	for iid in model.morph_items:
+		add_item(iid, 1)
+
+## Limit gauges and limit uses back to the save; captured enemies into S.captured.
+func _expansion_end_state(model: BattleModel) -> void:
+	for ps in model.party_end_state():
+		var m = member(ps["cid"])
+		m["limit_gauge"] = float(ps.get("limit", 0.0))
+		var uses: Dictionary = m.get("limit_uses", {})
+		for aid in ps.get("limit_used", []):
+			uses[aid] = int(uses.get(aid, 0)) + 1
+		m["limit_uses"] = uses
+	if not S.has("captured"):
+		S["captured"] = {}
+	for cid in model.captured:
+		S["captured"][cid] = int(S["captured"].get(cid, 0)) + 1
+
+## Limits a hero knows: tier 1 always; tier k+1 after `uses[k]` uses of tier k and level `levels[k]`.
+func limit_known(cid: String) -> Array:
+	var L: Dictionary = Content.data.get("limits", {})
+	var ids: Array = L.get("heroes", {}).get(cid, [])
+	if ids.is_empty():
+		return []
+	var m = member(cid)
+	var uses: Dictionary = m.get("limit_uses", {})
+	var levels: Array = L.get("levels", [1, 15, 30, 50])
+	var need: Array = L.get("uses", [0, 3, 5, 8])
+	var out = [ids[0]]
+	for k in range(1, ids.size()):
+		if int(m["level"]) >= int(levels[k]) and int(uses.get(ids[k - 1], 0)) >= int(need[k]):
+			out.append(ids[k])
+		else:
+			break
+	return out
+
+## What the next limit needs, for menus: {id, uses, need, level} or {} when all are known.
+func limit_next(cid: String) -> Dictionary:
+	var L: Dictionary = Content.data.get("limits", {})
+	var ids: Array = L.get("heroes", {}).get(cid, [])
+	var known = limit_known(cid)
+	if known.size() >= ids.size():
+		return {}
+	var k = known.size()
+	return {"id": ids[k], "uses": int(member(cid).get("limit_uses", {}).get(ids[k - 1], 0)), "need": int(L["uses"][k]), "level": int(L["levels"][k])}
+
+## Reports newly learned limits once (tracked in member.limits_seen).
+func limit_learning() -> Array:
+	var msgs = []
+	for cid in S["party"]["roster"]:
+		var m = member(cid)
+		var seen: Array = m.get("limits_seen", [])
+		for aid in limit_known(cid):
+			if not seen.has(aid):
+				seen.append(aid)
+				if seen.size() > 1:
+					msgs.append("%s can now use the limit %s." % [short_name(cid), Content.ability(aid).get("name", aid)])
+		m["limits_seen"] = seen
+	return msgs
+
+func blue_rule(cid: String) -> String:
+	return str(Content.data.get("blue", {}).get("mages", {}).get(cid, ""))
+
+## Learned blue magic (a shared pool) for a blue mage, in catalogue order.
+func blue_for(cid: String) -> Array:
+	if blue_rule(cid) == "":
+		return []
+	var known: Array = S.get("blue", [])
+	return Content.data.get("blue", {}).get("order", []).filter(func(x): return known.has(x))
+
+## Battle reserves: the next three available heroes after the active five (order set in the Formation menu).
+func battle_reserves() -> Array:
+	if S["party"].get("locked", false):
+		return []
+	var act = active()
+	var out = []
+	for cid in S["party"]["roster"]:
+		if out.size() >= 3:
+			break
+		if is_available(cid) and not act.has(cid):
+			out.append(cid)
+	return out
+
+func battle_reserve_party() -> Array:
+	var out = []
+	for cid in battle_reserves():
+		var m = member(cid)
+		var s = stats(cid)
+		var hp = int(m["hp"]) if int(m["hp"]) >= 0 else int(s["mhp"])
+		out.append({"cid": cid, "name": short_name(cid), "stats": s, "hp": mini(hp, s["mhp"]),
+			"mp": mini(int(m["mp"]) if int(m["mp"]) >= 0 else int(s["mmp"]), s["mmp"]),
+			"row": row(cid), "abilities": learned_abilities(cid), "link": link_of(cid),
+			"limits": limit_known(cid), "limit": float(m.get("limit_gauge", 0.0)), "blue": blue_for(cid), "blue_rule": blue_rule(cid)})
+	return out
+
 static func fmt_time(sec: float) -> String:
 	var s = int(sec)
 	return "%d:%02d:%02d" % [s / 3600, (s / 60) % 60, s % 60]
+
+# ======================================================================
+# Expansion systems s2 (tools/content/gear2.py, crafting.py): item sets, teaching gear, crafting, gathering,
+# bestiary completion, tier shop stock, regional inn prices.
+# ======================================================================
+func _g2() -> Dictionary:
+	return Content.data.get("gear2", {})
+
+## Set pieces worn by a member dict: {set id: pieces}. A piece counts once even if worn twice.
+func set_counts(mem: Dictionary) -> Dictionary:
+	var n = {}
+	var seen = {}
+	var eq: Dictionary = mem.get("equip", {})
+	for slot in eq:
+		var iid = eq[slot]
+		if iid == null or iid == "" or seen.has(iid):
+			continue
+		seen[iid] = true
+		var sid: String = str(Content.item(iid).get("set", ""))
+		if sid != "":
+			n[sid] = int(n.get(sid, 0)) + 1
+	return n
+
+static func _merge_passive(p: Dictionary, k: String, v) -> void:
+	if not p.has(k):
+		p[k] = v.duplicate(true) if (typeof(v) == TYPE_DICTIONARY or typeof(v) == TYPE_ARRAY) else v
+	elif typeof(v) == TYPE_DICTIONARY and typeof(p[k]) == TYPE_DICTIONARY:
+		p[k] = p[k].duplicate(true)   # never write into an item's own passive dict
+		for e in v:
+			p[k][e] = v[e]
+	elif typeof(v) == TYPE_ARRAY and typeof(p[k]) == TYPE_ARRAY:
+		p[k] = p[k].duplicate(true)
+		for e in v:
+			if not p[k].has(e):
+				p[k].append(e)
+	elif typeof(v) == TYPE_FLOAT or typeof(v) == TYPE_INT:
+		p[k] = maxf(float(p[k]), float(v))
+
+## Set bonuses: every threshold reached (2, 3, 4 pieces) adds its stats, passives and granted ability.
+func apply_set_bonus(st: Dictionary, mem: Dictionary) -> Dictionary:
+	var sets: Dictionary = _g2().get("sets", {})
+	var cnt = set_counts(mem)
+	var act = []
+	var pas: Dictionary = st["passives"]
+	var m0 = {"mhp_mult": float(pas.get("mhp_mult", 1.0)), "mmp_mult": float(pas.get("mmp_mult", 1.0)), "mag_bonus": float(pas.get("mag_bonus", 0.0))}
+	for sid in cnt:
+		if not sets.has(sid) or int(cnt[sid]) < 2:
+			continue
+		act.append([sid, int(cnt[sid]), sets[sid]["pieces"].size()])
+		for th in sets[sid]["bonus"]:
+			if int(cnt[sid]) < int(th):
+				continue
+			var b: Dictionary = sets[sid]["bonus"][th]
+			for k in ["atk", "matk", "def", "res", "spd", "mhp", "mmp"]:
+				if b.has(k):
+					st[k] = int(st[k]) + int(b[k])
+			for pk in b.get("passives", {}):
+				_merge_passive(pas, pk, b["passives"][pk])
+			if b.has("grants") and not st["grants"].has(b["grants"]):
+				st["grants"].append(b["grants"])
+	if not act.is_empty():
+		if float(pas.get("mhp_mult", 1.0)) > m0["mhp_mult"]:
+			st["mhp"] = int(floor(st["mhp"] * float(pas["mhp_mult"]) / m0["mhp_mult"]))
+		if float(pas.get("mmp_mult", 1.0)) > m0["mmp_mult"]:
+			st["mmp"] = int(floor(st["mmp"] * float(pas["mmp_mult"]) / m0["mmp_mult"]))
+		if float(pas.get("mag_bonus", 0.0)) > m0["mag_bonus"]:
+			st["matk"] = int(floor(st["matk"] * (1.0 + float(pas["mag_bonus"])) / (1.0 + m0["mag_bonus"])))
+		st["acc_bonus"] = int(pas.get("acc_bonus", st.get("acc_bonus", 0)))
+		if pas.has("weapon_element"):
+			st["weapon_element"] = str(pas["weapon_element"])
+	st["passives"] = pas
+	st["sets"] = act
+	return st
+
+## Teaching gear (FF6 relic style): each active, conscious hero gains rate x AP on every ability taught by what they
+## wear; at 100 it is known for good (kept in S.gknown, also when the item comes off).
+func gear_learning(ap: int) -> Array:
+	var msgs = []
+	if not S.has("glearn"):
+		S["glearn"] = {}
+	if not S.has("gknown"):
+		S["gknown"] = {}
+	for cid in active():
+		if int(member(cid)["hp"]) == 0:
+			continue
+		var prog: Dictionary = S["glearn"].get(cid, {})
+		var known: Array = S["gknown"].get(cid, [])
+		var eq: Dictionary = member(cid)["equip"]
+		for slot in eq:
+			var iid = eq[slot]
+			if iid == null or iid == "":
+				continue
+			for t in Content.item(iid).get("teach", []):
+				var aid: String = t[0]
+				if known.has(aid) or learned_abilities(cid).has(aid) or Content.ability(aid).is_empty():
+					continue
+				var p = int(prog.get(aid, 0)) + int(t[1]) * ap
+				if p >= 100:
+					known.append(aid)
+					prog.erase(aid)
+					msgs.append("%s learned %s." % [short_name(cid), Content.ability(aid)["name"]])
+				else:
+					prog[aid] = p
+		S["glearn"][cid] = prog
+		S["gknown"][cid] = known
+	return msgs
+
+func gear_progress(cid: String, aid: String) -> int:
+	if S.get("gknown", {}).get(cid, []).has(aid) or learned_abilities(cid).has(aid):
+		return 100
+	return int(S.get("glearn", {}).get(cid, {}).get(aid, 0))
+
+# ---------------------------------------------------------------- crafting
+func crafter_tier(crafter_id: String) -> String:
+	return str(_g2().get("crafters", {}).get(crafter_id, "R01"))
+
+## Recipe ids a crafter offers: every recipe of its tier or an earlier one (gear2 TIER_ORDER).
+func craft_recipes(crafter_id: String) -> Array:
+	var order: Array = _g2().get("tier_order", [])
+	var lim = order.find(crafter_tier(crafter_id))
+	var out = []
+	var rs: Dictionary = _g2().get("recipes", {})
+	var ids = rs.keys()
+	ids.sort()
+	for rid in ids:
+		if order.find(rs[rid]["tier"]) <= lim:
+			out.append(rid)
+	return out
+
+func can_craft(rid: String) -> Dictionary:
+	var r: Dictionary = _g2().get("recipes", {}).get(rid, {})
+	if r.is_empty():
+		return {"ok": false, "reason": "Unknown recipe"}
+	if r["kind"] == "reforge" and count(r["input"]) < 1:
+		return {"ok": false, "reason": "Needs %s (unequipped)" % Content.item_name(r["input"])}
+	for m in r["mats"]:
+		if count(m[0]) < int(m[1]):
+			return {"ok": false, "reason": "Needs %d %s" % [int(m[1]), Content.item(m[0]).get("name", m[0])]}
+	if gold() < int(r.get("gold", 0)):
+		return {"ok": false, "reason": "Not enough crowns"}
+	if count(r["result"]) + int(r["count"]) > STACK_CAP:
+		return {"ok": false, "reason": "No room"}
+	return {"ok": true}
+
+func craft(rid: String) -> Dictionary:
+	var c = can_craft(rid)
+	if not c["ok"]:
+		return c
+	var r: Dictionary = _g2()["recipes"][rid]
+	for m in r["mats"]:
+		remove_item(m[0], int(m[1]))
+	if r["kind"] == "reforge":
+		remove_item(r["input"], 1)
+	spend_gold(int(r.get("gold", 0)))
+	add_item(r["result"], int(r["count"]))
+	emit_signal("state_changed")
+	return {"ok": true, "item": r["result"], "count": int(r["count"])}
+
+# ---------------------------------------------------------------- gathering
+func node_ready(node_id: String, table: String) -> bool:
+	var st: Dictionary = S.get("nodes", {}).get(node_id, {})
+	if st.is_empty():
+		return true
+	var g: Dictionary = _g2().get("gather", {}).get(table, {})
+	return int(S.get("steps", 0)) - int(st.get("steps", 0)) >= int(g.get("steps", 100)) \
+		or int(S.get("battles", 0)) - int(st.get("battles", 0)) >= int(g.get("battles", 3))
+
+func _party_passive(k: String) -> int:
+	var best = 0
+	for cid in active():
+		best = maxi(best, int(stats(cid)["passives"].get(k, 0)))
+	return best
+
+## Harvest a node: `rolls` weighted draws from its table (loot stream), +1 per draw with a Gatherer's Satchel.
+func gather(node_id: String, table: String) -> Dictionary:
+	var g: Dictionary = _g2().get("gather", {}).get(table, {})
+	if g.is_empty():
+		return {"ok": false, "text": "Nothing here."}
+	var verb: String = _g2().get("gather_verb", {}).get(g["kind"], "Found")
+	if not node_ready(node_id, table):
+		var spent = {"mine": "The seam is worked out for now.", "herb": "Nothing left to pick. It will grow back.", "salvage": "Picked clean. The tide will bring more."}
+		return {"ok": false, "text": spent.get(g["kind"], "Nothing left for now.")}
+	var r = Rng.new(next_seed("loot"))
+	var total = 0
+	for d in g["drops"]:
+		total += int(d[1])
+	var got = {}
+	var bonus = _party_passive("gather_bonus")
+	for i in range(int(g.get("rolls", 1))):
+		var roll = r.randi_range(0, total - 1)
+		for d in g["drops"]:
+			roll -= int(d[1])
+			if roll < 0:
+				got[d[0]] = int(got.get(d[0], 0)) + r.randi_range(int(d[2]), int(d[3])) + bonus
+				break
+	var parts = []
+	for iid in got:
+		add_item(iid, got[iid])
+		parts.append("%s x%d" % [Content.item_name(iid), got[iid]])
+	if not S.has("nodes"):
+		S["nodes"] = {}
+	S["nodes"][node_id] = {"steps": int(S.get("steps", 0)), "battles": int(S.get("battles", 0))}
+	emit_signal("state_changed")
+	return {"ok": true, "got": got, "text": "%s %s." % [verb, ", ".join(parts)]}
+
+# ---------------------------------------------------------------- bestiary completion
+## Base entries: regular enemies, bosses and superbosses (no level variants, no boss parts).
+func bestiary_entries() -> Array:
+	var out = []
+	for eid in Content.data["enemies"]:
+		var e: Dictionary = Content.data["enemies"][eid]
+		if e.has("variant_of") or e.get("tags", []).has("part") or "@" in eid:
+			continue
+		out.append(eid)
+	out.sort_custom(func(a, b):
+		var ka = 0 if a.begins_with("E") else (1 if a.begins_with("B") and not a.begins_with("BX") else (2 if a.begins_with("BX") else 3))
+		var kb = 0 if b.begins_with("E") else (1 if b.begins_with("B") and not b.begins_with("BX") else (2 if b.begins_with("BX") else 3))
+		if ka == kb:
+			return a < b
+		return ka < kb)
+	return out
+
+func bestiary_progress() -> Dictionary:
+	var ids = bestiary_entries()
+	var seen = 0
+	var won = 0
+	for eid in ids:
+		var b: Dictionary = S["bestiary"].get(eid, {})
+		if b.get("seen", false):
+			seen += 1
+		if int(b.get("defeated", 0)) > 0:
+			won += 1
+	return {"total": ids.size(), "seen": seen, "defeated": won}
+
+## Milestones reached but not yet claimed: [[track, pct], ...] (track "seen" or "defeated").
+func bestiary_rewards_pending() -> Array:
+	var p = bestiary_progress()
+	var out = []
+	var claimed: Array = S.get("bestiary_claimed", [])
+	var rw: Dictionary = _g2().get("bestiary_rewards", {})
+	for track in ["seen", "defeated"]:
+		for pct in [25, 50, 75, 100]:
+			var key = "%s:%d" % [track, pct]
+			if claimed.has(key) or not rw.get(track, {}).has(str(pct)):
+				continue
+			if int(p[track]) * 100 >= pct * int(p["total"]):
+				out.append([track, pct])
+	return out
+
+func claim_bestiary_rewards() -> Array:
+	var msgs = []
+	if not S.has("bestiary_claimed"):
+		S["bestiary_claimed"] = []
+	for pr in bestiary_rewards_pending():
+		S["bestiary_claimed"].append("%s:%d" % [pr[0], pr[1]])
+		for rw in _g2()["bestiary_rewards"][pr[0]][str(pr[1])]:
+			add_item(rw[0], int(rw[1]))
+			msgs.append("%d%% %s: %s x%d." % [pr[1], pr[0], Content.item_name(rw[0]), int(rw[1])])
+	return msgs
+
+# ---------------------------------------------------------------- tier shop stock and inns
+## Region-tier gear a shop stocks now: the shop's tiers, once their gate chapter is done; weapons only for a
+## recruited hero who can use them; only the kinds the shop sells (plus gear2 shop_extra_kinds).
+func tier_stock(shop_id: String) -> Array:
+	var out = []
+	var g2 = _g2()
+	var sh: Dictionary = Content.data["shops"].get(shop_id, {})
+	var kinds: Array = sh.get("kinds", []).duplicate()
+	kinds.append_array(g2.get("shop_extra_kinds", {}).get(shop_id, []))
+	for tid in g2.get("shop_tiers", {}).get(shop_id, []):
+		var t: Dictionary = g2["tiers"][tid]
+		if t["gate"] != "" and not chapter_done(t["gate"]):
+			continue
+		for iid in t["items"]:
+			var it = Content.item(iid)
+			var k = {"weapon": "weapons", "armor": "armor", "accessory": "accessories"}.get(it.get("kind", ""), "")
+			if not kinds.has(k):
+				continue
+			if k == "weapons":
+				var any = false
+				for c in it.get("allowed", []):
+					if is_recruited(c):
+						any = true
+						break
+				if not any:
+					continue
+			if not out.has(iid):
+				out.append(iid)
+	return out
+
+## Inn price in a region (docs/expansion/ECONOMY.md): the canon price, raised to the region's rate.
+func inn_price_for(region: String, base: int) -> int:
+	var g2 = _g2()
+	var p = int(g2.get("inn", {}).get(region, 0))
+	if S.get("world_phase", "pre") == "post" and region.begins_with("R"):
+		p = maxi(p, int(g2.get("inn_post", 0)))
+	return maxi(base, p)
+# sys s4: meta counters, achievements, autosave / quicksave, New Game+
+# ======================================================================
+var _meta_dirty = false
+var _meta_t = 0.0
+signal achieved(id: String)
+
+## Counters for achievements and records (battles, boss wins without a KO, fish caught, crafted ...). Other systems
+## call Game.stat_add("crafted") etc.; the achievement evaluator reads them with "stat:<key>>=N".
+func stat(k: String) -> int:
+	return int(S.get("stats", {}).get(k, 0)) if not S.is_empty() else 0
+
+func stat_add(k: String, n: int = 1) -> void:
+	if S.is_empty():
+		return
+	if not S.has("stats"):
+		S["stats"] = {}
+	S["stats"][k] = stat(k) + n
+	_meta_dirty = true
+
+func stat_max(k: String, n: int) -> void:
+	if n > stat(k):
+		if not S.has("stats"):
+			S["stats"] = {}
+		S["stats"][k] = n
+		_meta_dirty = true
+
+func _battle_stats(model: BattleModel) -> void:
+	stat_add("battles")
+	if model.is_boss_battle:
+		stat_add("boss_wins")
+		if int(model.party_kos) == 0:
+			stat_add("boss_nokos")
+		for eid in model.enemy_ids:
+			var e = model.battlers[eid]
+			if e.tags.has("superboss"):
+				stat_add("superbosses")
+		request_autosave("boss")
+
+## Unlocks an achievement (idempotent). Other systems may call it directly for event-style achievements.
+func achieve(id: String) -> bool:
+	return Achievements.unlock(id)
+
+func has_achievement(id: String) -> bool:
+	return Achievements.is_unlocked(id)
+
+## Enemy scaling for battle: difficulty times the New Game+ cycle (+25% HP, +12% damage per cycle, up to NG+5).
+func battle_difficulty() -> Dictionary:
+	var d: Dictionary = DIFFICULTY.get(difficulty(), DIFFICULTY["normal"]).duplicate()
+	var ng = clampi(int(S.get("ng", 0)) if not S.is_empty() else 0, 0, 5)
+	if ng > 0:
+		d["hp"] = float(d["hp"]) * (1.0 + 0.25 * ng)
+		d["dmg"] = float(d["dmg"]) * (1.0 + 0.12 * ng)
+	return d
+
+# ---------------------------------------------------------------- autosave / quicksave
+func auto_path() -> String:
+	return save_root + "/auto.json"
+
+func quick_path() -> String:
+	return save_root + "/quick.json"
+var _autosave_reason = ""
+var last_autosave_ms = -100000
+
+func save_auto(reason: String = "") -> Dictionary:
+	if S.is_empty() or not playing:
+		return {"ok": false, "reason": "no game"}
+	var keep = S.get("save_id", "")
+	S["save_id"] = "auto"
+	S["autosave_reason"] = reason
+	var r = save_to(auto_path())
+	S["save_id"] = keep
+	S.erase("autosave_reason")
+	if r.get("ok", false):
+		last_autosave_ms = Time.get_ticks_msec()
+	return r
+
+func save_quick() -> Dictionary:
+	if S.is_empty():
+		return {"ok": false, "reason": "no game"}
+	var keep = S.get("save_id", "")
+	S["save_id"] = "quick"
+	var r = save_to(quick_path())
+	S["save_id"] = keep
+	return r
+
+## Marks an autosave as due; main flushes it when no scene is running (never mid-scene, so a boss scene cannot be
+## re-triggered by loading an autosave taken between its battle and its end).
+func request_autosave(reason: String) -> void:
+	if not Settings.get_v("autosave") or fixture_label.begins_with("unit") or S.is_empty():
+		return
+	_autosave_reason = reason
+
+func autosave_pending() -> bool:
+	return _autosave_reason != ""
+
+func flush_autosave() -> Dictionary:
+	if _autosave_reason == "" or fixture_label.begins_with("unit"):
+		_autosave_reason = ""
+		return {"ok": false, "reason": "none"}
+	var why = _autosave_reason
+	_autosave_reason = ""
+	return save_auto(why)
+
+## Everything the save list shows for one file: chapter, location, playtime, party (id + level), NG cycle, clear.
+func info_from_state(s: Dictionary) -> Dictionary:
+	var mp = Content.map(s["location"]["map"])
+	var party = []
+	for cid in s.get("party", {}).get("active", []):
+		var m = s["party"]["members"].get(cid, {})
+		party.append({"cid": cid, "level": int(m.get("level", 1)), "name": str(s.get("names", {}).get(cid, Content.ch(cid).get("short", cid)))})
+	return {"ok": true, "chapter": _current_chapter_name(s), "location": mp.get("name", s["location"]["map"]),
+		"playtime": float(s["playtime"]), "date": s.get("timestamp", ""), "level": int(s["party"]["members"]["C01"]["level"]),
+		"party": party, "ng": int(s.get("ng", 0)), "clear": bool(s.get("clear", false)), "gold": int(s.get("inventory", {}).get("gold", 0)),
+		"difficulty": str(s.get("difficulty", "normal")), "reason": str(s.get("autosave_reason", ""))}
+
+func path_info(path: String) -> Dictionary:
+	var r = _read_payload(path)
+	if not r["ok"]:
+		return r
+	return info_from_state(r["state"])
+
+## The newest readable save of all (manual slots, autosave, quicksave): {path, info} or {}.
+func latest_save() -> Dictionary:
+	var best = {}
+	var paths = [auto_path(), quick_path()]
+	for sl in range(1, SLOTS + 1):
+		paths.append(slot_path(sl))
+	for p in paths:
+		var info = path_info(p)
+		if info.get("ok", false) and (best.is_empty() or str(info["date"]) > str(best["info"]["date"])):
+			best = {"path": p, "info": info}
+	return best
+
+# ---------------------------------------------------------------- New Game+
+## Starts a new cycle from a cleared state: levels, XP, equipment, inventory (not key items), crowns, Vestiges,
+## learned Vestige magic, smith upgrades, bestiary, fish log, counters, names and achievements carry; the story,
+## quests, chests, flags and world state reset. Difficulty carries; Mature is a player setting and stays as set.
+func new_game_plus(from: Dictionary) -> void:
+	var carry = from.duplicate(true)
+	new_game()
+	S["ng"] = int(carry.get("ng", 0)) + 1
+	S["difficulty"] = str(carry.get("difficulty", S["difficulty"]))
+	for cid in carry["party"]["members"]:
+		if not S["party"]["members"].has(cid):
+			continue
+		var om: Dictionary = carry["party"]["members"][cid]
+		var nm: Dictionary = S["party"]["members"][cid]
+		for k in ["level", "xp", "equip", "vbonus", "starter_given"]:
+			if om.has(k):
+				nm[k] = om[k]
+		nm["hp"] = -1
+		nm["mp"] = -1
+	var items: Dictionary = {}
+	for iid in carry["inventory"]["items"]:
+		if Content.item(iid).get("kind", "") != "key":
+			items[iid] = int(carry["inventory"]["items"][iid])
+	S["inventory"]["items"] = items
+	S["inventory"]["gold"] = int(carry["inventory"]["gold"])
+	for k in ["vestiges", "vknown", "vlearn", "upgrades", "bestiary", "fish", "stats", "names", "achievements", "names_asked"]:
+		if carry.has(k):
+			S[k] = carry[k]
+	S["links"] = {}
+	S["stats"]["ng_started"] = int(S["stats"].get("ng_started", 0)) + 1
+	# C01 re-joins with the carried level and gear
+	var m = S["party"]["members"]["C01"]
+	var st = stats("C01")
+	m["hp"] = st["mhp"]
+	m["mp"] = st["mmp"]
+	_meta_dirty = true
+	emit_signal("state_changed")
+
+# ---------------------------------------------------------------- Mature mode
+## Mature mode is on only with both the setting and the one-time 18+ confirmation.
+func mature() -> bool:
+	return bool(Settings.get_v("mature")) and bool(Settings.get_v("mature_ok"))
+
+## Dialogue filter for the `{m:strong|mild}` markup in scene lines: the strong wording with Mature on, else the mild
+## one (either side may be empty). Lines without markup pass through unchanged.
+static func mature_filter(text: String, on: bool = false) -> String:
+	var i = text.find("{m:")
+	while i >= 0:
+		var j = text.find("}", i)
+		if j < 0:
+			break
+		var body = text.substr(i + 3, j - i - 3)
+		var bar = body.find("|")
+		var strong = body.substr(0, bar) if bar >= 0 else body
+		var mild = body.substr(bar + 1) if bar >= 0 else ""
+		text = text.substr(0, i) + (strong if on else mild) + text.substr(j + 1)
+		i = text.find("{m:", i)
+	return text.replace("  ", " ").strip_edges() if text.find("  ") >= 0 else text

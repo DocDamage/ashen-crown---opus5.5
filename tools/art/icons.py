@@ -197,13 +197,14 @@ def build_icons(items):
     """-> (atlas11, atlas24, sources). Items in sorted-id order, each category's pool used in turn."""
     P = pools()
     ids = sorted(items)
-    n = len(ids)
+    n = max([len(ids)] + [int(items[i].get("icon", 0)) + 1 for i in ids])
     rows = (n + 31) // 32
     a11 = Image.new("RGBA", (32 * 11, rows * 11), (0, 0, 0, 0))
     a24 = Image.new("RGBA", (32 * 24, rows * 24), (0, 0, 0, 0))
     used = {}
     for i, iid in enumerate(ids):
         it = items[iid]
+        i = int(it.get("icon", i))   # cell = item.icon (items added after the sorted pass get cells at the end)
         cat = category(it)
         pool = P[cat]
         k = used.get(cat, 0)
@@ -225,6 +226,8 @@ SOURCES = [S7I % 2, S7I % 3, S7G % "potions", S7G % "ammies", S7HAT % "hats-1", 
 def build_library(save_ext):
     root = os.path.join(os.path.dirname(__file__), "..", "..", "game", "content", "content.json")
     items = json.load(open(root))["items"]
+    # systems s2 items (icon_base) take cells after the base atlas: tools/art/icons_gear2.py appends them afterwards
+    items = {k: v for k, v in items.items() if "icon_base" not in v}
     a11, a24 = build_icons(items)
     save_ext(a11, "sprites/icons_11.png", "item_icons", SOURCES, note="11px item icons, 32/row, cell = item.icon")
     save_ext(a24, "sprites/icons_24.png", "item_icons", SOURCES, note="24px item icons, 32/row, cell = item.icon")

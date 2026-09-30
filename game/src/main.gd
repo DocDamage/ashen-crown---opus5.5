@@ -72,12 +72,13 @@ func _ready() -> void:
 	paused_overlay.draw.connect(func():
 		paused_overlay.draw_rect(Rect2(0, 0, 320, 240), Color(0.02, 0.02, 0.08, 0.6))
 		UI.win(paused_overlay, Rect2(116, 106, 88, 28))
-		UI.text_center(paused_overlay, 160, 114, "Paused"))
+		UI.text_center(paused_overlay, 160, 114, T.s("sys.paused")))
 	overlay.add_child(paused_overlay)
 	Game.notify.connect(toast)
 	get_window().min_size = Vector2i(640, 480)
 	if Settings.get_v("fullscreen"):
 		get_window().mode = Window.MODE_FULLSCREEN
+	_meta_ready()
 	await get_tree().process_frame
 	to_title()
 	if QA.tests:
@@ -90,6 +91,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("g_skip"):
 		director.handle_skip()
+	if caption_box != null:
+		_meta_process(delta)
 	if not toasts.is_empty():
 		toasts[0]["t"] -= delta
 		if toasts[0]["t"] <= 0:
@@ -134,8 +137,8 @@ func to_title() -> void:
 
 func start_new_game() -> void:
 	if not QA.active:
-		await say("", "Choose a difficulty. You can change it at any time in Settings.")
-		var d: int = await choose(["Easy - for the story", "Normal", "Hard - tougher enemies"], 1)
+		await say("", T.s("sys.difficulty_pick"))
+		var d: int = await choose([T.s("sys.difficulty.easy"), T.s("sys.difficulty.normal"), T.s("sys.difficulty.hard")], 1)
 		Settings.set_v("difficulty_default", ["easy", "normal", "hard"][maxi(d, 0)])
 	await fade(true, 0.6)
 	if title_screen:
@@ -183,14 +186,17 @@ func transition_to(dest: String, spawn: String, sfx: String = "") -> void:
 	if sfx != "":
 		Audio.sfx(sfx)
 	var prev_zone: String = field.map.get("zone", "")
+	var prev_kind: String = field.map.get("kind", "")
 	await fade(true, 0.18)
 	field.load_map(Game.world_for_phase(dest), spawn)
 	if field.map.get("zone", "") != prev_zone and field.map.get("name", "") != "":
 		field.show_banner(field.map["name"])
+	_arrival_autosave(prev_kind)
 	await fade(false, 0.18)
 	field.busy = false
 	_transitioning = false
-	_check_auto_scenes()
+	await _check_auto_scenes()
+	flush_autosave()
 
 func warp(map_id: String, spawn: String, dir: String = "") -> void:
 	await fade(true, 0.0 if director.skipping else 0.25)
@@ -277,15 +283,18 @@ func _draw_toasts() -> void:
 	if toasts.is_empty():
 		return
 	var t: Dictionary = toasts[0]
+	UI.push_px(UI.size_px("list"))
+	var lh = UI.line_h()
 	var lines: Array = UI.wrap(t["text"], 284.0)
 	var w = 24.0
 	for l in lines:
 		w = maxf(w, UI.width(l) + 22)
 	w = minf(312.0, w)
-	var r = Rect2(Vector2(round((320 - w) / 2.0), 34), Vector2(w, 12 + 11 * lines.size()))
+	var r = Rect2(Vector2(round((320 - w) / 2.0), 34), Vector2(w, 12 + lh * lines.size()))
 	UI.win(toast_box, r)
 	for i in range(lines.size()):
-		UI.text_center(toast_box, 160, r.position.y + 5 + 11 * i, lines[i])
+		UI.text_center(toast_box, 160, r.position.y + 5 + lh * i, lines[i])
+	UI.pop_px()
 
 func fade(out: bool, dur: float) -> void:
 	var target = 1.0 if out else 0.0
@@ -338,6 +347,8 @@ func emote(actor_id: String, sym: String) -> void:
 # ======================================================================
 func _on_field_scene(scene_id: String, ctx: Dictionary) -> void:
 	await director.run(scene_id, ctx)
+	if ctx.get("craft", "") != "":
+		await open_menu_async("craft", {"id": ctx["craft"]})   # crafter NPCs (systems s2)
 
 func _on_field_battle(form: String, opts: Dictionary) -> void:
 	await run_battle(form, opts)
@@ -352,6 +363,10 @@ func _on_field_menu(kind: String, data: Dictionary) -> void:
 			await open_menu_async("savepoint")
 		"shop":
 			await open_shop(data["id"])
+		"craft":
+			await open_menu_async("craft", data)
+		"fish":
+			await open_fishing(data)
 		"inn":
 			if data.get("scene", "") != "":
 				await director.run(data["scene"])
@@ -414,9 +429,19 @@ func run_battle(form_id: String, opts: Dictionary = {}) -> String:
 			await fade(false, 0.25)
 			for m in msgs.slice(1):
 				await say("", m)
+			if not director.running:
+				flush_autosave()
 			break
 		elif result == "fled":
 			Game.apply_battle_flee(model)
+			field.visible = true
+			await fade(false, 0.25)
+			break
+		elif opts.get("arena", false):
+			# arena bouts (field systems s3) never end the game: the party is restored and the loss stands
+			Game.restore_checkpoint()
+			Game.heal_all()
+			result = "defeat"
 			field.visible = true
 			await fade(false, 0.25)
 			break
@@ -450,12 +475,12 @@ func defeat_menu() -> int:
 		bg.draw_rect(Rect2(0, 0, 320, 240), Color8(4, 2, 8))
 		for i in range(10):
 			bg.draw_rect(Rect2(0, 150 + i * 9, 320, 9), Color8(20 + i * 3, 4 + i, 10 + i, 255))
-		UI.text_center(bg, 160, 70, "The party has fallen.", UI.C_RED)
+		UI.text_center(bg, 160, 70, T.s("sys.fallen"), UI.C_RED)
 		UI.win(bg, Rect2(24, 88, 272, 22))
-		UI.text_center(bg, 160, 94, "Retry restores the checkpoint and its supplies.", UI.C_TEXT))
+		UI.text_center(bg, 160, 94, T.s("sys.retry_hint"), UI.C_TEXT))
 	ui.add_child(bg)
 	Audio.music("silence")
-	var idx = await choose(["Retry from Checkpoint", "Load Save"])
+	var idx = await choose([T.s("sys.retry"), T.s("sys.load")])
 	bg.queue_free()
 	return idx
 
@@ -472,7 +497,12 @@ func clear_save() -> void:
 	await open_menu_async("clear_save")
 
 func ending_menu() -> void:
-	var idx = await choose(["Continue from Before the Final Descent", "Return to Title"])
+	var idx = await choose([T.s("sys.ending.continue"), T.s("sys.ending.title"), T.s("sys.ending.ngplus")])
+	if idx == 2:
+		# New Game+ from the cleared state (sys s4); starts after the ending scene has unwound
+		Game.S["clear"] = true
+		call_deferred("start_new_game_plus", Game.S.duplicate(true))
+		return
 	if idx == 0:
 		# post-clear: the pre-finale snapshot plus clear and personal-quest flags (not a simulated post-ending world)
 		var carry = {"quests": {}, "flags": {}, "epilogue": Game.S.get("epilogue", {}).duplicate(true)}
@@ -495,3 +525,103 @@ func ending_menu() -> void:
 			return
 		await say("", "The pre-finale backup could not be read. Returning to the title.", "")
 	to_title()
+
+# ======================================================================
+# sys s4: autosave, achievements toast, sound captions, fishing, New Game+, portable save
+# ======================================================================
+var captions: Array = []
+var caption_box: Control
+var fishing: FishingGame = null
+
+func _meta_ready() -> void:
+	Settings.apply_window()
+	Game.achieved.connect(func(id):
+		var d: Dictionary = Achievements.defs().get(id, {})
+		Audio.sfx("FX028")
+		toast(T.f("achv.toast", [str(d.get("name", id))])))
+	Audio.caption.connect(_on_caption)
+	caption_box = Control.new()
+	caption_box.size = Vector2(320, 240)
+	caption_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	caption_box.draw.connect(_draw_captions)
+	ui.add_child(caption_box)
+	director.scene_done.connect(func(_id):
+		if not director.running:
+			flush_autosave())
+
+## Autosave on arriving at a world map from a place, or at a town / village (no encounters) from a world map.
+func _arrival_autosave(prev_kind: String) -> void:
+	var k: String = field.map.get("kind", "")
+	var enc: String = field.map.get("encounters", "")
+	if (k == "world" and prev_kind != "world") or (prev_kind == "world" and k != "world" and enc in ["", "none"]):
+		Game.request_autosave("map")
+
+func flush_autosave() -> void:
+	if not Game.autosave_pending() or director.running or mode != "field":
+		return
+	var r = Game.flush_autosave()
+	if r.get("ok", false):
+		autosave_blink = 1.4
+		caption_box.queue_redraw()
+
+var autosave_blink = 0.0
+
+func _on_caption(text: String) -> void:
+	if mode == "battle" or text == "":
+		return
+	captions.append({"text": text, "t": 1.8})
+	if captions.size() > 3:
+		captions.pop_front()
+	caption_box.queue_redraw()
+
+func _meta_process(delta: float) -> void:
+	for c in captions:
+		c["t"] -= delta
+	captions = captions.filter(func(c): return c["t"] > 0)
+	if autosave_blink > 0:
+		autosave_blink -= delta
+	if not captions.is_empty() or autosave_blink > -0.1:
+		caption_box.queue_redraw()
+
+func _draw_captions() -> void:
+	var y = 158.0
+	for c in captions:
+		var w = UI.width(c["text"]) + 12
+		caption_box.draw_rect(Rect2(6, y, w, 11), Color(0, 0, 0, 0.7 * clampf(c["t"] / 0.4, 0.0, 1.0)))
+		UI.text(caption_box, Vector2(12, y), c["text"], UI.C_TEXT)
+		y -= 12
+	if autosave_blink > 0 and int(autosave_blink * 4) % 2 == 0:
+		UI.text_right(caption_box, 314, 4, T.s("save.autosaved"), UI.C_LABEL)
+
+func open_fishing(spot: Dictionary) -> void:
+	field.busy = true
+	fishing = FishingGame.new()
+	ui.add_child(fishing)
+	fishing.setup(self, spot)
+	router.push(fishing)
+	await fishing.done
+	router.pop(fishing)
+	fishing.queue_free()
+	fishing = null
+	field.busy = false
+
+## Waylamp: the save ledger anywhere outside battles, scenes and boss rooms.
+func can_use_save_lantern() -> bool:
+	return mode == "field" and not director.running and not field.map.get("boss_room", false)
+
+func start_new_game_plus(from: Dictionary) -> void:
+	await fade(true, 0.6)
+	if title_screen:
+		router.pop(title_screen)
+		title_screen.queue_free()
+		title_screen = null
+	for ch in ui.get_children():
+		if ch is GameMenu:
+			ch.queue_free()
+	router.stack.clear()
+	Game.new_game_plus(from)
+	enter_field(Game.S["location"]["map"], Game.S["location"]["spawn"])
+	await fade(false, 0.6)
+	toast(T.f("sys.ngplus_begin", [int(Game.S.get("ng", 1))]))
+	if Content.data["scenes"].has("OPENING"):
+		await director.run("OPENING")

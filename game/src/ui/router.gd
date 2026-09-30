@@ -10,6 +10,8 @@ const DIRS := ["up", "down", "left", "right"]
 const BUTTONS := ["confirm", "cancel", "menu", "page_l", "page_r", "skip"]
 const REPEAT_DELAY := 0.28
 const REPEAT_RATE := 0.07
+const HOLD_DELAY := 0.5
+const HOLD_RATE := 0.3
 var time = 0.0
 
 func push(n: Object) -> void:
@@ -38,8 +40,15 @@ func _process(delta: float) -> void:
 				_send(t, d)
 	for b in BUTTONS:
 		if Input.is_action_just_pressed("g_" + b):
+			_repeat_at[b] = time + HOLD_DELAY
 			_send(t, b)
 			t = top()
+		elif b == "confirm" and Settings.get_v("hold_confirm") and Input.is_action_pressed("g_confirm"):
+			# accessibility: holding Confirm repeats it (advance text, step through menus) instead of tapping
+			if time >= float(_repeat_at.get(b, 1e9)):
+				_repeat_at[b] = time + HOLD_RATE
+				_send(t, b)
+				t = top()
 
 func _send(t: Object, ev: String) -> void:
 	if t != null and t.has_method("handle"):

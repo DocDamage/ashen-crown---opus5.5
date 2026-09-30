@@ -112,6 +112,8 @@ func stop_music(fade: float = 0.0) -> void:
 func sfx(id: String, bus: String = "SFX") -> void:
 	if id == "":
 		return
+	if bus != "UI" and Settings.get_v("captions") and T.has("cc." + id):
+		emit_signal("caption", T.s("cc." + id))
 	var now = Time.get_ticks_msec()
 	if _last_sfx_ms.get(id, 0) + 40 > now:
 		return
@@ -129,3 +131,60 @@ func sfx(id: String, bus: String = "SFX") -> void:
 
 func ui(id: String) -> void:
 	sfx(id, "UI")
+
+# ======================================================================
+# sys s4: dialogue voice blips and sound captions
+# ======================================================================
+signal caption(text: String)
+var _blip_player: AudioStreamPlayer = null
+var _voices = null
+var _last_blip_ms = 0
+
+func _voice_table() -> Dictionary:
+	if _voices == null:
+		var p = "res://assets/audio/blips/voices.json"
+		_voices = JSON.parse_string(FileAccess.get_file_as_string(p)) if FileAccess.file_exists(p) else {}
+		if typeof(_voices) != TYPE_DICTIONARY:
+			_voices = {}
+	return _voices
+
+## [voice, pitch] for a speaker key: heroes (C01..), then named speakers through their portrait/type key, then a
+## stable hash so every unnamed voice still sounds the same each time.
+func voice_for(key: String) -> Array:
+	var vt = _voice_table()
+	var m: Dictionary = vt.get("map", {})
+	var ty: Dictionary = vt.get("types", {})
+	if m.has(key):
+		return m[key]
+	if ty.has(key):
+		return ty[key]
+	var info: Array = Content.speaker(key) if Content.data.has("speakers") else []
+	var h = absi(hash(key))
+	if info.size() > 1:
+		var t = str(info[1])
+		if m.has(t):
+			return m[t]
+		if ty.has(t):
+			var v: Array = ty[t]
+			return [v[0], float(v[1]) * (0.92 + 0.16 * float(h % 100) / 100.0)]
+	var names: Array = vt.get("voices", ["pulse"])
+	if names.is_empty():
+		return ["pulse", 1.0]
+	return [names[h % names.size()], 0.8 + 0.6 * float((h / 7) % 100) / 100.0]
+
+func blip(key: String) -> void:
+	var now = Time.get_ticks_msec()
+	if now - _last_blip_ms < 45:
+		return
+	_last_blip_ms = now
+	var v = voice_for(key)
+	var st = _cue_stream("blips", str(v[0]))
+	if st == null:
+		return
+	if _blip_player == null:
+		_blip_player = AudioStreamPlayer.new()
+		_blip_player.bus = "Voice" if AudioServer.get_bus_index("Voice") >= 0 else "SFX"
+		add_child(_blip_player)
+	_blip_player.stream = st
+	_blip_player.pitch_scale = clampf(float(v[1]) * randf_range(0.97, 1.03), 0.3, 3.0)
+	_blip_player.play()

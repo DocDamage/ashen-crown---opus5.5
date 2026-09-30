@@ -123,6 +123,10 @@ func run_gallery(p_main: Node, which: String) -> void:
 		main.router.pop(main.title_screen)
 		main.title_screen.queue_free()
 		main.title_screen = null
+	if which == "sys_s4":
+		await _g_sys_s4()
+		get_tree().quit(0)
+		return
 	if which.begins_with("perf:"):
 		# average field frame time (ms) per map: --qa-gallery-set perf:ID1,ID2
 		for m in which.substr(5).split(","):
@@ -133,6 +137,10 @@ func run_gallery(p_main: Node, which: String) -> void:
 				main.field.queue_redraw()
 				await RenderingServer.frame_post_draw
 			print("PERF %s %.2f ms/frame" % [m, (Time.get_ticks_usec() - t0) / 120000.0])
+		get_tree().quit(0)
+		return
+	if which == "sys_s2":
+		await _g_sys_s2()
 		get_tree().quit(0)
 		return
 	if which == "m7":
@@ -234,6 +242,11 @@ func run_gallery(p_main: Node, which: String) -> void:
 			await _g_shot("ov_" + pair[0])
 		get_tree().quit(0)
 		return
+	if which == "sys_s3":
+		# field and world systems review (src/qa/gallery_s3.gd)
+		await GalleryS3.run(self, main)
+		get_tree().quit(0)
+		return
 	if which.begins_with("map:"):
 		# whole-map stitched captures for tile review: --qa-gallery-set map:ID1,ID2 (or map:ALL)
 		var ids: Array = Array(which.substr(4).split(","))
@@ -309,6 +322,10 @@ func run_gallery(p_main: Node, which: String) -> void:
 			await _g_frames(2)
 		get_tree().quit(0)
 		return
+	if which == "sys_s1":
+		await _g_sys_s1()
+		get_tree().quit(0)
+		return
 	if which in ["battle", "all"] or which.begins_with("battle:"):
 		for cid in ["C02", "C03", "C04", "C05"]:
 			if Content.data["characters"].has(cid):
@@ -327,6 +344,96 @@ func run_gallery(p_main: Node, which: String) -> void:
 			bs.queue_free()
 			await _g_frames(2)
 	get_tree().quit(0)
+
+## Expansion battle systems (branch s1): limit gauge + Limit menu, Lore (blue magic), Swap with the bench, Capture,
+## the Formation page with bench and row depth.
+func _g_sys_s1() -> void:
+	var act = ["C04", "C08", "C09", "C12", "C13"]
+	var bench = ["C01", "C02", "C03"]
+	for cid in act + bench:
+		Game.recruit(cid)
+		var m = Game.member(cid)
+		m["level"] = 42
+		m["xp"] = F.xp_total_for_level(42)
+	Game.S["party"]["roster"] = act + bench + Game.S["party"]["roster"].filter(func(c): return not (act + bench).has(c))
+	Game.set_active(act)
+	Game.heal_all()
+	Game.S["blue"] = ["S301", "S303", "S306", "S313", "S315", "S317", "S321", "S323"]
+	Game.member("C04")["limit_gauge"] = 100.0
+	Game.member("C04")["limit_uses"] = {"S413": 3, "S414": 5}
+	Game.member("C08")["limit_gauge"] = 55.0
+	Game.member("C09")["limit_gauge"] = 20.0
+	Game.member("C12")["limit_gauge"] = 85.0
+	Game.member("C13")["limit_gauge"] = 100.0
+	await _g_menu("main", {}, "sys_s1_formation", func(m): m._formation_menu(); m.lists[-1].index = 5)
+	await _g_menu("main", {}, "sys_s1_abilities", func(m): m._abilities_menu("C04"); m.lists[-1].index = m.lists[-1].items.size() - 9; m.lists[-1]._fix_scroll())
+	for vid in ["V13", "V24"]:
+		Game.grant_vestige(vid)
+	Game.link_vestige("V24", "C13")
+	await _g_menu("main", {}, "sys_s1_vestiges", func(m): m._vestige_menu(); m.lists[-1].index = 1)
+	var bs = BattleScene.new()
+	bs.main = main
+	main.world.add_child(bs)
+	main.field.visible = false
+	bs.setup("D09_4", 1234, {})
+	bs.hint_t = 0.0
+	for bid in bs.model.party_ids:
+		bs.model.battlers[bid].atb = 0.0
+	bs.model.battlers[bs.model.party_ids[0]].atb = 990.0
+	for eid in bs.model.enemy_ids:
+		bs.model.battlers[eid].atb = 0.0
+	var g = 0
+	while bs.cmd_menu == null and g < 300:
+		await _g_frames(1)
+		g += 1
+	await _g_frames(20)
+	await _g_shot("sys_s1_commands_limit")
+	bs._on_cmd(0, {"value": "limit"})
+	await _g_frames(8)
+	await _g_shot("sys_s1_limit_menu")
+	bs.sub_menu.emit_signal("cancelled")
+	await _g_frames(2)
+	bs._on_cmd(0, {"value": "lore"})
+	await _g_frames(8)
+	await _g_shot("sys_s1_lore_menu")
+	bs.sub_menu.emit_signal("cancelled")
+	await _g_frames(2)
+	bs._on_cmd(0, {"value": "swap"})
+	await _g_frames(8)
+	await _g_shot("sys_s1_swap_menu")
+	bs.sub_menu.chosen.emit(0, bs.sub_menu.items[0])
+	g = 0
+	while g < 240 and (bs.cmd_menu == null or bs.selecting == null):
+		await _g_frames(1)
+		g += 1
+	await _g_frames(10)
+	await _g_shot("sys_s1_after_swap")
+	# Capture: Sak on a weakened enemy
+	if bs.selecting != null and bs.selecting.ref != "C08":
+		bs._close_menus()
+	var sak = null
+	for bid in bs.model.party_ids:
+		if bs.model.battlers[bid].ref == "C08":
+			sak = bs.model.battlers[bid]
+	if sak != null:
+		for bid in bs.model.ready_order.duplicate():
+			if bid != sak.id:
+				bs.model.cancel_select(bs.model.battlers[bid])
+				bs.model.ready_order.erase(bid)
+				bs.model.battlers[bid].state = "FILLING"
+				bs.model.battlers[bid].atb = 0.0
+		bs._close_menus()
+		sak.atb = 999.0
+		var e0 = bs.model.battlers[bs.model.enemy_ids[0]]
+		e0.hp = int(e0.mhp * 0.2)
+		g = 0
+		while g < 300 and (bs.selecting == null or bs.selecting != sak):
+			await _g_frames(1)
+			g += 1
+		await _g_frames(6)
+		await _g_shot("sys_s1_capture_command")
+	bs.queue_free()
+	await _g_frames(2)
 
 func _g_menu(kind: String, data: Dictionary, name: String, drive: Callable = Callable()) -> void:
 	var m = GameMenu.new()
@@ -436,6 +543,55 @@ func _g_ui_screens() -> void:
 	cr.queue_free()
 	await _g_frames(2)
 
+## Systems s2 review: crafting bench, a gathering node and its message, the bestiary (data, lore, rewards), set bonus.
+func _g_sys_s2() -> void:
+	for cid in ["C02", "C03", "C04", "C05"]:
+		Game.recruit(cid)
+	for ch in ["CH01", "CH02", "CH03", "CH04"]:
+		Game.complete_chapter(ch)
+	Game.add_gold(5000)
+	for iid in ["M001", "MT01", "MT20", "MT34", "MT10", "MT30"]:
+		Game.add_item(iid, 4)
+	main.enter_field("N06_SMITH", "entry")
+	main.field.banner_t = 0.0
+	await _g_frames(20)
+	await _g_menu("craft", {"id": "crafter_n06"}, "s2_craft_bench")
+	await _g_menu("craft", {"id": "crafter_n06"}, "s2_craft_weapons", func(m): m._craft_list("weapon"))
+	await _g_menu("craft", {"id": "crafter_n06"}, "s2_craft_items", func(m): m._craft_list("consumable"); m.lists[-1].index = 3; m.lists[-1]._fix_scroll())
+	main.enter_field("N06_R01", "default")
+	main.field.banner_t = 0.0
+	# a gathering node, then its harvest message
+	main.field.place_player(9, 24, "down")
+	await _g_frames(20)
+	await _g_shot("s2_node_field")
+	main.field.interact()
+	await _g_frames(12)
+	await _g_shot("s2_gather_message")
+	main.toasts.clear()
+	main.toast_box.queue_redraw()
+	# bestiary: some seen, some defeated, one scanned
+	var ids = Game.bestiary_entries()
+	for i in range(ids.size()):
+		if i % 3 != 2:
+			Game.bestiary_seen(ids[i], "seen")
+		if i % 3 == 0:
+			Game.bestiary_seen(ids[i], "defeated")
+	Game.bestiary_seen("E047", "scan")
+	var at = ids.find("E047") + 1
+	await _g_menu("main", {}, "s2_bestiary_data", func(m): m._bestiary(); m.lists[-1].index = at; m.lists[-1]._fix_scroll())
+	await _g_menu("main", {}, "s2_bestiary_lore", func(m): m._bestiary(); m.lists[-1].index = at; m.lists[-1]._fix_scroll(); m.best_tab = 1)
+	await _g_menu("main", {}, "s2_bestiary_rewards", func(m): m._bestiary())
+	# a two-piece set and a teaching accessory on Raven
+	for iid in ["WN01", "GN01", "AN01"]:
+		Game.add_item(iid, 1)
+	Game.equip("C01", "weapon", "WN01")
+	Game.equip("C01", "head", "GN01")
+	Game.equip("C01", "acc1", "AN01")
+	Game.gear_learning(4)
+	await _g_menu("main", {}, "s2_equip_set", func(m): m._equip_menu("C01"))
+	# region tier stock at Kettle Row
+	await _g_menu("shop", {"id": "SHOP_N06"}, "s2_shop_tier", func(m): m._shop_list("SHOP_N06", true); m.lists[-1].index = m.lists[-1].items.size() - 4; m.lists[-1]._fix_scroll())
+
 func _g_frames(n: int) -> void:
 	for i in range(n):
 		await get_tree().process_frame
@@ -445,3 +601,141 @@ func _g_shot(name: String) -> void:
 	var img = get_viewport().get_texture().get_image()
 	img.save_png("%s/%s.png" % [out_dir, name])
 	print("GALLERY ", name)
+
+# ---------------------------------------------------------------- sys s4 gallery: saves, records, settings, fishing
+func _g_sys_s4() -> void:
+	var keep_settings = Settings.v.duplicate(true)
+	Game.save_root = "user://gallery_saves"
+	DirAccess.make_dir_recursive_absolute(Game.save_root)
+	Achievements.reset_profile("user://gallery_profile.json")
+	Achievements.quiet = true
+	Settings.v["window_color"] = "dark"
+	for cid in ["C02", "C03", "C07"]:
+		Game.recruit(cid)
+	for cid in Game.S["party"]["roster"]:
+		Game.member(cid)["level"] = 18
+	Game.complete_chapter("CH01")
+	Game.complete_chapter("CH02")
+	Game.S["playtime"] = 4 * 3600 + 17 * 60
+	Game.fixture_label = ""
+	Game.save_slot(1)
+	Game.S["playtime"] += 1800.0
+	Game.save_slot(3)
+	Game.save_auto("map")
+	Game.save_quick()
+	Game.stat_add("battles", 31)
+	Game.S["fish"]["log"]["F13"] = {"n": 4, "best": 71.2, "kg": 5.03}
+	Game.S["fish"]["log"]["F23"] = {"n": 1, "best": 262.0, "kg": 71.9}
+	Game.S["fish"]["log"]["F02"] = {"n": 9, "best": 21.0, "kg": 0.17}
+	Achievements.evaluate()
+	Game.achieve("FS01")
+	main.enter_field("N14_R01", "world")
+	main.field.banner_t = 0.0
+	await _g_frames(6)
+	await _g_menu("main", {}, "s4_menu_main")
+	await _g_menu("main", {}, "s4_save_list", func(m): m._save_menu(false); m.lists[-1].index = 2; m.lists[-1]._fix_scroll())
+	await _g_menu("load", {}, "s4_load_list", func(m): m.lists[-1].index = 12; m.lists[-1]._fix_scroll())
+	await _g_menu("main", {}, "s4_records", func(m): m._records_menu())
+	await _g_menu("main", {}, "s4_achievements", func(m): m._achievements_page(); m.lists[-1].index = 1)
+	await _g_menu("main", {}, "s4_fishlog", func(m): m._fish_log_page(); m.lists[-1].index = 22; m.lists[-1]._fix_scroll())
+	await _g_menu("settings", {}, "s4_settings_pages")
+	await _g_menu("settings", {}, "s4_settings_access", func(m): m._settings_page("access"))
+	await _g_menu("settings", {}, "s4_settings_text", func(m): m._settings_page("text"))
+	Settings.v["glyphs"] = "xbox"
+	await _g_menu("settings", {}, "s4_settings_pad_xbox", func(m): m._settings_page("pad"))
+	Settings.v["glyphs"] = "playstation"
+	await _g_menu("settings", {}, "s4_settings_pad_ps", func(m): m._settings_page("pad"))
+	Settings.v["glyphs"] = "keyboard"
+	await _g_menu("settings", {}, "s4_settings_keys", func(m): m._settings_page("keys"))
+	# accessibility looks: large text dialogue at 70% opacity, colour-blind palette, high contrast
+	Settings.v["glyphs"] = "deck"
+	Settings.v["text_size"] = 1
+	Settings.v["dialogue_opacity"] = 0.7
+	main.say("Oni", "The seals remember every hand that wrote them. Mine too. Keep your weapons low in there; some of them flinch.", "C07")
+	await _g_frames(80)
+	await _g_shot("s4_dialogue_large")
+	main.dialogue.handle("confirm")
+	main.dialogue.handle("confirm")
+	main.dialogue.handle("confirm")
+	main.dialogue.visible = false
+	main.router.pop(main.dialogue)
+	Settings.v["text_size"] = 2
+	main.say("Vespera", "If I cut the tether mid-leap, the span drops.", "C03")
+	await _g_frames(60)
+	await _g_shot("s4_dialogue_largest")
+	main.dialogue.visible = false
+	main.router.pop(main.dialogue)
+	await _g_menu("main", {}, "s4_menu_largetext", func(m): m._items_menu())
+	Settings.v["text_size"] = 0
+	Settings.v["dialogue_opacity"] = 1.0
+	Settings.v["colorblind"] = "deuteranopia"
+	Game.bestiary_seen("E001", "seen")
+	Game.bestiary_seen("E001", "affinity")
+	await _g_menu("main", {}, "s4_bestiary_cues_deutan", func(m): m._bestiary())
+	Settings.v["colorblind"] = "off"
+	Settings.v["window_color"] = "contrast"
+	await _g_menu("main", {}, "s4_theme_contrast", func(m): m._equip_menu("C01"))
+	Settings.v["window_color"] = "dark"
+	# fishing at the Saltwhistle pier (spot 4,24 faces the water to the left)
+	main.enter_field("N14_R01", "world", Vector2i(4, 24), "left")
+	main.field.banner_t = 0.0
+	Settings.v["glyphs"] = "xbox"
+	await _g_frames(6)
+	main.open_fishing(main.field.fish_spot_here())
+	var fg: FishingGame = main.fishing
+	await _g_frames(4)
+	fg.core._held = true
+	fg.core.t = 0.5
+	fg.core.power = 0.62
+	await _g_shot("s4_fish_cast")
+	fg.core.power = 0.62
+	fg.core._cast()
+	fg.core.wait_t = 99.0
+	await _g_frames(10)
+	await _g_shot("s4_fish_wait")
+	fg.core.state = "reel"
+	fg.core.line = 0.55
+	fg.core.tension = 0.72
+	fg.core.running = true
+	fg.core.run_t = 99.0
+	set_process_dummy(fg)
+	await _g_frames(6)
+	await _g_shot("s4_fish_reel")
+	fg.core.state = "caught"
+	fg.core.fish = FishCore.fish_def("F21")
+	fg.core.size = 131.0
+	fg.core.weight = FishCore.weight_of(fg.core.fish, 131.0)
+	Game.set_flag("fishing_tournament_open")
+	fg.result_msgs = FishingGame.record_catch(fg.core.fish, fg.core.size, fg.core.weight, "N14")
+	fg.phase = "result"
+	fg.queue_redraw()
+	await _g_frames(6)
+	await _g_shot("s4_fish_result")
+	fg.handle("cancel")
+	await _g_frames(4)
+	# battle: auto-battle tab and an element cue
+	Settings.v["auto_battle"] = "repeat"
+	var bs = BattleScene.new()
+	bs.main = main
+	main.world.add_child(bs)
+	main.field.visible = false
+	bs.setup("D01_4", 1234, {})
+	bs.auto_mode = "repeat"
+	await _g_frames(60)
+	bs._result_popup({"id": bs.model.enemy_ids[0], "kind": "damage", "amount": 412, "weak": true}, "fire", {})
+	await _g_frames(10)
+	await _g_shot("s4_battle_auto_cues")
+	bs.queue_free()
+	main.field.visible = true
+	await _g_frames(2)
+	Settings.v = keep_settings
+	Game.save_root = Game.SAVE_DIR
+	Achievements.path = "user://profile.json"
+	Achievements._loaded = false
+
+## Freeze the fishing overlay's simulation for a staged screenshot (drawing continues on request).
+func set_process_dummy(fg: FishingGame) -> void:
+	fg.phase = "play"
+	fg.core.elapsed = 0.0
+	fg.set_process(false)
+	fg.queue_redraw()

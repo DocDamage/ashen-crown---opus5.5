@@ -7,6 +7,8 @@ var menu: MenuList
 var t = 0.0
 var latest_slot = -1
 var latest_info = {}
+var latest_path = ""
+var ng_saves: Array = []     # sys s4: cleared saves that can start New Game+
 var sub: Control = null
 var logo: Texture2D
 
@@ -19,16 +21,18 @@ func _ready() -> void:
 	menu.position = Vector2(112, 150)
 	menu.size = Vector2(96, 76)
 	menu.allow_cancel = false
-	var cont_txt = "Continue"
 	var items = [
-		{"text": "New Game"},
-		{"text": cont_txt, "enabled": latest_slot >= 0},
-		{"text": "Load", "enabled": latest_slot >= 0},
-		{"text": "Settings"},
-		{"text": "Credits"},
-		{"text": "Quit"},
+		{"text": T.s("title.new"), "value": 0},
+		{"text": T.s("title.continue"), "enabled": latest_slot >= 0, "value": 1},
+		{"text": T.s("title.load"), "enabled": latest_slot >= 0, "value": 2},
+		{"text": T.s("title.settings"), "value": 3},
+		{"text": T.s("title.credits"), "value": 4},
+		{"text": T.s("title.quit"), "value": 5},
 	]
-	menu.setup(items, 6)
+	if not ng_saves.is_empty():
+		items.insert(3, {"text": T.s("title.ngplus"), "value": 6})
+		menu.size = Vector2(96, 87)
+	menu.setup(items, items.size())
 	if latest_slot >= 0:
 		menu.index = 1
 	add_child(menu)
@@ -42,18 +46,32 @@ func _find_latest() -> void:
 			best = str(info["date"])
 			latest_slot = s
 			latest_info = info
+			latest_path = Game.slot_path(s)
+		if info.get("ok", false) and info.get("clear", false):
+			ng_saves.append([Game.slot_path(s), T.f("save.slot", [s]) + "  " + str(info["chapter"])])
+	# sys s4: the autosave or quicksave counts for Continue when it is newer
+	for pr in [[Game.auto_path(), T.s("save.auto")], [Game.quick_path(), T.s("save.quick")]]:
+		var i2: Dictionary = Game.path_info(pr[0])
+		if i2.get("ok", false) and str(i2["date"]) > best:
+			best = str(i2["date"])
+			latest_slot = 0
+			latest_info = i2
+			latest_path = pr[0]
+			latest_info["label"] = pr[1]
 
 func handle(ev: String) -> void:
 	if sub != null:
 		return
 	menu.handle(ev)
 
-func _on_choice(i: int, _it: Dictionary) -> void:
-	match i:
+func _on_choice(_i: int, it: Dictionary) -> void:
+	match int(it.get("value", _i)):
+		6:
+			_pick_ng_plus()
 		0:
 			main.start_new_game()
 		1:
-			var r: Dictionary = Game.load_from(Game.slot_path(latest_slot))
+			var r: Dictionary = Game.load_from(latest_path)
 			if r["ok"]:
 				main.continue_from_state()
 			else:
@@ -141,8 +159,21 @@ func _draw() -> void:
 	else:
 		UI.text_center(self, 160, 60, "THE ASHEN CROWN", UI.C_GOLD)
 	if latest_slot >= 0 and menu.index == 1:
-		var s = "Slot %d  %s" % [latest_slot, latest_info["chapter"]]
+		var s = "%s  %s" % [latest_info.get("label", T.f("save.slot", [latest_slot])), latest_info["chapter"]]
 		var s2 = "%s  %s  Lv%d  %s" % [latest_info["location"], Game.fmt_time(latest_info["playtime"]), latest_info["level"], str(latest_info["date"]).replace("T", " ").substr(0, 16)]
 		UI.text_center(self, 160, 124, s, UI.C_TEXT)
 		UI.text_center(self, 160, 135, s2, UI.C_LABEL)
 	UI.text_right(self, 316, 229, "v0.2", UI.C_DIM)
+
+## sys s4: New Game+ from a cleared save (the ending also offers it directly).
+func _pick_ng_plus() -> void:
+	var opts: Array = ng_saves.map(func(x): return x[1])
+	opts.append(T.s("common.back"))
+	var idx: int = await main.choose(opts, 0)
+	if idx < 0 or idx >= ng_saves.size():
+		return
+	var r: Dictionary = Game._read_payload(ng_saves[idx][0])
+	if not r.get("ok", false):
+		main.toast(T.s("save.damaged_none"))
+		return
+	main.start_new_game_plus(Game._sanitize(r["state"]))

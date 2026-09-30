@@ -30,6 +30,11 @@ func art(path: String) -> String:
 
 func load_art(path: String) -> Texture2D:
 	var p = art(path)
+	# Mature mode (sys s4): an uncovered variant <name>_m.png beside the art replaces it when present
+	if p.ends_with(".png") and Game.mature():
+		var mp = art(path.substr(0, path.length() - 4) + "_m.png")
+		if ResourceLoader.exists(mp):
+			return load(mp)
 	return load(p) if ResourceLoader.exists(p) else null
 
 func ch(id: String) -> Dictionary: return data["characters"].get(id, {})

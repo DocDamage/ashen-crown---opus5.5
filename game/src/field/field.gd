@@ -97,6 +97,11 @@ var extra_actors: Array = []     # scene-staged actors {id,tile,pos,dir,sprite}
 var tint = Color(0, 0, 0, 0)
 var interact_hint = ""
 var p_prev = Vector2i.ZERO
+# field and world systems (s3): weather overlay, roaming wyrms, the vehicle action key hint
+var weather: WeatherFx = null
+var wyrms: Wyrms = null
+var _weather_t = 0.0
+var _hint = ""
 
 func hazard_on(e: Dictionary) -> bool:
 	var per: float = float(e.get("period", 3.0))
@@ -126,6 +131,8 @@ func _ready() -> void:
 	ground_root = Node2D.new()
 	ground_root.show_behind_parent = true
 	add_child(ground_root)
+	weather = WeatherFx.new()
+	add_child(weather)
 
 func _tex(path: String) -> Texture2D:
 	if tex_cache.has(path):
@@ -159,6 +166,10 @@ func load_map(id: String, spawn: String = "default", pos: Vector2i = Vector2i(-1
 	_load_ext(map["tileset"] if art == null else "")
 	m7 = Mode7.make(art, id) if map.get("kind", "") == "world" else null
 	hud = WorldHud.make(art, id) if map.get("kind", "") == "world" else null
+	if map.get("kind", "") == "world" and m7 == null:
+		m7 = Mode7.make_grid(map, id)        # no baked art yet (UNDERSEA): the grid in flat colours
+	if map.get("kind", "") == "world" and hud == null:
+		hud = WorldHud.make_grid(map, id)
 	show_map = false
 	if m7 != null:
 		if m7_node == null:
@@ -200,6 +211,12 @@ func load_map(id: String, spawn: String = "default", pos: Vector2i = Vector2i(-1
 			ship_pos = sp
 	if vehicle != "ship" and vs.get("mode", "foot") == "ship" and map.get("kind", "") == "world":
 		vs["mode"] = "foot"
+	# the sea floor is travelled only in the Lanternwake's diving hull
+	if id == FieldSys.SEA_MAP:
+		vehicle = "sub"
+		vs["mode"] = "sub"
+	elif vs.get("mode", "foot") == "sub":
+		vs["mode"] = "foot"
 	p_tile = sp
 	p_pos = Vector2(sp * TS)
 	p_dir = sdir if sdir != "" else "down"
@@ -223,6 +240,9 @@ func load_map(id: String, spawn: String = "default", pos: Vector2i = Vector2i(-1
 	if m7 != null:
 		m7.snap(p_pos + Vector2(8, 12), m7.profile_key(vehicle, riding()))
 		m7.apply(m7_node.material)
+	wyrms = Wyrms.for_map(self)
+	if weather != null:
+		weather.want(FieldSys.weather_at(map, map_id, p_tile), true)
 	emit_signal("map_entered", id)
 	queue_redraw()
 
@@ -281,12 +301,14 @@ func solid_at(x: int, y: int, for_npc: bool = false) -> bool:
 	var k = kind_at(x, y)
 	if vehicle == "ship":
 		return k == "void"
-	if solid_set.has(k):
+	if vehicle == "sub":
+		return FieldSys.sub_solid(k) or not block_at(x, y).is_empty()
+	if solid_set.has(k) and not (not for_npc and _mount_crosses(k, x, y)):
 		return true
 	if not block_at(x, y).is_empty():
 		return true
 	for e in map["entities"]:
-		if e["type"] in ["chest", "save", "switch", "sign", "shop", "inn", "heal", "prop"] and e.get("x", -99) == x and e.get("y", -99) == y:
+		if e["type"] in ["chest", "save", "switch", "sign", "shop", "inn", "heal", "prop", "node"] and e.get("x", -99) == x and e.get("y", -99) == y:
 			if e["type"] == "prop" and not e.get("solid", true):
 				continue
 			if e["type"] == "sign":
@@ -314,9 +336,11 @@ func _process(delta: float) -> void:
 	if p_moving:
 		var spd = RUN if (_running() or vehicle == "ship") else WALK
 		if vehicle == "ship":
-			spd *= 1.5
+			spd *= 1.5 * (1.5 if FieldSys.gale() and ship_key() == "lanternwake" else 1.0)
+		elif vehicle == "sub":
+			spd = RUN * 1.4
 		elif riding():
-			spd = RUN * 1.35
+			spd = RUN * float(FieldSys.MOUNT_SPEED.get(FieldSys.mount_kind(), 1.35))
 		var tgt = Vector2(p_target * TS)
 		p_pos = p_pos.move_toward(tgt, spd * 60.0 * delta)
 		p_anim += delta * (10.0 if _running() else 7.0)
@@ -339,6 +363,7 @@ func _process(delta: float) -> void:
 			p_anim = 0.0
 	_update_camera()
 	_tick_clock(delta)
+	_s3_tick(delta)
 	if hud != null:
 		hud.tick(delta)
 		if Input.is_action_just_pressed("g_map") and (can_move() or show_map):
@@ -368,7 +393,8 @@ func _draw_m7() -> void:
 func _tick_clock(delta: float) -> void:
 	if Game.S.is_empty() or not can_move():
 		return
-	Game.S["clock"] = fposmod(float(Game.S.get("clock", 480.0)) + delta * 1.2, 1440.0)
+	if FieldSys.advance(delta * 1.2):
+		refresh_npcs()      # night fell or ended: NPC schedules (if=night / if=!night) change
 
 static func hour() -> float:
 	return float(Game.S.get("clock", 480.0)) / 60.0
@@ -429,6 +455,7 @@ func _in_bounds_or_exit(t: Vector2i) -> bool:
 
 func _on_arrive() -> void:
 	steps += 1
+	Game.S["steps"] = int(Game.S.get("steps", 0)) + 1   # gathering nodes refresh by steps (systems s2)
 	if hud != null:
 		hud.reveal(p_tile, WorldHud.REVEAL + (3 if vehicle == "ship" else 0))
 	Game.S["location"]["x"] = p_tile.x
@@ -439,6 +466,20 @@ func _on_arrive() -> void:
 		Game.S["vehicle"]["ship_x"] = p_tile.x
 		Game.S["vehicle"]["ship_y"] = p_tile.y
 		return
+	if vehicle == "sub":
+		# the diving hull docks at the sunken places of the sea floor
+		for e in map["entities"]:
+			if e["type"] == "location" and e["x"] == p_tile.x and e["y"] == p_tile.y and Game.eval_cond(e["cond"]):
+				Game.discover(e["id"])
+				if Content.data["maps"].has(e["dest"]):
+					main.transition_to(e["dest"], e["spawn"], "FX031")
+				return
+		return
+	# waystones: attune on touch (field systems s3)
+	for e in map["entities"]:
+		if e["type"] == "waystone" and e["x"] == p_tile.x and e["y"] == p_tile.y and Game.eval_cond(e["cond"]):
+			_touch_waystone(e)
+			return
 	# doors / exits
 	for e in map["entities"]:
 		if e["type"] in ["door", "exit"] and p_tile.x >= e["x1"] and p_tile.x <= e["x2"] and p_tile.y >= e["y1"] and p_tile.y <= e["y2"]:
@@ -457,7 +498,7 @@ func _on_arrive() -> void:
 			return
 	# world locations
 	for e in map["entities"]:
-		if e["type"] == "location" and e["x"] == p_tile.x and e["y"] == p_tile.y and Game.eval_cond(e["cond"]) and vehicle == "foot":
+		if e["type"] == "location" and e["x"] == p_tile.x and e["y"] == p_tile.y and Game.eval_cond(e["cond"]) and vehicle == "foot" and not e.get("land", false):
 			Game.discover(e["id"])
 			if Content.data["maps"].has(e["dest"]):
 				main.transition_to(e["dest"], e["spawn"], "")
@@ -476,12 +517,9 @@ func _on_arrive() -> void:
 	_encounter_step()
 
 func _encounter_step() -> void:
-	if vehicle == "ship" or riding():
+	if vehicle == "ship" or vehicle == "sub" or riding():
 		return
-	var group: String = map.get("encounters", "")
-	for e in map["entities"]:
-		if e["type"] == "zone" and p_tile.x >= e["x1"] and p_tile.x <= e["x2"] and p_tile.y >= e["y1"] and p_tile.y <= e["y2"]:
-			group = e["encounters"]
+	var group: String = encounter_group(p_tile)
 	if group == "" or group == "none":
 		return
 	var mode: String = Settings.get_v("encounters")
@@ -497,9 +535,10 @@ func _encounter_step() -> void:
 	for e in map["entities"]:
 		if e["type"] == "save" and absi(e["x"] - p_tile.x) + absi(e["y"] - p_tile.y) <= 3:
 			return
-	var inc = float(map.get("rate", 1.0))
+	var inc = float(map.get("rate_post", map.get("rate", 1.0)) if Game.S.get("world_phase", "pre") == "post" else map.get("rate", 1.0))
 	if mode == "reduced":
 		inc *= 0.5
+	inc *= clampf(float(Settings.get_v("encounter_rate") if Settings.get_v("encounter_rate") != null else 1.0), 0.0, 3.0)
 	for cid in Game.active():
 		var s = Game.stats(cid)
 		if s["passives"].has("encounter_mult"):
@@ -514,6 +553,7 @@ func _encounter_step() -> void:
 		if forms.is_empty():
 			return
 		var r = Rng.new(Game.next_seed("enc"))
+		forms = _night_mix(forms, r)
 		emit_signal("request_battle", forms[r.next_u32() % forms.size()], {"random": true})
 
 func _update_npcs(delta: float) -> void:
@@ -563,14 +603,27 @@ func interact() -> void:
 	if vehicle == "ship":
 		emit_signal("request_scene", "SHIP_HELM", {})
 		return
+	if vehicle == "sub":
+		emit_signal("request_scene", "SUB_HELM", {})
+		return
 	if ship_pos.x >= 0 and ft == ship_pos:
 		emit_signal("request_scene", "SHIP_BOARD", {})
+		return
+	if not waystone_at(ft).is_empty():
+		emit_signal("request_scene", "WAYSTONE", {})
 		return
 	# counters: talk across one counter tile
 	var across = ft + DV[p_dir]
 	for n in npcs:
 		if n["tile"] == ft or (kind_at(ft.x, ft.y) in ["counter", "window", "gate"] and n["tile"] == across):
 			n["dir"] = {"up": "down", "down": "up", "left": "right", "right": "left"}[p_dir]
+			if String(n["id"]).begins_with("crafter_"):
+				# crafters (systems s2): their lines, then the crafting bench
+				if n["talk"] != "":
+					emit_signal("request_scene", n["talk"], {"npc": n["id"], "craft": n["id"]})
+				else:
+					emit_signal("request_menu", "craft", {"id": n["id"]})
+				return
 			if n["talk"] != "":
 				emit_signal("request_scene", n["talk"], {"npc": n["id"]})
 			return
@@ -607,6 +660,11 @@ func interact() -> void:
 				Audio.sfx("FX022")
 				main.toast("The party is fully restored.")
 				return
+			"node":
+				var gr = Game.gather(e["id"], e["table"])
+				Audio.sfx("FX007" if gr["ok"] else "FX004")
+				main.toast(gr["text"])
+				return
 			"switch":
 				if e.get("scene", "") != "":
 					emit_signal("request_scene", e["scene"], {"switch": e["id"]})
@@ -615,6 +673,14 @@ func interact() -> void:
 					Game.set_flag(e["flag"], not Game.flag(e["flag"]) if e.get("toggle", false) else true)
 					refresh_npcs()
 				return
+	# a waystone under the player's feet
+	if not waystone_at(p_tile).is_empty():
+		emit_signal("request_scene", "WAYSTONE", {})
+	# fishing spots (sys s4): stand on or beside the spot, face the water, press Confirm
+	var fs = fish_spot_here() if QA.route == "" else {}
+	if not fs.is_empty():
+		emit_signal("request_menu", "fish", fs)
+		return
 	# floor plaques and readable markers under the player's feet
 	for e in map["entities"]:
 		if e["type"] in ["read", "sign"] and e.get("x", -99) == p_tile.x and e.get("y", -99) == p_tile.y and Game.eval_cond(e["cond"]):
@@ -683,7 +749,20 @@ func ship_op(op: String) -> bool:
 			Audio.sfx("FX031")
 			return true
 		"land":
-			if landing_at(p_tile).is_empty():
+			# a sky isle (location land=1, the Crucible): the Lanternwake moors at its dock
+			var isle = _land_location(p_tile)
+			if not isle.is_empty():
+				vehicle = "foot"
+				vs["mode"] = "foot"
+				ship_pos = p_tile
+				vs["ship_map"] = map_id
+				vs["ship_x"] = p_tile.x
+				vs["ship_y"] = p_tile.y
+				Game.discover(isle["id"])
+				var dsp = "dock" if _has_spawn(isle["dest"], "dock") else str(isle["spawn"])
+				main.transition_to(isle["dest"], dsp, "FX010")
+				return true
+			if landing_at(p_tile).is_empty() and not (FieldSys.grapnel() and ship_key() == "lanternwake"):
 				main.toast("No landing field here. Fly to a marked field by a town or ruin.")
 				return false
 			var t = _free_near(p_tile, 3)
@@ -753,7 +832,7 @@ func interact_target_name() -> String:
 		if n["tile"] == ft:
 			return "talk"
 	for e in map["entities"]:
-		if e.has("x") and Vector2i(e["x"], e["y"]) == ft and Game.eval_cond(e["cond"]) and e["type"] in ["chest", "sign", "read", "save", "shop", "inn", "switch", "heal"]:
+		if e.has("x") and Vector2i(e["x"], e["y"]) == ft and Game.eval_cond(e["cond"]) and e["type"] in ["chest", "sign", "read", "save", "shop", "inn", "switch", "heal", "node"]:
 			return e["type"]
 	return ""
 
@@ -1316,7 +1395,7 @@ func _draw() -> void:
 	var bg = Color8(12, 10, 18)
 	var talls = []
 	if m7 != null:
-		for o in art.data.get("objects", []):
+		for o in (art.data.get("objects", []) if art != null else []):
 			talls.append([float(o[7]) / UI.U, "a48", o, Vector2.ZERO])
 		y1 = y0 - 1
 	elif art != null:
@@ -1391,16 +1470,31 @@ func _draw() -> void:
 				talls.append([e["y"] * TS + 8, "obj", 5 if on else 4, pos])
 			"heal":
 				talls.append([e["y"] * TS + 8, "obj", 6, pos])
+			"node":
+				talls.append([e["y"] * TS + 8, "node", e, pos])
+			"fish":
+				var wv: Array = e.get("water", [0, 1])
+				talls.append([(e["y"] + int(wv[1])) * TS - 2, "fishspot", e, pos + Vector2(int(wv[0]), int(wv[1])) * TS])
 			"prop":
 				talls.append([e["y"] * TS + 15, "sprite", e["sprite"], pos])
+			"waystone":
+				talls.append([e["y"] * TS + 14, "waystone", e, pos])
+			"location":
+				# a world map without baked art (the grid fallback) still marks its places
+				if m7 != null and art == null:
+					talls.append([e["y"] * TS + 14, "locmark", e, pos])
+	if wyrms != null:
+		wyrms.collect(talls, cam)
 	for n in npcs:
 		if hidden_actors.has(n["id"]):
 			continue
 		talls.append([n["pos"].y + 15, "actor", n, n["pos"] + ox])
 	for a in extra_actors:
 		talls.append([a["pos"].y + 15, "actor", a, a["pos"] + ox])
-	if not hidden_actors.has("player") and vehicle != "ship":
+	if not hidden_actors.has("player") and vehicle != "ship" and vehicle != "sub":
 		talls.append([p_pos.y + 15.5, "player", null, p_pos + ox])
+	if vehicle == "sub":
+		talls.append([p_pos.y + 15.6, "sub", null, p_pos + ox])
 	if vehicle == "ship" or ship_pos.x >= 0:
 		var sp = Vector2(ship_pos * TS) + ox if vehicle != "ship" else p_pos + ox
 		talls.append([sp.y + 15.6, "ship", null, sp])
@@ -1443,15 +1537,27 @@ func _draw() -> void:
 					draw_rect(Rect2(t[3] + Vector2(0, 13), Vector2(16, 3)), Color(0, 0, 0, 0.25))
 					var bob = Vector2(0, -10 - (1 if p_moving and gf % 2 == 1 else 0))
 					if p_dir == "up":
-						VehicleArt.draw(self, "brackhorn", row, gf, foot + Vector2(0, 4), 0.85)
+						VehicleArt.draw(self, "brackhorn", row, gf, foot + Vector2(0, 4), 0.85, FieldSys.MOUNT_TINT.get(FieldSys.mount_kind(), Color.WHITE))
 						_draw_char(p_sprite, p_dir, 0, t[3] + bob)
 					else:
 						_draw_char(p_sprite, p_dir, 0, t[3] + bob)
-						VehicleArt.draw(self, "brackhorn", row, gf, foot + Vector2(0, 4), 0.85)
+						VehicleArt.draw(self, "brackhorn", row, gf, foot + Vector2(0, 4), 0.85, FieldSys.MOUNT_TINT.get(FieldSys.mount_kind(), Color.WHITE))
 				else:
 					_draw_char(p_sprite, p_dir, fr, t[3])
 			"ship":
 				_draw_ship(t[3])
+			"node":
+				_draw_node(t[2], t[3])
+			"sub":
+				_draw_sub(t[3])
+			"waystone":
+				_draw_waystone(t[2], t[3])
+			"wyrm":
+				Wyrms.draw(self, t[2], t[3], time)
+			"locmark":
+				_draw_locmark(t[3])
+			"fishspot":
+				FishingGame.draw_spot(self, t[3], time)
 	if m7 != null:
 		UI.base = Transform2D.IDENTITY
 		draw_set_transform_matrix(UI.base)
@@ -1475,6 +1581,9 @@ func _draw() -> void:
 		art.draw_over(self, cam)
 	if map.get("dark", false):
 		draw_rect(Rect2(Vector2.ZERO, VIEW), Color(0.02, 0.02, 0.08, 0.35))
+	var olc = _outdoor_light()
+	if olc.a > 0.0:
+		draw_rect(Rect2(Vector2.ZERO, VIEW), olc)
 	if tint.a > 0:
 		draw_rect(Rect2(Vector2.ZERO, VIEW), tint)
 	if ov_node == null:
@@ -1493,6 +1602,10 @@ func _draw_overlay() -> void:
 			hud.draw_full(ci, Vector2(p_tile), time, str(map.get("name", "")))
 		elif Settings.get_v("minimap") != false and not busy:
 			hud.draw_mini(ci, Vector2(p_tile), m7.yaw if m7 != null else 0.0, time)
+	if _hint != "" and can_move():
+		var hw = UI.width(_hint) + 16
+		UI.win(ci, Rect2(Vector2(round((320 - hw) / 2.0), 218), Vector2(hw, 18)))
+		UI.text(ci, Vector2(round((320 - hw) / 2.0) + 8, 222), _hint, UI.C_HI)
 	if banner_t > 0 and banner_text != "":
 		# location name window; slides up out of view during its last half second
 		var a = clampf(banner_t / 0.5, 0.0, 1.0)
@@ -1500,6 +1613,42 @@ func _draw_overlay() -> void:
 		var r = Rect2(Vector2(round((320 - w) / 2.0), round(10 - (1.0 - a) * 34)), Vector2(w, 22))
 		UI.win(ci, r)
 		UI.text(ci, r.position + Vector2(14, 6), banner_text)
+
+## Gathering node (systems s2), drawn in code: an ore seam, a herb tuft or a salvage pile; dim while spent.
+func _draw_node(e: Dictionary, pos: Vector2) -> void:
+	var ready = Game.node_ready(e["id"], e["table"])
+	var a = 1.0 if ready else 0.4
+	var p = pos
+	draw_rect(Rect2(p + Vector2(2, 13), Vector2(12, 2)), Color(0, 0, 0, 0.3 * a))
+	draw_rect(Rect2(p + Vector2(1, 4), Vector2(14, 11)), Color(0.04, 0.03, 0.06, 0.55 * a))   # dark rim so it reads on any floor
+	match e.get("kind", "mine"):
+		"mine":
+			draw_rect(Rect2(p + Vector2(2, 6), Vector2(12, 8)), Color8(92, 86, 96, int(255 * a)))
+			draw_rect(Rect2(p + Vector2(4, 3), Vector2(8, 4)), Color8(120, 112, 124, int(255 * a)))
+			draw_rect(Rect2(p + Vector2(3, 6), Vector2(10, 1)), Color8(150, 142, 152, int(255 * a)))
+			if ready:
+				var tw = 0.5 + 0.5 * sin(time * 4.0 + e["x"])
+				draw_rect(Rect2(p + Vector2(5, 8), Vector2(2, 2)), Color(1.0, 0.85, 0.4, 0.6 + 0.4 * tw))
+				draw_rect(Rect2(p + Vector2(10, 5), Vector2(1, 1)), Color(0.6, 0.9, 1.0, 1.0 - 0.5 * tw))
+				draw_rect(Rect2(p + Vector2(9, 10), Vector2(2, 1)), Color(1.0, 0.85, 0.4, 0.9))
+		"herb":
+			var g = Color8(70, 140, 70, int(255 * a))
+			for k in range(5):
+				var x = 3 + k * 2
+				var h = 5 + (k * 3) % 4
+				draw_rect(Rect2(p + Vector2(x, 14 - h), Vector2(1, h)), g)
+			draw_rect(Rect2(p + Vector2(4, 9), Vector2(8, 5)), Color8(56, 112, 60, int(255 * a)))
+			if ready:
+				draw_rect(Rect2(p + Vector2(5, 6), Vector2(2, 2)), Color8(220, 170, 240))
+				draw_rect(Rect2(p + Vector2(10, 7), Vector2(2, 2)), Color8(250, 230, 120))
+		_:
+			draw_rect(Rect2(p + Vector2(2, 9), Vector2(12, 5)), Color8(110, 76, 52, int(255 * a)))
+			draw_rect(Rect2(p + Vector2(4, 6), Vector2(6, 4)), Color8(138, 96, 64, int(255 * a)))
+			draw_rect(Rect2(p + Vector2(9, 5), Vector2(4, 2)), Color8(96, 104, 112, int(255 * a)))
+			if ready:
+				var tw2 = 0.5 + 0.5 * sin(time * 3.0 + e["y"])
+				draw_rect(Rect2(p + Vector2(11, 5), Vector2(1, 1)), Color(1, 1, 1, tw2))
+				draw_rect(Rect2(p + Vector2(5, 10), Vector2(2, 1)), Color(0.7, 0.9, 1.0, 0.8))
 
 ## Native field objects: chests (dungeon pack), save points (blue beam effect), healing springs (green aura).
 var _chest_tex: Texture2D = null
@@ -1564,6 +1713,13 @@ func ship_key() -> String:
 func riding() -> bool:
 	## Brackhorn mount: on the world map, on foot, once the party has it (Settings can turn riding off)
 	# route bots walk on foot: at bot speed a mounted step can finish inside one frame and chain an extra tile
+	if not _mount_ready():
+		return false
+	# each Brackhorn variant rides its own terrain; elsewhere the party leads it on foot (field systems s3)
+	return FieldSys.can_ride(kind_at(p_tile.x, p_tile.y), map_id, FieldSys.mount_kind())
+
+## The party has the Brackhorn out on a world map (riding is on, not a route bot, not flying or diving).
+func _mount_ready() -> bool:
 	if QA.route != "":
 		return false
 	return vehicle == "foot" and map.get("kind", "") == "world" and bool(Game.S["vehicle"].get("mount", false)) \
@@ -1620,3 +1776,233 @@ func _m7_place(talls: Array) -> Array:
 			t[0] = 1e9   # aloft: above every landmark
 		keep.append(t)
 	return keep
+
+# ======================================================================
+# Field and world systems (expansion pass s3): hooks; the rules live in FieldSys / Wyrms / FieldCmds
+# ======================================================================
+## Solid terrain the current Brackhorn crosses (Fenwader: water at the shore; Deepstrider: lava in the Deep).
+func _mount_crosses(k: String, x: int, y: int) -> bool:
+	if not _mount_ready():
+		return false
+	var mk = FieldSys.mount_kind()
+	if not FieldSys.MOUNT_PASS.has(mk):
+		return false
+	var shore = false
+	if k == "water":
+		for d in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+			var nk = kind_at(x + d.x, y + d.y)
+			if not solid_set.has(nk):
+				shore = true
+				break
+	return FieldSys.mount_passes(k, map_id, mk, shore)
+
+## Encounter group at a cell: the map's group (encounters_post after the fault), overridden by the last zone
+## whose `if=` holds (zones can use night / hour conditions too).
+func encounter_group(t: Vector2i) -> String:
+	var post: bool = Game.S.get("world_phase", "pre") == "post"
+	var group: String = str(map.get("encounters_post", map.get("encounters", ""))) if post else str(map.get("encounters", ""))
+	for e in map["entities"]:
+		if e["type"] == "zone" and t.x >= e["x1"] and t.x <= e["x2"] and t.y >= e["y1"] and t.y <= e["y2"] and Game.eval_cond(e["cond"]):
+			group = e["encounters"]
+	return group
+
+## At night the surface world maps draw some fights from the night group (W_NIGHT / WP_NIGHT): only the night
+## formations the party can face (strongest foe at most three levels above the party's average), and never for
+## the QA route bots (their fights stay as authored).
+func _night_mix(forms: Array, r: Rng) -> Array:
+	if not FieldSys.night() or map.get("kind", "") != "world" or FieldSys.is_deep_map(map_id) or map_id == FieldSys.SEA_MAP:
+		return forms
+	if QA.route != "":
+		return forms
+	var ng: Array = FieldSys.night_forms(Game.S.get("world_phase", "pre") == "post")
+	if ng.is_empty() or r.randf() >= 0.3:
+		return forms
+	return ng
+
+func waystone_at(t: Vector2i) -> Dictionary:
+	for e in map.get("entities", []):
+		if e["type"] == "waystone" and e["x"] == t.x and e["y"] == t.y and Game.eval_cond(e["cond"]):
+			return e
+	return {}
+
+func _touch_waystone(e: Dictionary) -> void:
+	if FieldSys.attune(e["id"]):
+		Audio.sfx("FX029")
+		if e["id"] == FieldSys.BEACON and Game.S.get("world_phase", "pre") == "post":
+			main.toast("The Last Beacon's stone wakes. Every attuned waystone answers again.")
+		else:
+			main.toast("Waystone attuned: %s." % e.get("name", e["id"]))
+
+func _land_location(t: Vector2i) -> Dictionary:
+	for e in map.get("entities", []):
+		if e["type"] == "location" and e.get("land", false) and (Vector2i(e["x"], e["y"]) - t).length() <= 3.0 \
+				and Game.eval_cond(e["cond"]) and Content.data["maps"].has(e["dest"]):
+			return e
+	return {}
+
+func _has_spawn(mid: String, sp: String) -> bool:
+	for e in Content.map(mid).get("entities", []):
+		if e["type"] == "spawn" and e["name"] == sp:
+			return true
+	return false
+
+## Per-frame systems: mount switching, the vehicle action key, weather, roaming wyrms.
+func _s3_tick(delta: float) -> void:
+	if map.is_empty():
+		return
+	_hint = ""
+	if can_move() and not p_moving:
+		if vehicle == "foot" and _mount_ready() and FieldSys.mounts_owned().size() > 1:
+			var dirn = 0
+			if Input.is_action_just_pressed("g_page_r"):
+				dirn = 1
+			elif Input.is_action_just_pressed("g_page_l"):
+				dirn = -1
+			if dirn != 0:
+				var mk = FieldSys.cycle_mount(dirn)
+				Audio.sfx("FX001")
+				main.toast("%s: %s" % [FieldSys.MOUNT_NAME[mk], FieldSys.MOUNT_DESC[mk]])
+		var act = vehicle_action()
+		if act != "":
+			_hint = "%s: %s" % [_key_name("run"), act]
+			if Input.is_action_just_pressed("g_run"):
+				_do_vehicle_action(act)
+	if weather != null:
+		_weather_t -= delta
+		if _weather_t <= 0.0:
+			_weather_t = 1.0
+			weather.want(FieldSys.weather_at(map, map_id, p_tile))
+		weather.tick(delta, can_move() or busy)
+	if wyrms != null and not wyrms.list.is_empty():
+		var hit = wyrms.update(delta, self)
+		if hit != "" and Content.data["scenes"].has("WYRM_" + hit):
+			emit_signal("request_scene", "WYRM_" + hit, {"wyrm": hit})
+
+func _key_name(action: String) -> String:
+	var ks: Array = Settings.keys_for(action)
+	return OS.get_keycode_string(int(ks[0])) if not ks.is_empty() else action.capitalize()
+
+## The action the run key does right now ("" = none): dive / descend from the airship, surface from the sea floor.
+func vehicle_action() -> String:
+	if vehicle == "sub":
+		return "Surface"
+	if vehicle != "ship" or map_id != "WORLD_POST":
+		return ""
+	if FieldSys.diving() and kind_at(p_tile.x, p_tile.y) == "deep":
+		return "Dive"
+	if FieldSys.auger():
+		for e in map["entities"]:
+			if e["type"] == "location" and e["id"] == "L_N36" and (Vector2i(e["x"], e["y"]) - p_tile).length() <= 2.5:
+				return "Descend into the Deep"
+	return ""
+
+func _do_vehicle_action(act: String) -> void:
+	match act:
+		"Dive":
+			ship_dive()
+		"Surface":
+			sub_surface()
+		"Descend into the Deep":
+			auger_descend()
+
+func _warp_to(mid: String, spawn: String, pos: Vector2i, sfx: String) -> void:
+	busy = true
+	Audio.sfx(sfx)
+	await main.fade(true, 0.4)
+	load_map(mid, spawn, pos, "down")
+	if main.field.map.get("name", "") != "":
+		show_banner(map["name"])
+	await main.fade(false, 0.4)
+	busy = false
+
+## Lanternwake diving hull: from open ocean on WORLD_POST down to the matching cell of the sea floor.
+func ship_dive() -> void:
+	var t = FieldSys.nearest_cell(FieldSys.SEA_MAP, FieldSys.to_sea(p_tile), func(k): return not FieldSys.sub_solid(k))
+	if t.x < 0:
+		main.toast("The sounding line finds rock straight below. Try open water.")
+		return
+	Game.S["vehicle"]["mode"] = "sub"
+	await _warp_to(FieldSys.SEA_MAP, "default", t, "FX031")
+
+## Back up from the sea floor: the ship breaks the surface over the matching cell of WORLD_POST, aloft.
+func sub_surface() -> void:
+	var t = FieldSys.from_sea(p_tile)
+	var wm: Dictionary = Content.map("WORLD_POST")
+	t = Vector2i(clampi(t.x, 1, int(wm.get("w", 176)) - 2), clampi(t.y, 1, int(wm.get("h", 132)) - 2))
+	var vs: Dictionary = Game.S["vehicle"]
+	vs["ship"] = true
+	vs["ship_map"] = "WORLD_POST"
+	vs["ship_x"] = t.x
+	vs["ship_y"] = t.y
+	vs["mode"] = "ship"
+	await _warp_to("WORLD_POST", "helm", Vector2i(-1, -1), "FX031")
+
+## Delver Auger: the Lanternwake hovers over the Aurora Pit and lowers the party into the Deep on its drill cable.
+func auger_descend() -> void:
+	var vs: Dictionary = Game.S["vehicle"]
+	ship_pos = p_tile
+	vs["ship_map"] = map_id
+	vs["ship_x"] = p_tile.x
+	vs["ship_y"] = p_tile.y
+	vs["mode"] = "foot"
+	vehicle = "foot"
+	await _warp_to("DEEP_POST", "auger", Vector2i(-1, -1), "FX019")
+
+func _draw_sub(pos: Vector2) -> void:
+	var mid = pos + Vector2(8, 8)
+	var d = VehicleArt.DIR8.get(p_dir, "south")
+	var bob = round(sin(time * 2.0) * 1.5)
+	if VehicleArt.has("lanternwake"):
+		VehicleArt.draw(self, "lanternwake", "shadow_" + d, 0, mid + Vector2(0, 5), 0.6, Color(0, 0, 0, 0.35), true)
+		VehicleArt.draw(self, "lanternwake", d, int(time * 4.0), mid + Vector2(0, -6 + bob), 0.6, Color(0.62, 0.82, 0.95), true)
+	else:
+		draw_rect(Rect2(pos + Vector2(1, 5 + bob), Vector2(14, 7)), Color(0.3, 0.45, 0.55))
+		draw_rect(Rect2(pos + Vector2(6, 2 + bob), Vector2(4, 4)), Color(0.4, 0.55, 0.65))
+	# rising bubbles
+	for i in range(3):
+		var ph = fmod(time * 0.9 + i * 0.33, 1.0)
+		draw_rect(Rect2(pos + Vector2(4 + i * 4, 2 - ph * 18), Vector2(1, 1)), Color(0.8, 0.95, 1.0, 0.8 * (1.0 - ph)))
+
+## A standing waystone: grey monolith with a rune that glows once attuned (brighter when the network is live).
+func _draw_waystone(e: Dictionary, pos: Vector2) -> void:
+	var on = FieldSys.is_attuned(e["id"])
+	var live = on and FieldSys.network_live()
+	var k = 1.7 if map.get("kind", "") == "world" else 1.2      # world landmarks are large: the stone stands tall
+	var ft = pos + Vector2(8, 16)
+	var P = func(x: float, y: float) -> Vector2: return ft + Vector2(x - 8.0, y - 16.0) * k
+	draw_colored_polygon(PackedVector2Array([P.call(1, 17), P.call(15, 17), P.call(15, 14), P.call(1, 14)]), Color(0, 0, 0, 0.3))
+	draw_colored_polygon(PackedVector2Array([P.call(4, 15), P.call(12, 15), P.call(11, -6), P.call(8, -9), P.call(5, -6)]), Color8(112, 116, 128))
+	draw_colored_polygon(PackedVector2Array([P.call(8, 15), P.call(12, 15), P.call(11, -6), P.call(8, -9)]), Color8(84, 86, 100))
+	var glow = Color(0.45, 0.8, 1.0) if live else (Color(0.5, 0.55, 0.7) if on else Color(0.3, 0.3, 0.36))
+	var pulse = 0.75 + 0.25 * sin(time * 3.0) if live else 1.0
+	draw_colored_polygon(PackedVector2Array([P.call(7, -3), P.call(9, -3), P.call(9, 5), P.call(7, 5)]), glow * pulse)
+	draw_colored_polygon(PackedVector2Array([P.call(5, 0), P.call(11, 0), P.call(11, 2), P.call(5, 2)]), glow * pulse)
+	if live:
+		draw_circle(P.call(8, 1), 5.0 * k, Color(0.45, 0.8, 1.0, 0.18 * pulse))
+
+## Place marker for world maps drawn from the grid fallback: a lit stone arch.
+func _draw_locmark(pos: Vector2) -> void:
+	var ft = pos + Vector2(8, 16)
+	draw_rect(Rect2(ft + Vector2(-12, -2), Vector2(24, 4)), Color(0, 0, 0, 0.3))
+	draw_rect(Rect2(ft + Vector2(-11, -26), Vector2(6, 25)), Color8(96, 104, 118))
+	draw_rect(Rect2(ft + Vector2(5, -26), Vector2(6, 25)), Color8(80, 86, 100))
+	draw_rect(Rect2(ft + Vector2(-12, -31), Vector2(24, 6)), Color8(110, 118, 132))
+	var p = 0.7 + 0.3 * sin(time * 2.5)
+	draw_rect(Rect2(ft + Vector2(-5, -24), Vector2(10, 22)), Color(0.5, 0.9, 1.0, 0.35 * p))
+
+## Evening and night light over outdoor town maps (the world maps tint their ground plane instead).
+func _outdoor_light() -> Color:
+	if m7 != null or map.is_empty() or not (str(map.get("tileset", "")) in FieldSys.OUTDOOR_TILESETS):
+		return Color(0, 0, 0, 0)
+	var dt = day_tint()
+	var a = clampf((1.0 - (dt.r + dt.g + dt.b) / 3.0) * 1.1, 0.0, 0.45)
+	return Color(dt.r * 0.25, dt.g * 0.25, dt.b * 0.45, a)
+## sys s4: the fishing spot the player can use now (standing on or next to it, facing water), or {}.
+func fish_spot_here() -> Dictionary:
+	var ft = facing_tile()
+	if not FishingGame.WATER.has(kind_at(ft.x, ft.y)):
+		return {}
+	for e in map.get("entities", []):
+		if e["type"] == "fish" and Game.eval_cond(e["cond"]) and absi(e["x"] - p_tile.x) + absi(e["y"] - p_tile.y) <= 1:
+			return e
+	return {}

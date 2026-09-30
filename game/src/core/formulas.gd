@@ -4,25 +4,47 @@ extends RefCounted
 ## Constants are initial tuning values from docs/06 and docs/07 (not verified balance).
 
 const ATB_MAX := 1000
-const LEVEL_CAP := 50
+const LEVEL_CAP := 99           # default cap; level breaks raise it (Game.level_cap(): 120 / 150 / 200)
+const LEVEL_MAX := 200          # the XP curve is defined up to here
+const DAMAGE_CAP := 9999        # normal damage per hit
+const DAMAGE_BREAK_CAP := 99999 # `uncapped` ops and heroes with the break_damage passive
+const HP_CAP := 9999
+const MP_CAP := 999
 const REDUCTION_FLOOR := 0.2  # total direct-damage reduction capped at 80%
 const ELEMENTS := ["physical", "fire", "ice", "storm", "earth", "water", "light", "shadow", "none"]
 const AFF_MULT := {"weak": 1.5, "neutral": 1.0, "resist": 0.5, "immune": 0.0}
 
+## Levels 1-50 keep the original curve; past 50 a C1-smooth extra term (zero value and slope at 50) makes the
+## post-game levels slower without a visible kink.
 static func xp_to_next(level: int) -> int:
-	return 30 + 12 * level + 3 * level * level
+	var x = 30 + 12 * level + 3 * level * level
+	if level > 50:
+		var k = level - 50
+		x += 2 * k * k + int(k * k * k / 12)
+	return x
 
 static func xp_total_for_level(level: int) -> int:
 	var t = 0
-	for l in range(1, level):
+	for l in range(1, mini(level, LEVEL_MAX)):
 		t += xp_to_next(l)
 	return t
 
-static func level_for_xp(xp: int) -> int:
+static func level_for_xp(xp: int, cap: int = LEVEL_CAP) -> int:
 	var l = 1
-	while l < LEVEL_CAP and xp >= xp_total_for_level(l + 1):
+	var need = 0
+	cap = clampi(cap, 1, LEVEL_MAX)
+	while l < cap:
+		need += xp_to_next(l)
+		if xp < need:
+			break
 		l += 1
 	return l
+
+## The quadratic HP term tapers into a straight line past level 50 (same value and half the slope at 50).
+static func hp_curve(n: int) -> int:
+	if n <= 49:
+		return int(floor(0.65 * n * n))
+	return int(floor(0.65 * 49 * 49 + 0.65 * 49 * (n - 49)))
 
 ## Readiness fill per simulation second.
 static func atb_rate(spd: int, speed_factor: float, haste: bool, slow: bool, is_boss: bool) -> float:
@@ -61,7 +83,7 @@ static func member_stats(member: Dictionary, cdef: Dictionary, items: Dictionary
 	var g: Dictionary = cdef["growth"]
 	var s = {
 		"level": lv,
-		"mhp": int(b["hp"]) + int(g["hp"]) * n + int(floor(0.65 * n * n)),
+		"mhp": int(b["hp"]) + int(g["hp"]) * n + hp_curve(n),
 		"mmp": int(b["mp"]) + int(g["mp"]) * n,
 		"str": int(b["str"]) + int(g["str"]) * n,
 		"mag": int(b["mag"]) + int(g["mag"]) * n,
@@ -107,6 +129,12 @@ static func member_stats(member: Dictionary, cdef: Dictionary, items: Dictionary
 					if not merged.has(e):
 						merged.append(e)
 				passives[k] = merged
+			elif passives.has(k) and typeof(v) == TYPE_DICTIONARY and typeof(passives[k]) == TYPE_DICTIONARY:
+				# element resistances from several pieces add up (a copy: item data is never written)
+				var md: Dictionary = passives[k].duplicate()
+				for e in v:
+					md[e] = v[e]
+				passives[k] = md
 			else:
 				passives[k] = v
 	s["passives"] = passives
@@ -114,6 +142,8 @@ static func member_stats(member: Dictionary, cdef: Dictionary, items: Dictionary
 		s["mhp"] = int(floor(s["mhp"] * float(passives["mhp_mult"])))
 	if passives.has("mmp_mult"):
 		s["mmp"] = int(floor(s["mmp"] * float(passives["mmp_mult"])))
+	s["mhp"] = mini(s["mhp"], HP_CAP)
+	s["mmp"] = mini(s["mmp"], MP_CAP)
 	s["acc_bonus"] = int(passives.get("acc_bonus", 0))
 	if passives.has("weapon_element"):
 		s["weapon_element"] = str(passives["weapon_element"])
