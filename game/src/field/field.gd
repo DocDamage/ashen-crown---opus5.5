@@ -747,7 +747,7 @@ func _update_camera() -> void:
 	var mh = H * TS
 	c.x = (mw - VIEW.x) / 2.0 if mw <= VIEW.x else clampf(c.x, 0, mw - VIEW.x)
 	c.y = (mh - VIEW.y) / 2.0 if mh <= VIEW.y else clampf(c.y, 0, mh - VIEW.y)
-	cam = c.round()
+	cam = (c * UI.U).round() / UI.U
 
 func _variant(x: int, y: int) -> int:
 	var h = (x * 73856093) ^ (y * 19349663)

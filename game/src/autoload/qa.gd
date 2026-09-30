@@ -145,7 +145,7 @@ func run_gallery(p_main: Node, which: String) -> void:
 			main.field.banner_t = 0.0
 			var mw = main.field.W * 16
 			var mh = main.field.H * 16
-			var full = Image.create(maxi(mw, 320), maxi(mh, 240), false, Image.FORMAT_RGBA8)
+			var full = Image.create(maxi(mw, 320) * UI.U, maxi(mh, 240) * UI.U, false, Image.FORMAT_RGBA8)
 			var cy = 0
 			while cy < mh:
 				var cx = 0
@@ -157,7 +157,7 @@ func run_gallery(p_main: Node, which: String) -> void:
 					await RenderingServer.frame_post_draw
 					var img = get_viewport().get_texture().get_image()
 					img.convert(Image.FORMAT_RGBA8)
-					full.blit_rect(img, Rect2i(0, 0, 320, 240), Vector2i(ox, oy))
+					full.blit_rect(img, Rect2i(0, 0, 320 * UI.U, 240 * UI.U), Vector2i(ox, oy) * UI.U)
 					cx += 320
 				cy += 240
 			main.field.cam_override = Vector2(-1, -1)

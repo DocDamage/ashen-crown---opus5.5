@@ -63,6 +63,7 @@ func setup(form_id: String, seed_value: int, opts: Dictionary) -> void:
 	ui.draw.connect(_draw_ui)
 	var layer = CanvasLayer.new()
 	layer.layer = 5
+	layer.scale = Vector2(UI.U, UI.U)
 	add_child(layer)
 	layer.add_child(ui)
 	for bid in model.party_ids:

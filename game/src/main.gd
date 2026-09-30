@@ -32,6 +32,7 @@ func _ready() -> void:
 	world = Node2D.new()
 	world.name = "World"
 	world.process_mode = Node.PROCESS_MODE_PAUSABLE
+	world.scale = Vector2(UI.U, UI.U)
 	add_child(world)
 	field = Field.new()
 	field.name = "Field"
@@ -43,9 +44,11 @@ func _ready() -> void:
 	field.request_menu.connect(_on_field_menu)
 	ui = CanvasLayer.new()
 	ui.layer = 10
+	ui.scale = Vector2(UI.U, UI.U)
 	add_child(ui)
 	overlay = CanvasLayer.new()
 	overlay.layer = 20
+	overlay.scale = Vector2(UI.U, UI.U)
 	add_child(overlay)
 	dialogue = DialogueBox.new()
 	ui.add_child(dialogue)
@@ -72,7 +75,7 @@ func _ready() -> void:
 		UI.text_center(paused_overlay, 160, 114, "Paused"))
 	overlay.add_child(paused_overlay)
 	Game.notify.connect(toast)
-	get_window().min_size = Vector2i(320, 240)
+	get_window().min_size = Vector2i(640, 480)
 	if Settings.get_v("fullscreen"):
 		get_window().mode = Window.MODE_FULLSCREEN
 	await get_tree().process_frame

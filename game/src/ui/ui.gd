@@ -35,27 +35,52 @@ const THEME_ORDER := ["blue", "ash", "crimson", "verdant", "violet"]
 static var _font: Font
 static var _hand: Texture2D
 
+## 960x720 rendering: UI layouts stay in 320x240 "units"; every UI layer is scaled by U. Text and window frames are
+## drawn at native resolution (transform 1/U) so they stay crisp; FONT_PX is the native pixel size of the UI font
+## (Pixelated Elegance, GGBotNet CC0, designed on an 8px grid, drawn at 3x its grid).
+const U := 3
+const FONT_PX := 24
+const INV := Vector2(1.0 / U, 1.0 / U)
+
 static func font() -> Font:
 	if _font == null:
-		_font = load("res://assets/fonts/ashen8.fnt")
+		var f: FontFile = load("res://assets/fonts/pixelated_elegance.ttf")
+		f.antialiasing = TextServer.FONT_ANTIALIASING_NONE
+		f.hinting = TextServer.HINTING_NONE
+		f.subpixel_positioning = TextServer.SUBPIXEL_POSITIONING_DISABLED
+		f.multichannel_signed_distance_field = false
+		var fb = load("res://assets/fonts/ashen8.fnt")
+		if fb != null:
+			f.fallbacks = [fb]
+		_font = f
 	return _font
+
+## Native-resolution drawing inside a unit-scaled layer: sets the item's draw transform so that native pixels map
+## 1:1 to the screen from `origin` (in units). Call native_end() afterwards.
+static func native_begin(ci: CanvasItem, origin: Vector2) -> void:
+	ci.draw_set_transform(origin, 0.0, INV)
+
+static func native_end(ci: CanvasItem) -> void:
+	ci.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 static func text(ci: CanvasItem, pos: Vector2, s: String, col: Color = C_TEXT, shadow: bool = true) -> void:
 	var f = font()
-	var p = Vector2(round(pos.x), round(pos.y) + 8)
+	native_begin(ci, Vector2(round(pos.x * U) / U, round(pos.y * U) / U))
+	var p = Vector2(0, f.get_ascent(FONT_PX) + 3)
 	if shadow:
-		# SNES-style hard shadow: right, below and diagonal, so thin strokes stay legible on the gradient
+		# SNES-style hard shadow (right, below, diagonal) so thin strokes stay legible on the gradient
 		var sc = Color(C_SHADOW, C_SHADOW.a * col.a)
-		ci.draw_string(f, p + Vector2(1, 1), s, HORIZONTAL_ALIGNMENT_LEFT, -1, 10, sc)
-		ci.draw_string(f, p + Vector2(0, 1), s, HORIZONTAL_ALIGNMENT_LEFT, -1, 10, sc)
-		ci.draw_string(f, p + Vector2(1, 0), s, HORIZONTAL_ALIGNMENT_LEFT, -1, 10, sc)
-	ci.draw_string(f, p, s, HORIZONTAL_ALIGNMENT_LEFT, -1, 10, col)
+		ci.draw_string(f, p + Vector2(3, 3), s, HORIZONTAL_ALIGNMENT_LEFT, -1, FONT_PX, sc)
+		ci.draw_string(f, p + Vector2(0, 3), s, HORIZONTAL_ALIGNMENT_LEFT, -1, FONT_PX, sc)
+		ci.draw_string(f, p + Vector2(3, 0), s, HORIZONTAL_ALIGNMENT_LEFT, -1, FONT_PX, sc)
+	ci.draw_string(f, p, s, HORIZONTAL_ALIGNMENT_LEFT, -1, FONT_PX, col)
+	native_end(ci)
 
 static func text_right(ci: CanvasItem, right_x: float, y: float, s: String, col: Color = C_TEXT) -> void:
 	text(ci, Vector2(right_x - width(s), y), s, col)
 
 static func text_center(ci: CanvasItem, cx: float, y: float, s: String, col: Color = C_TEXT) -> void:
-	text(ci, Vector2(round(cx - width(s) / 2.0), y), s, col)
+	text(ci, Vector2(cx - width(s) / 2.0, y), s, col)
 
 ## Small pale-blue stat label (HP, MP, LV ...).
 static func label(ci: CanvasItem, pos: Vector2, s: String) -> void:
@@ -89,7 +114,7 @@ static func icon(ci: CanvasItem, pos: Vector2, iid: String, px: int = 11, dim: b
 	return true
 
 static func width(s: String) -> float:
-	return font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, 10).x
+	return font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, FONT_PX).x / U
 
 static func wrap(s: String, max_w: float) -> Array:
 	var out = []
@@ -140,33 +165,30 @@ static func win(ci: CanvasItem, r: Rect2, bg: Color = C_BG) -> void:
 	_frame(ci, r)
 
 static func _frame(ci: CanvasItem, r: Rect2) -> void:
-	var x0 = r.position.x
-	var y0 = r.position.y
-	var x1 = r.end.x - 1
-	var y1 = r.end.y - 1
-	var w = r.size.x
-	var h = r.size.y
+	# drawn at native resolution: 2px dark rim, 2px bright bevel, 1px silver groove, 2px inner shadow
+	native_begin(ci, r.position)
+	var w = r.size.x * U
+	var h = r.size.y * U
 	var hi = Color8(248, 248, 255)
 	var lo = Color8(176, 182, 204)
 	var mid = Color8(150, 158, 186)
 	var sh = Color8(84, 90, 120)
-	# dark outer rim, rounded (corner pixels left open)
-	ci.draw_rect(Rect2(x0 + 2, y0, w - 4, 1), C_RIM)
-	ci.draw_rect(Rect2(x0 + 2, y1, w - 4, 1), C_RIM)
-	ci.draw_rect(Rect2(x0, y0 + 2, 1, h - 4), C_RIM)
-	ci.draw_rect(Rect2(x1, y0 + 2, 1, h - 4), C_RIM)
-	for c in [Vector2(x0 + 1, y0 + 1), Vector2(x1 - 1, y0 + 1), Vector2(x0 + 1, y1 - 1), Vector2(x1 - 1, y1 - 1)]:
-		ci.draw_rect(Rect2(c, Vector2(1, 1)), C_RIM)
-	# bright bevel: top/left light, bottom/right silver
-	ci.draw_rect(Rect2(x0 + 2, y0 + 1, w - 4, 1), hi)
-	ci.draw_rect(Rect2(x0 + 1, y0 + 2, 1, h - 4), hi)
-	ci.draw_rect(Rect2(x0 + 2, y1 - 1, w - 4, 1), lo)
-	ci.draw_rect(Rect2(x1 - 1, y0 + 2, 1, h - 4), lo)
-	# inner groove: silver on top/left, shadow on bottom/right
-	ci.draw_rect(Rect2(x0 + 2, y0 + 2, w - 4, 1), mid)
-	ci.draw_rect(Rect2(x0 + 2, y0 + 3, 1, h - 5), mid)
-	ci.draw_rect(Rect2(x0 + 3, y1 - 2, w - 5, 1), sh)
-	ci.draw_rect(Rect2(x1 - 2, y0 + 3, 1, h - 6), sh)
+	var c = 4    # rounded corner inset
+	ci.draw_rect(Rect2(c, 0, w - c * 2, 2), C_RIM)
+	ci.draw_rect(Rect2(c, h - 2, w - c * 2, 2), C_RIM)
+	ci.draw_rect(Rect2(0, c, 2, h - c * 2), C_RIM)
+	ci.draw_rect(Rect2(w - 2, c, 2, h - c * 2), C_RIM)
+	for p in [Vector2(2, 2), Vector2(w - 4, 2), Vector2(2, h - 4), Vector2(w - 4, h - 4)]:
+		ci.draw_rect(Rect2(p, Vector2(2, 2)), C_RIM)
+	ci.draw_rect(Rect2(c, 2, w - c * 2, 2), hi)
+	ci.draw_rect(Rect2(2, c, 2, h - c * 2), hi)
+	ci.draw_rect(Rect2(c, h - 4, w - c * 2, 2), lo)
+	ci.draw_rect(Rect2(w - 4, c, 2, h - c * 2), lo)
+	ci.draw_rect(Rect2(4, 4, w - 8, 1), mid)
+	ci.draw_rect(Rect2(4, 5, 1, h - 9), mid)
+	ci.draw_rect(Rect2(5, h - 6, w - 10, 2), sh)
+	ci.draw_rect(Rect2(w - 6, 5, 2, h - 10), sh)
+	native_end(ci)
 
 ## Recessed inset (portrait frames, map panes): dark well with a 1 px bevel.
 static func inset(ci: CanvasItem, r: Rect2, fill: Color = Color8(8, 10, 30)) -> void:
