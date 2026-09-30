@@ -1,0 +1,1555 @@
+# Group b scenes: Glass Coast, Ember Sea, Skyspine, Pale Basin, the Shattered Choir.
+# Questlines here: QW7 Old Bellharbor (N11 -> N13 -> N12), QW2 The Ridge Road (N16), QC10 The Host That Stopped Answering (N39).
+
+# ================================================================ N11 Tidewrack (R03, CH05)
+@scene N11_TAM
+if flag:n11_tam_told short
+set n11_tam_told
+say tam | New hands? Good. This coast wrecks a ship a month and gives it back a plank at a time.
+say tam | See where a hull glints, where the weed's been scraped off? That's a salvage node. Hand in, and pull.
+say tam | Some give iron. Some give tonic tins. Some give a ring off a man nobody's missed. The tide fills them again.
+say tam | Try the split in the barge behind me, then the ironwork on the far wreck. Mind your fingers on the ribs.
+journal | Tidewrack: salvage nodes glint on wrecks and ruins. Search them; the tide refills them.
+end
+label short
+if phase:post post
+say tam | Glints on the hulls. Hand in, pull, and don't ask whose it was.
+end
+label post
+say tam | Since the fault the sea gives back houses. Whole rooms, with the table laid. I pull what I can. I leave the tables.
+@end
+
+@scene N11_NODE_A
+if flag:n11_node_a empty
+set n11_node_a
+sfx FX007
+say narr | Wedged in the barge's ribs: a sealed tonic tin, and a fist of ore gone green with the sea.
+give I002 1
+give M001 1
+end
+label empty
+say narr | The split in the hull is picked clean. The tide will bring more.
+@end
+
+@scene N11_NODE_B
+if flag:n11_node_b empty
+set n11_node_b
+sfx FX007
+say narr | Under the weed, a strongbox hinge and a chain of good iron. The box itself is long gone.
+give M001 2
+give I009 2
+end
+label empty
+say narr | Scraped ironwork. Nothing left but barnacles.
+@end
+
+@scene N11_NETMENDER
+if phase:post post
+say elder | Nets are for fish. Since the fault I've been mending them for people. We drag the shallows after every high tide.
+end
+label post
+say elder | The Ministry takes a third of all salvage. The tithe barge came to collect it and ran aground. Now it's our roof.
+say elder | They still send a man to count. He counts the barge too.
+@end
+
+@scene N11_DIVER
+if phase:post post
+say sailor | I dived the Brine Stair once, south of here. Smugglers' caves. The smugglers are gone and the caves are fuller.
+say sailor | Whatever lives in the brood pool took them. There's a pool at the bottom that hums. Don't listen to it.
+end
+label post
+say sailor | The Brine Stair didn't flood with the fault. First place on this coast that didn't get worse. Tells you something.
+@end
+
+@scene N11_TITHE
+say guard | Salvage tithe, one third to the Crown. Everything the sea returns belongs to the Ministry of Waterways first.
+say guard | Yes, including that. Yes, including the barge. I don't write the rules. I just count them.
+@end
+
+@scene N11_KID
+if phase:post post
+say child | I found a boot with a foot in it once. Mum made me put it back.
+end
+label post
+say child | We don't go to the lower beach. Mum says the houses that wash up belong to people who might still want them.
+@end
+
+@scene N11_WIDOW
+if phase:post post
+say survivor | Twenty-two hulls on this beach. My Ander's boat isn't one of them. So he's still out there. That's how I count.
+end
+label post
+say survivor | Forty hulls now. Still not his. I keep counting. Somebody on this coast has to be stubborn.
+@end
+
+@scene N11_READER
+if phase:post post
+say scholar | Every ship has a name on her stern. I copy them into this book. Somebody should know where they ended up.
+say scholar | That one's Crown Tithe Barge 11. It ended up as a roof. Some names do better than others.
+end
+label post
+say scholar | I've started a second book, for the houses. Old Bellharbor's lower quay went under whole. Door numbers, mostly.
+@end
+
+@scene N11_REFUGEE
+say survivor | Bellharbor wanted our papers stamped before we could stay. We walked here instead.
+say survivor | The salvagers don't ask for papers. They ask if you can swim, and whether you'll share.
+@end
+
+@scene N11_LAMPMAN
+say worker | Storm lamps from Lanternfall, up the cliffs north. The lamp makers there light the whole coast.
+say worker | Go at dusk. Their night market's the only place I know where the Crown's lamp tax gets paid in jokes.
+@end
+
+@scene N11_RUMOR
+say sailor | The guild boats run from Belltower Point out to Saltwhistle Isle. Fishing tournament season, if you've the arms.
+say sailor | And if a boat ever offers to take you to Gullrock, say no. Nobody lands at Gullrock. Everybody leaves from it.
+@end
+
+@scene N11_P_BAILER
+say worker | The fault dropped this coast a man's height. We bail the hall every morning and sleep in shifts.
+say worker | Still dry, most days. Tidewrack's always been built out of other people's bad luck. We're good at it.
+@end
+
+@scene N11_P_LAMPS
+say apprentice | I'm from Lanternfall. Was. The cliff went into the sea with the kilns still lit. We watched it burn on the water.
+say apprentice | Oda's people went south to Hearthward. I stayed. Somebody here has to know how to make a lamp.
+@end
+
+@scene N11_P_SAVED1
+say survivor | Five months in the customs vault. We drank the rain through a crack and counted the tides by the bell.
+say survivor | When the knocking answered us, I thought I'd finally gone mad. Then a window came down through the dark.
+@end
+
+@scene N11_P_SAVED2
+say child | The bell had a window. I could see fish looking in. They looked more scared than me.
+@end
+
+@scene N11_INN
+if phase:post post
+say marl | Forty crowns for a bunk in a ship's belly. You'll sleep like the drowned. I mean that kindly.
+inn 40
+end
+label post
+say marl | Twenty. Half the town sleeps here now the lower houses flood. Step over the bucket line.
+inn 20
+@end
+
+@scene N11_DRINKER
+say sailor | This inn was the Mary Coyle, out of Veyr. Wenna's grandmother's. She sailed it onto the beach on purpose.
+say sailor | Said she was done with the sea and wanted a house that knew how to float.
+@end
+
+@scene N11_P_COTS
+say patient | The inn gave us the cots by the hearth. Salt water in the lungs. It comes up slow.
+@end
+
+@scene N11_TRADER
+if phase:post post
+say pruett | The sea sells, I buy, you buy. Everybody makes a little, except the sea, which doesn't care.
+shop SHOP_N11
+end
+label post
+say pruett | Prices are up. Everything the sea gives back now used to belong to someone who'd like it back.
+shop SHOP_N11
+@end
+
+@scene N11_CRAFTER
+say hesk | Hull iron, sea-glass, brine pearls if you're brave enough to go down the Stair for them.
+say hesk | Bring me what the wrecks give up and I'll rivet it into something you can wear. Salvage is just crafting with patience.
+@end
+
+@scene N11_CREW
+say worker | Wenna runs the crews. Nobody goes into a hull on a rising tide, and nobody goes in alone. Two rules. We keep both.
+@end
+
+@scene N11_LEDGER
+say clerk | I keep the hall's book: what came up, who brought it, and whose it was, if we can tell.
+say clerk | When we can tell, it goes back. The Ministry calls that theft from the Crown. We call it the second rule.
+@end
+
+@scene N11_WENNA
+if phase:post post
+say wenna | Welcome to the Salvagers' Hall. Everything in here came out of the sea, including half my crew.
+say wenna | You want work, Tam teaches the nodes. You want trouble, the Brine Stair's south. You want both, stay for supper.
+end
+label post
+if q:QW7 done
+if q:QW7:RESOLUTION_READY resolve
+if q:QW7:ACTIVE active
+if !ch:CH16 notyet
+say wenna | You've a ship now. The one that flies. Good. I've a job that needs something that can go where we can't.
+say wenna | Old Ossery at Belltower Point hears knocking through his lamp-glass at low tide. Three knocks. A pause. Three.
+say wenna | It's coming from under the water, where the Bell Quay used to be. Old Bellharbor. Someone's alive down there.
+say dain | After five months?
+say wenna | The customs house had a vault. Stone, sealed, above the high-water mark. The quay went down; maybe the vault held.
+say wenna | Go to Ossery. He's got the only thing on this coast that's ever been down there and come back up.
+quest QW7 ACTIVE ossery
+journal | QW7 Old Bellharbor: someone is knocking under the sea at Old Bellharbor. Speak to Keeper Ossery at Belltower Point.
+objective | Speak to Keeper Ossery at Belltower Point.
+end
+label notyet
+say wenna | We drag the shallows after every tide. Most of what we pull up is Old Bellharbor. Most of it is furniture.
+say wenna | Some of it isn't. If you ever find a way to go deeper than a rope, come and see me.
+end
+label active
+say wenna | Ossery at Belltower Point, and whatever he needs. Every low tide the knocking's a little slower.
+end
+label resolve
+call QW7_RESOLVE
+end
+label done
+say wenna | Eleven for eleven. I've been doing this thirty years and I've never had a count come out whole before.
+@end
+
+# ================================================================ QW7 Old Bellharbor (N11 -> N12 -> N13 -> N12 -> N11)
+@scene QW7_OSSERY
+if q:QW7 done
+if qs:QW7:dive dive
+if qs:QW7:bell bell
+if qs:QW7:glass glass
+say ossery | Wenna sent you. Good. Listen. Put your ear to the glass. There.
+say narr | Through the lamp room's cold pane, very faint: three knocks. A pause. Three knocks.
+say ossery | Every low tide. Coming up the old sea-stair from the drowned quay. Somebody's knocking on stone.
+say ossery | This tower's named for a bell, and the bell's a diving bell. My grandfather built it for the pearl beds.
+say ossery | It still hangs in the lamp room. But its window cracked the night of the fault. Without a window it's a coffin.
+say ossery | The smugglers in the Brine Stair had a diving helmet of real sea-glass. They used it to reach the brood pool.
+say ossery | Bring me that glass and I'll set it in the bell. Then we'll need a strong back on the crane, and a braver one inside.
+quest QW7 ACTIVE glass
+journal | QW7: find the smugglers' sea-glass diving helmet in the Brine Stair (the contraband hold), and bring it to Keeper Ossery.
+objective | Find the smugglers' sea-glass helmet in the Brine Stair's contraband hold.
+end
+label glass
+say ossery | The sea-glass, from the Brine Stair's hold. Low tide's in four hours. It's in four hours every day. Hurry anyway.
+end
+label bell
+say ossery | That's the one. Thick as my thumb, not a bubble in it. Hand it here.
+say narr | The keeper works the glass into the bell's brass collar with tallow and patience. He does not hurry, and does not stop.
+say ossery | There. She'll take six at a time, standing, if they're friends. The tide gives us two drops before it turns.
+say ossery | Go down the sea-stair on the point and wait at the bottom rung. I'll lower her to you from the tower.
+quest QW7 ACTIVE dive
+objective | Descend the sea-stair on Belltower Point; Ossery will lower the diving bell.
+end
+label dive
+say ossery | The sea-stair, on the point. I'll be on the crane. Knock three times when you're in. I'll know.
+end
+label done
+say ossery | Eleven came up in my grandfather's bell. He'd have been insufferable about it. I intend to be.
+@end
+
+@scene QW7_GLASS
+if !qs:QW7:glass none
+say narr | Under the oilcloth, packed in straw: a diving helmet of thick green sea-glass, bolted into a brass collar.
+say narr | The smugglers used it to reach the brood pool and come back. Mostly. The collar has a name scratched in: 'ours'.
+quest QW7 ACTIVE bell
+objective | Bring the sea-glass helmet to Keeper Ossery at Belltower Point.
+end
+label none
+say narr | Old diving gear, a helmet of sea-glass in a brass collar. The smugglers left in a hurry, or not at all.
+@end
+
+@scene QW7_STAIR
+if qs:QW7:dive dive
+if phase:post post
+say narr | Iron rungs down the rock to the old fishing ledge. Gulls have made the bottom rung their business.
+end
+label post
+if q:QW7 done
+say narr | The sea-stair runs down into dark water. Somewhere below, the Bell Quay. Nothing is knocking now.
+end
+label done
+say narr | The sea-stair runs into the water. Ossery has painted the top rung white: 'Eleven. All of them.'
+end
+label dive
+call QW7_DIVE
+@end
+
+@scene QW7_DIVE once
+say narr | At the bottom rung the water is black and very still. Then the bell comes down out of the lamp-light, swinging.
+say narr | Green glass, brass ribs, a hatch in the floor. The party climbs in. Someone knocks three times on the brass.
+fade out 0.6
+sfx FX031
+say narr | Down. The light goes green, then grey, then goes. Only the glass shows anything: a street, a door, a lamp post, fish.
+say narr | Old Bellharbor. The Bell Quay, whole and drowned. Customs House, three doors down. A knocking, very near.
+fade in 0.6
+say narr | The bell settles on the customs steps. Behind a stone door a pocket of air, and eleven people, and a bell-rope.
+say survivor | You came. We heard you. We heard you every day and thought it was the tide lying to us.
+say dain | Eleven. The bell takes six, and the tide gives us two drops. Everyone comes up.
+say survivor | Then who's first? There are children here. There's Harl, who can't stand. There's me, who wants to go first and hates it.
+choice | Send the children and Harl first -> first | Ask them to decide among themselves -> ask
+label first
+set qw7_chose
+say dain | Children and Harl in the first drop. Everyone else holds the rope. We'll be back before the tide turns.
+say survivor | ...That's fair. It's fair and I hate it. Go.
+goto trip
+label ask
+set qw7_asked
+say dain | You've kept each other alive for five months. You know better than we do. Decide, and we'll carry it.
+say narr | They talk for a long minute. The children go first, and Harl, and the woman who wanted to go first stays and holds the rope.
+say survivor | We chose. Thank you for letting us. Nobody's let us choose anything since the water came.
+label trip
+say narr | The first drop rises. Halfway up, the glass goes dark: something long has wrapped itself round the bell.
+battle POWX_SEA_6 noflee
+say narr | It lets go. The bell breaks the surface in the lamplight and Ossery is already hauling, shouting for blankets.
+say narr | The second drop, before the tide turns. Five more, and a bell-rope, and the last of the air in Old Bellharbor.
+say ossery | Eleven. Eleven. I'll paint it on the rung.
+quest QW7 RESOLUTION_READY rescued
+objective | Tell Wenna Coyle in Tidewrack that everyone came up.
+@end
+
+@scene QW7_RESOLVE once
+say wenna | Eleven? All of them? ...Sit down. No. Stand up. I need to shout at somebody and you're the nearest.
+say wenna | Ossery sent me the bell's plans by gull. A pressure skin, ribs, a glass keel. Built big, it'd fit under a ship.
+say wenna | Your ship. We fit the Lanternwake with a diving hull, and she goes under the sea like the bell did. Deeper.
+say wenna | There are more quays down there. More vaults. Maybe nobody in them. Maybe somebody. Now we can look.
+set lanternwake_diving
+say narr | (The Lanternwake has a Diving Hull: she can dive and sail under the sea.)
+give A118 1
+gold 2000
+quest QW7 COMPLETED
+journal | QW7 complete: everyone came up from Old Bellharbor. The Lanternwake can dive.
+@end
+
+# ================================================================ N12 Belltower Point (R03, CH05)
+@scene N12_FERRY_NORTH
+if phase:post post
+if !ch:CH06 tied
+say coll | North to Skyspine, first bell, every day the sea lets me. The trigger's at the ferry bell on the Bellharbor road.
+say coll | Two hours to the cliffs if the wind's kind. Four if it's Ministry weather. Pay me, not the Ministry.
+end
+label tied
+say coll | Tied up by Ministry order until the archive business is settled. Whatever that means. It means I drink.
+end
+label post
+say coll | Skyspine's still there. The cliffs came down to meet the sea halfway. I run the Hearthward crossing now.
+say coll | The timetable's the tide's, not mine. Nobody argues with it. That's the only thing the fault improved.
+@end
+
+@scene N12_FERRY_SALT
+if phase:post post
+say brisa | Saltwhistle boats go when the guild flag flies. Green flag, guild's taking passengers. Red flag, tournament.
+say brisa | Black flag, somebody's been lost off Gullrock and we're all out looking. We don't talk about the black flag.
+end
+label post
+say brisa | Saltwhistle kept its flagpole through the fault. The guild flies green every day now, whatever the weather.
+say brisa | Doesn't mean passengers. Means 'we're still here'.
+@end
+
+@scene N12_TIMEKEEPER
+say clerk | Ferry timetable, by tide: north boat at the first bell. Guild boats when the flag flies. Ministry boats never.
+say clerk | I also keep the drowning book. Two columns. The second one's always shorter. That's the lighthouse's doing.
+@end
+
+@scene N12_GULL
+say child | The keeper feeds the gulls fish heads so they'll yell at boats that come in wrong. They're very good at yelling.
+@end
+
+@scene N12_MOURNER
+if phase:post post
+say elder | My husband rang the harbour bell in Bellharbor for thirty years. The Ministry took the bell for inspection.
+say elder | He came up here and rang this one instead, in a storm, so the boats could find the point. The storm won.
+end
+label post
+say elder | They've added a line to the cairn for Old Bellharbor. One line for a whole quay. The bronze ran out.
+@end
+
+@scene N12_P_RAFT
+if q:QW7 done
+say survivor | We came off the lower quay on a door when it went. Floated here. The keeper pulled us out with a gaff.
+say survivor | He hears things through the lamp-glass. Knocking, he says. Everyone says he's mad. I don't.
+end
+label done
+say survivor | Eleven came up in the keeper's bell. I knew one of them. I'd been lighting a candle for her. I still am. Different reason.
+@end
+
+@scene N12_OSSERY
+if phase:post post
+say ossery | Lighthouse keeper. The Ministry stopped paying for the oil in spring. I light it anyway. Boats don't read budgets.
+say ossery | The bell up top's a diving bell. Grandfather built it for the pearl beds. Nobody's dived for pearls in forty years.
+end
+label post
+if q:QW7:ACTIVE qw
+if q:QW7 qw
+say ossery | The lamp's still lit. The sea's higher, the rocks are new, and there's a whole town under the point now.
+say ossery | Some nights I put my ear to the glass and I'd swear I hear knocking. Wenna at Tidewrack says I'm not mad.
+end
+label qw
+call QW7_OSSERY
+@end
+
+@scene N12_LAMPROOM
+if phase:post post
+say narr | The lamp room: a great oil lamp in brass, and above it, slung from a crane arm, a bell tall enough to stand in.
+end
+label post
+say narr | The lamp room. The diving bell hangs from its crane, green glass eye facing the sea. The oil smells like weather.
+@end
+
+# ================================================================ N13 The Brine Stair (R03, CH06, boss BX03)
+@scene N13_ENTER once
+say narr | Sea caves under the coast cliffs. Chalk arrows on the rock, crates rotting on the ledges. The smugglers' road.
+say narr | The water here doesn't move with the tide. It moves toward the back of the cave, and stays.
+@end
+
+@scene N13_SLUICE_A
+if flag:n13_sluice_a done
+sfx FX024
+shake 0.3
+set n13_sluice_a
+say narr | The wheel groans round. Somewhere to the west the sea falls away from a gap in the rock with a long sigh.
+end
+label done
+say narr | The west sluice is open. The wheel won't turn back without a crew of six.
+@end
+
+@scene N13_SLUICE_B
+if flag:n13_sluice_b done
+sfx FX024
+shake 0.4
+set n13_sluice_b
+say narr | The second wheel turns. The channel north drains to the ankle, then to wet rock. The way up the Stair is open.
+end
+label done
+say narr | The north channel stays drained.
+@end
+
+@scene N13_KEY
+if flag:n13_key done
+set n13_key
+say narr | You take the key from the drowned man's neck. The cord has been tied and retied many times. It was his job.
+end
+label done
+say narr | The drowned smuggler. His hands are folded now. Someone had to.
+@end
+
+@scene N13_ROPE
+if flag:n13_rope done
+sfx FX010
+set n13_rope
+say narr | You loose the rope ladder. It unrolls into the dark and slaps rock far below: the sea mouth. A short way back.
+end
+label done
+say narr | The rope ladder hangs down to the sea mouth.
+@end
+
+@scene N13_LEDGER
+say narr | DATE. CARGO. PAID TO HER. Salt, silk, forged passage papers. Paid: one man. One man. One man. Two men (storm).
+say narr | The last entry is in a different hand: 'She wants all of us now. We are not paying. God help whoever finds this.'
+@end
+
+@scene N13_GHOST
+if flag:n13_boss after
+say survivor | Forty-one trips. Forty-one men. We told ourselves they were volunteers. We told ourselves a lot of things.
+say survivor | She's past the hold, in the brood pool. She sings. Don't sleep. Whatever you do, don't sleep.
+end
+label after
+say survivor | She's quiet. The ledger's closed. Burn it, or read it out loud somewhere. Either's fair.
+@end
+
+@scene N13_BOSS once
+music M025
+say narr | The brood pool is still. Then the water draws back from the edges all at once, toward the centre.
+say narr | Something rises with it: a woman's shape to the waist, and below the waist, coils. She is humming a lullaby.
+say matriarch | More of them. The men who came before paid in men. What will you pay?
+say dain | Nothing. We're closing the account.
+say matriarch | Then sleep, little debtors, and I'll write you down.
+battle BX03 noflee
+set n13_boss
+say narr | The coils go slack into the pool. The humming stops in the middle of a bar.
+give G112 1
+gold 900
+rumor | The Brine Stair is quiet. Tidewrack's divers will want to know.
+@end
+
+@scene N13_RECEIPTS
+say narr | Receipts, hundreds of them, in her hand: a crude drawing of a man on each. Some have names. You take the ones with names.
+say narr | One tarred box is marked differently: 'HER SHARE. GULLROCK - UNDER THE STONES.'
+say narr | Tidewrack's hall keeps a book for names like these. They will know what to do with them.
+@end
+
+# ================================================================ N43 Lanternfall (R03, CH06, pre-fault only)
+@scene N43_STALL_GLASS
+say ysa | Blown glass, lamp chimneys, lenses for the lighthouse. Hold one to your eye: the whole market's on fire, safely.
+shop SHOP_N43
+@end
+
+@scene N43_STALL_OIL
+say baker | Lamp oil, whale-free, fish-free, mostly-free of Ministry tax. Seal oil for the storm lamps. Don't drink either.
+@end
+
+@scene N43_STALL_MOTH
+say apprentice | Moth-lamps! A jar, a wick, and a moth that's decided to stay. They only light for people they like.
+say apprentice | ...It went dark. Don't take it personally. It went dark for the tax man too.
+@end
+
+@scene N43_STALL_CHARM
+say elder | Grief lamps. You write a name on the paper shade and hang it in your window. The light says: still counting you.
+say elder | Most of mine go to Belltower Point and Tidewrack. The sea's very busy on this coast.
+@end
+
+@scene N43_STALL_FOOD
+say baker | Lantern buns: baked in the kiln flue while the glass cools. Everything in Lanternfall tastes a bit of smoke. You get used to it.
+@end
+
+@scene N43_STALL_MAPS
+say scholar | Maps of the coast by lamplight, drawn by people who actually walk it. South of Tidewrack: the Brine Stair.
+say scholar | I've marked it 'no'. It's the only honest mark on the map.
+@end
+
+@scene N43_LIGHTER
+say worker | Lamplighter. I light every lamp in the village at dusk and every one on the cliff stair. Two hundred and six.
+say worker | The Ministry charges a tax per flame. So the lamp makers made one flame, and split it two hundred and six ways.
+@end
+
+@scene N43_WIDOW
+say survivor | The Tallows up the lane lost their boy off the cliff stair in the wind. The whole village lit for him that night.
+say survivor | You could see it from the sea, they said. The boats came in by it. That's what a lamp's for.
+@end
+
+@scene N43_CHILD
+say child | I'm going to be a lamp maker. Oda says my hands are good but my patience is a moth.
+@end
+
+@scene N43_GUARD
+say guard | Curfew's at the second bell, but nobody's enforced it here in years. You try telling a lamp maker to go to bed.
+say guard | The cliff's creaking more this season. The old men say there's a line of builder stone under it. They say it hums.
+@end
+
+@scene N43_PILGRIM
+say volunteer | I'm carrying grief lamps to Belltower Point for the cairn. Twelve names. I only knew two of them.
+@end
+
+@scene N43_CRIER
+say clerk | Hear ye: the night market opens when the lamps do! Glass, oil, charms, buns, and whatever Ysa's calling art.
+say clerk | By order of the Lampmakers' Moot, the lamp tax will be paid in full, in candle stubs, on the Ministry's steps.
+@end
+
+@scene N43_MISER
+say noble | I came to buy the Galloway works outright. Oda said she'd sell the moment the sea stopped needing light.
+say noble | I'm told that was a no.
+@end
+
+@scene N43_CRAFTER
+say oda | Galloway Lampworks. Four generations, one kiln, and a great deal of burned hair.
+say oda | Bring me sea-glass, good tallow, a bit of ore for the brass, and I'll make you something that burns right.
+say oda | The kiln sits on old builder stone. Keeps the heat like nothing else. Hums, some nights. We don't ask it why.
+@end
+
+@scene N43_GLASSBOY
+say apprentice | Don't touch the gather, it's hotter than it looks. Everything here is hotter than it looks. Especially Oda.
+@end
+
+@scene N43_INN
+say brannock | The Wick and Wind. Thirty-five crowns, a bed, and a lamp in the window that I'll put out when you ask. Nobody asks.
+inn 35
+@end
+
+@scene N43_TRAVELLER
+say sailor | I came up the cliff stair for the night market and missed my boat three nights running. I think I live here now.
+@end
+
+@scene N43_LAMPSELLER
+say wick | Tallow and Wick. Lamps, oils, charms. Every lamp we sell is lit once before it leaves, so it knows what it's for.
+shop SHOP_N43
+@end
+
+@scene N43_BUYER
+say noble | I've bought a lamp for every window in my house in Veyr. My neighbours will hate it. That's the point.
+@end
+
+# ================================================================ N14 Saltwhistle Isle (R06, CH06): fishers' guild, tournament
+# Tournament hooks for the fishing minigame (built by the lead): Tourney Master Oyle is npc id fishing_master.
+# N14_TOURNEY sets flag fishing_tournament_open when the party signs up. The minigame sets fishing_rank1 / fishing_rank2
+# / fishing_rank3 (or fishing_entered with no placing); the prize scenes N14_PRIZE_GOLD/SILVER/BRONZE are `once`.
+@scene N14_TOURNEY
+if flag:fishing_rank1,!event:N14_PRIZE_GOLD gold
+if flag:fishing_rank2,!event:N14_PRIZE_SILVER silver
+if flag:fishing_rank3,!event:N14_PRIZE_BRONZE bronze
+if flag:fishing_champion champ
+if flag:fishing_tournament_open open
+say fishing_master | Tourney Master Oyle. The Saltwhistle Open: one day, one rod, the whole Ember Sea to fish in.
+say fishing_master | Biggest catch takes the Silver Hook. Second and third take smaller hooks and the right to complain loudly.
+say fishing_master | No entry fee. The guild pays for the tournament out of the fish. The fish have not been consulted.
+choice | Sign up -> sign | Not today -> no
+label sign
+set fishing_tournament_open
+say fishing_master | Written in. Your name goes on the board under the ones who've won, and the ones who drowned trying.
+say fishing_master | Cast off from any guild pier. When you've a catch worth weighing, bring it to the scales. Good luck. You'll need it.
+journal | Saltwhistle Isle: signed up for the fishing tournament. Fish from the guild piers and bring the catch to the scales.
+end
+label no
+say fishing_master | The sea'll be there tomorrow. So will I, unfortunately.
+end
+label open
+say fishing_master | You're entered. Guild piers, one rod, and nobody's allowed to use a net. Yes, Gorse, that means you.
+end
+label champ
+say fishing_master | The champion of Saltwhistle! You're on the board in big letters. Vane's already practising for next year.
+end
+label gold
+call N14_PRIZE_GOLD
+end
+label silver
+call N14_PRIZE_SILVER
+end
+label bronze
+call N14_PRIZE_BRONZE
+@end
+
+@scene N14_PRIZE_GOLD once
+say fishing_master | Winner of the Saltwhistle Open! Somebody fetch the chalk. Somebody fetch Vane, he'll want to sulk.
+say fishing_master | The Silver Hook. It's not silver. It's older than silver on this island. It's been lost overboard nine times.
+give A107 1
+gold 1500
+set fishing_champion
+@end
+
+@scene N14_PRIZE_SILVER once
+say fishing_master | Second place. A fine fish. Not the finest. You'll hear about the difference for years.
+give A108 1
+gold 800
+@end
+
+@scene N14_PRIZE_BRONZE once
+say fishing_master | Third! On the board, in small letters. Everybody starts in small letters.
+give I005 2
+gold 400
+@end
+
+@scene N14_RECORDS
+say narr | BIGGEST CATCHES. A grouper, 'the size of Oyle's mother'. A ray 'seen from Belltower Point'. A boot, 'with owner'.
+say narr | At the bottom, newer chalk: 'NOT A RECORD: the Crown's fish tax, which is larger every year.'
+@end
+
+@scene N14_VANE
+if phase:post post
+say vane | Guildmaster Vane. Saltwhistle is the guild and the guild is Saltwhistle. Everything else on this rock is fish.
+say vane | The Crown's tax on the catch doubled again. So we fish twice as much and eat half as well. That's arithmetic.
+say vane | Stay for the tournament. We hold it every year the Crown forgets to ban it.
+end
+label post
+say vane | The Ember Sea boils in the east now. The fish came west, to us, all at once. Too many to land. Too many to sell.
+say vane | So we feed Hearthward. Nobody pays. The guild has never been poorer or less ashamed of itself.
+@end
+
+@scene N14_RIVAL
+say sailor | You're entering? Good. I like to know who I'm beating. I've come second four years running. Fifth year's mine.
+@end
+
+@scene N14_SCRIBE
+say clerk | I keep the guild rolls: every boat, every hand, every catch. The Crown asks for copies. I send them the old ones.
+say clerk | Nobody at the Ministry has noticed they've been reading the same year since I was an apprentice.
+@end
+
+@scene N14_P_MOURN
+say survivor | We lost six boats the night of the fault. The sea stood up. The guild flies green for them every morning now.
+@end
+
+@scene N14_EEL
+say baker | Smoked eel, pickled eel, eel pie. We have one fish on this island and we are going to make you like it.
+@end
+
+@scene N14_SALTFISH
+say keeper | Salt cod from the Pale Basin salt, cured on Saltwhistle racks. Keeps a year. Keeps a family through a bad one.
+@end
+
+@scene N14_BAIT
+if phase:post post
+say apprentice | Bait! Lugworm, sand-flea, and the special, which I'm not allowed to tell you about until you've signed up.
+end
+label post
+say apprentice | Bait's free now. Nobody needs it. The fish jump into the boats. Grandmother says that's a bad sign.
+@end
+
+@scene N14_SHELL
+say elder | Shell charms. You carry one at sea so the Tide Serpent knows you're a fisher and not a meal. It hasn't been proven wrong.
+@end
+
+@scene N14_WEIGHER
+say clerk | Weighmaster. I weigh the tournament catches and the Crown's tax catches, on the same scales.
+say clerk | The scales are honest. Mostly. The tax weights are a little heavier. We've never found out why. We've never looked.
+@end
+
+@scene N14_DRIER
+say farmer | Fish on the racks, salt on the fish, wind on the salt. Three days and it's cod you could build a house with.
+@end
+
+@scene N14_HOPEFUL
+say sailor | I'm going to win the tournament this year. I've been practising on the harbour. The harbour's winning so far.
+@end
+
+@scene N14_KID
+say child | There's a cove on Gullrock, east, where the smugglers used to go. Mum says it's empty. Mum always says things are empty.
+@end
+
+@scene N14_OLDHAND
+say elder | Brine Stair smugglers used to run their cargo out of Gullrock. Salt, silk, people. Captain Rask ran the boats.
+say elder | She quit one night. Came in on the tide, sank her own cutter in the shallows, and never sailed again. Still lives out there.
+@end
+
+@scene N14_TAXMAN
+say guard | Fish tax, salt tax, boat tax, pier tax. I'd tax the gulls if I could catch one. The guild says I can't. The guild is correct.
+@end
+
+@scene N14_P_REFUGEE
+say survivor | I'm from Hearthward, over the water. The guild sends a boat of fish every morning. I came over to say thank you.
+say survivor | They put me on the eel stall. I think this is my life now. It's not a bad life.
+@end
+
+@scene N14_P_WATCHER
+say sailor | I watch the east. Since the fault, the sea over there is red at night. Something moves under it. Something big.
+@end
+
+@scene N14_FERRYHAND
+say sailor | Guild boats back to the mainland from the south pier, whenever you like. Tell Brisa at Belltower Point we're still here.
+@end
+
+@scene N14_INN
+if phase:post post
+say pearl | The Gutted Herring. Thirty crowns, a hammock, and a bowl of whatever the guild didn't sell.
+inn 30
+end
+label post
+say pearl | No charge. Everyone on Saltwhistle's family now, and family pays in washing-up.
+inn 0
+@end
+
+@scene N14_SINGER
+say sailor | ~ Oh the Crown wants a third, and the sea wants the rest, and the fisher gets the bones and the salt in her chest ~
+say sailor | It's a cheerful song. You have to hear the second verse.
+@end
+
+@scene N14_TACKLE
+say gorse | Tackle, stores, salt, oilskins. Everything a fisher needs except luck. Luck's on the shelf behind me; it's not for sale.
+shop SHOP_N14
+@end
+
+@scene N14_CRAFTER
+say ama | Net-wright. I knot nets, and I knot other things: charms, straps, harness. Bring me fish scale, shell and good line.
+say ama | Brine pearls from the Stair make the best charms. The divers who bring them back make the best stories.
+@end
+
+# ================================================================ N15 Gullrock (R06, secret)
+@scene N15_CAIRN
+if flag:n13_boss know
+say narr | Sea-stones, fitted tight. The gulls scream when you touch them. Whatever is under here, somebody meant it to stay.
+end
+label know
+set n15_cairn
+sfx FX024
+say narr | GULLROCK - UNDER THE STONES, the Matriarch's receipts said. You pull the stones down one by one. The gulls watch.
+say narr | Beneath them, a strongbox, tarred and dry. The smugglers' share. They never came back for it.
+@end
+
+@scene N15_NELL
+if flag:n13_boss done
+say gullrock | Captain Nell Rask. Retired. Don't bother asking from what; the answer's on every Ministry wanted board from here to Veyr.
+say gullrock | I ran boats out of the Brine Stair for eleven years. Then I saw what we were paying for the right to use it.
+say gullrock | I sank my cutter in the shallows so nobody would sail her back. The others kept paying. Most of them paid in full.
+end
+label done
+say gullrock | You went down the Stair. And she's quiet. ...Sit down. I've been waiting eleven years to pour this for somebody.
+say gullrock | The share's under the gull stones, north end. Take it. It was never ours. Maybe it's yours.
+@end
+
+@scene N15_LOOKOUT
+say child | Nell says if a Ministry boat comes, I whistle twice. If a guild boat comes, I whistle once. I've never whistled.
+@end
+
+@scene N15_P_GHOST
+say survivor | I rowed for Rask. The fault took the cove's mouth and the sea came in grey and fast.
+say survivor | She got the lookout out on her back. I stayed with the boat. I'm still with the boat, it seems.
+@end
+
+# ================================================================ N16 Windrest (R04, CH07): shepherds, Brackhorn stables
+@scene N16_SHEPHERD
+if phase:post post
+say farmer | The flocks go up to the high pasture in spring and come down in autumn. The wind decides the days in between.
+say farmer | Rocs from Eyrie Hollow take a lamb a week. The queen takes more when she's nesting. We call it rent.
+end
+label post
+say farmer | Half the flock went up the ridge the morning of the fault. The road came down behind them. We hear them some nights.
+@end
+
+@scene N16_CARDER
+say baker | Carding wool. You comb it till it forgets it was ever on a sheep. Windrest wool goes to High Aerie for cable lining.
+say baker | The Crown pays for it by the stone. They weigh it wet. We card it dry. Everybody's cheating a little.
+@end
+
+@scene N16_SPINNER
+if phase:post post
+say elder | I've spun on this step for sixty years. The wind turns the wheel if you let it. I mostly let it.
+end
+label post
+say elder | The wind's changed since the fault. It comes up from the new sea now, wet and salt. The wool won't dry.
+say elder | We'll learn. We learned the last wind. It took a hundred years, but we learned it.
+@end
+
+@scene N16_KID
+say child | I'm going to ride a brackhorn over the mountains. Maddoc says brackhorns don't climb. Maddoc says a lot of things.
+@end
+
+@scene N16_ASSESSOR
+say guard | Wool assessor, Ministry of Provision. I weigh the clip and take the tithe. They hate me here. It's a small village. I hate me too.
+@end
+
+@scene N16_PORTER
+say worker | Cable porter. Wool goes down the valley to the High Aerie cable, and the cable takes it over the chasm.
+say worker | The Ninefold Shrine keepers run the other cable, up into the clouds. Nobody I know has ridden it and come back talkative.
+@end
+
+@scene N16_ROCWATCH
+say sailor | I watch the sky for rocs. When I see one I ring this bell and everybody gets their lambs inside.
+say sailor | Eyrie Hollow's north-west, up in the crags. Poachers go up for the eggs. Poachers don't come down, mostly.
+@end
+
+@scene N16_HORNSMITH
+say worker | Brackhorn shoes. Iron for the road, horn for the rock. A shod brackhorn goes anywhere a goat can. Almost.
+say worker | The old ridgehorns, the wild ones on the high pasture, go where goats can't. Nobody knows how. They don't tell.
+@end
+
+@scene N16_P_FATHER
+if q:QW2 done
+say survivor | My boy's up on the ridge with the Harl girl and the flock. The road's gone. I shout up every morning.
+say survivor | Sometimes somebody shouts back. I tell myself it's him and not the echo.
+end
+label done
+say survivor | He came down on a ram's back, laughing. Laughing! I nearly killed him myself.
+@end
+
+@scene N16_P_WIDOW
+say survivor | We lost the lower houses when the valley dropped. The cliff kept us. It always has. We're a stubborn cliff.
+@end
+
+@scene N16_P_YSOLDE
+say ysolde | Old Crook's back in his pen, eating everything. He saved forty sheep and six people and he knows it.
+say ysolde | Dad's teaching Bramble the high paths. She hates it. She's brilliant at it.
+@end
+
+@scene N16_P_KIN
+say farmer | I was on the ridge four months. Snow, sheep, and Ysolde's cooking. I'd take the snow again. I'd take the sheep.
+@end
+
+@scene N16_STABLE
+if phase:post post
+say maddoc | Maddoc Harl. I bred Bramble's mother, and Bramble's grandmother, and I'd know that saddle-sore walk anywhere.
+say maddoc | Brackhorns don't climb, they plod. Plod long enough and you're at the top of anything. That's the whole secret.
+end
+label post
+if q:QW2 done
+if q:QW2:RESOLUTION_READY resolve
+if q:QW2:ACTIVE active
+say maddoc | You. You've been places. I need someone who's been places.
+say maddoc | My daughter Ysolde took the flock up to the high pasture the morning of the fault. The ridge road came down behind her.
+say maddoc | Four months. We see smoke up there some nights. Somebody's alive. The road's broken and I'm too old for rope.
+say maddoc | I've untied the shepherds' gate at the top of the village. Go up. Bring her down. Bring whoever's with her.
+set qw2_road
+quest QW2 ACTIVE ridge
+journal | QW2 The Ridge Road: climb the broken ridge road above Windrest and bring down Ysolde Harl and the stranded shepherds.
+objective | Climb the ridge road above Windrest to the high pasture.
+end
+label active
+say maddoc | The ridge road, through the gate at the top of the village. There was a winch at the second bend, for hauling hay.
+end
+label resolve
+call QW2_RESOLVE
+end
+label done
+say maddoc | Bramble's shoed with ridgehorn iron now. She'll take you over mountains. Plodding, mind. Always plodding.
+@end
+
+@scene N16_STABLEHAND
+say apprentice | I muck out, I feed, I get kicked. Brackhorns kick when they like you. I'm very well liked.
+@end
+
+@scene N16_INN
+if phase:post post
+say gwin | The Shorn Fleece. Forty crowns for a bed under two blankets and a sheepskin. Wind's free.
+inn 40
+end
+label post
+say gwin | Twenty-five. The blankets are thinner. So is everybody.
+inn 25
+@end
+
+@scene N16_CABLEMAN
+say worker | I rode the Ninefold cable once, up to the Choir anchorage. There's a whole island up there. Crucible, they call it.
+say worker | Arena. People pay to fight things. I paid to watch. I don't recommend either.
+@end
+
+@scene N16_TRADER
+say brannagh | Wool and Iron: coats, spears, horseshoes and knitting needles. Everything a cliff needs.
+shop SHOP_N16
+@end
+
+@scene N16_CRAFTER
+say tolly | Horn, hide and iron. Bring me roc feather, ram's horn, good ore and I'll make you something the wind can't get through.
+say tolly | Eyrie Hollow's full of feathers. Full of rocs, too. Those come with the feathers.
+@end
+
+# ================================================================ QW2 The Ridge Road (N16, post-fault)
+@scene QW2_WINCH
+if flag:qw2_beam done
+sfx FX024
+shake 0.3
+set qw2_beam
+say narr | The old hay winch groans. A cable runs up the cliff; far above, a long timber beam swings out and drops across the gap.
+say narr | It lands with a crack that echoes down the whole valley. It holds.
+end
+label done
+say narr | The hay beam spans the gap in the road. It creaks when the wind leans on it.
+@end
+
+@scene QW2_YSOLDE
+say ysolde | You came up the road? The road's GONE. ...You came up the road. Dad sent you. Of course he did.
+@end
+
+@scene QW2_HURT
+say patient | Broke my leg the morning of the fault. Ysolde splinted it with a crook. It's been four months; I'm mostly crook now.
+@end
+
+@scene QW2_CAMP once
+say narr | The high pasture: tents, a fire pit, a stone pen, and a great many sheep, all of them looking at you.
+say ysolde | Ysolde Harl. I've six people, forty sheep, one broken leg and a ram who thinks he's in charge. Is the road open?
+say dain | There's a beam across the gap. It holds a person at a time. Not a flock.
+say ysolde | Then there's another way. Old Crook knows it. The ridgehorn ram, there. He goes down to the valley every week and comes back.
+say ysolde | Goat paths. Ledges, the width of a hand. The rocs hunt there. It'd take all day, with the flock.
+say ysolde | Or we carry Davin down the road now, and leave the sheep. They're Dad's whole living. But it's quicker, and Davin's leg is bad.
+choice | Carry Davin down the road now -> road | Follow Old Crook with everyone -> crook
+label road
+set qw2_road_chosen
+say dain | Davin first. The flock can wait a day.
+say ysolde | ...Right. Right. We'll come back for them. The rocs will have some. Not all.
+fade out 0.6
+say narr | You carry Davin down in turns across the beam. At dusk the shepherds go back up with rope, and bring down what the rocs left.
+fade in 0.6
+goto home
+label crook
+set qw2_crook_chosen
+say dain | Everyone and everything. Show us the way, Crook.
+say narr | The ram stamps once and steps off the edge onto a ledge you hadn't seen. The flock follows him, one by one.
+say narr | Halfway down, with the sheep strung out along the cliff, a shadow crosses the ledge.
+battle POWX_R04_4 noflee
+say narr | The rocs wheel away. Old Crook does not look back. By dusk, every sheep and every shepherd is in the Windrest pens.
+label home
+set qw2_down
+quest QW2 RESOLUTION_READY home
+objective | Tell Maddoc Harl at the Windrest stables that the shepherds are home.
+warp N16_R01 from_ridge
+@end
+
+@scene QW2_RESOLVE once
+say maddoc | Ysolde. ...Ysolde. Don't. Don't say anything. I'll cry on the brackhorns and they'll never respect me again.
+if flag:qw2_crook_chosen crook
+say maddoc | And the flock? ...We'll rebuild the flock. We can't rebuild her. You chose right.
+goto gift
+label crook
+say maddoc | And the whole flock, down the goat paths behind Old Crook? That ram. That impossible ram.
+label gift
+say maddoc | Crook's paths. He's been walking them all his life, and now I know where they are. So will Bramble.
+say maddoc | Ridgehorn iron on her shoes, and a week on the high paths. She'll carry you over mountains. Plodding.
+set brackhorn_ridgehorn
+say narr | (Bramble is now a Ridgehorn: she can cross mountains on the world map.)
+give A111 1
+quest QW2 COMPLETED
+journal | QW2 complete: the shepherds are home, and Bramble can cross mountains.
+@end
+
+# ================================================================ N17 The Ninefold Shrine (R04, CH07): wind shrine, sky cable
+@scene N17_ALTAR
+say narr | Nine grooves run out from the basin to nine poles. The wind fills them one after another, never two at once.
+say narr | Eight poles have bells. The ninth has only a groove, worn deep, as if something heavy once hung there and rang for a long time.
+@end
+
+@scene N17_WINDKEEPER
+if phase:post post
+say windkeeper | Windkeeper Aun. We keep nine winds here. Eight blow. The ninth stopped before my grandmother's grandmother.
+say windkeeper | It came down from the sky, they wrote. Choir-wind. Voices on it, singing orders. Then one day, nothing.
+say windkeeper | The sky cable runs up to where it came from: the Choir Anchorage, and the Crucible beyond. We keep the cable too.
+end
+label post
+say windkeeper | Since the fault the eight winds blow all at once. The bells never stop. We sleep in wax.
+say windkeeper | And the ninth groove... hums. Just a little. Like a choir that's forgotten the words, humming the tune.
+@end
+
+@scene N17_CABLEHAND
+say worker | Cable's locked until the Arena crews re-rig the far anchor. The winch key's with the keepers. Talk to Aun.
+say worker | Sky cable, basket, two hours up through the clouds. You come out over the Choir Anchorage. Don't look down; there isn't one.
+@end
+
+@scene N17_PILGRIM
+say volunteer | I walked up from Windrest to ask the West wind for my brother back. He went over the edge in a storm.
+say volunteer | The keepers say the West wind comes back as weather. So I'll stand in the rain. It's something.
+@end
+
+@scene N17_NOVICE
+say apprentice | Novice keeper. I polish bells. Eight bells. There used to be nine. I polish the empty hook too. Aun says it's respect.
+@end
+
+@scene N17_P_LISTENER
+say elder | I put my ear to the ninth groove every night. Somewhere up there somebody is still conducting.
+say elder | The cable's down since the fault. Anyone going up now goes by ship.
+@end
+
+@scene N17_ELDERKEEPER
+say monk | The ninth wind belonged to the host in the sky: Seraphel. The Choir. They sang the Skyspine's weather once.
+say monk | Our book says the Choir stopped answering its own soldiers first. Then it stopped answering us. Then it stopped.
+@end
+
+@scene N17_COOK
+say baker | Barley, mutton, wind. That's the shrine menu. The wind's the seasoning. You'll taste it by the second bowl.
+@end
+
+@scene N17_BOOK
+say narr | 'Day of the South wind. Asked for: a safe birth.' 'Day of the North. Asked for: nothing. It has nothing.'
+say narr | An old page, in faded ink: 'The Choir-wind has not blown for a year. The keepers still ring its bell. Nobody answers.'
+@end
+
+# ================================================================ N18 Eyrie Hollow (R04, CH08, boss BX04)
+@scene N18_ENTER once
+say narr | The crags above the Skyspine. Rocs' nests crowd every ledge; feathers the length of a man drift in the updraft.
+say narr | Somewhere above, very large and very close, something shifts its wings and settles again.
+@end
+
+@scene N18_SHUTTER1
+if flag:n18_shutter1 done
+sfx FX010
+set n18_shutter1
+say narr | You knock the brace free. The wind-shutter above swings open with a bang and the updraft howls through the chimney.
+end
+label done
+say narr | The brace lies in the snow. The shutter stays open.
+@end
+
+@scene N18_SHUTTER2
+if flag:n18_shutter2 done
+sfx FX010
+set n18_shutter2
+say narr | The second brace gives. Across the chasm the upper shutter slams open. The poachers built these to keep the rocs out.
+end
+label done
+say narr | The upper shutter hangs open.
+@end
+
+@scene N18_FEATHER
+if flag:n18_feather done
+set n18_feather
+say narr | You work the great gold feather free. It smells of the queen: warm, dusty, dangerous.
+say narr | Carrying it, you smell like her kin. The nest-walls might let you through.
+end
+label done
+say narr | Branches, and the smell of roc.
+@end
+
+@scene N18_POACHER
+if flag:n18_boss after
+say survivor | Egg-poacher. Was. We came up twelve. Eggs fetch a fortune in Veyr; nobles hatch them for hunting birds.
+say survivor | The queen came home early. I hid under the eggs. She sat on me for three days. I'm still up here.
+end
+label after
+say survivor | She's calmer. You didn't take her egg? ...Good. Don't tell anyone in Veyr I said that.
+@end
+
+@scene N18_ROPE
+if flag:n18_rope done
+sfx FX010
+set n18_rope
+say narr | You let the feather-rope down. It falls away and slaps the rock of Nestfall Ledge far below. A quick way back.
+end
+label done
+say narr | The feather-rope hangs down to Nestfall Ledge.
+@end
+
+@scene N18_MOULT
+say narr | Drifts of moulted feathers. Beyond the cave mouth, open sky, and a nest built round the whole top of the crag.
+say narr | A rest before it would be wise. So would going home. Nobody has ever called poachers wise.
+@end
+
+@scene N18_BOSS once
+music M025
+say narr | The nest is empty. Then the sun goes out: a shadow, vast, sliding across the rim of the nest toward you.
+say narr | Aurelle, the Roc Queen, drops onto her nest with a sound like a sail filling, and screams.
+say dain | We're not here for the egg!
+say narr | She does not care. Her shadow crosses the back of the party, and she rises to stoop.
+battle BX04 noflee
+set n18_boss
+say narr | Aurelle breaks off, bleeding gold, and settles over her egg with her wings spread. She does not strike again.
+say narr | She watches you go. That is as close to a truce as a queen will come.
+give W131 1
+gold 1200
+@end
+
+@scene N18_NEST
+say narr | One egg, warm as a hearth, and a roc chick the size of a dog, hissing at you with its whole body.
+say narr | Aurelle's eye is on you from the rim. You leave the nest alone.
+@end
+
+# ================================================================ N19 Lilac Seep (R05, CH09): mineral farmers, herbalist
+@scene N19_PICKER
+say farmer | You set a stick in the seep, and the brine climbs it and leaves lilac crystal. A month, and it's a flower you can't pick.
+say farmer | Nacre's glassmakers buy the crystal. The Crown buys the brine for the relay works. We sell the flowers to anyone who's sad.
+@end
+
+@scene N19_RAKER
+if phase:post post
+say worker | Salt pans. We rake them at dawn before the wind gets up. The wind here takes the skin off your face if you let it.
+end
+label post
+say worker | The basin rang like a bell the night of the fault. The pans cracked. The brine comes up hot now, and it smells.
+@end
+
+@scene N19_WARDEN
+say elder | Water-warden. The seeps are the co-op's, not mine and not the Crown's. I say which pool rests and which works.
+say elder | A pool worked too hard goes bitter. Like a person. We let them rest before that. Mostly we do.
+@end
+
+@scene N19_KID
+say child | I named my crystal stick Sorrel, after the herbalist. It grew crooked. She says that makes it hers.
+@end
+
+@scene N19_ASSESSOR
+say guard | Mineral assessor. Relay works want twice the brine this year. The co-op says the seeps can't give it.
+say guard | I've been told to write down that they can. I've been writing slowly.
+@end
+
+@scene N19_SCHOLAR
+say scholar | I've come from Nacre to study the Glass Orchard, west of here. Crystal trees older than the kingdom. They're not trees.
+say scholar | What are they? That's the grant application. I'll know when they pay me.
+@end
+
+@scene N19_MOURNER
+if flag:n21_boss after
+say survivor | I'm walking to Sorrowmere, east. You leave a thing at the lake and it takes the memory. Just the one.
+say survivor | My daughter. I don't want to forget her. I want to forget the morning she drowned. The lake doesn't take mornings.
+end
+label after
+say survivor | They say the lake's gone quiet. That it gives things back now. I went. I remembered her laughing. I'd forgotten that.
+@end
+
+@scene N19_CARTER
+say worker | Crystal to Nacre, salt to Cinderwake, brine to the relay works. The cart goes out full and comes back full of paperwork.
+@end
+
+@scene N19_STICK
+say farmer | This fence keeps the goats off the resting pool. Goats lick the crystal. Then they lie down for a day and see things.
+@end
+
+@scene N19_P_DIGGER
+say worker | The quake split the east seep. We're digging it out by hand. The crystal came up black on that side. We don't sell it.
+@end
+
+@scene N19_P_FORGET
+say patient | I went to Sorrowmere after the fault. I wanted to forget the sound. The lake took it. Now I don't know what I'm afraid of.
+say patient | I'm still afraid. I just don't know of what. Don't go to the lake to forget. Go to remember.
+@end
+
+@scene N19_GRANDMA
+say elder | My mother's stick is in that pool. Her mother's too. Every family here has a stick in the seep, growing.
+say elder | When I die they'll set mine. It'll grow crooked. I'll insist.
+@end
+
+@scene N19_INN
+if phase:post post
+say hanne | The Resting Pool. Forty-five crowns, a clean bed, and a cup of seep-tea that will make you sleep like a salt pan.
+inn 45
+end
+label post
+say hanne | Twenty-five. The tea's still good. The beds are fewer; we gave some to the east seep families.
+inn 25
+@end
+
+@scene N19_CARAVAN
+say sailor | Salt caravan to Nacre. I'd take the long road round the basin if I were you. Sorrowmere's on the short one.
+@end
+
+@scene N19_HERBALIST
+say herbalist | Sorrel. Herbalist. Seep-mint for the lungs, salt-root for the stomach, lilac-moss for when you can't stop remembering.
+say herbalist | I grow everything in pots on the brine. It's bitter. Medicine should be a little bitter; it's honest.
+shop SHOP_N19
+@end
+
+@scene N19_PATIENT
+say patient | Lungs. From the relay works, where they boil the brine. Sorrel's mint helps. The works don't.
+@end
+
+@scene N19_CRAFTER
+say aldous | I cut crystal and I set it. Brine-glass, lilac crystal, glass-orchard shards if you can find a fallen branch.
+say aldous | Bring me those and a bit of ore and I'll set you a charm that hums when danger's close. Or when it's windy. Hard to tell.
+@end
+
+@scene N19_CHAIR
+if phase:post post
+say temperance | Temperance, chair of the co-op. The Crown wants twice the brine. The seeps want rest. I'm in the middle, like chairs are.
+say temperance | We've voted to give the Crown exactly what the pools can spare. The Crown hasn't voted. It doesn't need to.
+end
+label post
+say temperance | The relay works are gone. Nobody wants brine now but us. We voted to rest every pool for a season. First time in a hundred years.
+@end
+
+@scene N19_CLERK
+say clerk | The co-op ledger. Every stick, every family, every pool. When a pool gives, the whole village gives. When it rests, so do we.
+@end
+
+# ================================================================ N20 The Glass Orchard (R05, CH09): crystal trees, Vestige lore
+@scene N20_ORCHARDIST
+if phase:post post
+say orchardist | Pellam. Last orchardist. There were forty of us once. The glass trees don't need tending. We tended them anyway.
+say orchardist | They're not trees. They grew here before there was a here. The builders planted them, the old songs say, and waited for fruit.
+say orchardist | The fruit's empty. Perfect, and empty. My grandmother said they're waiting for something to be poured in.
+end
+label post
+say orchardist | The fault shook half the orchard down. The fallen trees are regrowing already. Out of their own glass. I've never seen it happen that fast.
+say orchardist | Something in the Heart Tree woke. It hasn't opened its eyes. It's thinking about it.
+@end
+
+@scene N20_CUTTER
+say worker | Glass-cutter. Nacre pays for orchard glass by the pound. I only take fallen branches. Pellam watches me like a hawk.
+say worker | Fair enough. I watched a man cut a living tree once. It rang for a week. He didn't sleep for a month.
+@end
+
+@scene N20_ARCHIVIST
+say scholar | The builder marks on the wall: nine circles, one filled. The same ring is on the Ninefold Shrine in the Skyspine.
+say scholar | Nine of something. One of them used. I think the orchard grew the Vestiges. I think the Heart Tree is a tenth, not yet picked.
+@end
+
+@scene N20_P_PILGRIM
+say volunteer | People come here now to sit by the Heart Tree. It hums at night. It's the only thing in the basin that isn't afraid.
+@end
+
+@scene N20_HEART
+if flag:n20_heart seen
+set n20_heart
+say narr | You put a hand on the glass. It is warm. Deep inside, the curled shape turns over in its sleep, like a child.
+if party:C06 oriel
+say narr | For a moment the whole orchard rings, very softly, one note, and then is still.
+goto fin
+label oriel
+say oriel | ...It's dreaming. My blood knows the shape. It dreams in dragon. It's saying: not yet. Ask me again when you've asked yourselves.
+label fin
+journal | The Glass Orchard: something sleeps in the Heart Tree. The builders called it a seed Vestige. It will not wake without consent.
+end
+label seen
+say narr | The glass is warm. The shape inside sleeps on, curled tight, dreaming of something that has not been decided yet.
+@end
+
+# ================================================================ N21 Sorrowmere (R05, CH09, boss BX05)
+@scene N21_ENTER once
+say narr | A lake so still it holds the sky upside down. Mourners' cairns along the shore. Nobody speaks above a whisper.
+say narr | Look into the water too long and you forget, for a heartbeat, why you came. Then you remember. Mostly.
+@end
+
+@scene N21_MOURNER1
+if flag:n21_boss after
+say survivor | I leave something every month. A ribbon, a button. The lake takes a little of the grief each time.
+say survivor | It takes a little of him each time too. That's the price. I pay it. I don't know what else to do.
+end
+label after
+say survivor | The lake gave something back. A morning, with him in it. I sat here and cried for an hour and it was the best hour I've had in a year.
+@end
+
+@scene N21_MOURNER2
+say elder | The lake remembers everything it drowned. Villages, whole ones. It's full of other people's memories and it's heavy with them.
+say elder | Whatever lives in the deep mere eats what we leave. Eats, and grows. Don't go out there to forget. It's hungry for forgetting.
+@end
+
+@scene N21_FERRYMAN
+if flag:n21_raft done
+say sailor | No boat. The last one went out to the island of the lamp and didn't come back. The raft's still out there, tied up.
+say sailor | If you get out there, cut it loose and push it back to me. I'll owe you the fare.
+end
+label done
+say sailor | You brought the raft back. The island's a short row now, for anyone who needs to sit by the lamp a while.
+@end
+
+@scene N21_LAMP1
+if flag:n21_lamp1 done
+sfx FX010
+set n21_lamp1
+say narr | You light the drowned lamp. Its light goes down into the water, and the water draws back from it like a held breath.
+say narr | The causeway rises out of the lake, wet stones, cut with names.
+end
+label done
+say narr | The lamp burns. The causeway stays above the water.
+@end
+
+@scene N21_LAMP2
+if flag:n21_lamp2 done
+sfx FX010
+set n21_lamp2
+say narr | The second lamp catches. The lake shrinks back from the far causeway, and the drowned village's roofs break the surface.
+end
+label done
+say narr | The second lamp burns steady.
+@end
+
+@scene N21_BELL
+if flag:n21_bell done
+sfx FX024
+set n21_bell
+say narr | You pull the rope. Underwater, the chapel bell rings, slow and huge. The whole village shivers.
+say narr | The lake remembers the lane out of the village. It gives it back, stone by stone.
+end
+label done
+say narr | The bell rope hangs still. The lane out of the village is dry.
+@end
+
+@scene N21_DROWNED
+say drowned | Are you here for the bread? Merrow's is closed today. The water came in. It's always today, now.
+say drowned | Tell my daughter I kept the shop. Tell her. I can't remember her name. Tell her anyway.
+@end
+
+@scene N21_RAFT
+if flag:n21_raft done
+sfx FX031
+set n21_raft
+say narr | You cut the raft loose from the island and push it off. It drifts across the black water and grounds on the shore.
+say narr | A short way back to the mourners' beach, whenever you need it.
+end
+label done
+say narr | The raft line runs from the island to the shore.
+@end
+
+@scene N21_LASTLAMP
+say narr | The last lamp burns without oil. In its light the lake is clear: villages on the bottom, streets, a well, a school.
+say narr | Beyond the island, the deep mere. The light does not reach that far.
+@end
+
+@scene N21_BOSS once
+music M025
+say narr | The deep mere is flat as glass. Then, at the edge of it, the lake begins to climb the shore.
+say narr | Heads rise out of the water: one, then another, long-necked, pale, weeping. Each one is humming a different village's song.
+say meremother | Leave it. Leave it with me. You'll feel better. Everyone feels better. Give me the worst thing and walk home light.
+say dain | And what happens to the rest of it?
+say meremother | I keep it. I keep all of it. I'm so full. Give me yours.
+battle BX05 noflee
+set n21_boss
+say narr | The heads sink one by one. Where each goes down, the water clears, and something rises: a sound, a smell, a morning.
+say narr | The lake is giving back what it took. All along the shore, the mourners are standing up.
+give A113 1
+gold 1500
+@end
+
+@scene N21_AFTER
+say narr | The deep mere is clear to the bottom. Village after village, small and still. Nobody left in them to forget.
+say narr | But the mourners on the shore will remember them now. That will have to be enough.
+@end
+
+# ================================================================ N37 Choir Anchorage (SKY, CH07; airship field after the fault)
+@scene N37_FIELD
+say narr | The old cable yard, painted over with a landing ring. The Lanternwake rides the updraft at her moorings.
+choice | Board the Lanternwake -> go | Stay -> stay
+label go
+warp WORLD_POST helm
+label stay
+@end
+
+@scene N37_ANCHORMASTER
+say anchormaster | Anchormaster Cleave. The cable from the Ninefold Shrine lands here, and the Crucible cable goes on to the Arena isle.
+say anchormaster | The Crucible line's shut while the Arena crews re-rig the far anchor. Ask me tomorrow. I've been saying that for a month.
+say anchormaster | See the chains on the rock? Stamped SERAPHEL. The host moored here once. It drifted north before my grandfather's day.
+@end
+
+@scene N37_CREW
+say worker | Cable crew. We grease the drum, check the strands, and try not to look over the edge. The edge is everywhere.
+say worker | Some nights you hear singing from the north. No words. Just the tune. The old crew called it the Choir and spat.
+@end
+
+@scene N37_TOUT
+say noble | Crucible Isle! Fighters from five kingdoms, beasts from the deep sky, and odds I'll give you personally. When the cable runs.
+say noble | Until then I'm practising my patter on the cable crew. They've started betting against me.
+@end
+
+@scene N37_P_FIELDKEEPER
+say pilot | Airfield now. The cable snapped in the fault; half the drum went down with it. We painted a ring where the yard was.
+say pilot | Put your ship on the ring and the updraft holds her. North of here, Seraphel's broken up and drifting. Don't moor there.
+@end
+
+@scene N37_P_WATCHER
+say survivor | I came up the cable the day before the fault, to see the Arena. The cable went, and here I am. Six months.
+say survivor | At night the wreck to the north plays one chord. Just one. Over and over. I'd give a lot for a second chord.
+@end
+
+@scene N37_P_CLEAVE
+say anchormaster | My anchorage is an airfield. My cable's in the clouds. I'm still the anchormaster. Somebody has to hold the chains.
+say anchormaster | Seraphel's come close since the fault, drifting on its old chains. If you go in, tell whoever's conducting to stop.
+@end
+
+# ================================================================ N39 Seraphel, Fallen Host (SKY, post, boss BX10, QC10)
+@scene N39_TO_SHIP
+say narr | The host's landing stair drops away beneath you to the Lanternwake's moorings.
+choice | Board the Lanternwake -> go | Stay in Seraphel -> stay
+label go
+warp WORLD_POST helm
+label stay
+@end
+
+@scene N39_ENTER once
+say narr | Seraphel: a sky host of white stone, broken into islands, strung together by chains and old bridges.
+say narr | Somewhere inside, an organ holds a single chord. It does not stop for breath. It has not stopped in thirty years.
+@end
+
+@scene QC10_HOOK once
+say narr | At the broken gate, the Archangel stops. He does not draw his sword. He takes off his helm.
+say archangel | This is Seraphel. My host. I commanded its sky road for thirty years, waiting for it to answer me.
+say archangel | I thought it stopped answering because it fell. ...No. Look at the statues. It stopped answering long before it fell.
+say dain | Do you want to go in?
+say archangel | I want to know why. I'll judge it by what I find in there, not by what I was told. Walk with me.
+quest QC10 ACTIVE roll
+journal | QC10 The Host That Stopped Answering: the Archangel has come home to Seraphel. Learn why the host stopped answering.
+objective | Find the host's muster roll in Seraphel.
+@end
+
+@scene N39_STOP1
+if flag:n39_stop1 done
+sfx FX024
+set n39_stop1
+say narr | You draw the organ stop at the altar. Far off, the chord gains a second note. The north gate's first silver bar hums and lifts.
+end
+label done
+say narr | The stop is drawn.
+@end
+
+@scene N39_STOP2
+if flag:n39_stop2 done
+sfx FX024
+set n39_stop2
+say narr | The second stop. A third note joins the chord, and for a moment it is almost music. The second silver gate lifts.
+end
+label done
+say narr | The stop is drawn.
+@end
+
+@scene N39_ROLL
+say narr | Nine hundred names in nine columns. At the head of the first, one name has been struck through with a single clean line.
+say narr | Beside it: 'RELIEVED OF COMMAND BY ORDER OF THE CHOIR. NOT TO BE INFORMED.'
+if qs:QC10:roll roll
+end
+label roll
+say archangel | That's my name. Relieved. Thirty years ago. They relieved me and didn't tell me, so I would keep holding the road.
+say archangel | I held it because nobody told me it had ended. That was the order. That was all I was, to them.
+if !party:C08 next
+say pip | They made you dead on paper so you'd stay useful. I know that trick. I'm sorry it was done to you.
+label next
+say archangel | The sentinels on the walk will have been told the same. Let's see what they were told.
+quest QC10 ACTIVE posts
+objective | Find the sentinels still holding their posts on the Sentinel Walk.
+@end
+
+@scene N39_SENTINEL
+if qs:QC10:posts decide
+if flag:qc10_asked asked
+if flag:qc10_ordered ordered
+if flag:n39_boss quiet
+say hostsoldier | Halt. The host holds this walk until relieved. We have no order to let you pass. We have no order to stop you.
+say hostsoldier | We hold.
+end
+label quiet
+say hostsoldier | The chord has changed. Something happened in the loft. We have no order for this. We are holding anyway.
+end
+label decide
+call QC10_DECIDE
+end
+label asked
+say hostsoldier | I am thinking about what the Commander told us. Thirty years is a long time to think about nothing. Now I have something.
+end
+label ordered
+say hostsoldier | Stood down, by the Commander's order. I don't know where to stand now. I will stand here until I do.
+@end
+
+@scene QC10_DECIDE once
+say hostsoldier | Commander? ...Commander. We held. We were told you had been relieved. We were told to hold until the Choir called.
+say hostsoldier | The Choir has not called in thirty years. The conductor still conducts. We hear it every night. Nobody sings.
+choice | Order them to stand down -> order | Tell them what you have seen, and let them choose -> tell
+label order
+set qc10_ordered
+say archangel | Sentinels. By my authority as your commander: stand down. You are relieved. All of you.
+say hostsoldier | ...By your order, Commander. It is good to have an order again. It has been so long.
+say archangel | It was easy for them to take. I gave it for that reason. I hope it was the right one.
+goto next
+label tell
+set qc10_asked
+say archangel | I won't order you. Orders are why you are still standing here. I'll tell you what I've seen.
+say archangel | Below us the world broke. People are rebuilding it with their hands. Nobody commands them. They choose to.
+say archangel | You can hold this walk, or come down, or go anywhere at all. It's yours to judge.
+say hostsoldier | ...Nobody has asked us anything in thirty years. May I think about it, Commander?
+say archangel | As long as you need. That's the answer I should have been given.
+label next
+quest QC10 ACTIVE loft
+objective | Climb to the choir loft, where the conductor still conducts.
+@end
+
+@scene N39_VESTRY
+if flag:n39_vestry done
+sfx FX009
+set n39_vestry
+say narr | You lift the latch-bar. The braced arch groans open onto the broken gate: a short way back to the landing stair.
+end
+label done
+say narr | The arch to the broken gate stands open.
+@end
+
+@scene N39_BOSS once
+music M025
+say narr | Rows of empty choir stalls. At the front, a tall winged shape in rotted white, its back to you, conducting.
+say narr | The baton moves in perfect time to nothing. Then, far off, the broken organ answers with its one chord.
+say seraph | Late. You are all late. Take your places. The Choir will answer. The Choir always answers.
+if party:C10 arch
+say dain | There's no choir. There's nobody left to sing.
+goto fight
+label arch
+say archangel | Choirmaster. It's me. You relieved me thirty years ago and let me keep holding the road. Why?
+say seraph | Commander. You were needed to hold. Holding needs no reasons. Take your place.
+label fight
+battle BX10 noflee
+set n39_boss
+say narr | The baton falls. The Seraph's wings fold, and it kneels in the empty loft. Far off, the organ's chord falters.
+give I024 1
+gold 3000
+if q:QC10:ACTIVE,party:C10 qc
+end
+label qc
+call QC10_CLIMAX
+@end
+
+@scene QC10_LATE
+if q:QC10:ACTIVE,party:C10 qc
+say narr | The Seraph kneels by the stand, wings folded, very still. It is waiting for an order nobody here will give.
+end
+label qc
+call QC10_CLIMAX
+@end
+
+@scene QC10_CLIMAX once
+say seraph | Commander. Give me an order. I have conducted thirty years because no one told me to stop. Tell me to stop.
+if flag:qc10_asked asked
+say archangel | I ordered the sentinels to stand down. It was kind, and it was easy, and it was one more order.
+say archangel | I won't give you one. The Choir stopped answering because it only ever listened to itself. Rest, if you judge it right.
+goto after
+label asked
+say archangel | The sentinels are choosing for themselves. I won't take that from you either. Stop because you see there's no one to sing.
+label after
+say narr | The Seraph looks out over the empty stalls for a long time. Then it lays the baton down, carefully, and is still.
+say archangel | I relieve myself of command. By my own judgment. Nobody else's. ...It's lighter than I thought it would be.
+give W004 1
+give A020 1
+quest QC10 COMPLETED
+journal | QC10 complete: the Archangel has relieved himself of Seraphel's last order, by his own judgment.
+@end
+
+# ================================================================ N40 The Broken Organ (SKY, secret, post)
+@scene N40_KEY
+if flag:n40_key done
+say narr | One key on the lowest manual is held down by a wedge of white stone. This is the chord. It has sounded for thirty years.
+choice | Pull out the wedge -> pull | Leave it -> leave
+label pull
+set n40_key
+sfx FX024
+say narr | You work the wedge free. The chord stops. The silence afterward is enormous, and the whole wreck sways on its chains.
+say narr | Across the gap, Seraphel's bells shiver once, all together, and go still. Somewhere a sentinel laughs, surprised.
+end
+label leave
+say narr | You leave it. The chord goes on. It will go on after all of you.
+end
+label done
+say narr | The keyboard is silent. The wedge of stone lies on the bench beside it, where you left it.
+@end

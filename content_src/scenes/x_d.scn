@@ -1,0 +1,2067 @@
+# Group d: the Deep, U01-U19
+
+@scene U01_BREACH_WORKER1
+say worker | You came down the slope? On purpose? Then you're either Crown or mad.
+say worker | The floor just went. Forty feet of quarry, straight into this. The lift came with us.
+@end
+
+@scene U01_BREACH_WORKER2
+say survivor | Hess broke his leg on the fall. We've been splinting it with rail.
+say survivor | Don't touch the red stone. It's warm. It's always warm.
+@end
+
+@scene U01_BREACH_WORKER3
+say worker | The foreman's lot went south with lamps and picks. Said the Crown had a camp down here already.
+say worker | Already. Before the floor fell. You think about that.
+@end
+
+@scene U01_VESSA_BREACH
+say vessa | Stay back from the crack. It moved twice since your people fell in.
+say vessa | I'm from Emberwell, south and east. Dragonborn. We felt the quarry come down in our teeth.
+if party:C01 dain
+end
+label dain
+say vessa | ...You smell of fire, scale-kin. Old fire. Come to Emberwell. The Matron will want to see you.
+@end
+
+@scene U01_LIFT
+say narr | A lift cage lies on its side, cable coiled beside it. The brake shoes are worn to the rivets.
+say narr | Scratched into the frame: 'Shift four. Nobody sent the cage back up.'
+@end
+
+@scene U01_CRUST
+say narr | A crust of cooled rock bridges the lava crack. It rings like a pot when you step on it.
+@end
+
+@scene U02_GATE_WARDEN
+say guard | Karag Dun. Mind the bridge, it's older than your family.
+say guard | We don't search strangers. We used to. The Crown's men made it a habit and we stopped out of spite.
+if phase:post post
+end
+label post
+say guard | Since the fault the moat's risen a hand. The bridge sweats now.
+@end
+
+@scene U02_PORTER
+say delver | Ore goes out that gate on the Crown's carts. Food comes in on ours. You can guess who counts which.
+@end
+
+@scene U02_STALL_BREAD
+say baker | Cap bread! Grown on the Fungal Terraces, baked on a forge-back. Tastes of smoke and dirt, like home.
+say baker | The terrace folk are west and south, past the geode trees. They trade spores for iron.
+@end
+
+@scene U02_PROSPECTOR
+say elder | The Geode Wood, south-west. Crystal trees taller than the hall. You can hear them grow if you lie still.
+say elder | Something big lives in the heart of it. Many mouths, all glass. We stopped sending lads.
+@end
+
+@scene U02_COUGHING_MINER
+say patient | (A long cough.) Deepforge lung. Firedamp and iron dust. Half the second shift has it.
+say patient | The king says the mines will open again. The king says a lot of things to the Crown, too.
+@end
+
+@scene U02_DRAGONBORN_TRADER
+say delver | Scale-cloth from Emberwell. Won't burn, won't tear, won't sell - not since the Crown dig took their menfolk.
+say delver | Emberwell's a day south-east, by the warm rivers. Ask for the Matron.
+@end
+
+@scene U02_KID_GATE
+say child | My da says a dragon sleeps under the whole city and if you're loud it'll roll over.
+say child | I'm very loud. Nothing's rolled over yet.
+@end
+
+@scene U02_CROWN_ESCORT
+say guard | Crown escort, ore detail. Move along. The carts have right of way here - king's own word.
+@end
+
+@scene U02_POST_REFUGEE
+say survivor | The Crown carts stopped coming after the sky broke. Nobody in Karag Dun is sorry.
+say survivor | We're sorry about the rest. The quake took the east galleries and two hundred souls.
+@end
+
+@scene U02_SMITH_ULF
+say delver | Every forge in the ward drinks from that channel. The lava comes from the king's well, far under.
+say delver | Crown ingots on the left, delver tools on the right. Guess which pile's bigger.
+@end
+
+@scene U02_SMITH_RIKA
+say delver | You want to see a Deepforge ingot? Here. Feel it. Still warm after a year.
+say delver | They come out of the Forge-Wurm, you know. Not the rock. The wurm eats ore and we dig out what it leaves.
+@end
+
+@scene U02_SMITH_OLD
+say elder | I made the king's crown. Iron, no gems. He wore it to meet the Crown's envoy. They laughed.
+say elder | He hasn't worn it since. He signed their paper instead.
+@end
+
+@scene U02_FORGE_MONK
+say elder | We keep the forge-flame. It is the oldest fire in Karag Dun, older than the kings.
+say elder | The dragonborn say it was a dragon's breath once. We say it was a gift. Both can be true.
+@end
+
+@scene U02_CROWN_CLERK
+say clerk | Factor Pym is inside. He'll see you if you're paying. He'll see you faster if you're owing.
+if phase:post post
+end
+label post
+say clerk | The Factor's gone. I'm still here. Nobody told me to stop.
+@end
+
+@scene U02_APPRENTICE_FORGE
+say apprentice | Master Branna says I'm allowed to hold the tongs next year. This year I'm allowed to fetch water.
+say apprentice | If you bring her ore she'll make anything. Heartsteel from the deep seams is best.
+@end
+
+@scene U02_ORE_SORTER
+say delver | The Crown takes heartsteel and leaves us iron. Their dig south-east takes the rest before it's even ours.
+say delver | The Crown Dig, they call it. The dragonborn call it worse.
+@end
+
+@scene U02_MEMORIAL
+say narr | Names cut into the rock, row on row. The newest rows are shallow. The mason ran out of time.
+say narr | The last line: 'Deepforge, second shift. The wurm and the air. The debt.'
+@end
+
+@scene U02_MEMORIAL_KEEPER
+say elder | I cut the names. One a day now, when it used to be one a season.
+say elder | The king comes at night, alone. He reads them all. Then he goes back in and signs whatever Pym brings.
+@end
+
+@scene U02_HALL_GUARD1
+say guard | The king sees petitioners. He doesn't always hear them.
+@end
+
+@scene U02_HALL_GUARD2
+say guard | Speak plain in there. He hates speeches. He's had enough of the Crown's.
+@end
+
+@scene U02_HILD_TERRACE
+say hild | You're the surface lot. Good. Father won't listen to delvers any more, maybe he'll listen to strangers.
+say hild | Ask him about the debt. Watch his hands when you do.
+@end
+
+@scene U02_HILD_AFTER
+say hild | Father sleeps now. First time in years. The mason's cutting fewer names.
+@end
+
+@scene U02_WIDOW_MEMORIAL
+say survivor | My Toren's up there. Fourth row. They spelled it right, at least.
+@end
+
+@scene U02_INNKEEP_U02
+say baker | Anvil and Ale. Beds by the forge wall, warm all night. Forty crowns and you'll sleep like the dead.
+say baker | ...Sorry. Bad saying, this year.
+@end
+
+@scene U02_INN_REST
+say baker | Forty crowns. Boots off the blankets.
+inn 40
+@end
+
+@scene U02_PATRON_U02
+say delver | Deepforge was the richest seam in the Deep. Now it's a wurm's larder and the king's shame.
+say delver | Somebody ought to go down and kill the thing. Somebody not us.
+@end
+
+@scene U02_NIB_U02
+say nib | Nib, pedlar, at your service. Karag Dun to Railhead Nine and back, if the rails hold.
+say nib | A tip for free: the Cinderlake ferrymen take coin or stories. Tell a good one.
+@end
+
+@scene U02_SHOP_U02
+say keeper | Outfitters by royal charter. The charter's framed. The royal part's in pawn.
+shop SHOP_U02
+@end
+
+@scene U02_ASTA
+say survivor | My husband's pick is by the door. The Crown sent a bill for it. Equipment not returned.
+say survivor | I paid it. I don't know why I paid it.
+@end
+
+@scene U02_ASTA_BOY
+say child | When I'm big I'm going to the Deepforge and I'm going to kill the wurm with Da's pick.
+@end
+
+@scene U02_CRAFTER_U02
+say branna | Branna Coalhand, master of this forge, and don't call me smith. Smiths make horseshoes.
+say branna | Bring me ore. Iron for a start, heartsteel from the deep seams for real work, starmetal if you find a miracle.
+say branna | Deepforge had the best heartsteel in the world. The wurm has it now. In its gut, mostly.
+if q:QUP3:ACTIVE qup
+end
+label qup
+say branna | You're doing the king's errand? Good. If you kill that wurm, bring me what it's been eating.
+@end
+
+@scene U02_COUNT_CLERK
+if phase:post post
+say clerk | Every delver in the city has a page. Some have two. The king has a whole book.
+end
+label post
+say clerk | The Factor left with the good ledger. He forgot the bad one. I've been reading it.
+if qs:QUP3:contract show
+end
+label show
+say clerk | The king wants the contract? It's here. It was always here. Nobody asked.
+call U02_CONTRACT
+@end
+
+@scene U02_STRONGBOX
+say narr | A Crown strongbox, bolted to the floor. Stencilled: KARAG DUN - PRINCIPAL AND INTEREST.
+@end
+
+@scene U02_HORRACH
+if q:QUP3 done
+if q:QUP3:RESOLUTION_READY resolve
+if qs:QUP3:contract contract
+if q:QUP3:ACTIVE active
+say horrach | Surface folk. In my hall. The Crown sends worse, and more often.
+say horrach | You want something. Everyone who comes down here wants something. Ore. Iron. Air.
+if flag:u12_cleared wurmdead
+say orsik | Majesty. Tell them about Deepforge.
+say horrach | ...Deepforge was our best seam. A wurm came up through the floor and ate the heartsteel. Then the miners.
+say horrach | I owe the Crown for the pumps and the props and the lamps. I owe them for the wurm's leavings. I owe them for the dead.
+say horrach | I am King Under the Mountain and I have not paid a debt in eleven years. I have only signed for more.
+choice | "We'll clear the Deepforge." -> take | "Not our fight." -> refuse
+label refuse
+say horrach | No. It is not. Go on, then.
+end
+label take
+say horrach | ...Then clear it. Kill the wurm. Then come back and tell me what I should do with a mine that works again.
+quest QUP3 ACTIVE start
+journal | QUP3: King Horrach's Deepforge Mines are held by the Forge-Wurm. Clear the mines (south-west, past the rails), then return to the Stone Throne.
+end
+label wurmdead
+say horrach | They tell me the wurm is dead. Some fool surfacer went into Deepforge and came out again.
+say horrach | ...You. Stand where I can see you.
+quest QUP3 ACTIVE wurm
+goto wurm
+label active
+if qs:QUP3:wurm wurm
+say horrach | Deepforge. South-west, past Vaultmouth. The wurm is in the deepest gallery. Take lamps. Take more lamps.
+end
+label wurm
+say horrach | The mine is free. The Crown will hear by week's end, and Pym will be at my door with a new page.
+say orsik | Majesty, the Factor holds the contract. Nobody in this hall has ever read it. Only signed it.
+say horrach | Then read it. You, surfacers. Go to the counting house in the Forge Ward and make Pym show you the paper.
+quest QUP3 ACTIVE contract
+journal | QUP3: Deepforge is clear. Make Factor Pym show the Karag Dun debt contract (Crown Counting House, Forge Ward).
+end
+label contract
+say horrach | Pym. The counting house. The contract. I will not read it myself, I have tried. My eyes stop working.
+end
+label resolve
+call U02_QUP3_DECIDE
+end
+label done
+if flag:qup3_defied defied
+say horrach | We ship ingots to the Crown under a debt we understand now. It is smaller than they said. It is still a debt.
+say horrach | But I read it. That is the difference. I read every page.
+end
+label defied
+say horrach | No carts leave my gate for the Crown. They will come for it. Let them come down the stair and ask.
+@end
+
+@scene U02_ORSIK
+if q:QUP3 done
+say orsik | Thane Orsik, steward. I count what the king will not.
+say orsik | Eleven years of interest on pumps that failed. On props that cracked. On lamps that went out with men under them.
+end
+label done
+say orsik | The Auger plans are the old kings' work. Your airship will bite rock like a delver's pick, when you have one to fit.
+@end
+
+@scene U02_PYM
+if phase:post post
+if qs:QUP3:contract show
+say pym | Factor Pym, Crown Deep Accounts. If you are not here to pay, you are here to waste my afternoon.
+say pym | The delvers are good tenants. They never read the terms. I recommend the same to you.
+end
+label show
+say pym | The contract? It is Crown property. It is also, technically, the king's copy. He has never asked for it.
+choice | "He's asking now." -> ask | "Just a look." -> ask | "Hand it over." -> press
+label press
+say pym | Threats. In a counting house. How very delver of you.
+label ask
+say pym | ...Fine. It's no secret, only unread. Page nine. Clause the fourth. Please try not to shout.
+call U02_CONTRACT
+say pym | The terms are the terms. Take it to your king. He signed it. Several times.
+end
+label post
+say narr | The Factor's desk is empty. His chair is on its side.
+@end
+
+@scene U02_CONTRACT
+say narr | "Where principal cannot be met in ore, the Crown shall accept labour in lieu, to be valued at the Factor's discretion."
+say narr | Below it, in the Factor's hand: every dead miner of the second shift, valued at four crowns each. Credited to the Crown.
+if party:C01 raven
+goto after
+label raven
+say dain | He charged them for the men who died paying him.
+label after
+set qup3_contract
+quest QUP3 RESOLUTION_READY contract
+journal | QUP3: The contract values the dead at four crowns each and credits them to the Crown. Bring it to King Horrach.
+@end
+
+@scene U02_QUP3_DECIDE once
+say horrach | Show me.
+say narr | Horrach reads page nine. Then he reads it again. His hands are still.
+say horrach | Four crowns. My miners. Four crowns each, and I signed the page under it.
+say orsik | Majesty. With Deepforge open we can pay the true principal in two years. Without the lie in clause four.
+say hild | Or we can stop paying at all. Burn it. Let the Crown come down the stair and collect from us in person.
+say horrach | Surfacers. You cleared the mine. You read the paper. You choose. I have chosen wrong for eleven years.
+choice | "Pay the true principal. Strike clause four." -> pay | "Tear it up. Owe them nothing." -> defy
+label pay
+set qup3_paid
+say horrach | Orsik. Draw up the true sum. We pay what we borrowed. Not a crown for the dead.
+say orsik | With pleasure, Majesty. With more pleasure than you know.
+goto reward
+label defy
+set qup3_defied
+say narr | Horrach tears the page. Then the book. Hild laughs out loud in the hall.
+say horrach | Let Pym write that down.
+label reward
+say horrach | One thing more. The old kings drilled downward with an engine of their own. Too big for a cart. Too big for a delver.
+say horrach | They called it the Auger. The plans are yours. If you ever have a ship that flies, it will dig as well.
+set lanternwake_auger
+say narr | (Obtained the Delver Auger plans. The Lanternwake can be fitted to drill into the Deep through the Great Pits.)
+give M002 3
+gold 3000
+unset qup3_contract
+quest QUP3 COMPLETED
+journal | QUP3 complete: Karag Dun's debt is settled on the king's terms. The Delver Auger plans are ours.
+@end
+
+@scene U03_VALVE
+if flag:qup1_pipe_cut cut
+if flag:qup1_pipe_turned turned
+say narr | A Crown valve wheel, chained and padlocked. The pipe beside it is cold outside and roaring inside.
+say narr | Stamped on the collar: DEEP WORKS HEAT RECOVERY - DO NOT OBSTRUCT.
+end
+label cut
+say narr | The pipe is cut and capped. Heat shimmers over the well again.
+end
+label turned
+say narr | The valve is turned round. A delver tag hangs on it: KARAG DUN - MASTER FORGE.
+@end
+
+@scene U03_WELL_TENDER
+say elder | I've tended the well sixty years. It was too hot to stand beside when I was a girl.
+say elder | Now I can put my hand on the rim. That pipe came, and the well started going out.
+if flag:qup1_pipe_cut cut
+end
+label cut
+say elder | It's warm again. Too warm to touch. I've never been so glad to burn my hand.
+@end
+
+@scene U03_VESSA_U03
+say vessa | You found your way. Good. The Matron is in the hall, north side. The one with the banners.
+say vessa | She'll call it a debt. Don't let her. A debt is something you agreed to.
+@end
+
+@scene U03_CHILD_U03
+say child | Are you a real dragon? Gran says we were dragons, a long way back, before we got small.
+say child | I'm going to be one again. I practise breathing fire every morning. It's mostly coughing.
+@end
+
+@scene U03_WEAVER_U03
+say dragonborn | Scale-cloth. We shed, we weave. It won't burn in the lava wind.
+say dragonborn | I've no one to sell to. The men who carried it to Karag Dun are digging for the Crown.
+@end
+
+@scene U03_WEAVER_U03B
+say dragonborn | My brother's home. He hasn't said a word about the dig. He sits by the well and holds his hands over it.
+@end
+
+@scene U03_TAKEN_WIFE
+say survivor | That's our house, bricked up. The Crown's surveyor said an empty house is a fire risk.
+say survivor | My husband is forty-one of forty-one. They number them at the dig. I know because he wrote to me. Once.
+@end
+
+@scene U03_TAKEN_HOME
+say dragonborn | I'm Hesk. Oriane's man. Number forty-one. I'll be pulling those bricks out with my teeth if I have to.
+@end
+
+@scene U03_EMBER_SINGER
+say elder | I sing the old songs at the well. There is one about a dragon who lost its heart-flame and would not die.
+say elder | It sleeps in a bone vault, north and west. The Ossuary of Wings. Do not wake it for sport.
+@end
+
+@scene U03_WARDEN_U03
+say dragonborn | I guard a pipe. I cannot cut it: the Crown hangs a man for every cut pipe, and they don't care which man.
+say dragonborn | The pump is at their dig, south of here. Shut the pump and the pipe is only iron.
+@end
+
+@scene U03_SURVEYOR_U03
+say clerk | Crown survey. The well's output is down thirty per cent. I'm told to find the cause.
+say clerk | I've written 'natural decline'. The pipe is not in my remit.
+@end
+
+@scene U03_TERRACE_HERBALIST
+say delver | Come from the Fungal Terraces with spore-salve. The ember-well dries the air - good for curing caps.
+say delver | The terraces are west, past the Geode Wood. Follow the smell of bread and rot.
+@end
+
+@scene U03_OLD_SCALE
+say elder | There is a hollow, far west, where a dragon's heart sleeps without its dragon. Drakesleep.
+say elder | It will not open for strangers. It might for one who carries a fire of his own.
+@end
+
+@scene U03_POST_ISLANDER
+say survivor | I'm from Cinderlake. Was. The lake rose after the sky broke and took the isles in a night.
+say survivor | The Matron took us in. Emberwell's crowded now. Nobody complains. That's how you know it's bad.
+@end
+
+@scene U03_INNKEEP_U03
+say baker | Warmstone beds. The stones sit in the well by day and under your blanket by night. Thirty crowns.
+@end
+
+@scene U03_INN_REST
+say baker | Thirty crowns. The stones are hot, mind your feet.
+inn 30
+@end
+
+@scene U03_LODGER_U03
+say delver | I'm a Karag Dun man, sent to buy scale-cloth. Nobody here will sell to a delver while the king pays the Crown.
+say delver | Can't say I blame them. Can't say I'm going home without it either.
+@end
+
+@scene U03_SHOP_U03
+say keeper | Shed-scale mail, ember-thread, a few Crown tonics we took in trade. Browse.
+shop SHOP_U03
+@end
+
+@scene U03_CRAFTER_U03
+say dragonborn | Scale-smith. I work shed scale and ember-glass. Bring me geode shards from the wood and I'll show you what they're for.
+say dragonborn | Heartsteel from the delvers takes an edge like a dragon's tooth. Iron is iron.
+@end
+
+@scene U03_HALL_ATTENDANT_U03
+say dragonborn | The Matron counts the Taken every night. Forty-one. She says the number out loud so the well hears it.
+@end
+
+@scene U03_YSOLDE
+if q:QUP1 done
+if q:QUP1:RESOLUTION_READY resolve
+if q:QUP1:ACTIVE active
+say ysolde | Strangers from the fallen quarry. Vessa said you would come. She said one of you burns inside.
+if party:C01 raven
+goto hook
+label raven
+say ysolde | Yes. You. The old fire looks out of your eyes when you're not watching it.
+say ilyr | She sees me.
+say dain | She sees something. Let's hear her.
+label hook
+say ysolde | The Crown came down five years ago and said the Deep was dangerous. They offered protection. We did not ask.
+say ysolde | Then they sent the bill. When we could not pay in heat-stone, they took our young for their dig. Forty-one.
+say ysolde | And they laid a pipe to our well. It drinks the fire that keeps us. It is going out.
+if flag:crown_dig_cleared already
+choice | "We'll go to the dig." -> take | "Not now." -> later
+label later
+say ysolde | Then warm yourselves while there is still warmth. The dig is south, past the lava fields.
+end
+label take
+say ysolde | Their foreman keeps a ledger - every name, every 'debt'. Find it. And stop the thing that pumps our well dry.
+quest QUP1 ACTIVE start
+journal | QUP1: The Crown Dig (south of Emberwell) holds forty-one dragonborn and pumps the ember-well cold. Find the foreman's ledger; stop the dig.
+end
+label already
+say ysolde | ...But you've come from the south. They say the dig is silent. They say a machine lies broken at the face.
+say ysolde | Then you have done half of it already. Did you find their ledger? Bring it, and I will tell you what it cost.
+quest QUP1 ACTIVE dug
+if flag:qup1_ledger ready
+journal | QUP1: The Crown Dig is stopped. Find the foreman's ledger in the dig's office and bring it to Matron Ysolde.
+end
+label ready
+quest QUP1 RESOLUTION_READY
+goto resolve
+label active
+if flag:crown_dig_cleared,flag:qup1_ledger ready
+if flag:crown_dig_cleared needledger
+say ysolde | The dig is south, beyond the lava fields. The foreman's ledger, and the pump. Go carefully.
+end
+label needledger
+say ysolde | The dig is silent - I can feel the well breathing. But the ledger. Their office at the dig. Bring it.
+end
+label resolve
+call U03_QUP1_DECIDE
+end
+label done
+if flag:qup1_pipe_turned turned
+say ysolde | The well is ours again, and ours alone. Hot enough to hurt. Forty-one came home. That number I will say every night too.
+end
+label turned
+say ysolde | Our heat runs to the delvers' forges now, and their iron runs to us. Horrach sent a letter. It said sorry four times.
+@end
+
+@scene U03_QUP1_DECIDE once
+say ysolde | Show me the ledger.
+say narr | She turns the pages slowly. Each line is a name and a sum: heat-stone owed, labour credited, 'protection' charged.
+say ysolde | Forty-one names. And the price of the well, written as if it were theirs to sell.
+say vessa | The Taken are home. The dig is stopped. The pipe is still there. What do we do with it?
+say ysolde | Cut it, and the well is ours alone. The Crown will send someone to ask why. We will be alone when they ask.
+say ysolde | Or turn it round. Send our heat to the delvers' forges, for iron and for friends. Karag Dun owes the Crown too.
+say ysolde | You carried the ledger. You choose.
+choice | "Cut the pipe. The well is Emberwell's." -> cut | "Turn it to Karag Dun. Stand together." -> turn
+label cut
+set qup1_pipe_cut
+say narr | Vessa takes an axe to the chain. The valve spins free, the pipe coughs once, and the well flares white.
+say ysolde | Hot enough to hurt. Good.
+goto reward
+label turn
+set qup1_pipe_turned
+say narr | The valve is reversed and re-chained, a delver tag on it this time. The well steadies. Far off, a forge answers.
+say ysolde | Horrach will grumble. Then he will send iron. Then, perhaps, an apology.
+label reward
+say ysolde | The Taken have a gift for you. They broke a brackhorn to the deep roads while they dug - a Deepstrider.
+say ysolde | It will carry you through Emberdeep and nothing that lives down here will dare to follow.
+set qup1_deepstrider
+say narr | (The Deepstrider brackhorn will carry the party through the Deep without random battles.)
+give A105 1
+gold 2400
+quest QUP1 COMPLETED
+journal | QUP1 complete: the forty-one are home and the ember-well burns. The Deepstrider is ours.
+@end
+
+@scene U04_GATHERER_U04
+say delver | Gathering, are you? Look for the crystals that hum. Hum means a node - a good one gives ore as well as glass.
+say delver | Three nodes up the glade, if the wood hasn't grown over them. Don't touch the red ones; the hydra's been at them.
+@end
+
+@scene U04_WARN
+say narr | A warning post, scratched deep: 'HEART OF THE WOOD - MANY MOUTHS - TURN BACK.'
+say narr | Under it, smaller, in a different hand: 'Or bring fire. It cracks.'
+@end
+
+@scene U04_NODE1
+if flag:u04_node1 done
+say narr | The crystal hums at a pitch you feel in your teeth. You strike it where the hum is loudest.
+give M001 2
+set u04_node1
+end
+label done
+say narr | The node is quiet now. It will grow back, in a hundred years or so.
+@end
+
+@scene U04_NODE2
+if flag:u04_node2 done
+say narr | The crystal hums at a pitch you feel in your teeth. You strike it where the hum is loudest.
+give M002 1
+set u04_node2
+end
+label done
+say narr | The node is quiet now. It will grow back, in a hundred years or so.
+@end
+
+@scene U04_NODE3
+if flag:u04_node3 done
+say narr | The crystal hums at a pitch you feel in your teeth. You strike it where the hum is loudest.
+give M001 1
+set u04_node3
+end
+label done
+say narr | The node is quiet now. It will grow back, in a hundred years or so.
+@end
+
+@scene U04_LOST_GATHERER
+say survivor | I came for the nodes and the wood moved. The path I came by is a tree now.
+say survivor | The north way is crystal-shut. West, there's a hollow full of prisms. The light's all wrong in there.
+@end
+
+@scene U04_SLATE
+say narr | A slate by the light-well: 'West prism to the well. East prism to the well. South prism to the sky.'
+say narr | 'When all three agree, the heart-wall opens.'
+@end
+
+@scene U04_SLAB
+if flag:u04_short done
+say narr | You strike the crack in the slab. It sings, shivers, and falls in two. The way back to the wood's edge is open.
+sfx FX020
+set u04_short
+end
+label done
+say narr | The broken slab. Daylight - or what passes for it down here - shows through.
+@end
+
+@scene U04_BONES
+say narr | A gatherer's coat around old bones. In the pocket, a note: 'It sleeps with its heads in the pool. Fire first. Then rock, when it breaks.'
+@end
+
+@scene U04_GHOST_GATHERER
+say survivor | (Faint, crystalline.) I heard it grow. Every shard it sheds becomes another mouth. Kill the heart, not the heads.
+@end
+
+@scene U04_PRISM1
+if flag:u04_prisms done
+if flag:u04_p1 back
+set u04_p1
+sfx FX020
+say narr | You turn the west prism. A blade of light swings across the hollow and drops into the light-well.
+call U04_PRISM_CHECK
+end
+label back
+unset u04_p1
+say narr | You turn the west prism away. The light-well dims.
+end
+label done
+say narr | The west prism holds its light steady on the well.
+@end
+
+@scene U04_PRISM2
+if flag:u04_prisms done
+if flag:u04_p2 back
+set u04_p2
+sfx FX020
+say narr | The east prism turns with a grinding chime. Its light crosses the first beam and both fall into the well.
+call U04_PRISM_CHECK
+end
+label back
+unset u04_p2
+say narr | The east prism turns aside. Its beam scatters on the ceiling.
+end
+label done
+say narr | The east prism holds.
+@end
+
+@scene U04_PRISM3
+if flag:u04_prisms done
+if flag:u04_p3 back
+set u04_p3
+sfx FX020
+say narr | You tilt the south prism up. Its light climbs to the roof of the hollow, out of the well's reach.
+call U04_PRISM_CHECK
+end
+label back
+unset u04_p3
+say narr | You tilt the south prism back down.
+end
+label done
+say narr | The south prism points at the sky that isn't there.
+@end
+
+@scene U04_PRISM_CHECK
+if flag:u04_p1,flag:u04_p2,flag:u04_p3 open
+end
+label open
+set u04_prisms
+shake 0.4
+say narr | The three beams agree. The light-well blazes, and far off to the east something made of crystal breaks with a sound like a bell.
+say narr | The alcove on the west wall splits open too.
+@end
+
+@scene U04_BOSS once
+music silence
+say narr | The pool is not a pool. It is a back. Crystal shoulders rise out of it, and on each shoulder a head.
+say narr | The heads ring as they turn. Every shard that drops from them twitches and starts to grow a mouth.
+if party:C01 raven
+goto fight
+label raven
+say ilyr | A heart inside the glass. Alive. It is not a dragon. It would like to be.
+label fight
+battle BX14 noflee
+set u04_cleared
+music M021
+say narr | The hydra shatters from the heart outward. The wood goes quiet. The crystal trees stop growing, for now.
+xp 1800
+say narr | In the dry pool, where the heart lay, something glints.
+@end
+
+@scene U05_GATEWORDS
+say narr | Carved into the wing bone, in a script older than the Crown: 'Here the winged lie down. Here they are not used.'
+if party:C01 ilyr
+end
+label ilyr
+say ilyr | 'Not used.' They wrote that because someone already was.
+@end
+
+@scene U05_BONE_PILGRIM
+say elder | I come from Emberwell to sweep the gate. The dragonborn say the dead here were our grandmothers' grandmothers.
+say elder | Something still walks inside. It has no heart-flame and no reason, and it will not lie down.
+@end
+
+@scene U05_CHIME_HINT
+say narr | Scratched in the floor, three marks and a verse: 'The deepest first, for the deepest sleep.'
+say narr | 'The highest next, for the flight. The middle last, for the lying down.'
+@end
+
+@scene U05_VERTEBRA
+say narr | A vertebra the size of a cart, split open along a seam. Inside, the bone is black, as if something was burned out of it.
+@end
+
+@scene U05_GHOST_DELVER_U05
+say survivor | (A delver ghost, very polite.) Mind the gaps. I didn't.
+say survivor | There's a ledge above, with a box on it. You get to it from the chapel stair, if the chimes let you through.
+@end
+
+@scene U05_CHIME_LOW
+if flag:u05_chimes done
+sfx FX031
+say narr | The deepest chime. The note goes down through your boots and keeps going.
+setvar u05_seq 1
+end
+label done
+say narr | The chime hangs still. The arch is open.
+@end
+
+@scene U05_CHIME_HIGH
+if flag:u05_chimes done
+sfx FX031
+if var:u05_seq==1 ok
+setvar u05_seq 0
+say narr | A high, thin note. It sours against the silence. The bone lattice in the arch shivers and tightens.
+end
+label ok
+setvar u05_seq 2
+say narr | A high, thin note, like wind over wings. The first note is still humming under it.
+end
+label done
+say narr | The chime hangs still.
+@end
+
+@scene U05_CHIME_MID
+if flag:u05_chimes done
+sfx FX031
+if var:u05_seq==2 ok
+setvar u05_seq 0
+say narr | The middle chime rings alone and wrong. The gallery goes quiet, offended.
+end
+label ok
+set u05_chimes
+shake 0.3
+say narr | The middle note settles between the other two. The bone lattice in the north arch lies down, rib by rib.
+end
+label done
+say narr | The chime hangs still.
+@end
+
+@scene U05_ILYR
+if flag:u05_ilyr_seen seen
+if party:C01 memory
+say narr | The skull's jaw is the size of a door. Inside, on the tongue-stone, the bone is scorched in the shape of a small flame.
+end
+label memory
+set u05_ilyr_seen
+music M002
+say narr | Raven stops. His hand rises to the scorch mark on its own. His eyes go the colour of old fire.
+say ilyr | I know this place. I was here when it had a roof of living wings.
+say ilyr | We came to lie down, when we were tired of being large. The dragonborn sang. The delvers had not yet learned to dig.
+say ilyr | Then the first Crown came with its engine and its promises, and it asked us for our hearts. Only for a while, it said.
+say ilyr | Some said yes. I said yes. They cut me out of myself and put me in a stone, and the stone in a relay, and the relay in the dark.
+say dain | And the rest of you?
+say ilyr | Still here. Lying down. Waiting to be asked properly.
+say ilyr | One did not lie down. It had its heart taken and would not die. It is on the roost above us. I will not say its name.
+say dain | Why not?
+say ilyr | Because it would hear. And it would come to me, and I have nothing to give it back.
+say narr | The fire goes out of Raven's eyes. He takes his hand off the stone and looks at it for a long moment.
+xp 600
+music M024
+end
+label seen
+say narr | The scorch mark on the tongue-stone. Raven does not touch it again.
+@end
+
+@scene U05_BOSS once
+music silence
+say narr | Something unfolds on the roost: a dragon, or the frame of one. Its chest is open and empty. Its eyes are empty too.
+say narr | It turns its head as if listening for a heartbeat that should be there.
+if party:C01 raven
+goto fight
+label raven
+say ilyr | Do not look at its eyes. It is looking for what it lost. It will think it is you.
+label fight
+battle BX15 noflee
+set u05_cleared
+music M024
+say narr | The Remnant folds, slowly, like something finally allowed to lie down. The roost is quiet.
+if party:C01 ilyr
+goto after
+label ilyr
+say ilyr | ...Thank you. It was tired. It did not know how to stop.
+label after
+xp 2000
+@end
+
+@scene U06_FERRYWIFE
+say islander | The skiffs are pumice hulls, sealed with delver tar. They float on lava like cork on soup. Mostly.
+say islander | Tip the ferryman a story. He's heard every coin there is.
+@end
+
+@scene U06_TOLL_CLERK_U06
+say clerk | Crown landing tax, two crowns a head. Or you can go round. Round is a week of lava fields.
+say clerk | ...I don't actually collect it. They'd have to send someone to count it, and nobody wants to come down here.
+@end
+
+@scene U06_LAVA_FISHER
+say islander | Lava eels. You hook them from the jetty with an iron line. They're sweet, if you don't mind the teeth.
+@end
+
+@scene U06_STRANDED_DELVERS
+say survivor | We're waiting on the bell. The Deepforge's shut, so the family's going to the isles to fish instead.
+say survivor | My grandad dug for forty years. I'm going to learn to swim in fire. Progress.
+@end
+
+@scene U06_POST_FERRYHAND
+say survivor | The fault shook the lake up. Cinderlake's gone under. The channel west opened instead, clean to the Terraces.
+@end
+
+@scene U06_FERRY
+if phase:post post
+say coll | Ferry's running. Where to? Mind, the Cinderlake crossing takes the long way round the rocks.
+choice | "Cinderlake Isles." -> isles | "Not today." -> no
+label isles
+sfx FX031
+say coll | Bell's rung. Sit low and don't touch the sides. The sides are the lake.
+fade out 0.4
+warp U07_R01 from_ferry up
+fade in 0.4
+end
+label post
+say coll | The isles are gone, friend. The lake came up and took them in a night. I ferried the last of them out.
+say coll | But the fault opened a channel west. Clean run to the Fungal Terraces now. Want it?
+choice | "The Fungal Terraces." -> ter | "Not today." -> no
+label ter
+sfx FX031
+say coll | West it is. The channel's new, so it's full of things that don't know they're lava yet.
+fade out 0.4
+warp U15_R01 from_ferry up
+fade in 0.4
+end
+label no
+say coll | I'll be here. I'm always here. That's the job.
+@end
+
+@scene U07_EEL_SMOKER
+say islander | Smoked lava eel. We hang them over the lake on iron hooks. The lake does the cooking.
+say islander | Karag Dun buys every eel we have. They're the only thing the Crown doesn't tax - they can't find us.
+@end
+
+@scene U07_STALL_U07A
+say islander | Pumice, tar, iron line. Everything a boat needs except courage, and I'm out of that.
+@end
+
+@scene U07_STALL_U07B
+say islander | Island mushrooms. They grow on the warm side of the rocks. Don't eat the blue ones, they eat back.
+@end
+
+@scene U07_ISLAND_ELDER
+say islander | Three isles, forty families, one rule: nobody tells the Crown we're here. Four generations and it's held.
+say islander | The lake's been restless lately. Rising a finger a month. The rocks are sweating.
+@end
+
+@scene U07_ISLAND_CHILD
+say child | I can jump from the boardwalk to the skiff and back. Ma says if I do it again she'll let the lake have me.
+@end
+
+@scene U07_BOAT_BUILDER
+say islander | A skiff takes a year to build and a second to sink. The trick is not thinking about the second.
+say islander | The delvers make the tar, the dragonborn weave the sails. We supply the madness.
+@end
+
+@scene U07_NET_MENDER
+say islander | Iron nets for the eels. Rope burns. Iron only glows. Remember that if you ever fish here.
+@end
+
+@scene U07_WATCHER_U07
+say islander | I watch the east rocks for Crown lamps. Two years, nothing. Then last month, lights at the dig, bright as day.
+say islander | The dig's on the far shore, south-east. If they come across the lake, we'll know.
+@end
+
+@scene U07_DROWNED_HOME
+say survivor | I came back to look. There's nothing. The inn's roof is sticking out of the lake like a tooth.
+say survivor | We're all at Emberwell now. The Matron says we can stay as long as there's a well.
+@end
+
+@scene U07_LAKE_DIVINER
+say islander | I read the lake by the colour of the crust. Orange is calm. Yellow is a warning. White means get in a boat.
+say islander | It's been yellow for a month.
+@end
+
+@scene U07_INNKEEP_U07
+say islander | The Floating Hook. The floor tilts when the lake breathes. You get used to it. Twenty-five crowns.
+@end
+
+@scene U07_INN_REST
+say islander | Twenty-five. Sleep on your left side, the lake's on the right.
+inn 25
+@end
+
+@scene U07_PATRON_U07
+say islander | You came on Coll's skiff? He tells the same story every crossing. The one about the Crown taxman and the eel.
+say islander | The taxman lost.
+@end
+
+@scene U07_SHOP_U07
+say islander | Boat stores, and whatever the delvers traded us this month.
+shop SHOP_U07
+@end
+
+@scene U07_CRAFTER_U07
+say islander | Boatwright and tinker. I work pumice, tar and iron. Bring me eel-bone - it's harder than it has any right to be.
+say islander | Heartsteel rivets would make a skiff that could cross the whole lake. If anyone could afford heartsteel.
+@end
+
+@scene U07_LOFT_GRANDMOTHER
+say islander | My mother was born on a skiff halfway across. She always said she belonged to neither shore.
+say islander | If the lake rises, I'll go out on a skiff and stay there. It's in the family.
+@end
+
+@scene U07_FERRY
+if phase:post post
+say islander | Back to the Magma Ferry? Da taught me the rocks. Sit low.
+choice | "To the Magma Ferry." -> go | "Not yet." -> no
+label go
+sfx FX031
+fade out 0.4
+warp U06_R01 from_ferry down
+fade in 0.4
+end
+label post
+say islander | I only come back for the boats. There's nothing else to come back for.
+choice | "Take us to the Magma Ferry." -> go | "Stay a while." -> no
+label no
+say islander | Suit yourself.
+@end
+
+@scene U08_TIRED_GUARD_U08
+say guard | You're not on the roster. Nobody's on the roster. The roster's a list of the dead with a few of us at the bottom.
+say guard | Go in if you want. Grisk won't notice. Grisk only notices the seam.
+@end
+
+@scene U08_FREED_U08A
+say dragonborn | Number nine, they called me. I'm Tavish. Tavish of Emberwell. I'm going home.
+@end
+
+@scene U08_FREED_U08B
+say worker | I was a quarryman up top. They sent us down 'on loan'. Nobody said for how long. You said. Thank you.
+@end
+
+@scene U08_TALLY
+say narr | Notches in a tent pole, in rows of seven. At the bottom, a name - Hesk - and then no more notches.
+@end
+
+@scene U08_TOKEN
+if flag:u08_token done
+say narr | A board of brass shift tokens, one hook for each shift. Only one token is left: SHIFT SEVEN - FACE.
+set u08_token
+say narr | (You take the shift-seven token. It opens the gate to the sorting floor.)
+end
+label done
+say narr | The empty token board.
+@end
+
+@scene U08_DESERTER_HINT
+say guard | I'm not deserting. I'm resting in a direction.
+say guard | Nine of the lads went off to the Singing Chasm last week. Echoes hide footsteps. If you see Tamsin, tell her I'm coming. Eventually.
+@end
+
+@scene U08_CLERK_U08
+say clerk | The foreman keeps the ledger himself. On the desk. He says a ledger in a drawer is a ledger that lies.
+say clerk | He hasn't been up from the face in nine days. He eats down there. He sleeps in the machine.
+@end
+
+@scene U08_BELT1
+if flag:u08_belt1 done
+sfx FX010
+set u08_belt1
+say narr | You throw the brake. The upper belt shudders and stops. The ore on it settles like a sigh.
+end
+label done
+say narr | The upper belt is braked.
+@end
+
+@scene U08_BELT2
+if flag:u08_belt2 done
+sfx FX010
+set u08_belt2
+say narr | The lower belt grinds to a halt. Somewhere below, a bell rings angrily: LINE STOPPED.
+end
+label done
+say narr | The lower belt is braked.
+@end
+
+@scene U08_PEN_LABOURER1
+say dragonborn | Number twelve. Kerrin of Emberwell. We work the sort from bell to bell. The foreman works the face.
+say dragonborn | The belts carry ore down to his machine. Stop the belts and you can walk the floor. Stop the machine and we can walk home.
+@end
+
+@scene U08_PEN_LABOURER2
+say dragonborn | Forty-one of us came. Thirty-eight now. Grisk writes the three in the ledger as 'wastage'.
+@end
+
+@scene U08_CHARGE
+if flag:u08_short done
+say narr | A plunger box, wired to a charge set in the rockfall. The label says SHORTCUT - DO NOT FIRE - GRISK.
+sfx FX010
+shake 0.6
+set u08_short
+say narr | You fire it anyway. The rockfall coughs into the gallery. Beyond, the lamps of the camp gate.
+end
+label done
+say narr | The spent plunger box.
+@end
+
+@scene U08_POWDER
+say narr | Crates of blasting powder, stacked to the roof, stencilled with the Crown seal and a single word: OVERTIME.
+@end
+
+@scene U08_TUBE
+say narr | A speaking tube runs down the shaft. When you lean close, a voice comes up it, hoarse and happy.
+say grisk | Who's on the tube? Shift seven? Get down here. The seam's singing. We're not stopping till it's dry.
+say grisk | Overtime, lads! Overtime for everyone!
+@end
+
+@scene U08_LEDGER
+if flag:qup1_ledger done
+say narr | The foreman's desk. On it, open, a thick Crown ledger. The page headed EMBERWELL - PROTECTION ACCOUNT.
+say narr | Forty-one names, each with a number beside it. Three are struck through: WASTAGE. Below, the ember-well itself, valued as collateral.
+set qup1_ledger
+if q:QUP1:ACTIVE quest
+say narr | (You take the ledger. The Emberwell dragonborn will want to see this.)
+end
+label quest
+quest QUP1 ACTIVE ledger
+say narr | (You take the ledger for Matron Ysolde.)
+journal | QUP1: We have the Emberwell ledger. Now stop the dig at the face, then return to the Matron.
+end
+label done
+say narr | The desk. Grisk's coffee is still on it, cold as the well should never have been.
+@end
+
+@scene U08_BOSS once
+music silence
+say narr | The face is a wall of wet red rock and on it, gripping it with three drill arms, a machine the size of a house.
+say narr | A man sits welded into the cab. His skin is grey with dust. He is smiling.
+say grisk | Visitors! On my face! You're not shift seven. Shift seven's dead. Doesn't matter. Pick up a shovel.
+say grisk | The seam's singing, can you hear it? Crown wants the heat-stone. Crown gets the heat-stone. Everybody works.
+if party:C01 raven
+goto fight
+label raven
+say dain | Grisk. It's over. Let them go.
+say grisk | Over? It's never over. It's overtime!
+label fight
+battle BX16 noflee
+set crown_dig_cleared
+music M020
+say narr | The Excavator shudders, stalls, and settles against the rock with a long hiss. The drill arms go slack.
+say narr | Somewhere above, a pump dies. The Crown pipe to Emberwell goes quiet.
+if q:QUP1:ACTIVE quest
+goto after
+label quest
+quest QUP1 ACTIVE dug
+journal | QUP1: The dig is stopped and the pump is dead. Return to Matron Ysolde in Emberwell (bring the ledger if you haven't).
+label after
+xp 2200
+@end
+
+@scene U09_ALTAR
+say narr | An altar grown out of the root-stone itself. A hollow in its face is the shape of a Vestige, and it is empty and sealed.
+say narr | Heat comes off the seal in slow waves, like breath. Words run round the rim:
+say narr | 'When the Surface Wyrm lies down, the hearth will open.'
+if party:C01 ilyr
+end
+label ilyr
+say ilyr | Cindermaw. It never gave its heart to anyone. It kept it, and grew old and huge around it.
+say ilyr | This shrine waits for what it carries. You would have to take it. I would not blame you.
+@end
+
+@scene U09_SHRINE_KEEPER
+say elder | Hearthroot Shrine. The dragonborn say the tree grew from a dragon's last breath. The delvers say it's a basalt pillar.
+say elder | I say it's warm, and people come to sit by it when they're grieving. That makes it a shrine.
+@end
+
+@scene U09_PILGRIM_U09
+say survivor | I walked from Emberwell to ask the tree for my brother back from the Crown dig.
+say survivor | It didn't say anything. It's a tree. But I feel better. Is that stupid?
+@end
+
+@scene U09_PILGRIM_U09B
+say survivor | My brother's home. I came back to thank the tree. Somebody should get thanked, and you won't stand still for it.
+@end
+
+@scene U09_GEOLOGIST_U09
+say clerk | Delver Guild survey. The 'tree' is a lava tube that cooled from the inside out. Fascinating. Also warm.
+say clerk | The seal on the altar isn't stone. I can't scratch it. I can't even get my pick near it without my hands shaking.
+@end
+
+@scene U09_TENT_SLEEPER
+say delver | I sleep here when the city's too loud. Karag Dun's always too loud. The tree hums, did you know? Very low.
+@end
+
+@scene U10_MARKS
+say narr | Old claw-marks, far above head height, run into the hollow and do not come out.
+@end
+
+@scene U10_SLEEPER_ECHO
+say narr | A shape in the crystal - not a ghost, a reflection with nobody to cast it. It turns to look at the heart-stone, then at you.
+if party:C01 ilyr
+end
+label ilyr
+say ilyr | That is her dreaming. Do not wake her. She is happier than we are.
+@end
+
+@scene U10_HEART
+if flag:u10_heard heard
+if party:C01 ilyr
+say narr | A stone the colour of a banked fire, set in a ring of bone. It is warm. It is, very slowly, beating.
+end
+label ilyr
+set u10_heard
+music silence
+say narr | The heart-stone pulses, and Raven's heart answers it. For a moment the two beats match.
+say ilyr | Sister.
+say ilyr | She gave hers to no one. She lay down here before the first Crown came, and put herself to sleep inside her own heart.
+say ilyr | No relay. No host. No one to argue with. Only sleep.
+say dain | Do you want that?
+say ilyr | ...Some days. Not today. Today I want to see what you do next.
+say narr | The heart-stone's beat slows back to its own time. Something in the far corner of the hollow glints, freshly uncovered.
+xp 800
+music M024
+end
+label heard
+say narr | The heart-stone beats, slow and content, in its ring of bone.
+@end
+
+@scene U11_CART_MECHANIC
+say delver | Rails run on to the old builder doors, too. North and east, under the Conduit. Sealed since my grandad's day.
+say delver | Some day someone'll open them, and I'll have to lay track to a place with no floor.
+@end
+
+@scene U11_RAIL_CHILD
+say child | I ride the empty carts back from Karag Dun. You go so fast your ears fold.
+@end
+
+@scene U11_RAIL_INSPECTOR
+say clerk | Crown rail inspection. The track is out of gauge, the carts are out of true, and the rail-master is out of patience.
+say clerk | I'll write it up. Nobody will read it. The Crown reads ore tallies, not track.
+@end
+
+@scene U11_COURIER_U11
+say delver | Courier for the Guild. Letters to Karag Dun, Emberwell, the Terraces. The dragonborn tip better than the king.
+say delver | Heard the Deepforge galleries have folk still trapped in them. Lamps seen moving, down past the wurm.
+@end
+
+@scene U11_POST_RAIL
+say survivor | The builder doors in the east tunnel opened by themselves after the sky broke. Lights behind them now.
+@end
+
+@scene U11_RAIL
+say dunmore | Vaultmouth. Every cart in Emberdeep turns on this table. Where are you bound?
+choice | "Karag Dun." -> kd | "Deepforge Mines." -> df | "Just looking." -> no
+label kd
+sfx FX010
+say dunmore | Hold on to something you'd miss.
+fade out 0.4
+warp U02_R01 from_rail up
+fade in 0.4
+end
+label df
+if !flag:u12_cleared warn
+goto dfgo
+label warn
+say dunmore | Deepforge? That's wurm country. I'll send you. I won't send a cart back till you ring.
+label dfgo
+sfx FX010
+fade out 0.4
+warp U12_R01 from_rail up
+fade in 0.4
+end
+label no
+say dunmore | Looking's free. Standing on the table isn't. Mind your feet.
+@end
+
+@scene U11_CART_BACK
+say narr | An empty cart waits on the spur, a bell-rope hanging above it.
+choice | "Ride back to Vaultmouth." -> go | "Stay." -> no
+label go
+sfx FX010
+fade out 0.4
+warp U11_R01 from_rail down
+fade in 0.4
+label no
+@end
+
+@scene U12_DAGNA
+say dagna | Dagna, shift foreman. Was. The wurm came up through the third gallery floor, and there's no shift to foreman.
+say dagna | The galleries run on points - rail switches. Throw them right and the carts clear you a road.
+if q:QUP3:ACTIVE qup
+end
+label qup
+say dagna | The king sent you? ...The king sent someone. I'll believe it when the wurm's dead.
+@end
+
+@scene U12_WIDOW_U12
+say survivor | I wait at the head for the second shift. They're not coming up. I know that. I wait anyway.
+@end
+
+@scene U12_SICK_MINER_U12
+say patient | Firedamp. Don't light anything in the low galleries. The wurm breathes it out like a sigh.
+@end
+
+@scene U12_POINTS1
+if flag:u12_points1 done
+sfx FX010
+set u12_points1
+say narr | You throw the points. Down the line, a cart jolts, rolls off onto the siding and bangs into the buffer.
+end
+label done
+say narr | The points are thrown.
+@end
+
+@scene U12_POINTS2
+if flag:u12_points2 done
+sfx FX010
+set u12_points2
+say narr | The second lever groans over. Above you, a cart trundles away along the upper gallery, into the dark.
+end
+label done
+say narr | The points are thrown.
+@end
+
+@scene U12_BOARD
+say narr | A chalk board: LOWER LINE - LEVER AT THE WEST SIDING. UPPER LINE - LEVER BY THE EAST PROP, PAST THE LOWER LINE.
+@end
+
+@scene U12_SEAM1
+if flag:u12_seam1 done
+say narr | Heartsteel, red-black and warm, in a vein as thick as your arm. You work a piece free.
+give M002 1
+set u12_seam1
+end
+label done
+say narr | You've taken what this vein will give.
+@end
+
+@scene U12_SEAM2
+if flag:u12_seam2 done
+say narr | Heartsteel, red-black and warm, in a vein as thick as your arm. You work a piece free.
+give M002 1
+set u12_seam2
+end
+label done
+say narr | You've taken what this vein will give.
+@end
+
+@scene U12_SEAM3
+if flag:u12_seam3 done
+say narr | Heartsteel, red-black and warm, in a vein as thick as your arm. You work a piece free.
+give M001 3
+set u12_seam3
+end
+label done
+say narr | You've taken what this vein will give.
+@end
+
+@scene U12_TRAPPED_MINER_U12
+say delver | You came through the galleries? Then the carts moved. Then the way's open. Then I can go home.
+say delver | There are four more of us in the refuge, by the old air-door. North-west. The wurm sleeps past it.
+@end
+
+@scene U12_REFUGE_MINER1
+say survivor | We sealed the air-door and waited. Nine days. You learn a lot about your friends in nine days.
+say survivor | Mostly that Brenn snores.
+@end
+
+@scene U12_REFUGE_BRENN
+say delver | I do not snore. The wurm is just through there. It eats ore and breathes fire-damp. Kill it with cold, if you've got any.
+@end
+
+@scene U12_REFUGE_CHILD
+say child | I came down with my da's lunch and the floor ate the gallery. Is the sky still up there?
+@end
+
+@scene U12_BOSS once
+music silence
+say narr | The hole in the gallery floor breathes out warm, sour air. Then the floor moves, and the hole is a mouth.
+say narr | The Forge-Wurm rises in rings of iron plate. Ore grinds in its gullet like a millstone.
+battle BX17 noflee
+set u12_cleared
+music M022
+say narr | The wurm shudders, sheds its last plates, and lies still across the gallery. Its gut is full of ingots.
+give M002 2
+if q:QUP3:ACTIVE quest
+goto after
+label quest
+quest QUP3 ACTIVE wurm
+journal | QUP3: The Forge-Wurm is dead and Deepforge is free. Return to King Horrach in Karag Dun.
+label after
+xp 2400
+@end
+
+@scene U13_GATE_SECOND
+say dragonborn | The cleft looks like a crack from outside. That's the point. Nobody finds Scaleward. Nobody's supposed to.
+say dragonborn | You got in because Emberwell vouched for you. Don't make them sorry.
+@end
+
+@scene U13_POOL_BATHER
+say elder | The hot pool is the only thing we brought from the old enclave. Well. We brought ourselves. The pool was here.
+@end
+
+@scene U13_REFUGEE_MOTHER
+say dragonborn | We came from the western enclaves when the Crown's surveyors started counting heads. Counting is how it starts.
+say dragonborn | Scaleward has no ledger. When someone asks how many live here, we say 'enough'.
+@end
+
+@scene U13_CHILD_U13
+say child | Warden Kesh says humans have soft skin and hard hearts. You don't look very hard. Are you soft all over?
+@end
+
+@scene U13_SCOUT_U13
+say dragonborn | I scout the Singing Chasm. There are humans camped in it, deserters from the Crown dig. They sing to hide their voices.
+say dragonborn | It works. Mostly they sing badly.
+@end
+
+@scene U13_GARDENER_U13
+say dragonborn | Ember-moss and cave-cress. We grow what the warm rock lets us. A refuge that has to trade is a refuge that can be found.
+@end
+
+@scene U13_SCULPTOR_U13
+say elder | I carve the names of the enclaves the Crown emptied, so the children will know where we're from.
+say elder | Nine names. Nine enclaves. I keep a tenth stone blank, and I pray I never need it.
+@end
+
+@scene U13_DESERTER_IN1
+say tamsin | They let us in. I keep waiting for the knife. It hasn't come. I'm going to learn to grow moss.
+@end
+
+@scene U13_DESERTER_IN2
+say guard | I carried a Crown pike for six years. Now I carry water for a dragonborn grandmother. She's harder on me than the sergeant was.
+@end
+
+@scene U13_BRASK_IN
+say brask | I sweep the gate. Every morning. Kesh watches me do it. We don't talk. It's the best conversation I've ever had.
+@end
+
+@scene U13_POST_U13
+say survivor | The fault shook half the cleft shut. Scaleward's more hidden than ever. Some days I think we'll be forgotten entirely.
+say survivor | Some days I think that'd be fine.
+@end
+
+@scene U13_EGG_WARMER
+say dragonborn | We don't lay eggs. Visitors always ask. I warm bread stones for the shelter. It's the closest thing.
+@end
+
+@scene U13_STONES
+say narr | Nine carved stones, each with the name of an emptied enclave. A tenth stands beside them, smooth and blank.
+@end
+
+@scene U13_COUNCIL_SCRIBE
+say dragonborn | Scaleward keeps no ledger, but the council keeps a memory. Mine. I remember what everyone said, so they can't pretend they didn't.
+@end
+
+@scene U13_INNKEEP_U13
+say dragonborn | The shelter takes anyone the gate lets in. Twenty crowns, or a chore if you're short. Nobody's ever short twice.
+@end
+
+@scene U13_INN_REST
+say dragonborn | Twenty crowns. Blankets are shed-scale; they don't itch once you stop thinking about it.
+inn 20
+@end
+
+@scene U13_SHOP_U13
+say dragonborn | Stores. We don't sell much. We're not supposed to have much to sell.
+shop SHOP_U13
+@end
+
+@scene U13_CRAFTER_U13
+say dragonborn | I forge what the refuge needs: hinges, hooks, blades for the gate. Bring me ember-glass and heartsteel and I'll make you something better.
+say dragonborn | Shed scale from the old ones in the Ossuary would be best. I won't ask you to fetch it. I won't stop you either.
+@end
+
+@scene U13_SAELITH
+if q:QUP2 done
+if q:QUP2:ACTIVE active
+say saelith | You found Scaleward, which means Emberwell trusts you. That makes you the only outsiders I can ask.
+say saelith | There are humans in the Singing Chasm. Nine of them, Crown soldiers who walked off the dig. They ask to come in.
+say saelith | Kesh says no. Irrin says yes. I say that a refuge that shuts its door is only a hiding place.
+say saelith | And a refuge that opens it may stop being one. Will you hear them? Then come and tell the council what you heard.
+choice | "We'll go to the chasm." -> take | "It isn't our place." -> no
+label no
+say saelith | It isn't. That's why I asked.
+end
+label take
+quest QUP2 ACTIVE start
+journal | QUP2: Hear the Crown deserters camped in the Singing Chasm (Tamsin Carrow), then Warden Kesh and the healer Irrin, and report to Elder Saelith.
+end
+label active
+if flag:qup2_kesh,flag:qup2_irrin,qs:QUP2:heard decide
+if qs:QUP2:heard hearthem
+say saelith | The Singing Chasm. Ask for Tamsin. Listen more than you talk; the chasm will repeat you.
+end
+label hearthem
+say saelith | You've heard the deserters. Now hear my wardens: Kesh at the gate, Irrin in the shelter. Then come back.
+end
+label decide
+call U13_QUP2_DECIDE
+end
+label done
+if flag:qup2_shut shut
+if flag:qup2_nobrask nobrask
+say saelith | Nine humans in Scaleward. The children follow them about. Kesh follows them too, with his hand on his blade. Both are learning.
+end
+label nobrask
+say saelith | Eight inside, one outside. Brask brings us firewood from the chasm and leaves it at the gate. Kesh burns it. It's a start.
+end
+label shut
+say saelith | The gate stayed shut. Scaleward is safe. I don't sleep better. I didn't expect to.
+@end
+
+@scene U13_KESH
+if q:QUP2 done
+if qs:QUP2:heard hear
+say kesh | Warden Kesh. The gate is mine. If you're here, Emberwell vouched for you. Don't make me regret their word.
+end
+label hear
+set qup2_kesh
+say kesh | You've been to the chasm. So you know one of them is Brask.
+say kesh | Brask held the whip at the dig. Two boys from Emberwell died on his shift. My sister's boys.
+say kesh | Let the rest in, if the council wants. I'll learn to live with humans. I will not live with him.
+end
+label done
+if flag:qup2_all all
+say kesh | Brask sweeps my gate. I watch him. That's all I can promise.
+end
+label all
+say kesh | Brask sweeps my gate every morning. I watch every stroke. Some mornings I almost say something.
+@end
+
+@scene U13_IRRIN
+if q:QUP2 done
+if qs:QUP2:heard hear
+say irrin | Irrin. I heal whoever's in front of me. It's simpler than deciding who deserves it.
+end
+label hear
+set qup2_irrin
+say irrin | They're starving in that chasm. Two have lung-rot from the dig. One of them is a boy of sixteen who can't stop shaking.
+say irrin | Brask? Brask carried that boy down the Singing Chasm on his back. People are more than their worst day. Even him.
+say irrin | If we shut the gate, we are the Crown with scales on.
+end
+label done
+say irrin | Whatever was decided, I'm still healing whoever's in front of me. That part never changes.
+@end
+
+@scene U13_QUP2_DECIDE once
+say saelith | The council sits. Kesh. Irrin. Speak once more, then the outsiders will speak.
+say kesh | Eight, yes. Brask, no.
+say irrin | All nine. Or we've learned nothing from the dig.
+say saelith | You heard them in the chasm. You carry no grudge and no debt here. What do you say?
+choice | "Let all nine in." -> all | "Let them in - all but Brask." -> nobrask | "Keep the gate shut." -> shut
+label all
+set qup2_all
+set qup2_in
+say saelith | All nine. Kesh, you will watch Brask. Brask will be watched. Scaleward will learn if it can hold both.
+say kesh | ...I'll watch him.
+give A114 1
+goto end_
+label nobrask
+set qup2_nobrask
+set qup2_in
+say saelith | Eight inside. Brask stays in the chasm, and we'll send him bread. Mercy with a door in it.
+say irrin | It's a door. It's more than we had yesterday.
+give A114 1
+goto end_
+label shut
+set qup2_shut
+say saelith | Then the gate stays shut. We'll leave food at the chasm's mouth. They'll go further down, or back up. Either way, not here.
+say irrin | (Irrin leaves the hall without a word.)
+give I024 1
+label end_
+gold 1800
+quest QUP2 COMPLETED
+journal | QUP2 complete: Scaleward's council has decided who comes in.
+@end
+
+@scene U14_DESERTER_BOY
+say child | I'm sixteen. I lied to get on the dig. I'd like to stop shaking now. Irrin says it'll stop. Irrin's nice.
+@end
+
+@scene U14_DESERTER_SINGER
+say guard | We sing so the chasm has something to throw back besides footsteps. Crown hunters can't tell twenty voices from two.
+say guard | I know three songs. After a week, so does the chasm.
+@end
+
+@scene U14_STONE1
+say narr | You speak to the stone. The chasm answers in a voice that isn't yours: '...who's there... there... there...'
+@end
+
+@scene U14_STONE2
+say narr | You speak to the stone. The chasm answers in a voice that isn't yours: '...forty-one... forty-one... one...'
+@end
+
+@scene U14_STONE3
+say narr | You speak to the stone. The chasm answers in a voice that isn't yours: '...overtime... time... time...'
+@end
+
+@scene U14_ECHO once
+music silence
+say narr | Halfway across the span the chasm begins to sing. Not an echo - a chord, low and old, from everywhere at once.
+say narr | Under it, faintly, every voice that ever crossed here. Miners. Dragonborn. A child laughing. Someone calling a name, over and over.
+if party:C01 ilyr
+goto after
+label ilyr
+say ilyr | The rock remembers. We sang here once, when we were many. It is still holding the note.
+label after
+say narr | The chord fades. The span sways. Far below, something in the dark hums the last bar back.
+music M021
+@end
+
+@scene U14_TAMSIN
+if q:QUP2 done
+if q:QUP2:ACTIVE heard
+say tamsin | Stop there. Crown or not? ...Not. Right. You've got the look of people the Crown's looking for.
+say tamsin | Tamsin Carrow. We were guards at the dig. Nine of us walked out the night Grisk welded himself into his machine.
+end
+label heard
+if qs:QUP2:heard again
+quest QUP2 ACTIVE heard
+say tamsin | Scaleward sent you? Then they're talking about us. That's more than I hoped for.
+say tamsin | We watched the dragonborn work the dig for a year. We held the pikes. We didn't stop it. We just, at the end, stopped helping.
+say tamsin | I won't lie to their council. One of us is Brask. He held the whip. He's the one who carried the boy here, too.
+say tamsin | Tell them what you like. Just tell them all of it.
+journal | QUP2: Tamsin's deserters want sanctuary; one of them, Brask, whipped Emberwell's labourers. Now hear Kesh (gate) and Irrin (shelter) in Scaleward.
+end
+label again
+say tamsin | Tell them all of it. Then let them choose. I've had enough of people choosing for other people.
+end
+label done
+if flag:qup2_shut shut
+say tamsin | Scaleward said no. We'll go down, I think. Further than the Crown will bother to follow.
+end
+label shut
+say tamsin | They left bread at the mouth of the chasm. The boy cried. So did I. Tell them thank you, and that I understand.
+@end
+
+@scene U14_BRASK
+if flag:qup2_nobrask alone
+say brask | I know what they'll say about me. They're right. Say it to my face if you want; everyone else has.
+say brask | I held the whip because the sergeant held one over me. That's not an excuse. It's just the order it happened in.
+end
+label alone
+say brask | Eight of them inside. Me out here. It's fair. I leave firewood at the gate. Kesh burns it. I leave more.
+@end
+
+@scene U15_CAP_FARMER1
+say terrace | Cave-caps, shelf-caps, bread-caps. We farm by smell. When the terrace smells like wet bread, it's harvest.
+@end
+
+@scene U15_CAP_FARMER2
+say terrace | The Crown buys our spore-salve for the dig. Burns and lung-rot. They buy a lot. Think about that.
+@end
+
+@scene U15_SPORE_CHILD
+say child | If you sneeze near the blue caps they puff at you and you see colours for an hour. I've done it nine times.
+@end
+
+@scene U15_GREAT_CAP_KEEPER
+say terrace | The great cap is four hundred years old. It feeds the terraces through its roots. Everything here is one mushroom, if you dig deep enough.
+@end
+
+@scene U15_POOL_TENDER
+say terrace | Spore pools. Warm water, rotting logs, patience. The logs come from the surface, down the Vaultmouth rail. Dear, per log.
+@end
+
+@scene U15_DELVER_BUYER_U15
+say delver | Karag Dun eats cap bread three meals a day. The king's own table. And the terraces won't take Crown coin, only iron.
+@end
+
+@scene U15_FORAGER_U15
+say terrace | I forage the Geode Wood's edge for glow-moss. The crystal trees have been quiet since someone killed the thing in the heart.
+say terrace | Or they've been quiet since before that. It's hard to tell with crystal.
+@end
+
+@scene U15_SICK_VISITOR
+say patient | I came from the Crown dig with lung-rot. Umbel's tea is the first thing that's let me sleep in a year.
+@end
+
+@scene U15_POST_U15
+say survivor | The fault opened a lava channel right up to the bottom terrace. Now we get boats. And heat. The caps love it.
+@end
+
+@scene U15_LOG_CARRIER
+say terrace | Logs for the spore pools, down the Vaultmouth rail from the surface. Every one of them's older than me and wetter.
+@end
+
+@scene U15_TERRACE_ELDER
+say terrace | The terraces were a delver dump once. Slag and tailings. My great-grandmother planted the first cap on the rubbish.
+say terrace | Now the king's table eats from it. Rubbish is patient. So are we.
+@end
+
+@scene U15_INNKEEP_U15
+say terrace | The Dry Cap. The only dry room on the terraces. Twenty crowns, and we'll brush the spores off your boots.
+@end
+
+@scene U15_INN_REST
+say terrace | Twenty crowns. Sleep well; don't lick the walls.
+inn 20
+@end
+
+@scene U15_NIB_U15
+say nib | Nib again! Told you the rails hold. Mostly. Cap bread's cheaper here than in Karag Dun by half. Buy low, walk far.
+@end
+
+@scene U15_CRAFTER_U15
+say umbel | Grandmother Umbel. Herbalist. I brew, I dry, I grind, and I don't hurry. Salves, teas, tonics.
+say umbel | Bring me what grows in the dark - glow-moss, cave-cress, a geode shard or two - and I'll make it into something that mends.
+shop SHOP_U15
+@end
+
+@scene U15_UMBEL_APPRENTICE
+say apprentice | Grandmother says herbalism is mostly waiting. I asked what the rest was. She said 'more waiting'.
+@end
+
+@scene U15_CELLAR_FARMER
+say terrace | The deep cellar grows the medicine caps. They only fruit in the dark, and only if you talk to them. I tell them about my day.
+say terrace | Take a few. They've heard enough about my day.
+if flag:u15_caps done
+give I007 2
+set u15_caps
+end
+label done
+@end
+
+@scene U15_FERRY
+say islander | Skiff back up the channel to the Magma Ferry? It's quick now the fault's cut us a road.
+choice | "To the Magma Ferry." -> go | "Not yet." -> no
+label go
+sfx FX031
+fade out 0.4
+warp U06_R01 from_ferry down
+fade in 0.4
+label no
+@end
+
+@scene U16_TOBIN
+say tobin | You came down on the old drill. Nobody has come down that shaft in two hundred years. We keep a chair ready anyway.
+say tobin | I'm a keeper. We keep the Lattice. Half its lights are dead and the other half are asleep. Meridian is south, past the rail.
+@end
+
+@scene U16_LIFT_DELVER
+say delver | I rode down on the drill with you lot? No - I rode down on it last week. Mad, I know. The rail from Vaultmouth goes nowhere now.
+@end
+
+@scene U16_CROWN_ENGINEER_U16
+say clerk | Crown Relay Office. We're here to compare our relay with the original. Strictly scientific. Strictly secret.
+say clerk | The keepers won't let us past Meridian. They say CURATOR is sleeping and we'd wake it. Superstition.
+@end
+
+@scene U16_POST_KEEPER_U16
+say lkeeper | Since the fault the lights have come back on, one by one. Every morning another street. CURATOR is waking.
+@end
+
+@scene U16_UNIT
+say narr | A builder machine, knelt as if at a gate. A plate on its chest reads GATE DETAIL 4 - AWAITING SHIFT.
+if party:C16 kael
+end
+label kael
+say kael | Gate detail. Same pattern as mine. It has been awaiting shift for a very long time. So had I.
+@end
+
+@scene U17_LAMPLIGHTER_U17
+say lkeeper | I light the lamps that still take a light. Forty-two out of four thousand. It's steady work.
+if phase:post post
+end
+label post
+say lkeeper | They're lighting themselves now. All of them. I don't have a job. I don't feel better.
+@end
+
+@scene U17_BEACON_WATCHER
+say lkeeper | The beacon was Meridian's clock. It showed the time to the whole Lattice. It stopped on the builders' last day.
+say lkeeper | We keep the hands where they stopped. It seems rude to move them.
+@end
+
+@scene U17_KEEPER_CHILD
+say child | My gran says the builders will wake up one day and ask what we did with their city. I'm going to say we dusted it.
+@end
+
+@scene U17_GATE_KEEPER_U17
+say lkeeper | The Hall is open to guests. Keeper Liss will want your names. She writes everything down; it's what keepers do.
+@end
+
+@scene U17_CROWN_ENVOY_U17
+say noble | Crown Relay Office, envoy class. We've offered the keepers every courtesy. They offered us tea and a closed door.
+@end
+
+@scene U17_RAIL_RUMOUR
+say lkeeper | The mag-rail still runs to Railhead Nine, south-east. The cars glide on nothing. My stomach has never forgiven them.
+@end
+
+@scene U17_DUST_KEEPER
+say lkeeper | I dust the Assembly Floors' outer doors. East, past the market. The machines inside still build. Nobody knows what for.
+@end
+
+@scene U17_POST_U17
+say survivor | After the sky broke, the machines at the Floors walked out and stood in rows in the street. Then walked back in. Nobody sleeps.
+@end
+
+@scene U17_STALL_PARTS
+say lkeeper | Builder parts, sorted by what they might be. This one might be a spoon. This one might be a gun. Priced accordingly.
+@end
+
+@scene U17_STALL_GLOW
+say lkeeper | Glow-cress from the Sunless Garden, deep south. It lights a room for a week. Don't eat it. People do.
+@end
+
+@scene U17_STALL_MAPS
+say lkeeper | Maps of the Lattice. Accurate to within a century. The streets move when nobody's looking, I swear it.
+@end
+
+@scene U17_STALL_TEA
+say lkeeper | Tea? We've been drinking the same tea for two hundred years. The builders left a warehouse of it. It's still good. It's frightening.
+@end
+
+@scene U17_RAIL_GUARD_U17
+say lkeeper | Mag-rail to Railhead Nine, when the car comes. It comes when it likes. Stand behind the grate.
+choice | "Ride to Railhead Nine." -> go | "Not now." -> no
+label go
+sfx FX032
+fade out 0.4
+warp U19_R01 from_rail down
+fade in 0.4
+label no
+@end
+
+@scene U17_SCRAP_BOY
+say child | I find bits in the Assembly Floors' bins and sell them to the parts stall. The machines don't mind. They're busy.
+@end
+
+@scene U17_NIB_U17
+say nib | Nib! Even here! The keepers pay in tea and old copper. The copper I sell to the delvers. The tea I drink. It's a good life.
+@end
+
+@scene U17_STACKS_ELDER
+say lkeeper | The Stacks were built for ten thousand builders. Three hundred keepers live here. We each have a whole floor. It's lonely.
+@end
+
+@scene U17_STACKS_READER
+say lkeeper | I read the builders' door plates. Every flat says who lived there. None of them say where they went.
+@end
+
+@scene U17_STACKS_MOTHER
+say lkeeper | My daughter wants to go up to the surface. I tell her there's a sky. She thinks it's a story, like the builders.
+@end
+
+@scene U17_KIOSK_TECH
+say lkeeper | That kiosk used to give orders to the builders' machines. Dead for centuries. Last month it blinked once. Just once.
+if recruited:C16 kael
+end
+label kael
+say lkeeper | ...It blinked the day your metal friend came through the Lattice Gate. I'm sure that's nothing.
+@end
+
+@scene U17_STACKS_SWEEPER
+say lkeeper | I sweep the stairs. Up and down. Four hundred of them. The builders had legs of iron, I think.
+@end
+
+@scene U17_INNKEEP_U17
+say lkeeper | The builders slept in these pods. The pods still hum you to sleep. Thirty-five crowns, and please don't touch the red button.
+@end
+
+@scene U17_INN_REST
+say lkeeper | Thirty-five. The pod will say goodnight. It's said it to nobody for two hundred years. Say it back.
+inn 35
+@end
+
+@scene U17_HOSTEL_GUEST
+say delver | Came down the drill from Vaultmouth to sell iron. They pay in tea. I've got a cart of tea. I don't even like tea.
+@end
+
+@scene U17_SHOP_U17
+say lkeeper | The Exchange. We trade builder salvage for surface goods, and surface coin for anything. Look.
+shop SHOP_U17
+@end
+
+@scene U17_CRAFTER_U17
+say lkeeper | The Mending Room. Keepers don't make. We mend. Bring me builder scrap, starmetal, lattice-glass - I'll mend them into something you can use.
+say lkeeper | The Assembly Floors throw out a lot of scrap. Nobody's stopped them. Nobody knows how.
+if party:C16 kael
+end
+label kael
+say lkeeper | ...Your plating is K-series. I've only seen that on the Floors' frames. Never walking about. Never talking.
+say kael | I talk. Rarely.
+@end
+
+@scene U17_MENDER_APPRENTICE
+say apprentice | I'm allowed to sort screws. There are nine thousand kinds. I'm on kind forty.
+@end
+
+@scene U17_HALL_ARCHIVIST
+say lkeeper | The Hall keeps the Lattice's memory: which doors open, which lights work, which machines are dangerous. The list is long and old.
+say lkeeper | CURATOR is on it. At the top. Underlined.
+@end
+
+@scene U17_FLAT_KEEPER
+say lkeeper | This was a builder's flat. I've kept it as I found it: the bed made, the cup on the table. Eighty years of dusting a cup.
+say lkeeper | Take the thing in the drawer. It was never mine. It shouldn't be anybody's in a drawer.
+@end
+
+@scene U17_KIOSK
+if q:QC16:ACTIVE active
+if party:C16 wake
+if recruited:C16 wait
+say narr | An orders kiosk. The screen is dark glass with dust in the corners. Nothing you do wakes it.
+end
+label wait
+say narr | The kiosk screen flickers once as you pass, then goes dark. It seems to be waiting for someone in particular.
+end
+label wake
+music silence
+say narr | As Kael-09 steps close, the dead screen fills with light. Lines of builder script run down it, too fast to read.
+say kiosk | OPERATIVE DETECTED. SERIES K. UNIT 09.
+say kiosk | STANDING ORDERS: HELD. ORIGIN: CURATOR. HOLDING LOCATION: ORIGIN VAULT - OMEGA. ROUTING: UNAVAILABLE.
+say kael | Held. For how long?
+say kiosk | DURATION: 71,204 DAYS.
+say kael | ...I was told to hold the vault until relieved. My orders were waiting for me the whole time. Somewhere else.
+say kael | I want to know who wrote them. And why they were never sent.
+quest QC16 ACTIVE kiosk
+journal | QC16: Meridian's orders kiosk says Kael-09's standing orders came from CURATOR and are held at 'Origin Vault - Omega'. Ask Keeper Liss in the Keepers' Hall.
+music M016
+end
+label active
+if party:C16 again
+say narr | The kiosk screen is dark again.
+end
+label again
+say kiosk | STANDING ORDERS: HELD. ROUTING: UNAVAILABLE.
+say kael | I heard you the first time.
+@end
+
+@scene U17_LISS
+if qs:QC16:record decode
+if qs:QC16:kiosk kiosk
+if flag:qc16_meridian_done after
+say liss | Keeper Liss. I keep the Hall. You're surface people. I'll need your names, your purpose, and the date as you understand it.
+say liss | We're not unfriendly. We're careful. The Lattice sleeps, and the things that wake it don't go back to sleep.
+if recruited:C16 kael
+end
+label kael
+say liss | Your companion is a K-series operative. Walking. Speaking. Keepers have been told for two centuries that those don't do either.
+end
+label kiosk
+say liss | The kiosk woke for him? ...Then the routing tables are still alive, somewhere.
+say liss | K-series frames were assembled on the Assembly Floors, east of the market. The line records are kept on the frame gallery.
+say liss | Find the record for unit nine. It will say who signed his orders - and where they went instead of to him.
+journal | QC16: Find the K-series line record in the Assembly Floors' frame gallery (east of the Keepers' Market) and bring it to Keeper Liss.
+end
+label decode
+say liss | Let me see it. ...Yes. Builder line script, very old.
+say liss | 'K-SERIES, UNITS 01 TO 40. STANDING ORDERS ISSUED BY CURATOR ON COMPLETION. UNIT 09: ORDERS DIVERTED TO ORIGIN VAULT OMEGA, PENDING REVIEW.'
+say liss | Pending review. For seventy-one thousand days.
+say kael | CURATOR wrote my orders, then held them back. It never sent me relief because it never sent me the orders to be relieved from.
+say kael | Vault Omega. Where is it?
+say liss | Under the deepest part of the Lattice, past the Datum Archive, sealed since before the keepers. It cannot be reached. Not while the Lattice sleeps.
+say liss | If it ever wakes, you'll find a way. I'm afraid you'll find it the same day we all do.
+say kael | Then I will wait. I am good at waiting. I would like, this once, to be waiting for something I chose.
+set qc16_meridian_done
+quest QC16 ACTIVE meridian_done
+journal | QC16: Kael-09's standing orders were written by CURATOR and diverted to Vault Omega, 'pending review'. The vault is sealed while the Lattice sleeps.
+xp 1500
+end
+label after
+say liss | Vault Omega. I've written it in the Hall's memory, under CURATOR. Underlined twice now.
+@end
+
+@scene U18_SCAVENGER_U18
+say lkeeper | Scavenging. The Floors throw out a frame every hour - arm, torso, head - and the bins take it back. We take it first.
+say lkeeper | Don't stand on the belts. Don't stand in front of anything that's standing. Don't make eye contact with the red lights.
+@end
+
+@scene U18_BOARD
+say narr | A board on the wall, numbers ticking over: UNITS COMPLETE 10,412. UNITS DEPLOYED 0. WAR STATUS: ONGOING.
+if party:C16 kael
+end
+label kael
+say kael | Ongoing. It has not been told. Nobody was left to tell it.
+@end
+
+@scene U18_BREAKER1
+if flag:u18_power1 done
+sfx FX021
+set u18_power1
+say narr | You heave the breaker down. The west dynamos cough, spin, and hum. A lamp over the west door turns green.
+end
+label done
+say narr | The west breaker is closed.
+@end
+
+@scene U18_PLATE
+say narr | A wiring plate: WEST DOOR - HALL BREAKER. EAST DOOR - GALLERY BREAKER (FRAME LINE).
+@end
+
+@scene U18_BREAKER2
+if flag:u18_power2 done
+sfx FX021
+set u18_power2
+say narr | The gallery breaker slams home. Every frame in the racks twitches once. Across the floor, the east pressure door unlocks.
+end
+label done
+say narr | The gallery breaker is closed. The frames are still. Probably.
+@end
+
+@scene U18_FRAME_GHOST
+say unit | (An unfinished frame on the rack turns its head.) UNIT K-31. INCOMPLETE. AWAITING ARMS.
+say unit | IS THE WAR OVER. NOBODY HAS SAID.
+if party:C16 kael
+end
+label kael
+say kael | It is over. It was over before either of us was finished.
+say unit | ...ACKNOWLEDGED. THANK YOU. STANDING DOWN.
+@end
+
+@scene U18_LIFT
+if flag:u18_short done
+sfx FX010
+set u18_short
+say narr | You slap the call-plate. Somewhere below, the freight lift groans awake. The way back to the intake bay is open.
+end
+label done
+say narr | The freight lift idles, humming.
+@end
+
+@scene U18_REJECT
+say narr | A frame in the reject bin, stencilled FAILED QC: INDEPENDENT JUDGEMENT DETECTED.
+if party:C16 kael
+end
+label kael
+say kael | They threw away the ones who could decide. ...I wonder how I passed.
+@end
+
+@scene U18_RACK
+say narr | A standby rack for twelve units, eleven slots filled with dead frames. The twelfth slot is labelled K-09.
+if party:C16 kael
+end
+label kael
+say kael | My slot. I was never put back. Someone moved me to a vault instead, and forgot.
+@end
+
+@scene U18_RECORD
+if qs:QC16:record have
+say narr | A line-record terminal, its screen scrolling builder script: K-SERIES, UNITS 01 TO 40. The rest is locked.
+if !recruited:C16 end_
+if !party:C16 noparty
+if !q:QC16:ACTIVE noparty
+say kael | Unit nine. That's me. Let me.
+say narr | Kael-09 lays his palm on the plate. The lock opens for him and a strip of record prints out, curling on the floor.
+say kael | 'Orders diverted.' Diverted where? I cannot read the rest. The script is older than mine.
+quest QC16 ACTIVE record
+journal | QC16: We have Kael-09's line record from the Assembly Floors. Bring it to Keeper Liss in Meridian.
+end
+label noparty
+say narr | The lock wants a palm of the right make. There's a slot marked K.
+label end_
+end
+label have
+say narr | The terminal scrolls on without you.
+@end
+
+@scene U18_BOSS once
+music silence
+say narr | The prime floor's central press rises out of the floor on four legs. Arms unfold from its sides - dozens, each holding a tool.
+say assembler | VISITORS ARE NOT ON THE SCHEDULE. SCHEDULING VISITORS FOR ASSEMBLY.
+if party:C16 kael
+goto fight
+label kael
+say kael | Assembler. The war is over. Stop the line.
+say assembler | UNIT K-09. YOU ARE OUTSIDE YOUR SLOT. RETURNING YOU FOR REWORK.
+say kael | No.
+label fight
+battle BX18 noflee
+set u18_cleared
+music M024
+say narr | Assembler Prime folds its arms, one by one, and settles to the floor. Across the factory, every line stops at once.
+say narr | For the first time in an age, the Assembly Floors are silent.
+if party:C16 kael2
+goto after
+label kael2
+say kael | Standing down. All of you. That's an order. My first one.
+label after
+xp 3200
+@end
+
+@scene U19_PLATFORM_KEEPER_U19
+say lkeeper | Railhead Nine. Eight railheads before us went dark. We keep this one lit. It's a matter of pride and of having nowhere else to go.
+@end
+
+@scene U19_RAIL_CHILD_U19
+say child | I can hear the car coming before anyone. It sounds like somebody humming with their mouth shut.
+@end
+
+@scene U19_GARDENER_U19
+say lkeeper | Glow-cress beds. The rail lamps feed them. When the rail goes dark, so does supper.
+@end
+
+@scene U19_OLD_DRIVER
+say lkeeper | I drove the car for fifty years. It drives itself. I sat in the front so it wouldn't be lonely.
+say lkeeper | Now my grandson sits there. The car hasn't said anything about it.
+@end
+
+@scene U19_TINKER_U19
+say lkeeper | The rail runs on to the Datum Archive, deep south, and to the Terminus. The doors there are shut. Something behind them hums.
+@end
+
+@scene U19_CROWN_PASSENGER
+say noble | I'm told this is the only way to Meridian. I'm told it floats. I'm told a great many things by people who don't fear for their lives.
+@end
+
+@scene U19_WIDOW_U19
+say lkeeper | My husband walked into the Assembly Floors to fetch a part and walked out a month later, very calm, and never spoke again.
+say lkeeper | He sits by the well and hums like the rail. The keepers say it happens.
+@end
+
+@scene U19_POST_U19
+say survivor | The rail lights all came on at once after the sky broke. Every railhead - One to Eight - lit up. Nobody lives at One to Eight.
+@end
+
+@scene U19_CAR_GRANDSON
+say lkeeper | I sit in the front of the car. I don't drive it. I tell it where we are, in case it forgets. It never forgets.
+@end
+
+@scene U19_LAMP_BUYER_U19
+say lkeeper | Delver lamps. Oil and a wick. The builders' lights never needed either, and look how they ended up.
+@end
+
+@scene U19_KEEPER_SCHOLAR_U19
+say lkeeper | Railhead Nine is the ninth of nine. The builders numbered everything. I think they were afraid of forgetting.
+say lkeeper | Meridian is north-west by the rail. The Assembly Floors beyond it. Keepers don't go to the Floors twice.
+@end
+
+@scene U19_INNKEEP_U19
+say lkeeper | The Sleeper Car. Berths are narrow, but the car rocks you to sleep even standing still. Thirty crowns.
+@end
+
+@scene U19_INN_REST
+say lkeeper | Thirty crowns. Berth by the window: you'll see the rail lights go by in your dreams.
+inn 30
+@end
+
+@scene U19_NIB_U19
+say nib | Nib, end of the line! Rails hold, see? Railhead Nine buys delver lamps like they're bread. I bring lamps. I leave with tea.
+@end
+
+@scene U19_SHOP_U19
+say lkeeper | Rail stores. Parts, lamps, the odd builder blade found under a seat.
+shop SHOP_U19
+@end
+
+@scene U19_CRAFTER_U19
+say lkeeper | I mend the car when it lets me. I'll mend your kit too. Starmetal and lattice-glass, if you find them. Builder alloy, if you're lucky.
+@end
+
+@scene U19_JUNO
+say juno | Signalwoman Juno. I throw the levers that tell the car where to go. The car ignores me and goes where it likes.
+say juno | But it waits for the signal first. Every time. Manners, I call it.
+if phase:post post
+end
+label post
+say juno | Since the sky broke, the signals change by themselves. The whole Lattice is throwing levers. I don't know who's driving.
+@end
+
+@scene U19_RAILCAR
+say narr | A car of glass and pale metal hangs over the rail, humming, touching nothing.
+choice | "Ride to Meridian." -> mer | "Stay." -> no
+label mer
+sfx FX032
+fade out 0.4
+warp U17_R02 from_floors left
+fade in 0.4
+label no
+@end

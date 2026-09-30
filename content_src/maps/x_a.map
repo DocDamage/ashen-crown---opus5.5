@@ -1,0 +1,2273 @@
+#! Group a expansion places: Crown March (N01-N05, N41), Cinder Reach (N06-N10, N42), post-fault P01 P02 P05 P09.
+#! Generated from hand-authored layouts; each section is one map.
+=== N01_R01
+name: Hollins Mill
+tileset: town_r01
+music: M010
+zone: N01
+region: R01
+location: L_N01
+encounters: none
+save: true
+grid:
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTT~~~TTTTTT
+TTT""T"""""TTTT""""""T"""""T"~~~"TTTTT
+TT""""RRRRRR"""""RRRRRRRRRRR"~~~""TTTT
+TT"1""R4RRRR"""""RRRRRRRRRRR<~~~"gggTT
+TT""""RRRRRR""l""RRRRRRRRRRR<~~~"gggTT
+TT""""WQDQWW"""""WWQWWDWWQWW"~~~""""TT
+T"cr":::::::::::::::::::::::"~~~"""""T
+T"""":""""""""::"""""""""""::===:""""T
+T"1"":""""""""::"""""""""""""~~~""""TT
+^^^^^s^^^^^^^^ss^^^^^^^^^^^^^~~~^^^^^^
+^^^^^s^^^^^^^^ss^^^^^^^^^^^^^~~~^^^^^^
+T""":::::::::::::"""""""""""w~~~~~~~~~
+T""RRRRRRRRR""::""""""""""""ww~~~~~~~~
+T""RRRR4RRRR""::"""RRRRRRRRR"""w~~~~~~
+T""RRRRRRRRR""::"""RRRRRRRRR""""ww~~~~
+T"lWQWWDWWQWl"::"""RRRRRRRRR"""""w~~~T
+T"r:::::::::::::""cWQWDWQWWWr"""""""TT
+T""":""""""O""::::::::::::::""""""""TT
+T""":::::::::""::""""1""""ffffffffff"T
+T""wwwwww"":""::""""b"""""fggggggggf"T
+T"ww~~~~~ww:""::""""""""""fggggggggf"T
+T"w~~~~~~~w:""::""""""""""fggggggggf"T
+T"w~~~~dddd::::::::::::::::::::::::f"T
+T"w~~~~~~~w"""::""""""""""fggggggggf"T
+T""ww~~~ww""""::""""""""""fggggggggf"T
+T"""wwww""""""::S"""""""""ffffffffff"T
+TTT"""TTTT""""::"""TTTTTT""""TTTTT"TTT
+TTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTT
+entities:
+spawn world 14 26 up
+spawn default 14 26 up
+spawn from_inn 7 16 down
+spawn from_shop 22 17 down
+spawn from_mill 22 6 down
+spawn from_house 8 6 down
+exit 14..15 27 WORLD l_n01
+door 7 15 N01_INN entry sfx=FX008
+door 22 16 N01_SHOP entry sfx=FX008
+door 22 5 N01_MILL entry sfx=FX008
+door 8 5 N01_HOUSE entry sfx=FX008
+npc hollin_n01 20 7 down sprite=elder talk=N01_HOLLIN name="Old Hollin"
+npc miller_n01 25 6 left sprite=worker talk=N01_MILLER name="Brannock"
+npc apprentice_n01 27 8 up sprite=apprentice talk=N01_APPRENTICE
+npc fisher_n01 11 21 left sprite=sailor talk=N01_FISHER name="Oda"
+npc child_n01 17 19 down sprite=child talk=N01_CHILD wander=1
+npc farmer_n01 30 22 left sprite=farmer talk=N01_FARMER
+npc assessor_n01 16 12 down sprite=clerk talk=N01_ASSESSOR name="Grain Assessor" if=!phase:post
+npc laundress_n01 2 17 right sprite=baker talk=N01_LAUNDRESS
+npc widow_n01 12 17 left sprite=elder talk=N01_WIDOW
+npc drover_n01 18 17 down sprite=worker talk=N01_DROVER
+npc refugee_n01 17 14 down sprite=volunteer talk=N01_REFUGEE if=phase:post
+npc survivor_n01 29 17 left sprite=survivor talk=N01_SURVIVOR if=phase:post
+save 13 24
+sign 16 25 "Hollins Mill. Grind by the sack, tithe by the Crown. Fishing pond west of the lane."
+read 7 22 "The end of the dock. The water is brown and patient." scene=N01_FISH
+read 28 4 "The mill wheel. Its paddles are patched with three different colours of Crown crate." scene=N01_WHEEL
+read 11 17 "The well rope is new. The bucket is older than the Crown."
+chest N01_C_GARDEN 35 5 A102 1 hidden=1
+
+=== N01_INN
+name: Hollins Mill - The Millstone Inn
+tileset: interior
+music: M010
+zone: N01
+location: L_N01
+grid:
+################
+#k!kkQkk?kQkBkB#
+#...........B.B#
+#....nnnnn.....#
+#..............#
+#.btb......r.c.#
+#.btb..........#
+#..............#
+#k............k#
+#..............#
+#######++#######
+entities:
+spawn entry 7 9 up
+exit 7..8 10 N01_R01 from_inn
+npc innkeep_n01 7 2 down sprite=keeper talk=N01_INN name="Innkeeper Pawley"
+inn 7 3 scene=N01_INN
+npc sleeper_n01 13 2 down sprite=worker talk=N01_INN_DROVER
+npc cards_n01 5 6 left sprite=farmer talk=N01_CARDS
+
+=== N01_SHOP
+name: Hollins Mill - Store and Workbench
+tileset: interior
+music: M010
+zone: N01
+location: L_N01
+grid:
+################
+#kkQkkkk#k5!Qkk#
+#.......#......#
+#nnnnn..#..t...#
+#..............#
+#..............#
+#rc..........cr#
+#..............#
+#k............k#
+#..............#
+#######++#######
+entities:
+spawn entry 7 9 up
+exit 7..8 10 N01_R01 from_shop
+npc keeper_n01 3 2 down sprite=keeper talk=N01_SHOPKEEP name="Storekeeper Linden"
+shop 3 3 SHOP_N01
+npc crafter_n01 11 2 down sprite=apprentice talk=N01_CRAFTER name="Juniper"
+npc customer_n01 5 5 up sprite=baker talk=N01_CUSTOMER
+
+=== N01_MILL
+name: Hollins Mill - The Mill
+tileset: interior
+music: M010
+zone: N01
+location: L_N01
+grid:
+##################
+#cc>>>kkQkk>>>rrr#
+#................#
+#..<<.......<<...#
+#..<<.......<<...#
+#................#
+#cr...........t..#
+#c...............#
+#................#
+#rr............cc#
+#................#
+########++########
+entities:
+spawn entry 8 10 up
+exit 8..9 11 N01_R01 from_mill
+npc nell_n01 5 5 down sprite=baker talk=N01_NELL name="Nell Hollin"
+npc clerk_n01 14 7 left sprite=clerk talk=N01_CLERK name="Tithe Clerk" if=!phase:post
+npc sack_n01 9 3 down sprite=worker talk=N01_SACKMAN
+chest N01_C_MILL 16 2 I001 3
+read 3 3 "A millstone. Someone has scratched a tally into the rim: every sack the Crown took this year."
+
+=== N01_HOUSE
+name: Hollins Mill - Hollin's House
+tileset: interior
+music: M010
+zone: N01
+location: L_N01
+grid:
+############
+#k!kQ?kkBkk#
+#.......B..#
+#..........#
+#.btb......#
+#..........#
+#r........c#
+#..........#
+#####++#####
+entities:
+spawn entry 5 7 up
+exit 5..6 8 N01_R01 from_house
+npc gran_n01 3 2 down sprite=elder talk=N01_GRAN name="Mother Hollin"
+read 5 1 "A flood ledger kept since the mill was built. The last entry: 'Crown dredgers came. River went wrong.'"
+
+=== N02_R01
+name: Gallowgate Toll
+tileset: town_r01
+music: M011
+zone: N02
+region: R01
+location: L_N02
+encounters: none
+save: true
+grid:
+^^^^^^^^^^^^^^^^::^^^^^^^^^^^^^^^^
+^^^"""""""""""""::"""""""""""""^^^
+^^^"RRRRRRRRR"""::"""RRRRRRRRR"^^^
+^^^"RRRR4RRRR"""::"""RRRRRRR4R"^^^
+^^^"RRRRRRRRR"""::"""RRRRRRRRR"^^^
+^^^"WQWWDWWQW"""::"""WQWQWQWQW"^^^
+^^^r::::::::::::::""""""""""""c^^^
+^^^"""""""S"""""::""fffffffffff^^^
+^^^"""""""""""""::""f.........f^^^
+^^^""1""""""""""::"":.........f^^^
+^^^"""""""""""""::""fffffffffff^^^
+^^^#############((#############^^^
+^^^###u####u####((####u####u###^^^
+^^^"""""""""""":::::"""""""""""^^^
+^^^""2""c"""""":::::"""""rr""""^^^
+^^^"""""""""""":::::"""""""""""^^^
+^^^"oyo"""""""":::::""""]""""""^^^
+^^^"""""""""""":::::"""""""""""^^^
+^^^^""""""""""":::::""""""""""^^^^
+^^^^^"""""""""":::::"""""""""^^^^^
+^^^^^^""""""""":::::""""""""^^^^^^
+^^^^^^^"""""""":::::"""""""^^^^^^^
+^^^^^^^^^^^^^^^:::::^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^:::::^^^^^^^^^^^^^^
+entities:
+spawn world 17 22 up
+spawn default 17 22 up
+spawn from_hall 8 6 down
+exit 15..19 23 WORLD l_n02
+exit 16..17 0 WORLD l_n02
+door 8 5 N02_HALL entry sfx=FX008
+trigger 15..19 13 scene=N02_TOLL if=!flag:n02_toll,!phase:post
+trigger 21..29 8..9 scene=N02_KENNEL if=flag:n02_bounty,!flag:n02_hounds
+npc tollman_n02 14 13 right sprite=guard talk=N02_TOLLMAN name="Tollkeeper" if=!phase:post
+npc carter_n02 6 14 right sprite=farmer talk=N02_CARTER if=!phase:post
+npc carter2_n02 23 14 left sprite=worker talk=N02_CARTER2 if=!phase:post
+npc hooded_n02 9 15 up sprite=survivor talk=N02_HOODED name="Hooded Traveller" if=!phase:post
+npc kennel_n02 19 8 right sprite=worker talk=N02_KENNELMAN name="Kennel-master" if=!phase:post
+npc barracks_n02 25 6 down sprite=soldier talk=N02_BARRACKS if=!phase:post
+npc wend_n02 25 16 left sprite=keeper talk=N02_WEND name="Tobiah Wend" if=!phase:post
+npc hermit_n02 12 6 down sprite=elder talk=N02_HERMIT name="Gate Hermit" if=phase:post
+npc scav_n02 22 15 left sprite=survivor talk=N02_SCAV if=phase:post
+read 10 7 "The Gallowgate bounty board." scene=N02_BOUNTY
+read 5 16 "A waystone among the carts, polished by a thousand waiting hands." scene=N02_WAYSTONE
+save 8 17
+
+=== N02_HALL
+name: Gallowgate Toll - Canteen and Bounty Office
+tileset: interior_stone
+music: M011
+zone: N02
+location: L_N02
+grid:
+##################
+#kk!kQkk#k?kkQk!k#
+#.......#........#
+#nnnnn..#..tt....#
+#.......#........#
+#.......###+######
+#................#
+#.btb.......btb..#
+#.btb.......btb..#
+#................#
+#r..............c#
+########++########
+entities:
+spawn entry 8 10 up
+exit 8..9 11 N02_R01 from_hall
+npc cook_n02 3 2 down sprite=baker talk=N02_COOK name="Canteen Cook"
+shop 3 3 SHOP_N02
+npc kell_n02 12 2 down sprite=guard talk=N02_KELL name="Sergeant Kell" if=!phase:post
+npc clerk_n02 14 4 left sprite=clerk talk=N02_CLERK if=!phase:post
+npc soldier_n02 5 8 up sprite=soldier talk=N02_SOLDIER if=!phase:post
+npc soldier2_n02 11 7 right sprite=guard talk=N02_SOLDIER2 if=!phase:post
+npc squatter_n02 13 9 left sprite=survivor talk=N02_SQUATTER if=phase:post
+chest N02_C_OFFICE 16 2 W103 1
+
+=== N03_R01
+name: Wren's Orchard
+tileset: town_r01
+music: M010
+zone: N03
+region: R01
+location: L_N03
+encounters: none
+save: true
+grid:
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+T;;;;;;;;;;;fTT"""""""""""""""""""""TT
+T;T;;;T;;;T;fT""RRRRRRRRRRR"""""""""TT
+T;;;;;;;;;;;fT""RRRRR4RRRRR"""1""""""T
+T;;;T;;;T;;;fT""RRRRRRRRRRR"""""""""TT
+T;T;;;@;;;T;fT""WQWWWDWWWQW"""rrc""""T
+T;;;;;;;;;;;fT""::::::::::::::::"""""T
+T;;T;;;;;T;;fT""""""":"""""""""""""""T
+Tfffff(ffffff^^^^^^^^s^^^^^^^^^^^^^^^^
+T""""j"""""""^^^^^^^^s^^^^^^^^^^^^^^^^
+T"""""::::::::::::::::"""""""""""""""T
+T""RRRRRRRRR""""""::"""""""RRRRRRRR""T
+T""RRRR4RRRR"rr"""::"""""""RRRRRR4R""T
+T""RRRRRRRRR""""""::"""""""RRRRRRRR""T
+T""WQWWDWWQWc"""""::"""""""WQWDWWQW""T
+T"":::::::::::::::::::::::::::::"""""T
+T"""""""""""""O"""::"""""""""""""""""T
+T"T"T"T"T"T"T"T"""::""T"T"T"T"T"T"T""T
+T"""""""""""""""""::"""""""""""""""""T
+T"T"T"T"T"T"T"T"""::""T"T"T"T"T"T"T""T
+T""""c""""""""""""::""""""r""""""""""T
+T"T"T"T"T"T"T"T"""::""T"T"T"T"T"T"T""T
+T"""""""""""""""""::"""""""""""""""""T
+T"T"T"T"T"T"T"T"""::""T"T"T"T"T"T"T""T
+T"""""""""""""""""::"""""""""""""""""T
+T"""""""""""""""""::S""""""""""""""""T
+TTTT""TTTTTTTTTT""::""TTTTTTTTTT""TTTT
+TTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTT
+entities:
+spawn world 18 26 up
+spawn default 18 26 up
+spawn from_inn 21 6 down
+spawn from_press 7 15 down
+spawn from_house 30 15 down
+exit 18..19 27 WORLD l_n03
+door 21 5 N03_INN entry sfx=FX008
+door 7 14 N03_PRESS entry sfx=FX008
+door 30 14 N03_HOUSE entry sfx=FX008
+npc wren_n03 32 15 left sprite=farmer talk=N03_WREN name="Wren Tamsey"
+npc picker_n03 4 18 right sprite=farmer talk=N03_PICKER
+npc picker2_n03 27 20 left sprite=worker talk=N03_PICKER2
+npc child_n03 16 16 down sprite=child talk=N03_CHILD wander=1
+npc levy_n03 20 16 left sprite=clerk talk=N03_LEVY name="Levy Officer" if=!phase:post
+npc carter_n03 24 15 down sprite=worker talk=N03_CARTER
+npc beekeeper_n03 33 6 left sprite=elder talk=N03_BEEKEEPER
+npc taster_n03 13 15 down sprite=farmer talk=N03_TASTER
+npc mourner_n03 8 10 left sprite=elder talk=N03_MOURNER
+npc guard_n03 23 7 down sprite=guard talk=N03_GUARD if=!phase:post
+npc refugee_n03 21 22 up sprite=survivor talk=N03_REFUGEE if=phase:post
+npc orphan_n03 5 16 right sprite=child talk=N03_ORPHAN if=phase:post
+npc harl_n03 6 6 down sprite=farmer talk=N03_HARL name="Harl Wren" if=flag:n03_night,!flag:n03_ghosts_done
+npc ghost1_n03 3 3 down sprite=survivor talk=N03_GHOST1 name="Pale Picker" if=flag:n03_night,!flag:n03_ghosts_done
+npc ghost2_n03 9 3 down sprite=survivor talk=N03_GHOST2 name="Pale Picker" if=flag:n03_night,!flag:n03_ghosts_done
+npc ghost3_n03 8 6 left sprite=child talk=N03_GHOST3 name="Small Ghost" if=flag:n03_night,!flag:n03_ghosts_done
+read 5 9 "The orchard bell, hung at the old grove gate. Its rope is tied off with a black ribbon." scene=N03_BELL
+read 6 5 "A picker's grave marker." scene=N03_GRAVE
+trigger 5..7 7 scene=N03_WISPS if=flag:n03_night,!event:N03_WISPS
+sign 20 25 "Wren's Orchard. Cider by the cask. The old grove is closed after dark."
+save 17 24
+chest N03_C_GROVE 10 1 I006 1
+
+=== N03_INN
+name: Wren's Orchard - The Bent Bough
+tileset: interior
+music: M010
+zone: N03
+location: L_N03
+grid:
+##################
+#kk!kQkkr?kQkBkBk#
+#............B.B.#
+#.nnnnnn.........#
+#................#
+#.btb....btb.....#
+#.btb....btb...rr#
+#................#
+#k..............k#
+#................#
+########++########
+entities:
+spawn entry 8 9 up
+exit 8..9 10 N03_R01 from_inn
+npc innkeep_n03 4 2 down sprite=keeper talk=N03_INN name="Innkeeper Aldo"
+inn 4 3 scene=N03_INN
+npc guest_n03 7 5 left sprite=worker talk=N03_GUEST
+npc guest2_n03 14 2 down sprite=noble talk=N03_GUEST2
+
+=== N03_PRESS
+name: Wren's Orchard - Cider Press
+tileset: interior
+music: M010
+zone: N03
+location: L_N03
+grid:
+##################
+#rrrkkQkk#kk5!kQr#
+#........#.......#
+#nnnnn...#..t....#
+#................#
+#..<<.......rrr..#
+#..<<.......rrr..#
+#................#
+#c..............c#
+#................#
+########++########
+entities:
+spawn entry 8 9 up
+exit 8..9 10 N03_R01 from_press
+npc presser_n03 3 2 down sprite=keeper talk=N03_SHOPKEEP name="Cellarman Duro"
+shop 3 3 SHOP_N03
+npc crafter_n03 11 2 down sprite=apprentice talk=N03_CRAFTER name="Cooper Mab"
+npc apprentice_n03 6 5 left sprite=apprentice talk=N03_PRESSBOY
+read 3 5 "The press stones. The third one sits a finger higher than the others." scene=N03_PRESSSTONE
+chest N03_C_PRESS 15 8 I009 2
+
+=== N03_HOUSE
+name: Wren's Orchard - Wren's Cottage
+tileset: interior
+music: M010
+zone: N03
+location: L_N03
+grid:
+##############
+#k!kQk?kkBkk.#
+#........B...#
+#............#
+#.btb........#
+#.btb.....rc.#
+#............#
+#k..........k#
+######++######
+entities:
+spawn entry 6 7 up
+exit 6..7 8 N03_R01 from_house
+npc daughter_n03 4 2 down sprite=child talk=N03_DAUGHTER name="Posy Wren"
+npc aunt_n03 10 3 left sprite=elder talk=N03_AUNT
+read 6 1 "A family ledger. Harl's hand stops in the autumn of the harvest levy. Wren's hand carries on, smaller."
+
+=== N04_R01
+name: The Sunken Chapel - Marsh Porch
+tileset: grove_flood
+music: M023
+zone: N04
+region: R01
+location: L_N04
+encounters: none
+save: true
+grid:
+##############..##############
+###y##########..##########y###
+~~##(u###u####((####u###u###~~
+~~ww,,,,,,,,,,,,,,,,,,,,,,ww~~
+~wwww,,,x,,,,,,,,,,,,,,x,,ww~~
+~~www''wwwwww::wwwwww''www~~~~
+~~~ww'wwww~~w::w~~wwww'ww~~~~~
+~~~~wwww~~~~w::w~~~~wwwww~~~~~
+~~~~~ww~~~~~w::w~~~~~ww~~~~~~~
+~~~~~~~~~~~~w::w~~~~~~~~~~~~~~
+~~~~~~~~~~~ww::ww~~~~~~~~~~~~~
+~~~~~~~~~~ww;::;ww~~~~~~~~~~~~
+~~~~~~~~~ww;;;::;;;ww~~~~~~~~~
+TT~~~~~~ww;;";::;";;ww~~~~~~TT
+TTT~~~~w"";""::"";""w~~~~~TTTT
+TTTT~~ww""""T::T""""ww~~~TTTTT
+TTTTT~w"""""""::"""""""w~TTTTT
+TTTTTT""""""""::""""""""TTTTTT
+TTTTTTT"""""""::"""""""TTTTTTT
+TTTTTTTT""""""::""""""TTTTTTTT
+TTTTTTTTTT""""::""""TTTTTTTTTT
+TTTTTTTTTTTTTT::TTTTTTTTTTTTTT
+entities:
+spawn world 14 20 up
+spawn default 14 20 up
+spawn from_r02 14 3 down
+spawn from_r03 4 3 down
+exit 14..15 21 WORLD l_n04
+exit 14..15 0 N04_R02 from_r01
+door 4 2 N04_R03 from_r01 sfx=FX009
+block 4 2 tile=gate if=!flag:n04_shortcut msg="A side door, barred from the inside."
+trigger 13..16 13 scene=N04_ENTER if=!event:N04_ENTER
+save 17 17
+read 8 4 "A toppled statue of an oath-knight. The inscription: 'WE HOLD UNTIL RELIEVED.'"
+
+=== N04_R02
+name: The Sunken Chapel - Drowned Nave
+tileset: grove_flood
+music: M023
+zone: N04
+region: R01
+location: L_N04
+encounters: W_N04
+rate: 0.7
+grid:
+##############,,,,##############
+##############,,,,##############
+##############,,,,##############
+#########u###,,,,,,###u#########
+##,,,,,,,,,,,,,,,,,,,,,,,,,,,,##
+##,,u,,,,,,,,,,,,,,,,,,,,,,u,,##
+##,,,,bbbb,,,,wwww,,,,bbbb,,,,##
+##,,,,,,,,,,,,wwww,,,,,,,,,,,,##
+##,,,,bbbb,,,w~~~~w,,,bbbb,,,,##
+,,,,,,,,,,,,,w~~~~w,,,,,,,,,,,##
+,,,,,,bbbb,,,w~~~~w,,,bbbb,,,,##
+##,,,,,,,,,,,w~~~~w,,,,,,,,,,,##
+##,,,,bbbb,,,w~~~~w,,,bbbb,,,,##
+##,,,,,,,,,,,,wwww,,,,,,,,,,,,##
+##,,,,bbbb,,,,wwww,,,,bbbb,,,,##
+##,,u,,,,,,,,,,,,,,,,,,,,,,u,,##
+##,,,,,,,,,,,,,,,,,,,,,,,,,,,,##
+##;,,x,,,,,,,,,,,,,,,,,,,,x,,;##
+##############,,,,##############
+##############,,,,##############
+entities:
+spawn from_r01 15 18 up
+spawn from_r03 1 9 right
+spawn from_r04 15 1 down
+exit 14..17 19 N04_R01 from_r02
+exit 0 9..10 N04_R03 from_r02
+exit 14..17 0 N04_R04 from_r02
+block 0..1 9..10 tile=gate if=!flag:n04_bell_w msg="A rusted portcullis. A bell rope hangs by the west pews."
+block 13..18 3 tile=gate if=!flag:n04_bell_e msg="An iron grille across the reliquary stair. It shivers when a bell rings somewhere to the west."
+switch n04_bell_w 3 6 scene=N04_BELL_W sprite=lever
+chest N04_C_STAIR 17 1 W101 1
+npc pilgrim_n04 26 16 left sprite=survivor talk=N04_PILGRIM name="Drowned Pilgrim"
+read 14 9 "The nave floor slopes into a baptismal font. The water in it is perfectly still, and warm."
+
+=== N04_R03
+name: The Sunken Chapel - Flooded Cloister
+tileset: grove_flood
+music: M023
+zone: N04
+region: R01
+location: L_N04
+encounters: W_N04
+rate: 0.8
+grid:
+######(#######################
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,#
+#,,u,,,,u,,,,u,,,,u,,,,u,,,,,#
+#,,,uuu,uuuuuuuuuuuuuu,uuu,,,#
+#,,,u;;;;;;;;;;;;;;;;;;;;u,,,#
+#,,,u;;wwwwwwwwwwwwwwww;;u,,,#
+#,,,u;ww~~~~~~~~~~~~~~ww;u,,,#
+#,,,,;w~~~~~~~~~~~~~~~~w;,,,,#
+#,,,u;w~~~~~~~~~~~~~~~~w;u,,,#
+#,,,u;wwwwww@~~~~~~~~~~w;u,,,,
+#,,,u;w~~~~~~~~~~~~~~~~w;u,,,,
+#,,,u;w~~~~~~~~~~~~~~~~w;u,,,#
+#,,,,;w~~~~~~~~~~~~~~~~w;,,,,#
+#,,,u;ww~~~~~~~~~~~~~~ww;u,,,#
+#,,,u;;wwwwwwwwwwwwwwww;;u,,,#
+#,,,u;;;;;;;;;;;;;;;;;;;;u,,,#
+#,,,uuu,uuuuuuuuuuuuuu,uuu,,,#
+#,,u,,,,u,,,,u,,,,u,,,,u,,,,,#
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,#
+##############################
+entities:
+spawn from_r02 28 9 left
+spawn from_r01 6 1 down
+exit 29 9..10 N04_R02 from_r03
+door 6 0 N04_R01 from_r03 sfx=FX009
+switch n04_bar 7 1 scene=N04_BAR sprite=lever
+switch n04_bell_e 11 9 scene=N04_BELL_E sprite=lever
+chest N04_C_CLOISTER 1 18 I004 2
+chest N04_C_GARDEN 24 4 G104 1 hidden=1
+read 27 17 "A waterlogged roster nailed to a pillar: forty oath-knights, 'to hold the chapel until relieved'. No relief is listed."
+
+=== N04_R04
+name: The Sunken Chapel - Reliquary Stair
+tileset: grove_flood
+music: M023
+zone: N04
+region: R01
+location: L_N04
+encounters: none
+grid:
+########,,,,,,########
+########ssssss########
+#####!##,,,,,,##!#####
+#k?kk#,,,,,,,,,,#kk?k#
+#,,,,,,,,,,,,,,,,,,,,#
+#,,y,,,,,,,,,,,,,,y,,#
+#,,,,,,,,,,,,,,,,,,,,#
+#,,,,,,,@@@@,,,,,,,,,#
+#,,,,,,,,,,,,,,,,,,,,#
+#,,y,,,,,,,,,,,,,,y,,#
+#,,,,,,,,,,,,,,,,,,,,#
+#k,,,,,,,,,,,,,,,,,,k#
+######,,,,,,,,,,######
+########,,,,,,########
+########,,,,,,########
+########,,,,,,########
+entities:
+spawn from_r02 10 14 up
+spawn from_r05 10 1 down
+exit 8..13 15 N04_R02 from_r04
+exit 8..13 0 N04_R05 from_r04
+npc aubel_n04 10 4 down sprite=survivor talk=N04_AUBEL name="Squire Aubel"
+save 4 8
+heal 17 8
+read 9 7 "The reliquary. Forty oath-rings in a drowned velvet tray, green with age." scene=N04_RELIC
+
+=== N04_R05
+name: The Sunken Chapel - Flooded Altar
+tileset: grove_flood
+music: M023
+zone: N04
+region: R01
+location: L_N04
+encounters: none
+grid:
+############################
+######j######@@######j######
+##,,,,,,,,,,,,,,,,,,,,,,,,##
+##,,u,,,,,,,,,,,,,,,,,,u,,##
+##,,,,,,,,,,,,,,,,,,,,,,,,##
+##wwwwwwwwwwwwwwwwwwwwwwww##
+##ww~~~~~~~~wwww~~~~~~~~ww##
+##ww~~~~~~~~wwww~~~~~~~~ww##
+##wwwwwwwwwwwwwwwwwwwwwwww##
+##,,u,,,,,,,wwww,,,,,,,u,,##
+##,,,,,,,,,,wwww,,,,,,,,,,##
+##,,u,,,,,,,,,,,,,,,,,,u,,##
+##,,,,,,,,,,,,,,,,,,,,,,,,##
+############,,,,############
+############,,,,############
+entities:
+spawn from_r04 13 13 up
+exit 12..15 14 N04_R04 from_r05
+npc hallam_n04 13 3 down sprite=guard talk=N04_BOSS name="Ser Hallam" if=!flag:n04_cleared
+trigger 12..15 10 scene=N04_BOSS if=!flag:n04_cleared
+chest N04_C_ALTAR 15 2 G101 1
+read 13 1 "The high altar, under a finger of water." scene=N04_ALTAR
+
+=== N05_R01
+name: Ashward Barrows
+tileset: whitebone
+music: M021
+zone: N05
+region: R01
+location: L_N05
+encounters: none
+grid:
+##############################
+######y.......@@@.......y#####
+#####....................#####
+####..u......u..u......u..####
+####......................####
+####..k?k..........k?k....####
+#####....................#####
+########......!!......########
+###########........###########
+#############....#############
+#############....#############
+^^^^^^^^^^^^#....#^^^^^^^^^^^^
+^^^^^^^^^^^^^((((^^^^^^^^^^^^^
+""""^^^^"""""::::"""""^^^^""""
+"o""^^^^""y""::::""y""^^^^"o""
+""""""""""""""::""""""""""""""
+"";;"""^^^"""::"""^^^""";;""""
+"""""""^^^"""::"""^^^"""""""""
+""y"""""""""::::"""""""""y""""
+T""""""""""""::""""""""""""""T
+TT""o"""""""::::"""""""o"""TTT
+TTTTTTTTTTTTT::TTTTTTTTTTTTTTT
+entities:
+spawn world 13 20 up
+spawn default 13 20 up
+exit 13..14 21 WORLD l_n05
+block 13..16 10 tile=gate if=!flag:n05_open msg="A round stone seals the barrow. Words are cut around its rim, half worn away."
+trigger 13..16 10 scene=N05_DOOR touch=0 if=!flag:n05_open
+npc warden_n05 18 15 left sprite=elder talk=N05_WARDEN name="Barrow-Warden Edrin" if=!phase:post
+npc pilgrim_n05 18 15 left sprite=survivor talk=N05_PILGRIM if=phase:post
+read 10 14 "A standing stone. A crown is carved on it, then chiselled out, then carved again." scene=N05_STONE
+read 19 14 "A standing stone. A name is carved on it. It has been scratched out so hard the stone is scored."
+trigger 12..17 8 scene=N05_WIGHTS if=flag:n05_open,!event:N05_WIGHTS
+read 15 1 "A stone sarcophagus with an empty crown-shaped hollow in its lid." scene=N05_TOMB
+read 7 5 "Grave goods on a shelf: a knight's gauntlet, a child's shoe, a Crown seal older than any in Veyr."
+read 20 5 "A tablet: 'HERE HE LAY, THE FIRST TIME. THE CROWN WAS TAKEN FROM HIM AND CARRIED BACK TO THE FIRST HEAD.'"
+chest N05_C_TOMB 22 2 A103 1 hidden=1
+chest N05_C_NICHE 5 4 I006 1
+
+=== N06_R01
+name: Kettle Row
+tileset: town_r02
+music: M012
+zone: N06
+region: R02
+location: L_N06
+encounters: none
+save: true
+grid:
+######################################
+#####&######&######&######&#####&#####
+#'';'.''''.';''.'''.''''..''';'.''~~,#
+#..o*o...o..........o*......o*o...~~,#
+^^^^^^^^^^^^ss^^^^^^^^^^^^^^^^^^^^~~,^
+^^^^^^^^^^^^ss^^^^^^^^^^^^^^^^^^^^~~,^
+#,RRRRRRR4RR,,,,,,,,,,,RRRRRR4RR,,~~,#
+#,RRRRRRRRRR,,RR4RRRRR,RRRRRRRRRp,~~,#
+#,RRRRRRRRRR,,RRRRRRRR,RRRRRRRRRp,~~,#
+#lWQWWDWWQWWr,WQWWWWQWccWQWDWQWW5r~~,#
+#:::::::::::::::::::::::::::::::::==:#
+#:::::::::::::::::::::::::::::::::==:#
+#|||||||::||||||||:::||||||||||||,~~,#
+#,xxx,,2::,,RRR4RRRRRRRRR,,,,,2,,,~~,#
+#,xxxx,,::,,RRRRRRRRRRRRR,,vpppv,,~~,#
+#,,xx,,,::,,RRRRRRRRRRRRR,,,,,,,,,~~,#
+#,,,,,,,::,lWQWWWQDQWWWQWrr,,,,,,,~~,#
+#,,,,,,,:::::::::::::::::::,,,,,,,~~,#
+#,,3333,,,,,,,,,,,::,,,,,,,,,,,,,,~~,#
+#,,,,,,,,,,,,,,,,,::,,xx,,,,x,xx,,~~,#
+#,RRRRRRR,,,,,,,,,::,,,,RRRRR4R,,,~~,#
+#,RRRRRRRc,,,,,,,,::,,,,RRRRRRRr,,~~,#
+#,WWQWWQW,,,,,,,,,::,,,,WQWWWQW,,,~~,#
+#,,,,,,,,,,,,,,,,,::,,,,,,,,,,,,,,~~,#
+#,xx,,,,,,,,,,,,,,,,,,,,,,,,,,,,xx~~,#
+#xxx,,,,,,,,,,,,S,,,,,,,,,,,,,,,xx~~,#
+#^^^^^^^^^^^^^^^^,::,^^^^^^^^^^^^^~~,#
+#^^^^^^^^^^^^^^^^^::^^^^^^^^^^^^^^~~,#
+entities:
+spawn world 18 26 up
+spawn default 18 26 up
+spawn from_inn 6 10 down
+spawn from_smith 27 10 down
+spawn from_hall 18 17 down
+exit 18..19 27 WORLD l_n06
+door 6 9 N06_INN entry sfx=FX008
+door 27 9 N06_SMITH entry sfx=FX008
+door 18 16 N06_HALL entry sfx=FX008
+npc grete_n06 20 17 left sprite=worker talk=N06_GRETE name="Forewoman Grete"
+npc pickett_n06 10 3 left sprite=worker talk=N06_PICKETT name="Tam Pickett"
+npc child_n06 5 16 up sprite=child talk=N06_CHILD wander=1
+npc damwatch_n06 26 3 up sprite=elder talk=N06_DAMWATCH name="Old Sallow"
+npc foreman_n06 15 10 down sprite=clerk talk=N06_FOREMAN name="Crown Foreman"
+npc cartman_n06 6 13 left sprite=worker talk=N06_CARTMAN
+npc widow_n06 6 19 up sprite=baker talk=N06_WIDOW
+npc smoker_n06 27 17 left sprite=worker talk=N06_SMOKER
+npc prospector_n06 29 11 left sprite=elder talk=N06_PROSPECTOR
+npc kid2_n06 23 23 left sprite=child talk=N06_KID2
+npc guard_n06 20 25 left sprite=guard talk=N06_GUARD
+npc cough_n06 12 23 right sprite=patient talk=N06_COUGH
+read 4 3 "A seam of dull ore breaks the ledge, marked with a miner's chalk X." scene=N06_NODE1
+read 29 3 "A second seam, glinting. The chalk mark says: 'LEAVE FOR THE NEW ONES'." scene=N06_NODE2
+read 12 1 "A sluice gate in the dam face. Water weeps around its edges like it has been crying for years."
+sign 16 25 "KETTLE ROW. Slag Guild of the Reach. The dam is INSPECTED. Do not stand under the sluices."
+save 23 11
+chest N06_C_SLAG 1 14 I011 2
+
+=== N06_INN
+name: Kettle Row - The Slag and Kettle
+tileset: interior
+music: M012
+zone: N06
+location: L_N06
+encounters: none
+grid:
+################
+#kk!kQkkr?kQkBk#
+#...........B.B#
+#.nnnnnn.......#
+#..............#
+#.btb....btb..r#
+#.btb....btb..r#
+#..............#
+#k............k#
+#..............#
+#######++#######
+entities:
+spawn entry 7 9 up
+exit 7..8 10 N06_R01 from_inn
+npc innkeep_n06 3 2 down sprite=keeper talk=N06_INN name="Innkeeper Bessa"
+inn 3 3 scene=N06_INN
+npc patron_n06 5 6 left sprite=worker talk=N06_PATRON
+npc patron2_n06 12 5 left sprite=worker talk=N06_PATRON2
+
+=== N06_SMITH
+name: Kettle Row - Guild Smithy
+tileset: interior
+music: M012
+zone: N06
+location: L_N06
+encounters: none
+grid:
+################
+#kk5!kkQ#k5!rrc#
+#.......#......#
+#nnnnn..#..9...#
+#..............#
+#..............#
+#rc..........cr#
+#..............#
+#k............k#
+#..............#
+#######++#######
+entities:
+spawn entry 7 9 up
+exit 7..8 10 N06_R01 from_smith
+npc smith_n06 3 2 down sprite=keeper talk=N06_SHOPKEEP name="Guild Smith Harrow"
+shop 3 3 SHOP_N06
+npc crafter_n06 10 2 down sprite=worker talk=N06_CRAFTER name="Ember-hand Ivy"
+npc apprentice_n06 5 5 up sprite=apprentice talk=N06_APPRENTICE
+chest N06_C_SMITH 13 8 M001 2
+
+=== N06_HALL
+name: Kettle Row - Miners' Hall
+tileset: interior
+music: M012
+zone: N06
+location: L_N06
+encounters: none
+grid:
+####################
+#k8kk!kkQkk8kkQkk!k#
+#..................#
+#......nnnnnn......#
+#..................#
+#..bbbb....bbbb....#
+#..................#
+#..bbbb....bbbb....#
+#..................#
+#r................c#
+#..................#
+#########++#########
+entities:
+spawn entry 9 10 up
+exit 9..10 11 N06_R01 from_hall
+npc chair_n06 9 2 down sprite=worker talk=N06_CHAIR name="Guild Chair Dunn"
+npc miner1_n06 3 6 up sprite=worker talk=N06_MINER1
+npc miner2_n06 12 6 up sprite=worker talk=N06_MINER2
+npc miner3_n06 16 8 left sprite=patient talk=N06_MINER3
+npc hallclerk_n06 15 2 down sprite=clerk talk=N06_HALLCLERK
+read 2 1 "A mural of the first slag-miners, coughing proudly."
+
+=== N07_R01
+name: The Slagfalls - Slag Foot
+tileset: furnace
+music: M022
+zone: N07
+region: R02
+location: L_N07
+encounters: none
+save: true
+legend: K=lava
+grid:
+^^^^^^^^^^^^^....^^^^^^^^^^^^^
+^^^^^^^^^^^^^ssss^^^^^^^^^^^^^
+^^^^^^^^(^^^^....^^^^^^^^^^^^^
+^KKKKK,,ee,,,,,,,,,,,ee,,KKKK^
+^KKKK,,eee,,,,,,,,,,,,eee,,KK^
+^KKK,,,,,,,xx,,,,,,xx,,,,,,,K^
+^KK,,o,,,,,,,,,,,,,,,,,,,o,,,^
+^K,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,2,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,,,,!,,,,^
+^,,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^xx,,,,,,,,,,,,,,,,,,,,,,,,,x^
+^^^^^^^^^^^,,,,,,,,,^^^^^^^^^^
+^^^^^^^^^^^,,,,,,,,,^^^^^^^^^^
+^AAAAAAAAAA:::::::::AAAAAAAAA^
+^AAAoAAAAAAA:::::::AAAAAAoAAA^
+^^^AAAAAAAAAA:::::AAAAAAAAAA^^
+^^^^^^AAAAAAA:::::AAAAAAA^^^^^
+^^^^^^^^^^^^:::::^^^^^^^^^^^^^
+entities:
+spawn world 14 18 up
+spawn default 14 18 up
+spawn from_r02 14 3 down
+spawn from_r03 8 3 down
+exit 12..16 19 WORLD l_n07
+exit 13..16 0 N07_R02 from_r01
+door 8 2 N07_R03 from_r01 sfx=FX009
+block 8 2 tile=rubble if=!flag:n07_chute msg="A slag chute mouth, choked with cooled clinker from above."
+trigger 11..18 12 scene=N07_ENTER if=!event:N07_ENTER
+save 22 8
+npc guide_n07 8 9 right sprite=worker talk=N07_GUIDE name="Slag Runner" if=!phase:post
+npc hermit_n07 8 9 right sprite=survivor talk=N07_HERMIT if=phase:post
+read 16 6 "A cairn of cooled slag, shaped like a man. Someone has given it a hat."
+
+=== N07_R02
+name: The Slagfalls - Lower Terrace
+tileset: furnace
+music: M022
+zone: N07
+region: R02
+location: L_N07
+encounters: W_N07
+rate: 0.8
+legend: K=lava
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^,,,^
+^eeKKK,,,,,,,,,,,,,,,,,,,,,,,,sss^
+^,,,KKK,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,KKK,,,,,,,,,,,,,,,,,,,,o*o,,^
+^,,,,,KKK,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,KKK,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,KKK,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,KKK,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,KKK,,,,,,,,,,,,,,,,,,,,^
+,,,,,,,,,,,KKK,,,,,,,,,,,,,,,,,,,^
+,,,,,,,,,,,,KKK,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,KKKK,,,,,,eee,,,,,,,^
+^,,,,,,,,,,,,,KKKKKKKKKeeeKKKKKKKK
+^,,,,,,,,,,,,,,,KKKKKKKeeeKKKKKKK^
+^,,,,,,,,,,,,,,,,,,,,,,eee,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,o,,x,,,,,,,,,,,,,,,,,,,xx,o,,,^
+^,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,2,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^^^^^^^^^^^^^^^,,,,^^^^^^^^^^^^^^^
+entities:
+spawn from_r01 16 20 up
+spawn from_r03 1 9 right
+spawn from_r04 31 1 down
+exit 15..18 21 N07_R01 from_r02
+exit 0 9..10 N07_R03 from_r02
+exit 30..32 0 N07_R04 from_r02
+block 23..25 11..14 tile=lava if=!flag:n07_vent1 msg="Molten slag runs across the ford. It would cool if the vent above were opened."
+block 30..32 0 tile=rubble if=!flag:n07_vent2 msg="The upper stair is buried in soft, smoking clinker."
+switch n07_vent1 30 18 scene=N07_VENT1 sprite=lever
+chest N07_C_TERRACE 29 4 W112 1
+chest N07_C_LOW 2 18 I011 2
+read 20 18 "A vent valve, rusted open a crack. Painted on the housing: 'OPEN TO COOL THE FORD. SLAG GUILD.'"
+
+=== N07_R03
+name: The Slagfalls - Crucible Shelf
+tileset: furnace
+music: M022
+zone: N07
+region: R02
+location: L_N07
+encounters: W_N07
+rate: 0.9
+legend: K=lava
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^o,,,,,,,,,,,,,,,,,,,,,,,,,!,^
+^,,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,KKKKKKKKeeKKKKKKKKKKKK,,,^
+^,,,KKKKKKKKeeKKKKKKKKKKKK,,,^
+^,,,KK,,,,,,,,,,,,,,,,,,KK,,,^
+^,,,KK,,,,,,,,,,,,,,,,,,KK,,,^
+^,,,KK,,,,,,,,,,,,,,x,,,KK,,,^
+^,,,KK,,,*o,,,,,,,,,,,,,KK,,,,
+^,,,KK,,,,,,,,,,,,,,,,,,KK,,,,
+^,,,KK,,,,,,,,,,,,,,,,,,KK,,,^
+^,,,KK,,,,,,,,,,,,o*,,,,KK,,,^
+^,,,KK,,,,x,,,,,,,,,,,,,KK,,,^
+^,,,KK,,,,,,,,,,,,,,,,,,KK,,,^
+^,,,KK,,,,,,,,,,,,,,,,,,KK,,,^
+^,,,KKKKKKKKKKKKKKKKKKKKKK,,,^
+^,,,KKKKKKKKKKKKKKKKKKKKKK,,,^
+^,,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^xx,,,,,,,,,,,,,,,,,,,,,,,,,,^
+^^^(^^^^^^^^^^^^^^^^^^^^^^^^^^
+entities:
+spawn from_r02 28 9 left
+spawn from_r01 3 20 up
+exit 29 9..10 N07_R02 from_r03
+door 3 21 N07_R01 from_r03 sfx=FX009
+switch n07_vent2 14 10 scene=N07_VENT2 sprite=lever
+switch n07_chute 4 20 scene=N07_CHUTE sprite=lever
+chest N07_C_SHELF 15 13 A104 1
+chest N07_C_HIDDEN 27 20 I002 2 hidden=1
+read 16 9 "A crucible the size of a house, cracked in half. Slag still drips from the lip, slow as honey."
+npc bones_n07 8 12 right sprite=survivor talk=N07_BONES name="Scorched Prospector"
+
+=== N07_R04
+name: The Slagfalls - Cooling Shelf
+tileset: furnace
+music: M022
+zone: N07
+region: R02
+location: L_N07
+encounters: none
+legend: K=lava
+grid:
+^^^^^^^^,,,,,,^^^^^^^^
+^o*o,,,,ssssss,,,,o*o^
+^,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,99,,,,^
+^,,]],,,,,,,,,,,,,,,,^
+^,,,,,!,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,^
+^,,,,,,,,,,,,,,,,,,,,^
+^xx,,,,,,,,,,,,,,,,xx^
+^,,,,,,,,,,,,,,,,,,,,^
+^^^^^^^^^,,,^^^^^^^^^^
+entities:
+spawn from_r02 10 14 up
+spawn from_r05 10 1 down
+exit 9..11 15 N07_R02 from_r04
+exit 8..13 0 N07_R05 from_r04
+npc runner_n07 8 7 left sprite=worker talk=N07_RUNNER name="Stranded Runner"
+save 5 11
+heal 16 11
+read 15 6 "A cooling pool, steaming. The Slag Guild's runners soak their boots here before the last climb."
+
+=== N07_R05
+name: The Slagfalls - Crown of the Falls
+tileset: furnace
+music: M022
+zone: N07
+region: R02
+location: L_N07
+encounters: none
+legend: K=lava
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^KKKKKKKKKKKKKKKKKKKKKKKKKKKK^
+^KKKKKKKKKKKKKKKKKKKKKKKKKKKK^
+^KKKKKKKKKKKKKKKKKKKKKKKKKKKK^
+^KKKKKKKKKKeeeeeeeeKKKKKKKKKK^
+^KKKKKeeeeeeeeeeeeeeeeeeKKKKK^
+^KKKeeeeeeeeeeeeeeeeeeeeeeKKK^
+^KKKeeeeeeeeeeeeeeeeeeeeeeKKK^
+^KKKeeeeeeeeeeeeeeeeeeeeeeKKK^
+^KKKeexeeeeeeeeeeeeeeeeeeeKKK^
+^KKKeeeeeeeeeeeeeeeeeexeeeKKK^
+^KKKeeeeeeeeeeeeeeeeeeeeeeKKK^
+^KKKeeeeeeeeeeeeeeeeeeeeeeKKK^
+^KKKeeeeeeeeeeeeeeeeeeeeeeKKK^
+^KKKeeeeoeeeeeeeeeeeeeeeeeKKK^
+^KKKeeeeeeeeeeeeeeeeoeeeeeKKK^
+^KKKeeeeeeeeeeeeeeeeeeeeeeKKK^
+^KKKeeeeeeeeeeeeeeeeeeeeeeKKK^
+^KKKeeeeeeeeeeeeeeeeeeeeeeKKK^
+^^^^^^^^^^^^eeeeee^^^^^^^^^^^^
+entities:
+spawn from_r04 14 18 up
+exit 12..17 19 N07_R04 from_r05
+trigger 5..24 11 scene=N07_BOSS if=!flag:n07_cleared
+chest N07_C_CROWN 23 7 W109 1
+read 14 3 "The source of the falls: a furnace flue from the Crown works above, pouring slag down the mountain day and night." scene=N07_FLUE
+
+=== N08_R01
+name: Anvil Cairn
+tileset: quarry
+music: M012
+zone: N08
+region: R02
+location: L_N08
+encounters: none
+save: true
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^RRR4RRRRRRRR^^^^^^^^^
+^^oo.....RRRRRRRRRRRR...oo..^^
+^^......5rWQW!DD!WQWWc5.....^^
+^^.......::::::::::::::.....^^
+^^............::............^^
+^^............::............^^
+^^...5.5.5....::....5.5.5...^^
+^^..........::::::..........^^
+^^..........:.555:..........^^
+^^..........:.@@@:..........^^
+^^..........:.555:..........^^
+^^..........::::::..........^^
+^^...5.5.5....::....5.5.5...^^
+^^............::............^^
+^^.]].........::........o...^^
+^^.!..........::.......xo...^^
+^^...........S::............^^
+^^^^^^^^^^^^^^::^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^::^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^::^^^^^^^^^^^^^^
+entities:
+spawn world 14 20 up
+spawn default 14 20 up
+spawn from_forge 14 5 down
+exit 14..15 21 WORLD l_n08
+door 14 4 N08_FORGE entry sfx=FX008
+door 15 4 N08_FORGE entry sfx=FX008
+npc keeper_n08 18 12 left sprite=monk talk=N08_KEEPER name="Cairn Keeper"
+npc pilgrim_n08 6 12 right sprite=worker talk=N08_PILGRIM name="Journeyman Smith"
+npc wend_n08 5 17 right sprite=keeper talk=N08_WEND name="Tobiah Wend" if=!phase:post
+npc refugee_n08 5 17 right sprite=survivor talk=N08_REFUGEE if=phase:post
+npc child_n08 22 6 down sprite=child talk=N08_CHILD
+read 14 11 "The Great Anvil, older than the Crown. Hundreds of smiths' marks are struck into its face." scene=N08_ANVIL
+read 5 8 "A pilgrim's anvil. Struck into it: a hammer, a date, and 'FOR MY FATHER'."
+read 24 14 "A pilgrim's anvil, cracked clean through. Someone struck it too hard, or too sadly."
+sign 13 18 "ANVIL CAIRN. Leave an anvil, take a blessing. Smiths of the Reach, welcome."
+save 21 17
+chest N08_C_CAIRN 26 3 M002 1
+
+=== N08_FORGE
+name: Anvil Cairn - Forge-Mother's Hall
+tileset: interior_stone
+music: M012
+zone: N08
+location: L_N08
+encounters: none
+grid:
+##################
+#kk5!!5kkQkk5!!5k#
+#................#
+#..nnnnn....99...#
+#................#
+#..5......5......#
+#................#
+#rr............cc#
+#................#
+#k..............k#
+#................#
+########++########
+entities:
+spawn entry 8 10 up
+exit 8..9 11 N08_R01 from_forge
+npc crafter_n08 4 2 down sprite=elder talk=N08_SEO name="Anvil-Mother Seo"
+shop 4 3 SHOP_N08
+npc striker_n08 12 5 left sprite=apprentice talk=N08_STRIKER name="Striker Tovi"
+npc quench_n08 13 2 down sprite=worker talk=N08_QUENCH
+
+=== N09_R01
+name: Pipewright's Rest
+tileset: town_r02
+music: M012
+zone: N09
+region: R02
+location: L_N09
+encounters: none
+save: true
+grid:
+____uu______uu______uu______uu______uu__
+____uu______uu______uu______uu______uu__
+pppppppppppppppppppppppppppppppppppppppp
+____uu______uu______uu______uu______uu__
+____uu______uu______uu______uu______uu__
+____uu______uu______uu______uu______uu__
+||||||||||||||||||||||||||||||||||||||||
+,ppRRRR4RRRRRRRR,aRRRRRR4R,,RR4RRRRRRpp,
+,p,RRRRRRRRRRRRR,SRRRRRRRR,SRRRRRRRRR,p,
+,p,RRRRRRRRRRRRR,,RRRRRRRR,,RRRRRRRRR,p,
+,r,WQWQWWDWWQWQWl,WQWDWWQWc,WWQWDWQWW5,,
+::::::::::::::::::::::::::::::::::::::::
+::::::::,:::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::,:::::::::
+::::::::::::::::::::::::::::::::::::::::
+,,ppvpp,,,,,aaaa,,,,>>,,,,,,,,,,,ppvpp,,
+,,,RRRRRRRR,nnnn,,,,<<,,,3333,,RR4RRRR,,
+,,,RRRRRRRR,,,,,,,,,,,,,,,,,,,,RRRRRRR,,
+,ccWWQWWQWW,rr,,,,,,,,,,,bb,,,,WWQWWQW,,
+||||||||||||||||||||||||||||||||||||||||
+____uu______uu______uu______uu______uu__
+____uu______uu______uu______uu______uu__
+____uu______uu______uu______uu______uu__
+pppppppppppppppppppppppppppppppppppppppp
+____uu______uu______uu______uu______uu__
+____uu______uu______uu______uu______uu__
+entities:
+spawn world 1 12 right
+spawn default 1 12 right
+spawn world_e 38 12 left
+spawn from_inn 9 11 down
+spawn from_shop 21 11 down
+spawn from_work 32 11 down
+exit 0 11..14 WORLD l_n09
+exit 39 11..14 WORLD l_n09
+door 9 10 N09_INN entry sfx=FX008
+door 21 10 N09_SHOP entry sfx=FX008
+door 32 10 N09_WORK entry sfx=FX008
+npc fitter_n09 5 14 up sprite=worker talk=N09_FITTER name="Pipe-fitter"
+npc valve_n09 34 14 up sprite=worker talk=N09_VALVE name="Valve-watcher"
+npc inspector_n09 22 12 down sprite=clerk talk=N09_INSPECTOR name="Crown Pipe Inspector"
+npc kid_n09 11 18 up sprite=child talk=N09_KID
+npc laundress_n09 26 17 up sprite=baker talk=N09_LAUNDRESS
+npc ambrose_n09 24 18 right sprite=elder talk=N09_AMBROSE name="Old Ambrose"
+npc courier_n09 37 13 left sprite=worker talk=N09_COURIER
+npc guard_n09 2 13 right sprite=guard talk=N09_GUARD
+npc piper_n09 19 18 up sprite=apprentice talk=N09_PIPER name="Steam-organ Player"
+npc cook_n09 13 15 down sprite=baker talk=N09_COOK name="Stall Cook"
+npc veteran_n09 30 15 down sprite=survivor talk=N09_VETERAN
+read 20 15 "The steam organ: forty pipes of scavenged brass. It plays one chord at noon, loud enough to scare the crows off the ridge."
+read 17 8 "THE PIPEWRIGHT'S REST - beds, stew, and the only hot bath between Cinderwake and the sky."
+read 27 8 "WEND'S AGENT - GOODS. Closed on feast days, and on days the viaduct sways."
+read 15 19 "Past the railing: a long, long drop, full of mist and the sound of water."
+save 9 15
+chest N09_C_LOOKOUT 38 18 I002 1
+
+=== N09_INN
+name: Pipewright's Rest - The Inn
+tileset: interior
+music: M012
+zone: N09
+location: L_N09
+encounters: none
+grid:
+##################
+#kk!kQkkr?kQkkBkB#
+#..............B.#
+#.nnnnnn.........#
+#................#
+#.btb....btb.....#
+#.btb....btb..999#
+#.............999#
+#................#
+#k..............k#
+#................#
+########++########
+entities:
+spawn entry 8 10 up
+exit 8..9 11 N09_R01 from_inn
+npc dunmore_n09 3 2 down sprite=keeper talk=N09_INN name="Dunmore Pipewright"
+inn 3 3 scene=N09_INN
+npc bather_n09 12 7 right sprite=worker talk=N09_BATHER
+npc patron_n09 5 6 left sprite=noble talk=N09_PATRON
+read 14 6 "A copper bath, fed by a pipe from the viaduct boilers. The water is almost too hot. Almost."
+
+=== N09_SHOP
+name: Pipewright's Rest - Wend's Agent
+tileset: interior
+music: M012
+zone: N09
+location: L_N09
+encounters: none
+grid:
+################
+#kkQkkkk#kk5!Qk#
+#.......#......#
+#nnnnn..#..t...#
+#..............#
+#..............#
+#rc..........cr#
+#..............#
+#k............k#
+#..............#
+#######++#######
+entities:
+spawn entry 7 9 up
+exit 7..8 10 N09_R01 from_shop
+npc keeper_n09 3 2 down sprite=keeper talk=N09_SHOPKEEP name="Agent Pim"
+shop 3 3 SHOP_N09
+npc crafter_n09 11 2 down sprite=apprentice talk=N09_CRAFTER name="Brasswife Olen"
+
+=== N09_WORK
+name: Pipewright's Rest - Pipe Workshop
+tileset: interior
+music: M012
+zone: N09
+location: L_N09
+encounters: none
+grid:
+################
+#pp>>kk!kk<<ppQ#
+#..............#
+#..............#
+#..tt......55..#
+#..............#
+#pp..........pp#
+#..............#
+#r............c#
+#..............#
+#######++#######
+entities:
+spawn entry 7 9 up
+exit 7..8 10 N09_R01 from_work
+npc master_n09 4 3 down sprite=elder talk=N09_MASTER name="Master Pipewright Hesta"
+npc appr_n09 11 5 left sprite=apprentice talk=N09_APPRENTICE
+chest N09_C_WORK 13 2 W116 1
+read 3 1 "Blueprints for the viaduct, signed by three generations of Pipewrights. The newest adds a note: 'The east piers are shifting.'"
+
+=== N10_R01
+name: Cindermaw Caldera
+tileset: furnace
+music: M022
+zone: N10
+region: R02
+location: L_N10
+encounters: none
+legend: K=lava
+grid:
+^^^^^^^^^^^^^^####^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^....^^^^^^^^^^^^^^
+^^eeeeeeeeeey^....^yeeeeeeeeee^^
+^^eo,eeeeeeeeeeeeeeeeeeeee,oee^^
+^^eeeeeeeeeeeeeeeeeeeeeeeeeeee^^
+^^eeeeeeeeeeeeeeeeeeeexeeeeeee^^
+^^eeee*eeeeee,,,,,,eeeeeeeeeee^^
+^^eeeeeeee,,KKKKKKKK,,eeeeeeee^^
+^^eeeeee,,KKKKKKKKKKKK,,eeeeee^^
+^^eeeee,,KKKKKKKKKKKKKK,,eeeee^^
+^^eeeee,KKKKKKKKKKKKKKKK,eeeee^^
+^^,eee,,KKKKKKKKKKKKKKKK,,eee,^^
+^^eeee,,KKKKKKKKKKKKKKKK,,eeee^^
+^^eeee,,KKKKKKKKKKKKKKKK,,eeee^^
+^^eeeee,KKKKKKKKKKKKKKKK,eeeee^^
+^^eeeee,,KKKKKKKKKKKKKK,,eeeee^^
+^^eeeeee,,KKKKKKKKKKKK,,eeeeee^^
+^^eeeeeeee,,KKKKKKKK,,ee*eeeee^^
+^^eeeeeeeeeee,,,,,,eeeeeeeeeee^^
+^^eeeeeee!eeeeeeeeeeeeeeeeeeee^^
+^^exxeeeeeeeeeeeeeeeeeeeeexoee^^
+^^eeeeeeeeeeeesssseeeeeeeeeeee^^
+^^^^^^^^^^^^^^,,,,^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^,,,,^^^^^^^^^^^^^^
+entities:
+spawn world 15 22 up
+spawn default 15 22 up
+exit 14..17 23 WORLD l_n10
+block 14..17 2 tile=rubble if=!flag:cindermaw_awake msg="The cave mouth is plugged with a single slab of cooled glass, warm to the touch. Something behind it is breathing."
+read 15 2 "The seal on the lair." scene=N10_SEAL if=!flag:cindermaw_awake
+npc scholar_n10 8 18 right sprite=scholar talk=N10_SCHOLAR name="Fire-Reader Imre" if=!phase:post
+npc watcher_n10 8 18 right sprite=survivor talk=N10_WATCHER if=phase:post
+read 6 6 "A crystal of cooled dragon-breath, clear as glass. Something small and scaled is frozen inside it."
+read 24 17 "A second crystal. Inside it, a scale the size of a door."
+read 20 3 "Scorch marks climb the rim in a spiral, as if something coiled here to sleep and turned over once a century."
+chest N10_C_RIM 27 12 M002 2
+chest N10_C_HIDDEN 4 4 A105 1 hidden=1
+
+=== N41_R01
+name: Oathstone Crossroads
+tileset: town_r01
+music: M017
+zone: N41
+region: R01
+location: L_N41
+encounters: none
+save: true
+grid:
+TTTTTTTTTTTTTT::TTTTTTTTTTTTTT
+TT"""TT""""T""::""T""""TT""TTT
+T"1"""""""""""::"""""""""""1"T
+T"""o"""o"""""::""""]]]""""""T
+T""o"""""o""""::""""]]]c"""""T
+T""o""y""o""""::""""aaar""""TT
+T"""o"""o"""""::"""""""c"""""T
+T""""o"o""""""::"""""""""""""T
+T"""""""""""::::::"""""""""""T
+T"""""""""""::::::"""""""""""T
+::::::::::::::yy::::::::::::::
+::::::::::::::yy::::::::::::::
+T"""""""""""::::::"""""""""""T
+T"""""""""""::::::"""""""""""T
+T"[[""!"""""""::""hhhhhhhhh""T
+T"[[""""""""""::""h.x.y.x.h""T
+T""""""""""""":::::.......h""T
+T"1"""""""""""::""h..5..r.h""T
+T"""""""""""""::""hhhhhhhhh""T
+TT""""T"""""""::"""""""T""""TT
+TTTT"""TTTTTTT::TTTT""TTTTTTTT
+TTTTTTTTTTTTTT::TTTTTTTTTTTTTT
+entities:
+spawn world 14 20 up
+spawn default 14 20 up
+exit 14..15 21 WORLD l_n41
+exit 14..15 0 WORLD l_n41
+exit 0 10..11 WORLD l_n41
+exit 29 10..11 WORLD l_n41
+npc wend_n41 21 6 down sprite=keeper talk=N41_WEND name="Tobiah Wend"
+npc courier_n41 16 9 left sprite=worker talk=N41_COURIER name="Crown Courier" if=!phase:post
+npc warden_n41 17 12 down sprite=guard talk=N41_WARDEN name="Road Warden" if=!phase:post
+npc pilgrim_n41 4 15 right sprite=elder talk=N41_PILGRIM
+npc mason_n41 20 17 up sprite=worker talk=N41_MASON name="Milestone Mason"
+npc child_n41 11 12 down sprite=child talk=N41_CHILD
+npc waykeep_n41 7 8 down sprite=monk talk=N41_WAYKEEP name="Waystone Keeper"
+npc camp_n41 5 16 up sprite=survivor talk=N41_CAMP if=phase:post
+npc camp2_n41 9 13 left sprite=volunteer talk=N41_CAMP2 if=phase:post
+read 14 10 "The Oathstone: a milestone taller than a house. Four faces, four roads, and a fifth face nobody reads aloud." scene=N41_MILESTONE
+read 6 5 "A waystone, humming faintly." scene=N41_WAYSTONE
+save 9 8
+chest N41_C_YARD 25 15 I013 1
+
+=== N42_R01
+name: The Weeping Dam - Dam Foot
+tileset: underways
+music: M022
+zone: N42
+region: R02
+location: L_N42
+encounters: none
+save: true
+grid:
+##############..##############
+##############..##############
+###&#####&####..####&#####&###
+#####(########((##############
+^'';''',,,,,,,,,,,,,,,,,'''';'
+^~~~~~~~~~~~,,,,,,,~~~~~~~~~~^
+^~~~~~~~~~~~,,,,,,,~~~~~~~~~~^
+^ww~~~~~~~~ww,,,,,,ww~~~~~~ww^
+^,,ww~~~~ww,,,,,,,,,,ww~~ww,,^
+^,,,,wwww,,,,,,,,,,,,,,ww,,,,^
+^,x,,,,,,,,,,o,,,,,,,,,,,,,x,^
+^,xx,,,,,,,,,,,,,,,,,2,,,,xx,^
+^^^^^^^^^^^,ss,,,,,,,^^^^^^^^^
+^^^^^^^^^^^,ss,,,,,,,^^^^^^^^^
+^""""""""""::::::::""""""""""^
+^""T"""""""":::::::"""""""T""^
+^TTTT"""""""::::::""""""TTTTTT
+^TTTTTTT""""::::""""TTTTTTTTTT
+^TTTTTTTTTTT::::TTTTTTTTTTTTTT
+TTTTTTTTTTTT::::TTTTTTTTTTTTTT
+entities:
+spawn world 13 18 up
+spawn default 13 18 up
+spawn from_r02 14 4 down
+spawn from_r03 5 4 down
+exit 12..15 19 WORLD l_n42
+exit 14..15 0 N42_R02 from_r01
+block 14..15 3 tile=rubble if=phase:post msg="The service door is packed with mud to the lintel. The galleries beyond are silent."
+door 5 3 N42_R03 from_r01 sfx=FX009
+block 5 3 tile=gate if=!flag:n42_shortcut msg="A maintenance hatch, bolted from inside."
+block 5 3 tile=rubble if=phase:post msg="The hatch is buried under a slope of dam-stone."
+trigger 11..18 11 scene=N42_ENTER if=!event:N42_ENTER,!phase:post
+save 17 10
+npc sapper_n42 8 10 right sprite=worker talk=N42_SAPPER name="Guild Sapper" if=!phase:post
+npc mourner_n42 16 15 left sprite=elder talk=N42_MOURNER if=phase:post
+npc digger_n42 9 9 right sprite=survivor talk=N42_DIGGER if=phase:post
+read 12 10 "A gauge post. The needle has been wired to point at SAFE."
+
+=== N42_R02
+name: The Weeping Dam - Lower Gallery
+tileset: underways
+music: M022
+zone: N42
+region: R02
+location: L_N42
+encounters: W_N42
+rate: 0.7
+grid:
+################################
+#kk..pppp.....vv......pppp...kk#
+#..............................#
+#...............................
+#...............................
+#.u......u......u......u.......#
+#..............................#
+#'''.....''.......''......''''.#
+#~~~~~~~~~~~~~~==~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~==~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~==~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~==~~~~~~~~~~~~~~#
+#''......''....'.......''....''#
+#..............................#
+#..............................#
+#.u......u......u......u.......#
+#..............................#
+#rr..........................cc#
+#..............................#
+##############..################
+entities:
+spawn from_r01 14 18 up
+spawn from_r03 30 3 left
+exit 14..15 19 N42_R01 from_r02
+exit 31 3..4 N42_R03 from_r02
+block 15..16 8..11 tile=water if=!flag:n42_sluice1 msg="The walkway is under a fast black current."
+switch n42_sluice1 3 13 scene=N42_SLUICE1 sprite=lever
+chest N42_C_GALLERY 16 3 I002 2
+chest N42_C_HIDDEN 2 2 A106 1 hidden=1
+read 10 13 "A painted notice: 'SLUICE ONE diverts the gallery race. Pull ONLY in an emergency.' Someone has added: 'it is one'."
+npc drowned_n42 25 14 left sprite=survivor talk=N42_DROWNED name="Drowned Guildsman"
+
+=== N42_R03
+name: The Weeping Dam - Valve Hall
+tileset: underways
+music: M022
+zone: N42
+region: R02
+location: L_N42
+encounters: W_N42
+rate: 0.8
+grid:
+##############..##############
+#k>>k..pp..<<.....<<..pp..>>k#
+#............................#
+.............................#
+.............................#
+#............................#
+#.<........................>.#
+#...~~~~~~~~~ww~~~~~~~~~~~~..#
+#...~~~~~~~~~ww~~~~~~~~~~~~..#
+#...~~~~~~~~~ww~~~~~~~~~~~~..#
+#...wwwwwwwwwwwwwwwwwwwwww~..#
+#...~~~~~~~~~~~~ww~~~~~~~~~..#
+#...~~~~~~~~~~~~ww~~~~~~~~~..#
+#...~~~~~~~~~~~~ww~~~~~~~~~..#
+#...~~~~~~~~~~~~ww~~~~~~~~~..#
+#............................#
+#.>........................<.#
+#............................#
+#............................#
+#rc......................x...#
+#............................#
+###########################(##
+entities:
+spawn from_r02 1 3 right
+spawn from_r04 14 1 down
+spawn from_r01 27 20 up
+exit 0 3..4 N42_R02 from_r03
+exit 14..15 0 N42_R04 from_r03
+block 14..15 1 tile=gate if=!flag:n42_sluice2 msg="A floodgate seals the keeper's stair. The valve for it is out on the race."
+switch n42_sluice2 25 10 scene=N42_SLUICE2 sprite=lever
+switch n42_short 26 20 scene=N42_SHORT sprite=lever
+door 27 21 N42_R01 from_r03 sfx=FX009
+chest N42_C_VALVE 4 18 G108 1
+chest N42_C_ISLE 17 14 I004 2
+read 9 1 "Valve schedule, in the keeper's hand: 'Open two, close one, pray.' Below, in a different hand: 'I stopped praying. I started holding.'"
+
+=== N42_R04
+name: The Weeping Dam - Keeper's Stair
+tileset: underways
+music: M022
+zone: N42
+region: R02
+location: L_N42
+encounters: none
+grid:
+########......########
+#kk?k!kksssssskk!k?kk#
+#....................#
+#..pp..............pp#
+#....................#
+#....................#
+#.btb...........B....#
+#..t............B....#
+#....................#
+#....................#
+#....................#
+#....................#
+#....................#
+#rr................cc#
+#....................#
+#########....#########
+entities:
+spawn from_r03 10 14 up
+spawn from_r05 10 1 down
+exit 9..12 15 N42_R03 from_r04
+exit 8..13 0 N42_R05 from_r04
+npc orrin_n42 10 5 down sprite=survivor talk=N42_ORRIN name="Keeper Orrin"
+save 6 11
+heal 15 11
+read 3 5 "The keeper's log, last page: 'Crown says hold the water for the furnaces. Village below says let it out. I am one man with two hands.'"
+read 17 5 "A made bed, two pillows. One is still dented."
+
+=== N42_R05
+name: The Weeping Dam - Dam Crown
+tileset: underways
+music: M022
+zone: N42
+region: R02
+location: L_N42
+encounters: none
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+#,,,,&,,,,,,,,,,,,,,,,,,&,,,,#
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,#
+#,,,,,,,,,,,,,,,,,,,,,,,,,,,,#
+#u##u###u####,,,,u###u###u##u#
+^^^^^^^^^^^^#,,,,#^^^^^^^^^^^^
+^^^^^^^^^^^##,,,,##^^^^^^^^^^^
+^^^^^^^^^^^^#,,,,#^^^^^^^^^^^^
+^^^^^^^^^^^^#,,,,#^^^^^^^^^^^^
+^^^^^^^^^^^^#,,,,#^^^^^^^^^^^^
+entities:
+spawn from_r04 14 16 up
+exit 13..16 17 N42_R04 from_r05
+npc sluicewife_n42 14 9 down sprite=patient talk=N42_BOSS name="The Sluicewife" if=!flag:n42_cleared
+trigger 10..19 11 scene=N42_BOSS if=!flag:n42_cleared
+chest N42_C_CROWN 27 10 A107 1
+read 2 10 "The crest walk. Below you, very small, the roofs of Kettle Row."
+
+=== P01_R01
+name: Spine of Ilyrath - Rib Gate
+tileset: whitebone
+music: M024
+zone: P01
+region: R01
+location: L_P01
+encounters: none
+save: true
+grid:
+^^^^^^^^^^^^^....^^^^^^^^^^^^^
+^^^^^^^^^^^^^....^^^^^^^^^^^^^
+^^^^^^^(^^^^^....^^^^^^^^^^^^^
+^^^xx....................xx^^^
+^^^..u...u..........u...u..^^^
+^^^..u...u..........u...u..^^^
+^^^..u...u..........u...u..^^^
+^^^..u...u..;;;;....u...u..^^^
+^^^..u...u..........u...u..^^^
+^^^........................^^^
+^^^........................^^^
+^^^........................^^^
+^^^..u...u.....;;...u...u..^^^
+^^^..u...u..........u...u..^^^
+^^^..u...u..........u...u..^^^
+^^^..u...u..........u...u..^^^
+^^^..u...u..........u...u..^^^
+^^^o......................o^^^
+^^^^^^^^^^^^......^^^^^^^^^^^^
+^^^^^^^^^^^^......^^^^^^^^^^^^
+^^^^^^^^^^^^......^^^^^^^^^^^^
+^^^^^^^^^^^^......^^^^^^^^^^^^
+entities:
+spawn world 14 20 up
+spawn default 14 20 up
+spawn from_r02 14 1 down
+spawn from_r03 7 3 down
+exit 12..17 21 WORLD_POST l_p01
+exit 13..16 0 P01_R02 from_r01
+door 7 2 P01_R03 from_r01 sfx=FX009
+block 7 2 tile=rubble if=!flag:p01_shortcut msg="A gap between two ribs, jammed with fallen vertebrae."
+trigger 11..18 15 scene=P01_ENTER if=!event:P01_ENTER
+save 22 10
+npc pilgrim_p01 8 10 right sprite=survivor talk=P01_PILGRIM name="Bone-pilgrim"
+read 14 10 "A rib the height of a house, rising out of the plain. Carved at its root, by dragonborn hands, very old: a name." scene=P01_NAME
+
+=== P01_R02
+name: Spine of Ilyrath - Vertebral Walk
+tileset: whitebone
+music: M024
+zone: P01
+region: R01
+location: L_P01
+encounters: WP_R01
+rate: 0.7
+grid:
+________________....________________
+________________....________________
+________________....________________
+_.*...._________....________________
+_......_________....________________
+_......_________....________________
+___..___________....________________
+__...__.u.__.u._....__.u.__.u.__.u._
+^..................................^
+^..x....................;..........^
+^.........;...................x....^
+^..................................^
+__.u.__.u.__.u._....__.u.__.u._..u._
+________________....___________..___
+________________...._________......_
+________________...._________......_
+________________...._________....*._
+________________....________________
+________________....________________
+________________....________________
+entities:
+spawn from_r01 17 18 up
+spawn from_r03 17 1 down
+exit 16..19 19 P01_R01 from_r02
+exit 16..19 0 P01_R03 from_r02
+block 16..19 5 tile=rubble if=!flag:p01_mem2 msg="Vertebrae lock together across the way, like a jaw shut tight."
+block 16..19 4 tile=rubble if=!flag:p01_mem1 msg="Vertebrae lock together across the way, like a jaw shut tight."
+switch p01_mem1 2 4 scene=P01_MEM1 sprite=lever
+switch p01_mem2 33 15 scene=P01_MEM2 sprite=lever
+chest P01_C_WALK 5 3 I003 2
+read 17 9 "The walk along the spine. On either side, nothing: the Scar falls away into the dark for a long way."
+
+=== P01_R03
+name: Spine of Ilyrath - Ribcage Hollow
+tileset: whitebone
+music: M024
+zone: P01
+region: R01
+location: L_P01
+encounters: WP_R01
+rate: 0.8
+grid:
+^^^^^^^^^^^^^^....^^^^^^^^^^^^^^
+^..............................^
+^....u...u...u...u...u...u.....^
+^.u..........................u.^
+^..............................^
+^...xx................*........^
+^.u..........................u.^
+^..............................^
+^.......;;;;;;;;;;;;;;;;.......^
+^.u.....;;;;;;;;;;;;;;;;.....u.^
+^.......;;;000..00000;;;.......^
+^.......;;;0000..0000;;;.......^
+^.u.....;;;0000..0000;;;.....u.^
+^.......;;;0000..0000;;;.......^
+^.......;;;;;;;;;;;;;;;;.......^
+^.u.....;;;;;;;;;;;;;;;;.....u.^
+^..............................^
+^.....o........................^
+^.u.......................xo.u.^
+^..............................^
+^..............................^
+^....u...u...u...u...u...u.....^
+^..(...........................^
+^^^^^^^^^^^^^^....^^^^^^^^^^^^^^
+entities:
+spawn from_r02 15 22 up
+spawn from_r04 15 1 down
+spawn from_r01 3 21 up
+exit 14..17 23 P01_R02 from_r03
+exit 14..17 0 P01_R04 from_r03
+block 14..17 1 tile=rubble if=!flag:p01_mem3 msg="The throat of the ribcage is shut by a knot of fused bone."
+switch p01_mem3 15 12 scene=P01_MEM3 sprite=lever
+switch p01_short 4 21 scene=P01_SHORT sprite=lever
+door 3 22 P01_R01 from_r03 sfx=FX009
+chest P01_C_HOLLOW 22 6 G121 1
+chest P01_C_HIDDEN 28 21 W145 1 hidden=1
+read 22 5 "A fragment-crystal grown out of the bone, dark and cold. Nothing remembers in it anymore."
+npc scav_p01 8 6 right sprite=survivor talk=P01_SCAV name="Marrow-scavenger"
+
+=== P01_R04
+name: Spine of Ilyrath - Skull Stair
+tileset: whitebone
+music: M024
+zone: P01
+region: R01
+location: L_P01
+encounters: none
+grid:
+^^^^^^^^......^^^^^^^^
+^uuu....ssssss....uuu^
+^....................^
+^....................^
+^....................^
+^..y..............y..^
+^........@@@@........^
+^....................^
+^....................^
+^....................^
+^..y..............y..^
+^....................^
+^....................^
+^xx................xx^
+^....................^
+^^^^^^^^^....^^^^^^^^^
+entities:
+spawn from_r03 10 14 up
+spawn from_r05 10 1 down
+exit 9..12 15 P01_R03 from_r04
+exit 8..13 0 P01_R05 from_r04
+save 5 11
+heal 16 11
+read 10 6 "An altar of dragonborn make, set into the jawbone. Offerings: scales, teeth, a child's clay dragon." scene=P01_ALTAR
+npc elder_p01 13 8 left sprite=elder talk=P01_ELDER name="Dragonborn Elder"
+
+=== P01_R05
+name: Spine of Ilyrath - The Marrow Nest
+tileset: whitebone
+music: M024
+zone: P01
+region: R01
+location: L_P01
+encounters: none
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^..u..u..u..u..u..u..u..u....^
+^............................^
+^..;;;;;;;;;;0000;;;;;;;;;;..^
+^..;;;;;xxx;;;;;;;;;;;;;;;;..^
+^..;;;;;;;;;;;;;;;;xxx;;;;;..^
+^..;;;;;;;;;;;;;;;;;;;;;;;;..^
+^............................^
+^............................^
+^............................^
+^............................^
+^............................^
+^...o........................^
+^........................o...^
+^............................^
+^............................^
+^.....x................x.....^
+^............................^
+^............................^
+^^^^^^^^^^^^......^^^^^^^^^^^^
+entities:
+spawn from_r04 14 18 up
+exit 12..17 19 P01_R04 from_r05
+trigger 4..25 11 scene=P01_BOSS if=!flag:p01_cleared
+chest P01_C_NEST 24 4 A110 1
+read 14 3 "The dragon's heart-cavity. The bone around it is scorched from the inside." scene=P01_HEART
+
+=== P02_R01
+name: The Tessellate - Foundation Plaza
+tileset: crown
+music: M024
+zone: P02
+region: R01
+location: L_P02
+encounters: none
+save: true
+grid:
+##############....##############
+##############....##############
+##############....##############
+##############....##############
+##############....##############
+###uu###uu####....#####uu###uu##
+###uu###uum###....###m#uu###uu##
+###uu###uu####(())#####uu###uu##
+T""",..........::..........,"""T
+T""",..........::..........,"""T
+T""",.{{.......::.......{{.,"""T
+T""",..........::..........,"""T
+T""",......y...::...y......,"""T
+T""",..........::..........,"""T
+T""",.vv.......::.......vv.,"""T
+T""",..........::..........,"""T
+T""",..........::.S........,"""T
+T""""""""""""""::""""""""""""""T
+T"]]"""""""""""::"""""""""[["""T
+T"]]""!""""""""::"""""""""[["""T
+T""""""""x"""""::""""""""""""""T
+T""""""""""""""::"""""xo"""""""T
+TTTTTTTTTTTTTT"::"TTTTTTTTTTTTTT
+TTTTTTTTTTTTTT"::"TTTTTTTTTTTTTT
+entities:
+spawn world 15 22 up
+spawn default 15 22 up
+spawn from_r02 15 6 down
+spawn from_r03 5 9 down
+exit 14..17 23 WORLD_POST l_p02
+exit 14..17 0 P02_R02 from_r01
+trigger 12..19 17 scene=P02_ENTER if=!event:P02_ENTER
+read 18 16 "A builder road sign, bent but legible: MILE 0. RING HIGHWAY - ALL LANES." scene=QC17_MARKER
+npc surveyor_p02 10 15 right sprite=scholar talk=P02_SURVEYOR name="Surveyor Lanne"
+npc camper_p02 5 18 right sprite=survivor talk=P02_CAMPER
+npc kid_p02 24 19 left sprite=child talk=P02_KID
+read 11 12 "A builder statue with a measuring rod. Someone has hung a Crown helmet on its head, then thought better of it and taken it off."
+save 21 15
+
+=== P02_R02
+name: The Tessellate - Assembly Courses
+tileset: conduit
+music: M024
+zone: P02
+region: R01
+location: L_P02
+encounters: WP_R01
+rate: 0.7
+grid:
+###############....###############
+#.......pppp..........pppp.......#
+#{{............................vv#
+#................................#
+#................................#
+#______________....______________#
+#__..._________...._________...__#
+#__..._________................__#
+#__..._________................__#
+#__..._________...._________...__#
+#__................_________...__#
+#__................_________...__#
+#__..._________...._________...__#
+#__..._________...._________...__#
+#__..._________...._________...__#
+#__..._________...._________...__#
+#______________...._________...__#
+#................................#
+#mm............................mm#
+#................................#
+#................................#
+###############....###############
+entities:
+spawn from_r01 16 20 up
+spawn from_r03 16 1 down
+exit 15..18 21 P02_R01 from_r02
+exit 15..18 0 P02_R03 from_r02
+block 15..18 6 tile=block if=!flag:p02_course1 msg="A fresh course of masonry, laid across the shaft this morning. A console blinks at the top of the west column."
+block 15..18 13 tile=block if=!flag:p02_course2 msg="A course of masonry walls the shaft, still settling. A console hums on the far side."
+switch p02_course1 4 6 scene=P02_COURSE1 sprite=lever
+switch p02_course2 16 12 scene=P02_COURSE2 sprite=lever
+chest P02_C_COURSE 7 10 I003 2
+read 16 9 "Between the courses: a gap where the tower ends and the sky begins. Wind comes up out of the plain."
+
+=== P02_R03
+name: The Tessellate - Traffic Control
+tileset: conduit
+music: M024
+zone: P02
+region: R01
+location: L_P02
+encounters: WP_R01
+rate: 0.8
+grid:
+##############..##############
+#mmm{{mmm{{mmm..mmmmm{{mmm{{m#
+#............................#
+#............................#
+#..nnnnnnnn........nnnnnnnn..#
+#............................#
+#............................#
+#............................#
+#............................#
+#..mm..mm............mm..mm..#
+#............................#
+#............................#
+#.........,,,,,,,,,,.........#
+#.........,,ynny,,,,.........#
+#.........,,,,,,,,,,.........#
+#............................#
+#............................#
+#.........................vv.#
+#EE..........................#
+#.........................cc.#
+#............................#
+##############..##############
+entities:
+spawn from_r02 14 20 up
+spawn from_r04 14 1 down
+spawn from_r01 3 18 right
+exit 14..15 21 P02_R02 from_r03
+exit 14..15 0 P02_R04 from_r03
+block 14..15 1 tile=block if=!flag:p02_course3 msg="The stair up is walled with this morning's course. The traffic console is dark."
+switch p02_course3 13 11 scene=P02_COURSE3 sprite=lever
+switch p02_lift 3 19 scene=P02_LIFT sprite=lever
+door 1 18 P02_R01 from_r03 sfx=FX009
+door 2 18 P02_R01 from_r03 sfx=FX009
+block 1..2 18 tile=gate if=!flag:p02_lift msg="A builder service lift. Its cage is chained at the top of the shaft."
+read 6 4 "Traffic log, lane 1." scene=QC17_LOG1
+read 22 4 "Traffic log, lane 6." scene=QC17_LOG2
+read 14 13 "The dispatch relay: a console with a single lit key." scene=QC17_LOG3
+chest P02_C_CONTROL 27 3 W144 1
+chest P02_C_HIDDEN 2 3 G124 1 hidden=1
+
+=== P02_R04
+name: The Tessellate - Scaffold Landing
+tileset: crown
+music: M024
+zone: P02
+region: R01
+location: L_P02
+encounters: none
+grid:
+########......########
+#.......ssssss.......#
+#....................#
+#|||..............|||#
+#....................#
+#....................#
+#...]............c...#
+#....................#
+#....................#
+#....................#
+#....................#
+#....................#
+#mm................mm#
+#....................#
+#....................#
+##########..##########
+entities:
+spawn from_r03 10 14 up
+spawn from_r05 10 1 down
+exit 10..11 15 P02_R03 from_r04
+exit 8..13 0 P02_R05 from_r04
+save 5 10
+heal 16 10
+npc climber_p02 12 6 left sprite=worker talk=P02_CLIMBER name="Scaffold Climber"
+read 4 7 "A survey tent, abandoned. A notebook: 'The tower adds one course every dawn. At this rate it reaches the clouds in eleven years. Why?'"
+
+=== P02_R05
+name: The Tessellate - Governor's Crown
+tileset: crown
+music: M024
+zone: P02
+region: R01
+location: L_P02
+encounters: none
+grid:
+##############################
+#{{mm{{mm{{mm{{mm{{mm{{mm{{mm#
+#............................#
+#....vv....,,mmmm,,.....nn...#
+#..........,,m@@m,,..........#
+#..........,,,,,,,,..........#
+#..........,,,,,,,,..........#
+#............................#
+#............................#
+#..u......................u..#
+#............................#
+#............................#
+#............................#
+#............................#
+#..u......................u..#
+#............................#
+#............................#
+#............................#
+#............................#
+############......############
+entities:
+spawn from_r04 14 18 up
+exit 12..17 19 P02_R04 from_r05
+trigger 4..25 11 scene=P02_BOSS if=!flag:p02_cleared
+read 24 3 "The dispatch console of the Ring Highway, still warm." scene=QC17_CONSOLE
+read 14 4 "The governor core's cradle, empty and humming."
+chest P02_C_CROWN 5 5 A113 1
+
+=== P05_R01
+name: Refuge Rock
+tileset: harbor
+music: M016
+zone: P05
+region: R03
+location: L_P05
+encounters: none
+save: true
+grid:
+~~~~~~~~~~~~dd~~~~~~~~dd~6~~~~~~~~~~~~
+~~~~~~~~~~6~dd~~~~~~~~dd~~~~~~~~~~~~~~
+~~~~~~~~zzzzdd,,,,,,,,dd,,zzzz~~~~~~~~
+~~~~~z,,,,,,,,,RRuuuRR,,,,,,,,,,z~~~~~
+~~~z,,,,,,,,,,,RRRRRRR,,,,,,,,,,,,z~~~
+~~z,,,,,,,,,,,,RRRRRRR,,,,,,,,,,,,,z~~
+~~z,,,,,,,,,,,lWQWDWQWl,,,,,,,,,,,,z~~
+~z,,,,,,,,,,,,,,,,:,,,,,,,,,,,,,,,,,z~
+~z,RRRRRR4RR,,,,,,:,,,,,,,R4RRRRRR,,z~
+~z,RRRRRRRRR,,,,,,:,,,,,,,RRRRRRRR,,z~
+~z,WWQWDWQWWrc,,,,:,,,,,crWQWWDWQW,,z~
+~z,,::::::::::::::::::::::::::::::,,z~
+~z,,,,,,,,,,,,,,,,:,,,,,,,,,,,,,,,,,z~
+~z,]],,,,[[,,,,hh9hh,,,,,,,]],,[[,,,z~
+~z,]],,!,[[,,,,h999h,,,,,,,,,,,[[,,,z~
+~z,,,,,,,,,,,,,hhOhh,,,,,,,,,!,,,,,,z~
+~z,,,,,,,,,,,,,,,,:,,,,,,,,,,,,,,,,,z~
+~z,,333,,,22,,,,,,:,,,,,,ccr,,o,,,,,z~
+~~z,,,,,,,,,,,,,,,:,,,,,,,,,,,,,,,,z~~
+~~z,,g1g1g,,,,,,,,:,,,,,,,,,,,,,,,,z~~
+~~z,,ggggg,,S,,,,,:,,,,,,,,,,,,,,,,z~~
+~~~z,,,,,,,,,,,,,,:::::::::s,,,,,,z~~~
+~~~~z,,,,,,,,,,,,,:,,,,,,,ss,,,,,z~~~~
+~~~~~~z,,,,,:::::::,,,,,,,ssss,z~~~~~~
+~~~~~~~~z,,::,,,,,:,,,,,,,,,ss~~~~~~~~
+~~~~~~~~~~~dd,,,,,,,,,,,,,z~ss~~~~~~~~
+~~~~~~~~~~~dd~~~~~~~~~~~~~~~ss~~~~~~~~
+~~~~~~~~~~~dd~~~~~~~~~~~~~~~ss~~~~~~~~
+entities:
+spawn world 11 26 up
+spawn default 11 26 up
+spawn from_inn 7 11 down
+spawn from_shop 30 11 down
+spawn from_hall 18 7 down
+spawn from_shelf 28 25 up
+exit 11..12 27 WORLD_POST l_p05
+exit 28..29 27 P05_R02 from_rock
+block 28..29 27 tile=gate if=!flag:qw1_started msg="A rope gate across the shelf stair. A painted board: 'SHELF CLOSED - ASK THE WARDEN.'"
+door 7 10 P05_INN entry sfx=FX008
+door 30 10 P05_SHOP entry sfx=FX008
+door 18 6 P05_HALL entry sfx=FX008
+npc marit_p05 20 8 left sprite=elder talk=QW1_MARIT name="Warden Marit Oakes"
+npc boatwright_p05 14 2 right sprite=sailor talk=P05_BOATWRIGHT name="Boatwright"
+npc netmender_p05 21 2 left sprite=baker talk=P05_NETMENDER
+npc lookout_p05 33 5 left sprite=guard talk=P05_LOOKOUT name="Lookout"
+npc mother_p05 6 12 right sprite=baker talk=P05_MOTHER
+npc kid_p05 13 16 down sprite=child talk=P05_KID wander=1
+npc kid2_p05 24 14 left sprite=child talk=P05_KID2
+npc wend_p05 24 12 down sprite=keeper talk=P05_WEND name="Tobiah Wend"
+npc scribe_p05 10 16 right sprite=clerk talk=P05_SCRIBE name="Once-Clerk Abery"
+npc waiting_p05 26 20 down sprite=baker talk=QW1_WAITING name="Tamm's Wife" if=!q:QW1
+npc springkeep_p05 17 12 down sprite=worker talk=P05_SPRING name="Spring-keeper"
+npc dragonborn_p05 33 16 left sprite=survivor talk=P05_DRAGONBORN
+npc librarian_p05 3 18 right sprite=scholar talk=P05_LIBRARIAN
+npc ansa_p05 8 11 down sprite=sailor talk=QW1_ANSA_HOME name="Ansa" if=flag:qw1_home
+npc dov_p05 22 16 left sprite=worker talk=QW1_DOV_HOME name="Dov" if=flag:qw1_home
+npc tamm_p05 25 20 right sprite=worker talk=QW1_TAMM_HOME name="Tamm" if=flag:qw1_home
+npc wynn_p05 13 17 up sprite=child talk=QW1_WYNN_HOME name="Wynn" if=flag:qw1_home
+npc kell_p05 20 17 left sprite=guard talk=QW1_KELL_HOME name="Kell" if=flag:qw1_kell_in
+npc deserter_p05 31 11 left sprite=soldier talk=QW1_DESERTER if=flag:qw1_kell_in
+read 17 15 "The Rock's spring: a cracked cistern, barely wet." scene=P05_CISTERN
+sign 12 20 "REFUGE ROCK. All who walk out of the ruin are welcome. Work if you can. Eat either way."
+save 20 20
+
+=== P05_R02
+name: Refuge Rock - The Tide Shelf
+tileset: harbor
+music: M016
+zone: P05
+region: R03
+location: L_P05
+encounters: WP_R03
+rate: 0.6
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~z,,,,,,,,,,,,,,,,,,,,,,,,,,,,z~~
+~~zwwoww,,,,,,,,,,,,,,,,,,,,,ooz~~
+~~z,,,,,,,,,,,,,,,,,,,,,oow,,,,z~~
+~~z,ooo,,,,,,,,,,,,,,,o,,,,,,,,z~~
+~~z,,,,,,,,,WWWWWWWWWWWWWW,,,,,z~~
+~~z,,,,,,,WWddddddddddddWW,,,,,z~~
+~~z,,,,,WWdddddcrddddddddW,,,,,z~~
+~~z,,,WWdddddddddddduddddW,,~~~z~~
+~~z,,,Wdddddudddddddddddd+,w~~~w~~
+~~zo,,WWdddddddddrcddddddW,,~~~z~~
+~~z,,,,,WWddddddddddddddW,,,,,,z~~
+~~z,,,,,,,WWWWWW+WWWWWWWW,,,,,,z~~
+~~z,,,,,,,,,,,,,,,,,,,,,,,,,,,,z~~
+~~z,,,,,,,,,,,,,,,,,,,,,,,,,,,,z~~
+~~z,,,,,,,ww~~ww,,,,,,,,,,w''o,z~~
+~~z,o''ow,,w~~w,,,,o,,,,,,,,,,,z~~
+~~z,,,,,,,,,,,,,,,,,,,,,,,,,,,,z~~
+~~z,,,,,,,,,,,,x,,,,,,,,,,,,,,,z~~
+~~zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz~~
+~~zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~ss~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~ss~~~~~~
+entities:
+spawn from_rock 26 21 up
+exit 26..27 23 P05_R01 from_shelf
+npc ansa_shelf 29 14 left sprite=sailor talk=QW1_ANSA name="Ansa" if=q:QW1:ACTIVE,!flag:qw1_home
+trigger 26..30 13..15 scene=QW1_CRABS if=q:QW1:ACTIVE,!flag:qw1_home
+npc dov_shelf 4 4 down sprite=worker talk=QW1_DOV name="Dov" if=q:QW1:ACTIVE,!flag:qw1_home
+npc tamm_shelf 11 10 right sprite=worker talk=QW1_WRECK name="Tamm" if=q:QW1:ACTIVE,!flag:qw1_home
+npc wynn_shelf 12 8 down sprite=child talk=QW1_WYNN name="Wynn" if=q:QW1:ACTIVE,!flag:qw1_home
+npc kell_shelf 19 10 left sprite=guard talk=QW1_WRECK name="Sergeant Kell" if=q:QW1:ACTIVE,!flag:qw1_home
+npc kell_camp 19 10 left sprite=guard talk=QW1_KELL_CAMP name="Kell" if=flag:qw1_kell_out
+npc soldier_shelf 16 11 up sprite=soldier talk=QW1_SOLDIER if=q:QW1:ACTIVE,!flag:qw1_home
+trigger 3..30 20 scene=QW1_AMBUSH if=qs:QW1:plead,!event:QW1_AMBUSH
+read 21 7 "Crates stencilled CROWN PROVISION - COASTAL GARRISON. Most are empty. Someone has been sharing them out, fairly."
+read 8 10 "A Crown desalination still, salvaged and patched. It drips fresh water into a bucket, one drop a breath."
+chest P05_C_SHELF 28 3 I003 2
+chest P05_C_HOLD 23 11 G123 1
+
+=== P05_INN
+name: Refuge Rock - The Upturned Hull
+tileset: interior
+music: M016
+zone: P05
+location: L_P05
+encounters: none
+grid:
+##################
+#kk!kQkkr?kQkBkBkB
+#............B.B.#
+#.nnnnnn.........#
+#................#
+#.btb....btb.....#
+#.btb....btb...rr#
+#................#
+#k..............k#
+#................#
+########++########
+entities:
+spawn entry 8 9 up
+exit 8..9 10 P05_R01 from_inn
+npc innkeep_p05 3 2 down sprite=keeper talk=P05_INN name="Hullkeeper Brin"
+inn 3 3 scene=P05_INN
+npc sleeper_p05 13 3 down sprite=survivor talk=P05_SLEEPER
+npc cardplayer_p05 7 5 left sprite=sailor talk=P05_CARDS
+
+=== P05_SHOP
+name: Refuge Rock - Salvage Store
+tileset: interior
+music: M016
+zone: P05
+location: L_P05
+encounters: none
+grid:
+################
+#kkQkkkk#kk5!Qk#
+#.......#......#
+#nnnnn..#..t...#
+#..............#
+#..............#
+#rc..........cr#
+#..............#
+#k............k#
+#..............#
+#######++#######
+entities:
+spawn entry 7 9 up
+exit 7..8 10 P05_R01 from_shop
+npc keeper_p05 3 2 down sprite=keeper talk=P05_SHOPKEEP name="Salvager Quill"
+shop 3 3 SHOP_P05
+npc crafter_p05 11 2 down sprite=worker talk=P05_CRAFTER name="Wreckwright Nan"
+chest P05_C_STORE 13 8 I005 1
+
+=== P05_HALL
+name: Refuge Rock - Warden's Hall
+tileset: interior
+music: M016
+zone: P05
+location: L_P05
+encounters: none
+grid:
+##################
+#kk!k8kQkk@kQk8k!k
+#................#
+#....tttttttt....#
+#....tttttttt....#
+#................#
+#................#
+#rr............cc#
+#................#
+#k..............k#
+#................#
+########++########
+entities:
+spawn entry 8 10 up
+exit 8..9 11 P05_R01 from_hall
+npc council_p05 3 3 right sprite=elder talk=P05_COUNCIL name="Councillor Fenn"
+npc council2_p05 14 3 left sprite=baker talk=P05_COUNCIL2 name="Councillor Rue"
+npc hallscribe_p05 9 6 up sprite=clerk talk=P05_HALLSCRIBE
+read 9 1 "A lamp in a niche: the old lighthouse lens, cracked, set in the wall like a saint's relic."
+read 6 5 "The council table is a ship's hatch cover on crates. Names are carved around the edge - everyone who has arrived."
+
+=== P09_R01
+name: The Last Beacon
+tileset: town_r04
+music: M014
+zone: P09
+region: R04
+location: L_P09
+encounters: none
+save: true
+grid:
+~~~~~~~~~~~"^^^^^^^^""~~~~~~~~~~
+~~~~~~~~""""########"""""~~~~~~~
+~~~~~~~"""""#Q####Q#""""""~~~~~~
+~~~~~~""""""########"""""""~~~~~
+~~~~~"""""""##Q##Q##""""""""~~~~
+~~~~""""""""########"""""""""~~~
+~~~""""""""l###((###l"""""""""~~
+~~~""""""""""""::"""""""""""""~~
+~~^^^^^""""""""::""""""""""""""~
+~~^^^^^""ccr"""::""]]"]]"""""""~
+~~^^^^^""""""""::""""""""""""""~
+~,,,^^^""""""""::""""!"""""""""~
+~@,,LLL:"""""""::""""""""[[""""~
+~,,,^^^"::::::::::::::::"""""""~
+~,,,^^^""""""""::"""""""""EE77"~
+~~^^^^^""""""""::"""""""""xx""~~
+~~^^^^^"""]]"""::"""""""""""""~~
+~~^^^^^"!""""""::""""""""""""~~~
+~~^^^^^""""""""::"""""""o"""~~~~
+~~~~~~"""""""""::S"""""""""~~~~~
+~~~~~~~o"""""""::"""""""""~~~~~~
+~~~~~~~~"""""""::""""""""~~~~~~~
+~~~~~~~~~~~""""::"""""~~~~~~~~~~
+~~~~~~~~~~~~~""::""~~~~~~~~~~~~~
+entities:
+spawn world 15 22 up
+spawn default 15 22 up
+spawn from_top 15 7 down
+exit 13..18 23 WORLD_POST l_p09
+door 15 6 P09_TOP entry sfx=FX009
+door 16 6 P09_TOP entry sfx=FX009
+block 15..16 6 tile=gate if=!flag:qw6_key msg="The tower door is shut with a keeper's lock: a bronze plate with a lantern-shaped keyhole."
+npc hesk_p09 18 8 left sprite=worker talk=QW6_HESK name="Signalwoman Hesk"
+npc keeper1_p09 23 10 left sprite=survivor talk=P09_KEEPER1 name="Signal-keeper"
+npc keeper2_p09 11 15 right sprite=worker talk=P09_KEEPER2 name="Signal-keeper"
+npc child_p09 20 15 up sprite=child talk=P09_CHILD
+npc liftman_p09 25 13 right sprite=elder talk=P09_LIFTMAN name="Lift-warden"
+npc wend_p09 12 10 down sprite=keeper talk=P09_WEND name="Tobiah Wend" if=flag:p09_beacon_lit
+read 1 12 "A cairn of stones on the ledge, with a lantern set on top. Under the lantern, a body in a keeper's coat." scene=QW6_CAIRN
+read 26 14 "The cable lift to the lower harbour. The cable hangs in the sea."
+sign 17 19 "THE LAST BEACON. Signal Company of the Skyspine. When it burns, every lamp that sees it answers."
+save 19 17
+chest P09_C_CAMP 9 10 I023 2
+
+=== P09_TOP
+name: The Last Beacon - Lamp Gallery
+tileset: sky
+music: M014
+zone: P09
+region: R04
+location: L_P09
+encounters: none
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~
+#||||||||||||||||||||||#
+#,,,,,,,,,,,,,,,,,,,,,,#
+##Q##Q##Q#((#Q##Q##Q####
+#......................#
+#..xx..............xx..#
+#......................#
+#........******........#
+#........*@@@@*........#
+#........*@@@@*........#
+#........******........#
+#......................#
+#...................xx.#
+#..x...................#
+#......................#
+#.kk................kk.#
+#......................#
+###########ss###########
+entities:
+spawn entry 11 16 up
+exit 11..12 17 P09_R01 from_top
+trigger 1..22 12 scene=QW6_ROOST if=qs:QW6:climb,!event:QW6_ROOST
+read 11 7 "The great lamp of the Last Beacon: a lens of a thousand prisms around an empty fire-cup." scene=QW6_LAMP
+read 4 5 "A griffon nest woven from signal flags. The colours are all the colours of 'HELP'."
+read 21 15 "The keepers' signal book. The last line: 'Fault. All stations dark. Holding on for relief.'"
+chest P09_C_GALLERY 5 2 A118 1
+chest P09_C_NEST 20 11 I005 2
+

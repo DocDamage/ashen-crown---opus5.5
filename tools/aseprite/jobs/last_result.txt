@@ -1,3 +1,3 @@
 OK
-seconds=0.1
-job=job_1790784371_enemies.lua
+seconds=2.3
+job=job_1790791673_enemies.lua

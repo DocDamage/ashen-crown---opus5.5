@@ -15,6 +15,7 @@ from content import cast as CAST  # noqa: E402
 from content import vestiges as VES  # noqa: E402
 from content import bestiary2 as BX  # noqa: E402
 from content import bosses2 as BS  # noqa: E402
+from content import places as PL  # noqa: E402
 
 SUPPORTED_OPS = {"self_hp", "damage", "heal", "mp", "full_restore", "revive", "status", "cleanse", "dispel_positive", "atb", "oath",
                  "arm_overcast", "heat_exchange", "leap", "ground", "mine", "decoy", "steal", "protect", "lethal_guard",
@@ -584,6 +585,7 @@ def main():
     cat = {k: load(k) for k in ["characters", "abilities", "weapons", "armor", "accessories", "consumables", "statuses",
                                   "enemies", "bosses", "dungeons", "regions", "towns", "chapters", "quests", "music", "sfx"]}
     content = {"schema": 1}
+    PL.apply(cat, FM)
     content["characters"] = build_characters(cat["characters"])
     content["abilities"] = build_abilities(cat["abilities"])
     content["items"] = build_items(cat["weapons"], cat["armor"], cat["accessories"], cat["consumables"])

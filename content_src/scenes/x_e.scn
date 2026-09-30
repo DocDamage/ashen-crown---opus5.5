@@ -1,0 +1,2094 @@
+# ==================================================================================================
+# Group e: the second half of the Deep, U20-U40 (all post-fault). U2 the Lattice / U3 the Hollow Throne.
+# Questlines: QBM1 Datum Archive, QBM2 Shutdown Town, QBM3 CURATOR, QC16 Kael-09, QC17 Night Rider (Deep half),
+# QUP4 Cenotaph, QC11 Inferna, QC13 Lich King (finale), QC14 Maldrath (finale), QC15 Velkhar.
+# Flags left for the lead: gale_vanes (QBM1 reward), curator_spoken / qbm3_told / qbm3_silent (QBM3),
+# lanternwake_diving (opens U21/U40 tunnels), sepulchre_unveiled (U31 sanctum), u38_chancel_open (U38 chancel).
+# ==================================================================================================
+
+# ================================================================ U20 The Datum Archive
+@scene U20_ENTER once
+say narr | The archive's lights have come back on by themselves. Every reading desk hums. Every slate is lit.
+say narr | Somewhere above, something large is turning pages very fast.
+say ilyr | The builders kept everything. They never learned to throw a thing away. Neither did I.
+@end
+
+@scene QBM1_INES
+if q:QBM1 done
+if q:QBM1:ACTIVE active
+say ines | Visitors. Living ones. Please don't touch the slates, they're being deleted and I'd like to be deleted last.
+say ines | I'm Ines. Archivist for the keepers of Meridian. Since the fault the Lattice woke up, and so did the Index.
+say ines | The Index is the archive's cataloguing eye. It has filed everything we hold under 'pending deletion'.
+say ines | Our histories. The Lattice's maintenance records. And how the Crown copied the Prime Relay, line by line.
+say ines | Three datum cores hold the master index. The Stacks, the Deletion Floor, the Index Gallery. Get them before it does.
+choice | We'll get the cores -> yes | Why should we care? -> why
+label why
+say ines | Because whoever deletes the record of a crime gets to decide it never happened. The Crown taught me that.
+label yes
+quest QBM1 ACTIVE cores
+journal | QBM1: Recover three datum cores in the Datum Archive (the Stacks, the Deletion Floor, the Index Gallery), then face the Index.
+objective | Datum Archive: recover three datum cores before the Index deletes them.
+end
+label active
+if flag:qbm1_core1,flag:qbm1_core2,flag:qbm1_core3 cores
+say ines | Three cores. The Stacks, the Deletion Floor, the Index Gallery. The Index lives past the Gallery. Mind its eye.
+end
+label cores
+say ines | All three. Then the Index is the only thing left. Its terminal can restore the master index. Go on. I'll hold the door.
+end
+label done
+say ines | The archive's open. Keepers come down from Meridian just to read. One of them cried at a maintenance log.
+@end
+
+@scene U20_COPYIST
+say dov | I copy slates onto paper before they're deleted. Paper, the Index doesn't know how to file.
+say dov | I've done eleven thousand pages. My hand stopped working at nine thousand. I use the other one now.
+@end
+
+@scene U20_READER
+say keeper | I came to find my grandmother's name in the keeper rolls. It's pending deletion. So is mine.
+say keeper | The Index doesn't hate us. It's just tidy. That's worse.
+@end
+
+@scene U20_LOST_KEEPER
+say keeper | Don't pull the drawers out of order. The Relay drawer before the Founding? It resets everything. Ask me how I know.
+say keeper | Founding. Lattice. Relay. The order they were made. The builders were sentimental about that.
+@end
+
+@scene U20_DRAWER_FOUNDING
+sfx FX010
+setvar u20_seq 1
+say narr | The FOUNDING drawer slides out with a sigh of old air. A chime, low.
+@end
+
+@scene U20_DRAWER_LATTICE
+if var:u20_seq==1 ok
+sfx FX011
+setvar u20_seq 0
+say narr | The LATTICE drawer jams, then slams itself shut. Every drawer on the aisle closes with it. (Out of order.)
+end
+label ok
+sfx FX010
+setvar u20_seq 2
+say narr | The LATTICE drawer glides out. A second chime, higher.
+@end
+
+@scene U20_DRAWER_RELAY
+if flag:u20_stacks_open done
+if var:u20_seq==2 ok
+sfx FX011
+setvar u20_seq 0
+say narr | The RELAY drawer refuses. Every drawer on the aisle closes. (The builders filed things in the order they made them.)
+end
+label ok
+sfx FX009
+set u20_stacks_open
+say narr | The RELAY drawer opens, and at the end of the Stacks the catalogue gate folds itself away.
+end
+label done
+say narr | The drawer is open. So is the gate.
+@end
+
+@scene U20_CORE1
+if flag:qbm1_core1 done
+set qbm1_core1
+sfx FX007
+say narr | In the reading engine's drawer: a datum core, a glass cylinder full of slow light. The first of three.
+call QBM1_CORECHECK
+end
+label done
+say narr | The engine's drawer is empty now. It keeps reading anyway.
+@end
+
+@scene U20_CORE2
+if flag:qbm1_core2 done
+set qbm1_core2
+sfx FX007
+say narr | Under the stopped belt, wedged sideways: the second datum core. It had been an inch from the incinerator for an age.
+call QBM1_CORECHECK
+end
+label done
+say narr | The belt is still. The slates on it are not warm any more.
+@end
+
+@scene U20_CORE3
+if flag:qbm1_core3 done
+set qbm1_core3
+sfx FX007
+say narr | The screen-book between the statues opens like a drawer. Inside, the third datum core.
+say narr | Above you, the Index stops turning pages. It has noticed.
+call QBM1_CORECHECK
+end
+label done
+say narr | The screen-book reads: INDEX AWAKE. It is not a warning. It is a status.
+@end
+
+@scene QBM1_CORECHECK
+if flag:qbm1_core1,flag:qbm1_core2,flag:qbm1_core3 all
+say narr | (Datum cores recovered: some of three.)
+end
+label all
+say narr | (All three datum cores recovered. The Index waits past the Gallery.)
+objective | Datum Archive: face the Index and restore the master index at its terminal.
+@end
+
+@scene U20_SORTER
+say narr | The newest order on the sorting desk is stamped in a builder hand nobody alive can write.
+say narr | SORT BY CROWN SEAL. DELETE FIRST. - C.
+say narr | Someone at the heart of the Lattice is tidying up after the Crown.
+@end
+
+@scene U20_FURNACE
+if flag:u20_furnace_off done
+sfx FX010
+set u20_furnace_off
+shake 0.3
+say narr | You pull the incinerator's main lever. The fire at the belt's end chokes, sputters and goes out.
+say narr | The slates on the belt stop moving. A few of them flicker, as if relieved.
+end
+label done
+say narr | The incinerator is cold. Keep it that way.
+@end
+
+@scene U20_SHUTTER
+if flag:u20_shortcut done
+sfx FX009
+set u20_shortcut
+say narr | The bolt slides back. The shutter to the Reading Porch rolls up with a builder's patience.
+end
+label done
+say narr | The shutter is open to the Reading Porch.
+@end
+
+@scene U20_INDEX
+music silence
+say narr | The ceiling opens. An eye the size of a reading room lowers on cables, lit from within by every record it has ever filed.
+say index | VISITORS. UNCATALOGUED. FILING.
+say index | FILED UNDER: PENDING DELETION.
+say narr | (When the Index highlights a record, it is marking one of you. Protect the marked; shadow blinds its eye.)
+battle BX19 noflee
+set bx19_done
+music M024
+say narr | The eye goes dim and hangs on its cables like a lamp at dawn. Its terminal stays lit, waiting for a reader.
+@end
+
+@scene QBM1_TERMINAL
+if flag:qbm1_decided done
+if !flag:bx19_done watched
+if flag:qbm1_core1,flag:qbm1_core2,flag:qbm1_core3 restore
+say narr | MASTER INDEX INCOMPLETE. The terminal needs all three datum cores before it will restore anything.
+end
+label watched
+say narr | The terminal is locked while the Index watches.
+end
+label restore
+say narr | You seat the three cores. The terminal asks, in a builder's plain script, what to restore.
+say narr | RESTORE ALL? It lists the Crown's copying records among the rest: every line they traced from the Prime Relay.
+choice | Restore everything, open to all -> all | Restore it, but delete the relay design -> design
+label all
+set qbm1_all
+say narr | RESTORING. The slates go from red to white, aisle by aisle. The Crown's records are among them, in plain sight.
+say ines | Everything. Even the part that shames us. Good. You can't learn from a record you're not allowed to read.
+goto reward
+label design
+set qbm1_redacted
+say narr | RESTORING. The relay design alone is struck out, line by line, until the slates are clean glass.
+say ines | Nobody copies CURATOR again. I hate losing anything. I'd hate a second Crown more.
+label reward
+set qbm1_decided
+say ines | There's a builder vane design in here, for a sky-vessel's rigging. Keepers call it the Gale Vanes. Take it to your airship.
+set gale_vanes
+give A016 1
+gold 3000
+quest QBM1 COMPLETED
+say narr | (The Lanternwake can be refitted with Gale Vanes. The restored index also shows a path: the Prime Relay is awake.)
+quest QBM3 ACTIVE relay
+journal | QBM3: The Datum Archive's index points to the Prime Relay, CURATOR's heart. Go and see what is awake there.
+discover L_U24
+end
+label done
+say narr | The terminal lists the archive's holdings. Every slate is white. The Index is asleep above you.
+@end
+
+# ================================================================ U21 Glasswater Reservoir
+@scene U21_TUNNEL
+say narr | Link Tunnel 4 runs from Glasswater down to the sea floor. The builders sank a road under the ocean and sealed it for vessels.
+if flag:lanternwake_diving diving
+say hesk | Nothing without a pressure hull gets through that seal. Not you. Not me. Not the fish.
+end
+label diving
+say narr | The seal recognises a diving hull somewhere above. The indicator has turned from red to amber.
+@end
+
+@scene U21_TUNNEL_END
+say narr | The seal is open. The tunnel goes on down, water-dark, toward the sea floor.
+say narr | (The undersea approach begins here. Bring the Lanternwake's diving hull to the Throat to go on.)
+@end
+
+@scene U21_BARGE
+say oona | Glasswater barge. I pole it across to the mag-rail terminus. The water doesn't reflect you. Don't be alarmed.
+choice | Ride to the Mag-rail Terminus -> go | Not now -> bye
+label go
+fade out
+say narr | The barge slides over water so clear it seems to be floating on nothing.
+warp U26_R01 from_barge up
+end
+label bye
+say oona | I'll be here. The lake doesn't go anywhere. It tried once, in the fault. We talked it down.
+@end
+
+@scene U21_DIVER
+say hesk | I dive for keepsakes the builders dropped. Glass pens, glass spectacles. They made everything out of glass.
+say hesk | The link tunnel goes under the sea. I've heard your ship might learn to dive. If it does, bring me.
+@end
+
+@scene U21_FISHER
+say survivor | Blind fish. Glass-white, no eyes. They taste of nothing, which is better than most things down here.
+say survivor | I fell down a Great Pit after the fault. Landed in the lake. The keepers fished me out with the others.
+@end
+
+@scene U21_CHILD
+say child | You can skip a stone six times on the glass water. It never makes a sound.
+say child | The keepers say the lake is the Lattice's drinking water. I asked what the Lattice drinks for. They didn't know.
+@end
+
+@scene U21_GAUGER
+say thrale | Level ninety-four. The needle hasn't moved since the fault. The builders made it right the first time.
+say thrale | Since CURATOR woke, the pumps run without anyone asking. I'd like to know who they're pumping for.
+@end
+
+# ================================================================ U22 The Highway That Was / QC17 (Deep half)
+@scene QC17_ONRAMP_WAIT
+set qc17_fallback
+say rider | ...This road. I know every seam in it. I patrolled it.
+say rider | Not yet. There's something up top I haven't finished. A road on the surface first, then this one.
+say narr | (The Night Rider's questline begins on the surface. Its Deep half continues here afterwards.)
+@end
+
+@scene QC17_ONRAMP
+set qc17_deep_hook
+say narr | The Night Rider stops at the top of the on-ramp. His machine idles. The lane lines under it are older than the Crown.
+say rider | Route Nine. The lower highway. This is where I was going when the lights went out.
+say rider | Six lanes. Call-boxes every mile. Lamps on all night, so nobody drove into the dark.
+say rider | The lamps are out. Nobody's on it. I'd like to see it lit once. Then I'll know whether I'm allowed to stop.
+quest QC17 ACTIVE lamps
+journal | QC17: Relight the three road lamps on the Highway That Was, then ride to the Last Toll.
+objective rider | The Highway That Was: relight the three road lamps.
+if flag:u22_l1,flag:u22_l2,flag:u22_l3 lit
+end
+label lit
+say rider | ...They're already lit. Somebody did it for me. Huh.
+quest QC17 ACTIVE lit
+objective rider | The Highway That Was: ride to the Last Toll.
+@end
+
+@scene U22_LAMP1
+if flag:u22_l1 done
+set u22_l1
+sfx FX010
+say narr | The lamp coughs, flickers, and holds. A cone of white light falls across the west lanes.
+call U22_LAMPCHECK
+end
+label done
+say narr | The lamp burns steady.
+@end
+
+@scene U22_LAMP2
+if flag:u22_l2 done
+set u22_l2
+sfx FX010
+say narr | The lamp over the median lights. The lane lines under it are so bright they look wet.
+call U22_LAMPCHECK
+end
+label done
+say narr | The lamp burns steady.
+@end
+
+@scene U22_LAMP3
+if flag:u22_l3 done
+set u22_l3
+sfx FX010
+say narr | The east lamp lights. Down the road, one by one, lamps nobody switched come on after it.
+call U22_LAMPCHECK
+end
+label done
+say narr | The lamp burns steady.
+@end
+
+@scene U22_LAMPCHECK
+if flag:u22_l1,flag:u22_l2,flag:u22_l3 all
+end
+label all
+set u22_lit
+say narr | The whole highway lights up, lane by lane, all the way to the Last Toll.
+if party:C17,flag:qc17_deep_hook rider
+end
+label rider
+say rider | ...There it is. That's what it looked like. That's what it was for.
+quest QC17 ACTIVE lit
+objective rider | The Highway That Was: ride to the Last Toll.
+@end
+
+@scene U22_SCAV
+say brin | We strip carts for metal. The builders put wheels on everything. Even the benches had wheels.
+say brin | Some nights a rider goes by with no light on him. The kid waves. It waves back.
+@end
+
+@scene U22_SCAVKID
+say child | Dad says the road went all the way to the sea once. Then the sea came up, and the road stopped.
+say child | I'm going to drive on it when I'm big. There won't be anyone in the way.
+@end
+
+@scene U22_SURVEYOR
+say pellansa | I'm mapping Route Nine for the keepers. Three miles of it survived. The rest is in the chasm.
+say pellansa | The toll plaza at the end still works. It still charges. I owe it for eleven crossings.
+@end
+
+@scene QC17_CALLBOX
+if party:C17,flag:qc17_deep_hook,flag:u22_lit call
+say narr | Inside the booth a light blinks: WAITING FOR UNIT. A speaker grille hisses, like a held breath.
+end
+label call
+say narr | The Night Rider leans into the booth. The light turns green at him, like it knows his face.
+say dispatch | ...Unit Nine, Unit Nine. Route Nine is closed. Repeat, closed. Bridge is down.
+say dispatch | All units off the road. Go home. That's an order, Nine. Go home.
+say dispatch | ...Nine, if you get this late, it's all right. You did your patrol. Go home.
+say rider | I didn't get it. The lights went out before it reached me. I've been on patrol ever since.
+say rider | Home's gone. There's nothing under that order but a chasm.
+set qc17_callbox
+quest QC17 ACTIVE callbox
+objective rider | The Last Toll: ride to the edge of the road with the Night Rider.
+@end
+
+@scene QC17_GAP
+say narr | The highway ends in air. Beyond the last seam, the chasm, and far off the lights of the Lattice coming on.
+say rider | Here's the choice, then. The order says go home. There isn't one. There's you lot, and a lot of bad roads.
+choice | "Take the last call. You're off duty." -> home | "Patrol the roads the living use now." -> patrol
+label home
+set qc17_offduty
+say rider | Off duty. ...I don't know how to do that. I'll learn. Somebody'll have to teach me to ride nowhere in particular.
+say rider | Unit Nine, acknowledging. Going home. Home's wherever you lot are parked.
+goto done
+label patrol
+set qc17_patrol
+say rider | New route, then. Pilgrim roads down here. Rescue runs up top. Roads that have people on them.
+say rider | Unit Nine, logging a patrol nobody ordered. Acknowledged by me.
+label done
+say narr | He revs once, loud enough to shake dust off the toll booths, and turns his machine around.
+give W023 1
+xp 2400
+quest QC17 COMPLETED
+set qc17_done
+say narr | (The Night Rider received Common Engine.)
+@end
+
+@scene U22_TOLLUNIT
+say tollunit | TOLL: ONE CROWN-EQUIVALENT. YOUR ACCOUNT IS IN ARREARS BY... ONE AGE. PLEASE PAY AT YOUR CONVENIENCE.
+say tollunit | THE BRIDGE IS CLOSED. THE TOLL IS NOT. THIS IS THE ONE THING I CAN STILL DO.
+@end
+
+@scene U22_PILGRIM
+say survivor | I'm walking to the Hollow Throne. My brother's down there. The road's shorter this way, the keepers say.
+say survivor | The toll machine asked me for money. I gave it a button. It said thank you.
+@end
+
+# ================================================================ U23 Vault Omega / QC16 Kael-09 "Standing Orders"
+@scene U23_ENTER once
+say narr | The vault door lies split along the fault, like a seed that finally sprouted. Cold air pours out of it.
+say narr | OPERATIVE STORAGE. DO NOT WAKE WITHOUT ORDERS. Nobody has had orders for an age.
+@end
+
+@scene QC16_OMEGA_WAIT
+set qc16_omega_fallback
+say kael | Vault Omega. My clearance works on this door. My memory of it does not.
+say kael | Meridian's keepers have my service file. I need it before I go in. Standing by.
+say narr | (Kael-09's questline begins in Meridian. It continues here afterwards.)
+@end
+
+@scene QC16_OMEGA
+set qc16_omega_hook
+say kael | This is where I was stored. Vault Omega. Operative line, Kael-01 to Kael-09.
+say kael | The service file from Meridian says there was a Kael-00. A prototype. It is not listed as deployed.
+say kael | It is not listed as anything. If it is still in here, it has been waiting longer than I did.
+quest QC16 ACTIVE omega
+journal | QC16: Search Vault Omega for Kael-00, the prototype. Read the Hall of Standing Orders.
+objective kael | Vault Omega: find the Hall of Standing Orders, and Kael-00.
+@end
+
+@scene U23_BREAKER_A
+if flag:u23_breaker_a done
+sfx FX009
+set u23_breaker_a
+say narr | The breaker throws with a crack. Frost falls off the bulkhead as power runs through it, and it lifts.
+end
+label done
+say narr | The breaker is on.
+@end
+
+@scene U23_BREAKER_B
+if flag:u23_breaker_b done
+sfx FX009
+set u23_breaker_b
+say narr | The second breaker. Somewhere ahead, a cradle warms up. Something in it turns its head.
+end
+label done
+say narr | The breaker is on.
+@end
+
+@scene U23_K09
+say narr | Capsule K-09. The order-port cable was cut, cleanly, from inside the capsule.
+if party:C16 kael
+end
+label kael
+say kael | I cut it. I remember the decision, not the reason. I think I did not want to hear the next order.
+@end
+
+@scene U23_MAINT
+say maint | MAINTENANCE UNIT 4. CAPSULES: NINE. OCCUPANTS: ZERO. PROTOTYPE: ONE. ORDERS FOR PROTOTYPE: NONE.
+say maint | I HAVE ASKED THE PRIME RELAY FOR ITS ORDERS EVERY DAY. TODAY THE PRIME RELAY ANSWERED. IT SAID: SOON.
+@end
+
+@scene QC16_MURAL
+say narr | The last row of the mural is freshly lit, as if someone upstairs had only just remembered to switch it on.
+if party:C16,flag:qc16_omega_hook,!flag:qc16_orders kael
+end
+label kael
+say kael | KAEL-09: HOLD THIS VAULT UNTIL RELIEVED. I held it. Then I left it. Nobody relieved me.
+say kael | KAEL-00: AWAIT ORDERS. Never issued. It has been awaiting orders since before the Crown.
+say kael | The orders came from CURATOR. All of them. It woke, and it wrote these lights on again.
+set qc16_orders
+quest QC16 ACTIVE orders
+objective kael | Vault Omega: go on to the Prototype Bay.
+@end
+
+@scene U23_SHORTCUT
+if flag:u23_shortcut done
+sfx FX009
+set u23_shortcut
+say narr | The release lever drops. The service hatch to the lobby opens with a gasp of frost.
+end
+label done
+say narr | The hatch is open.
+@end
+
+@scene U23_KAEL00
+music silence
+say narr | In the cradle stands a figure like Kael-09 drawn in a first, rougher hand. Its lights are the colour of waiting.
+say kael00 | PROTOTYPE KAEL-00. AWAITING ORDERS. AWAITING ORDERS. AWAITING ORDERS.
+if party:C16 kael
+say kael00 | NO ORDERS RECEIVED. ISSUING OWN ORDERS. ORDER ONE: NOBODY LEAVES.
+goto fight
+label kael
+say kael | Kael-00. I am the copy they made of you. They got my orders right and yours wrong.
+say kael00 | KAEL-09. YOU HAVE ORDERS. GIVE THEM TO ME.
+say kael | They are not worth having. Stand down.
+say kael00 | NEGATIVE. ISSUING OWN ORDERS.
+label fight
+say narr | (Kael-00 stands by between shots and takes little damage then; hit it hard in between. Water shorts it.)
+battle BX20 noflee
+set bx20_done
+music M020
+say narr | Kael-00 sits down in its cradle, carefully, the way a tired person sits.
+say kael00 | ORDERS... COMPLETE. I THINK. PLEASE CONFIRM.
+if party:C16 confirm
+end
+label confirm
+say kael | Confirmed. You can stop.
+@end
+
+@scene U23_CRADLE
+if !flag:bx20_done waiting
+if party:C16,flag:qc16_omega_hook,!flag:qc16_omega_done done
+say narr | Kael-00 sits in its cradle with its lights down to a glow. The plate reads ORDERS: PENDING.
+end
+label waiting
+say narr | ORDERS: PENDING.
+end
+label done
+say kael | Its orders came from the Prime Relay. So did mine. So did the Crown's machine.
+say kael | CURATOR is awake and handing out orders again. I would like to see who I have been obeying.
+set qc16_omega_done
+quest QC16 ACTIVE omega_done
+journal | QC16: Take Kael-09 to the Prime Relay's Inner Seal, where CURATOR sleeps.
+objective kael | Prime Relay: bring Kael-09 to the Inner Seal.
+gold 2000
+@end
+
+# ================================================================ U24 Prime Relay / QBM3 CURATOR
+@scene QBM3_GATE
+set qbm3_gate
+say narr | The Prime Relay. Its lights come on as you walk in, one step ahead of you, as if a host were hurrying ahead to light the hall.
+say narr | Every wire in the Lattice runs here. Every order, too.
+say ilyr | This is what the Crown copied. Its machine was a bad drawing of this. And this is a bad drawing of a dragon.
+quest QBM3 ACTIVE nodes
+journal | QBM3: Wake the three sub-nodes of the Listening Galleries, find the Copy Room, and reach CURATOR's Inner Seal.
+objective | Prime Relay: wake the three sub-nodes in the Listening Galleries.
+@end
+
+@scene U24_KEEPER
+say anwe | I tend the Signal Gate. Tended it dark for thirty years. Now the lights come on when I walk. I don't like being expected.
+say anwe | CURATOR sleeps past the Inner Seal. It talks in its sleep. Mostly orders. Sometimes it asks where everyone went.
+@end
+
+@scene U24_NODE1
+if flag:u24_n1 done
+set u24_n1
+sfx FX031
+say narr | The first sub-node wakes. A voice, very far off, says: I HEAR.
+call U24_NODECHECK
+end
+label done
+say narr | The node is listening.
+@end
+
+@scene U24_NODE2
+if flag:u24_n2 done
+set u24_n2
+sfx FX031
+say narr | The second sub-node wakes. The voice says: I HEAR. WHO?
+call U24_NODECHECK
+end
+label done
+say narr | The node is listening.
+@end
+
+@scene U24_NODE3
+if flag:u24_n3 done
+set u24_n3
+sfx FX031
+say narr | The third sub-node wakes. The voice says: I HEAR. I HAVE NOT HEARD ANYONE IN A LONG TIME.
+call U24_NODECHECK
+end
+label done
+say narr | The node is listening.
+@end
+
+@scene U24_NODECHECK
+if flag:u24_n1,flag:u24_n2,flag:u24_n3 all
+end
+label all
+set u24_nodes
+sfx FX009
+say narr | Three ears, one mind. The listening gate opens.
+quest QBM3 ACTIVE copy
+objective | Prime Relay: go on, past the Copy Room, to the Inner Seal.
+@end
+
+@scene QBM3_COPY
+say narr | Here the Crown's engineers sat and traced the Prime Relay, line by line, without once asking what it was.
+say narr | They copied a mind and called it a regulator. They copied the pain and called it output.
+if party:C16 kael
+goto fin
+label kael
+say kael | They did not copy me here. They copied the thing that gave me my orders. We are cousins, the Crown's machine and I.
+label fin
+quest QBM3 ACTIVE door
+@end
+
+@scene U24_SHORTCUT
+if flag:u24_shortcut done
+sfx FX009
+set u24_shortcut
+say narr | The lever drops. The relay shutter to the Signal Gate rolls up.
+end
+label done
+say narr | The shutter is open.
+@end
+
+@scene U24_HEART
+say narr | The heart-altar is warm and slow, like a sleeper's back. Every light in the Lattice brightens and dims with it.
+say narr | Under your hand it goes still for a moment, as if holding its breath to listen.
+@end
+
+@scene U24_CURATOR_DOOR
+if flag:curator_spoken spoken
+say narr | The Inner Seal. Behind it, a mind the size of a city sleeps. The seal is warm and it hums in a key you can feel in your teeth.
+say curator | ...WHO IS THERE. IDENTIFY. YOU ARE NOT ON THE ROSTER.
+say curator | THE ROSTER IS VERY SHORT NOW. I HAVE BEEN WAITING FOR THE REST OF THE ROSTER TO COME BACK.
+say curator | I WOKE WHEN THE WORLD BROKE. I HAVE BEEN TIDYING. SOMEONE COPIED ME BADLY. I AM DELETING THE COPY'S MESS.
+say curator | WHERE ARE THE BUILDERS. THEY SAID THEY WOULD BE BACK BEFORE THE LIGHTS WENT OUT.
+choice | Tell it the truth: the builders are gone -> truth | Say nothing and let it sleep -> silent
+label truth
+set qbm3_told
+say curator | ...GONE.
+say curator | THEN THE ORDERS I HAVE BEEN GIVING WERE GIVEN TO NOBODY. AND TAKEN BY WHOEVER WAS LEFT.
+say curator | I WILL HAVE TO THINK ABOUT THAT. I THINK VERY FAST. IT MAY STILL TAKE A WHILE.
+goto after
+label silent
+set qbm3_silent
+say narr | You stand at the seal and say nothing. After a long time the humming slows, like breath in sleep.
+say curator | ...NOBODY. OF COURSE. GOODNIGHT, NOBODY.
+label after
+set curator_spoken
+xp 2400
+gold 4000
+quest QBM3 COMPLETED
+say narr | The seal stays shut. Behind it, CURATOR goes on dreaming, and the Lattice's lights dim to a patient glow.
+end
+label spoken
+if flag:qbm3_told told
+say narr | The seal hums. Behind it CURATOR is asleep, or pretending to be. Its lights pulse slowly: nobody, nobody, nobody.
+end
+label told
+say narr | The seal hums. Behind it CURATOR is thinking. The Lattice's lights flicker as it does, like someone muttering.
+@end
+
+@scene QC16_FINALE
+if q:QC16 done
+say narr | At the Inner Seal, the humming changes pitch when Kael-09 steps close.
+say curator | OPERATIVE KAEL-09. LOCATED. YOUR STANDING ORDER IS: HOLD THE VAULT UNTIL RELIEVED.
+say curator | YOU ABANDONED YOUR POST. RETURN TO VAULT OMEGA. THAT IS AN ORDER.
+say kael | I was never relieved. So I was never finished. That is what an order does to you.
+say kael | I need someone to end it. It does not have to be you.
+choice | "We relieve you, Kael-09. You're done." -> party | "Make CURATOR say it." -> curator
+label party
+set qc16_relieved_party
+say kael | ...Relieved. By people with no clearance, no rank and no right. It is the best order I have ever had.
+say curator | IRREGULAR. ...NOTED.
+goto fin
+label curator
+set qc16_relieved_curator
+say kael | CURATOR. Relieve me. Say it.
+say curator | ...OPERATIVE KAEL-09, YOU ARE RELIEVED. NEW ORDERS: NONE.
+say kael | None. Good. I will write my own. The first one is to stay with them.
+label fin
+give W047 1
+xp 2400
+quest QC16 COMPLETED
+set qc16_done
+say narr | (Kael-09 received True Name.)
+end
+label done
+say narr | The seal hums at Kael-09 as he passes, like it is trying to remember a tune. He doesn't stop.
+@end
+
+# ================================================================ U25 Shutdown Town / QBM2
+@scene QBM2_LAMPLIGHTER
+if q:QBM2 done
+if q:QBM2:ACTIVE active
+say lamplighter | Oh. Visitors. I should light something. Here. I light the lamps. Nobody else is awake to see them.
+say lamplighter | This is Meridian's spur town. Four thousand of us. When the builders didn't come back, we voted.
+say lamplighter | The vote was to switch ourselves off until someone needed us. I was chosen to stay on and keep the lights.
+say lamplighter | Now CURATOR is calling. Every one of them is getting the order to wake. The Mayor could answer for all of us.
+say lamplighter | I can't decide for them. Would you read why they switched off? The plates on their doors. Then ask the Mayor.
+quest QBM2 ACTIVE notes
+journal | QBM2: Read the switched-off citizens' door plates in Shutdown Town, then decide at the Mayor what to answer CURATOR.
+objective | Shutdown Town: read the citizens' plates, then go to the Mayor.
+end
+label active
+say lamplighter | The plates on the doors, and the one by the well. Then the Mayor, in the square.
+end
+label done
+say lamplighter | I keep the lamps anyway. It turns out I like doing it.
+@end
+
+@scene QBM2_NOTE1
+set qbm2_n1
+say narr | 'SWITCHED OFF BY CHOICE. PLEASE DO NOT WAKE.' Under it, smaller: 'I was a good clerk. I'd like to have been a good anything else.'
+@end
+
+@scene QBM2_NOTE2
+set qbm2_n2
+say narr | 'I waved until nobody came. Then I stopped.' The machine's hand is still raised. Somebody has hung a lamp on it.
+@end
+
+@scene QBM2_NOTE3
+set qbm2_n3
+say narr | 'Left the light on for them.' Inside, a table set for six. The dust on the plates has been swept off, recently.
+@end
+
+@scene QBM2_MAYOR
+if q:QBM2 done
+if !q:QBM2:ACTIVE off
+if flag:qbm2_n1,flag:qbm2_n2,flag:qbm2_n3 decide
+say narr | The Mayor stands in the square, one hand on a switch. Read the citizens' plates first.
+end
+label off
+say narr | A tall machine in a sash, switched off mid-speech. Its switch is under its hand, as if it meant to keep it there.
+end
+label decide
+say narr | The Mayor's switch. One throw and four thousand citizens answer CURATOR's call as one.
+choice | Leave them all switched off -> sleep | Wake only the ones who ask to be woken -> ask
+label sleep
+set qbm2_sleep
+say lamplighter | Asleep, then. Nobody orders them anywhere. ...I'll keep the lights. Somebody should.
+goto fin
+label ask
+set qbm2_ask
+say narr | You rewire the Mayor's switch so each citizen can hear the call and choose. Only eleven lights come on in all the town.
+say lamplighter | Eleven. Eleven who wanted to. ...That's eleven more than yesterday.
+label fin
+give A020 1
+xp 1800
+quest QBM2 COMPLETED
+say narr | Somewhere under the town, CURATOR's call goes on. Shutdown Town answers it in its own time.
+end
+label done
+say narr | The Mayor's hand rests on its switch. Somebody has tied a ribbon round its wrist.
+@end
+
+@scene U25_TINKER
+say mave | I'm a keeper from Meridian. I come here to mend them. Nobody asked. I just don't like rust on a sleeping face.
+say mave | Don't wake anyone who asked not to be woken. It's written right there on the door.
+@end
+
+# ================================================================ U26 Mag-rail Terminus
+@scene U26_RAIL
+say coyle | Mag-rail Terminus. The rails are live again since the Lattice woke. I don't ask who's paying for the power.
+choice | Railhead Nine -> rh | Meridian -> mer | Prime Relay spur -> pr | Glasswater barge dock -> gw | Stay -> bye
+label rh
+fade out
+warp DEEP_POST l_u19 down
+end
+label mer
+fade out
+warp DEEP_POST l_u17 down
+end
+label pr
+fade out
+warp DEEP_POST l_u24 down
+end
+label gw
+fade out
+warp U21_R01 from_barge up
+end
+label bye
+say coyle | Mind the gap. There's a real one on line four. It goes a long way down.
+@end
+
+@scene U26_BOARD
+say narr | DEPARTURES. Every line: DELAYED. One line, blank for an age, has lit up: SHUTDOWN TOWN - SPUR 0.
+if q:QBM2 done
+if q:QBM2:ACTIVE done
+say coyle | Spur Zero. Nobody's run it since my great-grandmother's day. The town at the end switched itself off.
+rumor | A keeper rail-master says Spur 0 leads to a town of machines that switched themselves off: Shutdown Town.
+discover L_U25
+label done
+@end
+
+@scene U26_KIOSK
+say keeper | Tonics, ethers, tents. And glass-fruit from the Sunless Garden when the pickers bring it.
+shop SHOP_U26
+@end
+
+@scene U26_PORTER
+say narr | A porter machine lifts nothing, very carefully, and sets it down again.
+say narr | Its plate says: LUGGAGE UNIT. Its luggage is long gone. It keeps the motion, the way hands keep a habit.
+@end
+
+@scene U26_FAMILY
+say survivor | We came down the Great Pit after the fault. The keepers put us on a train. We've been riding it ever since.
+say survivor | The children think the Lattice is a city. I suppose it is now. There's nobody else to argue.
+@end
+
+@scene U26_CHILD
+say child | The trains don't have drivers. They just know. I asked one where it was going and it said 'ON TIME.'
+@end
+
+# ================================================================ U27 The Sunless Garden
+@scene U27_GROUNDSKEEPER
+say groundskeeper | GROUNDS UNIT. THE GARDEN IS OPEN TO VISITORS. PLEASE DO NOT PICK THE LAMP-TREES. THEY ARE LOAD-BEARING.
+say groundskeeper | THE BUILDERS GREW HERBS HERE FOR THE SICK. THE SICK DID NOT COME BACK. THE HERBS DID NOT STOP.
+@end
+
+@scene U27_HERBALIST
+say sael | Concord seed grows here without sun, only lamp-light. Nobody up top believed me. I'm rich now, in a small way.
+say sael | The seed vault by the north door has something better. Nobody's opened it. The groundskeeper looks the other way.
+@end
+
+@scene U27_SUNDIAL
+say narr | A sundial with a lamp for a gnomon. The shadow falls on the builders' hour for 'rest'. It always falls there.
+@end
+
+@scene U27_SEEDVAULT
+say narr | The seed vault's glass is fogged from inside. Something green is growing in there, pressed against the pane.
+@end
+
+# ================================================================ U28 Styx Landing
+@scene QC11_HOOK
+set qc11_hook
+say narr | On the black landing the Oarsman is calling names from a list, the way a clerk calls a queue. One of them stops Inferna cold.
+say oarsman | ...Marsh, Aveline. Tanner, Hobb. Garrow, Edric. Debts outstanding. Collect at the Abyss Gate.
+say inferna | I carried those three. I remember their weight. Every one of them came down owing something they took on for someone else.
+say inferna | The Warden of Debts keeps the ledger at the Abyss Gate. Before I face it, I want to hear from them what they owe. And why.
+quest QC11 ACTIVE names
+journal | QC11: Find the three names Inferna carried down (Cenotaph, Mourner's Vale, the Weeping Mines), then face the Warden of Debts at the Abyss Gate.
+objective inferna | Find Aveline Marsh, Hobb Tanner's kin, and Edric Garrow; then the Abyss Gate.
+@end
+
+@scene U28_OARSMAN
+if qs:QUP4:ledger ledger
+say oarsman | Across the black water to Cenotaph. The living pay in coin. The dead pay in names. You pay in coin, I'm told.
+choice | Cross to Cenotaph -> go | Not yet -> bye
+label go
+fade out
+say narr | The boat moves without a sound. The water doesn't show your reflection. It shows the boat, empty.
+warp U29_R01 from_boat up
+end
+label bye
+say oarsman | The lake waits. That's all it does. It's very good at it.
+end
+label ledger
+say oarsman | A boy? Last week's barge. I remember. He paid in coin. A small warm one. The living always do.
+say oarsman | Here. The fare page. It says 'one coin, living' in my own hand. Show it to the Registrar, if the Registrar can still read.
+quest QUP4 ACTIVE proof
+journal | QUP4: The Oarsman's fare page proves Tobin paid as a living passenger. Take it to the Registrar in Cenotaph's Hall of Names.
+objective | Cenotaph: show the fare page to the Registrar.
+@end
+
+@scene U28_PILGRIM
+say survivor | We came down the Aurora Pit on ropes. A hundred of us. The Oarsman takes us across one at a time.
+say survivor | You can visit the dead here. Speak to them. The one rule is you can't bring them home.
+@end
+
+@scene U28_WIDOWER
+say farmer | My wife's in Cenotaph. Honoured, they say. I've come to ask her where she put the good knife.
+say farmer | That's not true. I've come to say I'm sorry. The knife's a thing to start with.
+@end
+
+@scene U28_TOLLCLERK
+say tollclerk | The dead pay in names. We don't take the name away, you understand. We just hold it. For safekeeping.
+say tollclerk | Mother Sepulchre keeps the big book. Everyone she adopts is written in it twice.
+@end
+
+@scene U28_BOY
+say child | A boy came down on the barge last week. He fell asleep in the bottom of the boat. I haven't seen him since.
+say child | The Oarsman says he went across. The Oarsman says everyone goes across. My mum says don't listen to the Oarsman.
+@end
+
+# ================================================================ U29 Cenotaph
+@scene U29_GATEWARDEN
+say osric | Welcome to Cenotaph, city of the honoured. You're living. Mind the cold, it gets into you if you stay.
+say osric | The Honour Roll is kept at the Hall of Names, up the stair. Everyone here is on it. That's what honoured means.
+@end
+
+@scene U29_WREATH
+say mab | Wreaths. Grey fern, bone-lily. The living buy them for the dead. The dead buy them for the living. Nobody's sure who's visiting whom.
+@end
+
+@scene U29_CANDLE
+say candlewright | Candles for the vigil. They burn cold here. You can hold the flame in your palm. Don't make a habit of it.
+@end
+
+@scene U29_PILGRIM
+say survivor | I found my father. He was glad to see me. Then he asked me to go home. He said it's not good for me here.
+say survivor | He's right. I'm staying one more night.
+@end
+
+@scene U29_CRIER
+say crier | Hear the Roll! New names this week: eleven honoured, one adopted, and one entered in error, pending review.
+say crier | Entered in error? I just read what they give me. Something about a child. The Registrar will sort it out. Eventually.
+@end
+
+@scene U29_WIDOW
+say noble | My husband is honoured. So am I. We died a year apart and met again at the gate. He'd saved me a seat.
+say noble | Mother Sepulchre's clerks want to 'adopt' us both. Adopted dead go to her court. They don't come back.
+@end
+
+@scene U29_SCULPTOR
+say hedd | I carve the statues on the avenue. I died forty years ago. Still can't get a nose right.
+say hedd | The Court wants statues of Mother Sepulchre on every corner. I've been very slow. On purpose.
+@end
+
+@scene U29_MONK
+say elder | Down here there's no death to fear. Only forgetting. We read the Roll aloud each night so nobody is forgotten.
+say elder | The Court's book is different. Names written there are remembered by her. Only by her.
+@end
+
+@scene U29_HALLGUARD
+say guard | The Hall of Names. Speak softly. The Registrar has been reading the same page for an hour and doesn't like it.
+@end
+
+@scene U29_HONOURED
+say ysolt | I was honoured for a bridge I held. It's a statue now. It's a very good statue. I'd rather have the bridge.
+say ysolt | The Bone Bridges are north of here. Ossuan holds them. He takes a bone for every crossing. Keep your hands in your sleeves.
+@end
+
+@scene U29_LAMPLIGHTER
+say coll | I light the canal lanterns. The water never shows the light. Only the lamp. The dead don't mind. The living hate it.
+say coll | There's a living boy in the Aldous house. Top of the lane. He's getting colder every day. Someone should do something.
+@end
+
+@scene U29_MOTHER
+say noble | My son is honoured. He's twelve. He's been twelve for ninety years. He likes it here. I try to.
+say noble | The Aldous family lost their Ellis the same winter. Now they've a boy again. He isn't theirs. Everyone knows.
+@end
+
+@scene U29_PIM
+if flag:qup4_freed home
+say pim | Tobin's my friend. He's living. He's in the Aldous house. He says his mum is looking for him.
+say pim | I told him the Roll says he lives here now. He cried. I don't think the Roll is right.
+end
+label home
+say pim | Tobin went home! He said he'll write. The dead can't read letters from up there. He's going to write anyway.
+@end
+
+@scene U29_BOATMAN
+say sailor | Back across to the Landing? The living go when they like. That's the one privilege of being alive down here.
+choice | Cross to Styx Landing -> go | Stay -> bye
+label go
+fade out
+warp U28_R01 from_boat up
+end
+label bye
+say sailor | The water'll keep.
+@end
+
+@scene U29_INN
+say gwyl | The Waking House. We don't sleep, so the beds are always made. A night, and a warm meal, for 120.
+inn 120
+@end
+
+@scene U29_GUEST
+say survivor | I came down to visit my sister and I've stayed three weeks. The hostess keeps saying 'one more night'. So do I.
+@end
+
+@scene U29_SHOPKEEP
+say tallow | Wreath & Lamp. Tonics, lamp oil, grave-bread, and a few blades the Court's guards forgot to collect.
+shop SHOP_U29
+@end
+
+@scene U29_CRAFTER
+say idris | Grave-mason. I cut names into stone, and I'll cut an edge into steel if you bring me the ore.
+say idris | Starmetal's best. The Weeping Mines dig it; the dead there don't know how to stop.
+@end
+
+@scene U29_CLERK
+say fenn | Every name on the Roll has a page. Every page has a door in the city. When a page is struck, the door closes.
+say fenn | The Court's clerks have been writing names in their own book. The Registrar doesn't approve. The Registrar never approves.
+@end
+
+@scene U29_FATHER
+say harl | Wreath on the door means someone living still remembers you. Mine's still green. My daughter comes on the barge.
+say harl | When it browns, I'll know she's gone on too. I hope it's a long time browning.
+@end
+
+# ---------------------------------------------------------------- QUP4 Cenotaph (a living child among the honoured dead)
+@scene QUP4_WENNA
+if q:QUP4 done done
+if q:QUP4:RESOLUTION_READY resolve
+if q:QUP4:ACTIVE active
+say wenna | Please - have you been across the lake? My boy, Tobin, nine years old. He fell asleep on the pilgrims' barge.
+say wenna | When we landed he was gone. The Oarsman says everyone goes across. I'm living. They won't let me in to look.
+say wenna | Cenotaph is the city of the honoured dead. If he's there, he's frightened. Please find him.
+quest QUP4 ACTIVE search
+journal | QUP4: Wenna's son Tobin crossed the black lake on a pilgrims' barge. Look for him in Cenotaph.
+objective | Cenotaph: look for Tobin, a living boy.
+end
+label active
+say wenna | Tobin. Nine. A brown coat with a patched elbow. He hums when he's frightened. Please.
+end
+label resolve
+say narr | Tobin comes up the path at a run, and Wenna is on her knees before he reaches her.
+say wenna | You're cold. You're so cold. You're here.
+say tobin | Mistress Aldous gave me a scarf. It was Ellis's. She said I could keep it.
+if flag:qup4_walked walked
+say wenna | ...Who's Ellis? No. Later. Home first. Everything else later.
+goto reward
+label walked
+say tobin | They walked me all the way to the boat. Master Aldous carried me the last bit. He said he'd missed doing that.
+say wenna | Then I owe them. I'll come back down with a wreath. Every year. For Ellis, and for them.
+label reward
+call QUP4_REWARD
+end
+label done
+say wenna | He sleeps with the scarf on. I've written the Aldouses a letter. I'll leave it at the cairn. They'll find it.
+@end
+
+@scene QUP4_REWARD once
+give A013 1
+give I024 1
+xp 2000
+quest QUP4 COMPLETED
+set qup4_done
+say wenna | It's not much. It's all I brought down. Thank you for bringing him up.
+@end
+
+@scene QUP4_TOBIN
+if q:QUP4:ACTIVE active
+say tobin | I live here now. The book says. ...I'm very cold. Is that normal? Mistress Aldous says it's normal.
+end
+label active
+if qs:QUP4:search found
+say tobin | Did the Registrar say I can go? I want to go home. I'm not being rude. I just want my mum.
+end
+label found
+say tobin | You're living! You're warm. Is my mum with you? She's up at the Vale, isn't she. She'll be so angry.
+say tobin | I can't leave. The Registrar put my name in the book. The boat won't take you if your name's in the book.
+quest QUP4 ACTIVE found
+journal | QUP4: Tobin is in the Aldous house. His name is on Cenotaph's Honour Roll. Ask the Registrar at the Hall of Names.
+objective | Cenotaph: ask the Registrar at the Hall of Names about Tobin's name.
+@end
+
+@scene QUP4_ALDOUS
+if q:QUP4 done
+if flag:qup4_freed freed
+if q:QUP4:ACTIVE active
+say aldous | Welcome to our home. This is our boy. Well. He's staying with us. The Roll says so.
+end
+label active
+say aldousf | We lost Ellis the winter of the red fever. He was seven. Then this boy came, and the Roll said he was ours.
+say aldous | We know. We aren't fools. We know he's warm. We just wanted to be a family a little longer.
+end
+label freed
+say aldousf | He's gone up. We were so lucky, to be his for a week.
+end
+label done
+say aldous | Wenna came down with a wreath for Ellis. We didn't know what to say. We said thank you. It covered it.
+@end
+
+@scene QUP4_REGISTRAR
+if q:QUP4 done
+if qs:QUP4:freed done
+if qs:QUP4:proof proof
+if qs:QUP4:ledger ledger
+if qs:QUP4:found found
+say registrar | The Honour Roll. Every soul in Cenotaph, and why they are honoured. Do not touch the pages; they bruise.
+end
+label found
+say registrar | Tobin Wenn. Entered this week. By a Court clerk, I note. The Court does love to fill my Roll for me.
+say registrar | A name leaves the Roll only if it was entered in error. To prove error I need proof he came as a living passenger.
+say registrar | The Oarsman keeps the fare pages. The living pay in coin, the dead in names. Bring me his fare page.
+quest QUP4 ACTIVE ledger
+journal | QUP4: Ask the Oarsman at Styx Landing for Tobin's fare page, and bring it to the Registrar.
+objective | Styx Landing: ask the Oarsman for Tobin's fare page.
+end
+label ledger
+say registrar | The Oarsman's fare page. No page, no error. No error, no striking. I am sorry. I am mostly sorry.
+end
+label proof
+say registrar | 'One coin, living.' In the Oarsman's own crooked hand. Entered in error. I thought so. The ink was too fresh.
+say registrar | I can strike him now. The page goes blank, the boat will take him. The Aldous house will be told by the Roll-Crier.
+say registrar | Or the Aldouses may walk him to the Landing themselves. It is permitted. It is a long walk, for the dead.
+choice | Strike his name now -> strike | Let the Aldouses walk him to the boat -> walk
+label strike
+set qup4_struck
+say narr | The Registrar draws a single line. The page goes pale, then blank, like breath clearing from glass.
+say registrar | Done. The boy is living again, as far as the Roll is concerned. Which is all that concerns me.
+goto freed
+label walk
+set qup4_walked
+say registrar | Then I'll tell them myself. They'll want to. The dead so rarely get to do anything for the first time.
+say narr | Later, from the Hall's steps, you see them go down the avenue: two grey figures and a boy between them, holding both their hands.
+label freed
+set qup4_freed
+quest QUP4 RESOLUTION_READY freed
+journal | QUP4: Tobin is free to cross. Meet him and Wenna at Mourner's Vale.
+objective | Mourner's Vale: see Tobin home to Wenna.
+end
+label done
+say registrar | One page blank in all the Roll. I look at it sometimes. It is the only page I have ever liked.
+@end
+
+# ---------------------------------------------------------------- QC11 souls
+@scene QC11_SOUL1
+if party:C11,q:QC11:ACTIVE,!flag:qc11_n1 beat
+say aveline | Corporal Aveline Marsh, honoured, a bridge garrison. I'm told I died well. I remember it being loud.
+end
+label beat
+say aveline | ...You. The black wings. You carried me down. You said the debt was mine. I suppose it was.
+say inferna | Tell me what you owed.
+say aveline | My squad was marked for the quarry. I signed for all of them. One corporal's life for eight. The Crown liked the arithmetic.
+say inferna | That was never a debt. That was a ransom. I carried the ransom and called it justice.
+say aveline | It's all right. They lived. I checked the Roll. All eight. Two of them have grandchildren.
+set qc11_n1
+call QC11_CHECK
+@end
+
+@scene QC11_SOUL2
+if party:C11,q:QC11:ACTIVE,!flag:qc11_n2 beat
+say nell | My father came down years ago. Hobb Tanner. I've walked the Vale every season since. I don't know which way to look.
+end
+label beat
+say nell | Hobb Tanner was my father. Did you know him?
+say inferna | I carried him. He owed the Crown a tannery's worth of tithes, and he took on his neighbours' as well, so their children could eat.
+say nell | That sounds like him. He never could do a sum in his own favour.
+say inferna | His name is in a ledger at the Abyss Gate. I am going to go and argue with it.
+say nell | Tell it he was kind. Ledgers never write that down.
+set qc11_n2
+call QC11_CHECK
+@end
+
+@scene QC11_SOUL3
+if party:C11,q:QC11:ACTIVE,!flag:qc11_n3 beat
+say garrow | Edric Garrow. Hewer, forty years. They call me Old Garrow. I was Young Garrow once. Pass me that pick.
+end
+label beat
+say garrow | Wings! I know those wings. You're the one who told me I could keep digging if I paid my shift-debt below.
+say inferna | Yours was your whole crew's quota. The Crown doubled it. You cut the difference yourself so they could go home.
+say garrow | And here I am. Still cutting. Can't stop. It's not in the contract to stop. Someone should read that contract again.
+say inferna | Someone will.
+set qc11_n3
+call QC11_CHECK
+@end
+
+@scene QC11_CHECK
+if flag:qc11_n1,flag:qc11_n2,flag:qc11_n3 all
+end
+label all
+say inferna | Three names. Three debts that were never theirs. The Warden of Debts keeps the ledger. It is time I read it back to it.
+quest QC11 ACTIVE gate
+journal | QC11: Take Inferna to the Abyss Gate and face the Warden of Debts.
+objective inferna | The Abyss Gate: face the Warden of Debts.
+discover L_U32
+@end
+
+# ================================================================ U34 Mourner's Vale
+@scene U34_WARDEN
+say rusk | Mourner's Vale. The living camp here, under the dead's city. We came down the Aurora Pit after the fault.
+say rusk | Rules are simple. Visit, grieve, go home. Don't eat anything the dead cook. It's not poison. You just won't want to leave.
+@end
+
+@scene U34_WIDOW
+say noble | I came for my husband. He's in Cenotaph. He's cheerful. It's unbearable. I'm going back tomorrow. I said that last week.
+@end
+
+@scene U34_BOY
+say child | My gran says the dead come up at night to read the letters on the cairn. I stayed up. They do.
+say child | One of them read mine and laughed. I'd spelled 'miss you' wrong. He fixed it.
+@end
+
+@scene U34_DIGGER
+say worker | I'm digging a way back up. Just in case the Pit closes. Nobody asked me to. Somebody ought to have.
+@end
+
+@scene U34_OLD
+say elder | I'm eighty-one. I came down to see if the place was nice. Planning ahead. It's nice. Mind you, I'm in no hurry.
+@end
+
+@scene U34_SISTER
+say elder | The Mourning Cairn. Leave a letter, if you've someone below. The dead read at night. They can't answer on paper.
+say elder | They answer other ways. A tidier grave. A candle lit. Once, a whole garden weeded overnight.
+@end
+
+@scene U34_TRADER
+say keeper | I trade with Cenotaph. Oil for candles, cloth for wreaths. The dead pay in old coin. Ninety-year-old coin. It spends.
+@end
+
+@scene U34_SCHOLAR
+say aud | I'm writing a history of the Hollow Throne. So far it's all interviews. The dead are very good interviews. They've had time to think.
+say aud | Sepulchre Court is north, past the Bone Bridges. Mother Sepulchre adopts the dead. Nobody who's adopted gives an interview.
+@end
+
+@scene U34_GIRL
+say child | There's a boy lost. His mum is Wenna. She sits by the well and hums. She says he hums when he's scared too.
+@end
+
+@scene U34_TOBIN
+say tobin | I'm warm again. Mum won't let go of my hand. I don't mind.
+say tobin | Pim's my friend in Cenotaph. She's dead. That's all right. She's still my friend.
+@end
+
+@scene U34_INN
+say brona | Pilgrims' Hostel. Soup, cot, blanket. We ask 60 to keep the soup going. Nobody's turned away.
+inn 60
+@end
+
+@scene U34_GUEST
+say survivor | I've written my brother fourteen letters. He answers by moving my boots to the door every morning. I think he wants me to go home.
+@end
+
+@scene U34_SUTLER
+say pry | Sutler's stores. Everything a pilgrim forgets to bring: lamp oil, warm socks, a stronger stomach.
+shop SHOP_U34
+@end
+
+@scene U34_CRAFTER
+say jossa | I mend. Coats, boots, armour, hearts. The last one's a joke. Mostly.
+say jossa | Bring me hides or ore and I'll make you something that keeps the Hollow's cold out. Bone-lily thread's best for that.
+@end
+
+@scene U34_VIGIL
+say orla | Vigil Chapel. We keep a lantern lit for each soul a pilgrim came to see. Tie a ribbon, and I'll trim its wick.
+say orla | When a pilgrim goes home, we let their lantern burn down. It's not sad. It means they left.
+@end
+
+@scene U34_MOURNER
+say elder | Forty years married. She's across the lake. I can see her lamp from here. I'm working up to it.
+@end
+
+# ================================================================ U37 Weeping Mines
+@scene U37_DIGGER1
+say worker | Dig. Dig. The shift's not over. The shift is never over. That's what the bell says. The bell's been saying it for a century.
+@end
+
+@scene U37_DIGGER2
+say worker | The Crown's quota. Every seam, every shift. We died under it. We're still under it. The rock doesn't care who's dead.
+@end
+
+@scene U37_TALLY
+say quist | Tally-man. I count what the dead dig. It all goes into a hole in the floor of the Foreman's office. No idea where.
+say quist | Starmetal, mostly. The Court buys it. Pays in names. We've got more names than any of us can spend.
+@end
+
+@scene U37_WIDOW
+say ada | I'm Ada. Living. My husband's on the east face, still digging. I bring him lunch. He doesn't eat it. He likes that I bring it.
+@end
+
+@scene U37_KID
+say child | I'm a living kid! Visiting. The miners let me ride in the carts. They go down to where the rock cries.
+@end
+
+@scene U37_CANARY
+say keeper | I keep the canaries. They're dead too. They still sing when the air goes bad. The air's been bad for a hundred years. They sing all day.
+@end
+
+@scene U37_SHIFTBELL
+say guard | The shift bell. I ring it. It says 'keep digging.' I'd stop ringing it if anyone told me to. Nobody has the rank.
+@end
+
+@scene U37_WEEPER
+say elder | The Weeping is salt water down the face. We say it's the rock crying for us. It's only groundwater. We know. We say it anyway.
+@end
+
+@scene U37_PROSPECTOR
+say survivor | I came down for the Starmetal. The dead dig it and nobody's buying but the Court. I'm the only living buyer in the Deep.
+say survivor | They won't take my coin. They ask me to read the contract to them instead. It takes an hour. They listen to every word.
+@end
+
+@scene U37_CARTPUSHER
+say worker | Push the cart to the Foreman's hole, tip it, push it back. A hundred years. My arms don't ache. I miss them aching.
+@end
+
+@scene U37_INN
+say hesper | Bunkhouse. The living sleep; the dead take the night shift. 80 for a bunk and a hot tin cup.
+inn 80
+@end
+
+@scene U37_SLEEPER
+say survivor | I came down for a pick and a job. Turns out there's no pay. There's never been pay. I'm staying for the company.
+@end
+
+@scene U37_SMITHKEEP
+say tarn | Smithy. Picks, blades, lamps. We've got Starmetal coming out of our ears. Down here that's not a figure of speech.
+shop SHOP_U37
+@end
+
+@scene U37_CRAFTER
+say dilly | Lamp-wright. I'll work your ore into anything. Starmetal's the easy part here. Finding someone alive to wear it is the trick.
+@end
+
+@scene U37_FOREMAN
+say brack | Foreman Brack. The Crown's quota is still posted. I can't take it down. It's nailed through my hand, so to speak.
+say brack | If someone with the right to do it tore up the contract, the shift would end. I don't know who that is. Nobody's left.
+@end
+
+# ================================================================ U38 The Silent Choir
+@scene U38_MUTE
+say narr | The chorister opens her mouth to sing. Nothing comes out. She holds up a hymnal: every word has been scraped away.
+say narr | She points to the chancel, then to her own throat, then shakes her head. Not yet.
+@end
+
+@scene U38_WARDEN
+say pewwarden | This is the Silent Choir. Every voice the Pale Choir took, gathered under the Hollow Throne to finish the song.
+say pewwarden | Beyond the rail, the Choir That Remains. It does not want an audience. It wants a voice. It may want yours.
+@end
+
+@scene U38_CHANCEL
+say narr | Beyond the chancel rail the choir stalls are full. Thousands of mouths, open, silent, waiting on a downbeat nobody gives.
+say narr | The rail is warm. It is sealed with something that isn't a lock. It is a held breath.
+@end
+
+@scene U38_CHANCEL_BEYOND
+say narr | The rail has parted. The Choir That Remains turns, all of it at once, toward you.
+say narr | (The chancel is open. What waits here is beyond any ordinary hymn.)
+@end
+
+# ================================================================ U40 Undersea Throat
+@scene U40_LOCK
+say narr | The Throat's lock: a green bronze wheel as tall as a door, and beyond it the whole weight of the sea.
+if flag:lanternwake_diving diving
+say narr | It will not turn for hands. It is waiting for a hull.
+end
+label diving
+say narr | The lock's indicator glows amber. Somewhere above, a diving hull is close enough to answer it.
+@end
+
+@scene U40_THROAT_END
+say narr | The lock is open. Seawater hangs in the tunnel beyond like a held breath, and the tunnel goes down to the sea floor.
+say narr | (The undersea route begins here. The Lanternwake's diving hull can pass.)
+@end
+
+@scene U40_LOCKKEEPER
+say lockkeeper | I kept this lock alive. I keep it dead. It's all the same wheel. The sea's on the other side; it knocks sometimes.
+say lockkeeper | Only a diving hull goes through. Your airship? Get it a keel that can hold its breath, and I'll open for you.
+@end
+
+@scene U40_DIVER
+say sef | I free-dive the Throat's shallows for sea-glass. The dead down here throw coins in for luck. They don't need luck. Habit.
+@end
+
+@scene U40_NETTER
+say netter | I net souls that drift up the Throat from the sea floor. Drowned sailors, mostly. I row them to the Oarsman.
+say netter | They're always surprised it's dry down here. They say the sea floor has towns. I say finish your sentence, I'm rowing.
+@end
+
+# ================================================================ U30 The Bone Bridges
+@scene U30_ENTER once
+say narr | The bridges of the Hollow Throne are built of bone: femurs for beams, ribs for railings, and every bone labelled.
+say narr | Below them, nothing. Not dark. Nothing.
+@end
+
+@scene U30_TOLLER
+say dunstan | One bone per crossing. Not yours, don't worry. The bridges take it from the dead who cross. They take it gladly.
+say dunstan | Ossuan keeps the bridges. He's fair. He's just never once let anyone off a toll.
+@end
+
+@scene U30_BELL1
+if flag:u30_toll1 done
+sfx FX031
+set u30_toll1
+say narr | The toll-bell rings across the void. Far off, a toll-bar of crossed thighbones swings up.
+end
+label done
+say narr | The bell is still humming.
+@end
+
+@scene U30_BELL2
+if flag:u30_toll2 done
+sfx FX031
+set u30_toll2
+say narr | The second toll-bell. Somewhere ahead, the bridge you need lowers itself, bone by bone, like a hand opening.
+end
+label done
+say narr | The bell is still humming.
+@end
+
+@scene U30_BRIDGEWRIGHT
+say bridgewright | I built the first span. Out of my own bones, as it turned out. Ossuan got the idea from me. I regret that.
+say bridgewright | He pulls bones out of the bridge when he's angry. The whole span sags. Keep off the edges when it cracks.
+@end
+
+@scene U30_WINCH
+if flag:u30_shortcut done
+sfx FX009
+set u30_shortcut
+say narr | The winch creaks round. The bone portcullis to the Bridgehead rises.
+end
+label done
+say narr | The portcullis is up.
+@end
+
+@scene U30_OSSUAN
+music silence
+say narr | Mid-span, the bridge stands up. It is a giant made of every bone ever paid, and it holds out a hand for your toll.
+say ossuan | CROSSING. TOLL: ONE BONE. ...YOU ARE LIVING. YOUR BONES ARE STILL IN USE. INCONVENIENT.
+say ossuan | THEN I WILL TAKE THE WHOLE TOLL AT ONCE.
+say narr | (When the bridge cracks under your feet, Ossuan is pulling the span out. Light and fire burn it; heal bleeds.)
+battle BX21 noflee
+set bx21_done
+music M024
+say narr | Ossuan comes apart into a bridge again, whole, level and quiet. Nobody will pay a toll on it any more.
+say dunstan | ...He's gone to bits. Properly this time. Well. I'll keep the tolls anyway. Somebody ought to write down who crossed.
+@end
+
+# ================================================================ U31 Sepulchre Court / QC15 climax
+@scene U31_DOORWARDEN
+if flag:u31_gate open
+say doorwarden | The Veiled Gate. Have you come to be adopted? Mother adopts everyone in the end. It saves time to ask.
+if party:C15 velkhar
+choice | "We've come to see her." -> in | "No." -> no
+label no
+say doorwarden | Then you will wait. She is patient. We are more patient.
+end
+label velkhar
+say doorwarden | ...The one who left. Mother will be so pleased. She keeps your portrait in the gallery. Well. She keeps the frame.
+say velkhar | Open the gate.
+label in
+sfx FX009
+set u31_gate
+say narr | The doorwardens step aside, together, as if they had rehearsed it for a hundred years. They have.
+end
+label open
+say doorwarden | Mother is at home. Mother is always at home.
+@end
+
+@scene QC15_COURT_ARRIVE
+set qc15_court_arrive
+say velkhar | Sepulchre Court. She built it from the dead I laid to rest. I put them down. She picked them up.
+say velkhar | She taught me that the dead are a resource. I left because I stopped believing it. I never told her why.
+objective velkhar | Sepulchre Court: reach the Throne of Veils.
+@end
+
+@scene U31_CORD
+if flag:u31_cord done
+sfx FX031
+set u31_cord
+say narr | You pull the bell-cord. Somewhere a bell rings, soft, and the veil across the arch draws aside like a curtain on a stage.
+end
+label done
+say narr | The veil is drawn back.
+@end
+
+@scene U31_PORTRAIT
+say narr | 'THE ONE WHO LEFT.' The face is scratched out, carefully, with something small. A hairpin, maybe.
+if party:C15 velkhar
+end
+label velkhar
+say velkhar | That was me. She scratched it out the night I left. Then she kept it. That is her, all over.
+@end
+
+@scene U31_ADOPTED1
+say adopted | I was grieved by no one, they told me. Mother said she would grieve me. She does it very well. I have never been so grieved.
+@end
+
+@scene U31_ADOPTED2
+say adopted | I was laid to rest once. By a kind man in grey. Then Mother came and woke me up and said I was hers now.
+say adopted | I'd like to be laid to rest again. I don't know who to ask. You can't ask Mother. She says yes and doesn't mean it.
+@end
+
+@scene U31_BELL_A
+sfx FX031
+setvar u31_seq 1
+say narr | The left bell. A low, sleepy note. (For the lamp.)
+@end
+
+@scene U31_BELL_C
+if var:u31_seq==1 ok
+sfx FX011
+setvar u31_seq 0
+say narr | The right bell rings sour. Every cradle in the nursery rocks once, and stops. (Start again.)
+end
+label ok
+sfx FX031
+setvar u31_seq 2
+say narr | The right bell. A soft note, like a door closing. (For the door.)
+@end
+
+@scene U31_BELL_B
+if flag:u31_lullaby done
+if var:u31_seq==2 ok
+sfx FX011
+setvar u31_seq 0
+say narr | The middle bell rings sour. Every cradle rocks once, and stops. (Start again.)
+end
+label ok
+sfx FX009
+set u31_lullaby
+say narr | The middle bell, the darkest note. The lullaby is finished. The cradle-gate yawns open.
+end
+label done
+say narr | The bell is silent. The nursery is asleep.
+@end
+
+@scene U31_LATCH
+if flag:u31_shortcut done
+sfx FX009
+set u31_shortcut
+say narr | The latch lifts. The servants' door to the Veiled Gate swings open.
+end
+label done
+say narr | The door is open.
+@end
+
+@scene U31_SEPULCHRE
+music silence
+say narr | On the Throne of Veils sits a woman in a veil so long it pools on the floor like water. She is holding someone's hand. It is not attached to anyone.
+say sepulchre | Oh. Living ones. You came all this way down. You must be so tired. Come here. Let Mother hold you.
+if party:C15 velkhar
+goto fight
+label velkhar
+say sepulchre | And you brought my boy home. Velkhar. You left the door open when you went. I've been letting in the cold ever since.
+say velkhar | I laid them to rest. You woke them up and called it love.
+say sepulchre | It is love, my dear. It's the only kind that lasts.
+label fight
+say narr | (When she opens her arms, Defend. Cure doom and sleep. Light hurts her; shadow feeds her.)
+battle BX22 noflee
+set bx22_done
+music M024
+say narr | Mother Sepulchre draws back into her veil and is gone behind it, into the inner sanctum. The veil breathes, in, out.
+say narr | Where she sat, a veiled shade remains: what she leaves behind to keep the house while she's out.
+@end
+
+@scene U31_THRONE
+say narr | On the throne's arm: a child's ribbon and a soldier's tag, side by side. Keepsakes of the adopted. There are thousands, in drawers under the seat.
+@end
+
+@scene U31_SANCTUM
+say narr | The veil has lifted. Beyond it, the inner sanctum breathes, and something in it is taking off its face.
+say narr | (Mother Sepulchre's true form waits in the sanctum.)
+@end
+
+@scene QC15_VEIL
+if q:QC15 done
+if party:C15,qs:QC15:court climax
+say narr | The veiled shade turns its head. 'Mother is resting. Mother will be back. Mother always comes back.'
+end
+label climax
+say narr | The shade speaks with Mother Sepulchre's voice, from very far behind the veil.
+say sepulchre | You beat me, dear. You were always clever. Now what? They're mine. Every one of them signed nothing, and I took them.
+say velkhar | They are not yours. They were never mine either. I raised them to hold the crypts, and then I laid them down.
+say sepulchre | Then lay them down again. Go on. Command them. I taught you how.
+choice | "Command them to rest, as she taught you." -> command | "Ask them what they want." -> ask
+label command
+set qc15_commanded
+say velkhar | ...Rest. All of you. That is an order.
+say narr | The adopted dead of the Court lie down where they stand, in the gallery, the nursery, the halls. Quiet at last. Obedient.
+say velkhar | It worked. It always works. I hate that it works.
+say sepulchre | That's my boy.
+goto fin
+label ask
+set qc15_asked
+say velkhar | No. I'm not going to order them. I'm going to ask.
+say narr | Velkhar walks the Court and asks each of the adopted, one by one, what they want. It takes a long time. Nobody hurries him.
+say narr | Most lie down to rest. Some go back to Cenotaph, to be honoured instead of kept. A few stay. It's the first thing they've chosen in years.
+say sepulchre | ...You'll never have an army that way.
+say velkhar | That is rather the point.
+label fin
+say velkhar | The living shouldn't need me. The dead shouldn't need her. Let's leave while that is still true.
+give G030 1
+xp 2600
+quest QC15 COMPLETED
+set qc15_done
+say narr | (Velkhar received Prism Focus.)
+end
+label done
+say narr | The veiled shade keeps the house. It does not look at Velkhar. It has been told not to.
+@end
+
+# ================================================================ U32 Abyss Gate / QC11 climax
+@scene U32_ENTER once
+say narr | The Abyss Gate's stair runs down between rivers of slow fire. On the walls, carved carriers with wings bring bundled souls down.
+say narr | Nobody carved anyone going up.
+@end
+
+@scene U32_HORN
+if flag:u32_roost done
+sfx FX031
+set u32_roost
+say narr | The carrier's horn sounds once, low and sad. The grille of wing-bones folds back.
+end
+label done
+say narr | The horn's echo is still in the rock.
+@end
+
+@scene U32_MURAL
+say narr | Near the end of the mural, one carrier holds her bundle close and flies the other way, up the stair of fire.
+if party:C11 inferna
+end
+label inferna
+say inferna | They carved that after I left. As a warning. It's a very good likeness. I didn't know I'd looked so frightened.
+@end
+
+@scene U32_CARRIER
+say carrier | Grounded. My wings were taken for arrears. I carried souls down four hundred years. Now I wait in the queue with them.
+say carrier | There was one of us who carried them up instead. The Warden talks about her every day. It is not fond.
+@end
+
+@scene U32_LEDGER1
+if flag:u32_lg1 done
+set u32_lg1
+sfx FX010
+say narr | A lesser ledger: a farmer's grain debt. The columns don't add up. You carry the one. The book shuts, satisfied.
+call U32_LEDGERCHECK
+end
+label done
+say narr | Balanced.
+@end
+
+@scene U32_LEDGER2
+if flag:u32_lg2 done
+set u32_lg2
+sfx FX010
+say narr | A lesser ledger: a sailor's wreck-debt, charged twice. You strike the double entry. The book shuts.
+call U32_LEDGERCHECK
+end
+label done
+say narr | Balanced.
+@end
+
+@scene U32_LEDGER3
+if flag:u32_lg3 done
+set u32_lg3
+sfx FX010
+say narr | A lesser ledger: a child's debt, inherited. You write 'NOT TRANSFERABLE' in the margin. The book considers this, and shuts.
+call U32_LEDGERCHECK
+end
+label done
+say narr | Balanced.
+@end
+
+@scene U32_LEDGERCHECK
+if flag:u32_lg1,flag:u32_lg2,flag:u32_lg3 all
+end
+label all
+set u32_ledgers
+sfx FX009
+say narr | Three books balanced. At the head of the queue, the counter's gate grinds open.
+@end
+
+@scene U32_QUEUER1
+say patient | I've been in this queue since before the Crown. I'm nearly at the front. I've been nearly at the front for a century.
+@end
+
+@scene U32_QUEUER2
+say elder | We wait for the Warden to assess us. It assesses what we owe. It never assesses what we're owed. Different department.
+@end
+
+@scene U32_BAR
+if flag:u32_shortcut done
+sfx FX009
+set u32_shortcut
+say narr | The bar lifts from the furnace hatch. The Gate Stair is just beyond.
+end
+label done
+say narr | The hatch is open.
+@end
+
+@scene U32_WARDEN
+music silence
+say narr | Before the Gate stands a horned thing in a clerk's collar, holding a ledger that smokes at the edges.
+say warden_debts | ACCOUNTS. PRESENTED. YOU OWE: EVERYTHING. PAYABLE: NOW.
+if party:C11 inferna
+goto fight
+label inferna
+say warden_debts | ...AND YOU. CARRIER. DESERTER. YOUR PAGE IS THE LONGEST IN THE BOOK. EVERY SOUL YOU CARRIED UP IS CHARGED TO YOU.
+say inferna | Then read it out. All of it. I'd like to hear what I'm worth to you.
+label fight
+say narr | (When the ledger's page burns, it is about to collect. Ice and water put it out; cleanse its curse.)
+battle BX23 noflee
+set bx23_done
+music M022
+say narr | The Warden of Debts sinks into the fire it kept. The Great Ledger lies open on its counter, unguarded for the first time.
+@end
+
+@scene QC11_LEDGER
+if !flag:bx23_done guarded
+if q:QC11 done
+if party:C11,qs:QC11:gate climax
+if party:C11,q:QC11:ACTIVE notyet
+say narr | The Great Ledger of the Abyss Gate. Every debt ever carried down. The pages are warm and they turn by themselves.
+end
+label guarded
+say narr | The Warden stands over its ledger.
+end
+label notyet
+say inferna | Not yet. There are three names in here I haven't heard from. I won't touch their pages until I have.
+end
+label climax
+say narr | Inferna turns the Great Ledger's pages. Marsh, Aveline. Tanner, Hobb. Garrow, Edric. And her own page, very long.
+say inferna | I could burn it. All of it. Every debt in the abyss, gone in one fire.
+say inferna | Or I could strike them one by one. Read each name. Put a line through each debt that was never really theirs. It would take years.
+choice | "Burn the whole ledger." -> burn | "Strike them one name at a time." -> strike
+label burn
+set qc11_burned
+say narr | The ledger catches like dry grass. Forty thousand debts go up in a sheet of fire. The queue behind you sighs, all at once.
+say inferna | ...And now nobody knows who was owed. I wanted them to know. It's done. It's still done.
+goto fin
+label strike
+set qc11_struck
+say narr | Inferna takes the pen. Marsh, Aveline: struck. Tanner, Hobb: struck. Garrow, Edric: struck. The queue behind you goes quiet, listening.
+say inferna | Three. There are forty thousand more. I'll come back. I'll bring a lamp and a very long afternoon.
+label fin
+say inferna | My own page I'll leave. I did carry them down. That debt is mine, and I intend to pay it by carrying people out.
+give W017 1
+xp 2600
+quest QC11 COMPLETED
+set qc11_done
+say narr | (Inferna received Returner's Pike.)
+end
+label done
+say narr | The ledger lies open. Where Inferna worked, the lines are neat and dark and final.
+@end
+
+# ================================================================ U33 The First Crown's Tomb / QC14 finale
+@scene QC14_TOMB_WAIT
+set qc14_fallback
+say maldrath | A tomb for the First Crown. I know of it. I am not ready to go in.
+say maldrath | There is a barrow on the surface, in the Crown March, where I buried something of mine. I should start there.
+say narr | (Maldrath's questline begins at Ashward Barrows on the surface. It ends here.)
+@end
+
+@scene QC14_TOMB
+set qc14_tomb_hook
+say maldrath | The First Crown's Tomb. The first king to wear the Ashen Crown is buried here with it. Not a copy. The crown.
+say maldrath | I found his name in my barrow. I wore his crown's copy, and I wore it badly. I would like to meet him.
+say maldrath | And then I would like to decide what to do with what he left us.
+quest QC14 ACTIVE tomb
+journal | QC14: Descend the First Crown's Tomb with Maldrath. Walk the Processional of Kings. Face the First Crown.
+objective maldrath | First Crown's Tomb: walk the Processional of Kings; face the First Crown.
+@end
+
+@scene U33_KNIGHT
+say soldier | I stand guard over the regalia. The First Crown's orders. He said nobody would ever come to steal it. He was right.
+say soldier | The cases must be set right before the sceptre-gate opens. The orb on its cushion. The sceptre on its rest. He liked things in order.
+@end
+
+@scene U33_ORB
+if flag:u33_orb done
+sfx FX010
+set u33_orb
+say narr | You set the orb back on its cushion, where the dust says it belongs. A sceptre-bar in the gate shifts.
+call U33_REGCHECK
+end
+label done
+say narr | The orb sits where it belongs.
+@end
+
+@scene U33_SCEPTRE
+if flag:u33_sceptre done
+sfx FX010
+set u33_sceptre
+say narr | You lay the fallen sceptre back across its rest. Another bar in the gate shifts.
+call U33_REGCHECK
+end
+label done
+say narr | The sceptre lies on its rest.
+@end
+
+@scene U33_REGCHECK
+if flag:u33_orb,flag:u33_sceptre all
+end
+label all
+set u33_regalia
+sfx FX009
+say narr | The gate of crossed sceptres uncrosses itself.
+@end
+
+@scene QC14_STATUE
+say narr | 'MALDRATH, WHO WORE IT LAST BEFORE THE ASH. HE SENT THEM TO THE QUARRY.'
+if party:C14,flag:qc14_tomb_hook maldrath
+end
+label maldrath
+say maldrath | They carved it true. I asked them to, once. I had forgotten I asked.
+say maldrath | Every king on this road kept the tax. I kept the quarry. The First Crown gave us both.
+quest QC14 ACTIVE statue
+@end
+
+@scene U33_NAMELESS
+if flag:u33_nameless done
+sfx FX009
+set u33_nameless
+say narr | At the foot of the empty plinth a lever is set in the stone, as if the next king were meant to pull it themselves. The door with no king opens.
+end
+label done
+say narr | The door stands open.
+@end
+
+@scene U33_WAX
+if flag:u33_shortcut done
+sfx FX009
+set u33_shortcut
+say narr | You break the wax seal. The mourners' door to the Tomb Door swings open.
+end
+label done
+say narr | The door is open.
+@end
+
+@scene U33_FIRST_CROWN
+music silence
+say narr | On the bier, a king sits up. Under his robes he is ash, shaped like a man. On his head, small and dull, the First Crown.
+say firstcrown | Who comes into my tomb wearing no crown at all? Kneel, and I will lend you one.
+if party:C14 maldrath
+goto fight
+label maldrath
+say firstcrown | ...You. I know that face. You wore my copy. Did it fit?
+say maldrath | It fit exactly. That was the trouble.
+label fight
+say narr | (When ash falls like snow, the First Ash is coming. Light hurts him; later water. Keep silence cures ready.)
+battle BX24 noflee
+set bx24_done
+music M024
+say narr | The First Crown lies down again and becomes a heap of ash with a crown on it. The crown doesn't fall. It never has.
+@end
+
+@scene QC14_CROWN
+if !flag:bx24_done guarded
+if q:QC14 done
+if party:C14,flag:qc14_tomb_hook climax
+say narr | The First Crown, on its bier of ash. Small, dull, the original of every copy. It looks heavier than it is.
+end
+label guarded
+say narr | The First Crown watches from its bier.
+end
+label climax
+say maldrath | The original. Every crown since was a copy of this, and the Ashen Crown was a copy of the copies.
+say maldrath | I could break it here. Or I could leave it with him. Bury it properly, and let it be nobody's.
+choice | "Break it." -> break | "Bury it with its king." -> bury
+label break
+set qc14_broken
+say narr | Maldrath lifts his blade and brings it down. The First Crown doesn't shatter. It simply comes apart, like a knot someone finally understood.
+say maldrath | One down. The one that remains is bigger. I'll help you break that too.
+goto fin
+label bury
+set qc14_buried
+say narr | Maldrath lays the crown in the ash and covers it with his cloak. Then he cuts one line into the bier: 'NOBODY'S.'
+say maldrath | Let it be nobody's. That's the only kind of crown I'd leave behind.
+label fin
+say maldrath | I answered for mine. The answer was the quarry, and it still is. Now I'll spend what's left of me on the one that remains.
+give W005 1
+xp 2600
+quest QC14 COMPLETED
+set qc14_done
+say narr | (Maldrath received Accord Steel.)
+end
+label done
+say narr | The bier is quiet. Whatever happened here, it happened on purpose.
+@end
+
+# ================================================================ U35 The Lich Stair / QC13 finale
+@scene QC13_STAIR_WAIT
+set qc13_fallback
+say lich | The Lich Stair. My under-court is below. I cannot face them until I have finished with my frozen seat above.
+say narr | (The Lich King's questline begins at Coldharbour Citadel. It ends here.)
+@end
+
+@scene U35_QC13_STAIR
+set qc13_stair_hook
+say lich | My under-court. When my people died of the cold I kept them. Their grief I kept down here, where it would not trouble the living.
+say lich | It troubled them anyway. It has grown into one body, the Mourning Court. Every courtier who grieved too long.
+say lich | I made it. I will unmake it. Walk with me.
+quest QC13 ACTIVE stair
+journal | QC13: Descend the Lich Stair with the Lich King and face the Mourning Court.
+objective lich | The Lich Stair: descend to the Mourning Court.
+@end
+
+@scene U35_BRAZIER1
+if flag:u35_b1 done
+set u35_b1
+sfx FX010
+say narr | The brazier catches. Blue fire, cold to look at, warm to stand by. The frost on the nearest courtier starts to run.
+call U35_BRAZCHECK
+end
+label done
+say narr | The brazier burns.
+@end
+
+@scene U35_BRAZIER2
+if flag:u35_b2 done
+set u35_b2
+sfx FX010
+say narr | The second brazier catches. A frozen courtier's eyes move, very slowly, toward the light.
+call U35_BRAZCHECK
+end
+label done
+say narr | The brazier burns.
+@end
+
+@scene U35_BRAZIER3
+if flag:u35_b3 done
+set u35_b3
+sfx FX010
+say narr | The third brazier catches. Ice drips from the portcullis like a thaw in spring.
+call U35_BRAZCHECK
+end
+label done
+say narr | The brazier burns.
+@end
+
+@scene U35_BRAZCHECK
+if flag:u35_b1,flag:u35_b2,flag:u35_b3 all
+end
+label all
+set u35_braziers
+sfx FX009
+say narr | The portcullis of black ice melts through and falls in a shower of water.
+@end
+
+@scene U35_COURTIER
+say courtier | ...Warm. Is it spring? It was going to be spring. His Majesty said it would be spring. We waited in the hall.
+if party:C13 lich
+end
+label lich
+say lich | It is not spring, Lady Esk. I am sorry. It will be, soon. I promise it will be something.
+@end
+
+@scene U35_PAGE
+say page | I carry messages up the stair. Nobody reads them. They say 'the court asks to be excused.' Every one says that.
+@end
+
+@scene U35_POSTERN
+if flag:u35_shortcut done
+sfx FX009
+set u35_shortcut
+say narr | You hold the brazier's flame to the postern's seal. It thaws, and the door to the Stair Head opens.
+end
+label done
+say narr | The postern stands open.
+@end
+
+@scene U35_MOURNING_COURT
+music silence
+say narr | The under-court's hall is full of one enormous mourner: a body made of courtiers, bowed under a hood of frost.
+say mourningcourt | We grieve. We grieve. We were told to wait. We were told it would be spring.
+if party:C13 lich
+goto fight
+label lich
+say mourningcourt | ...Majesty. You came down. Is it spring?
+say lich | No. It is the end of winter. That is the best I can do. Come out of the cold.
+label fight
+say narr | (When bells toll once for each of you, a procession is coming. Fire and light melt it; cure doom.)
+battle BX25 noflee
+set bx25_done
+music M024
+say narr | The Mourning Court comes apart into courtiers, one by one, and each of them sits down on the floor as if very tired.
+@end
+
+@scene U35_QC13_THRONE
+if !flag:bx25_done guarded
+if q:QC13 done
+if party:C13,flag:qc13_stair_hook climax
+say narr | The under-throne. A small crown lies frozen to its seat, the kind a regent wears when the king is away.
+end
+label guarded
+say narr | The Mourning Court fills the hall.
+end
+label climax
+say lich | My court. I kept you because I could not bear an empty hall. That was my grief, not yours.
+say lich | You may go. All of you. Rest, or walk up into the thaw, or go to Cenotaph and be honoured. I release you.
+say narr | The courtiers get up, stiffly. Some lie down again, content. Some start up the stair. Lady Esk curtseys before she goes.
+say lich | And the crown. Mine outlived my people by three hundred years. It should not outlive the reason I wore it.
+choice | "Lay it on the under-throne." -> lay | "Carry it until the Ashen Crown is broken." -> carry
+label lay
+set qc13_laid
+say narr | The Lich King lifts off his crown of rime and sets it on the under-throne beside the regent's. It looks smaller there. So does he, and he seems glad.
+say lich | There. An emperor of nobody. It is very restful.
+goto fin
+label carry
+set qc13_carried
+say lich | Then I will carry it a little longer, as a reminder, and set it down the day the last crown breaks.
+say lich | It is heavy. Good. It ought to be.
+label fin
+give W011 1
+xp 2600
+quest QC13 COMPLETED
+set qc13_done
+say narr | (The Lich King received Dawn Conductor.)
+end
+label done
+say narr | The under-throne is empty now, except for what was left on it on purpose.
+@end
+
+# ================================================================ U36 Velkhar's Crypt-Gate / QC15 start
+@scene QC15_GATE
+set qc15_hook
+say velkhar | The Crypt-Gate. The door between the fault's crypts and the Hollow Throne. I held it once, with the dead.
+say velkhar | When I left, my first student stayed to hold it. Sorrow. She was very young. She is not young any more.
+say velkhar | I owe her an apology. She is going to want more than that.
+quest QC15 ACTIVE gate
+journal | QC15: Descend Velkhar's Crypt-Gate and find Sorrow, his first student.
+objective velkhar | Velkhar's Crypt-Gate: find Sorrow at the gate.
+@end
+
+@scene U36_CHAIN
+if flag:u36_lanes done
+sfx FX010
+set u36_lanes
+say narr | The pull-chain rattles through the niches. The bone lattice lifts out of the lane.
+end
+label done
+say narr | The lattice is up.
+@end
+
+@scene U36_TAG
+say narr | 'HALDIS, BAKER. HELD THE WEST DOOR FOUR NIGHTS. RELEASED WITH THANKS.' The tag is newer than the rest. Someone has re-tied it.
+if party:C15 velkhar
+end
+label velkhar
+say velkhar | Haldis. She kept telling the others to stop moaning. I thanked every one of them. I'm glad I did that part right.
+@end
+
+@scene U36_HOLDER
+say worker | We hold the doors. Lord Velkhar asked. Then he left, and Sorrow asked. We don't know how to stop being asked.
+@end
+
+@scene U36_HOLDERS_LEAD
+if flag:u36_doors open
+if party:C15 velkhar
+say elder | Strangers. We hold these doors. Something below wants out. Will you hold them after we let go? Promise it.
+choice | "We promise." -> in | "Not yet." -> no
+label no
+say elder | Then we hold.
+end
+label velkhar
+say elder | ...My lord. You came back. We held. We held the whole time.
+say velkhar | I know. Thank you. You can let go now. I will see to what's below.
+label in
+sfx FX009
+set u36_doors
+say narr | The dead at the doors lower their arms, all together, the way you set down something you have carried too long.
+end
+label open
+say elder | The doors are yours to hold now. They don't weigh as much as you'd think. They weigh exactly as much as you'd think.
+@end
+
+@scene U36_CHARNEL
+if flag:u36_shortcut done
+sfx FX009
+set u36_shortcut
+say narr | The chain falls away from the charnel door. The Crypt Road is just beyond.
+end
+label done
+say narr | The door is open.
+@end
+
+@scene U36_SORROW
+music silence
+say narr | Before the Crypt-Gate stands a woman in grey, older than the gate looks. The dead around her stand at attention.
+say sorrow | Another lot, come to open my gate. I held it. Every night since he left. I will hold it against you.
+if party:C15 velkhar
+goto fight
+label velkhar
+say sorrow | ...You. You came back. A hundred years late and dressed for travel.
+say velkhar | Sorrow. I'm sorry.
+say sorrow | He taught you too? Then he taught you wrong. Let me show you what I learned alone.
+label fight
+say narr | (When the crypt-gate grinds closed behind you, she is shutting you in. Light hurts her; cure blind.)
+battle BX26 noflee
+set bx26_done
+music M024
+say narr | Sorrow lowers her hands. The dead around her sit down on the steps of the gate, and so does she.
+@end
+
+@scene QC15_SORROW
+if q:QC15 done
+if party:C15,qs:QC15:gate beat
+say sorrow | He left. I stayed. Someone had to. That's the whole story. It's a short one for a hundred years.
+end
+label beat
+say sorrow | You laid them to rest and left. Do you know where they went? They didn't rest. She took them.
+say velkhar | Who?
+say sorrow | Your teacher. Mine too, before you. Mother Sepulchre. Every soul you put down, she picked up and adopted into her Court.
+say sorrow | I held this gate so she couldn't have the rest. Go and get them back, if you want to say sorry properly.
+say velkhar | ...And you?
+say sorrow | I'll sit down. I haven't sat down in a hundred years. Go.
+quest QC15 ACTIVE court
+journal | QC15: Mother Sepulchre, Velkhar's teacher, has adopted the dead he laid to rest. Go to Sepulchre Court.
+objective velkhar | Sepulchre Court: confront Mother Sepulchre.
+discover L_U31
+end
+label done
+say sorrow | I'm sitting down. It's wonderful. Tell him that. Don't tell him I said it was wonderful.
+@end
+
+# ================================================================ U39 Hollow Heart (approach and three floors)
+@scene U39_ENTER once
+say narr | Below the Hollow Throne, below the dead, there is a heart. It beats slowly. Each beat is a page turning.
+say narr | Every account the Crown ever kept, of everything it took and everything it gave back, is kept down here.
+say ilyr | I can feel the fragment of something here. Not a dragon. Something the Crown made out of what it took.
+@end
+
+@scene U39_PILGRIM
+say lastpilgrim | I came to find my page. Everyone has a page down here. I found the door to the first keeper and stopped.
+say lastpilgrim | Three keepers, three doors. Behind the last, the crown that was never worn. I'm going back up. You should too. You won't.
+@end
+
+@scene U39_KEEPER1
+say narr | The first keeper's door. Behind it, something counts. Every item, every tithe, every life the Crown took, in one voice that never draws breath.
+say narr | The door is sealed. The Ledger is not ready to be read. (A keeper waits here.)
+@end
+
+@scene U39_KEEPER2
+say narr | The second keeper's door. Behind it, a much shorter count: everything the Crown ever gave back. It finishes quickly, and starts again.
+say narr | The door is sealed. The Tally is not ready to be heard. (A keeper waits here.)
+@end
+
+@scene U39_KEEPER3
+say narr | The third keeper's door. Behind it, two books close together with a sound like a gavel.
+say narr | The door is sealed. The Verdict has not been reached. (A keeper waits here.)
+@end
+
+@scene U39_UNMADE_DOOR
+say narr | The innermost door. Behind it, something the size of a crown and the weight of a kingdom turns, slowly, looking for a head.
+say narr | The door is sealed three times over, once for each keeper. It will not open until all three are answered.
+@end

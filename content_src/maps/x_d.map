@@ -1,0 +1,3018 @@
+#! Group d: the Deep, U01-U19 (Emberdeep U1, the Lattice U2)
+#! U01 The Breach: the Crown Quarry's lower floor fell into Emberdeep. Collapse slope north, workers' camp, lava crack east, the way down south.
+=== U01_R01
+name: The Breach
+tileset: emberdeep
+music: M020
+zone: U01
+region: U1
+location: L_U01
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+###############..#x::x..################
+###############}..x::x..}x##############
+##############..|..::..|.###############
+##############.r|..::r.|..##############
+#########...####.#####..###....#########
+########.....xr....::..........#########
+####.o##....x.*o...::....xr..x#..#######
+###.#c##...ooEro...::ox.....c.#..#...###
+####o.....####x....::#r######r#....#.###
+####..F..]]cxF.....::....ooorMMM..MM.###
+####.]].*c.x.......::......xoMMMMMMM####
+####F....r.........::.......cMMMMMMM.###
+####...............::......e.MMMMMM.####
+###.....F.!r...F...........eMMMMMMMo####
+###.......*c.F...............MMMMMMM####
+####.rx........F............HHHHHHHH.###
+####cc2........F............HHHHHHHH*###
+###.Fo....................e..MMMMMMM####
+####............F...........oMMMMMM..###
+###.#x.....................e.MMMMMM..###
+####......A.......A.....A..eMMMMMMM..###
+###.#x.......A.A..........e.MMMMMMM.####
+###...P.*..oxA.A.........A..MMM.MM...###
+#####..P...**.........A.AAx.cr*......###
+###.r.....AAP.xx.:::::::.A#.....P#..####
+######.###..r.###:::::::######x#r##..###
+#################:::::::################
+#################:::::::################
+#################:::::::################
+#################:::::::################
+entities:
+spawn from_quarry 19 2 down
+spawn world 20 27 up
+spawn default 20 27 up
+exit 18..22 29 DEEP l_u01
+save 22 11
+npc breach_worker1 8 12 right sprite=worker talk=U01_BREACH_WORKER1 name="Trapped Worker"
+npc breach_worker2 12 14 left sprite=survivor talk=U01_BREACH_WORKER2 name="Trapped Worker"
+npc breach_worker3 6 17 up sprite=worker talk=U01_BREACH_WORKER3 name="Trapped Worker"
+npc vessa_breach 26 20 left sprite=volunteer talk=U01_VESSA_BREACH name="Vessa"
+read 10 7 "A lift cage on its side, cable coiled like a dead snake." scene=U01_LIFT
+read 31 16 "The cooled crossing." scene=U01_CRUST
+chest U01_C1 4 12 I002 2
+chest U01_C2 34 24 I011 3
+
+#! U02 Karag Dun, delver forge-city of King Horrach. Shape: valley spine - a gate over the lava moat, the ward climbs to the King's Terrace.
+=== U02_R01
+name: Karag Dun - Gate Ward
+tileset: emberdeep
+music: M012
+zone: U02
+region: U1
+location: L_U02
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+##^^^^^^^^^^^^^^^^^^ss^^^^^^^^^^^^^^^^^^^^##
+##^^^^^^^^^^^^^^^^^^ss^^^^^^^^^^^^^^^^^^^^##
+##^^^^^^^^^^^^^^^^^^ss^^^^^^^^^^^^^^^^^^^^##
+#####.###.#..####.#lssl:#.##.#..##..#.or#c##
+##*.RRRRRR4RR*....F.::::......RR4RRRRRRcc###
+##F2RRRRRRRRRr......::::..e...RRRRRRRRR..###
+###2RRRRRRRRR.......::::......RRRRRRRRR.c###
+###5WQWWQWWQW.e..ee.::::.....oWQWWQWWQW.c###
+##..WQWWDWWQW.......::::.....cWQWWDWWQW...##
+##2...cS..roF.......::::.....ree...Srcc...##
+##..e.....e.........::::....e...e.......::::
+###o::::::::::::::::::::::::::::::::::::::::
+##F.::::::::::::::::::::::::::::::::::::::::
+##..cccx.oe..F...e.N::::N...............::::
+###.RRRRRRR.........:yy:....e.........e...##
+##c.RRRRRRRxe......F::::.F..aaaa.aaaee.ccc##
+###.RRRRRRR.......eN::::N...nnnn5nnn....c###
+##..WQWWQWWF........::::....r2ce.......Fx.##
+##e.WQWDQWW3.e...e..::::................o###
+###......5....x.ro..::::r.......cx....o.F.##
+###..##.###..##.##..::::co.#r*#######.#.####
+###################u::::u###################
+##################J#::::#J##################
+###################u::::u###################
+#MMMMMMMMMMMMMMMMMMM====MMMMMMMMMMMMMMMMMMM#
+#MMMMMMMMMMMMMMMMMMM====MMMMMMMMMMMMMMMMMMM#
+######.#o##r#..##.#N::::N##.########.#o..###
+###..o...oo..c......::::.....*x....o.....###
+###.####c###.#.##.##::::...#...####o#.#o*###
+####################::::####################
+entities:
+spawn world 21 27 up
+spawn default 21 27 up
+spawn from_forge 41 11 left
+spawn from_terrace 20 4 down
+spawn from_inn 8 9 down
+spawn from_shop 34 9 down
+spawn from_house 7 19 down
+spawn from_rail 36 19 up
+exit 20..23 29 DEEP l_u02
+exit 43 10..13 U02_R02 from_gate
+exit 20..21 0 U02_R03 from_gate
+door 8 8 U02_INN entry sfx=FX008
+door 34 8 U02_SHOP entry sfx=FX008
+door 7 18 U02_HOUSE1 entry sfx=FX008
+sign 25 11 "West: Anvil & Ale. East: Forge Ward. Up: the King's Terrace. Down: the Deep, and whatever's in it."
+npc gate_warden 18 20 down sprite=guard talk=U02_GATE_WARDEN name="Gate Warden"
+npc porter 25 27 left sprite=worker talk=U02_PORTER name="Porter"
+npc stall_bread 30 15 down sprite=baker talk=U02_STALL_BREAD name="Cap-Bread Seller"
+npc prospector 14 12 right sprite=elder talk=U02_PROSPECTOR name="Old Prospector"
+npc coughing_miner 26 19 up sprite=patient talk=U02_COUGHING_MINER name="Coughing Miner"
+npc dragonborn_trader 10 19 right sprite=volunteer talk=U02_DRAGONBORN_TRADER name="Dragonborn Trader"
+npc kid_gate 16 8 down sprite=child talk=U02_KID_GATE name="Delver Child" wander=1
+npc crown_escort 22 17 down sprite=soldier talk=U02_CROWN_ESCORT name="Crown Escort" if=!phase:post
+npc post_refugee 22 17 down sprite=survivor talk=U02_POST_REFUGEE name="Refugee" if=phase:post
+chest U02_C1 40 19 I007 2
+npc cart_u02 34 19 right sprite=worker talk=U11_CART_BACK name="Cart Bell"
+
+=== U02_R02
+name: Karag Dun - Forge Ward
+tileset: emberdeep
+music: M012
+zone: U02
+region: U1
+location: L_U02
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+############################################
+####################MMMM####################
+####....#.....###.#.MMMM.eRRR4RRRRR4RRR#o.##
+##.WWWWWW.WWWWWW....MMMM..RRRRRRRRRRRRR....#
+##.W!mp!W.W!mp!Wx...MMMM*.RRRRRRRRRRRRRx...#
+##.Wo...W.Wcx..Wx...MMMM..RRRRRRRRRRRRR..c##
+##o...e.....r.......MMMM.oWQWWQWWQWWQWW..c##
+##...5c5....5.5.....MMMMcrWQWWQWDQWWQWW...r#
+##.r......r.........MMMM.....5.!...5..r....#
+##c.......c.........MMMM...................#
+::::............e...MMMM..................##
+::::::::::::::::::::====:::::::::::::::::.##
+::::::::::::::::::::====:::::::::::::::::..#
+::::..............e.MMMM.......e...........#
+##..xx........ee....MMMM...................#
+##.WWWWWWc..........MMMM...........xr......#
+#..W!m!pWe..........MMMM.....RRRRRRRRRr....#
+#..Wex..W..........eMMMM.....RRRRRRRRR....##
+#..................*MMMM.....RRRRRRRRR.....#
+##...5..9..........xMMMMe....WQWWQWWQW....##
+#.....e.............MMMM...eJWQWWDWWQWJ...e#
+##..................MMMMr................r##
+#.e...........e..:::====:::............e..##
+##.......e.........*MMMM.e..........e..x.ec#
+##c...2r.x..2.......MMMMe.....2*......xcx..#
+##||||||||||||||||||MMMM||||||||||||||||||c#
+##.c..xr.......x..e.MMMMe..o.....x...*r..x.#
+#..####.##c###.#o...MMMM#...#.#.c##e#r*.##.#
+####################MMMM####################
+############################################
+entities:
+spawn from_gate 1 11 right
+spawn from_forge 32 8 down
+spawn from_count 33 21 down
+exit 0 10..13 U02_R01 from_forge
+door 32 7 U02_FORGE entry sfx=FX008
+door 33 20 U02_COUNT entry sfx=FX009
+sign 30 8 "THE MASTER FORGE. Crown work at the back of the queue."
+sign 35 21 "CROWN FACTOR - DEEP ACCOUNTS. Knock. Wait."
+npc smith_ulf 6 6 down sprite=worker talk=U02_SMITH_ULF name="Smith Ulf"
+npc smith_rika 13 6 down sprite=worker talk=U02_SMITH_RIKA name="Smith Rika"
+npc smith_old 6 18 down sprite=elder talk=U02_SMITH_OLD name="Old Smith Berrin"
+npc forge_monk 17 14 left sprite=monk talk=U02_FORGE_MONK name="Flame-Keeper"
+npc crown_clerk 33 22 down sprite=clerk talk=U02_CROWN_CLERK name="Crown Clerk"
+npc apprentice_forge 27 13 up sprite=apprentice talk=U02_APPRENTICE_FORGE name="Forge Apprentice"
+npc ore_sorter 38 12 left sprite=worker talk=U02_ORE_SORTER name="Ore Sorter"
+chest U02_C2 41 3 M002 1
+
+=== U02_R03
+name: Karag Dun - King's Terrace
+tileset: emberdeep
+music: M012
+zone: U02
+region: U1
+location: L_U02
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+########################################
+########RRRRRRRRRRRRRRRRRRRRRRRR########
+#####.#.RRRRRRRRRRRRRRRRRRRRRRRR#.#rc.##
+##......RRRRRRRRRRRRRRRRRRRRRRRR*.xo.r##
+##.....oWWWWWWWWWWWWWWWWWWWWWWWWx....###
+##......WWWWWWWWWWWWWWWWWWWWWWWW.....###
+###.....WWWWJWWWWWWDWWWWWWWJWWWW.....###
+###......cu...uo.::::::.xu...u.c.....###
+##..F.......e..cN:.::::No.F.........*###
+##.........H....F::::::r......'...F.*###
+###..............:.::::..C...........###
+###.....H.eHH.H.F::::::..............###
+##...F.............::.........or......##
+##*FrN....H....F...::.......cRRRRRRR..##
+##r8r..F......''.C.::...C...*RRRRRRR.o##
+##.8...............::.......rWQWxWQW..##
+###8...F.F.........::..'..H....F....o###
+##.8...........e...::.................##
+##.8.@.C..'........::........o..o.....##
+###8.....e.........::........RRRRRRR.###
+###8.e.....'......F::...C....RRRRRRRcc##
+##.8...H........C..::.....e.oWQWxWQWr.##
+##r8...............::....H........co.###
+##...N.............::.................##
+###.rc....F..o.....::..c....xo........##
+#####r.r.###.#.##.#::..#.#..o##r#...#.##
+##ffffffffffffffff#::#ffffffffffffffff##
+###################ss###################
+entities:
+spawn from_gate 19 25 up
+spawn from_hall 19 7 down
+exit 19..20 27 U02_R01 from_terrace
+door 19 6 U02_HALL entry sfx=FX009
+read 4 18 "The Miners' Memorial." scene=U02_MEMORIAL
+sign 33 16 "Sealed by order of the Crown Factor: tenant in arrears."
+npc memorial_keeper 6 16 left sprite=elder talk=U02_MEMORIAL_KEEPER name="Memorial Mason"
+npc hall_guard1 17 9 down sprite=guard talk=U02_HALL_GUARD1 name="Hall Guard"
+npc hall_guard2 22 9 down sprite=guard talk=U02_HALL_GUARD2 name="Hall Guard"
+npc hild_terrace 12 20 right sprite=volunteer talk=U02_HILD_TERRACE name="Hild Stonebeard" if=!q:QUP3
+npc hild_after 12 20 right sprite=volunteer talk=U02_HILD_AFTER name="Hild Stonebeard" if=q:QUP3
+npc widow_memorial 7 22 left sprite=survivor talk=U02_WIDOW_MEMORIAL name="Widow"
+chest U02_C3 36 3 A104 1
+
+=== U02_INN
+name: Karag Dun - The Anvil & Ale
+tileset: interior_stone
+music: M012
+zone: U02
+region: U1
+location: L_U02
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_##############_
+##kk!##kk?##k!#k
+#_............_#
+#.nnnn.nk..B.B.#
+#r............r#
+#r.............#
+#..tt......B.B.#
+#..............#
+#..tt..........#
+#_............_#
+_######++######_
+entities:
+spawn entry 7 9 up
+exit 7..8 10 U02_R01 from_inn
+npc innkeep_u02 3 2 down sprite=baker talk=U02_INNKEEP_U02 name="Innkeeper Marit"
+inn 2 3 scene=U02_INN_REST
+npc patron_u02 5 7 left sprite=worker talk=U02_PATRON_U02 name="Drinking Miner"
+npc nib_u02 8 8 up sprite=keeper talk=U02_NIB_U02 name="Nib the Pedlar"
+
+=== U02_SHOP
+name: Karag Dun - Stonebeard Outfitters
+tileset: interior_stone
+music: M012
+zone: U02
+region: U1
+location: L_U02
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_############_
+##k5kk5kk5kk##
+#_......kr.._#
+#.nnnnn.nn...#
+#............#
+#r..........r#
+#...........c#
+#...........k#
+#_.........._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U02_R01 from_shop
+npc shop_u02 4 2 down sprite=keeper talk=U02_SHOP_U02 name="Outfitter Gunnar"
+shop 3 3 SHOP_U02
+
+=== U02_HOUSE1
+name: Karag Dun - Asta's House
+tileset: interior_stone
+music: M012
+zone: U02
+region: U1
+location: L_U02
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_##########_
+##k!8#k?k###
+#_........_#
+#.B......B.#
+#....tt....#
+#r.........#
+#..........#
+#_......k._#
+_####++####_
+entities:
+spawn entry 5 7 up
+exit 5..6 8 U02_R01 from_house
+npc asta 7 3 down sprite=survivor talk=U02_ASTA name="Asta"
+npc asta_boy 4 6 right sprite=child talk=U02_ASTA_BOY name="Asta's Boy"
+chest U02_C4 10 6 I006 1
+
+=== U02_FORGE
+name: Karag Dun - The Master Forge
+tileset: furnace
+music: M012
+zone: U02
+region: U1
+location: L_U02
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_################_
+##!pmp!##k5k##!pmp
+#_......rk......_#
+#..MMM........9..#
+#.kMMM..5..5.....#
+#................#
+#k..............k#
+#k..............k#
+#................#
+#.c............r.#
+#_.........r...._#
+_#######++#######_
+entities:
+spawn entry 8 10 up
+exit 8..9 11 U02_R02 from_forge
+npc crafter_u02 9 5 down sprite=worker talk=U02_CRAFTER_U02 name="Branna Coalhand"
+
+=== U02_COUNT
+name: Karag Dun - Crown Counting House
+tileset: interior
+music: M012
+zone: U02
+region: U1
+location: L_U02
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_############_
+##k?kJ##Jk?k##
+#_.........._#
+#.nnnnrnnnn..#
+#..k.........#
+#k..........k#
+#k..tt......k#
+#............#
+#_.........._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U02_R02 from_count
+npc pym 6 2 down sprite=noble talk=U02_PYM name="Factor Pym" if=!phase:post
+npc count_clerk 9 7 left sprite=clerk talk=U02_COUNT_CLERK name="Ledger Clerk"
+read 11 2 "A strongbox, locked." scene=U02_STRONGBOX
+
+=== U02_HALL
+name: Karag Dun - The Stone Throne
+tileset: interior_stone
+music: M012
+zone: U02
+region: U1
+location: L_U02
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_##################_
+##J!k8J##u##u##J8k!J
+#_..kr...y@......._#
+#........::........#
+#k.J.....::.....J..#
+#.....u..::..u.....#
+#........::........#
+#........::........#
+#........::........#
+#..r..u..::.ru.....#
+#..!.....::.....!..#
+#........::........#
+#_................_#
+_########++########_
+entities:
+spawn entry 9 12 up
+exit 9..10 13 U02_R03 from_hall
+npc horrach 10 3 down sprite=elder talk=U02_HORRACH name="King Horrach Stonebeard"
+npc orsik 12 4 left sprite=clerk talk=U02_ORSIK name="Thane Orsik"
+
+#! U03 Emberwell: dragonborn enclave around the ember-well (clearing village). A Crown pipe drinks the well from the east.
+=== U03_R01
+name: Emberwell
+tileset: emberdeep
+music: M015
+zone: U03
+region: U1
+location: L_U03
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+######################################
+######################################
+###..##.#####....###.##RR4RRRRRRR#####
+###www.#RRRRR4RRr#.#oo.RRRRRRRRRRP..##
+##owww..RRRRRRRRoe.....RRRRRRRRRR.P.##
+##*www.oRRRRRRRRo...e..WQWWQWWQWWI#.##
+##.wvw.2WQWWQWWW.......WQWWWDWQWWc2###
+###www..WQWDQWWW..e..*Jc2xx......J.###
+##*www.r..S...ex.eeeeee.I......eI..###
+##owww..........eeMMMMeeoc..*r..**J###
+###www..e..I...!eeMOOMee!ppppppppppp##
+###www.....e....eeMMMMee...ec)o..xr.##
+##.===:::::::::::::::ee::::::::::.####
+###===:::::::::::::::::::::::::::...##
+###www..I....e...::::.........ggg...##
+###vww..P....PP..::::........Iggge..##
+##cwww..RRRRRRR..::::....xoo2r....e.##
+###www.eRRRRRRR..::::..*RRRRRR...c#.##
+##.www..RRRRRRR..::::..rRRRRRR....xo##
+###www.cWQWWQWW2.::::...RRRRRR.....###
+##.www.xWQWDQWW5r::::..rWQWWQWe...####
+##.wwv.PP.S......::::...WWxWQW....2.##
+###wwwcffff.ffff.::::.effffffffc....##
+###wwwo.o......I.::::..xPcr.......P.##
+###www#.#e#..e...::::..2c#.#..Ic.#r###
+###P##.#.#..#.#.#::::#.#.#..#..##...##
+#################::::#################
+#################::::#################
+entities:
+spawn world 18 26 up
+spawn default 18 26 up
+spawn from_inn 11 8 down
+spawn from_hall 28 7 down
+spawn from_smith 11 21 down
+exit 17..20 27 DEEP l_u03
+door 11 7 U03_INN entry sfx=FX008
+door 28 6 U03_HALL entry sfx=FX009
+door 11 20 U03_SHOP entry sfx=FX008
+save 21 15
+read 29 12 "A Crown valve wheel, chained." scene=U03_VALVE
+sign 18 14 "The Ember-Well. Breathe slowly near the edge."
+npc well_tender 14 12 right sprite=elder talk=U03_WELL_TENDER name="Well-Tender"
+npc vessa_u03 22 14 left sprite=volunteer talk=U03_VESSA_U03 name="Vessa"
+npc child_u03 12 14 down sprite=child talk=U03_CHILD_U03 name="Dragonborn Child" wander=1
+npc weaver_u03 7 11 right sprite=volunteer talk=U03_WEAVER_U03 name="Scale-Weaver" if=!flag:crown_dig_cleared
+npc weaver_u03b 7 11 right sprite=volunteer talk=U03_WEAVER_U03B name="Scale-Weaver" if=flag:crown_dig_cleared
+npc taken_wife 27 23 up sprite=survivor talk=U03_TAKEN_WIFE name="Oriane" if=!flag:crown_dig_cleared
+npc taken_home 27 23 up sprite=worker talk=U03_TAKEN_HOME name="Hesk" if=flag:crown_dig_cleared
+npc ember_singer 31 17 left sprite=monk talk=U03_EMBER_SINGER name="Ember-Singer"
+npc warden_u03 30 9 down sprite=guard talk=U03_WARDEN_U03 name="Pipe Warden"
+npc surveyor_u03 24 11 up sprite=clerk talk=U03_SURVEYOR_U03 name="Crown Surveyor" if=!phase:post,!flag:crown_dig_cleared
+npc terrace_herbalist 33 20 left sprite=farmer talk=U03_TERRACE_HERBALIST name="Travelling Herbalist"
+npc old_scale 6 19 right sprite=elder talk=U03_OLD_SCALE name="Old Scale"
+npc post_islander 16 18 right sprite=survivor talk=U03_POST_ISLANDER name="Islander Refugee" if=phase:post
+chest U03_C1 34 15 I005 1
+
+=== U03_INN
+name: Emberwell - Warmstone Lodge
+tileset: interior_stone
+music: M015
+zone: U03
+region: U1
+location: L_U03
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_############_
+##k!8k##k!8k##
+#_.........._#
+#.nnn...B.B..#
+#............#
+#r...........#
+#..tt...B.B..#
+#k..r........#
+#_.........._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U03_R01 from_inn
+npc innkeep_u03 3 2 down sprite=baker talk=U03_INNKEEP_U03 name="Lodge-Keeper"
+inn 2 3 scene=U03_INN_REST
+npc lodger_u03 5 7 up sprite=worker talk=U03_LODGER_U03 name="Delver Buyer"
+
+=== U03_SHOP
+name: Emberwell - Scale-Smith
+tileset: furnace
+music: M015
+zone: U03
+region: U1
+location: L_U03
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_############_
+##!k5k##k5k!##
+#_......kr.._#
+#.nnnn.......#
+#........5.9.#
+#............#
+#...........r#
+#............#
+#_.......k.._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U03_R01 from_smith
+npc shop_u03 3 2 down sprite=keeper talk=U03_SHOP_U03 name="Scale-Smith's Wife"
+shop 2 3 SHOP_U03
+npc crafter_u03 9 6 up sprite=worker talk=U03_CRAFTER_U03 name="Scale-Smith Arvek"
+
+=== U03_HALL
+name: Emberwell - The Matron's Hearth
+tileset: interior_stone
+music: M015
+zone: U03
+region: U1
+location: L_U03
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_################_
+##J8!k8J##J8k!8J##
+#_............k._#
+#.....eeeeee.....#
+#.....eMMMMe.....#
+#k....eeeeee....k#
+#k..........r...k#
+#...bb......bb...#
+#...........r....#
+#................#
+#_.............._#
+_#######++#######_
+entities:
+spawn entry 8 10 up
+exit 8..9 11 U03_R01 from_hall
+npc ysolde 8 7 down sprite=elder talk=U03_YSOLDE name="Matron Ysolde"
+npc hall_attendant_u03 14 9 left sprite=volunteer talk=U03_HALL_ATTENDANT_U03 name="Hearth Attendant"
+
+#! U04 The Geode Wood: a crystal forest. Mechanism: prisms that bend the wood's light. Boss BX14 The Geode Hydra.
+=== U04_R01
+name: The Geode Wood - Edge
+tileset: emberdeep
+music: M021
+zone: U04
+region: U1
+location: L_U04
+encounters: W_U1
+rate: 0.6
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+################IIII################
+################IIII################
+###.#III#####.#IIIII#I##I#III###I###
+####*I##I.IIIP#II.I.#IPIII##IIIIF###
+##IF.IP.IIIII*IIIFIIIIII.PII.IIII###
+###IIPIIIPII.IIII.IIII.I.IIPo.oI#I##
+###.IIIPIIIIIII.II..IIII.IIII.PI.###
+###IIIIcIIIIIIIIII.IIFII.IIIP*III.##
+###IIIII*IIIIII.I.I..IIIxI..IIIII###
+##II.IPIIIIIIIIIIIIII.II*oIIIIIIx###
+###I.IIIIIIIFII.IIIIIIIIIIIIIPII#III
+##I.II.IIII**I.IIIIIIIIIIFIFIIIIIIII
+##cIF.IIIIIFIIIIIIII.IIIIIIFoIIxIIII
+###IIIIIIIIIIIIIII.IIII.IIIIPII*o###
+##IIPI.IIII.IIIIIIIIIIIIIIIII.FPFc##
+###c*IIPIFIIIIIIIIII.IIIIIPIFI.III##
+###xoP.II.II.I*.IIIIr*IIII*I.PIr####
+###II.IIIIIIII*oIFIIIII.I.III.III###
+##IFI..III**III..I.I.IIIF..IIIIFIF##
+###IIIIIIIPxIIIII.I..IIPxxII..III###
+##I#I.IIIIIIPIFIIIIIIII.IPIFIIII#I##
+####FIIIIIIII.IIIIFIIIII.IIIIIFII###
+#####II#II.II##I#IIIr.II#II#IIIIIr##
+####.*oI#III####::::#II###I..r###o##
+################::::################
+################::::################
+entities:
+spawn world 17 24 up
+spawn default 17 24 up
+spawn from_r02 17 1 down
+spawn from_short 33 11 left
+exit 16..19 25 DEEP l_u04
+exit 16..19 0 U04_R02 from_r01
+exit 35 10..12 U04_R04 from_short if=flag:u04_short locked="A slab of crystal seals the passage. It rings faintly from the far side."
+npc gatherer_u04 14 12 down sprite=farmer talk=U04_GATHERER_U04 name="Crystal Gatherer"
+read 20 20 "A delver's warning post." scene=U04_WARN
+chest U04_C1 5 20 I002 1
+
+=== U04_R02
+name: The Geode Wood - Glade of Chimes
+tileset: emberdeep
+music: M021
+zone: U04
+region: U1
+location: L_U04
+encounters: W_U1
+rate: 0.8
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+#################IIII###################
+#################IIII###################
+#####I..#.II#I###IIII##.I#r#I#.###I#####
+###I#II#.II##IIIPIIIIPII#.o#ooIIII.ox###
+###IIIrcPIII.II.II.III.II..I*PIII.IIII##
+##IIIIPIxIIII.IIIIIIIIIIIIII*IIIIPo..I##
+##I.II.I.IPIIIII.IIIIIIIIII.IIIPIIII.###
+###.*IIIIIIIIIIII.IIIIIIIIIooIIrIIIII.##
+###.IIIIIIIIPIIIIIIII.IIIIIPII.IIIII####
+##r..III.I.IIIIIorIIIIIII.IIIIIIIII.II##
+##I.II..I.cII.II9999oIIIIII.III.IIIII###
+###IIII.***oIII999999*IIIIIII*IIII.Ix###
+IIIIIIIIIIII.II999999.IIIIIII.IIIIIPo###
+IIIII.III.I.III.9999IIIIIIIII.IIIIIIr###
+IIIIIIIIIIIIIIII.I.I..II..IIIIIII.*P####
+###IIIIIIIIIIr.IIIIIIIIIIIIIIIIIIIIIII##
+###III.IIIIIIPIIIIIIIIIIIPIIIIIIIIII.I##
+##IIIIIIII.IIIII..IIIIIII.I.IIIIII.I.c##
+##IIIIIIIIII..I.III*III..IIIII*III*I.###
+###r.PI.IIIIIIIIIIIIIII.I.I.I.PIIII.I###
+####I.IIIIII.II.IIIIIIIIIIIII.IIII.II###
+##IIIIIPI..IIIIIIIIIIIIIIIIII.IIPIIII###
+###IIII*IIIIIIPI.IIIIrIP*IIIII.IIIII####
+###IIIIIII..I.I.I.Ix**IIIIIIoIII.III####
+###II.#II..II.#I#III##xo###I#I#I*#.I.###
+####I###III.#.IIoIIIr#####I.##I#oII##I##
+#################IIII###################
+#################IIII###################
+entities:
+spawn from_r01 18 26 up
+spawn from_r03 1 13 right
+spawn from_r05 18 1 down
+exit 17..20 27 U04_R01 from_r02
+exit 0 12..14 U04_R03 from_r02
+exit 17..20 0 U04_R05 from_r02
+block 17..20 2..3 tile=crystal if=!flag:u04_prisms msg="A wall of crystal, whole and humming. Somewhere the wood's light is being bent the wrong way."
+read 7 12 "A humming crystal node." scene=U04_NODE1
+read 31 13 "A humming crystal node." scene=U04_NODE2
+read 24 23 "A humming crystal node." scene=U04_NODE3
+chest U04_C2 36 24 I018 2 hidden=1
+chest U04_C3 3 3 A114 1
+npc lost_gatherer 21 20 left sprite=survivor talk=U04_LOST_GATHERER name="Lost Gatherer"
+
+=== U04_R03
+name: The Geode Wood - Prism Hollow
+tileset: emberdeep
+music: M021
+zone: U04
+region: U1
+location: L_U04
+encounters: W_U1
+rate: 0.9
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+##################################
+##################################
+##x#..####.I#.##.###.#.#..#####*##
+##I.o#.P...#I#.P.#P..#I....oo#**##
+####oP...........*........P..r*.##
+####.c....I........I......I.Pro###
+##o#...................I.....r####
+####II....I.................I..###
+##I*....u...............u.....####
+###.I......I...000xI..........c.##
+##IPPP..I.....00000..........II...
+##.P.P.........000....I........I..
+##.#I........I...........I........
+##.......I....I..........I......##
+###..............I.I........I..###
+##x..........I............I....###
+###.I...........u.I...I...I....###
+##......I....I...I..........xP.###
+####P.I......II.....I.....IP.I..##
+##....P....x.........I..II.**r.###
+##r......I.##orr.##I....#o.c#*#.##
+##...#.#o#...o##.##..###.o#####.##
+##################################
+##################################
+entities:
+spawn from_r02 32 11 left
+exit 33 10..12 U04_R02 from_r03
+switch u04_p1 8 9 scene=U04_PRISM1 sprite=crystal
+switch u04_p2 24 9 scene=U04_PRISM2 sprite=crystal
+switch u04_p3 16 17 scene=U04_PRISM3 sprite=crystal
+read 22 12 "A prism-reader's slate." scene=U04_SLATE
+chest U04_C4 4 11 W027 1
+block 3..5 12 tile=crystal if=!flag:u04_prisms msg="Crystal grown shut. Light moves inside it, looking for a way out."
+
+=== U04_R04
+name: The Geode Wood - Heartgrove
+tileset: emberdeep
+music: M021
+zone: U04
+region: U1
+location: L_U04
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+#############IIII#############
+#############IIII#############
+####I#I##III#IIII##IIII##I#I##
+###IIIPIoFPIIIIIIIIPIIFFIFI###
+##IIPxIIIIIIIIIIIIIFIIIPIIII##
+##FIIIIIIIIIIIFIIIIIIIIIIPrr##
+###IIIIIIIII**IIFIIIIIIIIrF###
+##FIIIIIIIII99IIIIIIIIIIFIII##
+##IIIIIIIII9999IIIIIIIIIIII###
+IIIIIIIIIIII99oIIIIIIIIIII*###
+IIIIIIIIIFIIIFIIIIFIIIIIIFI###
+IIIIIIIIIIIIIIIIIIFIIIIIIIII##
+###FIIFIIIIIIIIIFIFIIIFIIII###
+###IIFIIIIFIIFIIIIIIIFIIIIx###
+##IIIIIIIIIFFIIIIIIIIIIIIIc###
+##IIIIFIIIIIIIIIIIIIIIIIIII###
+###IPIIIIIIIIIIFIIIIIIIIIII###
+##IIIIIIIFIIIIIIIIIIIIIIPII###
+###IoIIIIII*IIIIIIIIIoIIIIII##
+##I##I##xI###xxII##II###II#I##
+##############################
+##############################
+entities:
+spawn from_short 1 10 right
+spawn from_r05 14 1 down
+spawn from_r02x 20 12 up
+exit 0 9..11 U04_R01 from_short if=flag:u04_short locked="The crystal slab is still whole on this side. A crack runs down it."
+exit 13..16 0 U04_R05 from_r04
+switch u04_slab 3 13 scene=U04_SLAB sprite=crystal
+save 20 14
+heal 22 14
+read 8 15 "Bones in a gatherer's coat." scene=U04_BONES
+npc ghost_gatherer 17 16 up sprite=survivor talk=U04_GHOST_GATHERER name="Glassy Ghost"
+chest U04_C5 26 10 I005 1
+
+=== U04_R05
+name: The Geode Wood - Hydra's Heart
+tileset: emberdeep
+music: M021
+zone: U04
+region: U1
+location: L_U04
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+################################
+################################
+################################
+####I###I##I###o#r*###I#I#I#I###
+####IIPI#cIIIo#oIIr*IIIIIPI#I###
+###IPIIIoII99999999IICIIIIIII###
+####IIIIII9999999999IIIIIIrP####
+###IIIIIIII99999999II.ICII*#I###
+####xIIIIIIIIIIIIIIIIIICIII#####
+###IIIIIIIIIIIIIIIIIIIIIIIo#####
+####III.II**IIIIFII.I*IF.III####
+####II.IIIIIIICIIIIIIIIIIIIII###
+####IIIIPIIIIIIIIIIIIIIPIII*####
+####oIIIIIIIIIIIIIIIIIIIIIIr####
+###I#IIICIIIIIIIIIIIIIIICII#c###
+###IIIIIIIII*IIIC.I*IIIIIIIIc###
+####IIIIIIIIIIIIFIIIIIIIFIII####
+###IIIII.IICIIIIIIIIIIIIFII#I###
+###IIPI.IIII.CIIIIIIIIIIIIPII###
+####IIIIIIIIIIIIIIIIIIIIIIIx####
+#####IIIII#rIIIIIIIIIIIIIIIII###
+#####II####IcIIIII#I#####o*#I###
+##############IIII##############
+##############IIII##############
+entities:
+spawn from_r04 15 22 up
+spawn from_r02 16 22 up
+exit 14..17 23 U04_R04 from_r05
+trigger 10..21 12..13 scene=U04_BOSS if=!flag:u04_cleared
+chest U04_C6 15 9 A017 1 if=flag:u04_cleared
+
+#! U05 Ossuary of Wings: dragon-bone vault. Mechanism: bone chimes rung in order. Ilyr memory in the Skull Chapel. Boss BX15.
+=== U05_R01
+name: Ossuary of Wings - Wing-Gate
+tileset: whitebone
+music: M024
+zone: U05
+region: U1
+location: L_U05
+encounters: W_U1
+rate: 0.6
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+################AAAA################
+################AAAA################
+#####A#AAA#A#A##AAAx#A###AA#AxAA####
+####AAA.#.#.#A##.AA.AAAAAAxxA.AA####
+####AA.AAyAAAAAAA.AAAA.AAAyA.AA#A###
+###AAAAAAAAAuAAAAAAAAAAuAAoAAAA#A###
+###oAAAAAAAAoAAAAAA.AAAAAAAA.AAy####
+###oAAAAAAAxoAA.AAAA..AA.A.AAAA#A###
+###A#AxAAAAouAAAAAAAAAAuAAAAAAA.####
+#####A.AAAAAAAAAAAAAAAAA.AAAAxyAA###
+####AAAAAAAAy.AAAAAAAAAAAAAAAoyAA###
+####AA.AA.AAuAAAAAAA..xuoAAAAAAAA###
+####AAAAAA.AAAA.AAAAAAAAAAAAAAA#####
+###AAAAAAAAAAAAAAAAAAAAAAAAAAAAA####
+####AAAAAAA.uyA.AAAA.AAuAA.AAAAAA###
+####AAAAAA.AAAAAAAAA.AAAAA.AA.A#####
+####AAAAAA.AAA.AAAA.A.AAAAAA.AAo####
+###AAAAAAAAAuAAAA..A.AouAAA.AAA#####
+###AAAAxAAAAAAAAA.AAAAAA..AAAAAxo###
+####A.AAAAAAAAAAAAAAA.AAA.AAxoAA####
+####AAAAAAAAAAAAA.AAA.A.AAAAA.x#####
+###AAA..AAAA.AxAAAAAoxAAAAAA.AAA####
+###A.Ao#.AAAAAoA###AAAAA##AA.AA#####
+###AoA#AAxxA#A##.AAA#AAA#x##oA#Ay###
+################AAAA################
+################AAAA################
+entities:
+spawn world 17 24 up
+spawn default 17 24 up
+spawn from_r02 17 1 down
+exit 16..19 25 DEEP l_u05
+exit 16..19 0 U05_R02 from_r01
+read 18 12 "Carved into a wing bone." scene=U05_GATEWORDS
+npc bone_pilgrim 8 14 right sprite=monk talk=U05_BONE_PILGRIM name="Bone-Sweeper"
+chest U05_C1 30 21 I006 2
+
+=== U05_R02
+name: Ossuary of Wings - Rib Gallery
+tileset: whitebone
+music: M024
+zone: U05
+region: U1
+location: L_U05
+encounters: W_U1
+rate: 0.9
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+################AAAA####################
+################AAAA####################
+################AAAA####################
+######yyx#AA###yAAAA#o##A#A###yy#o#A####
+###AAox.yxAAA.AyAAAAAAAA..Axo.xoAAAAo###
+##A.AAAAAAAAAAAoAA.AAAAAAAAAAAAAAA.AA###
+##AAAuAAAAuAAAAuAA.AuyAAxuxAAAu.AAAuA###
+##AA.AA.AAAAAAAAAAAAAAAAAAyAAAAAAAAAAA##
+###A.AAAAAAAAA.AAAAAAA.AAAAAAAAAAAAAA.##
+##y.A.AAAAAAAAAAAAAAAAAAAAA.AAA..AA.A.##
+###yAAAAAAA.AA..AAA.A.AAA.AAAAAAAA.AAx##
+##.A.AAAAAAAAA.AAAAA.AAAAAAAAA.AAAAAAAAA
+##AAAAAAAAAAAAAA.A..AAAAAA..AAAAA...AAAA
+##AAAAAAAA.AAAA.AAAAAAAAA.A.AAAAAAAAAAAA
+###xAAA.AAAAAAAAA.AAAAAAAAAA.AA.AAAAA.##
+###oAAA.AAAAAAAAA.AAAAAAAAAAA.AA.AAAAA##
+##oAAAAAAA.AAAAAAAAAAAAAA.AAAAAAAAAAAA##
+###AAAAAAAAAAAAAA..A.AAAAA.AAAAAAAAAA###
+##AAAAAA.AAAAAAAAAAAxAAA.yA.AAAAAAAA.###
+##xAAuAAAAuo.AAuAAAou.A.xu.AAAuAAAAuA###
+##xAAAAAAAA.AAAy..AAAAAAAAAAAAAAAAAAA###
+##oAAA.AAAAA.AAAAAAAAAAAxxoA.AAAAAo.A###
+####AAA#AA##AA##AAAAA#AA#######AA###.A##
+################AAAA####################
+################AAAA####################
+################AAAA####################
+entities:
+spawn from_r01 17 24 up
+spawn from_r03 38 12 left
+spawn from_r04 17 1 down
+exit 16..19 25 U05_R01 from_r02
+exit 39 11..13 U05_R03 from_r02
+exit 16..19 0 U05_R04 from_r02 if=flag:u05_chimes locked="A lattice of bone fills the arch. It shivers when you touch it, like a held note."
+switch u05_c_low 7 5 scene=U05_CHIME_LOW sprite=bell
+switch u05_c_mid 17 5 scene=U05_CHIME_MID sprite=bell
+switch u05_c_high 31 5 scene=U05_CHIME_HIGH sprite=bell
+read 20 20 "Lines scratched in the floor." scene=U05_CHIME_HINT
+chest U05_C2 36 21 I023 2
+
+=== U05_R03
+name: Ossuary of Wings - Vertebra Bridge
+tileset: whitebone
+music: M024
+zone: U05
+region: U1
+location: L_U05
+encounters: W_U1
+rate: 0.9
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+######################AA############
+#KKKKKKKKKKKKKKKKKKKKKAAKKKKKKKKKKK#
+#KKKKKKKKKKKAAAAxAKKKKAAKKKKKKKKKKK#
+#KKKKKKKKKKKAHAAAAAAAAAAKKKKKKKKKKK#
+#KKKKKKKKKKKAAAHACAKKKKKKKKKKKKKKKK#
+#KKKKKKKKKKKAAAAAAAKKKKKKKKKKKKKKKK#
+#KKKKKKKKKKKKKKKKKAKKKKKKKKKKKKKKKK#
+#KKKKKKKKKKKKKKKKKAKKKKKKKKKKAAxxAy#
+#KKKKKKKKKKKKKKKKKAKKKKKKKKKKAAAAAA#
+#AAAAAoKKKKKKKKKKKAKKKKKKKKKKAAHAAo#
+#AAAAAyKuKKKuKKKuKAKuKKKuKKKuxAAAAA#
+AAHAHAAoxxAAAxAAAAAAoAAAAAyAAAAAA.A#
+AAAAAAAAAAAAAAAAoAyAAAAAAAAAAAACAAA#
+AACAAAAKuKKKuKKKuKKKuKKKuKKKuAAAACA#
+#AAAAyAKKKKKKKKKKKKKKKKKKKKKKACAAAA#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKKAAAACA#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKKAHAAAA#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKKAHACAA#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKKAAAHAA#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKKAAHAAA#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKKxAAAAA#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKKooxAyx#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK#
+####################################
+entities:
+spawn from_r02 1 12 right
+spawn from_ledge 22 1 down
+exit 0 11..13 U05_R02 from_r03
+exit 22..23 0 U05_R04 from_ledge
+chest U05_C3 13 3 W039 1
+chest U05_C4 32 19 M002 2
+read 31 9 "A dragon's vertebra, split open." scene=U05_VERTEBRA
+npc ghost_delver_u05 32 12 left sprite=survivor talk=U05_GHOST_DELVER_U05 name="Delver Ghost"
+block 18 4..10 tile=deep if=!flag:u05_chimes msg="A chasm. The ledge above is out of reach from here."
+
+=== U05_R04
+name: Ossuary of Wings - Skull Chapel
+tileset: whitebone
+music: M024
+zone: U05
+region: U1
+location: L_U05
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+###############AAAA###############
+###############AAAA###############
+###############AAAx###############
+####A#AAAA#Ao##xAAx####A###A######
+###A.AAAAAAAAAAAAAAAAAAAAAoA.A.###
+###AAAAAAAA.yyyyyyyyy...AAAAAy####
+###.AAAA.AAyyy@yyy@yyyAAAAAA.A####
+####AAAAAAAAyyyyyyyyyAAAAAAAAAA###
+####AAA.AAAAAAyyoyyAA.AAAAAAAA####
+####A.AAA..A.AAoAAAAA.AAAAAAAAA###
+####.AAAA!AAAA.AA.AAAA.A!oA..AAAAA
+###AAAAAAAAA...AAAAAAAAAAAAAAAAAAA
+####.AAAAAAAAAA.AAAA.AAAAAAAA.AAAA
+###AAAAAAAAbbAA.AAAobbAAAA.AAo####
+###AAAAA..AAAAAAAAAxxAA.A..AAA####
+###xA.AAAA.bbAAAA..AbbAA.AAA.Ax###
+###AAAAAAAAAyAAAAAAAAAAAAAAAAA####
+####AAAA.AAAAAAAAAAAAAAA.AAAAAA###
+####oAAAAAAAAAAAAA.AAAAAAAAA.AA###
+####AAAAAAA.AAAAAAAAAAyAAAAAA.A###
+#####A#oAA#AA##AAA.yA##.A####.A###
+###############AAAA###############
+###############AAAA###############
+###############AAAA###############
+entities:
+spawn from_r02 16 22 up
+spawn from_r05 16 1 down
+spawn from_ledge 32 11 left
+exit 15..18 23 U05_R02 from_r04
+exit 15..18 0 U05_R05 from_r04
+exit 33 10..12 U05_R03 from_ledge
+read 16 9 "The great skull's jaw." scene=U05_ILYR
+save 7 17
+heal 26 17
+chest U05_C5 29 4 I020 1
+
+=== U05_R05
+name: Ossuary of Wings - Remnant's Roost
+tileset: whitebone
+music: M024
+zone: U05
+region: U1
+location: L_U05
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+################################
+################################
+################################
+#######A##A#A##A#x##y#AA#x#A####
+####y##AAxxAyyyyyyyyxx##Ax#A####
+#####AAAAAAAAAAAAAAAAoyyyoAA####
+####AAxAAAAAAAAACHAAAAAAAxA#####
+####yAAAHAAAAAAACAAAAAAAAAAA####
+###AAAAAAAA.AA.AAAAAAAxAAAo#A###
+###AAAAAxuAAAAA.AAAAAAuACAAA####
+#####AAAAAAAHAHAAAAAAAAAAAA#####
+#####AAAAAAAAAAAAACAAACAHAAxA###
+###AAAAAAAAAAAAAAAAAAAAAAAA#A###
+#####AAAAAAAAAAAAAAAAAAAAAAAA###
+#####AAAyuAAAAAAAAAAAAuoAAAAA###
+####AAAAAAAAAAAAAAAHAAAAAHAA####
+###AAAAoAAA.ACAAAAAAA.AAAAAA####
+####A.AxAHAAAAAAAAACAAAAxACAA###
+####AAAAAAAAAAAAAAAAAAAAAAAA####
+###AA#AA#AAxAAAA.AAAAAAAAAAA####
+####A#AAA#A#AAAAAA######AA#A####
+##############AAAo##############
+##############AAAA##############
+##############AAAA##############
+entities:
+spawn from_r04 15 22 up
+exit 14..17 23 U05_R04 from_r05
+trigger 10..21 11..12 scene=U05_BOSS if=!flag:u05_cleared
+chest U05_C6 16 6 A110 1 if=flag:u05_cleared
+
+#! U06 Magma Ferry: lava-boat landing. The skiffs run to Cinderlake Isles (pre-fault) and the new channel to the Fungal Terraces (post).
+=== U06_R01
+name: Magma Ferry
+tileset: emberdeep
+music: M019
+zone: U06
+region: U1
+location: L_U06
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+######################################
+#MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM#
+#MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM#
+#MMMMMMM6MMMMMMMMM6MMMMMMMMMM6MMMMMMM#
+#MMMMMMdddMMMMMMMdddMMMMMMMMdddMMMMMM#
+#MMMMMMdddMMMMMMMdddMMMMMMMMdddM6MMMM#
+#MMMMM6dddMMMMMMMdddMMMMMMMMdddMMMMMM#
+#MMMMMMdddMMMMMMMdddMMMMMM6MdddMMMMMM#
+#MMMMMMdddM6MMMMMdddMMMMMMMMdddMMMMMM#
+#MMMMMMdddMMMMMMMdddMMMMMMMMdddMMMMMM#
+#MMMMMMdddMMMMMMMdddMMMMMMMMdddMMMMMM#
+#MMMMMNdddNMMMMMNdddNMMMMMMNdddNMMMMM#
+#M.HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH.M#
+###HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH###
+###...................e.......eH...###
+###*c..........Sor...............H..##
+###cRRRRRR.......eHe..e...aaaa...e.r##
+###.RRRRRRcrr.............nnnn*e...###
+###cWQWWQWcr.H.....H..H...e.c.....c###
+###c.c.r.orr.e.e..H.e.....H.H.......##
+##xo.....H........H.....e.......e..###
+##rc.e..x..e...H..H..............e.###
+###ee.oroe...c........or.H...ce.c..r##
+###xc.####...#...::::co#.#..###.###.##
+#################::::#################
+#################::::#################
+entities:
+spawn world 18 24 up
+spawn default 18 24 up
+spawn from_ferry 18 12 down
+exit 17..20 25 DEEP l_u06
+save 22 20
+sign 15 15 "MAGMA FERRY. Skiffs to Cinderlake Isles on the bell. Hands inside the boat."
+npc ferry_u06 18 11 down sprite=sailor talk=U06_FERRY name="Ferryman Coll"
+npc ferrywife 28 16 down sprite=sailor talk=U06_FERRYWIFE name="Ferry-Wife"
+npc toll_clerk_u06 13 15 down sprite=clerk talk=U06_TOLL_CLERK_U06 name="Crown Toll-Clerk" if=!phase:post
+npc lava_fisher 33 14 left sprite=worker talk=U06_LAVA_FISHER name="Lava-Fisher"
+npc stranded_delvers 6 21 right sprite=survivor talk=U06_STRANDED_DELVERS name="Delver Family"
+npc post_ferryhand 33 14 left sprite=survivor talk=U06_POST_FERRYHAND name="Ferryhand" if=phase:post
+chest U06_C1 34 21 I011 3
+
+#! U07 Cinderlake Isles: lava-boat village on three islands joined by boardwalks (port shape). Lost to the lake after the fault.
+=== U07_R01
+name: Cinderlake Isles
+tileset: emberdeep
+music: M013
+zone: U07
+region: U1
+location: L_U07
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+########################################
+#MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM#
+#MMMMMMMMMMMMMMMMMMMMMM.x.ooMMMMroMMMMM#
+#MMxM.MM.MMMM.MMMMMMMMe.*R4RRRRRRRo..MM#
+#MMMRRRRR4RRc..MMMMMMMM..RRRRRRRRR..MMM#
+#MMcRRRRRRRR...xMMMMMMM..RRRRRRRRR..oMM#
+#MMMRRRRRRRRc...MMMMMMMeoWQWWQWWQWe.MMM#
+#MMMWQWWQWWWx..========.*WQWWDWWQWr.MMM#
+#MMMWQWDQWWW...========.ccxrS.....ce.MM#
+#MMr..S...e.....MMMMMM....oee........MM#
+#MMe.RRRRRRc...MMMMMMM.e.........2.cMMM#
+#MMM.RRRRRR....MMMMMMMMc.........*.6xMM#
+#MMM.WWDWQWcx3xMMMMMMMMM..MMM==..MMcrMM#
+#MM..MM.==.rMMrMMMMMMMMMMMMMM==MMMMMMMM#
+#MMMMMMM==MMMMMMMMMMMMMMMMMMM==MMMMMMMM#
+#MMMMMMM==MMMMMMMMMMMMMMMMMMM==MMMMMMMM#
+#MMMMMMM==MMrrMMM..M.MMMMM..M==MMMMMMMM#
+#MMMMMMM==MMr.xo....e..oe.e..==MMMMMMMM#
+#MMMMMMM==M...aaa...aaa......==MMMMMMMM#
+#MMMMMMM====e.nnnr.rnnn....====MMMMMMMM#
+#MMMMMMM====.......e.r.....====MMMMMMMM#
+#MMMMMMMMMMMd.......!c.....dMMMMMMMMMMM#
+#MMMMMMMMMM.d..............dM6MMMMMMMMM#
+#MMMMMMMMM6Md........e..e..d.MMMMMMMMMM#
+#MMMMMMMMMMcd...N.e....N.r.dMMMMMMMMMMM#
+#MMMMMMMMMM*eM.MMMMddMMr.M.M.MMMMMMMMMM#
+#MMMMMMMMMMMMMMMM6MddM6MMMMMMMMMMMMMMMM#
+###################::###################
+entities:
+spawn world 19 26 up
+spawn default 19 26 up
+spawn from_ferry 20 23 up
+spawn from_inn 7 9 down
+spawn from_home 7 13 down
+spawn from_wright 29 8 down
+exit 19..20 27 DEEP l_u07
+door 7 8 U07_INN entry sfx=FX008
+door 7 12 U07_HOUSE1 entry sfx=FX008
+door 29 7 U07_SHOP entry sfx=FX008
+save 25 18
+block 15..22 7..8 tile=lava if=phase:post msg="Lava, where the boardwalk was. The west isle is a black hump in the glow."
+block 29..30 12..19 tile=lava if=phase:post msg="The east boardwalk is under the lake."
+block 8..9 13..19 tile=lava if=phase:post msg="The west boardwalk has sunk."
+npc ferry_u07 21 22 down sprite=sailor talk=U07_FERRY name="Ferryman Coll's Son"
+npc eel_smoker 20 20 down sprite=baker talk=U07_EEL_SMOKER name="Eel-Smoker" if=!phase:post
+npc stall_u07a 15 18 down sprite=keeper talk=U07_STALL_U07A name="Chandler" if=!phase:post
+npc stall_u07b 21 18 down sprite=farmer talk=U07_STALL_U07B name="Mushroom Seller" if=!phase:post
+npc island_elder 13 9 down sprite=elder talk=U07_ISLAND_ELDER name="Isle Elder" if=!phase:post
+npc island_child 13 11 down sprite=child talk=U07_ISLAND_CHILD name="Island Child" wander=1 if=!phase:post
+npc boat_builder 30 10 down sprite=worker talk=U07_BOAT_BUILDER name="Boat-Builder" if=!phase:post
+npc net_mender 35 5 left sprite=sailor talk=U07_NET_MENDER name="Net-Mender" if=!phase:post
+npc watcher_u07 24 23 up sprite=guard talk=U07_WATCHER_U07 name="Rock-Watcher" if=!phase:post
+npc drowned_home 18 21 up sprite=survivor talk=U07_DROWNED_HOME name="Last Islander" if=phase:post
+chest U07_C1 35 3 A112 1
+npc lake_diviner 24 17 down sprite=elder talk=U07_LAKE_DIVINER name="Lake-Reader" if=!phase:post
+chest U07_C2 26 23 I021 1
+
+=== U07_INN
+name: Cinderlake Isles - The Floating Hook
+tileset: interior
+music: M013
+zone: U07
+region: U1
+location: L_U07
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_############_
+##k!r##k8k!r##
+#_.........._#
+#knnn....B.B.#
+#k...........#
+#r...........#
+#..tt....B.B.#
+#............#
+#_.........._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U07_R01 from_inn
+npc innkeep_u07 3 2 down sprite=baker talk=U07_INNKEEP_U07 name="Innkeeper Pell-Eye" if=!phase:post
+inn 2 3 scene=U07_INN_REST
+npc patron_u07 6 7 left sprite=sailor talk=U07_PATRON_U07 name="Ferry Regular" if=!phase:post
+
+=== U07_SHOP
+name: Cinderlake Isles - Boatwright's Stores
+tileset: interior
+music: M013
+zone: U07
+region: U1
+location: L_U07
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_############_
+##k6kc##k2kc##
+#_.........._#
+#.nnnn.......#
+#....k.......#
+#...........r#
+#c.........rr#
+#............#
+#_.........._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U07_R01 from_wright
+npc shop_u07 3 2 down sprite=keeper talk=U07_SHOP_U07 name="Storekeeper Moss" if=!phase:post
+shop 2 3 SHOP_U07
+npc crafter_u07 9 6 up sprite=worker talk=U07_CRAFTER_U07 name="Boatwright Hanne" if=!phase:post
+
+=== U07_HOUSE1
+name: Cinderlake Isles - Net-Loft
+tileset: interior
+music: M013
+zone: U07
+region: U1
+location: L_U07
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_##########_
+##k3#k!#k3##
+#_........_#
+#.B......B.#
+#....tt....#
+#r........r#
+#.........k#
+#_........_#
+_####++####_
+entities:
+spawn entry 5 7 up
+exit 5..6 8 U07_R01 from_home
+npc loft_grandmother 7 3 down sprite=elder talk=U07_LOFT_GRANDMOTHER name="Grandmother Ember" if=!phase:post
+chest U07_C3 9 6 I013 1
+
+#! U08 The Crown Dig: the Crown's deep-mining camp. Mechanism: conveyor belts stopped by switches. Boss BX16 Foreman Grisk's Excavator (U08_BOSS).
+=== U08_R01
+name: The Crown Dig - Camp Gate
+tileset: quarry
+music: M020
+zone: U08
+region: U1
+location: L_U08
+encounters: W_U1
+rate: 0.5
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+#################::::#################
+#################::::#################
+###.#.x#.#.#.....::::#####..#######.##
+##..RRRRRR.c.....::::.......RRRRRR.###
+###.RRRRRR.c.....::::.......RRRRRR2.##
+###cWQWWQW.cc....::::...xr..WQWWQW.###
+##.......oxc.r...::::.....c.....2..###
+###.........cc...::::...............##
+##..........o....::::............xr###
+##fffffffffffffJu::::uJfffffffffffff##
+###..............::::x....rxx......r##
+##...............::::............c..##
+###o....2........::::...........cx.###
+###.rx..o........::::........2.....###
+##....x..........::::........x......##
+###..............::::................#
+##...............::::................#
+##...............::::......o.........#
+##..]]..]].......::::.....]]..]]...###
+##...x...........::::.....x....c...###
+###.rx......!....::::...!..o...c...###
+###.]]..]].......::::.....]]c.]]...###
+###..............::::.........rx...###
+##...............::::.........o2....##
+###.........r....::::.........xc...###
+##.#.#o2.#####.##::::....#...####x#.##
+#################::::#################
+#################::::#################
+entities:
+spawn world 18 26 up
+spawn default 18 26 up
+spawn from_r02 18 1 down
+spawn from_short 34 16 left
+exit 17..20 27 DEEP l_u08
+exit 17..20 0 U08_R02 from_r01
+exit 36 15..17 U08_R04 from_short if=flag:u08_short locked="A rockfall, packed tight. Charges are stacked on the far side, by the sound of the dripping."
+sign 14 10 "CROWN DEEP WORKS. AUTHORISED LABOUR ONLY. QUOTA IS KINDNESS."
+npc tired_guard_u08 13 11 down sprite=soldier talk=U08_TIRED_GUARD_U08 name="Tired Guard" if=!flag:crown_dig_cleared
+npc freed_u08a 6 16 right sprite=worker talk=U08_FREED_U08A name="Tavish" if=flag:crown_dig_cleared
+npc freed_u08b 28 16 left sprite=worker talk=U08_FREED_U08B name="Loaned Quarryman" if=flag:crown_dig_cleared
+read 10 22 "A labourer's tally, cut into a tent pole." scene=U08_TALLY
+chest U08_C1 3 24 I002 2
+
+=== U08_R02
+name: The Crown Dig - Barracks and Office
+tileset: quarry
+music: M020
+zone: U08
+region: U1
+location: L_U08
+encounters: W_U1
+rate: 0.7
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+####################################
+####################################
+######2###.#######.###.##2#..#.2#.##
+###B.BxB.B.B...c...JWWWWWWWWWWWWJ.##
+###......o..........Wk?k.tt.k?kW..##
+###B.B.B.BrB........Wx.........W.###
+##..................W........c.W.###
+##x....'.......C....WWWWW.xWWWWW..##
+##......C....C......2..cr.........##
+###xr.'.e......................e..##
+###xo..e..mm.He..C...............:::
+##...............C.........e.....:::
+##..c...................C.....H..:::
+##.ott.tt..e........'...H'....C..###
+###o...xx...H.......'..........H.###
+###2tt.tt..'.....................###
+##...r...........C......e......e.###
+###.......e...................'..###
+##.r........xc.........HC...F....###
+###.rr.......c...................###
+###....rcc...x.x.........rx.......##
+##...x.###r#.###::::#########.#c####
+################:H::################
+################::::################
+entities:
+spawn from_r01 17 22 up
+spawn from_r03 34 11 left
+exit 16..19 23 U08_R01 from_r02
+exit 35 10..12 U08_R03 from_r02 if=flag:u08_token locked="A Crown gate. The lock takes a brass shift token; there's a board for them in the office."
+read 26 4 "The foreman's desk." scene=U08_LEDGER
+read 29 5 "A board of brass shift tokens." scene=U08_TOKEN
+npc deserter_hint 8 8 down sprite=soldier talk=U08_DESERTER_HINT name="Resting Soldier" if=!flag:crown_dig_cleared
+npc clerk_u08 24 6 right sprite=clerk talk=U08_CLERK_U08 name="Dig Clerk" if=!flag:crown_dig_cleared
+chest U08_C2 32 20 G015 1
+
+=== U08_R03
+name: The Crown Dig - Sorting Floor
+tileset: quarry
+music: M020
+zone: U08
+region: U1
+location: L_U08
+encounters: W_U1
+rate: 0.9
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+#################::::###################
+#################::::###################
+##.#.#.#..#.##.or::::#.#o##rc.###..#####
+###2..................................##
+##...........'.F........2..'...x..H..###
+##.'..xx............'.....'...........##
+##...................................###
+###mc....................o2.ox.xr...m.##
+#|||||||||||||||||..|||||||||||||||||||#
+##.............xx....................###
+##........F........F...H.............###
+##............................x.....c###
+:::...........2.e.....FH..............##
+:::.F....C........F............e.....###
+:::........'H.........F..C....F.....r###
+###c.................................r##
+###m..................xr...xr2.rc...m###
+#||||||||..||||||||||||||||||||||||||||#
+###...........r.oo............r.x....###
+##rfffffff..............C.............##
+##.fc....f.......F.'..CF.......'.F.H.:::
+###f.c...fr.x.e........e........e....:::
+###fff.fff..........'.F...xx.........:::
+##...................C.e............2###
+##.o.r........................2.o....###
+##.#o#c.x.#.##..##r####.#..##.#####.#.##
+########################################
+########################################
+entities:
+spawn from_r02 1 13 right
+spawn from_r05 18 1 down
+spawn from_r04 38 21 left
+exit 0 12..14 U08_R02 from_r03
+exit 17..20 0 U08_R05 from_r03
+exit 39 20..22 U08_R04 from_r03
+block 18..19 8 tile=rail if=!flag:u08_belt1 msg="The belt runs full of ore, fast enough to take a leg off."
+block 9..10 17 tile=rail if=!flag:u08_belt2 msg="The lower belt screams past, loaded with rock."
+switch u08_sw1 30 14 scene=U08_BELT1 sprite=lever
+switch u08_sw2 6 11 scene=U08_BELT2 sprite=lever
+npc pen_labourer1 5 20 right sprite=worker talk=U08_PEN_LABOURER1 name="Labourer Twelve" if=!flag:crown_dig_cleared
+npc pen_labourer2 7 21 left sprite=worker talk=U08_PEN_LABOURER2 name="Labourer Thirty" if=!flag:crown_dig_cleared
+chest U08_C3 36 3 A113 1
+chest U08_C4 4 24 I006 1
+
+=== U08_R04
+name: The Crown Dig - Blasting Gallery
+tileset: quarry
+music: M020
+zone: U08
+region: U1
+location: L_U08
+encounters: W_U1
+rate: 0.9
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+####################################
+####################################
+###2.##.##.c#2#..#.##o.#.x.#########
+###2#...........##.#2..##.#....x..##
+##...ccr........................####
+###..c...........................###
+##.#.......xxx....................##
+##.......cr.....................#.##
+##.......u......2ux......uc......###
+###......x.......................###
+:::#............................####
+::::::::::::::::::::::::::::::::::##
+:::............................::x##
+##r#...........................::###
+###c.....u.......u.......u.....::.##
+##.#.....x.......x.............:::::
+###................xxx.........:::::
+###................c..x..........:::
+##........x................cc.....##
+####.....c.........r......rc.....###
+#####x.#.#..#.##.###..##....x...####
+##..cx#######.###..#..#.##.###o#####
+####################################
+####################################
+entities:
+spawn from_r03 1 11 right
+spawn from_short 34 16 left
+exit 0 10..12 U08_R03 from_r04
+exit 35 15..17 U08_R01 from_short if=flag:u08_short locked="Packed rock. A good charge would open it."
+switch u08_charge 32 18 scene=U08_CHARGE sprite=lever
+chest U08_C5 4 19 M002 2 hidden=1
+chest U08_C6 30 3 I005 2
+read 15 4 "Crates stencilled BLASTING POWDER." scene=U08_POWDER
+
+=== U08_R05
+name: The Crown Dig - Staging Shaft
+tileset: quarry
+music: M020
+zone: U08
+region: U1
+location: L_U08
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+#############::::#############
+#############::::#############
+#############::::#############
+###r.#....#.#::H:.#co####.####
+###..2}}o....::.:.........####
+####..E......::::.....cc..####
+####2........::::....xc...####
+####.......C.::::..........###
+####.........::::....'....####
+####.........::::.........x###
+###o.HC..H...:H.:........2####
+####.........::::........c####
+###..........::::..H......####
+####.........::::..........###
+###2......'..::::..rmm.C.c####
+###..e.......::::........r####
+###........C.::::.e...e...####
+####.....x...::::..........###
+#####..###.##::H:####.###.####
+#############:H::#############
+#############:H::#############
+#############::::#############
+entities:
+spawn from_r03 14 20 up
+spawn from_r06 14 1 down
+exit 13..16 21 U08_R03 from_r05
+exit 13..16 0 U08_R06 from_r05
+save 9 12
+heal 19 11
+read 24 9 "A speaking tube, brass, running down to the face." scene=U08_TUBE
+
+=== U08_R06
+name: The Crown Dig - The Dig Face
+tileset: quarry
+music: M020
+zone: U08
+region: U1
+location: L_U08
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+##################################
+##################################
+##################################
+#####2..xxxxxxxxxxxxxxxxxx#..#.###
+####...cxxHxxxHxHxxHHHxxxx..#.####
+###..Po.xxH*HHHHHHHHHH*Hxx...#####
+####....xxHHHHHHHHHHHHHHxx..P..###
+####....xHHHHHxHxxxxxxHxHx...#.###
+####............xrxx..........####
+###........H..................####
+###.....''.......H......'.H..#####
+####........CC......C..'.e...#####
+#####.|x...................|r2####
+####..|..e.............C...|.#####
+####...............'.H........c###
+#####......H.........'..F.....####
+####.......e.....'.....C......####
+###2#c.2..................2...o###
+####...c.........o...........xc###
+###.#x.x#.co..#.##.#..#.....#r####
+####2#.##.###.#::::...#..#..##r###
+###############::::###############
+###############::::###############
+###############::::###############
+entities:
+spawn from_r05 16 22 up
+exit 15..18 23 U08_R05 from_r06
+trigger 8..25 14..15 scene=U08_BOSS if=!flag:crown_dig_cleared
+chest U08_C7 16 9 W021 1 if=flag:crown_dig_cleared
+
+#! U09 Hearthroot Shrine: a Vestige shrine in the roots of an ember-tree that grows out of the lava. The altar is sealed (V13 comes from Cindermaw).
+=== U09_R01
+name: Hearthroot Shrine
+tileset: emberdeep
+music: M015
+zone: U09
+region: U1
+location: L_U09
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+####################################
+####################################
+####r#.##.**###..#.##o#####..o..#.##
+####...x...MMMMMMMMMMMMMMM#....#.###
+##rxP.....MMMMMMyyyyyMMMMMM....P.###
+##........MMMMMyyyyyyyMMMMM.......##
+###.......r;;;;;yy@yy;;;;;.......###
+###....;.;;;..;;;;:;;;;..;;..;....##
+##.#x...........::::..............##
+###.........!...::::...!;.....;..###
+##..;.........;.::::............r.##
+##.#o;..;.;;....::::;.o.......;.#.##
+###........*bb..::::;.bb;;...;..c###
+###.......;.....::::;....;....;..###
+###.....;...bbo.::::..bb.;......;.##
+###.............::::.;......;..xo###
+##x.......;....;::::......;....c####
+##..x..........N::::N............###
+##..]]*.........::::.............x##
+###...c.........::::.............o##
+####............::::.............###
+##.oxr..........::::............#.##
+##..Po.........N::::N.........cP..##
+##.#..........ox::::..r.......o..###
+###...#.#....x##::::..#.##o..#ro.###
+##...##..##..r##::::#..###*#########
+################::::################
+################::::################
+entities:
+spawn world 17 26 up
+spawn default 17 26 up
+exit 16..19 27 DEEP l_u09
+read 18 6 "The sealed altar in the roots." scene=U09_ALTAR
+npc shrine_keeper 14 9 down sprite=monk talk=U09_SHRINE_KEEPER name="Shrine-Keeper"
+npc pilgrim_u09 21 15 left sprite=survivor talk=U09_PILGRIM_U09 name="Pilgrim" if=!flag:crown_dig_cleared
+npc pilgrim_u09b 21 15 left sprite=survivor talk=U09_PILGRIM_U09B name="Pilgrim" if=flag:crown_dig_cleared
+npc geologist_u09 28 19 left sprite=scholar talk=U09_GEOLOGIST_U09 name="Guild Surveyor"
+npc tent_sleeper 7 19 left sprite=worker talk=U09_TENT_SLEEPER name="Tired Delver"
+chest U09_C1 32 13 I020 1
+
+#! U10 Drakesleep Hollow (secret): a sleeping dragon fragment. The hollow only opens to someone carrying a fragment (Raven, C01).
+=== U10_R01
+name: Drakesleep Hollow
+tileset: emberdeep
+music: M024
+zone: U10
+region: U1
+location: L_U10
+encounters: none
+dark: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+##################################
+##################################
+###c##xAAAA#AAA#AI####A##AAI#AA###
+#######AA#*#A#IAAooAAI#cxA#IAAA###
+###AxAAAIAPPPPPPPPPPPPPPAAAAAA####
+#####*AAAPAr*AAAAAAAAAAAPAAAAA####
+###AAAIAIPAA*yyyyyyyAAAAPAAA*#A###
+###AAIAIIPAAAyAAAAAyAAAAPAAAAx####
+#####IAAAPAIAyyy@yyy*AAAPAAAAc####
+####AAAAAAPAAAxAAAAAAAAPAAAAAIA###
+####rAAAAAIAAAAAAAAAAAAAAAAAA#####
+####AIoIAAIAAAAAAAAIAAAAAAIAAAA###
+###AAA*IAAAAAAAAAAAAAIAAAAA*A#####
+#####*A#IA#IAAAAAA##AAAAA##A#AA###
+###AArI##*#####AAAA##c*####A##A###
+###############::::###############
+###############::::###############
+###############::::###############
+############x..::::.#.############
+#############........c############
+############..........############
+############..........############
+#############........#############
+#############........r############
+###############::::...############
+###############::::###############
+entities:
+spawn world 16 23 up
+spawn default 16 23 up
+exit 15..18 25 DEEP l_u10
+block 15..18 15..16 tile=crystal if=!party:C01 msg="The air thickens into something like a wall. Whatever sleeps beyond will not be seen by strangers."
+read 16 19 "Claw-marks on the cave wall." scene=U10_MARKS
+read 15 9 "The heart-stone." scene=U10_HEART
+chest U10_C1 27 3 A001 1 hidden=1
+chest U10_C2 5 12 I024 1
+npc sleeper_echo 22 11 left sprite=survivor talk=U10_SLEEPER_ECHO name="A Reflection"
+
+#! U11 Vaultmouth Rail: the delvers' mine-rail hub. Carts run to Karag Dun and the Deepforge Mines (rail-master rail_u11).
+=== U11_R01
+name: Vaultmouth Rail
+tileset: quarry
+music: M020
+zone: U11
+region: U1
+location: L_U11
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+########################################
+########################################
+###.#rc#..x##.#.##x...#x..###r###.##..##
+###o.................................###
+##....................................##
+##(...2..2...........o..x....2.......(##
+##.||||||||||||||||..||||||||||||||||.##
+##.......oo......r.........x.......r..##
+###..............o...................###
+###.............|||..|||.............###
+##c............|<o....2<|............###
+##x............|........|.............##
+##r............|<......<|.............##
+##r.............|||..|||.............###
+###c.............co...................##
+###c..............r.......2.......r.x###
+###||||||||||||||||..||||||||||||||||.##
+##(.....2.r...2.................2....(##
+###..................................###
+##..RRRRRRR2..............ccr....rr...##
+##..RRRRRRR......................>m.x###
+##.cWQWDWQWS..........................##
+###........x2................xcr.....###
+#####..#.###x.r###::::.#....######2c.###
+##################::::##################
+##################::::##################
+entities:
+spawn world 19 24 up
+spawn default 19 24 up
+spawn from_rail 20 11 down
+exit 18..21 25 DEEP l_u11
+sign 11 21 "VAULTMOUTH RAIL. Karag Dun - Deepforge. Keep hands in the cart, heads below the beam."
+npc rail_u11 17 11 right sprite=worker talk=U11_RAIL name="Rail-Master Dunmore"
+npc cart_mechanic 30 12 left sprite=worker talk=U11_CART_MECHANIC name="Cart Mechanic"
+npc rail_child 24 18 down sprite=child talk=U11_RAIL_CHILD name="Rail Child" wander=1
+npc rail_inspector 12 12 right sprite=clerk talk=U11_RAIL_INSPECTOR name="Crown Rail Inspector" if=!phase:post
+npc courier_u11 26 8 down sprite=volunteer talk=U11_COURIER_U11 name="Guild Courier"
+npc post_rail 12 12 right sprite=survivor talk=U11_POST_RAIL name="Railhand" if=phase:post
+chest U11_C1 36 22 I013 1
+
+#! U12 Deepforge Mines: Karag Dun's richest seam, taken by the Forge-Wurm. Mechanism: rail points. Boss BX17 The Forge-Wurm.
+=== U12_R01
+name: Deepforge Mines - Mine Head
+tileset: furnace
+music: M022
+zone: U12
+region: U1
+location: L_U12
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+################::::################
+################::::################
+##r..#55.#.###.o::::###..#x...#.#.##
+###.RRRRRRRr.r..::.:.....}5.......##
+###.RRRRRRRc....::::....<.>.e.H..###
+###.WQWWWQWx.FC.::::.....}.......###
+###.............::::.H........H'.###
+###.............::::.........F....##
+##....'.........::.:.....rrr...rx###
+###......F......::::..|||||||||||###
+###.............::::......2.c52x.###
+##c.....xx......::::..............##
+###...5.!x.F....::H:.......H....r###
+##.........e....::::..C...........##
+###....H..e...'.::::.............###
+###.............::::.............###
+##..]]x]]x.ro...::::.............###
+##...x...cccr...::::...........'.###
+###.......xr....::::....'..rx.....##
+###.'.e.........::::.........x.F.###
+##..............::::.H............##
+###r.x........C.::H:.H........'.o###
+##..........x...::.:.......x......##
+###.##.###.##..#::.:.#####.##.#o####
+################::::################
+################::::################
+entities:
+spawn world 17 24 up
+spawn default 17 24 up
+spawn from_rail 23 11 left
+spawn from_r02 17 1 down
+exit 16..19 25 DEEP l_u12
+exit 16..19 0 U12_R02 from_r01
+npc cart_u12 24 12 left sprite=worker talk=U11_CART_BACK name="Cart Bell"
+save 13 12
+npc dagna 15 9 right sprite=worker talk=U12_DAGNA name="Foreman Dagna"
+npc widow_u12 7 19 up sprite=survivor talk=U12_WIDOW_U12 name="Waiting Wife"
+npc sick_miner_u12 10 14 down sprite=patient talk=U12_SICK_MINER_U12 name="Sick Miner"
+chest U12_C1 32 22 I009 3
+
+=== U12_R02
+name: Deepforge Mines - Cart Galleries
+tileset: furnace
+music: M022
+zone: U12
+region: U1
+location: L_U12
+encounters: W_U1
+rate: 0.9
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+########################################
+########################################
+###...##x#.##..#.##..#.#######.###.#.###
+###r....................o.............##
+##..........H....................x...###
+:::....u......u......u.....5u....cx...##
+:::..'...C.......F................r..###
+:::..................................###
+###.F..................e..F...........##
+###.....2.......r..x2..........5c.....##
+#|||||||||||||||||||||||||..|||||||||||#
+###......r.xx..rcr......5..........r.c##
+##..eF.H..............F...F.'........:::
+##.................C..........'......:::
+###....u....'.u......u.e'...u........:::
+###.......H...............C...'..'..c###
+##...'................C.....F..'.e....##
+###.......C...........................##
+##...2.r...............c...5x.2......###
+#|||||||||||..|||||||||||||||||||||||||#
+###..............xc...rr..........crr.##
+###.................F.................##
+###....u........e...........u.F'......##
+##..xo.............C...............xxo##
+##.xxxc5..r..........................###
+###x###r..####o.::::.x..####c#...#..####
+################:H::####################
+################::::####################
+entities:
+spawn from_r01 17 26 up
+spawn from_r03 38 13 left
+spawn from_r04 1 6 right
+exit 16..19 27 U12_R01 from_r02
+exit 39 12..14 U12_R03 from_r02
+exit 0 5..7 U12_R04 from_r02
+block 12..13 19 tile=cart if=!flag:u12_points1 msg="A loaded ore cart sits across the gallery, brake welded on by rust."
+block 26..27 10 tile=cart if=!flag:u12_points2 msg="A cart blocks the upper gallery. The points lever for this line must be somewhere else."
+switch u12_pt1 5 21 scene=U12_POINTS1 sprite=lever
+switch u12_pt2 34 16 scene=U12_POINTS2 sprite=lever
+read 18 22 "A chalked board of the gallery points." scene=U12_BOARD
+chest U12_C2 35 3 M002 1
+chest U12_C3 3 12 G117 1
+
+=== U12_R03
+name: Deepforge Mines - Heartsteel Seam
+tileset: furnace
+music: M022
+zone: U12
+region: U1
+location: L_U12
+encounters: W_U1
+rate: 1.0
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+####################################
+####################################
+####..#.H###x#.#.###x#55#.#.#c######
+##..........*#.#ox..##....5..#..####
+####.*.....................*..HH..##
+###............H....x......H......##
+##.#................M.MMM.MMMMM..###
+##c5.H..............MMMMMMMMMM..####
+##..P..H.H..H......H5MMMMMMMMM...###
+###........H..H.....===========.o###
+##..........H.......oMMMMMMMMMx..###
+:::#o...............5MMMMMMMMMM...##
+:::..............H...M.M.MM5Mrc.#H##
+:::.H......H........HH...x.rxr....##
+###..................H......roxox###
+###....H............H.........o*..##
+##....................H...........##
+####...........H.......H....HH....##
+###......H....H.H................###
+##H.............................P.##
+##o#..*......H...................x##
+##o.x.H...............*o..........##
+##5#o......##.x#.......#.H###..#.###
+##r#..#o.####H.##H.#...#.#..####.###
+####################################
+####################################
+entities:
+spawn from_r02 1 12 right
+exit 0 11..13 U12_R02 from_r03
+read 9 5 "A seam of heartsteel in the rock." scene=U12_SEAM1
+read 29 17 "A seam of heartsteel in the rock." scene=U12_SEAM2
+read 14 20 "A seam of heartsteel in the rock." scene=U12_SEAM3
+chest U12_C4 31 8 A106 1 hidden=1
+npc trapped_miner_u12 16 15 down sprite=worker talk=U12_TRAPPED_MINER_U12 name="Trapped Miner"
+
+=== U12_R04
+name: Deepforge Mines - Refuge Gallery
+tileset: furnace
+music: M022
+zone: U12
+region: U1
+location: L_U12
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+#############::::#############
+#############::::#############
+#############::H:#############
+###x#.####..#::::#...###..####
+###r.]].]]o........C..cc..####
+###o............C..F.......###
+####r......rc.............5###
+####.......r!.......C.....r###
+###..B5B...................###
+####oc....'..........'....::::
+####....e..C..............::::
+####.......'........C.....::::
+###...F............e...e..####
+###...........F..C.........###
+####........F...FF..H.H...####
+####v.'.................xvx###
+####......H.......H.......r###
+###..c.5..................####
+###..#.##..x..###...#.o#.#####
+##############################
+##############################
+##############################
+entities:
+spawn from_r02 28 10 left
+spawn from_r05 14 1 down
+exit 29 9..11 U12_R02 from_r04
+exit 13..16 0 U12_R05 from_r04
+save 10 14
+heal 18 14
+npc refuge_miner1 8 10 right sprite=survivor talk=U12_REFUGE_MINER1 name="Refuge Miner"
+npc refuge_brenn 11 11 up sprite=worker talk=U12_REFUGE_BRENN name="Brenn"
+npc refuge_child 21 9 left sprite=child talk=U12_REFUGE_CHILD name="Miner's Daughter"
+
+=== U12_R05
+name: Deepforge Mines - The Wurm's Gallery
+tileset: furnace
+music: M022
+zone: U12
+region: U1
+location: L_U12
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+################################
+################################
+################################
+####HH#####H#####HH##H##HHH#H###
+####H#H#xHHHHHHHxHHHxxHHHHHHH###
+#####HHHxxxx0xx0x0x0xxxHHHHHH###
+###HH*HHHx00000000000xxxHHHHH###
+####HHHHHx00000000000xxHHH*#H###
+###HHHHHHx00xx000xxxx0xxHHHH####
+###H#HUHxxHHHxHHxxHxxxxxHHHHH###
+####HHHHHHHHHHHHHHHHHHHHHHHH####
+#####HHHHHHHHHHHHHHHIHHHHHHHH###
+###H#|HHHHHIIHIHHHHH'IHHHH|H####
+####H|HHHHIHHHHU'HHHHIHHHH|H####
+#####HHHHHH'HHHHHHHHHHHHHHH#H###
+####HHHHHHUHHHHHHHHH'HHHIHHHH###
+###HHHHHUHHHHHHHHHHHHHHHHHHH####
+####HH*HHHHHHUHHHHH'HHHHH*H#H###
+####HHHHHHHHHHHHHHHHHHHHHHHH####
+#####HHHHHHHH#HHH#H#H#HH#HHH####
+###H#H##H##H#H::::##HHH##HH#####
+##############::::##############
+##############::::##############
+##############::::##############
+entities:
+spawn from_r04 15 22 up
+exit 14..17 23 U12_R04 from_r05
+trigger 9..22 13..14 scene=U12_BOSS if=!flag:u12_cleared
+chest U12_C5 16 11 W003 1 if=flag:u12_cleared
+
+#! U13 Scaleward: hidden dragonborn refuge behind a basalt cleft. Terraced axis: gate at the bottom, council hall at the top.
+=== U13_R01
+name: Scaleward
+tileset: emberdeep
+music: M015
+zone: U13
+region: U1
+location: L_U13
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+######################################
+######################################
+###oo.###c#.RRR4RRRRRRRRRR#.rx.#..####
+####P..F####RRRRRRRRRRRRRR#.....#P####
+#####..F..x.RRRRRRRRRRRRRR......or####
+###rr.......WQWWQWWQWWQWWW..F....r####
+###.......xJWQWWQWWDWWQWWWJ....F...###
+####.....F................x.....*#r###
+###x...c.....**Fl::::l.c......ocr*r###
+###^^^^^^^^^^^^^^ssss^^^^^^^^^^^^^^###
+###^^^^^^^^^^^^^^ssss^^^^^^^^^^^^^^###
+###oRRRRRR4R..erl::::le...RRRRRRRR####
+###oRRRRRRRR.....::::....xRRRRRRRR####
+###.RRRRRRRR.....::::....cRRRRRRRRc###
+###eWQWWQWWW.....::::....cWQWWQWWW.###
+####WQWDQWWWP....::::.....WQWWDWWW####
+###r.cS.....Fe..e::::...FxoP.S...ec###
+#####o....c999...::::..e.....e.F.#####
+###...F.ev99999F.::::...oggrgg...x####
+###P....F#.999e.#::::.F....##...F.P###
+####..#coxo#r####::::#xr##.#.c#..#####
+###############rN::::N.###############
+###############..::::...##############
+#############^^^^::::^^^^#############
+#############^^^G::::G^^^#############
+#############^^^^::::^^^^#############
+#############^^^^::::^^^^#############
+#################::::#################
+#################::::#################
+#################::::#################
+entities:
+spawn world 18 28 up
+spawn default 18 28 up
+spawn from_hall 19 7 down
+spawn from_inn 7 16 down
+spawn from_shop 30 16 down
+exit 17..20 29 DEEP l_u13
+door 19 6 U13_HALL entry sfx=FX009
+door 7 15 U13_INN entry sfx=FX008
+door 30 15 U13_SHOP entry sfx=FX008
+save 22 14
+npc kesh 19 23 down sprite=guard talk=U13_KESH name="Warden Kesh"
+npc gate_second 17 25 down sprite=guard talk=U13_GATE_SECOND name="Gate Second"
+npc pool_bather 13 15 down sprite=elder talk=U13_POOL_BATHER name="Old Bather"
+npc refugee_mother 24 15 left sprite=volunteer talk=U13_REFUGEE_MOTHER name="Refugee Mother"
+npc child_u13 20 17 down sprite=child talk=U13_CHILD_U13 name="Scaleward Child" wander=1
+npc scout_u13 31 7 left sprite=volunteer talk=U13_SCOUT_U13 name="Chasm Scout"
+npc gardener_u13 26 19 up sprite=farmer talk=U13_GARDENER_U13 name="Moss-Gardener"
+npc sculptor_u13 6 7 right sprite=elder talk=U13_SCULPTOR_U13 name="Name-Carver"
+npc deserter_in1 14 13 right sprite=worker talk=U13_DESERTER_IN1 name="Tamsin Carrow" if=flag:qup2_in
+npc deserter_in2 29 19 up sprite=soldier talk=U13_DESERTER_IN2 name="Former Soldier" if=flag:qup2_in
+npc brask_in 15 13 down sprite=guard talk=U13_BRASK_IN name="Brask" if=flag:qup2_all
+npc post_u13 24 13 down sprite=survivor talk=U13_POST_U13 name="Refugee" if=phase:post
+chest U13_C1 32 19 I023 1
+npc egg_warmer 30 5 left sprite=volunteer talk=U13_EGG_WARMER name="Stone-Warmer"
+read 7 4 "The Name-Carver's stones." scene=U13_STONES
+
+=== U13_HALL
+name: Scaleward - Council Hearth
+tileset: interior_stone
+music: M015
+zone: U13
+region: U1
+location: L_U13
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_################_
+##J8k!8J##J8!k8J##
+#_............k._#
+#.....eeeeee.....#
+#.....eMMMMe.....#
+#k....eeeeee....k#
+#k...........r..k#
+#..bb........bb..#
+#............r...#
+#................#
+#_.............._#
+_#######++#######_
+entities:
+spawn entry 8 10 up
+exit 8..9 11 U13_R01 from_hall
+npc saelith 8 7 down sprite=elder talk=U13_SAELITH name="Elder Saelith"
+npc council_scribe 12 9 left sprite=clerk talk=U13_COUNCIL_SCRIBE name="Council Memory"
+
+=== U13_INN
+name: Scaleward - The Shelter
+tileset: interior_stone
+music: M015
+zone: U13
+region: U1
+location: L_U13
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_############_
+##k!8k##k8!k##
+#_.........._#
+#.nnn...B.B..#
+#............#
+#r...........#
+#..tt...B.B..#
+#k..r........#
+#_.........._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U13_R01 from_inn
+npc innkeep_u13 3 2 down sprite=baker talk=U13_INNKEEP_U13 name="Shelter-Keeper"
+inn 2 3 scene=U13_INN_REST
+npc irrin 6 7 right sprite=volunteer talk=U13_IRRIN name="Irrin"
+
+=== U13_SHOP
+name: Scaleward - Stores and Forge
+tileset: furnace
+music: M015
+zone: U13
+region: U1
+location: L_U13
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_############_
+##k5k!##!k5k##
+#_......kr.._#
+#.nnnn.......#
+#.........5..#
+#............#
+#...........r#
+#...........k#
+#_.........._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U13_R01 from_shop
+npc shop_u13 3 2 down sprite=keeper talk=U13_SHOP_U13 name="Storekeeper"
+shop 2 3 SHOP_U13
+npc crafter_u13 9 6 up sprite=worker talk=U13_CRAFTER_U13 name="Refuge Smith Orla"
+
+#! U14 The Singing Chasm: an echo set piece - rope spans over a deep chasm; the rock repeats every voice. Deserters' camp (QUP2).
+=== U14_R01
+name: The Singing Chasm
+tileset: emberdeep
+music: M021
+zone: U14
+region: U1
+location: L_U14
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+########################################
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKK.oK.r*xxrK#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKK*o.....*KK#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKx.xy..y..KK#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKr.........K#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKK..e..F.xKK#
+#KKKKKKKKKKKKKKKKKKKKKKKKKKKK........KK#
+#KKKKKKKKKKKKKK.KKK.K.KKKKKK...'.y...KK#
+#KKKKKKKKKKKKK*cr...uKKKKKKKKu.....F..K#
+#KKKKKKKKKKKK........========...r....KK#
+#KKKKKKKKKKKK.....F...KKKKKKK.K.K*K..KK#
+#KKKKKKKKKKKKKr*....cKKKKKKKKKKKKKKKKKK#
+#KKKKKKKKKKKKKKKK==o.KKKKKKKKKKKKKKKKKK#
+#KKKKKKKKKKKKKKKu==uKKKKKKKKKKKKKKKKKKK#
+#KKKKKKKKKKKKKKKK==KKKKKKKKKKKKKKKKKKKK#
+#KKKKKKKKKKKKKKKK==KKKKKKKKKKKKKKKKKKKK#
+#KKKKK..K.KrrKKKK==KKKKKKKKKKKKKKKKKKKK#
+#KK]].]]*.ccxKKKK==KKKKKKKKKKKKKKKKKKKK#
+#KKcc.*.....KKK..==cxK.KKKKKKKKKKKKKKKK#
+#KK.....!x..====....o*..KKKKKKKKKKKKKKK#
+#KK.........KKK.........cKKKKKKKKKKKKKK#
+#KK]].'..H..KKKKx.F.H.F.oKKKKKKKKKKKKKK#
+#KK..........KKKo.......KKKKKKKKKKKKKKK#
+#K.K.K.KK..*KKKKr.::::...KKKKKKKKKKKKKK#
+#KKKKKKKKKKKKKK.KK:H::K..KKKKKKKKKKKKKK#
+##################::::##################
+entities:
+spawn world 19 26 up
+spawn default 19 26 up
+exit 18..21 27 DEEP l_u14
+save 23 23
+trigger 21..28 11 scene=U14_ECHO if=!event:U14_ECHO
+npc tamsin 7 20 down sprite=worker talk=U14_TAMSIN name="Tamsin Carrow" if=!flag:qup2_in
+npc brask 5 22 right sprite=guard talk=U14_BRASK name="Brask" if=!flag:qup2_all
+npc deserter_boy 10 23 up sprite=child talk=U14_DESERTER_BOY name="Young Deserter" if=!flag:qup2_in
+npc deserter_singer 4 24 right sprite=soldier talk=U14_DESERTER_SINGER name="Singing Deserter" if=!flag:qup2_in
+read 32 6 "An echo stone, worn smooth." scene=U14_STONE1
+read 35 8 "An echo stone, worn smooth." scene=U14_STONE2
+read 30 11 "An echo stone, worn smooth." scene=U14_STONE3
+chest U14_C1 36 11 A013 1
+chest U14_C2 4 24 I002 2
+
+#! U15 Fungal Terraces: mushroom farmers on stepped terraces (valley spine). Herbalism: spore cellar, cap gardens, a post-fault ferry landing.
+=== U15_R01
+name: Fungal Terraces
+tileset: grove
+music: M010
+zone: U15
+region: U1
+location: L_U15
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+######################################
+######################################
+##..RRRRRR4RRc...::::#.F.F#Y##F.Y#####
+###.RRRRRRRRR.F..::::r.....YYYr....###
+###;RRRRRRRRR;...::::....FYYYYY...F###
+##..WQWWQWWQW...;::::.....rYYY.....###
+###FWQWWDWWQWrF..::::..........F...###
+###rY..S..cc.....::::....b....cb.Fc###
+##..r........F..l::::l..;....F....F.##
+##^^^^^^^^^^^^^^^ssss^^^^^^^^^^^^^^^##
+##^^^^^^^^^^^^^^^ssss^^^^^^^^^^^^^^^##
+###Y.FF.Yrr....rl::::l....RRRRR4RR.###
+###FggggggggggY.F::::....YRRRRRRRR;###
+###.Yc..........F::::....YRRRRRRRR.Y##
+##..gggggggggg..F::::.;..FWQWWQWWW.r##
+###r....Y...;....::::.....WQWDQWWW.###
+##.Ygggggggggg..F::::c...c.FS...FYcY##
+###..F;..r....;cl::::l....F....FF.r###
+##^^^^^^^^^^^^^^^ssss^^^^^^^^^^^^^^^##
+##^^^^^^^^^^^^^^^ssss^^^^^^^^^^^^^^^##
+##...RRRRRRR..rcl::::l..F......r.MMM##
+###..RRRRRRRF.Ycc::::....999.F.;.MMM##
+###F.RRRRRRRY;;F.::::...99999Y...M6M##
+##...WQWWQWW.....::::..........dddMM##
+###..WQWDQWW.....::::...F.F.F....MMM##
+###Y.............::::.;....F..F..MMM##
+##r....F....Y..Y.::::......YF.Y..MMM##
+##r###.#;.#Y#.###::::..#.F#..###c.#.##
+#################::::#################
+#################::::#################
+entities:
+spawn world 18 28 up
+spawn default 18 28 up
+spawn from_ferry 31 22 left
+spawn from_shop 8 7 down
+spawn from_inn 29 16 down
+spawn from_cellar 8 25 down
+exit 17..20 29 DEEP l_u15
+door 8 6 U15_SHOP entry sfx=FX008
+door 29 15 U15_INN entry sfx=FX008
+door 8 24 U15_HOUSE1 entry sfx=FX008
+save 22 14
+npc ferry_u15 32 24 left sprite=sailor talk=U15_FERRY name="Channel Skiff" if=phase:post
+npc cap_farmer1 9 13 down sprite=farmer talk=U15_CAP_FARMER1 name="Cap Farmer"
+npc cap_farmer2 11 15 up sprite=farmer talk=U15_CAP_FARMER2 name="Salve Farmer"
+npc spore_child 22 12 down sprite=child talk=U15_SPORE_CHILD name="Terrace Child" wander=1
+npc great_cap_keeper 25 5 right sprite=elder talk=U15_GREAT_CAP_KEEPER name="Cap-Keeper"
+npc pool_tender 26 24 up sprite=worker talk=U15_POOL_TENDER name="Pool-Tender"
+npc delver_buyer_u15 14 7 left sprite=worker talk=U15_DELVER_BUYER_U15 name="Delver Buyer"
+npc forager_u15 30 17 left sprite=volunteer talk=U15_FORAGER_U15 name="Forager"
+npc sick_visitor 13 24 right sprite=patient talk=U15_SICK_VISITOR name="Recovering Labourer"
+npc post_u15 30 25 left sprite=survivor talk=U15_POST_U15 name="Channel Watcher" if=phase:post
+chest U15_C1 34 3 I007 3
+npc log_carrier 10 25 up sprite=worker talk=U15_LOG_CARRIER name="Log-Carrier"
+npc terrace_elder 23 4 left sprite=elder talk=U15_TERRACE_ELDER name="Terrace Elder"
+chest U15_C2 3 21 A102 1
+
+=== U15_INN
+name: Fungal Terraces - The Dry Cap
+tileset: interior
+music: M010
+zone: U15
+region: U1
+location: L_U15
+encounters: none
+save: true
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_############_
+##k!8k##k!8k##
+#_.........._#
+#.nnn...B.B..#
+#............#
+#r...........#
+#..tt...B.B..#
+#k..r........#
+#_.........._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U15_R01 from_inn
+npc innkeep_u15 3 2 down sprite=baker talk=U15_INNKEEP_U15 name="Innkeeper Fen"
+inn 2 3 scene=U15_INN_REST
+npc nib_u15 6 7 right sprite=keeper talk=U15_NIB_U15 name="Nib the Pedlar"
+
+=== U15_SHOP
+name: Fungal Terraces - Umbel's Spore Shop
+tileset: interior
+music: M010
+zone: U15
+region: U1
+location: L_U15
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_############_
+##k?k9##9k?k##
+#_......kr.._#
+#.nnnn.......#
+#.........gg.#
+#............#
+#...........r#
+#............#
+#_..k......._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U15_R01 from_shop
+npc crafter_u15 3 2 down sprite=baker talk=U15_CRAFTER_U15 name="Grandmother Umbel"
+shop 2 3 SHOP_U15
+npc umbel_apprentice 9 6 up sprite=apprentice talk=U15_UMBEL_APPRENTICE name="Umbel's Apprentice"
+
+=== U15_HOUSE1
+name: Fungal Terraces - Spore Cellar
+tileset: interior_stone
+music: M010
+zone: U15
+region: U1
+location: L_U15
+encounters: none
+legend: F=moss M=lava A=bone P=crystal_tall J=banner N=lantern_post C=cave_floor I=crystal_floor Y=tree2 H=rocky
+grid:
+_##########_
+##kgk#9#kgk#
+#_........_#
+#.gg....gg.#
+#....tt....#
+#r........r#
+#.........k#
+#_........_#
+_####++####_
+entities:
+spawn entry 5 7 up
+exit 5..6 8 U15_R01 from_cellar
+npc cellar_farmer 6 6 up sprite=farmer talk=U15_CELLAR_FARMER name="Cellar Farmer"
+
+#! U16 Lattice Gate: where the Conduit's drill-lift comes down into the builder realm. A dead gate, dead lights, keepers waiting.
+=== U16_R01
+name: Lattice Gate
+tileset: lattice
+music: M024
+zone: U16
+region: U2
+location: L_U16
+encounters: none
+save: true
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+########################################
+########################################
+#####U#U##U#UUPPmmmmmmPPUUU#UrUUU####U##
+###UUUUUUUUUUUPrr...x>.PUUUxUUUUUUUUU###
+##UUmmUUUUUUUUP.EEEEEE.PUUUUUUUUUmmUUU##
+##UUU>UUUUUUUxP.EEEEEE.PUUUUUUUUUUUUU###
+###UUUUUUUUUU>PP.HHHH.PPUUUUUUUUUUUUU###
+##UUUUUUUUUUUUUxUHHHHUrUUUUUUUUUUUUUUU##
+###PUUUUUUUUUUUUUHHHHUUUUUUUUUUUUUUUP###
+###UUUUUUUUUUUUUUHHHHUUUUUUUUUUUUUUUUU##
+##UUUUUUUUUUUUUUUHHHHUUUUUUUUUUUUUUUr###
+##UUUUUUUc>UUUNUUHHHHUUNUUUUUUUrUrUrc###
+###############uHHHHHHu#################
+###U>UUUrxxUUUNUUHHHHUUNUU>xU>UUUUUUUU##
+##xU>UyUUUyUUUUUUHHHHUUUUU>yUUUyUUUUU###
+##UUUUUUUUUUUUUUUHHHHUUUUUUUUIIUUUUUU###
+###UUUUUNUUUUUUUUH{{HUUUUUUIUNUUUUUUU###
+###UUIUUvUUUUUUUUHHHHUUUUUIUUUUUUUUUUU##
+###UUUUUUUUUUUUIUHHHHUUUUUUUUUUcUUIUU###
+###xUUyUUUUUUUUUUHHHHUUUUUUUUUUyUIUUUU##
+###>UUUUxUUUUUUUUH{{HUUUUUUUUUUUUUUUU###
+###UUUUUN>UUUUUUUHHHHUUUUUUIUNUUUUUUU###
+##UPUUUUUUUUUUUUUHHHHUUUUUUIUUUUUUUUP###
+###UUUUIUUUIUUUUUHHHHUUUIUUUUUUUUUIUUU##
+###UUUUUIUUUUUUUIHHHHUIUUUUI>UUUIUUUUU##
+####UU#I#U#>c#U#UHHHH#>rUUUU###UU##U#>##
+#################HHHH###################
+#################HHHH###################
+entities:
+spawn world 18 26 up
+spawn default 18 26 up
+spawn from_lift 18 4 down
+exit 17..20 27 DEEP l_u16
+npc tobin 21 15 left sprite=scholar talk=U16_TOBIN name="Keeper Tobin"
+npc lift_delver 12 8 right sprite=worker talk=U16_LIFT_DELVER name="Stray Delver"
+npc crown_engineer_u16 25 8 left sprite=clerk talk=U16_CROWN_ENGINEER_U16 name="Crown Engineer" if=!phase:post
+npc post_keeper_u16 25 8 left sprite=scholar talk=U16_POST_KEEPER_U16 name="Worried Keeper" if=phase:post
+read 10 15 "A dormant automaton." scene=U16_UNIT
+chest U16_C1 35 24 I003 1
+
+#! U17 Meridian: half-lit builder city of the keepers. Imperial-capital shape: stacked blocks round a dead beacon, the Keepers' Hall at the axis end.
+=== U17_R01
+name: Meridian - Lampless Concourse
+tileset: lattice
+music: M016
+zone: U17
+region: U2
+location: L_U17
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+############################################
+############################################
+##############RRRRRRRRRRRRRRRR##############
+###UUUUUUU>UUURRRRRRRRRRRRRRRRUU>UUUUUUUU###
+###UUUUUUUUUUURRRRRRRRRRRRRRRRUUUUUUUUUUU###
+###UUUUUUUUUUUWQWWQWWQWWQWWQWWUUUUUUUUUUU###
+###UUUUUUUUUUJWQWWQWWDWWQWWQWWJvUUUUUUUUU###
+###Uc>UUUUUUUUUUUUNHHHHHHNUrvv>UUUccUUUUU###
+###^^^^^^^^^^^^^^^^ssssss^^^^^^^^^^^^^^^^###
+###URRRRRRRRRRUUUUUHHHHHHUcUUURRRRRRRRRRR###
+###URRRRRRRRRRUUUUUHHHHHHUUUUURRRRRRRRRRR###
+###URRRRRRRRRRUUUUUHHHHHHUUUUrWQWWQWWQWWW###
+###PWQWWQWWQWWPIUUIHHHHHHUUUUvWWWXWWWXWWW###
+###UWQWSDWWQWWcUUUUHHHHHHUUUUUcccUUrvxxUU###
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+###rUUUUUUUUUUUUUxcN.yyvNUUUUUUUUUxUUUIUU###
+###rvUU>UUUUUUUUIrx..yyxxUIUUUcUUUccxUU>U###
+###URRRRRRRRRRRRUIIN..>.NUUUURRRRRRRRRRRR###
+###URRRRRRRRRRRRUUUHHHHHHUUUIRRRRRRRRRRRR###
+###>WQWWQWWQWWQWUUUHHHHHHUIUUWQWWQWWQWWQW###
+###xWWWXWWWWXWWWUUUHHHHHHUUUIWWWWXWWWWXWW###
+###cUUUUcccUUUxUUUUHHHHHHUUUUUUxUUUcrcvUU###
+###pUUUUUUUUUUUUUIUHHHHHHUUIUUUUUIUU>UUUp###
+###UUUUUUUUUUIUUUUUHHHHHHUUIUUUUUUUUUUUUU###
+###pUUUUUUUUUUUUUUUHHHHHHUUUUUUUUUUUUUUUp###
+###UUUUUU>vvUUUUUUUHHHHHHUxUUUUUUIrrUUUUU###
+###################HHHHHH###################
+###################HHHHHH###################
+###################HHHHHH###################
+entities:
+spawn world 21 28 up
+spawn default 21 28 up
+spawn from_hall 21 7 down
+spawn from_inn 8 14 down
+spawn from_market 42 14 left
+spawn from_stacks 1 14 right
+exit 19..24 29 DEEP l_u17
+exit 43 14..15 U17_R02 from_concourse
+exit 0 14..15 U17_R03 from_concourse
+door 21 6 U17_HALL entry sfx=FX009
+door 8 13 U17_INN entry sfx=FX008
+sign 26 14 "MERIDIAN. East: Keepers' Market. West: the Stacks. North: the Keepers' Hall. Speak quietly; the city is sleeping."
+npc lamplighter_u17 17 12 down sprite=worker talk=U17_LAMPLIGHTER_U17 name="Lamplighter"
+npc beacon_watcher 26 19 left sprite=elder talk=U17_BEACON_WATCHER name="Beacon-Watcher"
+npc keeper_child 12 15 down sprite=child talk=U17_KEEPER_CHILD name="Keeper Child" wander=1
+npc gate_keeper_u17 22 10 down sprite=guard talk=U17_GATE_KEEPER_U17 name="Hall Doorward"
+npc crown_envoy_u17 33 16 left sprite=noble talk=U17_CROWN_ENVOY_U17 name="Crown Envoy" if=!phase:post
+npc rail_rumour 8 16 right sprite=volunteer talk=U17_RAIL_RUMOUR name="Commuter"
+npc dust_keeper 36 16 left sprite=worker talk=U17_DUST_KEEPER name="Duster"
+npc post_u17 12 25 up sprite=survivor talk=U17_POST_U17 name="Frightened Keeper" if=phase:post
+
+=== U17_R02
+name: Meridian - Keepers' Market
+tileset: lattice
+music: M016
+zone: U17
+region: U2
+location: L_U17
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+########################################
+########################################
+########################################
+###URRRRRRRRRRrUUU>UvvUURRRRRRRR4RRUU###
+###rRRRRRRRRRRxUUUUUUUUURRRRRRRRRRRUU###
+###URRRRRRRRRRUUUUUUUUUURRRRRRRRRRRUU###
+###UWQWWQWWQWWvUUUUUUUUvWQWWQWWQWWWUU###
+###UWQWWDWWQWWUUUUUUUUUUWQWWWDWQWWWUU###
+###c>xUSUUUUUUUUUUUUUUU>UUUUSUUU>xU5U###
+###UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU###
+###xUUUUUIUUUUUUUUUUUUUUUUUUUUUUUUUUU###
+###>UUUIUUUUUUUUUUUUUUUUUUUUUUUUUUUUU###
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH###
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH###
+###UUUUUUUUUUUUUUUUUUUUUUUUrUUUUUUUUU###
+###cNaaaaUUaaaaIUaaaaUUaaaaNrUUUUUUUU###
+###vcnnnnxUnnnnU>nnnnUvnnnnUUUUUUUUUx###
+###UccUIUUUUUUUUUUIUUUUUUvUUIUUUUUUUU###
+###UNrUUUUUUUUUUUUUUUUUUUUUNcUUUUUUUU###
+###UUUUUUUUUUUUUUUUUUUIUUUUUUUUUUUUUI###
+###rIUUrrxUUUUvUUUUUUUUUUUUUUUUUUUUUHHHH
+###UUUU>rccUvUcrxrrUUUUU>>rc>UUx>UUUHHHH
+###||||||||||||||||||||||||||||||||||###
+###{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{###
+###||||||||||||||||||||||||||||||||||###
+########################################
+########################################
+########################################
+entities:
+spawn from_concourse 1 12 right
+spawn from_shop 8 8 down
+spawn from_work 29 8 down
+spawn from_floors 38 20 left
+exit 0 12..13 U17_R01 from_market
+exit 39 20..21 DEEP l_u17
+door 8 7 U17_SHOP entry sfx=FX008
+door 29 7 U17_WORK entry sfx=FX008
+npc stall_parts 6 15 down sprite=keeper talk=U17_STALL_PARTS name="Parts Stall"
+npc stall_glow 12 15 down sprite=farmer talk=U17_STALL_GLOW name="Glow-Cress Seller"
+npc stall_maps 18 15 down sprite=scholar talk=U17_STALL_MAPS name="Map-Keeper"
+npc stall_tea 24 15 down sprite=baker talk=U17_STALL_TEA name="Tea Stall"
+npc rail_guard_u17 20 21 up sprite=guard talk=U17_RAIL_GUARD_U17 name="Platform Keeper"
+npc scrap_boy 31 11 down sprite=child talk=U17_SCRAP_BOY name="Scrap-Runner" wander=1
+npc nib_u17 15 19 up sprite=keeper talk=U17_NIB_U17 name="Nib the Pedlar"
+
+=== U17_R03
+name: Meridian - The Stacks
+tileset: lattice
+music: M016
+zone: U17
+region: U2
+location: L_U17
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+########################################
+########################################
+########################################
+###RRRRRRRRRRRRRRRUHHURRRRRRRRRRRRRRR###
+###RRRRRRRRRRRRRRRUHHURRRRRRRRRRRRRRR###
+###RRRRRRRRRRRRRRRUHHURRRRRRRRRRRRRRR###
+###WQWWQWWQWWQWWQWUHHUWQWWQWWQWWQWWQW###
+###WWXWWWWXWWWXWWWUHHxWWWXWWWDWWWWXWW###
+###>ccUxr>rUcIIUUUUHHUUUUUUxUUUUUUcxU###
+###>UUUUUUUUUUIUUUsHHsUUUUUUUUUUUUUUU###
+###rUUUUUUmmUUUUUUUHHUUUUIUIUUUUUUUUx###
+###rUUUIUUU>UUUUUUNHHNUUUUUUUUUUUUUUr###
+###HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+###HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+###UUUUUUUUUUUUUUUNHHN>UUUUUUUUUUUUUU###
+###UUUvxrUUU>xrrxU>HHUxcUUUUUUIUUUUcr###
+###RRRRRRRRRRRRRRRcHHURRRRRRRRRRRRRRR###
+###RRRRRRRRRRRRRRRUHHURRRRRRRRRRRRRRR###
+###WQWWQWWQWWQWWQWUHHUWQWWQWWQWWQWWQW###
+###WWWXWWWWWWWXWWWUHHUWWXWWWWWWWXWWWW###
+###Ur>UUcUUUrrUUUUUHHUUUUUUcUUUUUUUU>###
+###pcUUUUUUUUUUUUUUHHUUUUUUUUUUUUUUUp###
+###UUUUUUUUUUUUUUUUHHUUUUUUUUUUUUUUUU###
+###UUUIUUUUUUUIUUUUHHUUUUUUUUUUUUUUIx###
+###pUUxvUvUx>UUUUU>HHUUUUUUUUUrUUUUUp###
+########################################
+########################################
+########################################
+entities:
+spawn from_concourse 38 12 left
+spawn from_flat 29 8 down
+exit 39 12..13 U17_R01 from_stacks
+door 29 7 U17_HOUSE1 entry sfx=FX008
+read 12 10 "An orders kiosk, screen dark." scene=U17_KIOSK if=recruited:C16
+read 12 10 "An orders kiosk. The screen is dark glass with dust in the corners. Nothing you do wakes it." if=!recruited:C16
+npc stacks_elder 8 13 down sprite=elder talk=U17_STACKS_ELDER name="Stacks Elder"
+npc stacks_reader 25 14 left sprite=scholar talk=U17_STACKS_READER name="Plate-Reader"
+npc stacks_mother 13 22 up sprite=volunteer talk=U17_STACKS_MOTHER name="Keeper Mother"
+npc kiosk_tech 14 11 left sprite=worker talk=U17_KIOSK_TECH name="Kiosk Tender"
+npc stacks_sweeper 27 21 up sprite=worker talk=U17_STACKS_SWEEPER name="Stair-Sweeper"
+chest U17_C1 35 24 A016 1
+
+=== U17_INN
+name: Meridian - Sleeper Hostel
+tileset: crown
+music: M016
+zone: U17
+region: U2
+location: L_U17
+encounters: none
+save: true
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+_##############_
+##kmPk##kPmk##k#
+#_............_#
+#.nnn....B.B.B.#
+#..............#
+#r............k#
+#..tt....B.B.B.#
+#..........r...#
+#..............#
+#_............_#
+_######++######_
+entities:
+spawn entry 7 9 up
+exit 7..8 10 U17_R01 from_inn
+npc innkeep_u17 3 2 down sprite=baker talk=U17_INNKEEP_U17 name="Hostel Keeper"
+inn 2 3 scene=U17_INN_REST
+npc hostel_guest 6 8 up sprite=worker talk=U17_HOSTEL_GUEST name="Delver Trader"
+
+=== U17_SHOP
+name: Meridian - Keepers' Exchange
+tileset: crown
+music: M016
+zone: U17
+region: U2
+location: L_U17
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+_############_
+##kPkm##mkPk##
+#_.........._#
+#.nnnn.......#
+#....k.......#
+#...........k#
+#..........rk#
+#............#
+#_.........._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U17_R02 from_shop
+npc shop_u17 3 2 down sprite=keeper talk=U17_SHOP_U17 name="Exchange Keeper"
+shop 2 3 SHOP_U17
+
+=== U17_WORK
+name: Meridian - The Mending Room
+tileset: conduit
+music: M016
+zone: U17
+region: U2
+location: L_U17
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+_##############_
+##m>mPk##kPm>m##
+#_............_#
+#r.............#
+#k...5....5..m.#
+#..............#
+#k............k#
+#..............#
+#..............#
+#_..........k._#
+_######++######_
+entities:
+spawn entry 7 9 up
+exit 7..8 10 U17_R02 from_work
+npc crafter_u17 8 5 down sprite=worker talk=U17_CRAFTER_U17 name="Mender Oshe"
+npc mender_apprentice 12 8 left sprite=apprentice talk=U17_MENDER_APPRENTICE name="Screw-Sorter"
+
+=== U17_HALL
+name: Meridian - The Keepers' Hall
+tileset: crown
+music: M016
+zone: U17
+region: U2
+location: L_U17
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+_##################_
+##J?kk?J##u##u##J?##
+#_........kkk....._#
+#...tt...HH...tt...#
+#........HH........#
+#k.......HH.......k#
+#k....u..HH..u....k#
+#k.......HH..k....k#
+#........HH........#
+#.....u..HH..u....r#
+#........HH........#
+#_................_#
+_########++########_
+entities:
+spawn entry 9 11 up
+exit 9..10 12 U17_R01 from_hall
+npc liss 10 3 down sprite=scholar talk=U17_LISS name="Keeper Liss"
+npc hall_archivist 15 8 left sprite=clerk talk=U17_HALL_ARCHIVIST name="Hall Archivist"
+
+=== U17_HOUSE1
+name: Meridian - A Stacks Flat
+tileset: crown
+music: M016
+zone: U17
+region: U2
+location: L_U17
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+_##########_
+##kPk#N#kPk#
+#_........_#
+#.B........#
+#....tt....#
+#.........r#
+#.........k#
+#_........_#
+_####++####_
+entities:
+spawn entry 5 7 up
+exit 5..6 8 U17_R03 from_flat
+npc flat_keeper 8 3 down sprite=elder talk=U17_FLAT_KEEPER name="Old Flat-Keeper"
+chest U17_C2 9 6 A021 1
+
+#! U18 The Assembly Floors: automaton factory still building for a war that ended. Mechanism: power breakers. Kael-09 lore. Boss BX18 Assembler Prime.
+=== U18_R01
+name: The Assembly Floors - Intake Bay
+tileset: conduit
+music: M024
+zone: U18
+region: U2
+location: L_U18
+encounters: W_U2
+rate: 0.6
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+#################HHHH#################
+#################HHHH#################
+#################HHHH#################
+###PUUxxmmUUUUUUUHHHHUUUUUUUUUUUUUP###
+###xUUUUUUUUUUUUUHHHHUUUUUUUxUUUUUU###
+###cUUyUUyUUyUUUUHHHHUUU>yUUyUUyUUU###
+###UUUUUUUUUxUUUUHHHHUUUUxUUUUUUUUU###
+###m>UUUUUUUUvcmUHHHHUmUUxUUUUUUUUm###
+###|||||||||||||UHHHHU|||||||||||||###
+###UUUUUUUUxmUUUUHHHHUUUUUUUUUUUUUU###
+###UUUUUUUUUUUUUUHHHHUUUUUUUUUUUUUUHHH
+###xUUUUUUUmUUUUUHHHHUUUUUUUUUUUUUUHHH
+###UUUUUUUUxxUUUUHHHHUUUUUUUUUUUUUUHHH
+###UUxmUUUUxmUUUUHHHHUUUUUxUUUUUUUU###
+###cUUUUUUUUUUUUUHHHHUUUUUxUUUUUUUU###
+###UUUUUUUUUUUUUUHHHHUUUUUUUUUUUUUU###
+###mUUmUUUUUUUUmUHHHHUmUUUUUUUUUUUm###
+###|||||||||||||UHHHHU|||||||||||||###
+###xUUUUUcUUUvUUUHHHHUUUUUUUUUUUUU>###
+###UUUUUUUUUUUUUUHHHHUUUUUUUUUUUUUx###
+###xUUyUUyUUUUUUUHHHHUUUUUUUyUvyUUU###
+###xUUUUUUUUUUUUUHHHHUUUUUUUmUUUUUU###
+###PUUUUUUUUUUcUUHHHHUUUUUUUxUUUmcP###
+#################HHHH#################
+#################HHHH#################
+#################HHHH#################
+entities:
+spawn world 18 24 up
+spawn default 18 24 up
+spawn from_r02 18 1 down
+spawn from_short 36 11 left
+exit 17..20 25 DEEP l_u18
+exit 17..20 0 U18_R02 from_r01
+exit 37 10..12 U18_R04 from_short if=flag:u18_short locked="A freight lift, dead. Its call-plate is on the far side."
+npc scavenger_u18 12 11 right sprite=worker talk=U18_SCAVENGER_U18 name="Keeper Scavenger"
+read 25 12 "A production board, still counting." scene=U18_BOARD
+chest U18_C1 33 21 I005 2
+
+=== U18_R02
+name: The Assembly Floors - Power Hall
+tileset: conduit
+music: M024
+zone: U18
+region: U2
+location: L_U18
+encounters: W_U2
+rate: 0.9
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+########################################
+########################################
+########################################
+###PUUUUUUUUmvUUxP{{P>>xUUUUUx>UUUUUP###
+###UUUUUUUUUxmUUUU{{UUUUUUUUUUUUUUUUU###
+###UUvmmUUUUmmUUIU{{UUUUUUmm>UUUmmUUU###
+###UUU>UUUUUUUU''U{{UU'UUUUUUUUUUUUUU###
+###UUUUUUUUUUUUUUU{{UUUUUUUU'UUUUU'UU###
+###mUUUUUUUUUUUUUU{{UUUUUUUUUUU{UIUUU###
+###UUUUUUUUUUUUUUU{{UUUUUUmUUUUUUUUUU###
+###UUvmmUUUUmmUUUU{{UUU.UUmmUUUUmmUUU###
+HHHUUUUUUUUUUUUUUU{{UUUUUUUUUUUUUxUUUHHH
+HHHUIUUUUUNxUUUU.U{{UUU.UUUUUNUUUUUUUHHH
+HHHUUUUU{UUUUUUUUU{{UUUUUUUUUcUUUUUUUHHH
+###mUUUUUUUUUUUUUU{{UUUUUUUUUUUUUUUUU###
+###UUUmmU'UUmmUUUU{{UHU{UUmmxUUUmmUUU###
+###UUUUxUUUUUUUUUU{{UU'U'UxmUUUUUUUUU###
+###>UIUUUUU{UUUUUU{{UU'U'UUUUUUUUUUUU###
+###UUUIUUU{UU'UU'U{{UUUUU'UUUU.UUUUUU###
+###UUUUUUUUUUUUHUU{{UUUUUUUUUUUUUUUUU###
+###cUUmmUUUUmmUHUU{{UUUHUUmmUUUUmmUUU###
+###UUUUUUUUUUUUUUU{{UUUUUUUUUUUUUUUUU###
+###PUUUUvUUUxxUUUU{{UUUUUUUUUUUU>UUUP###
+#################HHHH###################
+#################HHHH###################
+#################HHHH###################
+entities:
+spawn from_r01 18 24 up
+spawn from_r03 1 12 right
+spawn from_r04 38 12 left
+exit 17..20 25 U18_R01 from_r02
+exit 0 11..13 U18_R03 from_r02 if=flag:u18_power1 locked="A pressure door, unpowered. Its lamp is dark."
+exit 39 11..13 U18_R04 from_r02 if=flag:u18_power2 locked="A pressure door, unpowered. The breaker for this bank is somewhere else on the floor."
+switch u18_brk1 4 7 scene=U18_BREAKER1 sprite=lever
+read 22 21 "A wiring plate." scene=U18_PLATE
+chest U18_C2 35 21 W141 1
+chest U18_C3 4 21 I003 1
+
+=== U18_R03
+name: The Assembly Floors - Frame Gallery
+tileset: conduit
+music: M024
+zone: U18
+region: U2
+location: L_U18
+encounters: W_U2
+rate: 0.9
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+######################################
+######################################
+######################################
+###UvcUUUUUUUUUUUUUUUUUUUUUUUUUUUvm###
+###mcyUUyUUyUUyUUyUUyUxyUUyUUyUUyUU###
+###UUUUUUUUUUUUUUUUUUUUxUUUUUUUUUUU###
+###UUUUUcUUUUUUUUUUUUUUUUUUUUUUUUUU###
+###xUyUUyUUyUUymUyUUyxUyUUyUUyUUyUU###
+###xUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU###
+###mUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUm###
+###UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU###
+###HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+###HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+###HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+###UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU###
+###mUvxUUUUUUUUUUUUUUUUUUUUUUUUUUUm###
+###UUymmyUUyUUyUUyUUyUUyUUyUUyUUyUU###
+###UUUUUUUUUUU>UUUUUUUUUUUUUUUUUUUU###
+###UUUUUxUUUUUvUUUUUUUUUUUUUUUUUUUU###
+###mUyUUyUUyUUyUUyUUyUUyUmyUUyUUyUU###
+###>UUUUvUUUUUUUUUUUUUUUUUUUUUUUUUU###
+###UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU###
+###xUmUUUUUUvUmUUUUUUUUUUUUUUUUvUUU###
+######################################
+######################################
+######################################
+entities:
+spawn from_r02 36 12 left
+exit 37 11..13 U18_R02 from_r03
+read 8 10 "The K-series line record." scene=U18_RECORD
+switch u18_brk2 30 21 scene=U18_BREAKER2 sprite=lever
+chest U18_C4 4 22 A020 1
+npc frame_ghost 20 9 down sprite=survivor talk=U18_FRAME_GHOST name="Unit K-31"
+
+=== U18_R04
+name: The Assembly Floors - Quality Control
+tileset: conduit
+music: M024
+zone: U18
+region: U2
+location: L_U18
+encounters: W_U2
+rate: 1.0
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+################HHHH################
+################HHHH################
+################HHHH################
+###PUUmUUUUUUUUUHHHHUUUUUUUUUc>UP###
+###UUUm>m.m.mUUUHHHHUUUUUUUUUUUUU###
+###UUU......xUUUHHHHUUUUUUUxUUUUU###
+###vUUm.m>m.mUUUHHHHUUUUUUU>UUUUU###
+###vUUUUUUUU>UUUHHHHUUUUUUUUUUUUU###
+###cUUUUUUUUUUUUHHHHUUUUUUUUUUUUU###
+###UUUUUUUUUUUUUHHHHUUUUUUUUUUUUU###
+###UUUUUUUUUUUUUHHHHUUUUUUUUUUUUUHHH
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HHHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU###
+###UUUUUUUUUUUUUUUUUUUUUUUUUUUUUx###
+###UUUUUUUUUUUUUUUUUUmm.m.m.mUUUU###
+###UUUUUUUUUUUUUUUUUUU.......UUUU###
+###cUUUcxUUUUUUUUUUUUvm.m.m.mUUUU###
+###UUUUUUxUUUUUUUUUUUUUUUUUUUUUUv###
+###UUUUUUUUUUUUUUUUUUUUUUUUUUUUUU###
+###PUm>vUUUUUUUUUxUUUUUUUUUUUUUmP###
+####################################
+####################################
+####################################
+entities:
+spawn from_r02 1 12 right
+spawn from_short 34 11 left
+spawn from_r05 17 1 down
+exit 0 11..13 U18_R02 from_r04
+exit 35 10..12 U18_R01 from_short if=flag:u18_short locked="The freight lift is dead. Its call-plate is right here, though."
+exit 16..19 0 U18_R05 from_r04
+switch u18_lift 31 14 scene=U18_LIFT sprite=lever
+chest U18_C5 4 19 M003 1 hidden=1
+chest U18_C6 9 5 G121 1
+read 26 8 "A rejected frame in a scrap bin." scene=U18_REJECT
+
+=== U18_R05
+name: The Assembly Floors - Standby Room
+tileset: conduit
+music: M024
+zone: U18
+region: U2
+location: L_U18
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+#############HHHH#############
+#############HHHH#############
+#############HHHH#############
+#############HHHH#############
+####mUUUUUUUUHHHHxcUUmUUUU####
+####UyUyUyUHUHH'HUUUyUyUy>####
+####U>UUUUUUUHHHHUUUUUUUUm####
+####UUUU.UU'UHHHHUUUU{UUU>####
+####UUUUUUUUUHHHHUUUUUUUUU####
+####vUUUUUUUUHHHHUU.UUUUUU####
+####kUUUUU{UUHHHHUIUU'UUUk####
+####kUUIUUUUUHHHHU.UU.UUUk####
+####UUUUUUUUUHHHHUUUUUUUUU####
+####UUUUUUUUUH'HHUUUUUUUUv####
+####U'UUHUUUUHHHHUUUUUUUUc####
+####UUUUUUUHUHHHHUUUUUUUUU####
+####xvUUUUUUUHHHHUHUUUUUUv####
+####U>UUUUmUUHIHHUUUUUxcxx####
+#############HHHH#############
+#############HHHH#############
+#############H'HH#############
+#############HHHH#############
+entities:
+spawn from_r04 14 20 up
+spawn from_r06 14 1 down
+exit 13..16 21 U18_R04 from_r05
+exit 13..16 0 U18_R06 from_r05
+save 8 14
+heal 21 14
+read 11 8 "A standby rack, one slot empty." scene=U18_RACK
+
+=== U18_R06
+name: The Assembly Floors - Prime Floor
+tileset: conduit
+music: M024
+zone: U18
+region: U2
+location: L_U18
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+##################################
+##################################
+##################################
+##################################
+####P>UUUUUUUUUmmUUmmUUUUUUUUP####
+####UU||||||||||||||||||||||UU####
+####UUUU>>cUUUUUUUmxUvvUUxmUUU####
+####UmvUUUUUUmmmmmmmmUUUUUUUmU####
+####UUUU{UUUUUU>UUUUvUU.UUUUUU####
+####UHUUUUUUUUUUUUUUUUHUUUUUUU####
+####UUUUUUUU'UUU{UUUUU{UUUUUUU####
+####cUUUUUUUUHUHUUUUUUUUUUIUUU####
+####mU{UUUUUUUUUUUUUUUUUUIUUUU####
+####mUU'UUUUUUUUUUUUUUUU{UUUU>####
+####vUUUU'UUUUUUUUUUU{UU{UUUUU####
+####mUUUUUUUUUU'UUUH'UUUUUUUUU####
+####xmUUUUUUUUUUUUUUUUUUUUUUmU####
+####UUUUUUUUU>>ccUUUUmUvcUUUUU####
+####UU||||||||||||||||||||||UU####
+####PUUUUUUUUUvUUUUUUUUUUUUUUP####
+###############HHHH###############
+###############HIHH###############
+###############HHHH###############
+###############HHHH###############
+entities:
+spawn from_r05 16 22 up
+exit 15..18 23 U18_R05 from_r06
+trigger 8..25 13..14 scene=U18_BOSS if=!flag:u18_cleared
+chest U18_C7 16 9 A118 1 if=flag:u18_cleared
+
+#! U19 Railhead Nine: keepers' settlement on the mag-rail (port shape: the town runs down to the rail platform; old carriages are houses).
+=== U19_R01
+name: Railhead Nine
+tileset: lattice
+music: M014
+zone: U19
+region: U2
+location: L_U19
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+########################################
+########################################
+####U####U#U#UUUU####UU#c##U#U###UU#UU##
+#||||||||||||||||||||||||||||||||||||||#
+#{{{{{{{EE{{{{{{{{{{{{{{{{{{{EE{{{{{{{{#
+#||||||||||||||||||||||||||||||||||||||#
+###HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH###
+##UUNUUUUUUIUUNvUUHHHHUUUNUUUUUUUrcNU###
+###UUUUUrcUUUvrrUUHHHHUUUUUUUUUUUcUrI###
+##rURRRRRRRRRRRRUUHHHHUURRRRRRRRRRRUU###
+###URRRRRRRRRRRRUUHHHHUURRRRRRRRRRRUUx##
+###xWQWWQWWQWWQWUUHHHHUUWQWWQWWQWWWcc###
+##UUWQWWWDWQWWQWUUHHHHUxWQWWDWWQWWWrU###
+##UrUUUUSUUUUUvUUUHHHHU>rcUSUUUUUcx>UU##
+###UUUUUUUUUUUUUUUHHHHUUcxUUUUUUUUUUU###
+###UUUUUUIUUUUUUUUHHHHUUUUUUUUUUUUUUc###
+##UUUUUUUUUIUUxOUUHHHHUUUUUUUUUUUUUUr###
+###URRRRRRRRRUUIUUHHHHUUU>RRRRRRRUUUc###
+##UUWQWWXWWQWUUUUUHHHHUUUxRRRRRRRUUU>U##
+##UUUccUcrUUIUUUUUHHHHUUUURRRRRRRUUUU###
+###UUUrUUUUUUIUUUUHHHHUUUUWQWWQWWjUUUU##
+##UUUUUUUUUUU>vxUUHHHHUUUUWQWDQWWUUUU###
+###UUIggggcUggggUUHHHHUIIUrcUUUUvUUUU###
+###UUIU>UUUUUUUrUUHHHHUUUUUUUUUUUUUxUU##
+###UUIUrUUUUUUUxUUHHHHUcUUUUUUU>vUUrU###
+##U#UU##U##>U###UUHHHH####U##UU##U##U###
+##################HHHH##################
+##################HHHH##################
+entities:
+spawn from_rail 21 8 down
+spawn world 19 26 up
+spawn default 19 26 up
+spawn from_inn 9 13 down
+spawn from_shop 28 13 down
+spawn from_signal 29 22 down
+exit 18..21 27 DEEP l_u19
+door 9 12 U19_INN entry sfx=FX008
+door 28 12 U19_SHOP entry sfx=FX008
+door 29 21 U19_HOUSE1 entry sfx=FX008
+save 22 15
+npc rail_car_u19 19 6 up sprite=keeper talk=U19_RAILCAR name="Mag-Rail Car"
+npc platform_keeper_u19 12 7 down sprite=guard talk=U19_PLATFORM_KEEPER_U19 name="Platform Keeper"
+npc rail_child_u19 23 15 down sprite=child talk=U19_RAIL_CHILD_U19 name="Rail Child" wander=1
+npc gardener_u19 9 21 up sprite=farmer talk=U19_GARDENER_U19 name="Cress-Gardener"
+npc old_driver 16 11 left sprite=elder talk=U19_OLD_DRIVER name="Old Driver"
+npc tinker_u19 34 15 left sprite=worker talk=U19_TINKER_U19 name="Rail Tinker"
+npc crown_passenger 30 22 left sprite=noble talk=U19_CROWN_PASSENGER name="Crown Passenger" if=!phase:post
+npc widow_u19 13 18 down sprite=survivor talk=U19_WIDOW_U19 name="Keeper Widow"
+npc post_u19 23 20 up sprite=survivor talk=U19_POST_U19 name="Frightened Railhand" if=phase:post
+chest U19_C1 36 24 I003 2
+npc car_grandson 22 7 left sprite=apprentice talk=U19_CAR_GRANDSON name="Driver's Grandson"
+npc lamp_buyer_u19 33 14 down sprite=worker talk=U19_LAMP_BUYER_U19 name="Lamp-Buyer"
+npc keeper_scholar_u19 7 15 right sprite=scholar talk=U19_KEEPER_SCHOLAR_U19 name="Rail Scholar"
+
+=== U19_INN
+name: Railhead Nine - The Sleeper Car
+tileset: crown
+music: M014
+zone: U19
+region: U2
+location: L_U19
+encounters: none
+save: true
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+_##############_
+##QkQkQ##QkQkQk#
+#_............_#
+#.nnn..kB.B.B..#
+#...........r..#
+#r.............#
+#..tt...B.B.B..#
+#..............#
+#_............_#
+_######++######_
+entities:
+spawn entry 7 8 up
+exit 7..8 9 U19_R01 from_inn
+npc innkeep_u19 3 2 down sprite=baker talk=U19_INNKEEP_U19 name="Car Steward"
+inn 2 3 scene=U19_INN_REST
+npc nib_u19 6 7 right sprite=keeper talk=U19_NIB_U19 name="Nib the Pedlar"
+
+=== U19_SHOP
+name: Railhead Nine - Railhead Stores
+tileset: conduit
+music: M014
+zone: U19
+region: U2
+location: L_U19
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+_############_
+##k>kP##Pk>k##
+#_.........._#
+#rnnnn.......#
+#............#
+#...........k#
+#.........5.k#
+#............#
+#_.......r.._#
+_#####++#####_
+entities:
+spawn entry 6 8 up
+exit 6..7 9 U19_R01 from_shop
+npc shop_u19 3 2 down sprite=keeper talk=U19_SHOP_U19 name="Storekeeper Tam"
+shop 2 3 SHOP_U19
+npc crafter_u19 9 7 up sprite=worker talk=U19_CRAFTER_U19 name="Car-Mender Ines"
+
+=== U19_HOUSE1
+name: Railhead Nine - Signal Box
+tileset: conduit
+music: M014
+zone: U19
+region: U2
+location: L_U19
+encounters: none
+legend: F=moss P=pipe_tall J=banner N=lantern_post U=ruin_floor I=crystal_floor H=road M=lava X=block
+grid:
+_##########_
+##m)m)#)m)m#
+#_........_#
+#.B........#
+#.....tt...#
+#.........k#
+#.........k#
+#_........_#
+_####++####_
+entities:
+spawn entry 5 7 up
+exit 5..6 8 U19_R01 from_signal
+npc juno 5 3 down sprite=volunteer talk=U19_JUNO name="Signalwoman Juno"

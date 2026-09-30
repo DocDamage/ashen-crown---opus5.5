@@ -1,0 +1,2231 @@
+# ======================================================================================================
+# Group c scenes: Mirewold (N22-N26), Vermilion Reach (N27-N31), Hoarfrost March (N32-N36)
+# Questlines: QC09 Kitsune, QC12 Corvus, QC13 Lich King (citadel half), QW3, QW4, QW5.
+# No night condition exists in Game.eval_cond, so the "night" events (Gibbet Road, the fox wedding) are gated on
+# flags set by waiting at a campfire / lighting a lantern (n23_night, n30_night).
+# ======================================================================================================
+
+# ================================================================ N22 Harrowfen - Plague Gate
+@scene N22_GATE_WARDEN
+if ch:CH09 late
+say guard | Name, parish, symptoms. In that order, and quickly. The Board pays me by the head I turn away.
+say guard | You're not grey. Not yet. In you go. Don't touch the canal water and don't touch anyone who weeps.
+end
+label late
+say guard | They've doubled the wall since spring. Nobody asked the wall whether it's working.
+@end
+
+@scene N22_QUEUE
+say patient | I've queued at the apothecary since dawn.
+say patient | They're out of the Remedy again. They're always out of the Remedy.
+say patient | The cathedral has plenty, they say. The cathedral sells it by the spoon, at the price of a coat.
+@end
+
+@scene N22_EELWIFE
+say baker | Eels, smoked or jellied. The fen's poisoned and the eels don't mind.
+say baker | Might be the only healthy thing in Harrowfen.
+say baker | A doctor in a beak taught me to brew a fever draught once.
+say baker | Ten doses from one kettle. Then the Board confiscated the kettle.
+@end
+
+@scene N22_SULPHUR
+say worker | Sulphur in the braziers keeps the miasma off. That's what the Board says.
+say worker | It keeps my eyes streaming, so at least nobody can tell whether I'm weeping from the Grey.
+@end
+
+@scene N22_CANAL_CHILD
+say child | Don't drink the canal. Don't eat the canal.
+say child | Don't fall in the canal. That's the whole of school here.
+say child | Ma says the Gibbet Road is where they put people who break curfew. I'm never breaking curfew.
+@end
+
+@scene N22_SALLOW
+if phase:post post
+say sallow | Brother Sallow, late of the Beaked Order. I write down what the Order would prefer forgotten.
+say sallow | The Grey began the year the Abbot sold our Remedy to the Crown.
+say sallow | Coincidence is a word I have stopped using.
+say sallow | If you go into the fen, there's a hollow west of Sickle Hamlet where the moths gather.
+say sallow | Nobody sick has ever died near it.
+rumor | Brother Sallow: a glade of moths west of Sickle Hamlet, where the sick seem to recover.
+discover L_N26
+end
+label post
+say sallow | I watched the Board burn the Ward and write it down as "purified".
+say sallow | I wrote it down as murder. Both of us had ink.
+say sallow | Mother Brannock is still pulling people out. She could use hands that don't shake.
+@end
+
+@scene N22_GRAVEDIGGER
+say worker | Graves are full. We stack them now. The Board calls it "vertical interment".
+say worker | The Order used to bury our dead for free. Then the Abbot started charging by the foot.
+@end
+
+@scene N22_WARD_LISTENER
+say elder | My sister's in the Ward. Past that gate. I come and listen. Some days she knocks back.
+say elder | The Board says the Ward is "stable". They say it the way you'd say it about a fire.
+@end
+
+# ---- post-fault Plague Gate
+@scene N22P_ASH_CHILD
+say child | The fire came the night the ground shook. The wardens lit it. They said it would clean us.
+say child | I'm clean now. Everything I had is clean.
+@end
+
+@scene N22P_DESERTER
+say guard | I was a Board warden. I threw my torch in the canal instead of the Ward.
+say guard | That's the whole of my heroism.
+say guard | Captain Ostrey didn't throw his. He's still in there, carrying out order twelve.
+@end
+
+@scene N22P_BOATMAN
+say sailor | The east footbridge went in the fire, so I pole folk across.
+say sailor | No charge. Charging is what got us here.
+@end
+
+# ---- interiors
+@scene N22_INN
+if phase:post post
+say marl | The Drowned Lantern. Beds are aired with sulphur. Forty crowns, and I don't ask about your cough.
+inn 40
+end
+label post
+say marl | Half the roof burned. The half that's left has beds under it. Sleep free; pay me in news.
+inn 0
+@end
+
+@scene N22_DRINKER
+say worker | I drink to kill whatever's in the water.
+say worker | Then I drink to kill what the drink did. It's a closed system.
+@end
+
+@scene N22P_INN_REFUGEE
+say survivor | I got out of the Ward through the eel-drains. There were more of us when we started crawling.
+@end
+
+@scene N22_APOTHECARY
+say gall | Gall and Daughter. Antidotes, eyesalve, tonics.
+say gall | Not the Remedy - that's licensed to the cathedral and I'm licensed to weep about it.
+shop SHOP_N22
+@end
+
+@scene N22_CRAFTER
+say apprentice | Da sells. I make. Bring me fen-herbs, grub-silk from the blight grubs, and I'll stitch you a charm against the Grey.
+say apprentice | It won't cure anything.
+say apprentice | But it keeps the miasma off your collar, and that's half of staying alive here.
+@end
+
+@scene N22_BOARDMASTER
+say boardmaster | Petitions are heard on the third bell. It is not the third bell. It is never the third bell.
+say boardmaster | The Board does not cure. The Board contains. Cures are the Order's business, under licence.
+@end
+
+@scene N22_BOARDSCRIBE
+say clerk | I copy the death rolls. Last month I ran out of ink before I ran out of names.
+say clerk | The licence ledger's on the east shelf, if you want to know who's paid to keep us sick.
+say clerk | Don't tell the Master I said "paid".
+@end
+
+@scene N22_TALLOW_MOTHER
+say survivor | Candles, tallow soap. My girl dips them.
+say survivor | The Board says the Grey isn't catching. Then why won't they let us out?
+@end
+
+@scene N22_TALLOW_GIRL
+say patient | My eyes won't stop running. Ma says it's the sulphur. I think Ma is being kind.
+say patient | The doctor with the beak used to come every week. He said I'd live. He left before he could check.
+@end
+
+@scene N22P_TALLOW
+say survivor | My girl got better. After the fire.
+say survivor | The smoke did something, or the fright, or nothing did. I stopped asking why.
+@end
+
+# ================================================================ N22 Rookery Row
+@scene N22_OUTFITTER
+say keeper | Physicians' coats, waxed. Reaper's blades.
+say keeper | The Board lets me trade because I sell them the wardens' armour.
+shop SHOP_N22_ROW
+@end
+
+@scene N22_ROOKKEEPER
+say elder | The rooks roost here because the doctors fed them.
+say elder | The doctors are gone. The rooks are still waiting.
+say elder | Loyal birds. More loyal than the Order ever was to this street.
+@end
+
+@scene N22_MASKMENDER
+say apprentice | I mend beaks. Stuffed with lavender and clove, they are, to keep the bad air out.
+say apprentice | Didn't keep anything out of the Abbot.
+@end
+
+@scene N22_WIDOW
+say survivor | My husband was an Order physician.
+say survivor | He went into the cathedral to ask about the Remedy stores. He came out a leech-keeper.
+say survivor | He doesn't know me now. He smiles all the time. I preferred him frightened.
+@end
+
+@scene N22_RUNNER
+say child | I run messages for the physic house.
+say child | Idony pays me in honey sweets. She's the only one who still brews.
+@end
+
+@scene N22_NOVICE
+say monk | The Order's chapel is open. The Order is not.
+say monk | The Abbot moved us all to the Leech Cathedral in the fen.
+say monk | I ran away. I'd rather be poor in Harrowfen than fed in there.
+@end
+
+@scene N22P_ROOKS
+say survivor | Rookery Row burned last. The rooks stayed on the roofs till the roofs went.
+say survivor | Then they sat on the chimneys.
+@end
+
+@scene N22P_MASKS
+say apprentice | Nobody wants beaks now. They want gloves and wet cloths. I cut the beaks into funnels for the wells.
+@end
+
+@scene N22_CHAPEL_WARDEN
+say monk | Rest here if you must. The chapel's saint is Our Lady of Clean Water. She's been very quiet lately.
+@end
+
+@scene N22P_CHAPEL
+say monk | The chapel's stone, so it didn't burn.
+say monk | We've laid the sick in the pews. The Lady doesn't mind the company.
+@end
+
+@scene N22_PHYSIC_PATIENT
+say patient | Idony brews the old doctor's draught. It doesn't cure the Grey. It lets you sleep through it.
+@end
+
+@scene N22_DAYBOOK
+say narr | A physician's daybook in a narrow hand, the ink brown with age.
+say narr | "Brewed forty doses. Taught the eel-wife to brew ten. Better. Nobody should need me to be well."
+if recruited:C12 corvus
+end
+label corvus
+say corvus | I wrote that the year I came back.
+say corvus | I thought forty and ten was a beginning. The Abbot thought it was a threat.
+@end
+
+@scene N22_IDONY
+if q:QC12 done
+if qs:QC12:formula resolve
+if q:QC12:ACTIVE active
+if phase:post,recruited:C12 hook
+if phase:post post
+say idony | This was Doctor Corvus's physic house. I was his apprentice.
+say idony | Now I'm his apprentice with nobody to be apprenticed to.
+say idony | He taught me the draught that eases the Grey.
+say idony | The Remedy - the real cure - he never had. The Abbot had it.
+say idony | People say he ran. I say he went to carry the draught somewhere they'd let him brew it.
+end
+label post
+say idony | The fire took the roof. It left the stills. I brew in the rain now.
+say idony | The Grey came back with the smoke. If I had the Remedy's formula, I could stop it.
+say idony | The cathedral has it. The cathedral has everything.
+end
+label hook
+say idony | Doctor? ...Doctor Corvus. You came back into the smoke.
+say corvus | I heard Harrowfen burned. I heard the Grey came back with it.
+say corvus | Tell me what you have, Idony, not what you've lost.
+say idony | The draught. Enough for a week.
+say idony | The Remedy is in the Leech Cathedral, sold to the Crown under licence, kept by the Abbot.
+say idony | The Board kept a copy of the licence.
+say idony | If the ledger survived the fire, it's in their hall. It will say what was sold.
+say corvus | The cure was never mine. But it was never the Abbot's to sell. Let's see the bill of sale.
+quest QC12 ACTIVE ledger
+journal | QC12: Find the Mirewold Remedy's licence in the Board of Quarantine's ruined hall, Harrowfen.
+objective | Find the Remedy licence in the Board hall
+end
+label active
+say idony | The Board hall, then the cathedral. And, Doctor - eat something. You look like a man who forgets.
+end
+label resolve
+call QC12_RESOLVE
+end
+label done
+say idony | I teach three brewers a week now. Two of them are better than me. That's the idea, isn't it?
+@end
+
+@scene QC12_LEDGER
+if qs:QC12:ledger found
+say narr | Licence ledger, Board copy. Entry 7: The Mirewold Remedy.
+say narr | Sole right of sale: the Order of Saint Lamprey, under Crown seal.
+end
+label found
+say narr | The ledger survived the fire under the wet ashes of the shelves.
+say narr | Entry 7 is circled in the Master's own ink.
+say narr | "Mirewold Remedy. Formula surrendered by the Order to the Crown Ministry."
+say narr | "Supply to be held at the Leech Cathedral. Distribution: by tithe."
+say corvus | By tithe. Not by need.
+say corvus | The Abbot sold the cure and kept the disease, because the disease paid better.
+say corvus | The formula will be in the cathedral with the stores. So will he.
+quest QC12 ACTIVE cathedral
+journal | QC12: The Remedy was sold by tithe. Go to the Leech Cathedral in the western fen and take it back from Abbot Lamprey.
+objective | Take the Remedy from the Leech Cathedral
+@end
+
+@scene QC12_RESOLVE once
+say idony | You're back. You have it. Give it here before I start crying on it.
+say corvus | The formula, the Order's notes, and the Crown's seal, which is worth less than the paper.
+say corvus | Now the hard part. I won't own it. But someone has to decide who does.
+choice | Publish it to every herbalist in the Mirewold -> publish | Leave it with Idony's physic house -> keep
+label publish
+set qc12_published
+say corvus | Copy it out. Every herbalist, every reaper's wife, every eel-woman who can boil water.
+say corvus | Nobody should need a licence to live.
+say idony | Some of them will brew it wrong.
+say corvus | Then teach them to brew it right. That's what I should have done instead of leaving.
+goto reward
+label keep
+set qc12_kept
+say corvus | You keep it, Idony. Brew it, test it, teach it.
+say corvus | A cure in careful hands for a year is better than a hundred bad batches.
+say idony | And after a year?
+say corvus | After a year, you give it away. Promise me that, and I'll sleep.
+label reward
+say idony | He left you this, Doctor. Before.
+say idony | He said you'd come back for it one day, and you'd be ashamed to take it.
+say corvus | ...My old lantern. I am ashamed. I'm taking it anyway.
+give A015 1
+quest QC12 COMPLETED
+journal | QC12 complete: the Mirewold Remedy is back in the fen's hands.
+@end
+
+# ================================================================ QW3 Harrowfen Burning (post-fault)
+@scene QW3_HOOK
+if q:QW3 done
+if q:QW3:RESOLUTION_READY resolve
+if q:QW3:ACTIVE active
+say brannock | You. You're not ash and you're not wardens. Good. I'm Brannock.
+say brannock | I delivered half the babies in this city and I'm burying the other half.
+say brannock | The Board's order twelve: when the wall breaks, burn the Ward.
+say brannock | The wall broke when the ground shook. They burned it.
+say brannock | The fires went out. The order didn't.
+say brannock | Captain Ostrey's still in there, with his empty armours, keeping people in the lazar-house.
+say brannock | There are families alive in the Ward. Bring them to the gate.
+say brannock | And open that lazar-house before he lights it.
+quest QW3 ACTIVE ward
+setvar qw3_saved 0
+journal | QW3: Go into the Burning Ward (east gate of the Plague Gate). Find three trapped families; open the lazar-house.
+objective | Search the Burning Ward
+end
+label active
+say brannock | Three families at least.
+say brannock | The Hask twins, old Pellow, the tanner's widow and her boy. Then the lazar-house.
+end
+label resolve
+call QW3_END
+end
+label done
+say brannock | We've started a new Ward. It has no wall.
+say brannock | The sick sit in the sun and people bring them soup. Revolutionary.
+@end
+
+@scene QW3_FAMILY1
+set qw3_f1
+addvar qw3_saved 1
+say survivor | We've been in the root-cellar two days.
+say survivor | The Hask twins - both of us - we thought the armours would come back.
+say survivor | The Plague Gate? We can make it. Go on, there are others.
+fade out 0.3
+fade in 0.3
+say narr | (Families brought out: {v:qw3_saved} of 3.)
+@end
+
+@scene QW3_FAMILY2
+set qw3_f2
+addvar qw3_saved 1
+say child | Ma's hurt her leg. She told me to hide and not come out for anyone in a mask. You're not in a mask.
+say narr | You carry the tanner's widow between you, and the boy leads the way to the gate.
+say narr | (Families brought out: {v:qw3_saved} of 3.)
+@end
+
+@scene QW3_FAMILY3
+set qw3_f3
+addvar qw3_saved 1
+say elder | Pellow. Ninety-one. I survived the Grey twice and the Board once.
+say elder | I'll not be killed by a captain with a torch.
+say elder | Help me to the gate and I'll curse you all the way there, fondly.
+say narr | (Families brought out: {v:qw3_saved} of 3.)
+@end
+
+@scene QW3_LAZAR_DOOR
+if flag:qw3_door open
+if !q:QW3:ACTIVE plain
+if var:qw3_saved>=3 pry
+say narr | The lazar-house door is nailed shut. The knocking inside is slow and patient.
+say narr | Get the families clear first - if Ostrey hears you, he'll light it.
+end
+label pry
+say narr | The families are clear. You work the nails out one by one. The knocking stops.
+set qw3_door
+say narr | The door gives.
+end
+label open
+say narr | The door hangs open. Smoke curls out along the lintel.
+end
+label plain
+say narr | The lazar-house door is nailed shut from outside. Someone inside is knocking, slowly, in threes.
+@end
+
+@scene QW3_SICK
+say patient | He brings us water. He won't let us out. He says the order doesn't say anything about water.
+@end
+
+@scene QW3_OSTREY once
+say ostrey | Stand where you are. This is a quarantine house under Cleansing Order Twelve.
+say ostrey | Upon breach of the wall, the Ward is to be purified. The wall is breached. I am purifying.
+say narr | The empty plague armours around him straighten, as if someone had called them to attention.
+battle POWX_N22_1 noflee
+say ostrey | ...You broke them. They were only suits. They were only following the order. So was I.
+say ostrey | I brought them water. Every day. Does that count for anything?
+choice | Give him to the survivors' judgment -> judge | Let him carry the sick out himself -> carry
+label judge
+set qw3_judged
+say narr | Ostrey unbuckles his sword belt and holds it out, hilt first.
+say narr | He walks to the Plague Gate with his hands empty.
+goto finish
+label carry
+set qw3_carried
+say narr | Ostrey looks at the cots for a long moment.
+say narr | Then he lifts the nearest patient as if she weighs nothing, and walks out into the smoke.
+label finish
+set qw3_done
+quest QW3 RESOLUTION_READY
+journal | QW3: The lazar-house is open. Return to Mother Brannock at the Plague Gate.
+@end
+
+@scene QW3_END once
+say brannock | The lazar-house is empty. The Ward is empty.
+say brannock | For the first time in six years, nobody in Harrowfen is locked in.
+if flag:qw3_judged judged
+say brannock | Ostrey carried eleven of them out. Then he sat down by the canal and wouldn't get up.
+say brannock | I left him there. Let him sit with it.
+goto gifts
+label judged
+say brannock | Ostrey's in the chapel. The families will decide what to do with him.
+say brannock | Most of them want to shout first. That's fair.
+label gifts
+say brannock | Take these. The Board's stores, which nobody's guarding now.
+give I003 2
+gold 1500
+give I024 1
+quest QW3 COMPLETED
+@end
+# ================================================================ N23 The Gibbet Road
+@scene N23_WARDEN
+say guard | Road warden, Board of Quarantine. The cages are for curfew-breakers.
+say guard | The crows are for whatever the cages leave.
+say guard | After the curfew bell I go home. Nobody stays on this road after dark.
+say guard | Nobody who wants to walk home, anyway.
+@end
+
+@scene N23_HASK
+if flag:n23_hask_free done
+say hask | Water? No? Then walk on, I'm not a sight for tourists.
+say hask | Hask. Eel-poacher. Caught after the bell with a sack of eels and a sick daughter.
+say hask | The eels were for her.
+say hask | The warden's looking the other way. The latch is on your side. Just saying.
+choice | Lift the latch -> free | Walk on -> bye
+label free
+set n23_hask_free
+say narr | The latch sticks, then gives.
+say narr | Hask drops out of the cage like a sack of wet laundry and stays down a while.
+say hask | Sickle Hamlet. My girl's at Granny Sedge's.
+say hask | If you're ever that way, there's a glade west of there - the moths' place.
+say hask | Sick folk who sleep there wake up better. Don't ask me why. Ask the moths.
+rumor | Hask: sick folk who sleep in the moths' glade west of Sickle Hamlet wake up better.
+discover L_N26
+end
+label bye
+say hask | Aye. Walk on.
+end
+label done
+say narr | The cage is empty. Somebody has hung a dead eel in it, as a joke or a message.
+@end
+
+@scene N23_WIDOW
+say elder | That's my son's cage. They took him down in the autumn. I still come and talk to it.
+say elder | At night the old hangman walks the road with his lantern.
+say elder | People say he's looking for the last cage. The one he never opened.
+@end
+
+@scene N23_TULLY
+say tully | Tully's the name, pedlar's the game, and the Gibbet Road's the only road the Board forgets to tax.
+say tully | Antidotes, salt, candles for the cages. You'd be amazed what folk buy on a road like this.
+shop SHOP_N24
+@end
+
+@scene N23P_FLEEING
+say survivor | Harrowfen burned. We walked out through the smoke on this road, past the cages.
+say survivor | Nobody stopped us. Nobody was left to.
+@end
+
+@scene N23P_CUTTER
+say worker | I'm cutting the cages down. All of them.
+say worker | The Board's gone, the bell's gone. Somebody should have done it years ago.
+@end
+
+@scene N23_CAMPFIRE
+if flag:n23_night_done after
+if flag:n23_night already
+say narr | A cold campfire ring.
+say narr | Somebody has left kindling stacked, and a warning scratched on a stone: DON'T WAIT FOR DARK.
+choice | Light the fire and wait for dark -> wait | Leave it be -> bye
+label wait
+set n23_night
+fade out 0.8
+say narr | The fire catches. The sun goes down behind the fen and the crows go quiet one by one.
+say narr | When it is fully dark, a lantern comes swinging down the road from the north, carried by nobody you can quite see.
+fade in 0.8
+end
+label already
+say narr | The fire is burning low. Up the road, the lantern waits by the northern cages.
+end
+label after
+say narr | The ashes are warm. The warning stone has been turned face down.
+end
+label bye
+@end
+
+@scene N23_HANGMAN
+if flag:n23_night_done done
+say hangman | You waited for dark. Most run. The ones who run are the sensible ones.
+say hangman | I was the Board's hangman. Forty years on this road.
+say hangman | I opened every cage when the sentence was done. All but one.
+say hangman | The last one. North-east, by the old toll post.
+say hangman | I was told to leave that one shut. So I did. Then I died, and I still did.
+say hangman | Open it. Whatever it holds now, it's been waiting longer than me.
+end
+label done
+say hangman | Thank you. Walk on, now. It's nearly dawn and I've a long way to go.
+@end
+
+@scene N23_LAST_CAGE once
+say narr | The last cage is rusted shut. You break the latch.
+say narr | Inside, there is nothing but a heap of black feathers - and then the heap stands up.
+tint #20284060
+shake 0.3
+battle OWX_N23_1 noflee
+tint none
+say narr | The crows scatter. At the bottom of the cage, under the feathers, is a bundle that was a child's coat, and wrapped in it, a veil.
+give G120 1
+say hangman | ...So that's who it was. I'd forgotten. They made me forget. Thank you.
+set n23_night_done
+unset n23_night
+say narr | The lantern goes out. When your eyes adjust, it is grey dawn, and the road is only a road.
+@end
+
+# ================================================================ N24 Sickle Hamlet
+@scene N24_REAPER_A
+say farmer | We cut reed for thatch and fenbane for the apothecaries.
+say farmer | Fenbane'll kill a man or cure a fever. Depends who's weighing.
+say farmer | Wear gloves when you cut.
+say farmer | The ones who don't are the ones you see buried with their hands folded funny.
+@end
+
+@scene N24_REAPER_B
+say farmer | Poison herbs pay double since the Grey. Harrowfen buys everything.
+say farmer | The cathedral buys it cheaper and sells it dearer.
+@end
+
+@scene N24_REED_GIRL
+say child | I'm plaiting a reed crown. For the Moth Lady.
+say child | Granny Sedge says the moths are a lady, a very old one, who burned once.
+@end
+
+@scene N24_CARPENTER
+say worker | Stilts rot. Every house here is rebuilt a leg at a time.
+say worker | My grandfather's house has no original parts. It's still his house.
+@end
+
+@scene N24_CRESS
+say elder | My husband took our ferry to Harrowfen with a load of fenbane.
+say elder | The Board kept him at the Gate. That was three years ago.
+say elder | He writes. The Board reads it first. He writes very boring letters now.
+@end
+
+@scene N24_TRAPPER
+say sailor | Eel-traps. I set them under the boardwalks.
+say sailor | The blight grubs eat the bait and the eels eat the grubs, and I eat the eels.
+say sailor | Mind the fen lurkers out past the reeds. They look like logs until they don't.
+@end
+
+@scene N24_PIKE
+say pike | Old Pike. I pole the ferry across the causeway gap when the water's up. Been doing it fifty years.
+say pike | The causeway's the only dry road to Harrowfen.
+say pike | Folk pay me a copper. The Board pays me to count them.
+@end
+
+@scene N24_TAXMAN
+say clerk | Board tithe collector.
+say clerk | One-fifth of the fenbane, one-tenth of the reed, and a head count of any coughing.
+say clerk | I don't enjoy it. I'd enjoy the Gibbet Road less.
+@end
+
+@scene N24_SALLOW
+if phase:post post
+say sallow | The reapers here keep an older faith than the Order's.
+say sallow | They think the fen is sick because it was wounded.
+say sallow | The Order preached that the sick are sinners who must pay.
+say sallow | It took me thirty years to notice who was being paid.
+end
+label post
+say sallow | The causeway's gone under since the ground broke.
+say sallow | Reeve Holloway has a notion about the brackhorns. It is mad. It might work.
+@end
+
+@scene N24_HERB_BOY
+say child | That's hemlock, that's widow's lace, that's fenbane, that's moth-bloom.
+say child | Moth-bloom's the only one that won't kill you.
+say child | It only grows in the moths' hollow. Granny Sedge pays a silver a sprig.
+@end
+
+@scene N24_INN
+say meg | The Reapers' Rest. Beds are reed, blankets are wool, and the eel stew is included whether you want it or not. Thirty crowns.
+inn 30
+@end
+
+@scene N24_DRINKER
+say farmer | Here's to the Board. Long may they stay in Harrowfen and not come here.
+@end
+
+@scene N24_SEDGE
+if q:QW4:ACTIVE qw4
+say sedge | Granny Sedge. Herbs for what ails you, herbs for what ails your enemies.
+say sedge | I only sell the second kind to people I like.
+shop SHOP_N24
+end
+label qw4
+if flag:qw4_reed1,flag:qw4_reed2,flag:qw4_reed3,flag:qw4_pike,flag:qw4_mire ready
+say sedge | Pattens need ironreed - three good bundles off the drowned causeway - and Pike's say-so.
+say sedge | He knows the mire better than the eels.
+shop SHOP_N24
+end
+label ready
+call QW4_END
+@end
+
+@scene N24_CRAFTER
+say rue | I cut herbs for Granny. Bring me moth-bloom, fenbane, grub-silk.
+say rue | Moth-bloom and a bit of salt makes a draught against poison.
+say rue | Fenbane and grub-silk makes a lure for fen lurkers. Don't ask me how I found that out.
+@end
+
+@scene N24_REEVE
+say holloway | Reeve Holloway. I keep the hamlet's book and the hamlet's peace, in that order.
+say holloway | We're poor, we're poisonous and we're left alone. Two out of three isn't bad.
+@end
+
+@scene N24_REEVE_SON
+if phase:post post
+say worker | Da's been sketching brackhorn feet all week.
+say worker | He says if a heron can walk the fen, so can a horned goat. On reed shoes.
+end
+label post
+say worker | The fault sank the causeway and the ferry with it.
+say worker | Da says we'll wade before we drown. Da says a lot of things.
+@end
+
+@scene N24P_REFUGEE
+say survivor | I came from Harrowfen when it burned. Waded most of it.
+say survivor | The causeway's under three feet of black water now.
+@end
+
+@scene N24P_REAPER
+say farmer | The fen took the causeway and gave us a new eel-bed.
+say farmer | The fen always takes something and gives something back. Usually eels.
+@end
+
+# ================================================================ QW4 The Mire Ferry (post-fault)
+@scene QW4_HOOK
+if q:QW4 done
+if q:QW4:ACTIVE active
+say holloway | You came in over the fen? Then you know.
+say holloway | The causeway's drowned, Pike's ferry went down with it, and Pike's out on it still.
+say holloway | Here's my notion. Reapers wear pattens - reed shoes - to walk the soft fen.
+say holloway | Your brackhorn's got four feet. Four pattens.
+say holloway | Granny Sedge can weave them. She needs ironreed off the causeway, three good bundles.
+say holloway | And she won't do it without Pike's say-so.
+say holloway | Something's nesting out on the sunken road, too. Big. Mind it.
+quest QW4 ACTIVE reeds
+journal | QW4: Cut three bundles of ironreed on the Drowned Causeway (east of Sickle Hamlet), find Old Pike, then bring it all to Granny Sedge.
+objective | Cut ironreed on the Drowned Causeway
+end
+label active
+say holloway | Three bundles of ironreed, and Pike. Sedge does the rest. The causeway's east, past the herb house.
+end
+label done
+say holloway | The Fenwader. I named it. Nobody else wanted to. Pike calls it "that goat", affectionately.
+@end
+
+@scene QW4_REED1
+set qw4_reed1
+say narr | A stand of ironreed on the broken causeway, stiff as wire. You cut a good bundle.
+@end
+
+@scene QW4_REED2
+set qw4_reed2
+say narr | Ironreed grows thick around a sunken milestone. A second bundle.
+@end
+
+@scene QW4_REED3
+set qw4_reed3
+say narr | The last stand grows beside the deep water, where the road went under.
+say narr | As you cut it, the water behind you bulges.
+@end
+
+@scene QW4_PIKE
+set qw4_pike
+say pike | Took your time. I've been living on this islet on eels and spite.
+say pike | The punt's under the water. I watched it go.
+say pike | Pattens for a brackhorn? Holloway's mad. ...Mad enough.
+say pike | Tell Sedge I said the pattens want a wide toe. Wide toe and a long heel.
+say pike | I'll wade back on my own. Fifty years on this fen. It's not killing me today.
+@end
+
+@scene QW4_MIRE once
+say narr | The black water rises in a hump, and the hump has eyes.
+say narr | The thing that nests on the sunken road has come to see who's cutting its reeds.
+battle POWX_R08_1 noflee
+set qw4_mire
+say narr | It sinks back into the mire and does not come up. The road is quiet.
+@end
+
+@scene QW4_END once
+say sedge | Ironreed, three bundles. Pike's word.
+say sedge | And you killed the thing on the road, which I didn't ask for but I'll take.
+say narr | Granny Sedge weaves all night.
+say narr | In the morning there are four wide reed pattens, and Bramble is wearing them with enormous dignity.
+say pike | Wide toe, long heel. Good. Now then. There's reed left over.
+choice | Give Pike the first pair of pattens -> pattens | Rebuild Pike's punt with the spare reed -> punt
+label pattens
+set qw4_pike_guide
+say pike | Me, on reed shoes, guiding folk across on their goats. At my age.
+say pike | ...Aye. Aye, I'll do it. The ferry was always the fen, not the boat.
+goto reward
+label punt
+set qw4_pike_punt
+say pike | A punt of ironreed. It'll float till the world ends and then some.
+say pike | I'll be back on the water by the new moon.
+label reward
+set brackhorn_fenwader
+say narr | (Bramble can wade shallows and marsh now: the Fenwader.)
+give G119 1
+quest QW4 COMPLETED
+journal | QW4 complete: the Fenwader crosses shallows and marsh.
+@end
+
+# ================================================================ N25 The Leech Cathedral
+@scene N25_ENTER once
+say narr | The Leech Cathedral stands up out of the fen like a drowned animal. The steps go down, not up.
+say narr | Inside it smells of warm iron and wet stone. Something in the water is breathing slowly.
+if recruited:C12 corvus
+end
+label corvus
+say corvus | I took my vows on these steps.
+say corvus | The Abbot washed my hands in the basin and said the Order would keep me clean.
+@end
+
+@scene N25_SLUICE_W
+if flag:n25_sluice_w done
+set n25_sluice_w
+sfx FX010
+say narr | The lever groans down.
+say narr | Somewhere under the floor a sluice opens, and the west basin drains away with a long, sucking sigh.
+end
+label done
+say narr | The west sluice is open. The basin is a slope of mud and sleeping leeches.
+@end
+
+@scene N25_SLUICE_E
+if flag:n25_sluice_e done
+set n25_sluice_e
+sfx FX010
+say narr | The scriptorium lever drives a chain through the wall. Far off, water roars, and then stops.
+say narr | (The east basin and the nave's centre have drained.)
+end
+label done
+say narr | The lever is down. The chain through the wall hangs slack.
+@end
+
+@scene N25_SALEBOOK
+say narr | The abbot's sale book. "Mirewold Remedy, formula and all rights, to the Crown Ministry."
+say narr | "Price: the Order's tithe for life."
+say narr | Below, in a different ink: "Supply to be held here."
+say narr | "Release by tithe only. The Grey must not be ended; it must be managed."
+if recruited:C12 corvus
+end
+label corvus
+say corvus | Managed. He wrote down that he would let them sicken. He wrote it neatly.
+@end
+
+@scene N25_GRILLE_A
+if flag:n25_grille_a done
+set n25_grille_a
+sfx FX010
+say narr | The lever drags an iron grille up on the east walk. Rust snows down.
+end
+label done
+say narr | The east grille is up.
+@end
+
+@scene N25_GRILLE_B
+if flag:n25_grille_b done
+set n25_grille_b
+sfx FX010
+say narr | The north grille rattles open. The cloister walk runs clear all the way round now.
+end
+label done
+say narr | The north grille is open.
+@end
+
+@scene N25_WINCH
+if flag:n25_shortcut done
+set n25_shortcut
+sfx FX010
+say narr | You wind the winch.
+say narr | Up the steps, a portcullis grinds open onto the Drowned Steps - a quick way in and out.
+end
+label done
+say narr | The portcullis to the Drowned Steps is wound open.
+@end
+
+@scene N25_KEY
+if flag:n25_key done
+set n25_key
+say narr | Where the Saint lays his head: a stone pillow on the statue's plinth.
+say narr | Under it, a key shaped like a leech, warm to the touch.
+say narr | (The choir door in the Nave of Basins will open now.)
+journal | The Leech Key opens the choir door in the Nave of Basins.
+end
+label done
+say narr | The stone pillow is bare.
+@end
+
+@scene N25_GHOST
+say narr | A novice, drowned-pale, sits on the pew with her hands folded.
+say narr | She does not seem to know she is dead.
+say patient | The Abbot doesn't eat now. The leeches feed him. He says it's a sacrament. We're the sacrament.
+say patient | When he sheds the robe, he's weak to fire.
+say patient | And the censer - when it swings wide, cover your mouths. That's all I learned.
+@end
+
+@scene N25_WELL_LOOK
+say narr | The leech-well goes down further than a well should.
+say narr | The water in it is warm, and it moves against the current.
+if flag:n25_abbot_fled fled
+end
+label fled
+say narr | Something long and pale went down here. The stones are still wet with it.
+@end
+
+@scene N25_BOSS once
+if qs:QC12:cathedral quest
+say narr | The reliquary. On a dais of basins sits a gaunt man in a leech-grey robe, smiling with a mouth too wide for his face.
+say lamprey | Pilgrims. You'll want the Remedy. Everyone wants the Remedy.
+say lamprey | The price is one tithe, paid in the usual coin.
+say lamprey | The usual coin is you.
+music M026
+battle BX06 noflee
+say narr | Lamprey's body folds in on itself like an empty robe - and something long and pale slides out of it and into the leech-well.
+set n25_cleared
+set n25_abbot_fled
+say narr | On the dais: the Order's stores of the Remedy, and a strongbox of tithe coin.
+gold 2400
+give I005 2
+journal | Abbot Lamprey fled into the leech-well of the Leech Cathedral. He is not dead.
+end
+label quest
+say narr | The reliquary. On a dais of basins sits a gaunt man in a leech-grey robe.
+say narr | He sees Corvus, and his smile goes wider.
+say lamprey | Brother Corvus. My lost lamb.
+say lamprey | You carried the draught away and gave it to eel-wives. I forgave you. I let you run.
+say corvus | You sold the Remedy and kept the Grey. You kept a city sick for tithe.
+say lamprey | I kept a city. Sick is a manner of keeping.
+say lamprey | And you - you still want to be the one who heals them. We're not so different.
+say corvus | We are. I'm going to give it away.
+music M026
+battle BX06 noflee
+say narr | The Abbot comes apart in the basin.
+say narr | What is left of him is only leeches, and they are very small without him.
+set n25_cleared
+set qc12_lamprey_dead
+say narr | On the dais: the Order's stores, the Remedy's formula in the Abbot's hand, and a strongbox of tithe coin.
+gold 2400
+quest QC12 ACTIVE formula
+journal | QC12: Abbot Lamprey is dead. Take the Remedy's formula back to Idony at the physic house on Rookery Row, Harrowfen.
+objective | Bring the formula to Idony in Harrowfen
+@end
+
+@scene QC12_WELL once
+say narr | At the bottom of the leech-well, in warm black water, something coils around the drowned bones of the Order's dead.
+say narr | It raises the Abbot's face on a neck of pale, ringed flesh.
+say lamprey | Brother Corvus. I kept this city for you. I'm keeping myself, now.
+say corvus | You shed your skin to run. You can't shed what you did. Come up into the light, Abbot.
+music M026
+battle BX06 noflee
+say narr | The thing unwinds and sinks, and the water goes cold, the way well water should.
+set qc12_lamprey_dead
+say narr | Wedged in the drowned bones: an oilcloth packet.
+say narr | The Remedy's formula, in the Abbot's hand, and the Crown's seal.
+quest QC12 ACTIVE formula
+journal | QC12: Abbot Lamprey is dead. Take the Remedy's formula back to Idony at the physic house on Rookery Row, Harrowfen.
+objective | Bring the formula to Idony in Harrowfen
+@end
+
+# ================================================================ N26 Moth Hollow
+@scene N26_MURAL
+say narr | A moth carved in the stone, wings open wide enough to cover a town.
+say narr | Under it, older letters: SHE BURNED SO THE FEN COULD BREATHE.
+say narr | The carving is warm.
+say narr | The live moths settle on it and do not move, as if they were listening to something you cannot hear.
+if recruited:C12 corvus
+end
+label corvus
+say corvus | The reapers talk about a Moth Lady. The Order called it superstition.
+say corvus | The Order called a lot of true things superstition.
+@end
+
+@scene N26_BLOOM
+set n26_bloom
+say narr | In the centre of the glade grows moth-bloom, pale as ash.
+say narr | You take a few sprigs. The moths do not seem to mind.
+give I007 3
+@end
+
+@scene N26_NETTLE
+say nettle | Shh. They're sleeping. The moths sleep in the day and dream about the fire.
+say nettle | Granny Sedge says a great moth burned itself up, long ago, to clean the fen.
+say nettle | It's still here. It's just very, very tired.
+say nettle | Maybe one day it'll wake up and pick someone. Not me. I'd only want it to be warm.
+@end
+
+@scene N26_SALLOW
+say sallow | Look at them. Thousands. Every one of them faces the carving.
+say sallow | The Order had a word for this. The word was "heresy".
+say sallow | I have a better word now, and it is "Vestige".
+say sallow | Something old and kind is resting here. Don't wake it for nothing.
+@end
+# ================================================================ N27 Kaminari Ford
+@scene N27_TOKICHI
+if phase:post post
+say tokichi | Tokichi, ferry-master.
+say tokichi | The strait ferry sails from this jetty - step aboard from the landing on the far side of the ford.
+say tokichi | Two coppers a head and one for a brackhorn. Lanterns for the dead ride free. They always have.
+end
+label post
+say tokichi | The strait's a storm now, since the world cracked. I still sail. Slower, and I pray more.
+say tokichi | The court came across on my ferry, fleeing Akagane.
+say tokichi | Forty of them in masks, not one of them could row.
+@end
+
+@scene N27_WIDOW
+say elder | Every dusk we float a lantern for each of our dead. The river takes them out to the strait.
+say elder | I float nine. I used to float eleven. Two of mine came home from the Crown's levy.
+say elder | You don't stop floating for them. You just float fewer.
+@end
+
+@scene N27_KIDS
+say child | We race the lanterns down to the ford! If yours goes under the stones first, your grandmother wins.
+say child | Nobody knows why your grandmother wins. That's the rule.
+@end
+
+@scene N27_FISHER
+say sailor | Kaminari means thunder. The river's named for the sound the ford makes in spring flood.
+say sailor | You'll hear it if you stay.
+say sailor | Up the far bank there's a maple wood the foxes use. Don't go at dusk. Or do. Just don't talk.
+@end
+
+@scene N27_SHRINE
+say monk | A fox shrine. The court's foxes stop here on their way to Akagane.
+say monk | They leave a mask with no face, for luck.
+say monk | A face is a thing you are given. A mask is a thing you choose.
+say monk | The court says that's the difference between peasants and nobles.
+@end
+
+@scene N27_FARMER
+say farmer | Rice by the river, red maples on the hills.
+say farmer | The Crown's grain levy takes the rice. Nobody's found a way to levy the maples.
+@end
+
+@scene N27_WAITING
+say noble | I am waiting for the ferry, and for the Crown's customs man to finish counting my luggage.
+say noble | The second is taking longer.
+@end
+
+@scene N27_CUSTOMS
+say guard | Crown customs, Vermilion strait. One-tenth of anything crossing.
+say guard | The fox court says the Reach isn't the Crown's. The Crown says it is.
+say guard | I say I'm paid either way, and I've never once been bitten by a fox.
+@end
+
+@scene N27_RONIN
+say soldier | I served the fox court's guard until they wanted my face under a mask.
+say soldier | I'd rather be poor and recognised.
+say soldier | The Thousand Gates are south of here. Some say only one gate is true.
+say soldier | I say they're all true, if you walk far enough.
+@end
+
+@scene N27_UME
+if phase:post post
+say ume | Ume, lantern courier! I carry letters between the Ford, Akagane and the Shiroyama watch.
+say ume | By lantern, at night, faster than the Crown's post.
+say ume | Old Genba at Shiroyama still keeps watch for the Empress.
+say ume | He asks me every time if she's come home. I don't know what to tell him.
+end
+label post
+say ume | No letters now. The court's scattered.
+say ume | I carry lanterns instead, so people can find each other in the dark.
+@end
+
+@scene N27_FOX_CHILD
+if flag:n30_lantern done
+say narr | A small girl with very bright eyes and a smile a little too wide for her face.
+say child | You're travellers. Travellers are lucky at weddings.
+say child | There's a wedding in the Whispering Maples, but only at dusk.
+say child | Take this lantern. Light it at the shrine in the middle of the wood and wait.
+say child | Don't speak to the bride. Whatever she asks.
+set n30_lantern
+say narr | (Obtained a wedding lantern.
+say narr | The girl is gone - there is a fox's paw-print in the dust where she stood.)
+rumor | A fox-girl at Kaminari Ford: light the wedding lantern at the shrine in the Whispering Maples at dusk. Don't speak to the bride.
+discover L_N30
+end
+label done
+say narr | Nobody's there.
+@end
+
+@scene N27P_EXILE_GUARD
+say soldier | Guard of the court in exile.
+say soldier | We guard a ferry hall and a lady with no palace. It's quieter than it sounds.
+@end
+
+@scene N27P_EXILE_CHILD
+say child | We came across the strait in the storm.
+say child | My mask blew off in the wind. Nobody made me wear another one.
+@end
+
+@scene N27_INN
+say oharu | The Lantern Wake. Sixty crowns, supper, and a window on the river so you can count the lanterns until you sleep.
+inn 60
+@end
+
+@scene N27_PILGRIM
+say monk | I'm walking to the Thousand Gates to find the true one.
+say monk | I've been walking for six years. I've found nine hundred and some false ones.
+@end
+
+@scene N27_SAYO
+say sayo | River lanterns, travelling lanterns, fox-lanterns for the court.
+say sayo | And blades, because the roads aren't what they were.
+shop SHOP_N27
+@end
+
+@scene N27_CRAFTER
+say hanzo | Hanzo, lacquerer. Red lacquer from maple sap, black from lantern soot.
+say hanzo | Bring me sap and soot and I'll lacquer your armour hard as shell.
+say hanzo | Fox-hair from the kits in the Maples makes the best brushes.
+say hanzo | Don't pull it. Ask. They'll give it to you if you're polite.
+@end
+
+@scene N27_FERRY_CLERK
+say clerk | Ferry manifests. Every soul who crosses, and every lantern.
+say clerk | The lanterns outnumber the souls four to one.
+@end
+
+@scene N27P_SCRIBE
+say scholar | I was the court's registrar of masks. Every noble, every mask, every face under it.
+say scholar | I carried the registry across the strait in my coat.
+say scholar | Lady Hotaru says we'll need it again. I hope she's wrong. I'd like to see a court of faces.
+@end
+
+# ================================================================ N28 Akagane - Lantern Market
+@scene N28_MARKET
+say tae | Market-woman Tae. Rice cakes, charms, traveller's steel.
+say tae | Above the canal you wear a mask. Below it, you haggle.
+shop SHOP_N28_MKT
+@end
+
+@scene N28_POLER
+say sailor | I pole the lantern-boats. Courtiers ride masked so nobody knows who's having an affair with whom.
+say sailor | Everybody knows. It's the masks that are the affair.
+@end
+
+@scene N28_GUARD
+say soldier | Masks above the canal, by court law. You're foreigners, so you're forgiven.
+say soldier | Once. The Magistrate doesn't forgive twice.
+say soldier | The Magistrate sits at the Thousand Gates, down south.
+say soldier | Every tail's a verdict. He has nine tails. Draw your own conclusions.
+@end
+
+@scene N28_LANTERN_GIRL
+say child | I sell paper lanterns.
+say child | Red ones for the living, white ones for the dead, and gold ones for the Empress, in case she comes back.
+say child | Nobody buys the gold ones. I keep making them anyway.
+@end
+
+@scene N28_CHARMS
+say elder | Fox charms. That one keeps illusions off you.
+say elder | That one keeps them on. The court buys the second kind.
+@end
+
+@scene N28_POET
+say scholar | I write poems about the Empress. She was exiled for ruling through illusion.
+say scholar | Now the Regent rules through illusion. The poems write themselves.
+@end
+
+@scene N28_MAPLE_MONK
+if phase:post post
+say monk | I tend the maples by the canal. Each one was planted for a dead courtier. It's a very red garden.
+end
+label post
+say monk | Half the maples burned. The other half turned redder.
+say monk | I don't know what that means. I'm writing it down anyway.
+@end
+
+@scene N28_ENVOY
+say noble | Crown envoy. I've come to discuss the Reach's taxes with the fox court.
+say noble | They've given me eleven audiences and not one answer.
+say noble | Every time I think I'm speaking to the Regent, it's someone wearing his mask.
+say noble | I'm starting to think that's the answer.
+@end
+
+@scene N28_UME
+say ume | Ume again! Akagane's the loudest city I carry letters to.
+say ume | Everyone writes. Nobody signs. Signing is for peasants.
+@end
+
+@scene N28P_LOOTER
+say survivor | Don't look at me like that. The palace is full of masks nobody's wearing. Masks sell. People don't.
+@end
+
+@scene N28P_POLER
+say sailor | The Regent's still up in the palace.
+say sailor | From below you'd swear the city's whole - the lanterns, the roofs. It's him. It's all him.
+say sailor | Step onto the terrace and you'll see it how he sees it.
+say sailor | Step off and it's ash. I pole between the two.
+@end
+
+@scene N28P_MOURNER
+say elder | I stay because my house is still here.
+say elder | When I'm inside, it's still here. When I'm outside, I try not to look.
+@end
+
+# ---- Court Terrace
+@scene N28_TERRACE_GUARD
+say soldier | The Court of Masks is in session. Petitioners only, masked.
+say soldier | Foreigners may attend by the Regent's grace. The Regent is always gracious.
+@end
+
+@scene N28_COURTIER_A
+say noble | The Empress? We don't say her name. She ruled through illusion and the court exiled her.
+say noble | Now we have the Regent, who is much more honest about it.
+@end
+
+@scene N28_COURTIER_B
+say noble | My mask was my mother's, and her mother's.
+say noble | None of us has ever shown our face at court. I'm not sure I'd know mine.
+@end
+
+@scene N28_GARDENER
+say farmer | Raked sand, still water, stone lanterns.
+say farmer | The garden's meant to look like the strait from the Shiroyama watch.
+say farmer | The watch is north, on the headland.
+say farmer | Old Genba's up there. He doesn't come down. He's waiting for someone who isn't coming.
+@end
+
+@scene N28P_WATCH
+say survivor | The terrace guard went with the court. I stand here because somebody should.
+say survivor | It's strange how the palace looks whole from here.
+@end
+
+# ---- interiors
+@scene N28_INN
+say kasumi | The Nine Lanterns. Ninety crowns, a mask left on the pillow in case you're ashamed of your face in the morning.
+inn 90
+@end
+
+@scene N28_ACTOR
+say noble | I play the Empress in the lantern plays.
+say noble | Everybody's seen her, nobody's seen her face, so I'm very convincing.
+@end
+
+@scene N28_KAGEYAMA
+say kageyama | Kageyama. Masks for every station.
+say kageyama | Also armour, since the court decided masks weren't stopping arrows.
+shop SHOP_N28
+@end
+
+@scene N28_CRAFTER
+say hina | I carve masks from maple and paper.
+say hina | Bring me maple-heart, fox-lacquer, spirit-paper from the gates' paper spirits.
+say hina | A good mask doesn't hide you. It shows what you want to be.
+say hina | The bad ones are the ones people never take off.
+@end
+
+@scene N28_TEA
+say oyuki | The Quiet Cup. Everybody talks here, masked, and nobody remembers what anybody said. That's the service.
+say oyuki | You're foreigners. Here, the Regent's spies sit at that table. Wave to them. It confuses them.
+@end
+
+@scene N28P_TEA
+say survivor | Oyuki still pours tea. The cups are chipped and the roof's gone, and she still bows when you leave.
+@end
+
+@scene N28_HALL_COURTIER
+say noble | The Regent speaks for the court. The court speaks for the Regent.
+say noble | It is very efficient. Nobody has to decide anything.
+@end
+
+@scene N28_BAILIFF
+say bailiff | Court bailiff. Cases for the lower gates are sent to the Magistrate at the Thousand Gates.
+say bailiff | He has never overturned a verdict.
+say bailiff | That's not because he's cruel. It's because no one has ever been allowed to stand for the accused.
+@end
+
+@scene N28_SHRINE_MAIDEN
+say monk | The White Fox watches over the court.
+say monk | Its eyes are shut so it can't be fooled. Rest here; the White Fox won't mind.
+@end
+
+@scene N28_TSUBAKI
+if q:QC09 done
+say tsubaki | I wore her face for three years. Now I have to learn my own.
+say tsubaki | It's harder. Nobody tells you what it should look like.
+end
+label done
+if flag:qc09_throne throne
+say tsubaki | Regent Tsubaki. It sounds like a mask.
+say tsubaki | I'll wear it until I can take it off without the court falling down.
+end
+label throne
+say tsubaki | She took the throne back, barefaced. The court didn't fall down.
+say tsubaki | Some of them took their masks off too. Only some.
+@end
+
+@scene N28_REGENT
+if qs:QC09:court qc09
+if qs:QW5:regent qw5
+if phase:post post
+say shirogane | Regent Shirogane, the White Fox's hand. The court is honoured. The court is always honoured.
+say shirogane | You look at me as though you expect to see through me. Many do. The mask is very patient with them.
+end
+label post
+if flag:qw5_done after
+say narr | The Court of Masks is ash and fallen beams - and yet, for a moment, it stands whole, lanterns lit, courtiers bowing.
+say shirogane | Welcome to Akagane. The court is honoured. You see?
+say shirogane | Nothing has fallen. Nothing will fall while I hold it.
+end
+label after
+say shirogane | I kept the court's shape. I didn't keep the court.
+say shirogane | Hotaru did that, with a ferry hall and a registrar's coat.
+end
+label qc09
+call QC09_AUDIENCE
+end
+label qw5
+call QW5_REGENT
+@end
+
+# ================================================================ QC09 The Court of Masks (Kitsune)
+@scene N28_KIKU
+if q:QC09 done
+if qs:QC09:verdict resolve
+if q:QC09:ACTIVE active
+if recruited:C09 hook
+if phase:post post
+say kiku | Old Kiku. I nursed the Empress when she had one tail and a temper.
+say kiku | The court retired me. I retired the court.
+say kiku | She's out in the world somewhere, being somebody else. She was always so good at it.
+end
+label post
+say kiku | I crossed the strait with the court, in a basket. At my age you travel as luggage.
+end
+label hook
+if !party:C09 absent
+say kiku | ...Oh. Oh, look at you. You didn't even bother with a disguise. You've got worse at it, or better.
+say kitsune | Kiku. You're older. I'm not allowed to say that as an Empress, but I'm not one now.
+say kiku | Listen to me, child. Tsubaki - your handmaid - they've arrested her. For wearing your face.
+say kiku | After you were exiled, the Regent had her wear your illusion at court.
+say kiku | Three years. To keep the court calm. Now it's inconvenient.
+say kiku | She's to be tried by the Magistrate at the Thousand Gates.
+say kiku | He's never overturned a verdict. Nobody is allowed to stand for the accused.
+say kitsune | Then someone will stand. The Regent sits in the Court of Masks. I'll ask him for the summons.
+quest QC09 ACTIVE court
+journal | QC09: Seek an audience with Regent Shirogane in the Court of Masks, on Akagane's Court Terrace, and ask for the summons to Tsubaki's trial.
+objective | Ask the Regent for Tsubaki's summons
+end
+label absent
+say kiku | You travel with her. I can smell it - foxfire and bad decisions.
+say kiku | Bring her to me. It's about Tsubaki.
+end
+label active
+if qs:QC09:gates gates
+say kiku | The Regent first. He'll want to see what face you bring him. He always wanted to know.
+end
+label gates
+say kiku | The summons is only paper. The gates don't care about paper. Find the true one.
+end
+label resolve
+call QC09_RESOLVE
+end
+label done
+say kiku | You look like yourself. I'd forgotten how that looked. It suits you. It always did.
+@end
+
+@scene QC09_AUDIENCE once
+say shirogane | Petitioners approach the dais masked. It is the law. The court does not see faces.
+say kitsune | You know who I am, Shirogane. You had Tsubaki wear me for three years.
+say shirogane | The court knows who wears the mask.
+say shirogane | Who is under it is not the court's concern. Choose how you stand before us.
+choice | Wear a court mask, as the law asks -> masked | Stand barefaced, as herself -> bare
+label masked
+set qc09_masked
+say narr | Kitsune takes a plain white mask from the tray and ties it on. Her voice doesn't change at all.
+say kitsune | A petitioner asks the court for the right to stand for the accused, Tsubaki, at the lower gates.
+say shirogane | ...Granted. The court is gracious. It is so much easier to be gracious to a mask.
+goto summons
+label bare
+set qc09_barefaced
+say narr | Kitsune walks to the dais with her face bare and her tails out, all nine.
+say narr | The courtiers turn their masks away as if from the sun.
+say kitsune | I am the woman you exiled. I ask to stand for the woman you made wear me.
+say shirogane | ...The court does not see faces. But it seems the court has seen yours.
+say shirogane | Granted. Quickly, before they faint.
+label summons
+set qc09_summons
+say narr | (Received the court's summons. The Hall of Verdicts at the Thousand Gates will admit you.)
+quest QC09 ACTIVE gates
+journal | QC09: Take the summons to the Thousand Gates, south of Kaminari Ford. Find the true gate, and stand for Tsubaki before the Magistrate.
+objective | Stand for Tsubaki at the Thousand Gates
+@end
+
+@scene QC09_RESOLVE once
+say kiku | You brought her back. Both of you. Come here, both of you, and let an old woman be sentimental.
+say tsubaki | The court is waiting in the hall. They want to know what the Empress will do.
+say tsubaki | I told them I didn't know. It was nice, not knowing.
+say kitsune | They exiled me for ruling through what they believed I was.
+say kitsune | Whatever I do next, I do it with my face on.
+choice | Take the throne back, unmasked -> throne | Name Tsubaki regent and keep travelling -> regent
+label throne
+set qc09_throne
+say kitsune | I'll sit the throne barefaced. Anyone who wants to see me can.
+say kitsune | Anyone who wants to wear a mask may. Nobody has to.
+say kitsune | But I'll rule from the road for a while. There's a crown to break first, and it isn't mine.
+say tsubaki | Then I'll keep your seat warm. As myself, this time.
+goto reward
+label regent
+set qc09_regent
+say kitsune | Tsubaki, you held this court together wearing my face.
+say kitsune | Hold it wearing yours. You'll do better than I did.
+say tsubaki | And if they want the Empress back?
+say kitsune | Tell them she's out, being seen.
+label reward
+say kiku | Here. It was your mother's. She'd want it with somebody who's stopped hiding.
+give W040 1
+quest QC09 COMPLETED
+journal | QC09 complete: the Court of Masks has seen its Empress as she is.
+@end
+
+# ================================================================ N29 Thousand Gates
+@scene N29_ENTER once
+say narr | Red gates, one after another, climbing the hill in a tunnel of lacquer.
+say narr | After the fiftieth you stop counting. After the hundredth they start counting you.
+if recruited:C09 kit
+end
+label kit
+say kitsune | I built half these illusions when I was a girl, to keep the lower court's cases out of my sight. I'm sorry. Truly.
+@end
+
+@scene N29_PILGRIM
+say monk | I've walked the gates for a month.
+say monk | Two of the three at the top always bring you back to the bottom. Some days all three do.
+say monk | The foxes in stone see more than we do. The white one especially. It carries a lamp nobody lights.
+@end
+
+@scene N29_LAMP
+if flag:n29_lamp done
+set n29_lamp
+sfx FX019
+say narr | You light the white fox's lamp. Its stone head seems to turn.
+say narr | In the lamplight the north-west gate looks different - older, and real.
+end
+label done
+say narr | The white fox's lamp burns steadily, pointing north-west.
+@end
+
+@scene N29_MASK_RED
+if flag:n29_mask_red done
+set n29_mask_red
+sfx FX010
+say narr | You turn the red mask on its peg. Somewhere a red-lacquered bar slides back.
+end
+label done
+say narr | The red mask faces the wall now.
+@end
+
+@scene N29_MASK_WHITE
+if flag:n29_mask_white done
+set n29_mask_white
+sfx FX010
+say narr | You turn the white mask.
+say narr | The white-lacquered gate swings open - and on the west wall, a painted gate becomes a real one.
+end
+label done
+say narr | The white mask faces the wall.
+@end
+
+@scene N29_PAPER_CLERK
+say narr | A figure made of folded case-papers bows, rustling.
+say bailiff | Case pending. Case pending. All cases pending. Verdict to be upheld upon arrival of the accused.
+@end
+
+@scene N29_ROPE
+if flag:n29_rope done
+set n29_rope
+sfx FX010
+say narr | You cut the shrine rope.
+say narr | The fallen maple rolls, bounces once, and goes crashing down the stair below.
+end
+label done
+say narr | The rope's cut end hangs from the post.
+@end
+
+@scene N29_BAILIFF
+if flag:n29_cleared after
+if flag:qc09_summons case
+say bailiff | The court sits only when a case is called. No case is called. Please wait. Please wait. Please wait.
+end
+label case
+say bailiff | A summons. For the accused, Tsubaki, handmaid. A... sponsor?
+say bailiff | There is no form for a sponsor. I will improvise. Go in.
+end
+label after
+say bailiff | The court is adjourned. Permanently, I think.
+say bailiff | I'm going to fold myself into a crane and go and look at the sea.
+@end
+
+@scene N29_TSUBAKI
+say tsubaki | Don't. Whoever you are, don't stand for me. He's never lost. He'll only add you to the sentence.
+if recruited:C09 kit
+end
+label kit
+say tsubaki | ...Majesty? No. You're not wearing the illusion. You're just - you.
+@end
+
+@scene N29_BOSS once
+say narr | The court is a hall of red pillars.
+say narr | On the bench sits a fox the size of a gate, in judge's robes, nine tails fanned behind it like a hand of cards.
+say magistrate | Case of the court against Tsubaki, handmaid.
+say magistrate | Charge: wearing the face of the Empress. Plea: irrelevant. Verdict: upheld.
+say kitsune | I stand for the accused.
+say magistrate | There is no one to stand for the accused.
+say magistrate | There never has been. That is what makes the verdicts so tidy.
+say kitsune | Then look at me, Magistrate. Whose face did she wear?
+say magistrate | ...The court does not see faces. The court will now see you sentenced.
+music M026
+battle BX07 noflee
+say narr | The Magistrate's tails go out one by one, like lanterns at dawn.
+say narr | The last verdict falls from its paw and it's only paper.
+set n29_cleared
+set qc09_freed
+say tsubaki | Majesty. You came yourself. You didn't send an illusion.
+say kitsune | I'm out of the illusion business, Tsubaki. Come home.
+say kitsune | Kiku's waiting, and she's going to cry on both of us.
+quest QC09 ACTIVE verdict
+journal | QC09: Tsubaki is free. Return to Old Kiku (her house on the Court Terrace, or the exiles at Kaminari Ford after the fault).
+objective | Bring Tsubaki home to Kiku
+@end
+
+# ================================================================ N30 The Whispering Maples
+@scene N30_WOODCUTTER
+say worker | Lost? So am I. Three days. The maples move when you're not looking.
+say worker | I've started not looking on purpose, to see if it helps.
+say worker | The shrine's in the middle. Every path wants to take you back to the edge.
+say worker | Go the way the red leaves don't blow.
+@end
+
+@scene N30_LANTERN
+if flag:n30_wedding_seen after
+if flag:n30_night night
+if flag:n30_lantern light
+say narr | A stone lantern by the shrine, unlit. The wick is new.
+say narr | Somebody means for it to be lit, but not by you, and not with what you carry.
+end
+label light
+say narr | The wick is new. The wedding lantern in your pack is warm.
+choice | Light it and wait for dusk -> wait | Not yet -> bye
+label wait
+set n30_night
+fade out 0.8
+say narr | You light the lantern.
+say narr | The light turns red and the wood turns blue, and the day ends faster than days should.
+say narr | Down the paths come small lights, two by two.
+say narr | A procession of foxes in wedding clothes, walking on their hind legs, very solemn.
+say narr | Say nothing to the bride.
+fade in 0.8
+end
+label night
+say narr | The lantern burns red. The wedding is in the clearing.
+end
+label after
+say narr | The wick has burned down to nothing. A single red leaf lies on the lantern's cap.
+end
+label bye
+@end
+
+@scene N30_FOX_BRIDE
+say narr | The bride turns her veiled head towards you.
+say narr | Under the veil there is a gleam of teeth, or of a smile.
+say foxbride | Traveller. Tell me - am I beautiful?
+choice | Say nothing, and bow -> bow | Answer her -> speak
+label bow
+say narr | You bow. The bride laughs softly, pleased, and turns back to her groom.
+end
+label speak
+say narr | The moment you open your mouth, every lantern goes out.
+say narr | When they come back on, the clearing is empty and it is broad day.
+set n30_wedding_seen
+unset n30_night
+say narr | Somewhere in the maples, many small voices are laughing.
+@end
+
+@scene N30_FOX_GROOM
+say narr | The groom's mask is painted with a very human face.
+say narr | He nods to you gravely, the way you nod to a guest who arrived on time.
+@end
+
+@scene N30_FOX_LANTERN
+say narr | A fox kit in a paper hat holds up a lantern and stares at you without blinking, very seriously.
+@end
+
+@scene N30_FOX_FATHER
+if flag:n30_wedding_seen done
+say foxfather | You came to our wedding and you kept your tongue. Guests usually don't.
+say foxfather | The last one who spoke is a maple now. Third on the left.
+say foxfather | A gift for a quiet guest. Two rings that were one ring.
+say foxfather | Wear them and the second strike always answers the first.
+give A018 1
+set n30_wedding_seen
+unset n30_night
+say narr | The procession walks off into the maples, two by two, and the lanterns go out one by one. It is morning.
+end
+label done
+say narr | Only an old fox's footprints in the moss.
+@end
+
+# ================================================================ N31 Shiroyama Watch
+@scene N31_GENBA
+if q:QC09 empress
+if qs:QW5:beacon qw5
+if phase:post post
+say genba | Genba. Captain of the Shiroyama watch. The watch is me. I keep it for the Empress.
+say genba | They exiled her. I didn't hear the order. I'm very old and I hear what I like.
+if recruited:C09 kit
+end
+label kit
+say kitsune | Genba. You're still here.
+say genba | Where else would I be, Majesty? You told me to keep watch. You didn't tell me to stop.
+end
+label empress
+say genba | She came home with her own face on. I saw her from the parapet.
+say genba | I think I can stop now. I think I'll keep watching anyway.
+end
+label post
+say genba | The strait's all storm now. I watch it anyway.
+say genba | Something ought to be watched, when everything else has fallen down.
+end
+label qw5
+say genba | Light the beacon? For the court at the Ford? ...Aye.
+say genba | The court never cared for this old keep. But the beacon doesn't care who it's for.
+say genba | Top of the keep. The oil's still good. I've kept it good. Forty years.
+@end
+
+@scene N31_PAINTER
+say scholar | I paint the view from the keep top.
+say scholar | The strait, the far shore, the Crown's ships sitting on the horizon like flies.
+say scholar | I've painted it three hundred times. I keep hoping the ships won't be in the next one.
+@end
+
+@scene N31_UME
+say ume | Ume! Genba's letters. He writes to the Empress every week.
+say ume | I carry them to the court and the court sends them back unopened.
+say ume | I've been keeping them. There are a lot. One day I'll deliver them properly.
+@end
+
+@scene N31P_EXILES
+say survivor | We watch the strait for the court's boats.
+say survivor | Some came across in the storm. Some didn't. We count them either way.
+@end
+
+@scene N31_GHOST
+say narr | A sentry in old lacquered armour looks out over the strait.
+say narr | When you step closer, there is nobody there - only armour on a stand.
+say soldier | ...all quiet on the strait. All quiet. All quiet.
+@end
+
+@scene N31_VIEW
+say narr | Over the parapet: the strait, grey and wide, and the lantern-lights of the far shore.
+say narr | The whole Reach lies behind you, red with maples.
+if phase:post post
+say narr | Out on the water, the Crown's ships sit at anchor, patient as crows.
+end
+label post
+say narr | The strait is a wall of storm now. Lightning walks on it.
+say narr | Somewhere beyond, the rest of the world is still there, you hope.
+@end
+
+@scene N31_BEACON
+if qs:QW5:beacon light
+if flag:qw5_beacon lit
+say narr | The keep's signal beacon: an iron basket of old pine and lamp-oil, waiting.
+say narr | Genba keeps the oil fresh.
+end
+label light
+set qw5_beacon
+sfx FX019
+say narr | You put a torch to the beacon.
+say narr | The old pine takes, and a pillar of fire stands up over Shiroyama, red against the storm.
+say narr | Far off, across the Reach, one lantern answers. Then another.
+say narr | Then dozens - courtiers, hiding in farmhouses and woods, seeing the court still stands somewhere.
+say genba | Forty years I kept that oil. Worth it.
+quest QW5 ACTIVE regent
+journal | QW5: The scattered court has seen the beacon. Now go to ruined Akagane and face Regent Shirogane in the Court of Masks.
+objective | Face the Regent in ruined Akagane
+end
+label lit
+say narr | The beacon burns low and steady. Genba feeds it a log whenever he passes, muttering.
+@end
+
+# ================================================================ QW5 The Fox Court in Exile (post-fault)
+@scene QW5_HOOK
+if q:QW5 done
+if q:QW5:RESOLUTION_READY resolve
+if q:QW5:ACTIVE active
+say hotaru | Lady Hotaru. Chancellor of a court that owns one ferry hall and a registry in a coat.
+say hotaru | When the world broke, Akagane burned.
+say hotaru | The court fled across the strait to here. Most of it. The Regent stayed.
+say hotaru | Shirogane is holding the city up with an illusion. From the terrace it looks whole.
+say hotaru | The people who stayed live inside it and won't leave.
+say hotaru | And the rest of the court is scattered through the Reach, hiding, not knowing we're here.
+say hotaru | Light the old beacon at Shiroyama Watch so they can find us.
+say hotaru | Then go to Akagane and make Shirogane look at what he's holding up.
+quest QW5 ACTIVE beacon
+journal | QW5: Light the beacon at Shiroyama Watch (north of Akagane). Then face Regent Shirogane in the ruined Court of Masks.
+objective | Light the Shiroyama beacon
+end
+label active
+say hotaru | The beacon at Shiroyama, then the Regent.
+say hotaru | Genba will help you with the first. Nobody can help you with the second.
+end
+label resolve
+call QW5_END
+end
+label done
+say hotaru | The court meets on the ferry jetty now, with its faces on or off as it likes.
+say hotaru | Tokichi complains we scare the fish.
+@end
+
+@scene QW5_REGENT once
+say narr | The Court of Masks stands whole, lanterns lit, courtiers bowing.
+say narr | Only at the edges of your eyes do you see the ash, and the sky through the roof.
+say shirogane | You lit the beacon. I saw it.
+say shirogane | Now they'll gather at the Ford, and the court will be somewhere I am not holding it.
+say shirogane | The people here chose to stay inside my Akagane. Their houses are whole.
+say shirogane | Their children's rooms are whole. Would you take that?
+if party:C09 kit
+goto choose
+label kit
+say kitsune | I ruled like this, Shirogane. It works until it doesn't.
+say kitsune | And when it stops, they hate you for every day it worked.
+label choose
+choice | Let him keep the illusion for those who choose it -> keep | Ask him to let it fall -> fall
+label keep
+set qw5_kept
+say shirogane | For those who choose it. Yes.
+say shirogane | Anyone who wants to leave may walk down the stair and see the ash. I'll hold the rest.
+say shirogane | Tell Hotaru the court is hers. I'll be the ghost of it.
+goto finish
+label fall
+set qw5_fell
+say narr | Shirogane closes his eyes. The lanterns go out.
+say narr | The roof is gone, the walls are black, and the courtiers are only people standing in a ruin, blinking.
+say narr | Someone starts to cry. Someone else starts to laugh. After a while, someone picks up a broom.
+say shirogane | ...There. That's what it really looks like. I'm so tired.
+say shirogane | I'll come to the Ford. I don't know what for.
+label finish
+quest QW5 RESOLUTION_READY
+journal | QW5: Return to Lady Hotaru at Kaminari Ford.
+@end
+
+@scene QW5_END once
+say hotaru | The beacon brought forty-one courtiers to the Ford. Forty-one. I thought we had lost them all.
+if flag:qw5_fell fell
+say hotaru | And Shirogane holds his Akagane for those who want it.
+say hotaru | Some will stay forever. Some will walk down the stair. That's their right, now.
+goto gifts
+label fell
+say hotaru | And Shirogane is here, sweeping the jetty and not speaking.
+say hotaru | The people from Akagane are sweeping too. There's a great deal of ash.
+label gifts
+say hotaru | The court has nothing.
+say hotaru | The court has this, which it was keeping for an Empress. Take it; she'd approve.
+give A111 1
+gold 2000
+quest QW5 COMPLETED
+set qw5_done
+@end
+# ================================================================ N32 Rimeholt
+@scene N32_BRISK
+if phase:post post
+say brisk | Brisk. Furs, hides, sinew, and the only honest scales north of the Pale Basin.
+say brisk | I weigh the fur, not the customer.
+say brisk | I run the Ice Road twice a winter. If you're crossing it, go when the wind's talking.
+say brisk | When it goes quiet, get under something.
+end
+label post
+say brisk | The ground split open north of here. The Aurora Pit's not capped anymore.
+say brisk | Things come up out of it at night, curious.
+say brisk | Delvers too. Short, bearded, polite. They pay in ore. I've never been so rich or so frightened.
+@end
+
+@scene N32_TRAPPER
+say farmer | Frost wolves this winter, in packs of six.
+say farmer | They used to be packs of three. The cold's getting hungrier.
+@end
+
+@scene N32_DOGS
+say worker | Sled dogs. Best in the north.
+say worker | Pepper's the lead of Olle's team - she ran off on the Ice Road in the last storm.
+say worker | Olle's still out there looking.
+@end
+
+@scene N32_ICEBLIND
+say elder | I went blind on the ice sixty winters ago. Snow-glare.
+say elder | Now I see the aurora better than any of them. It's inside my eyes.
+say elder | It dances brightest over the Pit.
+say elder | My grandmother said it's the dead down there, holding lanterns up for us.
+@end
+
+@scene N32_CHILD
+say child | I made a snow-crown for the Lich King! Ma says he's just a story.
+say child | Pa says don't say that where the citadel can hear.
+@end
+
+@scene N32_HUNTER
+say soldier | Glacier Spire's east of here. The ice-maidens hunt the lower falls.
+say soldier | And something bigger's woken up at the top - the ice groans at night.
+@end
+
+@scene N32_FISHER
+say sailor | Ice-fishing. Cut a hole, drop a line, wait till your beard freezes to your coat.
+say sailor | Then the fish bite. Always then.
+@end
+
+@scene N32_SPIRE_WIFE
+say survivor | My husband climbs for the spire-guides. He's been up the Glacier Spire nine days.
+say survivor | He says the mountain is warm inside. That's not right, is it?
+@end
+
+@scene N32_SPIRE_WIFE2
+say survivor | He came down! Thin as a rope and grinning.
+say survivor | He said the warmth's gone out of the mountain. He said you went up.
+@end
+
+@scene N32_WATCHER
+say scholar | I study Coldharbour. From a safe distance. The citadel's been sealed in ice three hundred years.
+say scholar | A warden keeps the gate - a horned thing of frost.
+say scholar | The old north had an emperor. He loved his court so much he wouldn't let them die.
+say scholar | The stories are vague about whether he managed it.
+@end
+
+@scene N32_FUR_TAX
+say clerk | Crown fur-tithe. One pelt in five. They'll take it in coin if you haven't got pelts.
+say clerk | They'll take it in pelts if you haven't got coin.
+@end
+
+@scene N32_PILGRIM
+say monk | I'm walking to the Aurora Pit. The Crown capped it with iron.
+say monk | They say it's the deepest hole in the world. I want to know how they know.
+@end
+
+@scene N32P_CRACK
+say survivor | When the world broke, the ground cracked all the way to the Pit.
+say survivor | The cap went down it like a coin down a well. We heard it fall for a whole day.
+@end
+
+@scene N32P_DELVER
+say worker | Hail! Delver out of Karag Dun, come up through the Pit to trade.
+say worker | Your beer is terrible. Your furs are magnificent. Balance.
+@end
+
+@scene N32_INN
+say aud | The Last Hearth. Last in the world, some nights. Seventy crowns, and the fire's kept up till dawn.
+inn 70
+@end
+
+@scene N32_DROVER
+say worker | I drove reindeer across the Ice Road till the last storm took the lead buck.
+say worker | Now I drive myself to the bar.
+@end
+
+@scene N32_POSTKEEPER
+say torvald | Old Torvald's post. Furs out, steel in. If it's cold and you want it warmer, I have it.
+shop SHOP_N32
+@end
+
+@scene N32_CRAFTER
+say sigrun | Sigrun, bone-carver. Frost-wolf bone, rime-bear claw, hoarfrost dust from the wisps.
+say sigrun | Bring me those and I'll carve you wards that keep the cold out.
+say sigrun | Behemoth tusk would make something wonderful.
+say sigrun | Nobody's ever brought me behemoth tusk. Nobody's ever come back with one.
+@end
+
+@scene N32_HILD
+if phase:post post
+say hild | Reeve Hild. Rimeholt's the last village before the ice.
+say hild | We don't turn anyone away in a storm. That's our only law, and we keep it.
+say hild | The Crown taxes us for a road it never walks. The citadel sleeps. The spire groans. We carry on.
+end
+label post
+say hild | Half the village wanted to flee south when the ground cracked.
+say hild | The other half said south is where the breaking came from. We stayed.
+@end
+
+@scene N32_SKALD
+say scholar | I sing the long songs.
+say scholar | The one about the emperor who wouldn't let his court die takes a night and a day.
+say scholar | People leave during the middle.
+@end
+
+# ================================================================ N33 The Ice Road
+@scene N33_WHITEOUT once
+say narr | Halfway across, the wind drops. Utterly. The silence is so sudden your ears ring.
+tint #e8eef6c0
+shake 0.4
+say narr | Then the whiteout hits - a wall of snow from nowhere.
+say narr | You can't see your own hands. You hold onto each other and wait.
+wait 0.6
+tint none
+say narr | It passes as fast as it came. The flag-poles are still standing.
+say narr | Off to the west, there's smoke: a camp on a snow island.
+@end
+
+@scene N33_CARAVAN
+if flag:n33_pepper_done done
+if flag:n33_pepper found
+say olle | Olle. Caravan-master. The storm caught us on the lake and we made camp before we lost the sleds.
+say olle | We lost Pepper instead. My lead dog. She bolted in the whiteout.
+say olle | East, the runner said, towards the black ice.
+say olle | We can't leave without her. Can't drive without a lead, and I won't drive without her if I could.
+end
+label found
+set n33_pepper_done
+say narr | Pepper hurls herself at Olle and knocks him flat in the snow, and he lies there laughing with her in his arms.
+say olle | You brought her back. You walked out on that ice for my dog.
+say olle | Here - take this. I won't need it; I've got her.
+give A022 1
+end
+label done
+say olle | Pepper's leading again. We move out at first light. Walk well, friends.
+@end
+
+@scene N33_DRIVER
+say worker | Frostbite in two fingers. They'll come off at Rimeholt.
+say worker | I'll still be able to hold a whip. I'll just hold it rudely.
+@end
+
+@scene N33_CHILD
+say child | Pepper's my friend. She sleeps on my feet when it's cold. It's always cold. She's always on my feet.
+@end
+
+@scene N33_RUNNER
+say guard | Crown courier. I'm carrying dispatches to the Coldharbour survey post.
+say guard | Nobody's ever read one. I think they just like the word "dispatch".
+@end
+
+@scene N33_BRISK
+say brisk | Brisk again. North end of the Ice Road. When the wind stops, get down.
+say brisk | I told you. Everyone I tell forgets until the first time.
+@end
+
+@scene N33_PEPPER
+set n33_pepper
+say narr | A shaggy sled dog, half-buried in a drift on the edge of the black ice, whining.
+say narr | She's shivering, but her tail is going.
+say narr | She trots to heel at once, as if she'd only been waiting for someone to come and say her name.
+@end
+
+@scene N33P_CROSSERS
+say survivor | The lake cracked when the world did. The road still holds if you keep to the flags.
+say survivor | Just. Every crossing it holds a little less.
+@end
+
+# ================================================================ N34 Glacier Spire
+@scene N34_GUIDE
+if flag:n34_cleared after
+say egil | Egil, spire-guide. I'd not go up.
+say egil | The ice-maidens in the falls hunt climbers, and the heart of the spire - it's warm. Wrong-warm.
+say egil | The lower falls have cranks the old climbers built to crack the curtains.
+say egil | The bridges above - there's a winch on the far ledge.
+say egil | And at the top, an ice chute down, if you're brave.
+end
+label after
+say egil | The mountain's cold again. Properly cold. I never thought I'd be glad of it.
+@end
+
+@scene N34_CRANK_A
+if flag:n34_crank_a done
+set n34_crank_a
+sfx FX020
+say narr | The crank bites, the chain goes taut, and the frozen falls below shatter into a glittering heap.
+say narr | A short way back to the foot.
+end
+label done
+say narr | The crank is locked down.
+@end
+
+@scene N34_CRANK_B
+if flag:n34_crank_b done
+set n34_crank_b
+sfx FX020
+say narr | You heave the crank round.
+say narr | The upper falls crack from top to bottom and fall in sheets. The way up is open.
+end
+label done
+say narr | The crank is locked down.
+@end
+
+@scene N34_BRIDGE
+if flag:n34_bridge done
+set n34_bridge
+sfx FX010
+say narr | The winch grinds. Across the crevasse, a rope-bridge swings out of the ice and slaps into place on the western ledge.
+end
+label done
+say narr | The rope-bridge is across.
+@end
+
+@scene N34_BOSS once
+say narr | The heart of the spire is a cavern of blue ice, and in the ice a shape the size of a house - horns, tusks, a back like a hill.
+say narr | The ice is sweating. Water runs down it in streams.
+say narr | The shape's eye opens, yellow, and looks at you as if you were supper.
+music M026
+shake 0.5
+battle BX08 noflee
+say narr | The Behemoth sinks to its knees and the ice closes over it again, slowly, gently, like a blanket.
+say narr | The cavern goes cold.
+set n34_cleared
+give I024 1
+give M003 1
+say narr | Frozen into the wall where it slept: a climber's pack, and an old tusk-fragment, long as your arm.
+@end
+
+# ================================================================ N35 Coldharbour Citadel
+@scene N35_HERMIT
+if phase:post post
+say elder | I watch the citadel. Forty years.
+say elder | Once a winter the ice on the inner court glows, and I hear singing. Then nothing.
+say elder | The warden at the gate is a horned thing of frost.
+say elder | It lets nobody in. I've never seen it let anybody out, either.
+end
+label post
+say elder | Since the breaking, the singing's stopped.
+say elder | As if whatever sang has gone somewhere else. Down, I think. Everything goes down now.
+@end
+
+@scene N35_FIRE_W
+if flag:n35_fw done
+set n35_fw
+sfx FX019
+say narr | The west brazier catches with a gasp of blue flame, then burns orange.
+say narr | The ice around it begins to drip.
+call N35_THAW
+end
+label done
+say narr | The west brazier burns.
+@end
+
+@scene N35_FIRE_E
+if flag:n35_fe done
+set n35_fe
+sfx FX019
+say narr | The east brazier roars up. Somewhere a long crack runs through the ice with a noise like a gunshot.
+call N35_THAW
+end
+label done
+say narr | The east brazier burns.
+@end
+
+@scene N35_FIRE_S
+if flag:n35_fs done
+set n35_fs
+sfx FX019
+say narr | The south brazier lights. The frozen well in the ward begins, very faintly, to steam.
+call N35_THAW
+end
+label done
+say narr | The south brazier burns.
+@end
+
+@scene N35_THAW
+if flag:n35_fw,flag:n35_fe,flag:n35_fs thaw
+end
+label thaw
+set n35_thaw
+shake 0.3
+say narr | With all three braziers burning, the barbican gate weeps.
+say narr | The ice sheathing it slumps and falls away in great wet slabs.
+@end
+
+@scene N35_SENTRY
+say narr | A sentry frozen solid at his post, spear still grounded. Frost has grown over his face like a visor.
+say narr | As you pass, you would swear his eyes follow you.
+@end
+
+@scene N35_WINCH_A
+if flag:n35_winch_a done
+set n35_winch_a
+sfx FX010
+say narr | The winch screams with frost, then turns. A portcullis rises into the middle hall.
+end
+label done
+say narr | The winch is wound.
+@end
+
+@scene N35_WINCH_B
+if flag:n35_winch_b done
+set n35_winch_b
+sfx FX010
+say narr | The second winch turns. The inner portcullis lifts, dripping.
+end
+label done
+say narr | The winch is wound.
+@end
+
+@scene N35_SALLYPORT
+if flag:n35_shortcut done
+set n35_shortcut
+sfx FX010
+say narr | You drag the bar from the sally-port. It opens onto the frozen causeway: a quicker way back.
+end
+label done
+say narr | The sally-port is open.
+@end
+
+@scene N35_SLEEPER
+say narr | A courtier half-thawed from the ice, still kneeling. Her lips move.
+say narr | "...is it spring? Has the Emperor called for us? We were told to wait for his call..."
+if recruited:C13 lich
+end
+label lich
+say lich | I called, Dama Irelle. Three hundred years ago I called you to stay.
+say lich | I am sorry. I am calling again. Rest.
+say narr | The woman smiles and is still.
+@end
+
+@scene N35_BOSS once
+say narr | Before the inner court's sealed doors stands a titan of frost: a horned warden, armour grown over with rime three hundred winters deep.
+say warden | NONE ENTER THE COURT. THE COURT IS IN MOURNING. THE COURT WILL ALWAYS BE IN MOURNING.
+if recruited:C13 lich
+goto fight
+label lich
+say lich | Warden. It is I. The one who set you here. I was wrong. Stand aside.
+say warden | THE ONE WHO SET ME HERE ORDERED THAT NONE ENTER. NOT EVEN HIM. ESPECIALLY NOT HIM.
+say lich | ...Yes. I did say that. I was very thorough, when I was grieving.
+label fight
+music M026
+battle BX09 noflee
+say narr | The Warden kneels. Its horns crack, and the frost falls from its armour in a long white sigh.
+say narr | Inside, there is nobody at all.
+set n35_cleared
+if qs:QC13:warden quest
+if phase:post post
+say narr | Behind it, the seal on the inner court stays shut: a yard of blue ice, carved with a crown.
+say narr | Whatever it keeps, it keeps.
+journal | The Frosthorn Warden is broken. The inner court of Coldharbour remains sealed in ice.
+end
+label post
+say narr | Behind it, the seal on the inner court glows faintly, and a line of old writing surfaces in the ice: FOR HIS HAND ONLY.
+end
+label quest
+say lich | The seal answers to my hand. Come. Let us see what I kept.
+quest QC13 ACTIVE court
+journal | QC13: The Warden is broken. Enter Coldharbour's inner court with the Lich King.
+objective | Enter the inner court of Coldharbour
+@end
+
+@scene N35_SEAL
+if recruited:C13,phase:post,flag:n35_cleared open
+say narr | The seal on the inner court: a crown carved in the ice, and under it a line that will not stay legible, however you look.
+end
+label open
+say narr | The seal has thinned to a skin of blue ice.
+say narr | The Lich King's handprint is pressed into it, fingers spread.
+@end
+
+# ================================================================ QC13 A Court Too Long in Mourning (citadel half)
+@scene QC13_HOOK once
+say narr | At the causeway's midpoint the Lich King stops, and does not move for a long time.
+say lich | Coldharbour. My seat. I made it a tomb and called it a court.
+say lich | The Frosthorn Warden still stands at the inner gate, I think.
+say lich | I told it to let no one in. My court is inside, waiting for me to tell them they may rest.
+say lich | I told them to wait. I was their emperor. They did as they were told.
+say lich | They have been doing it for three hundred years.
+if flag:n35_cleared broken
+quest QC13 ACTIVE warden
+journal | QC13: The Frosthorn Warden guards the inner court of Coldharbour. Break it, and let the Lich King into his own court.
+objective | Break the Frosthorn Warden
+end
+label broken
+say lich | The Warden is already broken? ...Then someone came before me. And the seal waits for my hand.
+quest QC13 ACTIVE court
+journal | QC13: Enter Coldharbour's inner court with the Lich King. The seal on the Warden's gate answers to his hand.
+objective | Enter the inner court of Coldharbour
+@end
+
+@scene QC13_CHANCELLOR
+if flag:qc13_vesk done
+set qc13_vesk
+say vesk | Majesty. You are late.
+say vesk | You are three hundred years late, and I have had nothing to do but keep the minutes.
+say lich | Vesk. Where is the court? The hall held four hundred.
+say vesk | Gone below, Majesty.
+say vesk | When the singing came up the stair - a woman's voice, from the Hollow Throne - they went down to her.
+say vesk | She promised them a court that never ends.
+say vesk | I stayed. Somebody had to keep the minutes. Somebody had to tell you.
+call QC13_CHECK
+end
+label done
+say vesk | Minute the last: The Emperor returned. The Chancellor was, for once, glad to be interrupted.
+@end
+
+@scene QC13_CAPTAIN
+if flag:qc13_ormund done
+set qc13_ormund
+say ormund | My Emperor. The guard held the gate. The guard held it against everyone.
+say ormund | Even the court, when they wanted to come back up.
+say ormund | They came back once, Majesty. Up the stair. Changed.
+say ormund | Pale-eyed. I didn't let them in. You'd said none enter.
+say lich | You kept my order past its meaning, Ormund. So did I. We will have to learn to stop together.
+call QC13_CHECK
+end
+label done
+say ormund | The gate is yours, Majesty. It was always yours. I'm only very tired of standing at it.
+@end
+
+@scene QC13_HANDMAID
+if flag:qc13_ysolde done
+set qc13_ysolde
+say ysolde | You came back. I told them you would.
+say ysolde | They said an emperor who freezes his court doesn't come back, he just gets colder.
+say ysolde | The ones who went below - she calls them her guests. The Mother.
+say ysolde | She keeps them the way you kept us. Only she doesn't grieve. She collects.
+say lich | Mother Sepulchre. Velkhar's teacher. So my mourning court is someone's treasury now.
+call QC13_CHECK
+end
+label done
+say ysolde | The Rime Throne's cold. It always was. Sit on it or don't, Majesty. But tell us what you've decided.
+@end
+
+@scene QC13_CHECK
+if flag:qc13_vesk,flag:qc13_ormund,flag:qc13_ysolde all
+end
+label all
+say narr | (The three who stayed are waiting by the Rime Throne.)
+@end
+
+@scene QC13_THRONE
+if flag:qc13_citadel_done after
+if !q:QC13:ACTIVE plain
+if flag:qc13_vesk,flag:qc13_ormund,flag:qc13_ysolde decide
+say narr | The Rime Throne. Empty.
+say narr | The frost on the seat has the shape of someone who sat there for a very long time.
+say lich | Not yet. Let me hear all three of them first. I owe them that much listening.
+end
+label decide
+call QC13_DECISION
+end
+label after
+say narr | The Rime Throne. Empty, and not waiting for anyone now.
+end
+label plain
+say narr | The Rime Throne. Empty.
+say narr | The frost on the seat has the shape of someone who sat there for a very long time.
+@end
+
+@scene QC13_DECISION once
+say lich | Vesk. Ormund. Ysolde. You stayed when the court went down. You kept my orders past all meaning.
+say lich | I gave up a crown that outlived its people once, in the cradle.
+say lich | I am learning that I have to keep giving it up.
+choice | Release the three who stayed -> release | Ask them to keep the seat until the court comes home -> keep
+label release
+set qc13_released_citadel
+say lich | You may rest. That is not an order. It is the thing I should have said three hundred years ago.
+say vesk | Minute the last. The Emperor, for once, said the right thing.
+say narr | The three of them bow, all together, and the frost takes them gently, like sleep.
+say narr | They do not get up again. They do not need to.
+goto below
+label keep
+set qc13_kept_watch
+say lich | Keep the seat. Not for me. For them - the four hundred below.
+say lich | When I bring them up, someone must be here to open the door.
+say ormund | That's an order I can keep, Majesty. It has an end in it.
+say ysolde | Bring them home. Bring her guests home. We'll have the fires lit.
+label below
+say lich | The stair behind the throne goes down.
+say lich | Down past the roots of Coldharbour, into the Hollow Throne. My court is there.
+say lich | I will not leave them in another's keeping. We go down.
+set qc13_citadel_done
+quest QC13 ACTIVE stair
+journal | QC13: The Lich King's mourning court went down into the Deep, to Mother Sepulchre's Hollow Throne. Follow them to the Lich Stair (U35), below the Hollow Throne.
+objective | Find the Lich King's court at the Lich Stair, in the Deep
+@end
+
+@scene QC13_STAIR
+if flag:qc13_citadel_done down
+say narr | A stair cut down into the ice, going further than the citadel's foundations.
+say narr | Cold air rises from it, and faint singing.
+end
+label down
+say narr | The stair goes down into the dark and the singing.
+say narr | It is sealed by a slab of black ice from below - the Lich Stair must be reached from the Deep.
+say lich | She has closed it from her side. Of course she has.
+say lich | We'll come at her from the Hollow Throne, then, by the long way.
+@end
+
+# ================================================================ N36 The Aurora Pit
+@scene N36_OVERLOOK
+if phase:post post
+say narr | The rim. Far down, where no light should be, something is lit.
+say narr | The Crown's iron cap covers the rest, bolted and chained.
+say narr | Across the cap, stencilled in letters a yard high: CROWN PROPERTY. GREAT PIT No. 3. SEALED BY ORDER.
+say narr | The aurora burns green above it, and the green goes down into the cracks around the cap as if it were being drunk.
+end
+label post
+say narr | The cap is gone. The Pit is open: a round black well a mile across, and at the bottom, very far down, pinpricks of light.
+say narr | Lanterns, or eyes, or cities.
+say narr | The rim is flat and wide enough to set an airship down.
+say narr | Someone has already painted a landing mark in red on the snow.
+@end
+
+@scene N36_WARDEN
+say guard | Crown pit-warden. I guard the cap. From what? Thieves, I'm told. What would a thief steal? The hole?
+say guard | Some nights the cap is warm. Some nights it hums. I've asked for a transfer eleven times.
+@end
+
+@scene N36_PAINTER
+say scholar | I paint the aurora.
+say scholar | It's brightest here, right over the Pit - it pours down into it like a river going home.
+say scholar | My grandmother said the lights are the dead of the north, looking for a way down.
+say scholar | I think they found one.
+@end
+
+@scene N36P_AIRFIELD
+say pilot | Delver pilot. We came up the Pit when the cap fell.
+say pilot | The rim makes a fine landing field. You bring an airship here, you can go down.
+say pilot | Down needs a drill, mind. The Deep's not a hole, it's a country.
+say pilot | You'll want Horrach's auger if you mean to fly into it.
+@end

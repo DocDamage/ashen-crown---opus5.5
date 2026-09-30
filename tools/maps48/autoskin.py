@@ -53,7 +53,12 @@ class Skin:
 
 def load_skin(tileset):
     mod = importlib.import_module("skins." + tileset)
-    return mod.SKIN
+    sk = mod.SKIN
+    if not getattr(sk, "_fb", False):
+        sk._fb = True
+        from skins import fallback
+        fallback.augment(sk, tileset)   # kinds the skin does not cover get generic art (skins/fallback.py)
+    return sk
 
 
 def _tile(img_src, W, H):

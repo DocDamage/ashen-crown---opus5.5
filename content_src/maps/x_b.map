@@ -1,0 +1,2073 @@
+#! Group b: Glass Coast, Skyspine, Pale Basin, Ember Sea, the Shattered Choir
+=== N11_R01
+name: Tidewrack
+tileset: town_r03
+music: M013
+zone: N11
+region: R03
+location: L_N11
+encounters: none
+save: true
+legend: X=mast
+grid:
+^^^^^^^^^^^^^^^^::::^^^^^^^^^^^^^^^^
+^^^^^TT^^^^^^^^T::::T^^^^^^^^TT^^^^^
+^TT"RRRRRRRR""l"::::""RRRRRRRRR""TT^
+^T""RRRRRRRR""""::::""RRRRRRRRR"""T^
+^T"3RRRRRRRR""""::::""RRRRRRRRR"r"T^
+^T""WQWWQWWW""""::::""WQWWQWWQWcr"T^
+^T""WQWDQWWW""""::::""WQWWDWWQW"""T^
+^T"":l:::S::::::::::::::r:::S:::""T^
+^T"g1g""""":::::::::::::::"""""""T^^
+^T"RRRRRRRRR:::::::::::::RRRRRRRR"T^
+^T"R4RRRRRRR::O:::::l::::RRRRRR4R"T^
+^T"RRRRRRRRR:::::::::::::RRRRRRRR"T^
+^T"WQWWQWWQWS::::::::::::WQWWQWWQ"T^
+^T"WQWWDWWQWr:::::::::::cWQWxWWQW"T^
+^T"::::::::::::::::::::::::::::::"T^
+^^^^^^^^^^^^^^^^^ss^^^^^^^^^^^s^^^^^
+^ozzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzo^
+^ozzxxxxxzzzz333zzzz]crzzzzzzzzzzzo^
+^ozxxXxxxxxzzzzzzzzzzzzzzzzxxxxzzzo^
+^ozzxxxxxxzzzzzzzzzzzzzzzxxxxXxxzzo^
+^ozzzzzzzzzzzzzzzzzzzzzzzzxxxxzzzzo^
+^owwzzzzzzzzzzzzzzzzczzzzzzzzzzwwwo^
+^wwwwwwwwwwwwwwwwdddwwwwwwwwwwwwwww^
+~~~~~~~~~~~~~~~~~ddd~~~~~~~~~~~~~~~~
+~~~~~~~~~6~~~~~~~ddd~~6~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~6~ddd~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~ddd~~~~~~~~6~~~~~~~
+~~~~~~~~~~~~~~~~~ddd~~~~~~~~~~~~~~~~
+entities:
+spawn world 17 1 down
+spawn default 17 1 down
+spawn from_inn 7 7 down
+spawn from_shop 26 7 down
+spawn from_hall 7 14 down
+exit 16..19 0 WORLD l_n11
+door 7 6 N11_INN entry sfx=FX008
+door 26 6 N11_SHOP entry sfx=FX008
+door 7 13 N11_HALL entry sfx=FX008
+save 22 9
+sign 9 7 "The Keel and Lantern. Beds, soup, no questions about where the timber came from."
+sign 28 7 "Salvage Exchange. We buy what the sea gives back. We sell what it didn't want."
+sign 12 12 "Tide board: LOW at the second bell, HIGH at dusk. Nobody goes into the hulls on a rising tide."
+read 8 19 "A split in the hull where the tide has left something bright wedged in the ribs." scene=N11_NODE_A
+read 29 20 "Barnacled ironwork glints under the weed. A salvage node." scene=N11_NODE_B
+read 7 17 "The stern plate is still legible: 'CROWN TITHE BARGE 11. Property of the Ministry of Waterways.'"
+npc salvager_tam 11 19 left sprite=sailor talk=N11_TAM name="Tam Drift"
+npc n11_netmender 14 18 up sprite=elder talk=N11_NETMENDER
+npc n11_diver 23 20 left sprite=sailor talk=N11_DIVER
+npc n11_tithe 21 12 down sprite=guard talk=N11_TITHE if=!phase:post
+npc n11_kid 21 16 left sprite=child talk=N11_KID
+npc n11_widow 31 17 down sprite=survivor talk=N11_WIDOW
+npc n11_reader 24 21 up sprite=scholar talk=N11_READER
+npc n11_refugee 4 8 right sprite=survivor talk=N11_REFUGEE if=!phase:post
+npc n11_lampman 23 10 down sprite=worker talk=N11_LAMPMAN if=!phase:post
+npc n11_rumor 20 20 down sprite=sailor talk=N11_RUMOR
+npc n11_p_bailer 12 9 down sprite=worker talk=N11_P_BAILER if=phase:post
+npc n11_p_lamps 23 10 down sprite=apprentice talk=N11_P_LAMPS if=phase:post
+npc n11_p_saved1 16 20 right sprite=survivor talk=N11_P_SAVED1 if=q:QW7
+npc n11_p_saved2 5 21 up sprite=child talk=N11_P_SAVED2 if=q:QW7
+
+=== N11_INN
+name: Tidewrack - The Keel and Lantern
+tileset: town_r03
+music: M013
+zone: N11
+region: R03
+location: L_N11
+encounters: none
+grid:
+################
+##kk?k...rk?kk##
+#....nnn.......#
+#..............#
+#.BB.BB...t.t..#
+#.BB.BB...ttt..#
+#..............#
+#!.........rr..#
+##............##
+#######++#######
+entities:
+spawn entry 7 8 up
+exit 7..8 9 N11_R01 from_inn
+npc n11_innkeep 6 1 down sprite=baker talk=N11_INN name="Marl"
+inn 6 2 scene=N11_INN
+npc n11_drinker 11 6 left sprite=sailor talk=N11_DRINKER
+npc n11_p_cots 3 6 right sprite=patient talk=N11_P_COTS if=phase:post
+
+=== N11_SHOP
+name: Tidewrack - Salvage Exchange
+tileset: town_r03
+music: M013
+zone: N11
+region: R03
+location: L_N11
+encounters: none
+grid:
+################
+##kkk$..kkk?k)##
+#...nnn....5m..#
+#..............#
+#.c..........r.#
+#.cc...$$....rr#
+#..............#
+##............##
+#######++#######
+entities:
+spawn entry 7 7 up
+exit 7..8 8 N11_R01 from_shop
+npc n11_trader 6 1 down sprite=keeper talk=N11_TRADER name="Old Pruett"
+shop 6 2 SHOP_N11
+npc crafter_n11 12 3 up sprite=worker talk=N11_CRAFTER name="Hesk the Riveter"
+
+=== N11_HALL
+name: Tidewrack - Salvagers' Hall
+tileset: town_r03
+music: M013
+zone: N11
+region: R03
+location: L_N11
+encounters: none
+grid:
+##################
+##k8k8kk?kkj8k8k##
+#................#
+#..tttttt...rr.c.#
+#................#
+#..tttttt........#
+#................#
+#!..........kk...#
+##..............##
+########++########
+entities:
+spawn entry 8 8 up
+exit 8..9 9 N11_R01 from_hall
+npc wenna 6 2 down sprite=sailor talk=N11_WENNA name="Wenna Coyle"
+npc n11_crew 13 4 left sprite=worker talk=N11_CREW
+npc n11_ledger 2 5 right sprite=clerk talk=N11_LEDGER
+chest N11_C_HALL 15 2 I002 2
+
+=== N12_R01
+name: Belltower Point
+tileset: town_r03
+music: M013
+zone: N12
+region: R03
+location: L_N12
+encounters: none
+save: true
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~ooooo~~~~~~~~~~~~~~~
+~~~~~~~~~~ooo"""ooo~~~~~~~~~~~~~
+~~~~~~~~~oL""RRRR""oo~~~~~~~~~~~
+~~~~~~~~~o"""RjjR"""o~~~~~~~~~~~
+~~~~~~~~wo""lWQQW"RRRRRo~~~~~~~~
+~~~~~~~~wo"""WWWW"RRRRRo~~~~~~~~
+~~~~~~~ww""""WQQW"RRRRR"o~~~~~~~
+~~~~~~~w"""""WWWW"WQWQW""o~~~~~~
+~~~~~~ww"y"""WWDW:c:r:""""o~~~~~
+~~~~~~w""""""::::::::""""""o~~~~
+~~~~~~w"""1"":::::::::::::::ddd~
+~~~~~wo""""""::S::"""""S:::dddd~
+~~~~~wo"""""""::::""""""""oddd6~
+~~~~~o""^^^"""::::"""""""oo~ddd~
+~~~~wo"""^^"""::::""""""o~~~~6~~
+~~~~wo""""""""::::"""""""o~~~~~~
+~~~~o""""l""""::::""""""""o~~~~~
+~~~~o"""""""""::::""""""g1o~~~~~
+~~~wo""x"""""":::::"""""ggo~~~~~
+~~~wo"xx"""""":::::"""""""o~~~~~
+~~~o"""""""""":::::""""""oo~~~~~
+~~~o^^""""""""::::"""""^^o~~~~~~
+~~~o^^^^""""""::::""""^^^^o~~~~~
+~~~~^^^^^^^^^^::::^^^^^^^^~~~~~~
+~~~~^^^^^^^^^^::::^^^^^^^^~~~~~~
+entities:
+spawn world 15 24 up
+spawn default 15 24 up
+spawn from_lamp 15 10 down
+exit 14..17 25 WORLD l_n12
+door 15 9 N12_LAMP entry sfx=FX008
+save 20 10
+sign 15 12 "FERRIES from Belltower Point: north to Skyspine at the first bell; out to Saltwhistle when the guild flag flies. Pay the boatman, not the Ministry."
+sign 23 12 "Coastal lighthouse. Lamp lit at dusk by order of nobody. The keeper does it anyway."
+read 9 9 "A cairn of cracked bronze. Names of bellringers lost to the sea, one line per storm. The newest line is still bright."
+npc n12_ferry_north 26 11 left sprite=sailor talk=N12_FERRY_NORTH name="Coll the Boatman"
+npc n12_ferry_salt 25 13 left sprite=sailor talk=N12_FERRY_SALT name="Brisa"
+npc n12_timekeeper 17 12 down sprite=clerk talk=N12_TIMEKEEPER
+npc n12_gull 11 17 right sprite=child talk=N12_GULL wander=1
+npc n12_mourner 8 10 down sprite=elder talk=N12_MOURNER
+npc n12_p_raft 21 17 left sprite=survivor talk=N12_P_RAFT if=phase:post
+read 10 3 "The sea-stair: iron rungs down the rock into the water. Before the fault it went to the fishing ledge. Now it goes to Old Bellharbor." scene=QW7_STAIR
+
+=== N12_LAMP
+name: Belltower Point - Lighthouse
+tileset: town_r03
+music: M013
+zone: N12
+region: R03
+location: L_N12
+encounters: none
+grid:
+##############
+###k?kssk?k###
+#............#
+#..tt....B...#
+#..tt........#
+#............#
+#k..........k#
+#!...........#
+##........l.##
+######++######
+entities:
+spawn entry 6 8 up
+spawn from_lamp_top 6 2 down
+exit 6..7 9 N12_R01 from_lamp
+npc ossery 9 5 left sprite=elder talk=N12_OSSERY name="Keeper Ossery"
+read 6 1 "Stairs up to the lamp room. The oil smell comes down them like weather." scene=N12_LAMPROOM
+chest N12_C_LAMP 11 2 A109 1
+
+=== N43_R01
+name: Lanternfall
+tileset: town_r04
+music: M013
+zone: N43
+region: R03
+location: L_N43
+encounters: none
+save: true
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^RRRRRRRRRR^^^^^^^^^^^^^^RRRRRRRR^^
+^^^^RRRR4RRRRR^^^^^^^^^^^^^^RRRRRRRR^^
+^^^^RRRRRRRRRR^^^^^^^^^^^^^^RRRRR4RR^^
+^^^^WQWWQWWDWW^^^^^^^^^^^^^^WQWGWWQW^^
+^^^l::::::::::l^^^^^^^^^^^^l::::::::^^
+^^^^:::S:::::::::::::::::::::::::S::^^
+^^^^^^^^^^^^^^^^ss^^^^^^ss^^^^^^^^^^^^
+^^T"""""""""""""::::::::::"""""""""T^^
+^^T""""RRRRRRRRRRR::::RRRRRRRRRR"""T^^
+^T"""""RRRRRRRRRRR::::RRRRRRRRRR""""T^
+^T""g""RRRR4RRRRRR::::RRRRRR4RRR""""T^
+^T""g""WQWWQWWDWWW::::WQWDWWQWWW""""T^
+^T"1g""::::l:::::::::::::::::l::""""T^
+^T"""""::aaa:aaa:::::::::aaa:aaa:"""T^
+^T"""""::nnn:nnn:::::::::nnn:nnn:"""T^
+^T""""::::::::::::::O::::::::::::"""T^
+^T"""""::::::::::::::::::::::::::""T^^
+^T""3""::::aaa:aaa:::aaa:::::::::""T^^
+^^T""::::::nnn:nnn:::nnn:::::::::""T^^
+^^T"""""::::::::::::::::::::::::"""T^^
+^^^T"""""::::::::::::::::::::::::"T^^^
+^^^^T""""""l:::::::::::::::::l""""T^^^
+^^^^^^""""""""""""::::"""""""""""^^^^^
+^^^^^^^^^^""""""""::::""""""""^^^^^^^^
+^^^^^^^^^^^^^^^^^^ssss^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~^^::::^^~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~^::::^~~~~~~~~~~~~~~~
+entities:
+spawn world 19 26 up
+spawn default 19 26 up
+spawn from_works 11 5 down
+spawn from_inn 14 13 down
+spawn from_shop 25 13 down
+exit 18..21 27 WORLD l_n43
+door 11 4 N43_WORKS entry sfx=FX008
+door 14 12 N43_INN entry sfx=FX008
+door 25 12 N43_SHOP entry sfx=FX008
+save 20 20
+sign 7 6 "Galloway Lampworks. Wicks trimmed, glass blown, grief lit. Knock loud; the kilns roar."
+sign 33 6 "Closed for mourning. The Tallow family asks for quiet on the upper lane."
+sign 30 13 "NIGHT MARKET: stalls open when the lamps do. Anything that burns, anything that glows."
+npc n43_stall_glass 10 14 down sprite=keeper talk=N43_STALL_GLASS name="Ysa of the Blown Glass"
+shop 10 15 SHOP_N43
+npc n43_stall_oil 14 14 down sprite=baker talk=N43_STALL_OIL
+npc n43_stall_moth 26 14 down sprite=apprentice talk=N43_STALL_MOTH
+npc n43_stall_charm 30 14 down sprite=elder talk=N43_STALL_CHARM
+npc n43_stall_food 12 18 down sprite=baker talk=N43_STALL_FOOD
+npc n43_stall_maps 22 18 down sprite=scholar talk=N43_STALL_MAPS
+npc n43_lighter 24 21 up sprite=worker talk=N43_LIGHTER wander=1
+npc n43_widow 5 13 right sprite=survivor talk=N43_WIDOW
+npc n43_child 18 16 right sprite=child talk=N43_CHILD
+npc n43_guard 20 23 down sprite=guard talk=N43_GUARD
+npc n43_pilgrim 29 17 left sprite=volunteer talk=N43_PILGRIM
+npc n43_crier 20 8 down sprite=clerk talk=N43_CRIER
+npc n43_miser 34 20 left sprite=noble talk=N43_MISER
+
+=== N43_WORKS
+name: Lanternfall - Galloway Lampworks
+tileset: town_r04
+music: M013
+zone: N43
+region: R03
+location: L_N43
+encounters: none
+grid:
+##################
+##kk!!kk5k?kk!!k##
+#................#
+#..tt....ttt.....#
+#..............r.#
+#.kk.........rr..#
+#................#
+##..............##
+########++########
+entities:
+spawn entry 8 7 up
+exit 8..9 8 N43_R01 from_works
+npc crafter_n43 8 2 down sprite=worker talk=N43_CRAFTER name="Oda Galloway"
+npc n43_glassboy 12 4 left sprite=apprentice talk=N43_GLASSBOY
+chest N43_C_WORKS 15 2 A117 1
+
+=== N43_INN
+name: Lanternfall - The Wick and Wind
+tileset: town_r04
+music: M013
+zone: N43
+region: R03
+location: L_N43
+encounters: none
+grid:
+################
+##kk?k...lkk?k##
+#....nnn.......#
+#..............#
+#.BB.BB..tt..B.#
+#.BB.BB..tt..B.#
+#..............#
+#!..........rr.#
+##............##
+#######++#######
+entities:
+spawn entry 7 8 up
+exit 7..8 9 N43_R01 from_inn
+npc n43_innkeep 6 1 down sprite=baker talk=N43_INN name="Mother Brannock"
+inn 6 2 scene=N43_INN
+npc n43_traveller 11 6 up sprite=sailor talk=N43_TRAVELLER
+
+=== N43_SHOP
+name: Lanternfall - Tallow and Wick
+tileset: town_r04
+music: M013
+zone: N43
+region: R03
+location: L_N43
+encounters: none
+grid:
+################
+##kkllk..kkllk##
+#...nnnn.......#
+#..............#
+#.l..k....k..l.#
+#..............#
+#..............#
+##............##
+#######++#######
+entities:
+spawn entry 7 7 up
+exit 7..8 8 N43_R01 from_shop
+npc n43_lampseller 7 1 down sprite=keeper talk=N43_LAMPSELLER name="Wick"
+shop 7 2 SHOP_N43
+npc n43_buyer 11 5 left sprite=noble talk=N43_BUYER
+
+=== N13_R01
+name: The Brine Stair - Smugglers' Mouth
+tileset: reef
+music: M023
+zone: N13
+region: R03
+location: L_N13
+encounters: W_N13
+rate: 0.6
+grid:
+##############....############
+############,,....,,##########
+#########,,,,,....,,,,,#######
+#######,,,,',,....,,,,,,,L####
+######,,Z,,,,,....,,,,,,,,####
+#####,,,ZZ,,,,....,,,cr,,,,###
+####~~~~~~~~,,....,,,,,,,,,,##
+###~~~~ZZ~~~~w....w,,,,,,,,,##
+##wwwww,,Z~~~~wwww~~~~,,,,,,##
+##w~~~ZZZZ~~~~~==~~~~~~,,,,,##
+##w~~~~~~~~~~~~==~~~~~~~,,,,##
+##w~~~~~~~~~~~~==~~~~~~~~,,,##
+##ww~~~~~~~~~~w..w~~~~~~~,,,##
+##,,ww~~~~~~ww....ww~~~~ww,,##
+##,,,,wwwwww,,....,,wwww,,,,##
+###,,,,,,,,,,,....,,,,,,,,,###
+###,,cr,,,,,,,....,,,,,,rc,###
+####,,,,,,,,,,....,,,,,,,,####
+#####dddd,,,,,....,,,,,,,#####
+#####dddd~~~~,,....,,~~~~#####
+####~~6~~~~~~~....~~~~~~~~####
+#####~~~~~~~~~....~~~~~~~~~###
+entities:
+spawn world 15 20 up
+spawn default 15 20 up
+spawn from_r02 15 1 down
+spawn from_r04 24 4 left
+exit 14..17 21 WORLD l_n13
+exit 14..17 0 N13_R02 from_r01
+exit 25 3 N13_R04 from_r01
+block 25 3 tile=rubble if=!flag:n13_rope msg="A rope ladder's frayed end hangs in the dark far above. It was hauled up from the other side."
+trigger 14..17 18 scene=N13_ENTER if=!event:N13_ENTER
+chest N13_C_ISLET 8 8 I005 2
+sign 13 16 "Chalked on the rock: KEEP OUT. BY ORDER OF NOBODY YOU WANT TO MEET."
+read 6 19 "A smugglers' skiff, stove in. Someone scratched a tally of trips into the gunwale. It stops at forty-one."
+
+=== N13_R02
+name: The Brine Stair - Tide Gate
+tileset: reef
+music: M023
+zone: N13
+region: R03
+location: L_N13
+encounters: W_N13
+rate: 0.8
+grid:
+##############....##############
+##############....##############
+##########,,,,....,,,,##########
+#######,,,,,,,....,,,,,,,#######
+#####,,u,,,,,,....,,,,,,u,,#####
+####,,,,,,c,,,....,,,r,,,,,,####
+####,,,,,,,,,,wwww,,,,,,,,,,####
+###~~~~~~~~~~~wwww~~~~~~~~~~~###
+###~~~~~~~~~~~wwww~~~~~~~~~~~###
+###,,,,#~~~~~~wwww~~~~~~~,,,,###
+##,,,,,#~~~~,,,,,,,,~~~~,,,,,,##
+##,',,,#~~,,,,,,,,,,,,~~,,,',,##
+######ww#,,,,,,,,,,,,,,,,,,,,,##
+##,,,,www,,,,,,,,,,,,,,,,,,,,,##
+##,,,,,,,,,,,,,,,,,,,,,,,,&&,,##
+##,,,,,,,,,9,,,,,,,,,,,,,,,,,,##
+##,,c,,,,,,99,,,,,,,,,,,,,rr,,##
+###,,,,,,,,,,,,,,,,,,,,,,,,,,###
+####,,,,,,,,,,....,,,,,,,,,,####
+######,,,,,,,,....,,,,,,,,######
+#########,,,,,....,,,,,#########
+##############....##############
+##############....##############
+##############....##############
+entities:
+spawn from_r01 15 22 up
+spawn from_r03 15 1 down
+exit 14..17 23 N13_R01 from_r02
+exit 14..17 0 N13_R03 from_r02
+block 6..7 12 tile=water if=!flag:n13_sluice_a msg="Seawater pours through the gap in the rock. A sluice wheel somewhere could turn it aside."
+block 14..17 6..8 tile=water if=!flag:n13_sluice_b msg="The channel runs deep with the tide. A second sluice must hold it back."
+switch sluice_a 26 15 scene=N13_SLUICE_A sprite=wheel
+switch sluice_b 4 10 scene=N13_SLUICE_B sprite=wheel
+chest N13_C_ALCOVE 5 9 W119 1
+read 27 13 "A brass plate on the wheel housing: 'Sluice 1 of 2. Builder work, older than the Crown. Turn slowly.'"
+read 12 13 "Rope burns on the rock, and the scuffs of heavy crates dragged north. The smugglers came this way at low tide."
+
+=== N13_R03
+name: The Brine Stair - Stair of Pools
+tileset: reef
+music: M023
+zone: N13
+region: R03
+location: L_N13
+encounters: W_N13
+rate: 0.9
+grid:
+###########....###########
+###########....###########
+#########,,....,,#########
+#######,,,,ssss,,,,#######
+######,,99,,,,,,99,,######
+#####,,,99,,,,,,99,,,#####
+####,,,,,,,,,,,,,,,,,,####
+####,,oo,,,,,,,,,,oo,,####
+####^^^^^^,ssss,^^^^^^####
+####,,,,,,,,,,,,,,,,,,####
+###,,'',,,,,,,,,,,,,,,,###
+###,,,,,,99999999,,,,,,###
+###,,,,,,99999999,,,,,,###
+###,,,,,,,,,,,,,,,,,,,,###
+###,,cr,,,,,,,,,,,,,rr,###
+####^^^^^^,ssss,^^^^^^####
+####,,,,,,,,,,,,,,,,,,####
+####,,,,,,,,,,,,,,,,,,####
+###~~~~~~,,,,,,,,~~~~~~###
+###~~~~~~,,,,,,,,~~~~~~###
+###,,,,~~~,,,,,,~~~,,,,###
+###,,,,,~~,,,,,,~~,,,,,###
+###,,,,,,,,,,,,,,,,,,,,###
+####,,,,,,,,,,,,,,,,,,####
+######,,,,,,,,,,,,,,######
+##########,....,##########
+###########....###########
+###########....###########
+entities:
+spawn from_r02 12 26 up
+spawn from_r04 12 1 down
+exit 11..14 27 N13_R02 from_r03
+exit 11..14 0 N13_R04 from_r03
+block 11..14 1 tile=gate if=!flag:n13_key msg="An iron tide-gate, padlocked from this side. The smugglers kept the key on someone."
+read 20 5 "A drowned smuggler, wedged between the pools. A key on a cord round his neck." scene=N13_KEY
+chest N13_C_R03 22 21 I006 2
+chest N13_C_HIDDEN 4 20 A108 1 hidden=1
+read 4 10 "Moss grows thick on the west wall. Below, in the flooded bay, something catches the light."
+
+=== N13_R04
+name: The Brine Stair - Contraband Hold
+tileset: reef
+music: M023
+zone: N13
+region: R03
+location: L_N13
+encounters: none
+grid:
+#############....#############
+#############....#############
+###########,,....,,###########
+#########kk,,....,,kk#########
+########,,,,,,....,,,,,,######
+#######,,cccc,,,,,,,,rrrr,,###
+######,,,cc,,,,,,,,,,,rr,,,###
+#####,,,,,,,,,tt,,,,,,,,,,,###
+####,,,,,,,,,,tt,,,,,,,,,,,,##
+####,,,,,,,,,,,,,,,,,,,,,,,,##
+###,,$$,,,,,,,,,,,,,,,,,,,,,##
+###,,$$,,,,,,,,,,,,,,,,cc,,,##
+##L,,,,,,,,,,,,,,,,,,,,,,,,,##
+####,,,,,,,,,,,,,,,,,,,,,,,###
+#####,,,,,,,,,,,,,,,,,,,,,####
+#######,,,,,,,....,,,,,,######
+##########,,,,....,,,,########
+#############....#############
+#############....#############
+entities:
+spawn from_r03 14 17 up
+spawn from_r05 14 1 down
+spawn from_r01 3 12 right
+exit 13..16 18 N13_R03 from_r04
+exit 13..16 0 N13_R05 from_r04
+exit 2 12 N13_R01 from_r04
+block 2 12 tile=rubble if=!flag:n13_rope msg="A rope ladder, coiled and lashed to an iron ring. Loosing it would drop a way down to the sea mouth."
+switch rope 3 11 scene=N13_ROPE
+save 18 13
+heal 20 13
+read 15 7 "The smugglers' ledger, weighted with a stone. Columns: DATE. CARGO. PAID TO HER. The last column is always the same: 'one man'." scene=N13_LEDGER
+read 6 10 "A crate of diving gear under oilcloth: a helmet of thick sea-glass, bolted into a brass collar." scene=QW7_GLASS if=phase:post
+npc n13_ghost 24 9 left sprite=survivor talk=N13_GHOST
+
+=== N13_R05
+name: The Brine Stair - Brood Pool
+tileset: reef
+music: M023
+zone: N13
+region: R03
+location: L_N13
+encounters: none
+grid:
+##############################
+#########,,,,,,,,,,,,#########
+######,,,,999999999,,,,#######
+#####,,,,99999999999,,,,######
+####,,,,,99999999999,,,,,#####
+####,,Z,,,999999999,,,Z,,#####
+###,,,,,,,,,,,,,,,,,,,,,,,####
+###,,,,,,,,,,,,,,,,,,,,,,,,###
+###,,Z,,,,,,,,,,,,,,,,,,Z,,###
+###,,,,,,,,,,,,,,,,,,,,,,,,###
+####,,,,,,,,,,,,,,,,,,,,,,####
+####,,,'',,,,,,,,,,,,'',,,####
+#####,,,,,,,,,,,,,,,,,,,,#####
+#######,,,,,,,,,,,,,,,,#######
+##########,,,,,,,,,,##########
+############,....,############
+#############....#############
+#############....#############
+entities:
+spawn from_r04 14 16 up
+exit 13..16 17 N13_R04 from_r05
+trigger 4..25 9 scene=N13_BOSS if=!flag:n13_boss
+read 14 1 "Behind the pool: a shelf of tarred boxes. Receipts. Hundreds. Each one a name the smugglers never wrote down." scene=N13_RECEIPTS if=flag:n13_boss
+
+=== N14_R01
+name: Saltwhistle Isle
+tileset: town_r03
+music: M016
+zone: N14
+region: R06
+location: L_N14
+encounters: none
+save: true
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~ooooo~~~~~~~~~~~~~oooooo~~~~~
+~~~~oooo"""oRRRRRRRRRRRRo"""""oo~~~~
+~~~oo""T""""RRRRRRRRRRRR""T"""""oo~~
+~~oo""TT""""RRRRR44RRRRR""TT""""""o~
+~~o"""""""""RRRRRRRRRRRR"""""""""o~~
+~~o""3""""u"WQWWQWWQWWQW""""""""""o~
+~o"""3"""":"WQWWQDWWQWQW"::"""""""o~
+~o"""""":::::::::::::::::::"""""""o~
+~o"RRRRRRR":::::::::::::::RRRRRRRo~~
+~o"RR4RRRR":::::O:::::::::RRRR4RRo~~
+~o"RRRRRRR":::::::::::::::RRRRRRR"o~
+~o"WQWWQWW"::S::::::::::::WQWWQWW"o~
+~o"WQWDWWW"r:::::::::::::lWWDWQWW"o~
+~o""""::::::::::::::::::::::::""""o~
+~o""":::3:3:::::::::::::::3:3:::""o~
+~o"::aaa::aaa::::::::::aaa::aaa::"o~
+~o"::nnn::nnn::::::::::nnn::nnn::"o~
+~o"::::::::::::::::::::::::::::::"o~
+~o":rr:c:::::::::::::::::::cc:rr:"o~
+~oddddddddddddddddddddddddddddddddo~
+~~dddddddddddddddddddddddddddddddd~~
+~~~~dd~~~~~~~~~~dddd~~~~~~~~~~dd~~~~
+~~~~dd~~6~~~~~~~dddd~~~~~~~6~~dd~~~~
+~~~~dd~~~~~~~~~~dddd~~~~~~~~~~dd~~~~
+~~~~~6~~~~~~~~~~dddd~~~~~~~~~~~6~~~~
+~~~~~~~~~~~~~~~~dddd~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~dddd~~~~~~~~~~~~~~~~
+entities:
+spawn world 17 26 up
+spawn default 17 26 up
+spawn from_guild 17 8 down
+spawn from_inn 6 14 down
+spawn from_shop 28 14 down
+exit 16..19 27 WORLD l_n14
+door 17 7 N14_GUILD entry sfx=FX008
+door 6 13 N14_INN entry sfx=FX008
+door 28 13 N14_SHOP entry sfx=FX008
+save 21 14
+sign 13 12 "FISHING TOURNAMENT. Sign up with Tourney Master Oyle in the Guild Hall. Biggest catch takes the Silver Hook."
+sign 11 6 "The guild flag. Green: passengers. Red: tournament. Black: all boats out."
+read 16 10 "The guild well. Fresh water on a salt island; the guild guards it closer than its records."
+npc n14_vendor_eel 6 16 down sprite=baker talk=N14_EEL
+npc n14_vendor_salt 11 16 down sprite=keeper talk=N14_SALTFISH
+npc n14_vendor_bait 24 16 down sprite=apprentice talk=N14_BAIT
+npc n14_vendor_shell 29 16 down sprite=elder talk=N14_SHELL if=!phase:post
+npc n14_weigher 20 11 down sprite=clerk talk=N14_WEIGHER
+npc n14_drier 4 15 right sprite=farmer talk=N14_DRIER
+npc n14_hopeful 14 8 down sprite=sailor talk=N14_HOPEFUL wander=1
+npc n14_kid 21 19 left sprite=child talk=N14_KID
+npc n14_oldhand 32 18 left sprite=elder talk=N14_OLDHAND
+npc n14_taxman 10 9 right sprite=guard talk=N14_TAXMAN if=!phase:post
+npc n14_p_refugee 29 16 down sprite=survivor talk=N14_P_REFUGEE if=phase:post
+npc n14_p_watcher 10 9 right sprite=sailor talk=N14_P_WATCHER if=phase:post
+npc n14_ferryhand 23 21 down sprite=sailor talk=N14_FERRYHAND
+
+=== N14_GUILD
+name: Saltwhistle Isle - Fishers' Guild Hall
+tileset: town_r03
+music: M016
+zone: N14
+region: R06
+location: L_N14
+encounters: none
+grid:
+####################
+##8k8ky?...?yk8k8k##
+#..................#
+#..nnnn......tttt..#
+#..................#
+#y................y#
+#....tttt....tttt..#
+#..................#
+#k................k#
+#!................!#
+##................##
+#########++#########
+entities:
+spawn entry 9 10 up
+exit 9..10 11 N14_R01 from_guild
+npc vane 15 2 down sprite=elder talk=N14_VANE name="Guildmaster Vane"
+npc fishing_master 4 4 down sprite=sailor talk=N14_TOURNEY name="Tourney Master Oyle"
+read 9 1 "The record board: the biggest fish ever landed on Saltwhistle, in chalk, rubbed out and rewritten for sixty years." scene=N14_RECORDS
+npc n14_rival 6 7 right sprite=sailor talk=N14_RIVAL
+npc n14_scribe 14 5 left sprite=clerk talk=N14_SCRIBE
+npc n14_p_mourn 2 7 right sprite=survivor talk=N14_P_MOURN if=phase:post
+
+=== N14_INN
+name: Saltwhistle Isle - The Gutted Herring
+tileset: town_r03
+music: M016
+zone: N14
+region: R06
+location: L_N14
+encounters: none
+grid:
+################
+##kk?k...rk?kk##
+#....nnn.......#
+#..............#
+#.BB.BB..tt..B.#
+#.BB.BB..tt..B.#
+#..............#
+#!.........rr..#
+##............##
+#######++#######
+entities:
+spawn entry 7 8 up
+exit 7..8 9 N14_R01 from_inn
+npc n14_innkeep 6 1 down sprite=baker talk=N14_INN name="Pearl"
+inn 6 2 scene=N14_INN
+npc n14_singer 11 6 left sprite=sailor talk=N14_SINGER
+
+=== N14_SHOP
+name: Saltwhistle Isle - Guild Tackle and Stores
+tileset: town_r03
+music: M016
+zone: N14
+region: R06
+location: L_N14
+encounters: none
+grid:
+################
+##kk$k..kk?kk)##
+#...nnn....5m..#
+#..............#
+#.c..........r.#
+#.cc....3....rr#
+#..............#
+##............##
+#######++#######
+entities:
+spawn entry 7 7 up
+exit 7..8 8 N14_R01 from_shop
+npc n14_tackle 6 1 down sprite=keeper talk=N14_TACKLE name="Gorse"
+shop 6 2 SHOP_N14
+npc crafter_n14 12 3 up sprite=worker talk=N14_CRAFTER name="Net-Wright Ama"
+
+=== N15_R01
+name: Gullrock
+tileset: reef
+music: M023
+zone: N15
+region: R06
+location: L_N15
+encounters: none
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^zzzzzzzzzzzz^^^^^^^^^^
+^^^^^zzzzzz]zzzzzzzzzz^^^^^^^^
+^^^^zzzzzcrzzzzzzzzzzzzzzz^^^^
+^^^zzzzzzzzzzzzzzzzz6zzz^^^^^^
+^^oozzzzzzzzzzzzzzzzzzzzzz^^^^
+^^ozzzzwwwwwwwwwwwwzzzzzzzo^^^
+^^zzzwww~~~~~~~~~~wwwzzzzzo^^^
+^zzzww~~~~~~~~~~~~~~wwzzzzoo^^
+^zzww~~~~~~~~~~~~~~~~wwzzzzo^^
+^zww~~~~~~~~~~~~~~~~~~wwzzzo^^
+^zww~~~~~~~6~~~~~~~~~~~wwzzo^^
+^zzww~~~~~~~~~~~~~~~~~wwzzzo^^
+^^zzww~~~~~~~~~~~~~~~wwzzzzo^^
+^^zzzwwww~~~~~~~~~wwwwzzzzzo^^
+^^^zzzzzwwwwwwwwwwzzzzzzzzo^^^
+^^^^zzzzzzzzzzzzzzzzzzzzzz^^^^
+^^^^^zzzzzzzzzzzzzzzzzzzz^^^^^
+^^^^^^^^^zzzz::::zzzz^^^^^^^^^
+^^^^^^^^^^^^^::::^^^^^^^^^^^^^
+^^^^^^^^^^^^^::::^^^^^^^^^^^^^
+entities:
+spawn world 14 20 up
+spawn default 14 20 up
+exit 13..16 21 WORLD l_n15
+block 24 4 tile=rubble if=!flag:n15_cairn msg="A cairn of sea-stones, fitted too tightly to be chance. Gulls nest in every gap."
+read 24 4 "A cairn of sea-stones, fitted too tightly to be chance." scene=N15_CAIRN if=!flag:n15_cairn
+chest N15_C_CACHE 25 4 A112 1
+chest N15_C_POOL 3 11 W124 1 hidden=1
+npc gullrock_nell 12 4 down sprite=survivor talk=N15_NELL name="Captain Nell Rask" if=!phase:post
+npc n15_lookout 22 6 left sprite=child talk=N15_LOOKOUT if=!phase:post
+npc n15_p_ghost 7 17 right sprite=survivor talk=N15_P_GHOST if=phase:post
+read 20 5 "A smuggler's cutter, hauled up and tarred. Its name has been burned off. Its cargo hold is lined with lead."
+read 6 18 "Tally marks on the cliff, in groups of five. Next to the last group: 'enough'."
+
+=== N16_R01
+name: Windrest
+tileset: town_r04
+music: M014
+zone: N16
+region: R04
+location: L_N16
+encounters: none
+save: true
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^::^^
+^^^TTT^^^^^^^^^^^^^^^^^^^TT^^^::^^
+^TTqq"TT"RRRRRRRRRRRRRRRR"Tqq"::T^
+^Tqq"""T"RRRRRRRRRRRRRRRR"""q"::T^
+^Tq""""""RRRRRRR44RRRRRRR"""""::T^
+^T"""""""RRRRRRRRRRRRRRRR"""""::T^
+^T"ff"ff"WQWWQWWQWWQWWQWW"""""::"^
+^T"f""f""WQWWQWWDWWQWWQWW"::::::"^
+^T"ffff:::::::::::::::::::::::::T^
+^T""""^^^^^^^^^ss^^^^^^^^^^""""T^^
+^T"""""":::::::::::::::::::"""""T^
+^T"RRRRRRRR":::::::::::RRRRRRRR"T^
+^T"RR4RRRRR":::::O:::::RRRRR4RR"T^
+^T"RRRRRRRR":::::::::::RRRRRRRR"T^
+^T"WQWWQWWQ"::S::::::::WQWWQWWQ"T^
+^T"WQWDWWQW"l:::::::::lWQWWDWQW"T^
+^T""::::::::::::::::::::::::::""T^
+^T"fffff""""""::::"""""2r""q""""T^
+^T"f"""f""""""::::""""""""qq""""T^
+^T"f"""f""""""::::""""fffffff"""T^
+^T"fffff""""""::::""""f"""""f"""T^
+^T""""""""T"""::::""""f"""""f""TT^
+^T"""TT"""""""::::""""fff"fff""TT^
+^T""TTT"q"""""::::::"""""""""""TT^
+^T^^TT""""""""::::""""""""""TT^^T^
+^^^^^TT"""""""::::"""""""TT^^^^^^^
+^^^^^^^^^^^^^^::::^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^::::^^^^^^^^^^^^^^^^
+entities:
+spawn world 15 26 up
+spawn default 15 26 up
+spawn from_stable 16 8 down
+spawn from_inn 6 16 down
+spawn from_shop 27 16 down
+spawn from_ridge 30 1 down
+exit 14..17 27 WORLD l_n16
+exit 30..31 0 N16_RIDGE from_windrest
+block 30..31 1 tile=gate if=!flag:qw2_road msg="A shepherds' gate across the ridge path, tied shut: 'HIGH PASTURE. FLOCKS ONLY.'"
+door 16 7 N16_STABLE entry sfx=FX008
+door 6 15 N16_INN entry sfx=FX008
+door 27 15 N16_SHOP entry sfx=FX008
+save 19 10
+sign 14 14 "Windrest. Wool, horn, and the best brackhorns on the Skyspine. The wind is free and there is too much of it."
+sign 18 8 "Harl's Brackhorn Stables. Breaking, shoeing, stabling. Bramble's cousins, most of them."
+npc n16_shepherd 9 18 right sprite=farmer talk=N16_SHEPHERD
+npc n16_carder 25 18 down sprite=baker talk=N16_CARDER
+npc n16_spinner 20 16 down sprite=elder talk=N16_SPINNER
+npc n16_kid 12 21 right sprite=child talk=N16_KID wander=1
+npc n16_assessor 21 10 left sprite=guard talk=N16_ASSESSOR if=!phase:post
+npc n16_porter 28 8 left sprite=worker talk=N16_PORTER if=!phase:post
+npc n16_rocwatch 4 10 right sprite=sailor talk=N16_ROCWATCH
+npc n16_hornsmith 24 20 left sprite=worker talk=N16_HORNSMITH
+npc n16_p_father 28 8 left sprite=survivor talk=N16_P_FATHER if=phase:post
+npc n16_p_widow 21 10 left sprite=survivor talk=N16_P_WIDOW if=phase:post
+npc n16_p_ysolde 12 16 down sprite=volunteer talk=N16_P_YSOLDE if=q:QW2
+npc n16_p_kin 5 21 right sprite=farmer talk=N16_P_KIN if=q:QW2
+
+=== N16_STABLE
+name: Windrest - Harl's Brackhorn Stables
+tileset: town_r04
+music: M014
+zone: N16
+region: R04
+location: L_N16
+encounters: none
+grid:
+####################
+##f.ff.ff.ff.ff.kk##
+#..................#
+#.f..f..f..f..f..r.#
+#..................#
+#..................#
+#.2..............c.#
+#..rr..........ccc.#
+#!.................#
+##................##
+#########++#########
+entities:
+spawn entry 9 9 up
+exit 9..10 10 N16_R01 from_stable
+npc stable_n16 7 4 down sprite=elder talk=N16_STABLE name="Maddoc Harl"
+npc n16_stablehand 13 5 left sprite=apprentice talk=N16_STABLEHAND
+read 3 2 "A stall with a brass plate: BRAMBLE. Empty. Fresh straw anyway. Maddoc says she'll be back; they always come back."
+chest N16_C_STABLE 17 2 I021 2
+
+=== N16_INN
+name: Windrest - The Shorn Fleece
+tileset: town_r04
+music: M014
+zone: N16
+region: R04
+location: L_N16
+encounters: none
+grid:
+################
+##kk?k...lk?kk##
+#....nnn.......#
+#..............#
+#.BB.BB..tt..B.#
+#.BB.BB..tt..B.#
+#..............#
+#!.........rr..#
+##............##
+#######++#######
+entities:
+spawn entry 7 8 up
+exit 7..8 9 N16_R01 from_inn
+npc n16_innkeep 6 1 down sprite=baker talk=N16_INN name="Gwin"
+inn 6 2 scene=N16_INN
+npc n16_cableman 11 6 left sprite=worker talk=N16_CABLEMAN
+
+=== N16_SHOP
+name: Windrest - Wool and Iron
+tileset: town_r04
+music: M014
+zone: N16
+region: R04
+location: L_N16
+encounters: none
+grid:
+################
+##kk$k..kk?kk)##
+#...nnn....5m..#
+#..............#
+#.c..........r.#
+#.cc....3....rr#
+#..............#
+##............##
+#######++#######
+entities:
+spawn entry 7 7 up
+exit 7..8 8 N16_R01 from_shop
+npc n16_trader 6 1 down sprite=keeper talk=N16_TRADER name="Brannagh"
+shop 6 2 SHOP_N16
+npc crafter_n16 12 3 up sprite=worker talk=N16_CRAFTER name="Tolly the Hornsmith"
+
+=== N16_RIDGE
+name: Windrest - The Ridge Road
+tileset: sky
+music: M014
+zone: N16
+region: R04
+location: L_N16
+encounters: WP_R04
+rate: 0.5
+phase: post
+legend: _=void
+grid:
+______________________________
+___^^^^^^^^^^^^^^^^^^^^^^^____
+__^^qqq]qqqqq""""qq]qqqq^^____
+__^qqqqqqqqqq""""""qqqqqq^____
+__^qq!qqqqqqq""""""qqq!qq^____
+__^^qqqqqqqqqqq::qqqqqqq^^____
+___^^^^^^^^^^^^::^^^^^^^^_____
+______^qqqqqqqq::qqqqq^_______
+_____^qq::::::::::qqq^________
+_____^q::qqqqqqqqqqqq^________
+_____^q::q^^^^^^^^^^^^________
+_____^q::q^___________________
+_____^q::q^___________________
+_____^q::q^^^^^^^^^^__________
+_____^q::::::::::::qq^________
+_____^qqqqqqqqqqqq::q^________
+______^^^^^^^^^^^q::q^________
+_________________q::q^________
+_________________q::q^________
+______^^^^^^^^^^^q::q^________
+_____^qqq::::::::::::q^_______
+_____^qq::qqqqqqqqqqq^________
+_____^qq::qq^^^^^^^^^^________
+____^qqq::qqq^________________
+____^qq)::qqqq^^^^^^^^________
+____^qqq::qqqqqqqqqq^^________
+____^^^^::^^^^^^^^^^^_________
+________::____________________
+entities:
+spawn from_windrest 8 26 up
+exit 8..9 27 N16_R01 from_ridge
+block 18..19 17..18 tile=void if=!flag:qw2_beam msg="The road simply stops. Forty feet of wind where it used to be."
+switch winch 6 25 scene=QW2_WINCH sprite=wheel
+read 15 25 "The view: Windrest far below, the new sea glinting where the lowlands were. The cliff road lies in the valley in pieces."
+trigger 12..18 5 scene=QW2_CAMP if=q:QW2:ACTIVE
+npc qw2_ysolde 14 3 down sprite=volunteer talk=QW2_YSOLDE name="Ysolde Harl" if=!flag:qw2_down
+npc qw2_hurt 7 3 right sprite=patient talk=QW2_HURT if=!flag:qw2_down
+chest N16_C_RIDGE 22 3 G116 1
+
+=== N17_R01
+name: The Ninefold Shrine
+tileset: town_r04
+music: M014
+zone: N17
+region: R04
+location: L_N17
+encounters: none
+save: true
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^RRRRRRRRRRRR^^^^^^^^^^^
+^^^^qq^^^^^RRRRRRRRRRRR^^^^^qq^^^^
+^^^qqqq^^^^RRRRR44RRRRR^^^qqqqq^^^
+^^qqqqqq"""WQWWQWWQWWQW"""qqqqqq^^
+^^qq"""""""WQWWQDWQWWQW"""""""qq^^
+^^q"""""::::::::::::::::"""""""q^^
+^^q"""",,,,,,,,,,,,,,,,,,,""""""q^
+^q"""",,,,,,,,,u,,,,,,,,,,,""""""^
+^q""",,,,,u,,,,,,,,,,u,,,,,,"""""^
+^q""",,,,,,,,,,,,,,,,,,,,,,,,,mm7^
+^q"",,,,,,,,,,,,,,,,,,,,,,u,,,m<77
+^q"",,,,,u,,,,,,,,,,,,,,,,,,,,,,,7
+^q"",,,,,,,,,,,,@,,,,,,,,,,,,,,,,7
+^q"",,,,,,,,,,,,,,,,,,,,,,u,,,,,,7
+^q""",,,,,u,,,,,,,,,,,,,,,,,,,m<77
+^q""",,,,,,,,,,,,,,,,,,,,,,,,,mm7^
+^q"""",,,,,,,,u,,,,,,,u,,,,,""""^^
+^^q"""",,,,,,,,,,,,,,,,,,,,""""q^^
+^^qq"""",,,,,,,,u,,,,,,,,""""qqq^^
+^^^qq"""""",,,,,,,,,,,,""""""qq^^^
+^^^^qqq""""""""::::""""""""qqq^^^^
+^^^^^^qq"""""""::::"""""""qq^^^^^^
+^^^^^^^^^qq""""::::""""qq^^^^^^^^^
+^^^^^^^^^^^^^^^::::^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^::::^^^^^^^^^^^^^^^
+entities:
+spawn world 16 24 up
+spawn default 16 24 up
+spawn from_hall 16 6 down
+exit 15..18 25 WORLD l_n17
+door 16 5 N17_HALL entry sfx=FX009
+save 12 6
+read 16 13 "The wind altar: a basin of stone scoured smooth. Nine grooves run out from it to nine poles. The wind fills them in turn." scene=N17_ALTAR
+read 15 8 "The North pole's bell: 'The wind that brings snow. Ask it for nothing; it has nothing.'"
+read 21 9 "The Northeast bell: 'The wind that carries the cable. Thank it at both ends.'"
+read 26 11 "The East bell: 'The sea wind. It smells of other people's harbours.'"
+read 26 14 "The Southeast bell: 'The warm wind. It lies.'"
+read 22 17 "The South bell: 'The wind at your back. It is not yours; it is only going your way.'"
+read 14 17 "The Southwest bell: 'The wind off the salt. It keeps what it touches.'"
+read 10 15 "The West bell: 'The wind that goes over the edge. It comes back as weather.'"
+read 9 12 "The Northwest bell: 'The high wind. Nobody has ever heard it land.'"
+read 10 9 "The ninth pole has no bell, only a groove worn in the stone. 'The wind that stopped. Listen for it.'"
+read 30 12 "The cable house: the sky cable runs out over the drop toward the Shattered Choir and Crucible Isle. The winch is locked."
+npc windkeeper 18 7 down sprite=monk talk=N17_WINDKEEPER name="Windkeeper Aun"
+npc n17_cablehand 28 13 right sprite=worker talk=N17_CABLEHAND if=!phase:post
+npc n17_pilgrim 6 13 right sprite=volunteer talk=N17_PILGRIM
+npc n17_novice 20 19 up sprite=apprentice talk=N17_NOVICE wander=1
+npc n17_p_listener 28 13 right sprite=elder talk=N17_P_LISTENER if=phase:post
+
+=== N17_HALL
+name: The Ninefold Shrine - Keepers' Hall
+tileset: interior_stone
+music: M014
+zone: N17
+region: R04
+location: L_N17
+encounters: none
+grid:
+##################
+###k?kk.@..kk?k###
+#................#
+#..u..........u..#
+#................#
+#.B.B.......tt...#
+#.B.B.......tt...#
+#................#
+#!..............!#
+##..............##
+########++########
+entities:
+spawn entry 8 9 up
+exit 8..9 10 N17_R01 from_hall
+npc n17_elderkeeper 8 2 down sprite=monk talk=N17_ELDERKEEPER
+npc n17_cook 13 4 left sprite=baker talk=N17_COOK
+read 7 1 "The shrine's book of winds. Every page records one day's weather, and one line of what somebody asked for." scene=N17_BOOK
+chest N17_C_HALL 15 2 G115 1
+
+=== N18_R01
+name: Eyrie Hollow - Nestfall Ledge
+tileset: sky
+music: M021
+zone: N18
+region: R04
+location: L_N18
+encounters: W_N18
+rate: 0.6
+legend: _=void
+grid:
+_____________....____________^
+____________^....^___________^
+__________^^^....^^^_________^
+________^^qq.....qqq^^_______^
+______^^qqqq.....qqqqq^^_____^
+_____^qqqoqq......qqqqqqq^___^
+____^qqqqqq.......qqqq]qqq^__^
+___Lqqq;;qq.......qqqq2cqqq^_^
+___^qq;;;qq.......qqqqqqqqq^_^
+___^qqqqqqq.......qqqqqqqqqq^^
+____^qqqq.........qqqqqoqqq^_^
+_____^qqq.........qqqqqqqq^__^
+______^^q..........qqqqq^^___^
+________^..........qqqq^_____^
+________^qqq.......qqq^______^
+_______^qqqq.......qq^_______^
+______^qqqq;;.......q^_______^
+______^qqqqq;.......^________^
+_______^^qqqq.......^________^
+_________^^^^.......^________^
+____________^.......^________^
+____________^.......^________^
+entities:
+spawn world 15 20 up
+spawn default 15 20 up
+spawn from_r02 14 1 down
+spawn from_r04 4 7 right
+exit 13..19 21 WORLD l_n18
+exit 13..16 0 N18_R02 from_r01
+exit 3 7 N18_R04 from_r01
+block 3 7 tile=rubble if=!flag:n18_rope msg="A roc-feather rope hangs from the ledge above, well out of reach."
+trigger 12..18 16 scene=N18_ENTER if=!event:N18_ENTER
+read 22 7 "A poachers' camp: a cart for eggs, a tent for the poachers. The tent is torn from the top. The cart is empty."
+chest N18_C_R01 24 10 I002 3
+
+=== N18_R02
+name: Eyrie Hollow - Updraft Chimney
+tileset: sky
+music: M021
+zone: N18
+region: R04
+location: L_N18
+encounters: W_N18
+rate: 0.8
+legend: _=void
+grid:
+_________........_________
+________^........^________
+_______^qqqqqqqqqq^_______
+______^qqq;qqqqqqqq^______
+______^qqqqqqqqqqqq^______
+______^^^^^^..^^^^^^______
+_______^qqqq..qqqq^_______
+______^qqqqq..qqqqq^______
+_____^qqq;qq..qq;qqq^_____
+____^qqqqqqqqqqqqqqqq^____
+____^qqqq^^^^^^^^qqqq^____
+____^qqq^________^qqq^____
+____^qqq^________^qqq^____
+____^qqqq^^^^^^^^qqqq^____
+____^qqqqqqqqqqqqqqqq^____
+_____^qqqqqq..qqqqqq^_____
+______^^^^^^..^^^^^^______
+_______^qqqq..qqqq^_______
+______^qqqqq..qqqqq^______
+_____^qqq;qq..qqqqqq^_____
+____^qqqqqqqqqqqqqqqq^____
+____^^^^^qq..qq^^^^^^^____
+________^qq..qq^__________
+________^......^__________
+________^......^__________
+________^......^__________
+________^^....^^__________
+__________....____________
+entities:
+spawn from_r01 11 26 up
+spawn from_r03 12 1 down
+exit 10..13 27 N18_R01 from_r02
+exit 9..16 0 N18_R03 from_r02
+block 12..13 16 tile=gate if=!flag:n18_shutter1 msg="A wind-shutter of lashed timber, braced shut. The updraft screams through the slats."
+block 12..13 5 tile=gate if=!flag:n18_shutter2 msg="A second wind-shutter, braced from the ledge on the far side of the chasm."
+switch shutter1 5 20 scene=N18_SHUTTER1
+switch shutter2 19 12 scene=N18_SHUTTER2
+chest N18_C_R02 17 3 W127 1
+chest N18_C_RING 6 11 I005 1
+read 12 9 "The updraft: warm air pours up out of the chasm. Feathers ride it, turning, never falling."
+
+=== N18_R03
+name: Eyrie Hollow - Egg Terraces
+tileset: sky
+music: M021
+zone: N18
+region: R04
+location: L_N18
+encounters: W_N18
+rate: 0.9
+legend: _=void
+grid:
+______________....______________
+_____________^....^_____________
+__________^^^q....q^^^__________
+________^^qqqq....qqqq^^________
+_______^q;;oq......qo;;q^_______
+______^qq;o;q......q;o;qq^______
+______^qqqqqq......qqqqqq^______
+_____^^^^^^qq......qq^^^^^^_____
+_____^qqqqqqq......qqqqqqq^_____
+____^qq;o;qqq......qqq;o;qq^____
+____^qqqqqqqq......qqqqqqqq^____
+____^^^^^^^qqq....qqq^^^^^^^____
+___^qqqqqqqqqq....qqqqqqqqqq^___
+___^qq;oo;qqqq....qqqq;oo;qq^___
+___^qqqqqqqqqq....qqqqqqqqqq^___
+____^^^^^^qqqq....qqqq^^^^^^____
+__________^qqq....qqq^__________
+__________^qqq....qqq^__________
+___________^qq....qq^___________
+___________^qq....qq^___________
+____________^q....q^____________
+____________^......^____________
+_____________......_____________
+_____________......_____________
+entities:
+spawn from_r02 15 22 up
+spawn from_r04 15 1 down
+exit 13..18 23 N18_R02 from_r03
+exit 14..17 0 N18_R04 from_r03
+block 14..17 1 tile=rubble if=!flag:n18_feather msg="A wall of woven branches and old bone. Rocs let their own kind through. Everyone else, they eat."
+read 7 13 "A nest of four eggs, each the size of a barrel, warm as bread. One has a poacher's chalk mark on it."
+read 24 13 "An empty nest. Egg-shell and a snapped rope. Somebody got one out. Somebody didn't get far."
+read 22 5 "A great roc feather, gold at the root, stuck in the branches. The nest-wall smells of it." scene=N18_FEATHER
+chest N18_C_R03 9 5 G114 1
+chest N18_C_HIDDEN 27 12 A112 1 hidden=1
+npc n18_poacher 10 9 right sprite=survivor talk=N18_POACHER
+
+=== N18_R04
+name: Eyrie Hollow - Moulting Cave
+tileset: sky
+music: M021
+zone: N18
+region: R04
+location: L_N18
+encounters: none
+save: true
+legend: _=void
+grid:
+__________......__________
+_________^......^_________
+_______^^^......^^^_______
+_____^^qqq......qqq^^_____
+____^qqqqq......qqqqq^____
+___^qq;;qqqqqqqqqq;;qq^___
+___^qqqqqqqqqqqqqqqqqq^___
+__^qqqqqqqqqqqqqqqqqqqq^__
+__^qq!qqqqqqqqqqqqqq!qq^__
+__Lqqqqqqqqqqqqqqqqqqqq^__
+___^qqqqqqqqqqqqqqqqqq^___
+___^q;;qqqqqqqqqqqq;;q^___
+____^qqqqqq....qqqqqq^____
+_____^^qqqq....qqqq^^_____
+_______^^^^....^^^^_______
+__________......__________
+__________......__________
+__________......__________
+entities:
+spawn from_r03 12 16 up
+spawn from_r05 12 1 down
+spawn from_r01 3 9 right
+exit 10..15 17 N18_R03 from_r04
+exit 10..15 0 N18_R05 from_r04
+exit 2 9 N18_R01 from_r04
+block 2 9 tile=rubble if=!flag:n18_rope msg="A rope of plaited roc feathers, coiled round a spur. Let it down and it would reach Nestfall Ledge."
+switch rope 4 10 scene=N18_ROPE
+save 9 6
+heal 16 6
+read 12 11 "Moulted feathers, drifts of them, gold and grey. Beyond the cave mouth, a nest the size of a house." scene=N18_MOULT
+
+=== N18_R05
+name: Eyrie Hollow - The Crown Nest
+tileset: sky
+music: M021
+zone: N18
+region: R04
+location: L_N18
+encounters: none
+legend: _=void
+grid:
+______________________________
+_______^^^^^^^^^^^^^^^^_______
+_____^^;;;;;;;;;;;;;;;;^^_____
+____^;;;;;;;;;;;;;;;;;;;;^____
+___^;;;;qqqqqqqqqqqqqq;;;;^___
+___^;;;qqqqqqqqqqqqqqqq;;;^___
+___^;;qqqqqqqqqqqqqqqqqq;;^___
+___^;;qqqqqqqqqqqqqqqqqq;;^___
+___^;;qqqqqqqqqqqqqqqqqq;;^___
+___^;;qqqqqqqqqqqqqqqqqq;;^___
+___^;;;qqqqqqqqqqqqqqqq;;;^___
+____^;;;;qqqqqqqqqqqq;;;;^____
+_____^;;;;;;qqqqqq;;;;;;^_____
+______^^;;;;;qqqq;;;;;^^______
+________^^^^^....^^^^^________
+____________^....^____________
+____________^....^____________
+____________^....^____________
+____________^....^____________
+____________^....^____________
+____________^....^____________
+____________^....^____________
+entities:
+spawn from_r04 14 20 up
+exit 13..16 21 N18_R04 from_r05
+trigger 5..24 10 scene=N18_BOSS if=!flag:n18_boss
+read 14 3 "The queen's nest, lined with gold feathers and poachers' rope. Among the down, one egg, and one very small roc." scene=N18_NEST if=flag:n18_boss
+
+=== N19_R01
+name: Lilac Seep
+tileset: town_r05
+music: M015
+zone: N19
+region: R05
+location: L_N19
+encounters: none
+save: true
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^zzzz^^^^^^^^^^^^^^^^^^^zzzzz^^^^
+^^zzz99*99zz^^^^^^^^^^^^zz99*99zzz^^
+^zzz9*99*9zzz^^^^^^^^^^zzz9*99*9zzz^
+^zzzz999zzzzzzz^^^^^^^zzzzzz999zzzz^
+^zzzzzzzzzRRRRRRRRRRRRRRzzzzzzzzzzz^
+^zz2zzzzzzRRRRRR44RRRRRRzzzzzzcrzzz^
+^zzzzzzzzzRRRRRRRRRRRRRRzzzzzzzzzzz^
+^zzzzzzzzzWQWWQWWQWWQWWWzzzzzzzzzzz^
+^zzzzzzzzzWQWWQWDWQWWQWWzzzzzzzzzzz^
+^zzz::::::::::::::::::::::::::::zzz^
+^^^^^^^^^^^^^^ss^^^^^^ss^^^^^^^^^^^^
+^zzz:::::::::::::::::::::::::::::zz^
+^zRRRRRRRzzz::::::O::::::zzRRRRRRRz^
+^zRR4RRRRzzz:::::::::::::zzRRRR4RRz^
+^zRRRRRRRzzz:::::::::::::zzRRRRRRRz^
+^zWQWWQWWzzS:::::::::::::zzWQWWQWWz^
+^zWQWDWWWzzzl:::::::::::lzzWWDWQWWz^
+^zz:::::::::::::::::::::::::::::::z^
+^zzNNNNNzzz99*99zz::::zz99*99zzNNNz^
+^zzNNNNNzz9*99*9zz::::zz9*99*9zNNNz^
+^zzNNNNNzzz9999zzz::::zzz9999zzNNNz^
+^zzzzzzzzzzzzzzzzz::::zzzzzzzzzzzzz^
+^zzff2fzzzzzzzzzzz::::zzzzzzfffffzz^
+^^zzzzzzzzzzzzzzzz::::zzzzzzzzzzzz^^
+^^^^zzzzzzzzzzzzzz::::zzzzzzzzzz^^^^
+^^^^^^^^^^^^^^^^^^::::^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^::::^^^^^^^^^^^^^^
+entities:
+spawn world 19 26 up
+spawn default 19 26 up
+spawn from_hall 16 10 down
+spawn from_inn 5 18 down
+spawn from_shop 29 18 down
+exit 18..21 27 WORLD l_n19
+door 16 9 N19_HALL entry sfx=FX008
+door 5 17 N19_INN entry sfx=FX008
+door 29 17 N19_SHOP entry sfx=FX008
+save 21 13
+sign 11 16 "Lilac Seep Mineral Co-operative. We grow what the ground gives. We do not grow what the Crown orders."
+read 4 3 "A seep pool: brine wells up from below and leaves lilac crystal on every stick set in it. The sticks are labelled with names."
+read 29 20 "Seep pool, fenced. A slate: 'RESTING. Pool gave too much last season. Let it think.'"
+npc n19_picker 9 20 right sprite=farmer talk=N19_PICKER
+npc n19_raker 6 22 up sprite=worker talk=N19_RAKER
+npc n19_warden 25 4 left sprite=elder talk=N19_WARDEN
+npc n19_kid 22 22 left sprite=child talk=N19_KID wander=1
+npc n19_assessor 20 12 down sprite=guard talk=N19_ASSESSOR if=!phase:post
+npc n19_scholar 31 10 left sprite=scholar talk=N19_SCHOLAR if=!phase:post
+npc n19_mourner 4 12 right sprite=survivor talk=N19_MOURNER
+npc n19_carter 4 6 right sprite=worker talk=N19_CARTER
+npc n19_stick 27 23 right sprite=farmer talk=N19_STICK
+npc n19_p_digger 20 12 down sprite=worker talk=N19_P_DIGGER if=phase:post
+npc n19_p_forget 31 10 left sprite=patient talk=N19_P_FORGET if=phase:post
+npc n19_grandma 14 18 down sprite=elder talk=N19_GRANDMA
+
+=== N19_INN
+name: Lilac Seep - The Resting Pool
+tileset: town_r05
+music: M015
+zone: N19
+region: R05
+location: L_N19
+encounters: none
+grid:
+################
+##kk?k...lk?kk##
+#....nnn.......#
+#..............#
+#.BB.BB..tt..B.#
+#.BB.BB..tt..B.#
+#..............#
+#!.........rr..#
+##............##
+#######++#######
+entities:
+spawn entry 7 8 up
+exit 7..8 9 N19_R01 from_inn
+npc n19_innkeep 6 1 down sprite=baker talk=N19_INN name="Hanne"
+inn 6 2 scene=N19_INN
+npc n19_caravan 11 6 left sprite=sailor talk=N19_CARAVAN
+
+=== N19_SHOP
+name: Lilac Seep - Seep Herbalist
+tileset: town_r05
+music: M015
+zone: N19
+region: R05
+location: L_N19
+encounters: none
+grid:
+################
+##gkgk..kgkg?k##
+#...nnn........#
+#..............#
+#.gg...tt...gg.#
+#.gg...tt...gg.#
+#..............#
+##............##
+#######++#######
+entities:
+spawn entry 7 7 up
+exit 7..8 8 N19_R01 from_shop
+npc herbalist_n19 6 1 down sprite=apprentice talk=N19_HERBALIST name="Sorrel the Herbalist"
+shop 6 2 SHOP_N19
+npc n19_patient 10 3 left sprite=patient talk=N19_PATIENT
+
+=== N19_HALL
+name: Lilac Seep - Co-operative Hall
+tileset: town_r05
+music: M015
+zone: N19
+region: R05
+location: L_N19
+encounters: none
+grid:
+##################
+##k8k?kk*kk?k8k*##
+#................#
+#..tttttt....5...#
+#................#
+#..tttttt....**..#
+#................#
+#!..........kk...#
+##..............##
+########++########
+entities:
+spawn entry 8 8 up
+exit 8..9 9 N19_R01 from_hall
+npc crafter_n19 12 4 right sprite=worker talk=N19_CRAFTER name="Aldous Brine"
+npc n19_chair 5 2 down sprite=elder talk=N19_CHAIR name="Co-op Chair Temperance"
+npc n19_clerk 15 7 left sprite=clerk talk=N19_CLERK
+chest N19_C_HALL 15 2 I003 1
+
+=== N20_R01
+name: The Glass Orchard
+tileset: vault
+music: M024
+zone: N20
+region: R05
+location: L_N20
+encounters: none
+save: true
+grid:
+##############......##############
+##############......##############
+#######,,,,,,,......,,,,,,,#######
+#####,,,,*,,*,,,..,,,*,,*,,,,,####
+####,,*,,,,,,,*,..,*,,,,,,*,,,,###
+###,,,,,*,,*,,,,..,,,,*,,*,,,,,,##
+###,*,,,,,,,,,*,..,*,,,,,,,,*,,,##
+##,,,,*,,*,,,,,,..,,,,,*,,*,,,,,,#
+##,*,,,,,,,,,*,,..,,*,,,,,,,,*,,,#
+##,,,,*,,,*,,,,,..,,,,,*,,,*,,,,,#
+##,,*,,,,,,,,*,,..,,*,,,,,,,,,*,,#
+##,,,,,,*,,,,,,,..,,,,,,,*,,,,,,,#
+##..............................##
+##..............................##
+##,,*,,,*,,,,*,,..,,*,,,,*,,,*,,,#
+##,,,,,,,,*,,,,,..,,,,,*,,,,,,,,,#
+##,*,,,*,,,,,,*,..,*,,,,,x,*,,*,,#
+###,,,,,,,,*,,,,..,,,,,*,,,,,,,,##
+###,,*,,,,,,,,*,..,,*,,,,,,,*,,,##
+####,,,,*,,,*,,,..,,,*,,,*,,,,,###
+#####,,,,,,,,,,,..,,,,,,,,,,,,####
+#######,,,,,,,,,..,,,,,,,,,#######
+##########,,,,,,..,,,,,,##########
+##############......##############
+##############......##############
+##############......##############
+entities:
+spawn world 16 24 up
+spawn default 16 24 up
+spawn from_heart 16 1 down
+exit 14..19 25 WORLD l_n20
+exit 14..19 0 N20_R02 from_orchard
+save 20 12
+read 9 3 "A glass tree, taller than a house. Its fruit are small, perfect, empty spheres of crystal. They ring when the wind touches them."
+read 25 16 "A felled glass tree, cut clean through. The stump is still growing, slowly, a new tree out of the old one's glass."
+read 1 13 "The orchard wall is builder stone. Old marks on it: nine small circles in a ring, one of them filled in."
+npc orchardist 17 13 down sprite=elder talk=N20_ORCHARDIST name="Pellam, the Last Orchardist"
+npc n20_cutter 28 9 left sprite=worker talk=N20_CUTTER if=!phase:post
+npc n20_archivist 6 11 right sprite=scholar talk=N20_ARCHIVIST
+npc n20_p_pilgrim 28 9 left sprite=volunteer talk=N20_P_PILGRIM if=phase:post
+
+=== N20_R02
+name: The Glass Orchard - The Heart Tree
+tileset: vault
+music: M024
+zone: N20
+region: R05
+location: L_N20
+encounters: none
+grid:
+########################
+#######,,,,,,,,,,#######
+#####,,,,,****,,,,,#####
+####,,,,,******,,,,,####
+###,,,,,***yy***,,,,,###
+###,,,,,***yy***,,,,,###
+##,,,,,,,******,,,,,,,##
+##,,,,,,,,,**,,,,,,,,,##
+##,,,,,,,,,,,,,,,,,,,,##
+##,,*,,,,,,,,,,,,,,*,,##
+###,,,,,,,,,,,,,,,,,,###
+###,,,,,,,,,,,,,,,,,,###
+####,,,,,,,,,,,,,,,,####
+#####,,,,,,..,,,,,,#####
+#########,....,#########
+##########....##########
+##########....##########
+##########....##########
+entities:
+spawn from_orchard 11 16 up
+exit 10..13 17 N20_R01 from_heart
+read 11 8 "The Heart Tree. Inside the glass, very deep, something like a figure curled asleep. It is not a tree. It never was." scene=N20_HEART
+read 4 9 "A plinth of builder stone, carved: 'SEED VESTIGE 03. Grown, not made. Do not wake without consent.'"
+read 19 9 "A second plinth, blank but for a handprint worn into the stone by a great many hands."
+chest N20_C_HEART 16 12 A010 1
+
+=== N21_R01
+name: Sorrowmere - Mourners' Shore
+tileset: grove_flood
+music: M024
+zone: N21
+region: R05
+location: L_N21
+encounters: W_N21
+rate: 0.5
+grid:
+TTTTTTTTTTTTTwwwwTTTTTTTTTTTTT
+TTTTTTTTTT~~~wwww~~~TTTTTTTTTT
+TTTTTTT~~~~~~wwww~~~~~~~TTTTTT
+TTTTT~~~~~~~~wwww~~~~~~~~~TTTT
+TTTT~~~~~~~~~wwww~~~~~~~~~~TTT
+TTT~~~~~~~~wwwwwwww~~~~~~~~~TT
+TT~~~~~~~wwwwwwwwwwww~~~~~~~TT
+TT~~~~~wwww""""""wwwww~~~~~~TT
+TT~~~ww""""""""""""""ww~~~~~TT
+TTwww"""";;""""""";;"""ww~~~TT
+TT"""""";;;""""""";;;"""""wwTT
+TT""1"""""""""""""""""""1"""TT
+TT""""""""""::::"""""""""""""T
+TTT"""""""""::::""""""""""""TT
+TTTT"""@"""":::::"""""""@""TTT
+TTTT""""""""::::""""""""""TTTT
+TTTTTT""""""::::"""""""TTTTTTT
+TTTTTTTT""""::::""""TTTTTTTTTT
+TTTTTTTTTT""::::""TTTTTTTTTTTT
+TTTTTTTTTTTT::::TTTTTTTTTTTTTT
+TTTTTTTTTTTT::::TTTTTTTTTTTTTT
+TTTTTTTTTTTT::::TTTTTTTTTTTTTT
+entities:
+spawn world 13 20 up
+spawn default 13 20 up
+spawn from_r02 14 1 down
+spawn from_r04 3 10 right
+exit 12..15 21 WORLD l_n21
+exit 13..16 0 N21_R02 from_r01
+exit 2 9 N21_R04 from_r01
+block 2 9 tile=water if=!flag:n21_raft msg="Dark water, and far out on it, a single lamp on an island. There is no boat on this side."
+trigger 11..16 16 scene=N21_ENTER if=!event:N21_ENTER
+read 7 14 "A cairn of small offerings: a child's shoe, a letter, a wedding cord. Left so the lake would take the memory and leave the grief."
+read 24 14 "A second cairn. A slate: 'I came to forget her. I couldn't. I stayed three days. Then I went home and remembered her properly.'"
+npc n21_mourner1 9 11 right sprite=survivor talk=N21_MOURNER1
+npc n21_mourner2 20 12 left sprite=elder talk=N21_MOURNER2
+npc n21_ferryman 5 10 up sprite=sailor talk=N21_FERRYMAN
+
+=== N21_R02
+name: Sorrowmere - The Causeway of Names
+tileset: grove_flood
+music: M024
+zone: N21
+region: R05
+location: L_N21
+encounters: W_N21
+rate: 0.8
+grid:
+TTTTTTTTTTTTTT;;;;TTTTTTTTTTTTTT
+TTTTTTTTTTTT"";;;;""TTTTTTTTTTTT
+TTTTTTTTT"""""";;""""""TTTTTTTTT
+TTTTTT~~~~~""";;"""~~~~~~TTTTTTT
+TTTT~~~~~~~~~~wwww~~~~~~~~~~TTTT
+TTT~~~~~~~~~~~wwww~~~~~~~~~~~TTT
+TT~~~~~~~~~~~~wwww~~~~~~~~~~~~TT
+TT~~~~~~~~~~~~wwww~~~~~~~~~~~~TT
+TT~~~~""""~~~~wwww~~~~~~~~~~~~TT
+TT~~~""!""wwwwwwww~~~~~~~~~~~~TT
+TT~~~"""""~~~~~~~~~~~~~~~~~~~~TT
+TT~~~~""~~~~~~~~~~~~~~~~""""~~TT
+TT~~~~ww~~~~~~~~~~~~~~~""!""~~TT
+TT~~~~ww~~~~~~~~~~~~~~~~""""~~TT
+TT~~~~wwwwwwwwwwwwwwwwwwww~~~~TT
+TT~~~~~~~~~~~~wwww~~~~~~~~~~~~TT
+TT~~~~~~~~~~~~wwww~~~~~~~~~~~~TT
+TT~~~~""""~~~~wwww~~~~~~~~~~~~TT
+TT~~~"";;"wwwwwwww~~~~~~~~~~~~TT
+TTT~~""""~~~~~wwww~~~~~~~~~~~TTT
+TTTT~~~~~~~~~~wwww~~~~~~~~~~TTTT
+TTTTTTTTTT"""";;;;""""TTTTTTTTTT
+TTTTTTTTTTTTTT;;;;TTTTTTTTTTTTTT
+TTTTTTTTTTTTTT;;;;TTTTTTTTTTTTTT
+entities:
+spawn from_r01 15 22 up
+spawn from_r03 15 1 down
+exit 14..17 23 N21_R01 from_r02
+exit 14..17 0 N21_R03 from_r02
+block 14..17 15..16 tile=water if=!flag:n21_lamp1 msg="The causeway sinks under black water here. Names are cut into the stones below the surface."
+block 14..17 4..8 tile=water if=!flag:n21_lamp2 msg="The causeway runs on under the water toward the drowned village. Too deep to wade."
+switch lamp1 7 17 scene=N21_LAMP1 sprite=lamp
+switch lamp2 25 11 scene=N21_LAMP2 sprite=lamp
+read 7 9 "A drowned lamp-post, relit by someone once and gone out again. The names on the causeway stones stop halfway across."
+chest N21_C_R02 6 19 G118 1
+read 16 14 "Names cut into the causeway, thousands of them. Every one the lake has taken. Most have been rubbed smooth by hands."
+
+=== N21_R03
+name: Sorrowmere - The Drowned Village
+tileset: grove_flood
+music: M024
+zone: N21
+region: R05
+location: L_N21
+encounters: W_N21
+rate: 0.9
+grid:
+TTTTTTTTTTTTT;;;;TTTTTTTTTTTTT
+TTTTTTTTTT"""";;""""TTTTTTTTTT
+TTTTTT~~~~ww""xx""ww~~~~TTTTTT
+TTTT~~~~wwwwwRRRRwwwww~~~~TTTT
+TTT~~~wwwwwwwRjjRwwwwwww~~~TTT
+TT~~~wwwwwwwwWQQWwwwwwwwww~~TT
+TT~~wwRRRwwwwWWWWwwwwRRRwww~TT
+TT~~wwRRRwwwwwwwwwwwwRRRwww~TT
+TT~wwwWxWwwwwwwwwwwwwWQWwwww~T
+TT~www''wwwwxwwwwwwwwwwwwwww~T
+TT~wwwwwwwwwwwwwwwwwwwwwwwww~T
+TT~wwxxwwwwwwwwwwwwwwwwxxwww~T
+TT~wwRRRRwwwwwwwwwwwRRRRwwww~T
+TT~wwRRRRwwwwwwwwwwwRRRRwwww~T
+TT~wwWQxWwwwwwwwwwwwWxQWwwww~T
+TT~wwwwwwwwwwwwwwwwwwwwwwwww~T
+TT~~wwwwww~~~~wwww~~~~wwwww~TT
+TT~~~wwww~~~~~wwww~~~~~www~~TT
+TT~~~~ww~~~~~~wwww~~~~~~ww~~TT
+TTT~~~~~~~~~~~wwww~~~~~~~~~TTT
+TTTT~~~~~~~~~~wwww~~~~~~~~TTTT
+TTTTT~~~~~~~~~wwww~~~~~~~TTTTT
+TTTTTTT~~~~~~~wwww~~~~~TTTTTTT
+TTTTTTTTTT~~~~wwww~~~~TTTTTTTT
+TTTTTTTTTTTTTTwwwwTTTTTTTTTTTT
+TTTTTTTTTTTTTTwwwwTTTTTTTTTTTT
+entities:
+spawn from_r02 15 24 up
+spawn from_r04 15 1 down
+exit 14..17 25 N21_R02 from_r03
+exit 13..16 0 N21_R04 from_r03
+block 13..16 1 tile=water if=!flag:n21_bell msg="The lane out of the village is under the lake. Far off, a drowned bell hangs silent in the chapel tower."
+read 17 4 "The chapel bell, still in its tower, the rope trailing into the water." scene=N21_BELL
+read 7 8 "A house door, open. Inside, under a foot of water, a table set for four. Nobody has touched it."
+read 22 8 "A window. Through it: a cradle, floating. Empty. Rocking a little in the current."
+read 7 14 "Rubble where a wall was. On the lintel: 'Merrow's Bakery. Est. before anyone remembers.' Nobody remembers."
+read 21 14 "A shop sign, face-down in the shallows: 'Ferris and Daughters, Rope.' The lake took the town. It left the signs."
+chest N21_C_R03 4 9 W138 1
+chest N21_C_HIDDEN 26 10 A012 1 hidden=1
+npc n21_drowned 10 10 down sprite=survivor talk=N21_DROWNED
+
+=== N21_R04
+name: Sorrowmere - Isle of the Last Lamp
+tileset: grove_flood
+music: M024
+zone: N21
+region: R05
+location: L_N21
+encounters: none
+save: true
+grid:
+~~~~~~~~~~wwww~~~~~~~~~~
+~~~~~~~~~~wwww~~~~~~~~~~
+~~~~~~~""""""""""~~~~~~~
+~~~~~""""""""""""""~~~~~
+~~~~""";;"""l""";;""~~~~
+~~~""""""""""""""""""~~~
+~~~""@"""""""""""@"""~~~
+~~""""""""""""""""""""~~
+~~"""""""""""""""""""""~
+~~"""""";;""""";;"""""~~
+~~~"""""""""""""""""""~~
+~~~""""""""""""""""""~~~
+~~~~""""""""""""""""~~~~
+~~~~~~""""""""""""~~~~~~
+~~~~~~~~""wwww""~~~~~~~~
+~~~~~~~~~~wwww~~~~~~~~~~
+~~~~~~~~~~wwww~~~~~~~~~~
+~~~~~~~~~~wwww~~~~~~~~~~
+entities:
+spawn from_r03 11 16 up
+spawn from_r05 11 1 down
+spawn from_r01 3 8 right
+exit 10..13 17 N21_R03 from_r04
+exit 10..13 0 N21_R05 from_r04
+exit 2 8 N21_R01 from_r04
+block 2 8 tile=water if=!flag:n21_raft msg="Black water between the island and the shore. A raft is tied up on this side."
+switch raft 4 9 scene=N21_RAFT
+save 9 6
+heal 14 6
+read 12 4 "The last lamp: a lantern on a pole, burning without oil. Its light makes the water around the island clear to the bottom." scene=N21_LASTLAMP
+
+=== N21_R05
+name: Sorrowmere - The Deep Mere
+tileset: grove_flood
+music: M024
+zone: N21
+region: R05
+location: L_N21
+encounters: none
+grid:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~wwwwwwwwwwwwwwwwwwww~~~~~
+~~~~wwwwwwwwwwwwwwwwwwwwww~~~~
+~~~wwww""""""""""""""""wwww~~~
+~~~www""""""""""""""""""www~~~
+~~wwww""""""""""""""""""wwww~~
+~~www""""""""""""""""""""www~~
+~~www""""""""""""""""""""www~~
+~~www""""""""""""""""""""www~~
+~~wwww""""""""""""""""""wwww~~
+~~~www""""""""""""""""""www~~~
+~~~wwww""""""""""""""""wwww~~~
+~~~~wwwwwww""""""""wwwwwww~~~~
+~~~~~~~~~~ww""""""ww~~~~~~~~~~
+~~~~~~~~~~~~wwwwww~~~~~~~~~~~~
+~~~~~~~~~~~~~wwww~~~~~~~~~~~~~
+~~~~~~~~~~~~~wwww~~~~~~~~~~~~~
+~~~~~~~~~~~~~wwww~~~~~~~~~~~~~
+~~~~~~~~~~~~~wwww~~~~~~~~~~~~~
+entities:
+spawn from_r04 14 20 up
+exit 13..16 21 N21_R04 from_r05
+trigger 5..24 11 scene=N21_BOSS if=!flag:n21_boss
+read 14 7 "Where the Mere-Mother sank, the water is clear. On the bottom: a village, and another, and another, all very small, all asleep." scene=N21_AFTER if=flag:n21_boss
+
+=== N37_R01
+name: Choir Anchorage
+tileset: sky
+music: M019
+zone: N37
+region: SKY
+location: L_N37
+encounters: none
+save: true
+legend: _=void
+grid:
+__________________________________
+_____________^^^^^^^^_____________
+__________^^^........^^^__________
+________^^.....RRRRR....^^________
+_______^.......RRRRR......^_______
+______^...}....WQWxW...}...^______
+_____^.........:::::........^_____
+____^..........:::::.........^____
+___^...m.......:::::..........^___
+7777=m<........:::::...,,,,,,,,^__
+7777=m.........:::::...,,,,,,,,^__
+___^...m.......:::::...,,,,,,,,^__
+___^...........:::::...,,,,,,,,^__
+____^..}.......:::::...,,,,,,,^___
+_____^.........:::::.......}.^____
+______^........:::::........^_____
+_______^^......:::::......^^______
+_________^^^...:::::...^^^________
+____________^^^:::::^^^___________
+______________^:::::^_____________
+_______________^...^______________
+________________^.^_______________
+_________________^________________
+__________________________________
+entities:
+spawn world 17 17 up
+spawn default 17 17 up
+exit 4 9..10 WORLD cable_choir if=!phase:post
+trigger 23..30 9..13 scene=N37_FIELD if=phase:post touch=0
+save 19 7
+read 17 5 "The cable house. Its door is nailed shut and painted: 'CLOSED. CABLE TO CRUCIBLE ISLE RE-RIGGING. ASK THE ANCHORMASTER.'"
+read 7 8 "The anchor winch: a builder drum wound with a cable as thick as a man. It hums. The cable runs down into the cloud toward the Ninefold Shrine."
+read 26 14 "An old mooring chain, rusted to the rock. Stamped on every link: 'SERAPHEL. PROPERTY OF THE HOST.'"
+npc anchormaster 11 9 left sprite=pilot talk=N37_ANCHORMASTER name="Anchormaster Cleave" if=!phase:post
+npc n37_crew 9 13 right sprite=worker talk=N37_CREW if=!phase:post
+npc n37_tout 21 12 left sprite=noble talk=N37_TOUT if=!phase:post
+npc n37_p_fieldkeeper 22 8 down sprite=pilot talk=N37_P_FIELDKEEPER if=phase:post
+npc n37_p_watcher 12 14 up sprite=survivor talk=N37_P_WATCHER if=phase:post
+npc n37_p_cleave 11 9 left sprite=pilot talk=N37_P_CLEAVE if=phase:post
+
+=== N39_R01
+name: Seraphel - The Broken Gate
+tileset: sky
+music: M024
+zone: N39
+region: SKY
+location: L_N39
+encounters: WP_N39
+rate: 0.5
+phase: post
+legend: _=void
+grid:
+_____________......_____________
+____________^......^____________
+___________^^u....u^^___________
+_________^^^.u....u.^^^_________
+_______^^.......y.......^^______
+______^.....u...,...u.....^_____
+_____^..........,..........^____
+____^...x.......,.......x...^___
+____^..xx.......,........x..^___
+___^............,............^__
+___^.....y......,......y.....^__
+___.............,............^__
+___^......u.....,.....u......^__
+____^...........,...........^___
+____^..x........,........x..^___
+_____^..........,..........^____
+______^^........,........^^_____
+________^^^.....,.....^^^_______
+___________^^,,,,,,,^^__________
+_____________^,,,,,^____________
+______________^,,,^_____________
+______________^,,,^_____________
+______________^,,,^_____________
+______________^,,,^_____________
+entities:
+spawn world 16 22 up
+spawn default 16 22 up
+spawn from_r02 15 1 down
+spawn from_r04 4 11 right
+exit 13..18 0 N39_R02 from_r01
+trigger 15..17 23 scene=N39_TO_SHIP
+exit 3 11 N39_R04 from_r01
+block 3 11 tile=rubble if=!flag:n39_vestry msg="A collapsed arch. Something on the far side is holding it up; a latch, maybe."
+trigger 13..19 18 scene=QC10_HOOK if=recruited:C10,party:C10,!q:QC10:ACTIVE,!q:QC10
+trigger 13..19 17 scene=N39_ENTER if=!event:N39_ENTER
+read 16 4 "A statue of a winged soldier, sword reversed, face worn away by wind. The plinth: 'WE ANSWER.'"
+read 9 10 "A fallen sentinel statue. Someone has set its sword back in its hands."
+read 23 10 "A sentinel statue, facing outward, still on watch over a sky with nothing in it."
+chest N39_C_R01 26 14 I003 2
+
+=== N39_R02
+name: Seraphel - Muster Hall
+tileset: crown
+music: M024
+zone: N39
+region: SKY
+location: L_N39
+encounters: WP_N39
+rate: 0.8
+phase: post
+legend: _=void
+grid:
+#############....#############
+#############....#############
+##..........................##
+##..u....u....yy....u....u..##
+##..........................##
+##..bbbb..bbbb....bbbb..bbbb##
+##..........................##
+##..u....u..........u....u..##
+##..........................##
+##..bbbb..bbbb....bbbb..bbbb##
+##..........................##
+##..u....u..........u....u..##
+##..........................##
+##.....@..............@.....##
+##..........................##
+######..................######
+#######......,,,,......#######
+##########...,,,,...##########
+#############,,,,#############
+#############,,,,#############
+#############,,,,#############
+#############,,,,#############
+entities:
+spawn from_r01 14 20 up
+spawn from_r03 14 1 down
+exit 13..16 21 N39_R01 from_r02
+exit 13..16 0 N39_R03 from_r02
+block 13..16 1 tile=gate if=!flag:n39_stop1 msg="A gate of silver bars, tuned like pipes. It hums one note, waiting for a second."
+block 13..16 2 tile=gate if=!flag:n39_stop2 msg="A second silver gate, humming a different note."
+switch stop1 7 14 scene=N39_STOP1 sprite=lever
+switch stop2 22 14 scene=N39_STOP2 sprite=lever
+read 14 4 "The muster roll, cut into the wall under the statues of the host: nine hundred names, in nine columns." scene=N39_ROLL
+read 3 13 "A lectern with a hymn-book chained to it. Every hymn is an order: 'Hold.' 'Descend.' 'Answer.' 'Hold.'"
+chest N39_C_R02 26 2 W141 1
+
+=== N39_R03
+name: Seraphel - Sentinel Walk
+tileset: sky
+music: M024
+zone: N39
+region: SKY
+location: L_N39
+encounters: WP_N39
+rate: 0.9
+phase: post
+legend: _=void
+grid:
+______________......______________
+______________^....^______________
+_____________^......^_____________
+____^^^^^____^......^____^^^^^____
+___^.....^___^......^___^.....^___
+___^..u..^____^....^____^..u..^___
+___^.....^_____^==^_____^.....^___
+____^...^_______==_______^...^____
+_____^=^________==________^=^_____
+______=_________==_________=______
+______=_____^^^^..^^^^_____=______
+______=____^..........^____=......
+______=____^...u..u...^____=______
+______=____^..........^____=______
+______=====............=====______
+___________^..........^___________
+___________^...u..u...^___________
+____________^........^____________
+_____________^^....^^_____________
+_______________...._______________
+_______________...._______________
+_______________...._______________
+entities:
+spawn from_r02 17 21 up
+spawn from_r04 16 1 down
+spawn from_organ 30 11 left
+exit 15..18 21 N39_R02 from_r03
+exit 14..19 0 N39_R04 from_r03
+npc sentinel_w 6 6 down sprite=guard talk=N39_SENTINEL name="Host Sentinel"
+npc sentinel_e 27 6 down sprite=guard talk=N39_SENTINEL name="Host Sentinel"
+npc sentinel_c 16 13 down sprite=guard talk=N39_SENTINEL name="Host Sentinel"
+chest N39_C_W 5 4 G121 1
+chest N39_C_HIDDEN 28 4 A117 1 hidden=1
+exit 33 11 N40_R01 from_seraphel
+block 31..33 11 tile=void if=!flag:n39_boss msg="Far out on the wind, the wreck of something vast drifts on its chains. The chain-bridge to it is drawn up."
+read 16 9 "The walk narrows to a single span of white stone. Below it: cloud, and far below the cloud, the World of Ruin."
+
+=== N39_R04
+name: Seraphel - Vestry
+tileset: crown
+music: M024
+zone: N39
+region: SKY
+location: L_N39
+encounters: none
+save: true
+phase: post
+legend: _=void
+grid:
+##########...###########
+##k?k8kk.....kk8k?k#####
+#......................#
+#..u................u..#
+#......................#
+#..tt..............tt..#
+#......................#
+#.......................
+#..u................u..#
+#......................#
+#!....................!#
+##....................##
+#########.....##########
+##########...###########
+##########...###########
+##########...###########
+entities:
+spawn from_r03 11 14 up
+spawn from_r05 11 1 down
+spawn from_r01 22 7 left
+exit 10..12 15 N39_R03 from_r04
+exit 10..12 0 N39_R05 from_r04
+exit 23 7 N39_R01 from_r04
+block 23 7 tile=rubble if=!flag:n39_vestry msg="A collapsed arch, braced from this side with an iron latch-bar."
+switch vestry 21 6 scene=N39_VESTRY
+save 8 7
+heal 14 7
+read 17 1 "Vestments on hooks, white and gold, each tagged with a name from the muster roll. Nine hundred hooks. Most are empty."
+
+=== N39_R05
+name: Seraphel - The Choir Loft
+tileset: crown
+music: M024
+zone: N39
+region: SKY
+location: L_N39
+encounters: none
+phase: post
+legend: _=void
+grid:
+##############################
+##pppppppppppppppppppppppppp##
+##p..........................#
+##..........................##
+##...u....u....@....u....u..##
+##..........................##
+##..........................##
+##..bbbb..bbbb....bbbb..bbbb##
+##..........................##
+##..bbbb..bbbb....bbbb..bbbb##
+##..........................##
+##..........................##
+##..bbbb..bbbb....bbbb..bbbb##
+##..........................##
+###........................###
+####......................####
+######..................######
+########.......###.....#######
+##########...........#########
+############.......###########
+#############.....############
+#############.....############
+entities:
+spawn from_r04 15 20 up
+exit 13..17 21 N39_R04 from_r05
+trigger 3..26 10 scene=N39_BOSS if=!flag:n39_boss
+read 15 5 "The conductor's stand. A baton of white metal lies on it, still warm." scene=QC10_LATE if=flag:n39_boss
+
+=== N40_R01
+name: The Broken Organ
+tileset: sky
+music: M024
+zone: N40
+region: SKY
+location: L_N40
+encounters: none
+phase: post
+legend: _=void
+grid:
+______________________________
+_______^^^^^^^^^^^^^^^^_______
+_____^^pppppppppppppppp^^_____
+____^ppp..............ppp^____
+____^pp..nnnnnnnnnnnn..pp^____
+___^pp.....)..)..)......pp^___
+___^p....................p^___
+___^p..x.............x...p^___
+___^p....................p^___
+___^pp.....y......y.....pp^___
+....^p..................p^____
+....=.....x.........x...p^____
+....^pp................pp^____
+_____^pp..............pp^_____
+______^^pppp......pppp^^______
+________^^^^^....^^^^^________
+____________^....^____________
+_____________^^^^_____________
+______________________________
+______________________________
+______________________________
+______________________________
+entities:
+spawn from_seraphel 1 11 right
+spawn default 1 11 right
+exit 0 10..11 N39_R03 from_organ
+read 14 4 "The great organ's keyboard: five manuals of white keys, cracked, and a single key held down by a wedge of stone." scene=N40_KEY
+read 11 5 "A stop, pulled out, labelled in the host's script: HOLD."
+read 14 5 "A stop, pushed in, labelled: ANSWER. Someone pushed it in very hard; the knob is bent."
+read 17 5 "A stop, half out, labelled: DESCEND. Dust on it. Nobody has touched it in thirty years."
+chest N40_C_ORGAN 6 7 A017 1
+chest N40_C_BELLOWS 22 7 W148 1 hidden=1
+

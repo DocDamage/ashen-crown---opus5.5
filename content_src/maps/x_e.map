@@ -1,0 +1,2932 @@
+#! Group e: the second half of the Deep, U20-U40 (post-fault). Hand-drawn grids.
+
+=== U20_R01
+name: Datum Archive - Reading Porch
+tileset: lattice
+music: M024
+zone: U20
+region: U2
+location: L_U20
+encounters: none
+save: true
+grid:
+##############..##############
+##############..##############
+##k?kk8kk?kk##..##kk?kk8kk?k##
+##..........l#..#l..........##
+##..u....u....::....u....u..##
+##............::............##
+##.tt..mm.....::.....mm..tt.##
+##.tt..mm.....::.....mm..tt.##
+##............::............##
+##..*......::::::......*......
+##.........::::::::...........
+##............::............##
+##.cc.r.......::.......r.cc.##
+##............::............##
+##..u....u....::....u....u..##
+##............::............##
+##!...........::...........!##
+#############::::#############
+#############::::#############
+#############::::#############
+entities:
+spawn world 14 17 up
+spawn default 14 17 up
+spawn from_r02 14 2 down
+spawn from_r04 28 9 left
+exit 13..16 19 DEEP l_u20
+exit 14..15 0 U20_R02 from_r01
+exit 29 9..10 U20_R04 from_r01 if=flag:u20_shortcut locked="A reading-room shutter, bolted from the far side."
+trigger 13..16 15 scene=U20_ENTER if=!event:U20_ENTER
+npc ines 9 9 right sprite=scholar talk=QBM1_INES name="Archivist Ines"
+npc u20_copyist 20 5 down sprite=apprentice talk=U20_COPYIST name="Copyist Dov"
+npc u20_reader 25 11 left sprite=keeper talk=U20_READER wander=1
+read 7 6 "A reading desk. Glass slates, each a single page that never fades. Most now read: PENDING DELETION."
+read 22 6 "An index drum, turning slowly. The builders filed things by what they were for, not what they were called."
+save 20 12
+chest U20_C_PORCH 3 3 I005 2
+
+=== U20_R02
+name: Datum Archive - The Stacks
+tileset: lattice
+music: M024
+zone: U20
+region: U2
+location: L_U20
+encounters: WP_U2
+rate: 0.7
+save: false
+grid:
+################..################
+################..################
+##kkkk?kkkk8kkk#..#kkk8kkkk?kkkk##
+##.............l..l.............##
+##..............................##
+##.kkk.kkk.kkk..::..kkk.kkk.kkk.##
+##.kkk.kkk.kkk..::..kkk.kkk.kkk.##
+##.kkk.kkk.kkk..::..kkk.kkk.kkk.##
+##..............::..............##
+##.kkk.kkk.kkk..::..kkk.kkk.kkk.##
+##.kkk.kkk.kkk..::..kkk.kkk.kkk.##
+##.kkk.kkk.kkk..::..kkk.kkk.kkk.##
+##..............::..............##
+##.kkk.kkk.kkk..::..kkk.kkk.kkk.##
+##.kkk.kkk.kkk..::..kkk.kkk.kkk.##
+##..............::..............##
+##..m...........::...........m..##
+##..............::..............##
+##!.............::.............!##
+###############.::.###############
+################::################
+################::################
+entities:
+spawn from_r01 16 20 up
+spawn from_r03 16 2 down
+exit 16..17 21 U20_R01 from_r02
+exit 16..17 0 U20_R03 from_r02
+block 16..17 3 tile=gate if=!flag:u20_stacks_open msg="A catalogue gate. Three drawers must be pulled in the order the builders filed them."
+read 17 4 "Brass plate: 'FOUNDING before LATTICE before RELAY. Pull in the order of making.'"
+switch u20_sw_relay 10 5 scene=U20_DRAWER_RELAY
+switch u20_sw_lattice 27 9 scene=U20_DRAWER_LATTICE
+switch u20_sw_founding 6 13 scene=U20_DRAWER_FOUNDING
+read 29 16 "A reading engine with its drawer half open. Something glows inside." scene=U20_CORE1
+chest U20_C_STACKS 31 4 I023 2
+chest U20_C_HIDDEN 2 10 A016 1 hidden=1
+npc u20_ghostlight 22 12 left sprite=keeper talk=U20_LOST_KEEPER name="Lost Keeper"
+
+=== U20_R03
+name: Datum Archive - Deletion Floor
+tileset: lattice
+music: M024
+zone: U20
+region: U2
+location: L_U20
+encounters: WP_U2
+rate: 0.8
+save: false
+legend: J=lava
+grid:
+################################
+#pppvvppp#pppvvppp#pppvvppp#####
+#..........................JJJ##
+#..m......m........m.......JJJ##
+#..........................JJJ##
+#||||||||||=||||||||||||=||||J##
+#...........................ee.#
+#..!.....k?k.....k?k........ee..
+#...........................ee..
+#...........................ee..
+#||||=||||||||||||=||||||||||J##
+#..........................JJJ##
+#..m.......m........m......JJJ##
+#..........................JJJ##
+#..............................#
+#..cc..r.............r..cc.....#
+###############..###############
+###############..###############
+entities:
+spawn from_r02 15 16 up
+spawn from_r04 30 8 left
+exit 15..16 17 U20_R02 from_r03
+exit 31 7..9 U20_R04 from_r03
+block 28..29 6..9 tile=ember if=!flag:u20_furnace_off msg="The incinerator mouth. Slates slide in and do not come out."
+switch u20_sw_furnace 3 14 scene=U20_FURNACE
+read 10 7 "A sorting desk. Slates stamped with the Crown's seal are sorted first. Someone gave that order recently." scene=U20_SORTER
+read 19 3 "A conveyor stopped mid-feed. Wedged under the belt, a slate that is still warm." scene=U20_CORE2
+chest U20_C_BELT 24 14 W034 1
+
+=== U20_R04
+name: Datum Archive - Index Gallery
+tileset: lattice
+music: M024
+zone: U20
+region: U2
+location: L_U20
+encounters: none
+save: false
+grid:
+##############..##############
+##############..##############
+##kk8kk?kk8k##..##k8kk?kk8kk##
+##..........l#..#l..........##
+##..u.......................##
+##.....yy...........yy......##
+##..........................##
+#............9999............#
+.............9999.............
+.............9999.............
+#............................#
+##..u.......................##
+##.....tt...........tt......##
+##..........................##
+##!........................!##
+##############################
+entities:
+spawn from_r03 1 8 right
+spawn from_r01 28 8 left
+spawn from_r05 14 2 down
+exit 0 8..9 U20_R03 from_r04
+exit 29 8..9 U20_R01 from_r04 if=flag:u20_shortcut locked="The shutter is bolted. The bolt is on this side, low on the wall."
+exit 14..15 0 U20_R05 from_r04
+switch u20_sw_shutter 27 11 scene=U20_SHUTTER
+read 7 5 "Two statues of builders, faces worn smooth, holding an open book between them. The book is a screen. It says: INDEX AWAKE." scene=U20_CORE3
+save 10 10
+heal 18 10
+
+=== U20_R05
+name: Datum Archive - The Index
+tileset: lattice
+music: M024
+zone: U20
+region: U2
+location: L_U20
+encounters: none
+save: false
+grid:
+################################
+####kkk?kkk8kkk###kkk8kkk?kkk###
+###......................l....##
+##............****............##
+##...........**mm**...........##
+##...........*mmmm*...........##
+##...........**mm**...........##
+##............****............##
+##..u......................u..##
+##............................##
+##............................##
+##..u......................u..##
+##............................##
+##!..........................!##
+##############..################
+##############..################
+entities:
+spawn from_r04 14 14 up
+exit 14..15 15 U20_R04 from_r05
+trigger 10..20 10 scene=U20_INDEX if=!flag:bx19_done
+read 15 8 "The Index's reading terminal, low enough to reach from the floor." scene=QBM1_TERMINAL
+chest U20_C_INDEX 27 3 A017 1
+
+=== U21_R01
+name: Glasswater Reservoir
+tileset: lattice
+music: M015
+zone: U21
+region: U2
+location: L_U21
+encounters: none
+save: true
+grid:
+########################################
+###pp#vv#pp####uu..uu####pp#vv#pp#######
+###..........l..::::..l............#####
+##...m....m.....::::.....m....m......###
+##..............::::.................###
+##wwwwwwwwwwwwww::::wwwwwwwwwwwwwwwww###
+##~~~~~~~~~~~~~w::w~~~~~~~~~~~~~~~~~~###
+##~~~~~~~~~~~~~~==~~~~~~~~~~~~~~~~~~~###
+##~~~~~~~~~~~~~~==~~~~~~~~~~~~~~~~~~~###
+##~~~~~~~wwww~~~==~~~~~~~~~~~~~~~~~~~###
+##~~~~~~wz*zw=====~~~~~~~~~~~~~~~~~~~###
+##~~~~~~~wwww~~~==~~~~~~~~~~~~~~~~~~~###
+##~~~~~~~~~~~~~~==~~~~~~~~6~~~~~~~~~~###
+##~~~~~~~~~~~~~~==~~~~~~~dddd~~~~~~~~###
+##~~~~~6~~~~~~~w::w~~~~~~dddd~~~~~~~~###
+##wwwwwdddwwwwww::wwwwwwwdddd~~~~~~~~###
+##.....ddd......::.......dddd........###
+##..cc.....r....::..........r..cc....###
+##..............::...................###
+##!.....l.......::.......l...........!##
+################::######################
+################::######################
+entities:
+spawn world 16 20 up
+spawn default 16 20 up
+spawn from_barge 26 16 up
+exit 16..17 21 DEEP l_u21
+block 17..18 1 tile=gate if=!flag:lanternwake_diving msg="The undersea link tunnel. A builder seal, rated for pressure. It will not open for anything that cannot dive."
+trigger 17..18 1 scene=U21_TUNNEL_END touch=0 if=flag:lanternwake_diving
+read 15 1 "A pressure plaque by the tunnel seal: 'LINK TUNNEL 4 - TO SEA FLOOR - VESSELS ONLY.'" scene=U21_TUNNEL
+npc u21_barge 27 15 left sprite=sailor talk=U21_BARGE name="Bargemaster Oona"
+npc u21_diver 12 3 down sprite=keeper talk=U21_DIVER name="Diver Hesk"
+npc u21_fisher 8 16 up sprite=survivor talk=U21_FISHER
+npc u21_child 21 17 left sprite=child talk=U21_CHILD wander=1
+npc u21_gauger 31 4 down sprite=scholar talk=U21_GAUGER name="Gauge-Keeper Thrale"
+read 5 3 "A builder gauge: GLASSWATER LEVEL 94%. The needle has not moved since the fault. It is correct."
+chest U21_C_ISLE 9 10 G024 1
+save 20 18
+
+=== U22_R01
+name: The Highway That Was - On-Ramp
+tileset: lattice
+music: M017
+zone: U22
+region: U2
+location: L_U22
+encounters: none
+save: false
+grid:
+############################################
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#
+#..l......u.......l.......u.......l.....x..#
+#..........................................#
+#:::::::::::::::::::::::::::::::::::::::::::
+#::::2:::::::::::::::::::::::2::::::::::::::
+#..........................................:
+#.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:..:
+#..........................................:
+#::::::::::::::2::::::::::::::::::::::::::::
+#:::::::::::::::::::::::::::::::::::::::::::
+#..l......u.......l.......u.......l........#
+#.....x....................................#
+#ffff.fffff..fffffffffffffffffffff.ffffffff#
+#......]..]..........zz..........r.c.......#
+#..cr..........!.....zz.......]............#
+#....................zz....................#
+#^^^^^^^^^^^^^^^^^^^::^^^^^^^^^^^^^^^^^^^^^#
+#^^^^^^^^^^^^^^^^^^^::^^^^^^^^^^^^^^^^^^^^^#
+####################::######################
+entities:
+spawn world 20 19 up
+spawn default 20 19 up
+spawn from_r02 42 8 left
+exit 20..21 20 DEEP l_u22
+exit 43 5..11 U22_R02 from_r01
+trigger 20..21 16 scene=QC17_ONRAMP_WAIT if=party:C17,!flag:qc17_surface_done,!flag:qc17_fallback
+trigger 20..21 16 scene=QC17_ONRAMP if=party:C17,flag:qc17_surface_done,!flag:qc17_deep_hook
+switch u22_lamp1 4 3 scene=U22_LAMP1 sprite=lever
+switch u22_lamp2 19 12 scene=U22_LAMP2 sprite=lever
+switch u22_lamp3 35 3 scene=U22_LAMP3 sprite=lever
+npc u22_scav 8 15 right sprite=worker talk=U22_SCAV name="Scavenger Brin"
+npc u22_scavkid 11 16 up sprite=child talk=U22_SCAVKID
+npc u22_surveyor 28 9 down sprite=scholar talk=U22_SURVEYOR name="Surveyor Pell-Ansa"
+read 26 3 "An overpass pillar, painted over and over: lane numbers, then prayers, then tally marks."
+read 5 6 "A wrecked cart from the builders' era. No horse fittings. The seat faces a wheel that steers."
+chest U22_C_CAMP 32 16 I003 1
+
+=== U22_R02
+name: The Highway That Was - The Last Toll
+tileset: lattice
+music: M017
+zone: U22
+region: U2
+location: L_U22
+encounters: none
+save: false
+grid:
+########################################
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#
+#....l.........l........l.....xx0000000#
+#.............................x00000000#
+#:::::::::nn::::nn::::nn::::::::0000000#
+::::::::::nm::::nm::::nm:::::::00000000#
+::::::::::nn::::nn::::nn::::::x00000000#
+:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.::0000000#
+::::::::::nn::::nn::::nn::::::::0000000#
+::::::::::nm::::nm::::nm::::::::0000000#
+#:::::::::nn::::nn::::nn:::::::x0000000#
+#.............................xx0000000#
+#....l...........l.........l....0000000#
+#......c.r............S........x0000000#
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^0000000#
+########################################
+entities:
+spawn from_r01 1 8 right
+exit 0 6..10 U22_R01 from_r02
+read 22 14 "Sign, builder script under a keeper's chalk translation: 'LAST SERVICE BEFORE THE BRIDGE. BRIDGE: CLOSED.'"
+read 11 6 "A toll booth. A light inside still blinks: WAITING FOR UNIT." scene=QC17_CALLBOX
+trigger 29 5..11 scene=QC17_GAP if=party:C17,flag:qc17_callbox,!flag:qc17_done
+npc u22_tollunit 15 12 down sprite=keeper talk=U22_TOLLUNIT name="Toll Unit"
+npc u22_pilgrim 7 12 right sprite=survivor talk=U22_PILGRIM
+chest U22_C_BOOTH 19 4 A021 1
+chest U22_C_EDGE 28 14 M003 1 hidden=1
+
+=== U23_R01
+name: Vault Omega - Cracked Seal
+tileset: vault
+music: M020
+zone: U23
+region: U2
+location: L_U23
+encounters: none
+save: true
+grid:
+##############################
+####uGGGGGGGG..GGGGGGGGGGu####
+####u...x............x.u######
+###..........x.............###
+##....m..............m......##
+##..........................##
+##..xx...................x..##
+##..........................##
+##..u.......::::.......u......
+##..........::::..............
+##..........::::............##
+##....m.....::::.....m......##
+##..........::::............##
+##!.........::::...........!##
+############::::##############
+############::::##############
+entities:
+spawn world 13 14 up
+spawn default 13 14 up
+spawn from_r02 14 2 down
+spawn from_r04 28 8 left
+exit 12..15 15 DEEP l_u23
+exit 13..14 1 U23_R02 from_r01
+exit 29 8..9 U23_R04 from_r01 if=flag:u23_shortcut locked="A service hatch. Locked from the armoury side."
+trigger 12..15 12 scene=QC16_OMEGA_WAIT if=party:C16,!flag:qc16_meridian_done,!flag:qc16_omega_fallback
+trigger 12..15 12 scene=QC16_OMEGA if=party:C16,flag:qc16_meridian_done,!flag:qc16_omega_hook
+trigger 12..15 10 scene=U23_ENTER if=!event:U23_ENTER
+read 18 2 "The vault door lies split along a fault line. Builder letters on the halves: OMEGA - OPERATIVE STORAGE - DO NOT WAKE WITHOUT ORDERS."
+save 20 10
+
+=== U23_R02
+name: Vault Omega - Cryo Rows
+tileset: vault
+music: M020
+zone: U23
+region: U2
+location: L_U23
+encounters: WP_U2
+rate: 0.7
+save: false
+grid:
+###################################
+##mm.mm.mm.mm.mm#..#mm.mm.mm.mm.m##
+##..............#..#.............##
+##.mm.mm.mm.mm..l..l..mm.mm.mm.m.##
+##...............................##
+##.mm.mm.mm.mm...::...mm.mm.mm.m.##
+##...............::..............##
+##.mm.mm.mm.mm...::...mm.mm.mm.m.##
+##...............::..............##
+##.mm.mm.mm.mm...::...mm.mm.mm.m.##
+##...............::..............##
+##..v.......v....::.....v......v.##
+##...............::..............##
+##!..............::.............!##
+################.::.###############
+#################::################
+entities:
+spawn from_r01 17 14 up
+spawn from_r03 17 2 down
+exit 17..18 15 U23_R01 from_r02
+exit 17..18 1 U23_R03 from_r02
+block 17..18 3 tile=gate if=!flag:u23_breaker_a msg="A bulkhead, unpowered. A breaker panel is somewhere on this floor."
+switch u23_breaker_a 31 12 scene=U23_BREAKER_A
+read 4 3 "Capsule K-03: empty. The label is scratched out and rewritten by hand: 'He asked to be let out. We let him out.'"
+read 26 7 "Capsule K-07: empty, frosted inside. The frost has the shape of someone sitting up."
+read 13 9 "Capsule K-09: empty. The cable to its order-port has been cut cleanly." scene=U23_K09
+chest U23_C_ROWS 2 12 I005 2
+chest U23_C_CAPSULE 30 2 W046 1 hidden=1
+npc u23_maint 9 10 right sprite=keeper talk=U23_MAINT name="Maintenance Unit"
+
+=== U23_R03
+name: Vault Omega - Hall of Standing Orders
+tileset: vault
+music: M020
+zone: U23
+region: U2
+location: L_U23
+encounters: WP_U2
+rate: 0.8
+save: false
+grid:
+################################
+##88888888#88888888888#88888888#
+##........l............l.......#
+##.......................u.....#
+##..u....................u.....#
+##.............yy..............#
+##..u..........yy........u.....#
+##.............................#
+##..u....................u.....#
+#...............................
+#...............................
+##..u....................u.....#
+##.............................#
+##..............::.............#
+###############.::.#############
+################::##############
+entities:
+spawn from_r02 16 14 up
+spawn from_r04 30 9 left
+exit 16..17 15 U23_R02 from_r03
+exit 31 9..10 U23_R04 from_r03
+block 29..30 9..10 tile=gate if=!flag:u23_breaker_b msg="A second bulkhead. The breaker is in the hall, behind the statues."
+switch u23_breaker_b 15 7 scene=U23_BREAKER_B
+read 5 1 "Mural of orders, row one: KAEL-01 HOLD THE GATE. KAEL-02 HOLD THE GATE. KAEL-03 HOLD THE GATE."
+read 14 1 "Mural of orders, row two: KAEL-04 TO KAEL-08 - DEPLOYED. RECALLED. RECALLED. RECALLED. NOT RECALLED."
+read 26 1 "Mural of orders, row three, freshly lit: KAEL-09 - HOLD THIS VAULT UNTIL RELIEVED. KAEL-00 - AWAIT ORDERS." scene=QC16_MURAL
+chest U23_C_HALL 3 12 G016 1
+
+=== U23_R04
+name: Vault Omega - Armoury Lock
+tileset: vault
+music: M020
+zone: U23
+region: U2
+location: L_U23
+encounters: none
+save: false
+grid:
+##########################
+##kk5kk!kk##..##kk!kk5kk##
+##.........l..l.........##
+##..u..................u##
+##..u..................u##
+##..u..................u##
+.......tt........tt.......
+.......tt........tt.......
+##......................##
+##......................##
+##......................##
+##..u..................u##
+##........................
+##......................##
+##!....................!##
+##########################
+entities:
+spawn from_r03 1 6 right
+spawn from_r01 24 12 left
+spawn from_r05 12 2 down
+exit 0 6..7 U23_R03 from_r04
+exit 25 12 U23_R01 from_r04 if=flag:u23_shortcut locked="The hatch to the lobby. Its release lever is right here."
+exit 12..13 1 U23_R05 from_r04
+switch u23_shortcut_lever 22 13 scene=U23_SHORTCUT
+save 9 11
+heal 16 11
+chest U23_C_ARMOURY 3 13 I006 2
+read 4 1 "An armoury rack. Every blade is the same model. Every blade has a different name scratched on the grip."
+
+=== U23_R05
+name: Vault Omega - Prototype Bay
+tileset: vault
+music: M020
+zone: U23
+region: U2
+location: L_U23
+encounters: none
+save: false
+grid:
+##############################
+###*...................*######
+##............................
+##....mm............mm......##
+##....mm....****....mm......##
+##.........*mmmm*...........##
+##.........*mmmm*...........##
+##..........****............##
+##..u..................u....##
+##..........................##
+##..........................##
+##..........................##
+##..u..................u....##
+##!........................!##
+############..################
+############..################
+entities:
+spawn from_r04 12 14 up
+exit 12..13 15 U23_R04 from_r05
+trigger 8..20 9 scene=U23_KAEL00 if=!flag:bx20_done
+read 14 8 "The prototype's cradle. A plate: KAEL-00. ORDERS: PENDING." scene=U23_CRADLE
+chest U23_C_BAY 26 2 A018 1
+
+=== U24_R01
+name: Prime Relay - Signal Gate
+tileset: crown
+music: M024
+zone: U24
+region: U2
+location: L_U24
+encounters: none
+save: true
+grid:
+################################
+#######uu8uu8uu..uu8uu8uu#######
+######..........::.........#####
+#####.....*.....::.....*......##
+####............::............##
+###..u....m.....::.....m....u.##
+###..u....m.....::.....m....u.##
+###.............::............##
+###.............::............##
+###.............::............##
+###.............::..............
+###..u..........::..........u...
+###.............::............##
+###..!..........::..........!.##
+################::##############
+################::##############
+entities:
+spawn world 16 14 up
+spawn default 16 14 up
+spawn from_r02 15 2 down
+spawn from_r04 30 10 left
+exit 16..17 15 DEEP l_u24
+exit 15..16 1 U24_R02 from_r01
+exit 31 10..11 U24_R04 from_r01 if=flag:u24_shortcut locked="A relay shutter. It answers to a lever on the far side."
+trigger 16..17 12 scene=QBM3_GATE if=!flag:qbm3_gate
+read 8 1 "A builder mural: a hand holding a lamp over a sleeping face. Under it, one word everyone here can read: CURATOR."
+npc u24_keeper 22 4 down sprite=keeper talk=U24_KEEPER name="Relay Keeper Anwe"
+save 11 12
+
+=== U24_R02
+name: Prime Relay - Listening Galleries
+tileset: crown
+music: M024
+zone: U24
+region: U2
+location: L_U24
+encounters: WP_U2
+rate: 0.8
+save: false
+grid:
+###################################
+##8uu8uu8uu8uu8#..#8uu8uu8uu8uu8u##
+##.............l..l..............##
+##..mmm...................mmm....##
+##..m@m......*......*.....m@m....##
+##..mmm...................mmm....##
+##...............................##
+##fffffffffff...........fffffffff##
+##...............::..............##
+##.......mmm.....::......*.......##
+##.......m@m.....::..............##
+##.......mmm.....::..............##
+##...............::..............##
+##..*......................*.....##
+##!..............::.............!##
+#################::################
+#################::################
+entities:
+spawn from_r01 17 15 up
+spawn from_r03 16 2 down
+exit 17..18 16 U24_R01 from_r02
+exit 16..17 1 U24_R03 from_r02
+block 16..17 2 tile=gate if=!flag:u24_nodes msg="A listening gate. Three sub-nodes sleep on this floor; the gate waits for all three to answer."
+switch u24_node1 4 6 scene=U24_NODE1
+switch u24_node2 27 6 scene=U24_NODE2
+switch u24_node3 10 12 scene=U24_NODE3
+read 17 8 "Floor inlay: THREE EARS, ONE MIND. WAKE THE EARS AND THE MIND WILL HEAR YOU."
+chest U24_C_GAL 31 13 I005 2
+
+=== U24_R03
+name: Prime Relay - The Copy Room
+tileset: crown
+music: M024
+zone: U24
+region: U2
+location: L_U24
+encounters: WP_U2
+rate: 0.7
+save: false
+grid:
+################################
+##kkk?kkk8kkk?kk##kkk?kkk8kkk?##
+##.............l..l...........##
+##..tttt....tttt....tttt......##
+##..t??t....t??t....t??t......##
+##..tttt....tttt....tttt......##
+##............................##
+##............................##
+##....yy..............yy......##
+##....yy..............yy........
+##..............................
+##............................##
+##..cc..rr..............rr.cc.##
+##!..........................!##
+###############..###############
+###############..###############
+entities:
+spawn from_r02 15 14 up
+spawn from_r04 30 9 left
+exit 15..16 15 U24_R02 from_r03
+exit 31 9..10 U24_R04 from_r03
+read 6 5 "Crown engineers' drafting table. Blueprints of the relay, traced line by line. Margin note: 'We do not need to understand it. Only to copy it.'" scene=QBM3_COPY
+read 14 5 "A second table. A Ministry seal and a requisition: '1 (one) consciousness, distributed. Source: dragon remains. Approved.'"
+read 22 5 "A third table, the last. Someone's unfinished letter: 'It asked us what we were building. We didn't answer. I think it knows now.'"
+chest U24_C_COPY 3 10 W040 1
+chest U24_C_HIDDEN 28 2 A019 1 hidden=1
+
+=== U24_R04
+name: Prime Relay - Antechamber
+tileset: crown
+music: M024
+zone: U24
+region: U2
+location: L_U24
+encounters: none
+save: false
+grid:
+##########################
+##k8kk!kk##..##kk!kk8k####
+##........l..l..........##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+.........................#
+.........................#
+##..........@...........##
+##..u................u....
+##........................
+##!....................!##
+##########################
+entities:
+spawn from_r03 1 9 right
+spawn from_r01 24 12 left
+spawn from_r05 11 2 down
+exit 0 9..10 U24_R03 from_r04
+exit 25 12..13 U24_R01 from_r04 if=flag:u24_shortcut locked="The relay shutter back to the Signal Gate. The lever is beside it."
+exit 11..12 1 U24_R05 from_r04
+switch u24_lever 22 13 scene=U24_SHORTCUT
+save 7 10
+heal 17 10
+read 12 11 "An altar-console. Builders left offerings here: pens, spectacles, a child's drawing of a lamp."
+
+=== U24_R05
+name: Prime Relay - The Inner Seal
+tileset: crown
+music: M027
+zone: U24
+region: U2
+location: L_U24
+encounters: none
+save: false
+grid:
+##############################
+#########uuGGGGGGGGuu#########
+########u............u########
+#######.....*.....*.....######
+######...................#####
+######...................#####
+#####..u......@@......u...####
+#####.....................####
+####..u.......::.......u...###
+####..........::...........###
+####..u.......::.......u...###
+####..u.......::.......u...###
+####..........::...........###
+####!.........::..........!###
+##############..##############
+##############..##############
+entities:
+spawn from_r04 14 14 up
+exit 14..15 15 U24_R04 from_r05
+trigger 9..18 2 scene=U24_CURATOR_DOOR touch=0
+trigger 12..17 8 scene=QC16_FINALE if=party:C16,flag:qc16_omega_done,!flag:qc16_done
+read 14 6 "The Prime Relay's heart-altar. Warm as a hand. Every light in the Lattice runs through it." scene=U24_HEART
+
+=== U25_R01
+name: Shutdown Town
+tileset: lattice
+music: M024
+zone: U25
+region: U2
+location: L_U25
+encounters: none
+save: false
+grid:
+########################################
+#RRRRRRR####RRRRRRRR####RRRRRRR###RRRRR#
+#RRRRRRR####RRRRRRRR####RRRRRRR###RRRRR#
+#WQWDWQW##u#WQWWDWQW#u##WQDWWQW#u#WQDQW#
+#.......l......................l.......#
+#..y...............m......y.........y..#
+#.......::::::::::::::::::::::::.......#
+#..m....:.....................:....m...#
+#.......:...y.....99.....y....:........#
+#RRRRR..:.........99..........:..RRRRR.#
+#RRRRR..:...y.....99.....y....:..RRRRR.#
+#WQDQW..:.....................:..WQDQW.#
+#.......::::::::::::::::::::::::.......#
+#..y..l.........::::...........l...y...#
+#...............::::...................#
+#RRRRRRR..RRRRR.::::.RRRRRRRR..RRRRRRR.#
+#RRRRRRR..RRRRR.::::.RRRRRRRR..RRRRRRR.#
+#WQWWQWW..WQWQW.::::.WQWWWQWW..WQWWQWW.#
+#.........c.r...::::...r.c.............#
+#!..............::::..................!#
+################::::####################
+entities:
+spawn world 17 19 up
+spawn default 17 19 up
+exit 16..19 20 DEEP l_u25
+npc u25_lamp 16 13 down sprite=keeper talk=QBM2_LAMPLIGHTER name="Lamplighter"
+npc u25_tinker 5 18 right sprite=worker talk=U25_TINKER name="Tinker Mave"
+npc u25_mayor 17 5 down sprite=keeper talk=QBM2_MAYOR name="The Mayor (switched off)"
+read 3 3 "A house door, painted builder blue. On it, a plate: 'SWITCHED OFF BY CHOICE. PLEASE DO NOT WAKE.'" scene=QBM2_NOTE1
+read 14 11 "A standing machine by a well-pool, one hand raised to wave. Its plate: 'I waved until nobody came. Then I stopped.'" scene=QBM2_NOTE2
+read 34 11 "A house with every window lit from inside by one small lamp. Its door plate: 'Left the light on for them.'" scene=QBM2_NOTE3
+read 27 3 "A plaque above a closed door: 'TOWN HALL. QUORUM: 0 OF 4,000.'"
+chest U25_C_HALL 37 5 A020 1
+chest U25_C_WELL 21 9 I024 1 hidden=1
+
+=== U26_R01
+name: Mag-rail Terminus
+tileset: lattice
+music: M019
+zone: U26
+region: U2
+location: L_U26
+encounters: none
+save: true
+grid:
+########################################
+#pppp##vvvv##pppp##vvvv##pppp##vvvv##pp#
+#||||||||||||||||||||||||||||||||||||||#
+#......2........2..........2...........#
+#dddddddddddddddddddddddddddddddddddddd#
+#......l.......l.......l.......l.......#
+#..nnn.......................tt........#
+#..............................b.b.....#
+#dddddddddddddd........dddddddddddddddd#
+#||||||||||||||...::...||||||||||||||||#
+#......2.......l.::.l........2.........#
+#dddddddddddddd..::..dddddddddddddddddd#
+#..c.r...........::...........S......r.#
+#!...............::...................!#
+#################::#####################
+#################::#####################
+entities:
+spawn world 17 14 up
+spawn default 17 14 up
+spawn from_barge 17 12 up
+spawn from_rail 17 7 down
+exit 17..18 15 DEEP l_u26
+npc rail_u26 20 7 down sprite=pilot talk=U26_RAIL name="Rail-Master Coyle"
+npc u26_kiosk 3 7 up sprite=keeper talk=U26_KIOSK name="Kiosk Keeper"
+shop 3 6 SHOP_U26
+npc u26_porter 26 12 left sprite=worker talk=U26_PORTER name="Porter Unit"
+npc u26_family 30 7 down sprite=survivor talk=U26_FAMILY wander=1
+npc u26_child 32 5 left sprite=child talk=U26_CHILD
+read 30 12 "Departures board. Every line reads DELAYED. One line, blank for an age, has lit: SHUTDOWN TOWN - SPUR 0." scene=U26_BOARD
+save 10 12
+
+=== U27_R01
+name: The Sunless Garden
+tileset: lattice
+music: M021
+zone: U27
+region: U2
+location: L_U27
+encounters: none
+save: false
+legend: J=moss
+grid:
+###################################
+##TTTT%%TTTT##uGGu##TTTT%%TTTT#####
+##T11ggJgg11T#....#T11ggJgg11T#####
+##TggTTTTggT......TggTTTTggT...####
+##..J.......JJ...JJ.........J...###
+##.gg.999..TT.....TT..999..gg...###
+##.gg.999..T1.....1T..999..gg....##
+##..........J.....J..............##
+##TT..TT....:::::::....TT..TT....##
+##T1..1T....:.....:....T1..1T....##
+##..........:..@..:..............##
+##ggJggJ....:.....:....ggJggJgg..##
+##..........:::::::..............##
+##..%T%....JJ..:..JJ.....%T%.....##
+##..TTT........:.........TTT.....##
+##!............:................!##
+###############::##################
+###############::##################
+entities:
+spawn world 15 16 up
+spawn default 15 16 up
+exit 15..16 17 DEEP l_u27
+npc u27_ground 13 10 right sprite=keeper talk=U27_GROUNDSKEEPER name="Groundskeeper"
+npc u27_herbalist 25 7 down sprite=farmer talk=U27_HERBALIST name="Herb-Picker Sael"
+read 15 10 "A sundial with no sun. Its gnomon is a lamp, long dark. Engraved: 'THE GARDEN KEEPS ITS OWN HOURS.'" scene=U27_SUNDIAL
+read 15 1 "A glass door into the seed vault, fogged from the inside." scene=U27_SEEDVAULT
+chest U27_C_BED1 5 5 I020 2
+chest U27_C_BED2 29 5 I020 2
+chest U27_C_VAULT 16 3 I024 1 hidden=1
+chest U27_C_ROOTS 3 13 A012 1
+
+=== U28_R01
+name: Styx Landing
+tileset: hollow
+music: M015
+zone: U28
+region: U3
+location: L_U28
+encounters: none
+save: true
+legend: -=bone
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^u..u^^^^^^^^^^^^^^^^^^
+^^^^^^^^^......l........l......^^^^^^^^^
+^^^^^^^....]..........------.......^^^^^
+^^^^^......]].....y...------....y.....^^
+^^^^...[.....................--.......^^
+^^^...........l...............--..l....^
+^^.....c.r.........---------------.....^
+^^.................-----------------...^
+^^....zzzzzzzzzzzz------zzzzzzzzzzzz...^
+^^~~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~^
+^^~~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~^
+^^~~~~~6~~~~~~~~~~dddddd~~~~~~~~6~~~~~~^
+^^~~~~~~~~~~~~~~~~dddddd~~~~~~~~~~~~~~~^
+^^~~~~~~~~~~~~~~~~~dd6~~~~~~~~~~~~~~~~~^
+^^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+entities:
+spawn world 21 2 down
+spawn default 21 2 down
+spawn from_boat 20 12 up
+exit 19..20 1 DEEP_POST l_u28
+trigger 18..25 5 scene=QC11_HOOK if=party:C11,!flag:qc11_hook
+npc u28_oarsman 21 13 up sprite=elder talk=U28_OARSMAN name="The Oarsman"
+npc u28_pilgrim 11 7 right sprite=survivor talk=U28_PILGRIM
+npc u28_widower 30 5 left sprite=farmer talk=U28_WIDOWER
+npc u28_tollclerk 27 3 down sprite=clerk talk=U28_TOLLCLERK name="Toll Clerk (dead)"
+npc u28_boy 8 5 right sprite=child talk=U28_BOY
+read 18 4 "A black stone post, worn smooth by hands: 'THE LIVING PAY IN COIN. THE DEAD PAY IN NAMES. NOBODY RIDES FREE.'"
+chest U28_C_TENT 12 3 I006 3
+save 16 8
+
+=== U29_R01
+name: Cenotaph - Gate of Wreaths
+tileset: hollow
+music: M015
+zone: U29
+region: U3
+location: L_U29
+encounters: none
+save: true
+legend: -=bone
+grid:
+TTTTTTTTTTTTTTTTTTTT----TTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTy----yTTTTTTTTTTTTTTTTTTT
+TT^^^^^^^^^^^^^^^^^.----.^^^^^^^^^^^^^^^^^TT
+TT^^^^^^^^^^^^^^^^^.ssss.^^^^^^^^^^^^^^^^^TT
+TT.....l...........l----l...........l.....TT
+TT.RRRRRRRRR.......y----y.......RRRRRRRRR.TT
+TT.RRRRRRRRR.......l----l.......RRRRRRRRR.TT
+TT.RRRRRRRRR........----........RRRRRRRRR.TT
+TT.WQWQDQWQW..r.....----....c...WQWDWQWQW.TT
+TT.....:S...........----...........:S.....TT
+TT.....:::::::::::::----:::::::::::::.....TT
+TT^^^^^^^^^^^^^^^^^.ssss.^^^^^^^^^^^^^^^^^TT
+TT^^^^^^^^^^^^^^^^^.----.^^^^^^^^^^^^^^^^^TT
+TT.l................----...............l..TT
+TT..RRRRRRR.aaaa....----....aaaa.RRRRRRR..TT
+TT..RRRRRRR.nnnn....----....nnnn.RRRRRRR..TT
+TT..RRRRRRR.........----.........RRRRRRR..TT
+TT..WQWDWQW.........----.........WQDWQWW..TT
+TT..cr.:S...........----..........S:r.......
+TT.....:::::::::::::----::::::::::::::::::::
+TT..................----....................
+TT..y...h.h...y.....----.....y...h.h...y..TT
+TT~~~~~~~~~~~~~~~~~w====w~~~~~~~~~~~~~~~~~TT
+TT~~~~~~~~~~~~~~~~~w====w~~~~~~~~~~~~~~~~~TT
+TT..................----..................TT
+TT.l..cc.r..........----..........r.cc..l.TT
+TT..................----..................TT
+TTTTTTTTTTTTTTTTTTy.----.yTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTT----TTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTT----TTTTTTTTTTTTTTTTTTTT
+entities:
+spawn world 21 28 up
+spawn default 21 28 up
+spawn from_r02 21 1 down
+spawn from_r03 42 19 left
+spawn from_inn 7 9 down
+spawn from_smith 35 9 down
+spawn from_shop 7 18 down
+spawn from_house2 35 18 down
+spawn from_boat 21 24 up
+exit 20..23 29 DEEP_POST l_u29
+exit 20..23 0 U29_R02 from_r01
+exit 43 18..20 U29_R03 from_r01
+door 7 8 U29_INN entry sfx=FX008
+door 35 8 U29_SMITH entry sfx=FX008
+door 7 17 U29_SHOP entry sfx=FX008
+door 35 17 U29_HOUSE2 entry sfx=FX008
+npc u29_gatewarden 23 26 left sprite=guard talk=U29_GATEWARDEN name="Gate-Warden Osric"
+npc u29_wreath 13 16 down sprite=baker talk=U29_WREATH name="Wreath-Seller Mab"
+npc u29_candle 29 16 down sprite=keeper talk=U29_CANDLE name="Candle-Wright"
+npc u29_pilgrim 10 24 right sprite=survivor talk=U29_PILGRIM
+npc u29_crier 25 20 left sprite=clerk talk=U29_CRIER name="Roll-Crier"
+npc u29_widow 5 21 right sprite=noble talk=U29_WIDOW
+sign 8 9 "The Waking House. Beds for the living. The dead do not sleep, but they are good hosts."
+sign 36 9 "Grave-Mason. Stone cut, names set, weapons honed."
+sign 8 18 "Wreath & Lamp. Supplies for the long visit."
+sign 34 18 "A family house. A wreath on the door, still green."
+read 21 13 "A tall stone at the stair foot, names cut on every face. At the top, fresh: 'THE HONOUR ROLL IS KEPT AT THE HALL OF NAMES.'"
+save 17 24
+
+=== U29_R02
+name: Cenotaph - Avenue of the Honoured
+tileset: hollow
+music: M015
+zone: U29
+region: U3
+location: L_U29
+encounters: none
+save: false
+legend: -=bone
+grid:
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTRRRRRRRRRRRRRRRRRRRRRRRRRRTTTTTTT
+TTTTTTTRRRRRRRRRRRRRRRRRRRRRRRRRRTTTTTTT
+TTTTTTTRRRRRRRRRRRRRRRRRRRRRRRRRRTTTTTTT
+TTTTTTTRRRRRRRRRRRRRRRRRRRRRRRRRRTTTTTTT
+TTTTTTTWQWQWuWQWQWuDDuWQWQWuWQWQWTTTTTTT
+TTTTTT.l.....y....----....y.....l.TTTTTT
+TT^^^.............----.............^^^TT
+TT^^^.............----.............^^^TT
+TT^^^.............----.............^^^TT
+TT^^^..TT..y......----......y..TT..^^^TT
+TT.....TT.........----.........TT.....TT
+TT..y.............----.............y..TT
+TT.....yy.yy.yy...----...yy.yy.yy.....TT
+TT.....yy.yy.yy...----...yy.yy.yy.....TT
+TT................----................TT
+TT.....yy.yy.yy...----...yy.yy.yy.....TT
+TT................----................TT
+TTTT..l....y......----......y....l..TTTT
+TTTT..............----..............TTTT
+TT^^^..TT..y......----......y..TT..^^^TT
+TT................----................TT
+TT..y....@........----........@....y..TT
+TT................----................TT
+TTTTTTTTTTTTTTTTTT----TTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTT----TTTTTTTTTTTTTTTTTT
+entities:
+spawn from_r01 19 24 up
+spawn from_hall 19 6 down
+exit 18..21 25 U29_R01 from_r02
+door 19 5 U29_HALL entry sfx=FX009
+door 20 5 U29_HALL entry sfx=FX009
+npc u29_soldier 12 15 right sprite=soldier talk=QC11_SOUL1 name="Corporal Aveline Marsh"
+npc u29_sculptor 10 22 left sprite=worker talk=U29_SCULPTOR name="Sculptor Hedd"
+npc u29_monk 30 15 left sprite=monk talk=U29_MONK
+npc u29_hallguard 17 6 down sprite=guard talk=U29_HALLGUARD
+npc u29_honoured 26 21 down sprite=noble talk=U29_HONOURED name="Dame Ysolt"
+read 13 6 "A statue of a woman carrying a lantern down a stair. Plaque: 'FIRST OF THE HONOURED. SHE CAME DOWN TO FIND HER DAUGHTER, AND STAYED.'"
+read 26 6 "A statue of a man with empty hands. Plaque: 'HE GAVE EVERYTHING AWAY. WE KEPT HIS NAME.'"
+read 9 22 "An altar of names. The dead leave small things here for the living who still remember them."
+chest U29_C_GRAVES 35 16 A013 1
+
+=== U29_R03
+name: Cenotaph - Lantern Quarter
+tileset: hollow
+music: M015
+zone: U29
+region: U3
+location: L_U29
+encounters: none
+save: false
+legend: -=bone
+grid:
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TT..RRRRRRR....RRRRRRRR....RRRRRRR....TT
+TT..RRRRRRR....RRRRRRRR....RRRRRRR....TT
+TT..RRRRRRR....RRRRRRRR....RRRRRRR....TT
+TT..RRRRRRR....RRRRRRRR....RRRRRRR....TT
+TT..WQDQWQW..l.WQWQWQWQ..l.WQWQWQW....TT
+TT....:...............................TT
+TT....:::::::::::::::::::::::::::::...TT
+TT....:::::::::::::::::::::::::::::...TT
+TT..h1h1h.......h1h1h.......h1h1h.....TT
+TT......y.............y.............y.TT
+TT....................................TT
+TT..l...........l...........l.........TT
+::::::::::::::::::::::::::::::::::::::TT
+::::::::::::::::::::::::::::::::::::::TT
+::::::::::::::::::::::::::::::::::::::TT
+TT..RRRRRRRR......RRRRRRR......RRRRRR.TT
+TT..RRRRRRRR......RRRRRRR......RRRRRR.TT
+TT..RRRRRRRR......RRRRRRR......RRRRRR.TT
+TT..WQWQWQWQ......WQWQWQW......WQWQWQ.TT
+TT..l.........l.........l.........l...TT
+TTwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwTT
+TT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TT
+TT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+entities:
+spawn from_r01 1 14 right
+spawn from_house1 6 6 down
+exit 0 13..15 U29_R01 from_r03
+door 6 5 U29_HOUSE1 entry sfx=FX008
+npc u29_lamplighter 14 11 down sprite=worker talk=U29_LAMPLIGHTER name="Lamplighter Coll"
+npc u29_mother 25 10 left sprite=noble talk=U29_MOTHER
+npc u29_pim 10 20 up sprite=child talk=U29_PIM name="Pim"
+npc u29_boatman 30 20 down sprite=sailor talk=U29_BOATMAN
+sign 5 6 "The Aldous house. A child's shoes on the step. They are wet."
+read 20 5 "A house with every shutter closed. A notice: 'IN MOURNING. PLEASE DO NOT KNOCK.'"
+read 30 19 "A canal lantern. The water under it is black and perfectly still; it reflects the lamp and nothing else."
+chest U29_C_CANAL 37 20 I003 2
+
+=== U29_INN
+name: Cenotaph - The Waking House
+tileset: interior_stone
+music: M015
+zone: U29
+region: U3
+location: L_U29
+encounters: none
+save: false
+grid:
+##################
+#k8k.BB.BB.BB.k!k#
+#................#
+#..tt......nnnn..#
+#..tt............#
+#................#
+#.r..........l...#
+#................#
+#..tt........B.B.#
+#..tt............#
+#!..............!#
+########++########
+entities:
+spawn entry 8 10 up
+exit 8..9 11 U29_R01 from_inn
+npc u29_innkeeper 12 2 down sprite=elder talk=U29_INN name="Hostess Gwyl"
+inn 12 3 scene=U29_INN
+npc u29_guest 6 5 left sprite=survivor talk=U29_GUEST
+
+=== U29_SHOP
+name: Cenotaph - Wreath & Lamp
+tileset: interior_stone
+music: M015
+zone: U29
+region: U3
+location: L_U29
+encounters: none
+save: false
+grid:
+################
+#kk?kk8kk?kk!kk#
+#..............#
+#...nnnnnn.....#
+#..............#
+#.r..........c.#
+#..............#
+#..tt......y...#
+#..............#
+#!............!#
+#######++#######
+entities:
+spawn entry 7 9 up
+exit 7..8 10 U29_R01 from_shop
+npc u29_shopkeeper 6 2 down sprite=keeper talk=U29_SHOPKEEP name="Tallow"
+shop 6 3 SHOP_U29
+
+=== U29_SMITH
+name: Cenotaph - Grave-Mason
+tileset: interior_stone
+music: M015
+zone: U29
+region: U3
+location: L_U29
+encounters: none
+save: false
+grid:
+################
+#k5k!kkyykk!k5k#
+#..............#
+#..55....nnnn..#
+#..............#
+#.yy.......!...#
+#..............#
+#..............#
+#..............#
+#!............!#
+#######++#######
+entities:
+spawn entry 7 9 up
+exit 7..8 10 U29_R01 from_smith
+npc crafter_u29 10 2 down sprite=worker talk=U29_CRAFTER name="Grave-Mason Idris"
+read 3 5 "Blank headstones, stacked. One has a name half cut and abandoned: the mason heard the person was still alive."
+
+=== U29_HALL
+name: Cenotaph - Hall of Names
+tileset: interior_stone
+music: M015
+zone: U29
+region: U3
+location: L_U29
+encounters: none
+save: false
+grid:
+####################
+#kkkk?kk8@@8kk?kkkk#
+#..................#
+#..u....nnnn....u..#
+#..................#
+#..kk..........kk..#
+#..kk..........kk..#
+#..................#
+#..u....bb.bb...u..#
+#..................#
+#..u....bb.bb...u..#
+#..................#
+#!................!#
+#########++#########
+entities:
+spawn entry 9 12 up
+exit 9..10 13 U29_R02 from_hall
+npc u29_registrar 10 2 down sprite=scholar talk=QUP4_REGISTRAR name="The Registrar"
+npc u29_clerk 4 7 right sprite=clerk talk=U29_CLERK name="Under-Clerk Fenn"
+read 3 5 "Shelves of the Honour Roll, bound in grey leather. Each book is a street. Each page is a door."
+read 16 5 "A newer volume, stamped with a veiled seal: 'ADOPTED BY THE COURT.' The ink is still wet on the last page."
+
+=== U29_HOUSE1
+name: Cenotaph - The Aldous House
+tileset: interior_stone
+music: M015
+zone: U29
+region: U3
+location: L_U29
+encounters: none
+save: false
+grid:
+################
+#kk8k.BB.k?k!kk#
+#..............#
+#..tt....B.....#
+#..tt..........#
+#..............#
+#.r.......y....#
+#..............#
+#..............#
+#!............!#
+#######++#######
+entities:
+spawn entry 7 9 up
+exit 7..8 10 U29_R03 from_house1
+npc u29_aldous_m 5 5 right sprite=elder talk=QUP4_ALDOUS name="Master Aldous"
+npc u29_aldous_f 8 4 down sprite=noble talk=QUP4_ALDOUS name="Mistress Aldous"
+npc u29_tobin 11 3 down sprite=child talk=QUP4_TOBIN name="Tobin" if=!flag:qup4_freed
+read 10 6 "A small stone on a shelf, like a headstone for a doll. It reads: 'ELLIS. SEVEN. OURS.'"
+
+=== U29_HOUSE2
+name: Cenotaph - The Wreathed House
+tileset: interior_stone
+music: M015
+zone: U29
+region: U3
+location: L_U29
+encounters: none
+save: false
+grid:
+################
+#k?kk.B.kk8k!kk#
+#..............#
+#..tt..........#
+#..tt.....r.c..#
+#..............#
+#.....y........#
+#..............#
+#!............!#
+#######++#######
+entities:
+spawn entry 7 8 up
+exit 7..8 9 U29_R01 from_house2
+npc u29_father 9 3 down sprite=farmer talk=U29_FATHER name="Harl"
+chest U29_C_HOUSE 13 6 I023 1
+
+=== U34_R01
+name: Mourner's Vale
+tileset: hollow
+music: M016
+zone: U34
+region: U3
+location: L_U34
+encounters: none
+save: true
+legend: -=bone
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^y.@.y^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^.........^^^^^^^^^^^^^^
+^^^^^^^^^^^......--......^^^^^^^^^^^
+^^^^^RRRRRR......--.......RRRRRRR^^^
+^^^..RRRRRR..]...--...]...RRRRRRR..^
+^^...RRRRRR......--.......RRRRRRR..^
+^^...WQDQWW..l...--...l...WQWDWQW..^
+^^.....:.........--.........:......^
+^^.....::::::::::--::::::::::......^
+^^..]......y.....--.....y......]...^
+^^...[...........--..........[.....^
+^^.........RRRRRRRRRRRR............^
+^^..g1g....RRRRRRRRRRRR....g1g.....^
+^^..ggg....RRRRRRRRRRRR....ggg.....^
+^^.........WQWQWDDWQWQW............^
+^^..c.r.........::.........r.c.....^
+^^..............::.................^
+^^...]....O.....::.....]...........^
+^^..............::.................^
+^^^^.....]......::......]......^^^^^
+^^^^^^..........::..........^^^^^^^^
+^^^^^^^^^^^^^^^^::^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^::^^^^^^^^^^^^^^^^^^
+entities:
+spawn world 16 22 up
+spawn default 16 22 up
+spawn from_inn 7 8 down
+spawn from_shop 29 8 down
+spawn from_chapel 16 16 down
+exit 16..17 23 DEEP_POST l_u34
+door 7 7 U34_INN entry sfx=FX008
+door 29 7 U34_SHOP entry sfx=FX008
+door 16 15 U34_CHAPEL entry sfx=FX009
+door 17 15 U34_CHAPEL entry sfx=FX009
+npc u34_wenna 14 18 right sprite=farmer talk=QUP4_WENNA name="Wenna"
+npc u34_tobin 15 19 up sprite=child talk=U34_TOBIN name="Tobin" if=flag:qup4_freed
+npc u34_warden 18 21 left sprite=guard talk=U34_WARDEN name="Vale-Warden Rusk"
+npc u34_widow 22 10 left sprite=noble talk=U34_WIDOW
+npc u34_boy 9 13 right sprite=child talk=U34_BOY
+npc u34_digger 30 13 left sprite=worker talk=U34_DIGGER
+npc u34_hobb 12 10 down sprite=survivor talk=QC11_SOUL2 name="Nell Tanner"
+npc u34_old 3 17 right sprite=elder talk=U34_OLD
+npc u34_sister 17 2 down sprite=monk talk=U34_SISTER name="Sister of the Cairn"
+npc u34_trader 26 17 left sprite=keeper talk=U34_TRADER
+npc u34_scholar 31 9 down sprite=scholar talk=U34_SCHOLAR name="Chronicler Aud"
+npc u34_girl 20 19 up sprite=child talk=U34_GIRL
+read 17 1 "The Mourning Cairn: an altar where the living leave letters for the dead. The dead come up at night to read them."
+sign 8 8 "The Pilgrims' Hostel. Soup, cots, no questions."
+sign 28 8 "Sutler & Crafter. Lamp oil, grave-bread, mending."
+chest U34_C_CAIRN 21 2 I005 2
+save 20 16
+
+=== U34_INN
+name: Mourner's Vale - Pilgrims' Hostel
+tileset: interior
+music: M016
+zone: U34
+region: U3
+location: L_U34
+encounters: none
+save: false
+grid:
+##################
+#k8k.BB.BB.BB.k!k#
+#................#
+#..tt......nnnn..#
+#..tt............#
+#................#
+#.r.....B.B......#
+#................#
+#..tt.......c.r..#
+#!..............!#
+########++########
+entities:
+spawn entry 8 9 up
+exit 8..9 10 U34_R01 from_inn
+npc u34_innkeeper 12 2 down sprite=baker talk=U34_INN name="Hostel-Keeper Brona"
+inn 12 3 scene=U34_INN
+npc u34_guest 5 5 right sprite=survivor talk=U34_GUEST
+
+=== U34_SHOP
+name: Mourner's Vale - Sutler & Crafter
+tileset: interior
+music: M016
+zone: U34
+region: U3
+location: L_U34
+encounters: none
+save: false
+grid:
+################
+#kk?kk5kk?kk!kk#
+#..............#
+#...nnnnnn.....#
+#..............#
+#.r.......55...#
+#..............#
+#..cc......!...#
+#!............!#
+#######++#######
+entities:
+spawn entry 7 8 up
+exit 7..8 9 U34_R01 from_shop
+npc u34_sutler 6 2 down sprite=keeper talk=U34_SUTLER name="Sutler Pry"
+shop 6 3 SHOP_U34
+npc crafter_u34 12 4 left sprite=worker talk=U34_CRAFTER name="Mender Jossa"
+
+=== U34_CHAPEL
+name: Mourner's Vale - Vigil Chapel
+tileset: interior_stone
+music: M016
+zone: U34
+region: U3
+location: L_U34
+encounters: none
+save: false
+grid:
+####################
+#..!.l...@@...l.!..#
+#........yy........#
+#..................#
+#...bb.bb..bb.bb...#
+#..................#
+#...bb.bb..bb.bb...#
+#..................#
+#!................!#
+#########++#########
+entities:
+spawn entry 9 8 up
+exit 9..10 9 U34_R01 from_chapel
+npc u34_vigil 12 3 down sprite=monk talk=U34_VIGIL name="Vigil-Keeper Orla"
+npc u34_mourner 6 5 up sprite=elder talk=U34_MOURNER
+read 10 2 "Two statues holding a lantern between them. Pilgrims tie ribbons to it, one for each person they came down to see."
+
+=== U37_R01
+name: Weeping Mines
+tileset: quarry
+music: M020
+zone: U37
+region: U3
+location: L_U37
+encounters: none
+save: true
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^VVVV^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^......^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^...||....^^^^^^^^^^^^^^
+^^^^^xx.2......||.......x...^^^^^^^^
+^^^^.........||..........2...^^^^^^^
+^^^...c.r...||......................
+^^..........||...RRRRRRR.....RRRRRR^
+^^..RRRRRR..||...RRRRRRR.....RRRRRR^
+^^..RRRRRR..||...RRRRRRR.....RRRRRR^
+^^..RRRRRR..||...WQWDWQW.....WDWQWW^
+^^..WQDQWW..||......:..........:...^
+^^.....:....||......:..........:...^
+^^.....::::::::::::::::::::::::::..^
+^^..........||.........l...........^
+^^..l.......||..y.........y....l...^
+^^....2.....||.......''............^
+^^..........2|......'''.....c.c....^
+^^......................r..........^
+^^^...x........::..............^^^^^
+^^^^^..........::...........^^^^^^^^
+^^^^^^^^^^^^^^^::^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^::^^^^^^^^^^^^^^^^^^^
+entities:
+spawn world 15 21 up
+spawn default 15 21 up
+spawn from_inn 6 12 down
+spawn from_smith 20 11 down
+spawn from_office 30 11 down
+exit 15..16 22 DEEP_POST l_u37
+door 6 11 U37_INN entry sfx=FX008
+door 20 10 U37_SMITH entry sfx=FX008
+door 30 10 U37_OFFICE entry sfx=FX008
+npc u37_garrow 18 3 down sprite=worker talk=QC11_SOUL3 name="Old Garrow"
+npc u37_digger1 9 4 right sprite=worker talk=U37_DIGGER1
+npc u37_digger2 22 5 left sprite=worker talk=U37_DIGGER2
+npc u37_tally 27 14 left sprite=clerk talk=U37_TALLY name="Tally-Man Quist"
+npc u37_widow 8 16 right sprite=farmer talk=U37_WIDOW name="Ada (living)"
+npc u37_kid 23 17 up sprite=child talk=U37_KID
+npc u37_canary 27 5 left sprite=keeper talk=U37_CANARY name="Canary-Keeper"
+npc u37_foreman_ghost 25 12 down sprite=guard talk=U37_SHIFTBELL
+npc u37_weeper 17 18 right sprite=elder talk=U37_WEEPER name="The Weeper"
+npc u37_prospector 28 18 left sprite=survivor talk=U37_PROSPECTOR name="Prospector Wil (living)"
+npc u37_cartpusher 6 15 right sprite=worker talk=U37_CARTPUSHER name="Cart-Pusher"
+read 21 16 "A seep of water down the rock face, pooling at the foot. The miners call it the Weeping. It tastes of salt."
+sign 7 12 "Bunkhouse. The living may sleep. The dead prefer the night shift."
+sign 21 11 "Smithy. Picks mended. Lamps filled. Names engraved on handles, free."
+chest U37_C_FACE 7 4 M003 2
+chest U37_C_CART 33 18 I003 2 hidden=1
+save 12 18
+
+=== U37_INN
+name: Weeping Mines - Bunkhouse
+tileset: interior
+music: M020
+zone: U37
+region: U3
+location: L_U37
+encounters: none
+save: false
+grid:
+##################
+#k8k.BB.BB.BB.k!k#
+#................#
+#..tt......nnnn..#
+#..tt............#
+#................#
+#.BB.BB.BB.......#
+#................#
+#..c.r......tt...#
+#!..............!#
+########++########
+entities:
+spawn entry 8 9 up
+exit 8..9 10 U37_R01 from_inn
+npc u37_innkeeper 12 2 down sprite=baker talk=U37_INN name="Bunk-Mother Hesper"
+inn 12 3 scene=U37_INN
+npc u37_sleeper 13 7 left sprite=survivor talk=U37_SLEEPER
+
+=== U37_SMITH
+name: Weeping Mines - Smithy
+tileset: interior
+music: M020
+zone: U37
+region: U3
+location: L_U37
+encounters: none
+save: false
+grid:
+################
+#k5k!kk5kk!k5kk#
+#..............#
+#..55....nnnn..#
+#..............#
+#.rr.......!...#
+#..............#
+#..cc..........#
+#!............!#
+#######++#######
+entities:
+spawn entry 7 8 up
+exit 7..8 9 U37_R01 from_smith
+npc u37_smith 10 2 down sprite=worker talk=U37_SMITHKEEP name="Smith Tarn"
+shop 10 3 SHOP_U37
+npc crafter_u37 5 4 right sprite=apprentice talk=U37_CRAFTER name="Lamp-Wright Dilly"
+
+=== U37_OFFICE
+name: Weeping Mines - Foreman's Office
+tileset: interior
+music: M020
+zone: U37
+region: U3
+location: L_U37
+encounters: none
+save: false
+grid:
+################
+#kk?kk8kk?k!kkk#
+#..............#
+#..tttt........#
+#..t??t....k...#
+#..tttt........#
+#..............#
+#.r..........c.#
+#!............!#
+#######++#######
+entities:
+spawn entry 7 8 up
+exit 7..8 9 U37_R01 from_office
+npc u37_foreman 9 3 down sprite=elder talk=U37_FOREMAN name="Foreman Brack"
+read 5 5 "The shift ledger. Every miner who ever worked the Weeping Mines, still clocked in. None clocked out."
+chest U37_C_OFFICE 13 4 A014 1
+
+=== U38_R01
+name: The Silent Choir
+tileset: whitebone
+music: M024
+zone: U38
+region: U3
+location: L_U38
+encounters: none
+save: false
+legend: -=bone
+grid:
+##################################
+###########uuGGGGGGGGGGuu#########
+##########u............u##########
+#########u..!...@@...!...u########
+########......................####
+#######..u................u....###
+######..........................##
+######..bbbb.bbbb....bbbb.bbbb..##
+######..........----............##
+######..bbbb.bbbb----bbbb.bbbb..##
+######..........----............##
+######..bbbb.bbbb----bbbb.bbbb..##
+######..........----............##
+######..u.......----.........u..##
+######!.........----...........!##
+################----##############
+################----##############
+entities:
+spawn world 17 15 up
+spawn default 17 15 up
+exit 16..19 16 DEEP_POST l_u38
+block 11..24 2 tile=gate if=!flag:u38_chancel_open msg="The chancel rail. Beyond it, the choir stalls are full. Nobody is singing. Nobody has ever stopped."
+trigger 12..23 2 scene=U38_CHANCEL_BEYOND touch=0 if=flag:u38_chancel_open
+read 16 3 "The chancel altar, seen through the rail: two hymnals, open, with every word scraped out." scene=U38_CHANCEL
+npc u38_mute 9 12 right sprite=monk talk=U38_MUTE name="A Chorister"
+npc u38_warden 26 8 left sprite=keeper talk=U38_WARDEN name="Pew-Warden"
+read 8 5 "Carved on a pillar: 'THE PALE CHOIR SILENCED THEM ONE VOICE AT A TIME. THEY CAME HERE TO FINISH THE SONG.'"
+read 29 5 "Carved on a pillar: 'DO NOT HUM. THEY WILL HEAR YOU AND MAKE ROOM.'"
+chest U38_C_PEW 13 12 A015 1 hidden=1
+chest U38_C_NAVE 30 7 I005 3
+
+=== U40_R01
+name: Undersea Throat
+tileset: reef
+music: M023
+zone: U40
+region: U3
+location: L_U40
+encounters: none
+save: false
+legend: -=bone
+grid:
+##################################
+#~~~~~~~~~~~~~uGGGGu~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~w....w~~~~~~~~~~~~~#
+#~~~~~~~~~~wwww....wwww~~~~~~~~~~#
+#~~~~~~~~ww............ww~~~~~~~~#
+#~~~~~~ww...u........u...ww~~~~~~#
+#~~~~ww......................ww~~#
+#~~ww...ZZ.......--.......ZZ...ww#
+#ww.....ZZ.......--.......ZZ.....#
+#w...............--..............#
+#..c.r..y........--........y..r..#
+#................--..............#
+#.......ZZ.......--.......ZZ.....#
+#!...............--.............!#
+################----##############
+################----##############
+entities:
+spawn world 17 14 up
+spawn default 17 14 up
+exit 16..19 15 DEEP_POST l_u40
+block 15..18 2 tile=gate if=!flag:lanternwake_diving msg="The Throat's lock. Seawater hangs behind it like a held breath. Only a diving hull could go through."
+trigger 15..18 2 scene=U40_THROAT_END touch=0 if=flag:lanternwake_diving
+read 14 1 "A lock-wheel of green bronze, taller than a person. Builder script and, scratched below it in dead-letter: 'TO THE SEA FLOOR. HOLD YOUR BREATH.'" scene=U40_LOCK
+npc u40_lockkeeper 20 5 left sprite=sailor talk=U40_LOCKKEEPER name="Drowned Lock-Keeper"
+npc u40_diver 10 9 right sprite=survivor talk=U40_DIVER name="Pilgrim Diver Sef"
+npc u40_eel 25 11 left sprite=elder talk=U40_NETTER name="Soul-Netter"
+read 7 10 "A barnacled grave marker. The name has been kept clean by someone's thumb."
+chest U40_C_REEF 31 8 A004 1
+
+=== U30_R01
+name: The Bone Bridges - Bridgehead
+tileset: whitebone
+music: M024
+zone: U30
+region: U3
+location: L_U30
+encounters: none
+save: true
+legend: -=bone
+grid:
+################################
+##############----##############
+###.........l.----.l.........###
+##..y.....................y...##
+##............----............##
+##____________====____________##
+##____________====____________##
+##____________====____________##
+##...x........----........x.....
+##............----..............
+##..y.........----.........y..##
+##____________====____________##
+##____________====____________##
+##..c.r.......----.......r.c..##
+##!...........----...........!##
+##############----##############
+entities:
+spawn world 15 14 up
+spawn default 15 14 up
+spawn from_r02 15 2 down
+spawn from_r04 30 8 left
+exit 14..17 15 DEEP_POST l_u30
+exit 14..17 1 U30_R02 from_r01
+exit 31 8..9 U30_R04 from_r01 if=flag:u30_shortcut locked="A bone portcullis. The winch is on the far side."
+trigger 14..17 13 scene=U30_ENTER if=!event:U30_ENTER
+npc u30_toller 22 9 left sprite=elder talk=U30_TOLLER name="Toll-Taker Dunstan"
+read 4 3 "A post of stacked vertebrae. Carved: 'ONE BONE PER CROSSING. THE BRIDGE REMEMBERS WHO PAID.'"
+save 20 14
+
+=== U30_R02
+name: The Bone Bridges - The Long Span
+tileset: whitebone
+music: M024
+zone: U30
+region: U3
+location: L_U30
+encounters: WP_U3
+rate: 0.7
+save: false
+legend: -=bone
+grid:
+########################################
+##############################--########
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^.--.^^^^^^#
+#____________________________.--.______#
+#__......________________....----..____#
+#__..y...________________....----..____#
+#__......________________....----..____#
+#_____==____________________==_________#
+#_____==____________________==_________#
+#_____==_____............___==_________#
+#_____=======............=====_________#
+#____________..y......y..______________#
+#____________............______________#
+#_________________====_________________#
+#_________________====_________________#
+#_________________====_________________#
+#_______......c...----...r......_______#
+#_______..........----.........._______#
+##################----##################
+entities:
+spawn from_r01 19 17 up
+spawn from_r03 30 2 down
+exit 18..21 18 U30_R01 from_r02
+exit 30..31 1 U30_R03 from_r02
+block 25..27 10 tile=gate if=!flag:u30_toll1 msg="A toll-bar of crossed thighbones. Somewhere a toll-bell waits to be rung."
+switch u30_bell1 4 5 scene=U30_BELL1 sprite=lever
+read 16 11 "A bone lectern: 'THE WEST BELL LIFTS THE EAST BAR. OSSUAN HEARS EVERY BELL.'"
+chest U30_C_EAST 34 5 G023 1
+chest U30_C_PIER 21 12 I003 1
+
+=== U30_R03
+name: The Bone Bridges - Ossuary Pier
+tileset: whitebone
+music: M024
+zone: U30
+region: U3
+location: L_U30
+encounters: WP_U3
+rate: 0.8
+save: false
+legend: -=bone
+grid:
+##################################
+###############--#################
+##.uu.uu.uu.u.-.--.-.u.uu.uu.uu.##
+##..............--..............##
+##..xx......y...--...y......xx..##
+##..xx..........--..........xx..##
+##____....______--______....____##
+##____....______==______....____##
+##____....______==______....____##
+##..............--..............##
+##..u....u......--......u....u..##
+##..............--..............##
+##__________....--....__________##
+##__________....--....__________##
+##..c.r.........--.........r.c..##
+##!.............--.............!##
+################--################
+entities:
+spawn from_r02 16 15 up
+spawn from_r04 15 2 down
+exit 16..17 16 U30_R02 from_r03
+exit 15..16 1 U30_R04 from_r03
+block 15..16 1 tile=gate if=!flag:u30_toll2 msg="A second toll-bar. The bell for it hangs over the east bone-pile."
+switch u30_bell2 30 3 scene=U30_BELL2 sprite=lever
+npc u30_ghost 7 9 right sprite=worker talk=U30_BRIDGEWRIGHT name="Bridgewright's Shade"
+read 12 4 "A statue of a bridge-builder made of the bridge. Its hand points east."
+chest U30_C_PILE 3 11 A015 1
+chest U30_C_HIDDEN 31 11 I003 2 hidden=1
+
+=== U30_R04
+name: The Bone Bridges - Tollhouse
+tileset: whitebone
+music: M024
+zone: U30
+region: U3
+location: L_U30
+encounters: none
+save: false
+legend: -=bone
+grid:
+##########################
+##kk!kk8kk##--##kk8kk!kk##
+##.........l--l.........##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##.......................#
+##......y.......y........#
+##..u.................u...
+##........................
+##!.....................##
+############--############
+############--############
+entities:
+spawn from_r03 12 14 up
+spawn from_r05 12 2 down
+spawn from_r01 24 12 left
+exit 12..13 15 U30_R03 from_r04
+exit 12..13 1 U30_R05 from_r04
+exit 25 11..12 U30_R01 from_r04 if=flag:u30_shortcut locked="The portcullis to the Bridgehead. Its winch is right beside you."
+switch u30_winch 22 10 scene=U30_WINCH
+save 6 9
+heal 18 9
+read 3 1 "Toll ledgers, floor to ceiling. The last entry, fresh: 'THE LIVING: OWED.'"
+
+=== U30_R05
+name: The Bone Bridges - Ossuan's Span
+tileset: whitebone
+music: M024
+zone: U30
+region: U3
+location: L_U30
+encounters: none
+save: false
+legend: -=bone
+grid:
+##################################
+##^^^^^^^^^^^uyyyyyyyyu^^^^^^^^^##
+##__________u..........u________##
+##__________....yyyy....________##
+##__________............________##
+##_____________======___________##
+##_____________======___________##
+##_____________======___________##
+##_____________======___________##
+##_____________======___________##
+##__________............________##
+##__________..........!.________##
+##_____________======___________##
+##_____________======___________##
+##^^^^^^^^^^^^^......^^^^^^^^^^^##
+################----##############
+################----##############
+entities:
+spawn from_r04 17 15 up
+exit 16..19 16 U30_R04 from_r05
+trigger 15..20 7 scene=U30_OSSUAN if=!flag:bx21_done
+read 17 3 "Ossuan's throne of tolls. Every bone in it is labelled with the name of whoever paid it."
+chest U30_C_THRONE 21 4 W041 1
+
+=== U31_R01
+name: Sepulchre Court - The Veiled Gate
+tileset: crown
+music: M024
+zone: U31
+region: U3
+location: L_U31
+encounters: none
+save: true
+legend: -=bone
+grid:
+##################################
+###############u..u###############
+##8.8.8.8.8.8.u....u.8.8.8.8.8.8##
+##.............l..l.............##
+##..u......y..........y......u..##
+##..............--..............##
+##..............--..............##
+##..............--..............##
+##..u.........------.........u....
+##............------..............
+##..u.........------.........u..##
+##..u.........------.........u..##
+##..............--..............##
+##!..c.r........--........r.c..!##
+################----##############
+################----##############
+entities:
+spawn world 17 14 up
+spawn default 17 14 up
+spawn from_r02 16 2 down
+spawn from_r04 32 9 left
+exit 16..19 15 DEEP_POST l_u31
+exit 16..17 1 U31_R02 from_r01
+exit 33 8..9 U31_R04 from_r01 if=flag:u31_shortcut locked="A veiled servants' door. It is latched from within."
+block 16..17 1 tile=gate if=!flag:u31_gate msg="The Veiled Gate. Two doorwardens stand before it."
+npc u31_warden1 14 4 down sprite=guard talk=U31_DOORWARDEN name="Veiled Doorwarden"
+npc u31_warden2 21 4 down sprite=guard talk=U31_DOORWARDEN name="Veiled Doorwarden"
+trigger 16..19 12 scene=QC15_COURT_ARRIVE if=party:C15,qs:QC15:court,!flag:qc15_court_arrive
+save 11 12
+
+=== U31_R02
+name: Sepulchre Court - Gallery of the Adopted
+tileset: crown
+music: M024
+zone: U31
+region: U3
+location: L_U31
+encounters: WP_U3
+rate: 0.7
+save: false
+legend: -=bone
+grid:
+########################################
+##8888.8888.8888..#--#..8888.8888.8888##
+##...............l.--.l...............##
+##..y......y.......--.......y......y..##
+##.................--.................##
+##..kkk..kkk..kkk..--..kkk..kkk..kkk..##
+##..kkk..kkk..kkk..--..kkk..kkk..kkk..##
+##.................--.................##
+##.................--.................##
+##ffffffffffffff...--...ffffffffffffff##
+##.................--.................##
+##..t..t..t........--........t..t..t..##
+##.................--.................##
+##!................--................!##
+###################--###################
+###################--###################
+entities:
+spawn from_r01 19 14 up
+spawn from_r03 19 2 down
+exit 19..20 15 U31_R01 from_r02
+exit 19..20 1 U31_R03 from_r02
+block 19..20 1 tile=gate if=!flag:u31_cord msg="A black veil hangs across the arch, weighted with bone beads. A bell-cord hangs somewhere in the gallery."
+switch u31_cord 3 11 scene=U31_CORD sprite=lever
+read 4 1 "Portrait: a knight, eyes painted shut. Label: 'ADOPTED. FORMERLY: GRIEVED BY NO ONE.'"
+read 13 1 "Portrait: a whole family, the frame far too big. Label: 'ADOPTED TOGETHER. SHE WAS GENEROUS.'"
+read 26 1 "Portrait: a young man in necromancer's grey, face scratched out. Label: 'THE ONE WHO LEFT.'" scene=U31_PORTRAIT
+npc u31_adopted1 9 10 right sprite=noble talk=U31_ADOPTED1 name="An Adopted Lady"
+npc u31_adopted2 30 12 left sprite=soldier talk=U31_ADOPTED2 name="An Adopted Soldier"
+chest U31_C_GALLERY 35 4 A022 1
+
+=== U31_R03
+name: Sepulchre Court - Nursery of Graves
+tileset: crown
+music: M024
+zone: U31
+region: U3
+location: L_U31
+encounters: WP_U3
+rate: 0.8
+save: false
+legend: -=bone
+grid:
+##################################
+###############--#################
+##............l--l..............##
+##..B..B..B...----...B..B..B....##
+##..............--..............##
+##..............--..............##
+##..B..B..B......j.......B..B...##
+##..............................##
+##.....j..................j.....##
+##..B..B..B..............B..B...##
+##..............................##
+##......y......@@@......y.......##
+##..............................##
+##!..............--............!##
+#################--###############
+#################--###############
+entities:
+spawn from_r02 17 14 up
+spawn from_r04 15 2 down
+exit 17..18 15 U31_R02 from_r03
+exit 15..16 1 U31_R04 from_r03
+block 15..16 2 tile=gate if=!flag:u31_lullaby msg="A cradle-gate carved with sleeping faces. Three bells hang in the nursery."
+switch u31_bell_a 7 7 scene=U31_BELL_A
+switch u31_bell_b 17 7 scene=U31_BELL_B
+switch u31_bell_c 27 7 scene=U31_BELL_C
+read 15 11 "A lullaby carved around a cradle-altar: 'LEFT bell for the lamp, RIGHT bell for the door, MIDDLE bell for the dark, and hush for evermore.'"
+chest U31_C_CRADLE 4 12 I023 3
+chest U31_C_HIDDEN 30 2 G030 1 hidden=1
+
+=== U31_R04
+name: Sepulchre Court - Veil Antechamber
+tileset: crown
+music: M024
+zone: U31
+region: U3
+location: L_U31
+encounters: none
+save: false
+legend: -=bone
+grid:
+##########################
+##8.8.!.8.##--##.8.!.8.8##
+##........l--l..........##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##......................##
+##.....y.........y.......#
+##..u................u....
+##........................
+##!......--............!##
+#########----#############
+#########----#############
+entities:
+spawn from_r03 10 14 up
+spawn from_r05 12 2 down
+spawn from_r01 24 12 left
+exit 9..12 15 U31_R03 from_r04
+exit 11..12 1 U31_R05 from_r04
+exit 25 11..12 U31_R01 from_r04 if=flag:u31_shortcut locked="The servants' door. Its latch is here, on this side."
+switch u31_latch 22 10 scene=U31_LATCH
+save 6 9
+heal 18 9
+
+=== U31_R05
+name: Sepulchre Court - The Throne of Veils
+tileset: crown
+music: M028
+zone: U31
+region: U3
+location: L_U31
+encounters: none
+save: false
+legend: -=bone
+grid:
+##################################
+############uGGGGGGGGu############
+###########u..........u###########
+##########u....@@@@....u##########
+#########................#########
+########..u....yyyy....u..########
+########..u....yyyy....u..########
+#######......................#####
+#######......................#####
+######..u..............u.......###
+######..........--..............##
+######..u.......--.....u........##
+######..........--..............##
+######!.........--.............!##
+################--################
+################--################
+entities:
+spawn from_r04 16 14 up
+exit 16..17 15 U31_R04 from_r05
+trigger 10..23 9 scene=U31_SEPULCHRE if=!flag:bx22_done
+block 12..21 2 tile=gate if=!flag:sepulchre_unveiled msg="The Veil. Behind it, the inner sanctum breathes. It does not open for the living. Not yet."
+trigger 12..21 2 scene=U31_SANCTUM touch=0 if=flag:sepulchre_unveiled
+read 17 4 "The throne. It is warm. On the arm, a child's ribbon and a soldier's tag, side by side, like keepsakes." scene=U31_THRONE
+npc u31_veil 11 4 down sprite=noble talk=QC15_VEIL name="The Veiled Shade" if=flag:bx22_done
+chest U31_C_THRONE 26 9 A018 1
+
+=== U32_R01
+name: Abyss Gate - The Gate Stair
+tileset: whitebone
+music: M022
+zone: U32
+region: U3
+location: L_U32
+encounters: none
+save: true
+legend: -=bone J=lava
+grid:
+##############################
+#############----#############
+##JJJJJJJJJJJ.--.JJJJJJJJJJJ##
+##J.........l.--.l.........J##
+##J..y.....................J##
+##J..y.....................J##
+##J..y.....................J##
+##J........................J..
+##J..........------...........
+##J..........------........J##
+##J..!.......------......!.J##
+##J..!.......------......!.J##
+##J........................J##
+##JJJJJJJJJ...--...JJJJJJJJJ##
+#############----#############
+#############----#############
+entities:
+spawn world 14 14 up
+spawn default 14 14 up
+spawn from_r02 14 2 down
+spawn from_r04 28 8 left
+exit 13..16 15 DEEP_POST l_u32
+exit 13..16 1 U32_R02 from_r01
+exit 29 7..8 U32_R04 from_r01 if=flag:u32_shortcut locked="A furnace hatch, cold for once, barred from the far side."
+trigger 13..16 12 scene=U32_ENTER if=!event:U32_ENTER
+read 5 3 "A column of black iron carved with wings, broken off at the shoulder. 'HERE THE CARRIERS SET DOWN THEIR LOADS.'"
+save 8 9
+
+=== U32_R02
+name: Abyss Gate - Roost of Wings
+tileset: whitebone
+music: M022
+zone: U32
+region: U3
+location: L_U32
+encounters: WP_U3
+rate: 0.8
+save: false
+legend: -=bone J=lava
+grid:
+####################################
+##8888888888888##--##8888888888888##
+##.............l.--.l.............##
+##..u..u..u......--......u..u..u..##
+##..u..u..u......--......u..u..u..##
+##...............--...............##
+##..JJJJJ...............JJJJJ.....##
+##..JJJJJ...y.......y...JJJJJ.....##
+##..JJJJJ...y.......y...JJJJJ.....##
+##..JJJJJ...............JJJJJ.....##
+##...............--...............##
+##..u..u..u......--......u..u..u..##
+##..c.r..........--..........r.c..##
+##!..............--..............!##
+#################--#################
+#################--#################
+entities:
+spawn from_r01 17 14 up
+spawn from_r03 17 2 down
+exit 17..18 15 U32_R01 from_r02
+exit 17..18 1 U32_R03 from_r02
+block 17..18 1 tile=gate if=!flag:u32_roost msg="A grille of fused wing-bones. A carrier's horn hangs on the far wall."
+switch u32_horn 33 5 scene=U32_HORN sprite=lever
+read 8 1 "Roost murals: valkyries carrying bundled souls down a stair of fire. One figure, near the end, carries hers the other way." scene=U32_MURAL
+chest U32_C_ROOST 3 5 W029 1
+npc u32_carrier 26 10 left sprite=soldier talk=U32_CARRIER name="Grounded Carrier"
+
+=== U32_R03
+name: Abyss Gate - The Queue
+tileset: whitebone
+music: M022
+zone: U32
+region: U3
+location: L_U32
+encounters: WP_U3
+rate: 0.9
+save: false
+legend: -=bone J=lava
+grid:
+####################################
+#################--#################
+##..............l--l..............##
+##..n.....n.....----.....n.....n..##
+##................................##
+##..y.y.y.y.y.y.y..y.y.y.y.y.y.y..##
+##................................##
+##..y.y.y.y.y.y.y..y.y.y.y.y.y.y..##
+##................................##
+##..y.y.y.y.y.y.y..y.y.y.y.y.y.y..##
+##................................##
+##JJJ............--...........JJJ.##
+##JJJ............--...........JJJ.##
+##JJJ!...........--..........!JJJ.##
+#################--#################
+#################--#################
+entities:
+spawn from_r02 17 14 up
+spawn from_r04 17 2 down
+exit 17..18 15 U32_R02 from_r03
+exit 17..18 1 U32_R04 from_r03
+block 17..18 2 tile=gate if=!flag:u32_ledgers msg="The queue's end: a counter with a closed ledger. Three lesser ledgers must be balanced first."
+switch u32_ledger1 4 4 scene=U32_LEDGER1
+switch u32_ledger2 10 4 scene=U32_LEDGER2
+switch u32_ledger3 31 4 scene=U32_LEDGER3
+read 25 3 "A ledger on a stand: 'THE QUEUE: 40,112 SOULS. WAITING FOR: ASSESSMENT. ESTIMATED WAIT: UNTIL PAID.'"
+npc u32_queuer1 12 6 up sprite=patient talk=U32_QUEUER1 name="A Waiting Soul"
+npc u32_queuer2 24 8 up sprite=elder talk=U32_QUEUER2 name="A Waiting Soul"
+chest U32_C_QUEUE 33 10 A017 1
+
+=== U32_R04
+name: Abyss Gate - Counting House
+tileset: whitebone
+music: M022
+zone: U32
+region: U3
+location: L_U32
+encounters: none
+save: false
+legend: -=bone J=lava
+grid:
+##########################
+##kk?kk!kk##--##kk!kk?kk##
+##.........l--l.........##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##.......................#
+##......y.......y.........
+##..u.................u...
+##!.........--.........!##
+############--############
+############--############
+entities:
+spawn from_r03 12 14 up
+spawn from_r05 12 2 down
+spawn from_r01 24 11 left
+exit 12..13 15 U32_R03 from_r04
+exit 12..13 1 U32_R05 from_r04
+exit 25 11..12 U32_R01 from_r04 if=flag:u32_shortcut locked="The hatch to the Gate Stair. The bar lifts from this side."
+switch u32_bar 21 10 scene=U32_BAR
+save 6 10
+heal 18 10
+
+=== U32_R05
+name: Abyss Gate - The Abyss Gate
+tileset: whitebone
+music: M022
+zone: U32
+region: U3
+location: L_U32
+encounters: none
+save: false
+legend: -=bone J=lava
+grid:
+##################################
+##JJJJJJJJJJJuGGGGGGGGuJJJJJJJJJ##
+##JJJJJJJJJJu..........uJJJJJJJJ##
+##JJJJJJJJJ....nnnnnn....JJJJJJJ##
+##JJJJJJJJ................JJJJJJ##
+##JJJJJJJ..u............u..JJJJJ##
+##JJJJJJJ..u............u..JJJJJ##
+##JJJJJJ....................JJJJ##
+##JJJJJ......................JJJ##
+##JJJJ..u................u....JJ##
+##JJJJ..........----..........JJ##
+##JJJJ..........----..........JJ##
+##JJJJ..........----..........JJ##
+##JJJJ!.........----.........!JJ##
+################----##############
+################----##############
+entities:
+spawn from_r04 17 14 up
+exit 16..19 15 U32_R04 from_r05
+trigger 9..25 7 scene=U32_WARDEN if=!flag:bx23_done
+read 17 3 "The Great Ledger of the Abyss Gate, open on its counter. The pages are skin-thin and warm." scene=QC11_LEDGER
+chest U32_C_GATE 25 4 G032 1
+
+=== U33_R01
+name: The First Crown's Tomb - Tomb Door
+tileset: crown
+music: M024
+zone: U33
+region: U3
+location: L_U33
+encounters: none
+save: true
+legend: -=bone
+grid:
+##############################
+############u..u##############
+##8888888888u..u8888888888888#
+##..........l..l............##
+##..y....................y..##
+##..y....................y..##
+##..y....................y..##
+##..........----.............#
+##..........----.............#
+##..........----.............#
+##..u.......----........u.....
+##..........----..............
+##..........----............##
+##!..c.r....----.....r.c...!##
+############----##############
+############----##############
+entities:
+spawn world 13 14 up
+spawn default 13 14 up
+spawn from_r02 13 2 down
+spawn from_r04 28 11 left
+exit 12..15 15 DEEP_POST l_u33
+exit 13..14 1 U33_R02 from_r01
+exit 29 10..11 U33_R04 from_r01 if=flag:u33_shortcut locked="A mourners' door, sealed with wax from the other side."
+trigger 12..15 12 scene=QC14_TOMB_WAIT if=party:C14,!qs:QC14:barrows,!flag:qc14_fallback,!flag:qc14_tomb_hook
+trigger 12..15 12 scene=QC14_TOMB if=party:C14,qs:QC14:barrows,!flag:qc14_tomb_hook
+read 6 2 "A frieze of a coronation. The crowd is carved without faces. The king is carved without eyes."
+save 20 12
+
+=== U33_R02
+name: The First Crown's Tomb - Hall of Regalia
+tileset: crown
+music: M024
+zone: U33
+region: U3
+location: L_U33
+encounters: WP_U3
+rate: 0.7
+save: false
+legend: -=bone
+grid:
+####################################
+##kkkk?kkkk8kk##--##kk8kkkk?kkkk..##
+##.............l--l...............##
+##..tt..tt..tt......tt..tt..tt....##
+##................................##
+##................................##
+##................................##
+##..kk..kk..kk.yy...kk..kk..kk....##
+##................................##
+##ffffffffff..............ffffffff##
+##ffffffffff..............ffffffff##
+##................................##
+##..y......y.......y......y.......##
+##!..............--..............!##
+#################--#################
+#################--#################
+entities:
+spawn from_r01 17 14 up
+spawn from_r03 16 2 down
+exit 17..18 15 U33_R01 from_r02
+exit 16..17 1 U33_R03 from_r02
+block 16..17 2 tile=gate if=!flag:u33_regalia msg="A gate of crossed sceptres. The regalia cases must be set right."
+switch u33_orb 4 8 scene=U33_ORB
+switch u33_sceptre 31 8 scene=U33_SCEPTRE
+read 5 3 "A regalia case: a sword with no edge. 'THE FIRST SWORD. FOR SHOW.'"
+read 13 3 "A regalia case: a ledger, bound in gold. 'THE FIRST TAX. NOT FOR SHOW.'"
+read 21 3 "A regalia case: an empty cushion shaped for a crown. The crown is below."
+chest U33_C_CASE 33 2 G028 1
+npc u33_knight 10 11 right sprite=soldier talk=U33_KNIGHT name="A Tomb-Knight"
+
+=== U33_R03
+name: The First Crown's Tomb - Processional of Kings
+tileset: crown
+music: M024
+zone: U33
+region: U3
+location: L_U33
+encounters: WP_U3
+rate: 0.8
+save: false
+legend: -=bone
+grid:
+######################################
+#################--###################
+##..............l--l................##
+##..y...y...y...y--y...y...y...y....##
+##..................................##
+##..u...u...u...u..u...u...u...u....##
+##..u...u...u...u..u...u...u...u....##
+##..................................##
+##..................................##
+##..................................##
+##..................................##
+##..y...y...y...y..y...y...y...y....##
+##..................................##
+##!...............--...............!##
+##################--##################
+##################--##################
+entities:
+spawn from_r02 18 14 up
+spawn from_r04 17 2 down
+exit 18..19 15 U33_R02 from_r03
+exit 17..18 1 U33_R04 from_r03
+block 17..18 2 tile=gate if=!flag:u33_nameless msg="The procession ends at a door with no king carved on it."
+switch u33_nameless_sw 33 12 scene=U33_NAMELESS
+read 4 4 "Statue plaque: 'THE SECOND CROWN. HE KEPT THE TAX.'"
+read 8 4 "Statue plaque: 'THE THIRD CROWN. SHE KEPT THE TAX AND ADDED A WALL.'"
+read 12 4 "Statue plaque: 'THE FOURTH CROWN. HE WAS KIND. HE KEPT THE TAX.'"
+read 24 11 "Statue plaque, newer stone: 'MALDRATH, WHO WORE IT LAST BEFORE THE ASH. HE SENT THEM TO THE QUARRY.'" scene=QC14_STATUE
+read 32 11 "The last plinth is empty. Its plaque has been left blank on purpose."
+chest U33_C_PROC 35 4 I005 3
+
+=== U33_R04
+name: The First Crown's Tomb - Mortuary Chapel
+tileset: crown
+music: M024
+zone: U33
+region: U3
+location: L_U33
+encounters: none
+save: false
+legend: -=bone
+grid:
+##########################
+##8.8.!.8.##--##.8.!.8.8##
+##........l--l..........##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##......................##
+##.....y....@@...y.......#
+##..u................u....
+##!........--..........!##
+###########--#############
+###########--#############
+entities:
+spawn from_r03 11 14 up
+spawn from_r05 11 2 down
+spawn from_r01 24 12 left
+exit 11..12 15 U33_R03 from_r04
+exit 11..12 1 U33_R05 from_r04
+exit 25 12 U33_R01 from_r04 if=flag:u33_shortcut locked="The mourners' door. Break the wax seal from this side."
+switch u33_wax 22 11 scene=U33_WAX
+save 6 10
+heal 18 10
+
+=== U33_R05
+name: The First Crown's Tomb - The First Crown
+tileset: crown
+music: M028
+zone: U33
+region: U3
+location: L_U33
+encounters: none
+save: false
+legend: -=bone
+grid:
+################################
+###########uGGGGGGGGu###########
+##########u..........u##########
+#########u.....@@.....u#########
+########................########
+#######..u....yyyy....u..#######
+#######..u....yyyy....u..#######
+#######..u....yyyy....u..#######
+######....................######
+#####..u................u..#####
+#####..........--..........#####
+#####..........--..........#####
+#####..........--..........#####
+#####!.........--.........!#####
+###############--###############
+###############--###############
+entities:
+spawn from_r04 15 14 up
+exit 15..16 15 U33_R04 from_r05
+trigger 8..23 8 scene=U33_FIRST_CROWN if=!flag:bx24_done
+read 15 3 "The First Crown's bier. The crown lies on it, dull and small, the original of every copy." scene=QC14_CROWN
+chest U33_C_BIER 22 4 W016 1
+
+=== U35_R01
+name: The Lich Stair - Stair Head
+tileset: winter
+music: M024
+zone: U35
+region: U3
+location: L_U35
+encounters: none
+save: true
+grid:
+##############################
+#############qqqq#############
+##iiiiiiiiiii.ss.iiiiiiiiiii##
+##q.........l.ss.l.........q##
+##q..y....................yq##
+##q..y....................yq##
+##q..y....................yq##
+##q..y....................yq##
+##q..y....................yq##
+##q..y....................yq##
+##q........................q..
+##q.........qqqq..............
+##q.........qqqq...........q##
+##q!..c.r...qqqq......r.c.!q##
+#############qqqq#############
+#############qqqq#############
+entities:
+spawn world 14 14 up
+spawn default 14 14 up
+spawn from_r02 14 2 down
+spawn from_r04 28 11 left
+exit 13..16 15 DEEP_POST l_u35
+exit 13..16 1 U35_R02 from_r01
+exit 29 10..11 U35_R04 from_r01 if=flag:u35_shortcut locked="An ice-bound postern. It thaws from the other side."
+trigger 13..16 12 scene=QC13_STAIR_WAIT if=party:C13,!flag:qc13_citadel_done,!flag:qc13_fallback
+trigger 13..16 12 scene=U35_QC13_STAIR if=party:C13,flag:qc13_citadel_done,!flag:qc13_stair_hook
+read 5 3 "A frozen herald, trumpet raised. The note is still in the ice around its mouth."
+save 20 12
+
+=== U35_R02
+name: The Lich Stair - The Frozen Court
+tileset: winter
+music: M024
+zone: U35
+region: U3
+location: L_U35
+encounters: WP_U3
+rate: 0.8
+save: false
+grid:
+####################################
+##iiiiiiiiiiiiiii#ss#iiiiiiiiiiiii##
+##..............l.ss.l............##
+##..y..y..y.......ss.......y..y...##
+##................ss..............##
+##................ss..............##
+##..!.............ss............!.##
+##................ss..............##
+##..y..y..y.......ss.......y..y...##
+##..y..y..y.......ss.......y..y...##
+##................................##
+##ii....ii.........!......ii....ii##
+##................................##
+##................ss..............##
+#################qss################
+#################qss################
+entities:
+spawn from_r01 18 14 up
+spawn from_r03 18 2 down
+exit 17..19 15 U35_R01 from_r02
+exit 18..19 1 U35_R03 from_r02
+block 18..19 1 tile=gate if=!flag:u35_braziers msg="A portcullis of black ice. Three braziers stand cold around the court."
+switch u35_braz1 4 7 scene=U35_BRAZIER1
+switch u35_braz2 19 12 scene=U35_BRAZIER2
+switch u35_braz3 31 7 scene=U35_BRAZIER3
+read 7 3 "Frozen courtiers mid-bow. The frost on their faces has the shape of tears."
+npc u35_courtier 13 10 right sprite=noble talk=U35_COURTIER name="A Thawing Courtier"
+chest U35_C_COURT 33 12 G012 1
+
+=== U35_R03
+name: The Lich Stair - The Long Stair
+tileset: winter
+music: M024
+zone: U35
+region: U3
+location: L_U35
+encounters: WP_U3
+rate: 0.9
+save: false
+grid:
+########################
+##########ss############
+##ii......ss......l...##
+##..y.....ss.......y..##
+##........ss..........##
+##ffffff..ss..ffffff..##
+##........ss..........##
+##..l.....ss.....y....##
+##........ss..........##
+##ffffff..ss..ffffff..##
+##........ss..........##
+##..y.....ss......l...##
+##........ss..........##
+##ffffff..ss..ffffff..##
+##........ss..........##
+##..!.....ss.....!....##
+##........ss..........##
+##########ss############
+##########ss############
+entities:
+spawn from_r02 10 17 up
+spawn from_r04 10 2 down
+exit 10..11 18 U35_R02 from_r03
+exit 10..11 1 U35_R04 from_r03
+read 5 7 "Frozen into the stair wall: a list of courtiers who asked to be let go. Each request is stamped: 'LATER.'"
+npc u35_page 15 12 left sprite=child talk=U35_PAGE name="A Frozen Page"
+chest U35_C_LANDING 20 4 A019 1
+chest U35_C_HIDDEN 3 14 I024 1 hidden=1
+
+=== U35_R04
+name: The Lich Stair - Mourning Antechamber
+tileset: winter
+music: M024
+zone: U35
+region: U3
+location: L_U35
+encounters: none
+save: false
+grid:
+##########################
+##iiii!iiii##ss##iiii!ii##
+##.........l.ss.l.......##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##..u.................u.##
+##.......................#
+##.....y.........y........
+##..u.................u...
+##!..........ss........!##
+#############ss###########
+#############ss###########
+entities:
+spawn from_r03 13 14 up
+spawn from_r05 13 2 down
+spawn from_r01 24 11 left
+exit 13..14 15 U35_R03 from_r04
+exit 13..14 1 U35_R05 from_r04
+exit 25 11..12 U35_R01 from_r04 if=flag:u35_shortcut locked="The postern. A brazier beside it would thaw the seal."
+switch u35_postern 22 10 scene=U35_POSTERN
+save 6 10
+heal 19 10
+
+=== U35_R05
+name: The Lich Stair - The Mourning Court
+tileset: winter
+music: M024
+zone: U35
+region: U3
+location: L_U35
+encounters: none
+save: false
+grid:
+##################################
+############uiiiiiiiiu############
+###########u..........u###########
+##########u....@@@@....u##########
+#########................#########
+########..y...........y...########
+#######......................#####
+######..y..............y.......###
+######..y..............y.......###
+######..y..............y.......###
+######..........ss..............##
+######..........ss..............##
+######..........ss..............##
+######!.........ss.............!##
+################ss################
+################ss################
+entities:
+spawn from_r04 16 14 up
+exit 16..17 15 U35_R04 from_r05
+trigger 9..24 6 scene=U35_MOURNING_COURT if=!flag:bx25_done
+read 17 3 "The under-throne. A second crown lies on it, smaller than the Lich King's, frozen to the seat." scene=U35_QC13_THRONE
+chest U35_C_THRONE 24 4 W022 1
+
+=== U36_R01
+name: Velkhar's Crypt-Gate - The Crypt Road
+tileset: whitebone
+music: M024
+zone: U36
+region: U3
+location: L_U36
+encounters: none
+save: true
+legend: -=bone
+grid:
+################################
+##############--################
+##kkkkkkkkkk.l--l.kkkkkkkkkkkk##
+##..........................y.##
+##..........................y.##
+##..........................y.##
+##..........................y.##
+##..........................y.##
+##..........................y.##
+##..y.........--..............##
+##............--................
+##..u.........--.........u......
+##............--..............##
+##!..c.r......--......r.c....!##
+##############----##############
+##############----##############
+entities:
+spawn world 15 14 up
+spawn default 15 14 up
+spawn from_r02 14 2 down
+spawn from_r04 30 11 left
+exit 14..17 15 DEEP_POST l_u36
+exit 14..15 1 U36_R02 from_r01
+exit 31 10..11 U36_R04 from_r01 if=flag:u36_shortcut locked="A charnel door, chained from the other side."
+trigger 14..17 12 scene=QC15_GATE if=party:C15,!flag:qc15_hook
+read 5 2 "Wall-niches full of skulls, each with a name-tag in a tidy, familiar hand."
+save 22 9
+
+=== U36_R02
+name: Velkhar's Crypt-Gate - Ossuary Lanes
+tileset: whitebone
+music: M024
+zone: U36
+region: U3
+location: L_U36
+encounters: WP_U3
+rate: 0.8
+save: false
+legend: -=bone
+grid:
+####################################
+##kkkk.kkkk.kkkk.##--##kkkk.kkkk.k##
+##...............l.--.l...........##
+##.kk.kk.kk.kk....--....kk.kk.kk..##
+##.kk.kk.kk.kk....--....kk.kk.kk..##
+##.kk.kk.kk.kk....--....kk.kk.kk..##
+##................--..............##
+##.kk.kk.kk.kk....--....kk.kk.kk..##
+##.kk.kk.kk.kk....--....kk.kk.kk..##
+##................--..............##
+##.kk.kk.kk.kk....--....kk.kk.kk..##
+##.kk.kk.kk.kk....--....kk.kk.kk..##
+##................................##
+##!...............--.............!##
+##################--################
+##################--################
+entities:
+spawn from_r01 18 14 up
+spawn from_r03 19 2 down
+exit 18..19 15 U36_R01 from_r02
+exit 19..20 1 U36_R03 from_r02
+block 19..20 1 tile=gate if=!flag:u36_lanes msg="A bone lattice across the lane. A pull-chain hangs among the niches."
+switch u36_chain 33 12 scene=U36_CHAIN
+read 12 6 "A niche with a tag in Velkhar's hand: 'HALDIS, BAKER. HELD THE WEST DOOR FOUR NIGHTS. RELEASED WITH THANKS.'" scene=U36_TAG
+chest U36_C_LANE 2 12 A020 1
+chest U36_C_HIDDEN 14 9 G031 1 hidden=1
+
+=== U36_R03
+name: Velkhar's Crypt-Gate - The Held Doors
+tileset: whitebone
+music: M024
+zone: U36
+region: U3
+location: L_U36
+encounters: WP_U3
+rate: 0.8
+save: false
+legend: -=bone
+grid:
+##################################
+################--################
+##..............--..............##
+##.GG....GG.....--.....GG....GG.##
+##..............--..............##
+##..............................##
+##..............................##
+##..............................##
+##..u.....u...........u.....u...##
+##..u.....u...........u.....u...##
+##..............................##
+##.GG....GG.............GG...GG.##
+##..............................##
+##!.............--.............!##
+################--################
+################--################
+entities:
+spawn from_r02 16 14 up
+spawn from_r04 16 2 down
+exit 16..17 15 U36_R02 from_r03
+exit 16..17 1 U36_R04 from_r03
+block 16..17 1 tile=gate if=!flag:u36_doors msg="The way on is held shut by the dead. They will not move for strangers."
+npc u36_holder1 4 4 up sprite=soldier talk=U36_HOLDER name="A Door-Holder"
+npc u36_holder2 9 12 up sprite=worker talk=U36_HOLDER name="A Door-Holder"
+npc u36_holder3 24 12 up sprite=farmer talk=U36_HOLDER name="A Door-Holder"
+npc u36_holder4 30 4 up sprite=elder talk=U36_HOLDERS_LEAD name="The Eldest Holder"
+chest U36_C_DOORS 31 12 I023 2
+
+=== U36_R04
+name: Velkhar's Crypt-Gate - Gatehouse
+tileset: whitebone
+music: M024
+zone: U36
+region: U3
+location: L_U36
+encounters: none
+save: false
+legend: -=bone
+grid:
+##########################
+##kk!kkkk.#--#..kkkk!kk.##
+##........l--l..........##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##..u................u..##
+##.......................#
+##.....y.........y........
+##..u................u....
+##!.......--...........!##
+##########--##############
+##########--##############
+entities:
+spawn from_r03 10 14 up
+spawn from_r05 11 2 down
+spawn from_r01 24 11 left
+exit 10..11 15 U36_R03 from_r04
+exit 11..12 1 U36_R05 from_r04
+exit 25 11..12 U36_R01 from_r04 if=flag:u36_shortcut locked="The charnel door. The chain is on this side."
+switch u36_charnel 22 10 scene=U36_CHARNEL
+save 6 10
+heal 18 10
+
+=== U36_R05
+name: Velkhar's Crypt-Gate - The Crypt-Gate
+tileset: whitebone
+music: M024
+zone: U36
+region: U3
+location: L_U36
+encounters: none
+save: false
+legend: -=bone
+grid:
+################################
+###########uGGGGGGGGu###########
+##########u..........u##########
+#########u....y..y....u#########
+########................########
+#######..u............u..#######
+######....................######
+#####..u................u..#####
+#####..u................u..#####
+#####..u................u..#####
+#####..........--..........#####
+#####..........--..........#####
+#####..........--..........#####
+#####!.........--.........!#####
+###############--###############
+###############--###############
+entities:
+spawn from_r04 15 14 up
+exit 15..16 15 U36_R04 from_r05
+trigger 8..23 6 scene=U36_SORROW if=!flag:bx26_done
+read 15 2 "The Crypt-Gate itself: iron and bone, older than the Crown. It leads down to the Hollow Throne's lowest court."
+npc u36_sorrow 18 3 down sprite=monk talk=QC15_SORROW name="Sorrow" if=flag:bx26_done
+chest U36_C_GATE 21 4 W028 1
+
+=== U39_R01
+name: Hollow Heart - The Approach
+tileset: crown
+music: M027
+zone: U39
+region: U3
+location: L_U39
+encounters: none
+save: true
+legend: -=bone
+grid:
+##################################
+################--################
+##^^^^^^^^^^^^^.--.^^^^^^^^^^^^^##
+##..............--..............##
+##..y.......l...--...l.......y..##
+##..y.......l...--...l.......y..##
+##..y.......l...--...l.......y..##
+##..............--..............##
+##__..........------..........__##
+##___.........------.........___##
+##___.........------.........___##
+##__..........------..........__##
+##..............--..............##
+##!..c.r........--........r.c..!##
+################----##############
+################----##############
+entities:
+spawn world 17 14 up
+spawn default 17 14 up
+spawn from_r02 16 2 down
+exit 16..19 15 DEEP_POST l_u39
+exit 16..17 1 U39_R02 from_r01
+trigger 16..19 12 scene=U39_ENTER if=!event:U39_ENTER
+read 4 3 "A warning post, in every script the realm has ever used, all saying the same thing: 'THE BOOKS ARE KEPT BELOW. DO NOT ASK FOR YOUR PAGE.'"
+read 29 3 "A second post, newer, in Velkhar's tidy hand: 'Even I do not go further. - V.'"
+npc u39_pilgrim 9 7 right sprite=elder talk=U39_PILGRIM name="The Last Pilgrim"
+save 22 12
+
+=== U39_R02
+name: Hollow Heart - First Floor: The Ledger Stair
+tileset: crown
+music: M027
+zone: U39
+region: U3
+location: L_U39
+encounters: WP_U3
+rate: 1.0
+save: false
+legend: -=bone
+grid:
+####################################
+##8888888888888##ss##8888888888888##
+##.............l.ss.l.............##
+##..u....u.......ss.......u....u..##
+##................................##
+##ffffffff......................ff##
+##....uGGu.......................u##
+##....u..u........................##
+##................................##
+##................................##
+##..kkk..kkk......y.......kkk..kkk##
+##................................##
+##..u....u................u....u..##
+##!..............--..............!##
+#################--#################
+#################--#################
+entities:
+spawn from_r01 17 14 up
+spawn from_r03 17 2 down
+exit 17..18 15 U39_R01 from_r02
+exit 17..18 1 U39_R03 from_r02
+trigger 7..8 7 scene=U39_KEEPER1 touch=0
+read 18 10 "A statue of a clerk with a pen for a hand. Pages lie around its feet, all blank except for the numbers."
+chest U39_C_F1A 3 11 I024 1
+chest U39_C_F1B 33 4 A022 1
+chest U39_C_F1C 30 7 M003 3 hidden=1
+
+=== U39_R03
+name: Hollow Heart - Second Floor: The Tally Halls
+tileset: crown
+music: M027
+zone: U39
+region: U3
+location: L_U39
+encounters: WP_U3
+rate: 1.0
+save: false
+legend: -=bone
+grid:
+####################################
+##8888888888888##ss##8888888888888##
+##.............l.ss.l.............##
+##..tttt..tttt...ss...tttt..tttt..##
+##..tttt..tttt...ss...tttt..tttt..##
+##..t??t..t??t........t??t..t??t..##
+##..tttt..tttt........tttt..tttt..##
+##................................##
+##................................##
+##u.........................uGGu..##
+##..........................u..u..##
+##................................##
+##..y.....y.......!.......y.....y.##
+##!..............ss..............!##
+#################ss#################
+#################ss#################
+entities:
+spawn from_r02 17 14 up
+spawn from_r04 17 2 down
+exit 17..18 15 U39_R02 from_r03
+exit 17..18 1 U39_R04 from_r03
+trigger 29..30 10 scene=U39_KEEPER2 touch=0
+read 5 6 "A tally desk. Two columns: TAKEN and RETURNED. The first column runs off the bottom of the desk and down the leg."
+chest U39_C_F2A 3 10 A021 1
+chest U39_C_F2B 33 11 W035 1
+chest U39_C_F2C 13 11 I003 3 hidden=1
+
+=== U39_R04
+name: Hollow Heart - Third Floor: The Verdict Walk
+tileset: crown
+music: M027
+zone: U39
+region: U3
+location: L_U39
+encounters: WP_U3
+rate: 1.0
+save: false
+legend: -=bone
+grid:
+######################################
+#############uuGGGGGGGGuu#############
+############u............u############
+###########u..............u###########
+###########u..............u###########
+##888888888................888888888##
+##..u.............@@.............u..##
+##.....uGGu..................uGGu...##
+##.....u..u..................u..u...##
+##..................................##
+##ffffffff.................ffffffff.##
+##..................................##
+##..y....y.......ss.......y....y....##
+##!..............ss................!##
+#################ss###################
+#################ss###################
+entities:
+spawn from_r03 17 14 up
+exit 17..18 15 U39_R03 from_r04
+trigger 8..9 8 scene=U39_KEEPER3 touch=0
+read 31 7 "A fourth door, smaller, sealed with the Crown's own wax. Whatever it keeps, it keeps for later."
+trigger 14..23 2 scene=U39_UNMADE_DOOR touch=0
+read 18 6 "An altar with two closed books on it, one black, one white. A third space between them, empty, waits for a verdict."
+save 12 11
+heal 24 11
+chest U39_C_F3A 35 9 A019 1
+

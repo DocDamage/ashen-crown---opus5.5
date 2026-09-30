@@ -1,0 +1,2052 @@
+# Group a expansion scenes: N01-N10, N41, N42, P01, P02, P05, P09 (QW1, QW6, QC17 surface half, QC14 first beat).
+# ================================================================ N01 Hollins Mill (R01 village, CH01)
+@scene N01_HOLLIN
+if phase:post post
+say hollin | Forty years I've ground Crown grain. The Crown weighs the flour. I weigh what's left.
+say hollin | What's left is small. Don't let the size of the wheel fool you.
+choice | Ask about the village -> village | Ask about the roads -> road | Leave -> bye
+label village
+say hollin | Six families, one wheel, one pond. My granddaughter Nell runs the stones now. I run my mouth.
+say hollin | Juniper at the store mends anything with a hinge. Bring her scraps and she'll make you something honest.
+end
+label road
+say hollin | North, the Oathstone Crossroads. There's a peddler at the milestone who sells what the Crown forgot to tax.
+say hollin | East, past Wren's orchard, the old chapel sank into the marsh. Its bells still ring some nights. Nobody's pulling them.
+rumor | Hollins Mill: the Sunken Chapel's bells ring on their own, in the marsh east of Wren's Orchard.
+end
+label post
+say hollin | The river moved in the night. Picked itself up and went two fields east. The wheel turns anyway.
+say hollin | We grind for anybody now. There's nobody left to weigh it.
+label bye
+@end
+
+@scene N01_MILLER
+if phase:post post
+say brannock | Two sacks up, one sack down. The one going down is ours. The Crown carts the rest to Veyr.
+say brannock | I used to carry for the quarry. At least grain doesn't fall on you.
+end
+label post
+say brannock | Refugees from Veyr sleep in the loft. They grind their own and sing at the stones. Off-key. It's nice.
+@end
+
+@scene N01_APPRENTICE
+say apprentice | Old Hollin's mother kept a garden over the race, across the plank bridge. She died, he stopped going.
+say apprentice | He says she buried her good baking gloves out there so the assessors couldn't list them. Nobody's looked.
+@end
+
+@scene N01_FISHER
+if flag:n01_oda post
+set n01_oda
+say oda | New faces. Here's how the pond works: stand at the end of the dock, face the water, and wait.
+say oda | Don't jerk the line when it twitches. That's the pond testing you. When it pulls, you pull.
+say oda | Fish bite best at dusk. Here - my spare bait and a snack for the wait. Pay me back in stories.
+give I001 2
+end
+label post
+if phase:post ruin
+say oda | The carp in there are older than the assessor and twice as polite. The dock end's yours whenever you like.
+end
+label ruin
+say oda | The pond's the only water that didn't move when the ground broke. I think the carp held it down.
+@end
+
+@scene N01_FISH
+if flag:n01_fished done
+set n01_fished
+say narr | You drop a line off the dock end. The float sits. The float thinks about it.
+say narr | Then it goes under, hard. Something heavy and whiskered comes up, looks at you, and spits out a coin-sized tonic flask.
+give I001 1
+say narr | Oda, from the shore: 'He does that. Somebody drowned a crate of those in the flood of '06.'
+end
+label done
+say narr | The float sits on the brown water. The old carp is somewhere below, thinking about you.
+@end
+
+@scene N01_WHEEL
+say narr | The paddles are patched with three colours of Crown crate. One board still reads 'PROPERTY OF THE MINISTRY - DO NOT'.
+@end
+
+@scene N01_CHILD
+if phase:post post
+say child | I'm chasing the ducks! The assessor counts them every month, so I count them first. There's nine. He writes eight.
+end
+label post
+say child | The ducks came back! Nobody counts them now. I still do. Eleven.
+@end
+
+@scene N01_FARMER
+say worker | Barley. The Crown takes the good heads and leaves the chaff for the bread. We call it 'Crown loaf'. Not fondly.
+say worker | Hounds come down off the toll road at night after the rats in the stook. Keep to the lane after dark.
+@end
+
+@scene N01_ASSESSOR
+say assessor | Grain assessor, Ministry of Provision. Please don't stand between me and the scales.
+say assessor | Everything here is counted: sacks, ducks, hinges. It's not personal. It's just everything.
+@end
+
+@scene N01_LAUNDRESS
+say baker | My husband went to work the toll at Gallowgate. They pay in chits, and the chits are only good at the toll canteen.
+say baker | They've a bounty board there now. Hounds, bandits, 'persons of interest'. Half the names on it are ours.
+rumor | Hollins Mill: Gallowgate Toll keeps a bounty board. Some of the names on it are villagers.
+@end
+
+@scene N01_WIDOW
+say elder | My grandmother used to say a king was buried twice out west, under the ash barrows. Once in a crown, once without.
+say elder | Children dare each other to find the door. None of them ever has. None of them looks very hard.
+rumor | Hollins Mill: 'a king buried twice' lies under the Ashward Barrows, west of the river farms.
+@end
+
+@scene N01_DROVER
+say worker | I drive cattle up to Oathstone Crossroads. Tobiah Wend keeps a stall at the milestone.
+say worker | Wend walks the whole March with that pack. Tell him Hollins sent you and he'll still overcharge you, but kindly.
+@end
+
+@scene N01_REFUGEE
+say volunteer | We walked from Veyr when the square fell in. Hollin met us on the road with a cart of flour and didn't ask for a chit.
+say volunteer | I'd never seen a mill. It's just a wheel and some stubborn people. Turns out that's enough.
+@end
+
+@scene N01_SURVIVOR
+say survivor | The fault went through the toll road north of here. The Gallowgate fort's on an island now. Serves it right.
+@end
+
+@scene N01_INN
+if phase:post post
+say keeper | The Millstone. Bed, bread and a fire. Thirty crowns, and you can pay the Crown's share to me instead.
+inn 30
+end
+label post
+say keeper | Beds are free for anyone walking out of the ruin. You're walking out of it, aren't you? Close enough.
+inn 0
+@end
+
+@scene N01_INN_DROVER
+say worker | Cattle sleep standing up. Drovers sleep lying down, whenever they can. Go away.
+@end
+
+@scene N01_CARDS
+say worker | We play for Crown chits. Nobody wants to win. The winner has to spend them at the toll canteen.
+@end
+
+@scene N01_SHOPKEEP
+say keeper | Linden's Store. Tonics, rope, good boots, a sword or two from the old garrison. Look, then haggle.
+shop SHOP_N01
+@end
+
+@scene N01_CRAFTER
+if flag:n01_juniper met
+set n01_juniper
+say juniper | You've got the look of people who break things. Good. I mend them, and sometimes I make them better.
+say juniper | Bring me materials - ore from the hills, hides, herbs, scrap from anything the Crown leaves lying about.
+say juniper | A bench can't make something from nothing. But it can make a lot from a little. That's the whole trick of this village.
+end
+label met
+say juniper | Iron ore, hides, pond reeds, Crown scrap. Anything with a bit of use left in it. I'll show you what it wants to be.
+@end
+
+@scene N01_CUSTOMER
+say baker | Linden charges the Crown price and then gives you a biscuit. I can't decide if that's kindness or cheek.
+@end
+
+@scene N01_NELL
+if phase:post post
+say nell | Stones are dressed, the race is open, the wheel's greased. Grandad talks. I grind.
+say nell | If the tithe clerk says we're short again, I'll grind him.
+end
+label post
+say nell | We grind for three villages now. Refugees carry the sacks. Nobody takes a share. I didn't know flour could feel like this.
+@end
+
+@scene N01_CLERK
+say clerk | Tithe clerk. Every seventh sack is the Crown's. Every tenth after that is also the Crown's. It's in the schedule.
+@end
+
+@scene N01_SACKMAN
+say worker | Mind the millstones. They took my brother's thumb in the spring. He says it's the most honest tax he's paid.
+@end
+
+@scene N01_GRAN
+say elder | Hollin's mother planted that garden across the race. Beans, sage, gloves. Don't ask about the gloves.
+say elder | He won't cross the bridge since she passed. Somebody should. Things want to be found.
+@end
+
+# ================================================================ N02 Gallowgate Toll (R01 landmark, CH02)
+@scene N02_TOLL
+say guard | Halt. Gallowgate Toll. Ten crowns a head, a Crown writ, or turn round and walk home.
+if party:C08 sak
+choice | Show Raven's old commission -> writ | Turn back -> back
+label sak
+choice | Show Raven's old commission -> writ | Let Sak talk -> forge | Turn back -> back
+label writ
+say dain | Raven. Crown executioner, convoy service. The commission's still on file.
+say guard | ...Sir. Yes, sir. Go through, sir.
+say dain | The name still opens doors. I hate that it does.
+set n02_toll
+end
+label forge
+say pip | Ministry of Provision, audit division. You're three tallies short on the east ledger. Don't get up.
+say guard | Audit. Right. Go on through. Please don't mention the ledger to the sergeant.
+set n02_toll
+end
+label back
+say guard | Sensible.
+move player down
+@end
+
+@scene N02_TOLLMAN
+if flag:n02_toll paid
+say guard | Ten crowns, a writ, or the road home. I don't make the rules. I just stand in front of them.
+end
+label paid
+say guard | You're through. The canteen takes chits and coin. The bounty board takes everybody's name eventually.
+@end
+
+@scene N02_CARTER
+say worker | Three days in the queue with a cart of turnips. The turnips are winning.
+say worker | They weigh the load, then weigh me, then charge me for the difference. I asked what the difference was. 'Attitude.'
+@end
+
+@scene N02_CARTER2
+say worker | I haul slag bricks from Cinder Reach. They tax me at both ends of the toll road and once in the middle for luck.
+say worker | Past Cinderwake there's a village called Kettle Row, right under a dam. Nice people. Terrible dam.
+rumor | Gallowgate: Kettle Row, a slag-miners' village in Cinder Reach, sits right under a failing dam.
+@end
+
+@scene N02_HOODED
+say survivor | Don't look at me. Look at the carts. I'm a cart.
+say survivor | ...My name's on the board in there. I sold Crown grain back to the people who grew it. Cheaply. That's the crime.
+@end
+
+@scene N02_KENNELMAN
+if flag:n02_hounds done
+say worker | Toll hounds. The Crown breeds them to smell coin in a pocket. Four broke loose in the run and I'm not going in.
+say worker | Sergeant Kell's posted it on the board. Somebody braver than me can collect.
+end
+label done
+say worker | You cleared the run. I'll raise the next litter kinder. Maybe. They're still toll hounds.
+@end
+
+@scene N02_BARRACKS
+say guard | Barracks. Crown personnel only. That includes me, barely. They lost my papers in Veyr.
+@end
+
+@scene N02_WEND
+say wend | The queue's the best market in the March. Nobody can leave, and everybody's bored.
+shop SHOP_WEND
+@end
+
+@scene N02_BOUNTY
+if flag:n02_paid paid
+if flag:n02_bounty taken
+say narr | Notices are nailed three deep. WANTED FOR QUESTIONING: a list of names from Hollins Mill and Wren's Orchard.
+say narr | Under them, a work notice: 'Toll hounds loose in the kennel run. 150 crowns on clearing it. See Sgt. Kell.'
+choice | Take the hound notice -> take | Tear down the villagers' names -> tear | Leave it -> bye
+label take
+set n02_bounty
+say narr | You pull the hound notice. The kennel run is behind the fence, east of the road.
+if flag:n02_names_torn bye
+choice | Tear down the names too -> tear | Leave them -> bye
+label tear
+if flag:n02_names_torn bye
+set n02_names_torn
+say narr | The 'persons of interest' come down in one handful. Somebody in the cart queue laughs once and then very carefully stops.
+label bye
+end
+label taken
+say narr | The hound notice is gone from its nail. The kennel run is east of the road, behind the fence.
+end
+label paid
+say narr | New notices already. 'Bandit on the Cinder road.' 'Bells ringing in the marsh chapel: investigate, NOT urgent.'
+rumor | Gallowgate bounty board: bells ringing at the marsh chapel east of Wren's Orchard. Marked 'not urgent'.
+@end
+
+@scene N02_KENNEL
+say narr | Four toll hounds turn from a torn sack of coin-scented rags. Their collars are stamped with the Ministry seal.
+battle OWX_R01_2
+set n02_hounds
+say narr | The run is quiet. Sergeant Kell will want to hear it from you.
+@end
+
+@scene N02_WAYSTONE
+if flag:waystone_n02 done
+set waystone_n02
+discover L_N02
+sfx FX029
+say narr | The waystone warms. Far to the west you feel the Oathstone answer.
+say narr | (Waystone attuned: Gallowgate Toll.)
+end
+label done
+say narr | The waystone hums under a film of road dust.
+@end
+
+@scene N02_HERMIT
+say elder | I hid in the gatehouse when the ground split. When I came out the garrison was gone and the road ended in the sea.
+say elder | Sergeant Kell took the soldiers who'd listen and went east. Said she was done collecting names. Good for her.
+rumor | Gallowgate: Sergeant Kell deserted after the fault and took her soldiers east, toward the Glass Coast shoals.
+@end
+
+@scene N02_SCAV
+say survivor | Picking the fort clean. Crown iron, Crown rope, Crown nails. The Crown won't miss it. The Crown's in the sea.
+@end
+
+@scene N02_COOK
+say baker | Canteen. Crown chits or coin. The stew is mostly turnip, because of the queue outside.
+shop SHOP_N02
+@end
+
+@scene N02_KELL
+if flag:n02_paid after
+if flag:n02_hounds pay
+say kell | Sergeant Kell. I run the bounty board, and the toll, and the kennel, and my own patience, which is thinnest.
+if flag:n02_bounty took
+say kell | If you want work, the board's outside. If you want mercy, the chapel's in the marsh.
+end
+label took
+say kell | You took the hound notice. The run's east of the road. They bite low. Keep your boots on.
+end
+label pay
+set n02_paid
+say kell | Kennel-master says the run's clear. Here. The Crown pays late, but I don't.
+gold 150
+give I018 1
+if flag:n02_names_torn torn
+end
+label torn
+say kell | Somebody tore down my persons-of-interest. Now I'll have to copy them all out again. Slowly. Very, very slowly.
+end
+label after
+say kell | Twenty years collecting names. Some days I'd like to hand one back.
+@end
+
+@scene N02_CLERK
+say clerk | Bounty office. I pay out, I log it, I file it. The file goes to Veyr. Nobody in Veyr reads it. I checked.
+@end
+
+@scene N02_SOLDIER
+say guard | Off shift. We play 'guess the toll'. The sergeant makes up a new number every morning. I'm on a streak.
+@end
+
+@scene N02_SOLDIER2
+say guard | I joined to guard a road. Turns out a toll is a road with a fist in it.
+@end
+
+@scene N02_SQUATTER
+say survivor | We sleep in the canteen now. The cook stayed. The stew's still turnip. Some things survive anything.
+@end
+
+# ================================================================ N03 Wren's Orchard (R01 village, CH03) + the ghost orchard (night event)
+# There is no night condition for NPCs, so the ghost orchard is gated on flag n03_night, set by ringing the grove bell
+# "and waiting for dark" (N03_BELL). The event closes with n03_ghosts_done (N03_WREN).
+@scene N03_WREN
+if flag:n03_ghosts_done after
+if flag:n03_harl resolve
+if phase:post post
+say wren | Wren Tamsey. It's my orchard, whatever the levy officer writes on his slate.
+say wren | We press in autumn and pay in spring. The Crown takes a cask in three and calls the rest 'surplus'.
+say wren | The old grove behind the bell gate is shut. My Harl's buried there, with the pickers from the levy night. Leave them be.
+end
+label post
+say wren | The fault shook every apple off every tree in one night. We pressed for a week. The whole March drank.
+say wren | The levy officer went back to Veyr. There's no Veyr to go back to. I hope he found somewhere.
+end
+label resolve
+say wren | You went into the old grove after dark. ...You saw him. Don't tell me you didn't, you've got the look.
+say dain | He said the deed to the press is under the third press stone. He hid it the night of the levy, so the Crown couldn't take the farm.
+say wren | Under the stone. Twelve years I've paid rent to the Crown on my own orchard because I couldn't find that paper.
+say wren | ...That fool. That lovely, stubborn fool. He could have just told me before he went out picking in the frost.
+set n03_ghosts_done
+tint none
+say wren | Take this. It was his militia pennant. He'd want it on somebody who goes out at night on purpose.
+give A101 1
+give I021 1
+journal | Wren's Orchard: the ghosts of the levy night are at rest. Wren has the deed to her press.
+end
+label after
+say wren | The deed's framed over the press. The levy officer read it twice and went very quiet. Best cider we've made in years.
+@end
+
+@scene N03_MOURNER
+if flag:n03_ghosts_done done
+say elder | Twelve autumns back, the Crown wanted the harvest in before the frost. The levy made the pickers work through the night.
+say elder | Six of them froze in the old grove. Harl Wren was one. Now the bell at the gate rings itself on cold nights.
+say elder | The pickers say if you ring it at dusk and wait, you'll see them working. I've never had the nerve.
+rumor | Wren's Orchard: ring the old grove bell at dusk and wait, and the levy-night pickers come back.
+end
+label done
+say elder | The bell hasn't rung by itself since you went in there. I miss it, a little. Isn't that odd.
+@end
+
+@scene N03_BELL
+if flag:n03_ghosts_done rest
+if flag:n03_night dark
+say narr | The rope is tied off with a black ribbon. The pickers say: ring it at dusk, then wait.
+choice | Ring the bell and wait for dark -> ring | Leave it -> bye
+label ring
+sfx FX009
+fade out 0.8
+set n03_night
+wait 0.6
+fade in 0.8
+tint #0b1530a0
+say narr | Night comes down the rows. Frost ticks on the grass. Past the gate, lanterns move between the dead trees.
+say narr | Nobody is holding them.
+end
+label dark
+say narr | The bell is still swinging a little. It is fully dark in the old grove.
+end
+label rest
+say narr | The ribbon is gone. Somebody has tied a sprig of apple blossom to the rope instead.
+label bye
+@end
+
+@scene N03_WISPS once
+say narr | The lanterns turn toward you all at once. They are not lanterns.
+battle OWX_R01_3
+say narr | The wisps scatter into the frost. Deeper in, a man in a picker's smock is still working, one hand on an empty basket.
+@end
+
+@scene N03_HARL
+if flag:n03_harl told
+say harl | Mind the frost. You'll lose your fingers. We did.
+say harl | The levy said the harvest had to be in before dawn. Crown's orders. So we picked by lamplight, and the cold came.
+say dain | You're Harl Wren.
+say harl | I was. Is Wren still pressing? Tell her - no. Tell her something useful.
+say harl | The deed to the press is under the third press stone. I hid it that night so the levy couldn't take the farm if we didn't finish.
+say harl | We didn't finish. She's been paying the Crown rent ever since, hasn't she? Tell her. Then we can put the baskets down.
+set n03_harl
+objective harl | Tell Wren Tamsey that the press deed is under the third press stone.
+end
+label told
+say harl | Tell Wren. The third stone. Then we can put the baskets down.
+@end
+
+@scene N03_GHOST1
+say survivor | Two more rows. Two more rows and they said we could go in. That was a long time ago, wasn't it.
+@end
+
+@scene N03_GHOST2
+say survivor | The levy man had a warm coat. I remember his coat better than my own mother's face.
+@end
+
+@scene N03_GHOST3
+say child | I was only here to carry the baskets. Harl gave me his gloves. He shouldn't have. His hands went first.
+@end
+
+@scene N03_GRAVE
+say narr | Six names are cut into a flat stone. The last two are cut shallower, as if the mason ran out of daylight, or money.
+if flag:n03_ghosts_done rest
+end
+label rest
+say narr | Someone has left six cups of cider on the stone.
+@end
+
+@scene N03_PRESSSTONE
+if flag:n03_ghosts_done done
+if flag:n03_harl found
+say narr | The third stone sits a finger higher than the others. It won't budge. It's probably nothing.
+end
+label found
+say narr | Under the third stone, where Harl said: an oilcloth bundle, dry as the day it was hidden. Wren should open it.
+end
+label done
+say narr | The press stones are level now. The deed hangs framed on the wall above them.
+@end
+
+@scene N03_PICKER
+say worker | Pick with a twist, not a pull. Pull, and you take next year's bud with it. The Crown pulls.
+@end
+
+@scene N03_PICKER2
+if phase:post post
+say worker | We send the best casks to Veyr, the worst to the toll, and drink the middling ones ourselves. Middling's lovely.
+end
+label post
+say worker | The trees on the east rows split in the fault. The west rows are fine. We're grafting the one onto the other.
+@end
+
+@scene N03_CHILD
+say child | My big brother says the dead people in the old grove come out if you ring the bell. I'd never. Would you?
+@end
+
+@scene N03_LEVY
+if flag:n03_ghosts_done deed
+say clerk | Harvest levy office. One cask in three. The widow Tamsey owes rent on the press. There's no deed on file.
+say clerk | No deed, no farm. The Crown is patient. The Crown is also the only one with a pen.
+end
+label deed
+say clerk | She has a deed. A real one. Dated before the levy. I... will need to consult the regional office. For some years.
+@end
+
+@scene N03_CARTER
+say worker | Cider to Veyr, empties back. The toll at Gallowgate charges me for the empties. They're full of air. Crown air.
+@end
+
+@scene N03_BEEKEEPER
+say elder | Bees don't pay tithe. They sting the assessor, and he writes them down as 'hazard', and then they're exempt.
+say elder | Southeast, where the marsh starts, there's a chapel under the water. My bees won't fly over it.
+rumor | Wren's Orchard: the beekeeper's bees won't fly over the drowned chapel in the marsh south-east.
+@end
+
+@scene N03_TASTER
+say worker | I'm the taster. It's a real job. I taste, I nod, Wren tells me to stop nodding and start carrying.
+@end
+
+@scene N03_GUARD
+say guard | Levy escort. I carry the officer's slate and his umbrella. Mostly the umbrella. It's a hard posting.
+@end
+
+@scene N03_REFUGEE
+say survivor | I walked from Veyr with my shoes in my hand. Wren gave me a bed in the press loft and a job pulling apples.
+say survivor | Twist, not pull. I'm learning.
+@end
+
+@scene N03_ORPHAN
+say child | Posy says I can stay till my mum comes. Mum was at the square in Veyr. Posy says the orchard is good at waiting.
+@end
+
+@scene N03_INN
+if phase:post post
+say keeper | The Bent Bough. Bed, bread and a jug. Thirty-five crowns, cider included, headache extra.
+inn 35
+end
+label post
+say keeper | Pay what you can. Most pay in apples. We have a great many apples.
+inn 5
+@end
+
+@scene N03_GUEST
+say worker | Cinderwake smith, taking the long road home. The toll road's too dear. The orchard road's too pleasant. I'm torn.
+@end
+
+@scene N03_GUEST2
+say buyer | I'm a buyer from Veyr. I taste, I bargain, I lose. Wren always wins. It's why I keep coming back.
+@end
+
+@scene N03_SHOPKEEP
+say duro | Cellarman Duro. Casks, tonics, tools for the rows, and a few blades the pickers use for pruning. And for wolves.
+shop SHOP_N03
+@end
+
+@scene N03_CRAFTER
+if flag:n03_mab met
+set n03_mab
+say mab | I'm the cooper. I make casks and I mend everything else. Bring me hardwood, hoops, hides. Iron if you can find it.
+say mab | A good barrel is a hundred small promises, all holding. Armour's the same idea, only it's rude about it.
+end
+label met
+say mab | Hardwood, iron hoops, hides, orchard resin. Bring them and I'll bend something useful out of them.
+@end
+
+@scene N03_PRESSBOY
+say apprentice | Don't touch the third press stone. It rocks. Duro says it's always rocked. I think something's under it.
+@end
+
+@scene N03_DAUGHTER
+if flag:n03_ghosts_done after
+say child | Mum says Dad's in the old grove. I don't go in there. The bell does it for me.
+end
+label after
+say child | Mum laughed today, then she cried, then she laughed again. She says it was about a piece of paper.
+@end
+
+@scene N03_AUNT
+say elder | I came to help my sister after Harl died. That was twelve years ago. I'm still helping. Help takes a long time.
+@end
+
+# ================================================================ N04 The Sunken Chapel (R01 optional dungeon, CH03; boss BX01 Ser Hallam)
+# Mechanism: the chapel bells. The west bell rope (nave) lifts the cloister portcullis; the east bell (cloister island)
+# raises the reliquary grille. A barred side door in the cloister is a shortcut back to the porch.
+@scene N04_ENTER once
+say narr | The marsh gives way to flagstones. The chapel stands up to its knees in black water, doors open.
+say narr | Somewhere inside, a bell rings once. The water around your boots trembles with it.
+say dain | Oath-knights built these. They swore to hold them. I knew the words once.
+@end
+
+@scene N04_BELL_W
+if flag:n04_bell_w done
+set n04_bell_w
+sfx FX009
+shake 0.3
+say narr | You haul on the west bell rope. Far overhead, a drowned bell tolls. The west portcullis grinds up out of the silt.
+end
+label done
+say narr | The rope is slack. The west portcullis stays up.
+@end
+
+@scene N04_BELL_E
+if flag:n04_bell_e done
+set n04_bell_e
+sfx FX009
+shake 0.4
+say narr | The island bell is only a hand bell on a chain. You ring it anyway. Every bell in the chapel answers, underwater.
+say narr | Back in the nave, iron shrieks. Something has lifted.
+end
+label done
+say narr | The little bell hangs quiet on its chain.
+@end
+
+@scene N04_BAR
+if flag:n04_shortcut done
+set n04_shortcut
+sfx FX010
+say narr | You lift the bar off the side door. It opens onto the marsh porch, where you came in.
+end
+label done
+say narr | The bar leans against the wall. The side door is open.
+@end
+
+@scene N04_PILGRIM
+say survivor | I came to pray for my son. The water came in during the hymn. I'm still waiting for the hymn to end.
+say survivor | The knights still stand their watch below. Their commander will not let anyone pass who cannot relieve him.
+@end
+
+@scene N04_AUBEL
+if flag:n04_cleared after
+say aubel | Squire Aubel, Ser Hallam's shield-bearer. I drowned carrying his shield. He's been carrying it since.
+say aubel | He swore to hold the chapel until relieved. Nobody came. Now he holds it against everyone, even the water.
+say aubel | When he raises the shield, don't strike. Wait, or break the oath with storm. Lightning goes through wet steel.
+say aubel | And when the bells ring underwater, brace. He floods the altar and the cold slows you to a crawl.
+end
+label after
+say aubel | You relieved him. That's all any of us wanted. Somebody to say: you can stop now.
+say aubel | Tell whoever's giving the orders these days. Somebody should say it to them, too.
+@end
+
+@scene N04_RELIC
+say narr | Forty oath-rings in a velvet tray. One slot is empty. Whoever wore it is still upstairs, holding.
+@end
+
+@scene N04_BOSS once
+say narr | The knight at the altar turns. Water pours from the joints of his armour. His visor is full of it.
+say hallam | Halt. This chapel is held by the Order of the Oath. None pass until the garrison is relieved.
+say dain | Ser. The Order's gone. The Crown dissolved it. There's no one left to relieve you.
+say hallam | Then I hold. I hold until relieved. I HOLD.
+say narr | Every bell in the chapel rings at once, underwater.
+battle BX01 noflee
+set n04_cleared
+say narr | Hallam goes to one knee. The water runs out of his armour and does not come back.
+say hallam | ...You are relieved, Ser Hallam. Is that it? Did someone say it?
+say dain | I'm saying it. You're relieved. Stand down.
+say hallam | Thank you. Take the plate. It never kept the water out. Perhaps it will keep something else.
+say narr | The bells stop. For the first time in years, the chapel is quiet.
+journal | The Sunken Chapel: Ser Hallam is relieved of his watch. The drowned bells have stopped.
+@end
+
+@scene N04_ALTAR
+if flag:n04_cleared quiet
+say narr | The altar is under a finger of water. The stone is carved with the Order's oath: WE HOLD UNTIL RELIEVED.
+end
+label quiet
+say narr | Someone has cut a new line under the oath, fresh and shallow: RELIEVED.
+@end
+
+# ================================================================ N05 Ashward Barrows (R01 secret, CH06) + QC14 first beat
+# The barrow door answers to the first king's oath, cut on the fifth face of the Oathstone (N41_MILESTONE sets n41_oath).
+@scene N05_WARDEN
+if flag:n05_open opened
+say edrin | Barrow-warden. I keep the grass short and the curious out. The first is easier.
+say edrin | The big barrow has a speaking stone. It wants the oath of the first king. Nobody alive knows it.
+say edrin | Well. The Crown's masons keep chiselling it off the Oathstone at the crossroads. So somebody knows it.
+rumor | Ashward Barrows: the barrow door opens to the first king's oath, cut on the Oathstone at the crossroads.
+end
+label opened
+say edrin | You opened it. I've kept that grass for forty years and never once seen inside. ...Don't tell me. I like the not knowing.
+@end
+
+@scene N05_PILGRIM
+say survivor | The fault shook half the March into the sea and didn't crack one stone out here. The barrows are stubborn.
+say survivor | People come to lay flowers at the round door now. They don't know whose it is. It doesn't seem to matter.
+@end
+
+@scene N05_STONE
+say narr | A crown carved on the stone, chiselled out, then carved again, badly, by a different hand.
+say narr | Under it, very small: 'CROWNED TWICE. BURIED TWICE.'
+@end
+
+@scene N05_DOOR
+say narr | A round stone blocks the barrow. Around its rim, worn half away: '...SHALL WEIGH MORE THAN THE HEAD...'
+say narr | The stone seems to be waiting for the rest.
+if flag:n41_oath know
+choice | Speak: 'Long live the Crown.' -> wrong | Speak: 'The crown is the realm.' -> wrong | Leave it -> bye
+label know
+choice | Speak: 'No crown shall weigh more than the head that bears it.' -> right | Speak: 'Long live the Crown.' -> wrong | Leave it -> bye
+label right
+set n05_open
+sfx FX009
+shake 0.4
+say narr | The words go into the stone like a key. It rolls aside with a sound like someone sighing in their sleep.
+end
+label wrong
+say narr | The stone does not move. Somewhere under the grass, something laughs, once, without any breath.
+label bye
+@end
+
+@scene N05_WIGHTS once
+say narr | The dust in the passage stands up. Two knights in ash-grey mail, their faces long gone, level their swords.
+say narr | They wear no Crown seal. Their tabards bear a crown with a line struck through it.
+battle OWX_R01_4
+say narr | The wights fold back into dust. The passage to the inner barrow is open.
+@end
+
+@scene N05_TOMB
+if recruited:C14 maldrath
+say narr | The sarcophagus is empty. In its lid, a crown-shaped hollow, polished smooth, as if something was lifted out and put back many times.
+say narr | Scratched inside the lid, where only the dead could read it: 'THEY CARRIED THE CROWN BACK DOWN TO HIM WHO WORE IT FIRST. I WILL FOLLOW IT.'
+end
+label maldrath
+if flag:qc14_barrows known
+set qc14_barrows
+say maldrath | My knights buried me here the first time. Without the crown. The priests carried it back down to the one who wore it first.
+say maldrath | The First Crown. The first head it ever sat on. They entombed him with it, deep under the quarry. Every king after only borrowed it.
+say maldrath | I borrowed it. I sent people into that quarry with it on my head. Then they took it back, and put me here with the grass.
+say dain | Then we find where it went.
+say maldrath | Below. Past the dragons and the builders, in the country of the dead. His tomb. I can feel it from here, like a bad tooth.
+quest QC14 ACTIVE barrows
+journal | QC14 The First Crown: Maldrath's first grave lies empty in the Ashward Barrows. The crown went below - to the First Crown's Tomb, deep in the Hollow Throne.
+objective maldrath | Find the First Crown's Tomb in the realm of the dead, below the Deep.
+end
+label known
+say maldrath | Empty, still. The tomb that matters is below. The Hollow Throne. I can feel it pulling.
+@end
+
+# ================================================================ N06 Kettle Row (R02 village, CH04; destroyed in the fault)
+@scene N06_GRETE
+if flag:n42_cleared dam
+say grete | Grete Ossery, forewoman of the Slag Guild. Two hundred souls under that dam, and the Crown says it's sound.
+say grete | The Crown inspected it from the far bank, with a telescope, in fog. We have the certificate framed in the hall.
+say grete | If you're going up to the Weeping Dam, go quiet. There's something living in the sluice works. The keeper's widow went in and never came out.
+rumor | Kettle Row: something lives in the Weeping Dam's sluice works, north of the village.
+end
+label dam
+say grete | The seep's slowed since you went up the dam. It still weeps. But it weeps like a person now, not like a flood.
+say grete | I've told the guild to cut a second road out of the valley. Just in case. Nobody laughed.
+@end
+
+@scene N06_PICKETT
+if flag:n06_taught known
+set n06_taught
+say pickett | New hands? Good. I teach every new miner the same way: here's a seam, here's a pick, don't die.
+say pickett | See the chalk marks on the ledge? That's a node. Face it and work it and it'll give up ore. Not forever. It grows back slow.
+say pickett | Iron for a smith's first upgrade. Heartsteel deeper down, in hot places. Starmetal only where the sky's fallen in.
+say pickett | Take the pick. We've more picks than miners these days. That's not a joke. I wish it was.
+give M001 1
+end
+label known
+say pickett | Nodes along the ledge, marked in chalk. Work them, let them rest, come back. The mountain's patient. Be patient back.
+@end
+
+@scene N06_NODE1
+if flag:n06_node1 done
+set n06_node1
+sfx FX010
+say narr | You work the chalk-marked seam. A fist of dull ore breaks free.
+give M001 1
+end
+label done
+say narr | The seam is worked out for now. It will grow back, slowly.
+@end
+
+@scene N06_NODE2
+if flag:n06_node2 done
+set n06_node2
+sfx FX010
+say narr | The glinting seam gives up two good lumps of ore and a shower of grit.
+give M001 2
+end
+label done
+say narr | Someone has chalked a new mark: 'RESTING'.
+@end
+
+@scene N06_CHILD
+say child | I'm king of the slag heap! My dad says slag's what's left when you take the good out of rock. I'm still king of it.
+@end
+
+@scene N06_DAMWATCH
+say sallow | I watch the dam. Somebody ought to. I count the weeps. Forty years ago it was three. Today it was thirty-one.
+say sallow | The keeper's widow went up there when her man drowned in the sluices. They say she's in the walls now, holding it together out of spite.
+@end
+
+@scene N06_FOREMAN
+say clerk | Crown foreman. Output is down nine percent. The guild says it's the coughing. I have noted 'coughing' as an excuse.
+say clerk | The dam is certified. Stop looking at it like that.
+@end
+
+@scene N06_CARTMAN
+say worker | Carts to Cinderwake, slag bricks back. Bricks for the Crown's new furnaces. Furnaces for more slag. It's a wheel.
+@end
+
+@scene N06_WIDOW
+say baker | Washing doesn't dry here. It just gets differently grey. I hang it out anyway. You have to keep some rules.
+@end
+
+@scene N06_SMOKER
+say worker | Pipe? No? Everyone in Kettle Row smokes. Makes the air taste like something you chose.
+@end
+
+@scene N06_PROSPECTOR
+say elder | West of here the old slag runs down the terraces like a river, still hot. The Slagfalls. Something walks up there.
+say elder | North, in the ridges, there's Anvil Cairn - the smiths' shrine. The old forge-mother there will temper a blade for a song. A good song.
+rumor | Kettle Row: the Slagfalls to the west still run hot, and something big walks the terraces.
+rumor | Kettle Row: Anvil Cairn, the smiths' shrine in the northern ridges, keeps an old forge-mother who tempers blades.
+@end
+
+@scene N06_KID2
+say child | Grandad says if the dam ever breaks, run uphill and don't look back. I practise every day. I'm very fast now.
+@end
+
+@scene N06_GUARD
+say guard | I guard the road out. Nobody leaves Kettle Row owing the Crown. So, nobody leaves Kettle Row.
+@end
+
+@scene N06_COUGH
+say patient | Slag lung. Everybody gets it. The Crown doctor says fresh air. I asked him where. He's still thinking.
+@end
+
+@scene N06_INN
+say keeper | The Slag and Kettle. Soup, a bed, a window that doesn't face the dam. The window's extra. Forty crowns.
+inn 40
+@end
+
+@scene N06_PATRON
+say worker | We toast the dam every night. 'To the dam: hold one more day.' It's held forty years of days. Cheers.
+@end
+
+@scene N06_PATRON2
+say worker | Pipewright's Rest, up the viaduct, does a better stew. Don't tell Bessa. She'll put slag in mine.
+rumor | Kettle Row: Pipewright's Rest, the pipe-inn on the viaduct north-east, does the best stew in the Reach.
+@end
+
+@scene N06_SHOPKEEP
+say keeper | Guild smithy. Picks, hammers, and anything else you can swing. Ore, if you've got the coin. Tonics, because we must.
+shop SHOP_N06
+@end
+
+@scene N06_CRAFTER
+if flag:n06_ivy met
+set n06_ivy
+say ivy | I'm Ivy. The guild calls me Ember-hand, because I don't use tongs. I don't recommend it.
+say ivy | Bring me ore and I'll make it into something that keeps you alive. Iron first. Heartsteel from the hot places, if you're brave.
+say ivy | Slag's no good. Slag is what the Crown leaves you. Bring me what it doesn't know it's missing.
+end
+label met
+say ivy | Iron ore, heartsteel, cinder hides, pipe brass. Bring it and I'll put it to work.
+@end
+
+@scene N06_APPRENTICE
+say apprentice | I quench the blades in the trough. The water comes down from the dam. Harrow says that makes them brave.
+@end
+
+@scene N06_CHAIR
+say worker | Guild Chair Dunn. We meet every week to vote on whether to ask the Crown to fix the dam. We always vote yes.
+say worker | We've sent forty-one letters. They send one back every year: 'Received.' At least they're polite.
+@end
+
+@scene N06_MINER1
+say worker | I move that we stop writing letters and start digging a second road. Seconded? No? Next week, then.
+@end
+
+@scene N06_MINER2
+say worker | I've got four children and a rock in my chest. The rock's the only one that pays rent.
+@end
+
+@scene N06_MINER3
+say patient | Don't mind the cough. It's how you know a Kettle Row man's still breathing.
+@end
+
+@scene N06_HALLCLERK
+say clerk | Minutes of the Slag Guild. Item one: the dam. Item two: the dam. Item three: tea.
+@end
+
+# ================================================================ N07 The Slagfalls (R02 optional dungeon, CH04; boss BX02 Slag Colossus)
+# Mechanism: cooling vents. Vent One chills the slag ford on the lower terrace; Vent Two (on the crucible island) clears
+# the upper stair. A clinker-choked slag chute is the shortcut back to the foot.
+@scene N07_ENTER once
+say narr | The mountainside is a staircase of black glass. Molten slag slides down it in slow orange sheets.
+say narr | High above, something the size of a house takes a step, and the whole terrace shivers.
+@end
+
+@scene N07_GUIDE
+if flag:n07_cleared after
+say worker | Slag runner. I carry messages across the falls for the guild. You learn where the crust holds.
+say worker | The vents cool the fords if you open them. The guild built them when the Crown's flue started pouring. Nobody maintains them.
+say worker | Up top, the overflow's got legs. We call it the Colossus. It's just slag that nobody told to stop.
+end
+label after
+say worker | The terraces are still hot, but nothing walks them. I can run the falls in half the time. Thank you.
+@end
+
+@scene N07_HERMIT
+say survivor | The fault cracked the Crown's flue. The slag stopped. The falls are cooling. In ten years this'll be a hill.
+say survivor | I live here now. It's warm, and nobody collects anything.
+@end
+
+@scene N07_VENT1
+if flag:n07_vent1 done
+set n07_vent1
+sfx FX010
+shake 0.3
+say narr | The valve screams open. A blast of cold air roars down the channel, and the slag across the ford blackens and sets.
+end
+label done
+say narr | The vent roars steadily. The ford stays black and solid.
+@end
+
+@scene N07_VENT2
+if flag:n07_vent2 done
+set n07_vent2
+sfx FX010
+shake 0.4
+say narr | The crucible vent opens with a sound like a bellows the size of a church. Down on the terrace, the clinker over the upper stair cracks and falls away.
+end
+label done
+say narr | Cold air pours down toward the terrace.
+@end
+
+@scene N07_CHUTE
+if flag:n07_chute done
+set n07_chute
+sfx FX010
+shake 0.3
+say narr | You kick the chute gate open. A plug of cooled clinker tumbles away downhill. The chute runs straight to the foot of the falls.
+end
+label done
+say narr | The chute is clear. It's a quick, hot slide to the foot.
+@end
+
+@scene N07_BONES
+say survivor | Prospector. Came for heartsteel in the crucible. The slag came for me. It's all right. It's warm.
+say survivor | The big one up top gets harder as it cools. Ice cracks it, but fire only feeds it. When its heart goes white, cover your faces.
+@end
+
+@scene N07_RUNNER
+say worker | Twisted my ankle on the last climb. I'm waiting for the ankle to agree to go down. It hasn't yet.
+say worker | If you're going up: the Colossus burns everyone in front of it. Keep cool cloths ready. And don't stand in the pour.
+@end
+
+@scene N07_FLUE
+say narr | A Crown furnace flue juts from the ridge above, pouring slag down the mountain. It has been pouring for twenty years.
+say narr | A brass plate on the flue reads: 'OVERFLOW - ROUTE TO NATURAL TERRAIN.'
+@end
+
+@scene N07_BOSS once
+say narr | The slag at the top of the falls gathers itself. A body of cooling crust stands up, glowing at every crack.
+say narr | It has no face. It has a Crown furnace seal pressed into its chest, still legible, still hot.
+say dain | It's not alive. It's just the overflow, walking.
+say ilyr | Walking toward the villages below. Stop it here.
+battle BX02 noflee
+set n07_cleared
+say narr | The Colossus slumps, and cools, and cracks into a hill of black glass.
+say narr | The flue above still pours, but the slag now runs into the crucible and stays there, like it has nowhere left to go.
+journal | The Slagfalls: the Slag Colossus is broken. The overflow no longer walks toward Kettle Row.
+@end
+
+# ================================================================ N08 Anvil Cairn (R02 landmark, CH04; forge crafter crafter_n08)
+@scene N08_SEO
+if flag:n08_seo met
+set n08_seo
+say seo | Seo. They call me the Anvil-Mother, because I've outlived every smith who ever called me anything else.
+say seo | You carry Crown steel. It's poor. They fold it twice and call it done. Bring me ore and I'll fold it properly.
+if party:C04 golem
+say seo | Take this for the road. Heartsteel, from the cairn. Pilgrims leave it. I don't need it; I've enough to finish me.
+give M002 1
+shop SHOP_N08
+end
+label golem
+say seo | ...And you. A rune-engine. I knew the smiths who cast your plates. You're better kept than they were.
+say ivo | Pell keeps me. I keep the rest.
+say seo | Then take this, for Pell, and for the rest. Heartsteel. You'll know what to do with it.
+give M002 1
+shop SHOP_N08
+end
+label met
+say seo | Iron for the first fold. Heartsteel for the second. Starmetal only if the sky gives it to you. And patience, always.
+shop SHOP_N08
+@end
+
+@scene N08_STRIKER
+say apprentice | I'm her striker. She points, I hit. Seven years. Last week she said 'better'. I'll remember it on my deathbed.
+@end
+
+@scene N08_QUENCH
+say worker | Quench water comes from the cairn spring. The Crown's smiths use slag water. Their blades sing flat. Listen next time.
+@end
+
+@scene N08_KEEPER
+if phase:post post
+say cairnkeeper | Every smith of the Reach brings an anvil here once in their life. The cairn is a thousand anvils deep.
+say cairnkeeper | The Crown sent assessors to count them for scrap. They counted to four hundred, then asked for a blessing and went home.
+end
+label post
+say cairnkeeper | The fault shook the cairn. Not one anvil fell. Smiths from the drowned towns come to strike them, just to hear them ring.
+@end
+
+@scene N08_PILGRIM
+say worker | Journeyman. I carried my father's anvil up the ridge on my back. Three days. He'd have said I was holding it wrong.
+say worker | They say the dam over Kettle Row is failing. If it goes, half the smiths of the Reach go with it.
+@end
+
+@scene N08_WEND
+say wend | Smiths are the only people in the March who haggle harder than me. I come here to be humbled.
+shop SHOP_WEND
+@end
+
+@scene N08_REFUGEE
+say survivor | Kettle Row's gone. We came up to the cairn because it was the highest place we knew. Seo feeds us. Seo feeds everyone.
+@end
+
+@scene N08_CHILD
+say child | I'm going to be a smith. I've already got a hammer. It's a spoon, but it's a hammer inside.
+@end
+
+@scene N08_ANVIL
+say narr | The Great Anvil stands in a ring of smaller ones. Its face is scarred with hundreds of smiths' marks.
+if party:C04 golem
+end
+label golem
+say narr | One mark, near the horn, is a rune. The Golem looks at it for a long time.
+say ivo | That's my maker's mark. The same one that's on my heart-plate. I didn't know he came here.
+say ivo | ...He struck the anvil twice. Pilgrims only strike once. The second strike means 'for someone else'.
+@end
+
+# ================================================================ N09 Pipewright's Rest (R02 village, CH05; lost in the fault)
+@scene N09_INN
+say dunmore | Dunmore Pipewright. Fifth of the name. My great-great-grandmother built the viaduct, then built an inn on it so the builders had somewhere to drink.
+say dunmore | Stew, bed, hot bath. Forty-five crowns. The view's free, and so's the swaying.
+inn 45
+@end
+
+@scene N09_BATHER
+say worker | The bath's fed off the boiler pipes. It's the only hot water in the Reach the Crown doesn't meter. Don't tell them.
+@end
+
+@scene N09_PATRON
+say worker | I come up from Cinderwake for the stew. And to feel the viaduct move under my chair. It reminds me I'm alive.
+@end
+
+@scene N09_SHOPKEEP
+say keeper | Pim, agent for Tobiah Wend. He sends the goods, I sell them, he complains about my prices. It works.
+shop SHOP_N09
+@end
+
+@scene N09_CRAFTER
+if flag:n09_olen met
+set n09_olen
+say olen | Olen. Brasswife. I bend pipe into whatever you need. Gauntlets, greaves, a kettle that whistles your name.
+say olen | Bring me brass from the Crown's scrap heaps and ore from the ridges. The viaduct taught me: good joints hold anything.
+end
+label met
+say olen | Pipe brass, iron ore, cinder hides, boiler rivets. Bring them. I'll make them hold.
+@end
+
+@scene N09_MASTER
+say hesta | Hesta. Master of the viaduct. Eleven hundred joints, and I know every one by its voice.
+say hesta | The east piers are shifting. The Crown says it's the wind. It's the ground. Something under the Reach is moving.
+rumor | Pipewright's Rest: the master pipewright says the ground under the Reach is moving, not the wind.
+@end
+
+@scene N09_APPRENTICE
+say apprentice | Hesta makes me listen to the pipes for an hour every morning. I'm starting to hear them in my sleep. They're worried.
+@end
+
+@scene N09_FITTER
+say worker | I fit the steam lines from the boilers to the town. If you hear a whistle, that's a leak. If you hear a scream, that's me.
+@end
+
+@scene N09_VALVE
+say worker | Valve-watcher. I watch valves. It's a good job. Most of the time nothing happens, and I'm the one who knows it.
+@end
+
+@scene N09_INSPECTOR
+say clerk | Crown pipe inspection. Every joint on the viaduct is taxed by the inch. The Pipewrights built very long joints.
+@end
+
+@scene N09_KID
+say child | I drop stones off the edge and count. I've never heard one land. Old Ambrose says there's a river down there. I think it's the sky.
+@end
+
+@scene N09_LAUNDRESS
+say baker | Laundry dries in an hour up here. The steam, the wind. It comes back grey, but dry. Grey and dry is a good day.
+@end
+
+@scene N09_AMBROSE
+say ambrose | I laid the last stone on the east pier when I was nineteen. I'm ninety now. The pier's older than me and less tired.
+say ambrose | Below, there's the river, and the old slag works, and the Weeping Dam. If that dam goes, this viaduct is all that stays dry.
+@end
+
+@scene N09_COURIER
+say worker | Waiting for the steam lift down to the Cinderwake road. It comes when it comes. The lift has opinions.
+@end
+
+@scene N09_GUARD
+say guard | Viaduct toll's been waived since the Crown couldn't find anyone willing to stand in the wind to collect it. Except me. For some reason.
+@end
+
+@scene N09_PIPER
+say apprentice | I play the steam organ at noon. One chord. People say it's beautiful. It's the only chord it has.
+@end
+
+@scene N09_COOK
+say baker | Stall stew, half the inn's price and twice the pepper. Dunmore says I'm stealing his trade. I say I'm stealing his pepper.
+@end
+
+@scene N09_VETERAN
+say survivor | Crown pension. Eight crowns a month for a leg. The other leg's still paying the Crown back, apparently.
+@end
+
+# ================================================================ N10 Cindermaw Caldera (R02 secret, CH10; later the lair of SB01 Cindermaw)
+# The lair stays sealed (block if=!flag:cindermaw_awake). The superboss itself is placed by the lead.
+@scene N10_SEAL
+say narr | A slab of cooled glass plugs the cave mouth, smooth as a pane and warm as skin.
+say narr | Behind it, very slowly, something breathes. Each breath fogs the glass from the inside. Each breath takes a minute.
+say ilyr | Do not knock.
+say dain | You know what that is.
+say ilyr | The oldest of us who never gave up its fragment. It sleeps. It wakes to eat towns. Let it sleep until you are strong enough to be rude.
+rumor | Cindermaw Caldera: something ancient sleeps behind the glass seal in the crater. Ilyr says not to knock.
+@end
+
+@scene N10_SCHOLAR
+say imre | Imre, fire-reader. I read the caldera's moods from the colour of the lake. Today it's 'irritable'.
+say imre | The lake rises and falls once a minute, like breathing. The Crown sends surveyors. The surveyors don't come back to argue.
+say imre | Whatever is behind the northern seal has slept for a thousand years. I've written a paper. Nobody reads papers about things that eat towns.
+@end
+
+@scene N10_WATCHER
+say survivor | The fault split the caldera rim, but the seal held. I camp here to watch it. Someone should know first, if it opens.
+say survivor | Some nights the glass glows. I pretend it's a lighthouse.
+@end
+
+# ================================================================ N41 Oathstone Crossroads (R01 landmark, CH02)
+@scene N41_WEND
+if phase:post post
+if flag:wend_met again
+set wend_met
+say wend | Tobiah Wend, pack-merchant of the whole March. I sell rope, tonics, and news, and only the rope is guaranteed.
+say wend | I walk a circuit: here, the Gallowgate queue, the smiths at Anvil Cairn. Look for the man with the ugliest pack.
+shop SHOP_WEND
+end
+label again
+say wend | Back again. The Oathstone brings everyone back eventually. That's what it's for.
+shop SHOP_WEND
+end
+label post
+say wend | Still walking. The roads broke, so I walk the pieces. Somebody has to carry the news between the islands.
+say wend | Refuge Rock, out on the Glass Coast shoals - they'll need everything I've got. You'll find me there too, some days.
+shop SHOP_WEND
+@end
+
+@scene N41_COURIER
+say worker | Crown courier. Veyr to Gallowgate to Cinderwake and back, twice a week. I carry orders I'm not allowed to read.
+say worker | I read them anyway. This week: more tithe, fewer excuses, and 'locate the Hollins gloves'. I don't know either.
+@end
+
+@scene N41_WARDEN
+say guard | Road warden. The Crown built the Oathstone as a milestone. The towns built the market around it before the mortar dried.
+say guard | Every road here has a toll further on. Gallowgate east is the worst. Carry coin or carry a good story.
+@end
+
+@scene N41_PILGRIM
+if phase:post post
+say elder | I walk to the Oathstone every spring and read the fifth face. It's an oath the first king swore to the March.
+say elder | 'No crown shall weigh more than the head that bears it.' The Crown's masons keep trying to chisel it off. It keeps being legible.
+end
+label post
+say elder | The fifth face cracked in the fault. The oath's still there. Just in two pieces, like everything.
+@end
+
+@scene N41_MASON
+if phase:post post
+say worker | I'm paid to recut the milestone every year. New distances, new Ministry seal. Old words underneath.
+say worker | Found a carved box in the yard once, left for travellers. I left it there. Take what you need; leave the box.
+end
+label post
+say worker | Nobody pays me now. I recut it anyway. The distances all changed. The roads go into the sea.
+@end
+
+@scene N41_CHILD
+if phase:post post
+say child | Water, one copper! It's well water, not Crown water. Crown water costs two coppers and tastes like the lid.
+end
+label post
+say child | The well's still good! Mum says it's the only thing in the March the fault didn't touch. I'm not charging anymore.
+@end
+
+@scene N41_WAYKEEP
+say keeper | Waystones hum when someone who's walked far touches them. Lay a hand on this one and it'll remember you.
+say keeper | There are others. Gallowgate has one in the cart queue. The old keepers used them before the Crown numbered the roads.
+@end
+
+@scene N41_CAMP
+say survivor | We came up from the rift edge. Veyr's half under water. The Oathstone's the tallest thing left standing for a day's walk.
+say survivor | People leave notes on it. 'Gone to Hollins.' 'Gone to the Rock.' 'Wait for me.'
+@end
+
+@scene N41_CAMP2
+say volunteer | I'm copying the notes off the milestone into a book, before the rain gets them. Names first. Then where they went.
+@end
+
+@scene N41_MILESTONE
+say narr | North: VEYR, CROWN QUARRY. East: GALLOWGATE TOLL, WREN'S ORCHARD. West: THE ASH BARROWS. South: HOLLINS MILL.
+say narr | The fifth face, low down and half-chiselled: NO CROWN SHALL WEIGH MORE THAN THE HEAD THAT BEARS IT.
+set n41_oath
+if phase:post notes
+end
+label notes
+say narr | Paper notes are nailed all over the stone. 'Gone to Refuge Rock.' 'Gone to Hollins.' 'Mira - wait here.'
+@end
+
+@scene N41_WAYSTONE
+if flag:waystone_n41 done
+set waystone_n41
+discover L_N41
+sfx FX029
+say narr | The waystone warms under your hand. For a moment you can feel the other stones along the roads, like far lamps.
+say narr | (Waystone attuned: Oathstone Crossroads.)
+end
+label done
+say narr | The waystone hums. It remembers you.
+@end
+
+# ================================================================ N42 The Weeping Dam (R02 optional dungeon, CH05; boss BX11 The Sluicewife)
+# Mechanism: sluice levers. Sluice One drains the gallery walkway; Sluice Two (out on the valve race) opens the keeper's
+# stair. A bolted maintenance hatch in the valve hall is the shortcut to the dam foot. Post-fault the dam has burst.
+@scene N42_ENTER once
+say narr | The dam fills half the sky. Water weeps from a hundred seams in its face and runs down to the roofs of Kettle Row.
+say narr | Somewhere inside it, very faintly, a woman is humming.
+@end
+
+@scene N42_SAPPER
+if flag:n42_cleared after
+say worker | Guild sapper. They sent me to 'assess'. I've assessed. It's going to break. I'd like to go home now.
+say worker | The service door's open. Something inside keeps the water back and the valves turning. It doesn't like visitors.
+end
+label after
+say worker | The weeping's slowed. It's not fixed. Nothing is fixed. But it's slowed, and the guild's cutting a second road.
+@end
+
+@scene N42_MOURNER
+say elder | Kettle Row was down there. The dam went when the ground broke. Two hundred people and the valley's a lake now.
+say elder | Some got up the high road Grete made them cut. Thirty-one of us. Old Sallow counted. He always counted.
+@end
+
+@scene N42_DIGGER
+say survivor | I dig for the guild hall's bell. I don't need the bell. I need to have dug for it.
+@end
+
+@scene N42_SLUICE1
+if flag:n42_sluice1 done
+set n42_sluice1
+sfx FX010
+shake 0.4
+say narr | You drag the lever down. Somewhere a gate slams, and the black current over the walkway sinks to a trickle.
+end
+label done
+say narr | The lever is down. The gallery race runs low.
+@end
+
+@scene N42_SLUICE2
+if flag:n42_sluice2 done
+set n42_sluice2
+sfx FX010
+shake 0.5
+say narr | The valve wheel fights you, then gives. Across the hall, the floodgate over the keeper's stair grinds open.
+end
+label done
+say narr | The valve is open. The race hisses past below you.
+@end
+
+@scene N42_SHORT
+if flag:n42_shortcut done
+set n42_shortcut
+sfx FX010
+say narr | You draw the bolts on the maintenance hatch. Stale air, a ladder, and the dam foot far below.
+end
+label done
+say narr | The hatch stands open onto the ladder down to the dam foot.
+@end
+
+@scene N42_DROWNED
+say survivor | I came up to clear the grates. She told me to go home. I didn't listen. Now I clear them forever.
+say survivor | She's not cruel. She's just holding a lot of water, and nobody ever said thank you.
+@end
+
+@scene N42_ORRIN
+if flag:n42_cleared after
+say orrin | Orrin. I kept this dam twenty years. The Crown wanted the water held for the furnaces. The valley wanted it let out slow.
+say orrin | I drowned in the sluices trying to do both. My wife came up after me. She's been holding it ever since. Holding everything.
+say orrin | When the gates shudder, she's about to let a breach go through her. Brace for it. And lightning - she never could abide storms.
+say orrin | Don't hate her. She's the only reason Kettle Row is still dry.
+end
+label after
+say orrin | She's resting. The dam isn't. Tell the guild to cut that road. Tell them Orrin said so. They never listened to Orrin.
+@end
+
+@scene N42_BOSS once
+say narr | The woman on the crest walk is made of water held in the shape of a woman. Cracks run across her like veins.
+say sluicewife | Go home. Go HOME. Every one of you comes up here to tell me it's safe, and then you go home and I hold it.
+say sluicewife | Forty years. Letters. Certificates. Telescopes in the fog. Not one of you ever held a single drop of it.
+say dain | We're not from the Crown. We came to help.
+say sluicewife | Then HOLD IT.
+say narr | Every sluice gate on the dam shudders at once.
+battle BX11 noflee
+set n42_cleared
+say narr | The Sluicewife sinks to her knees. The water in her runs clear, then slows.
+say sluicewife | ...I can let it out slow. Orrin always said slow. I was so angry I forgot.
+say sluicewife | I can hold it a while longer, like this. Not forever. Tell them to cut the road. Tell them to go uphill.
+say narr | She sinks into the crest walk and is part of the dam again. The weeping below grows quieter.
+journal | The Weeping Dam: the Sluicewife is at rest and lets the water out slowly. She warned that the dam will not hold forever.
+@end
+
+# ================================================================ P01 Spine of Ilyrath (post-fault dungeon in the Scar, R01; boss BX12 Marrow Tyrant)
+# Mechanism: memory crystals. Touching the fragment-crystals grown from the bone lets Ilyr remember, and the bone
+# unlocks. Two on the Vertebral Walk open the way to the ribcage; the third opens the throat to the skull.
+@scene P01_ENTER once
+say narr | The fault split the plain and something rose out of it: a ridge of white bone a league long. Ribs arch over the road like the vaults of a cathedral.
+say ilyr | ...
+say dain | Ilyr?
+say ilyr | I know this shape. I know it from the inside.
+@end
+
+@scene P01_PILGRIM
+say survivor | Dragonborn pilgrims came as soon as it rose. We walk the spine and leave a scale at every rib. My grandmother said a great one lay under the plain.
+say survivor | Something else got here first. It nests in the skull. It eats marrow and it's grown enormous on it. We hear it cracking the bones at night.
+@end
+
+@scene P01_NAME
+say narr | Carved at the root of the rib, in the old dragonborn script, weathered almost smooth: ILYRATH.
+say ilyr | That was my name when I had all of it. Before I was a fragment. Before I was a guest in your chest.
+say dain | This is your body.
+say ilyr | It was. I let go of it a long time ago, to keep the part that mattered. I did not think I would have to walk through it.
+@end
+
+@scene P01_MEM1
+if flag:p01_mem1 done
+set p01_mem1
+sfx FX029
+flash
+say narr | You lay a hand on the crystal. It warms. For a moment you are flying - over the river farms, over a March with no roads, no Crown, no Veyr.
+say ilyr | Before the builders. Before anyone built anything. There was just the wind, and the river, and me.
+say narr | Deep in the spine, bone grinds against bone and loosens.
+end
+label done
+say narr | The crystal is warm, and quiet.
+@end
+
+@scene P01_MEM2
+if flag:p01_mem2 done
+set p01_mem2
+sfx FX029
+flash
+say narr | The crystal warms. You hear singing - small voices, in a language of hisses and clicks. Dragonborn children, on a hill, singing up at the sky.
+say ilyr | They sang to me. I never answered. I thought there would always be time.
+say narr | Somewhere ahead, the vertebrae unlock with a sound like a knuckle cracking.
+end
+label done
+say narr | The crystal is warm. Far away, very faintly, the song goes on.
+@end
+
+@scene P01_MEM3
+if flag:p01_mem3 done
+set p01_mem3
+sfx FX029
+flash
+shake 0.5
+say narr | The last crystal burns cold. Iron hands close around your heart and PULL. A crown of chains, a ring of men in masks, and a vast body going limp.
+say ilyr | They came for the heart. Men with seals and relays, and one of them wore a crown. I let go of the body to keep the heart out of their hands.
+say ilyr | I have been small ever since. In a jar. In a seal. In a soldier. ...In you. You are the best of the three.
+say dain | I'll take that.
+say narr | The knot of bone across the ribcage's throat unravels.
+end
+label done
+say narr | The crystal is cold. It has nothing left to remember.
+@end
+
+@scene P01_SHORT
+if flag:p01_shortcut done
+set p01_shortcut
+sfx FX010
+say narr | You heave the loose vertebrae out of the gap between the ribs. Daylight: the Rib Gate, just below.
+end
+label done
+say narr | The gap between the ribs is clear.
+@end
+
+@scene P01_SCAV
+say survivor | Marrow's worth a fortune since the fault. Burns like oil, heals like magic. I only take from the small bones.
+say survivor | ...That's a lie. I take from anything I can reach. The big one in the skull takes more. We're both thieves. It's just bigger.
+@end
+
+@scene P01_ELDER
+if flag:p01_cleared after
+say elder | I came to pray at the skull. The Tyrant nests in the heart-cavity now. Every night it cracks another rib.
+say elder | It's a scavenger. It eats what's already dead and calls it strength. When it breathes in the dust, hide your eyes. Storm breaks its hide.
+end
+label after
+say elder | The heart-cavity is quiet. We'll leave scales there now, and sing. Maybe someone will hear it this time.
+@end
+
+@scene P01_ALTAR
+say narr | Scales, teeth, and a child's clay dragon with a lopsided smile. Someone has written on the altar in chalk: 'COME BACK.'
+if party:C01 raven
+end
+label raven
+say ilyr | I cannot. But I can go on. Tell them that, if you ever find the singers.
+@end
+
+@scene P01_BOSS once
+say narr | The heart-cavity is a nest of cracked bone and shed scales. Something huge lifts its head from a split thighbone, marrow dripping from its jaws.
+say narr | It is a dragon, but a lesser one: all belly and teeth, fat on the dead.
+say ilyr | Get out of my ribs.
+say dain | He means it.
+battle BX12 noflee
+set p01_cleared
+say narr | The Marrow Tyrant crashes down among the bones it stripped. Ilyrath's skull is silent.
+say ilyr | ...Thank you. It is only bone. But it was mine. It is good to leave it clean.
+journal | Spine of Ilyrath: the Marrow Tyrant is dead. The ridge is Ilyr's old body, and he has walked through it.
+@end
+
+@scene P01_HEART
+say narr | The hollow where a dragon's heart once burned. The bone is scorched from the inside, as if the heart left in a hurry.
+if flag:p01_cleared quiet
+end
+label quiet
+say ilyr | It left to keep burning. It is still burning. Feel.
+say narr | Under your breastbone, something warm beats twice, very gently.
+@end
+
+# ================================================================ P02 The Tessellate (post-fault builder tower, R01; boss BX13 The Tessellate Engine)
+# Mechanism: schedule consoles. The tower lays a fresh course of masonry across its own corridors every dawn; each
+# console pauses construction and the course retracts. A builder service lift is the shortcut back to the plaza.
+# QC17 (Night Rider) "The Highway That Was", surface half: Mile Marker 0 (hook) -> three traffic logs -> the dispatch
+# console after the Engine falls (patrol drones, decision) -> qc17_surface_done; the Deep half is at U22.
+@scene P02_ENTER once
+say narr | Where the plains were flat, a tower now stands, built of interlocking grey tiles that fit together too well. It is still growing.
+say narr | Every few breaths, somewhere high above, a new tile slides into place with a soft, final click.
+@end
+
+@scene P02_SURVEYOR
+say lanne | Surveyor Lanne, formerly of the Crown Survey. The tower rose the night of the fault. It adds one course of tiles every dawn.
+say lanne | It's building something to a plan nobody alive has seen. I would very much like to see the plan. I would also like to not be demolished.
+@end
+
+@scene P02_CAMPER
+say survivor | We camp in its shadow. It's warm at the base - the tiles hum. Nothing attacks the camp. I think the tower doesn't notice us.
+@end
+
+@scene P02_KID
+say child | I found a road under the grass! A black one, smooth as glass, with white lines. It goes right under the tower. Mum says don't dig.
+@end
+
+@scene P02_COURSE1
+if flag:p02_course1 done
+set p02_course1
+sfx FX010
+say narr | The console flickers: CONSTRUCTION PAUSED - COURSE 4417. Down in the central shaft, the fresh masonry slides back into the walls.
+end
+label done
+say narr | The console reads: PAUSED. It sounds offended.
+@end
+
+@scene P02_COURSE2
+if flag:p02_course2 done
+set p02_course2
+sfx FX010
+say narr | CONSTRUCTION PAUSED - COURSE 4418. The course below you folds away. The shaft runs clear down to the lower floor.
+end
+label done
+say narr | The console reads: PAUSED.
+@end
+
+@scene P02_COURSE3
+if flag:p02_course3 done
+set p02_course3
+sfx FX010
+say narr | TRAFFIC CONTROL: LANE CLOSURE LIFTED. The stair course grinds back into the wall. The way up is open.
+end
+label done
+say narr | LANE CLOSURE LIFTED. Somewhere a builder voice adds: DRIVE SAFELY.
+@end
+
+@scene P02_LIFT
+if flag:p02_lift done
+set p02_lift
+sfx FX010
+say narr | You release the lift chain. The service cage drops down the shaft to meet you, then waits, humming. It runs straight down to the plaza.
+end
+label done
+say narr | The service lift hums, ready.
+@end
+
+@scene P02_CLIMBER
+say worker | I climb the outside for the Survey. The tiles are warm and they move under your hands. Don't look at the joins too long. They look back.
+say worker | Up top, the governor runs everything. It announces demolition before it does it. Very polite. Very thorough. Hit its core and it loses its place in the schedule.
+@end
+
+@scene P02_BOSS once
+say narr | The crown of the tower is a single vast room. At its centre, something of grey tiles and white light unfolds from the floor and stands.
+say tessellate | VISITORS. NOT ON SCHEDULE. CONSTRUCTION WILL CONTINUE AROUND YOU.
+say dain | What are you building?
+say tessellate | THE PLAN. THE PLAN IS 4418 COURSES COMPLETE OF 90112. ESTIMATED COMPLETION: 212 YEARS. DEMOLITION OF OBSTRUCTIONS: NOW.
+battle BX13 noflee
+set p02_cleared
+say narr | The Engine's light dims. Tile by tile it lays itself down on the floor and stops.
+say tessellate | SCHEDULE... SUSPENDED. PLAN... ARCHIVED.
+say narr | Far below, for the first time since the fault, no new tile clicks into place at dawn.
+journal | The Tessellate: the tower's governor is stopped. The tower no longer grows.
+@end
+
+# ---------------------------------------------------------------- QC17 The Highway That Was (surface half)
+@scene QC17_MARKER
+if recruited:C17 rider
+say narr | A builder road sign, bent double, half buried: MILE 0. RING HIGHWAY - ALL LANES.
+end
+label rider
+if flag:qc17_hook known
+set qc17_hook
+say rider | Mile zero. I haven't seen this sign since - since the last night the lights were on.
+say rider | This was my road. The Ring Highway. Six lanes round the whole plain. The tower's sitting right on the interchange.
+say dain | You patrolled it.
+say rider | I still patrol it. Nobody ever told me the patrol was over. There's a traffic control deck in there. If anyone ever wrote down why the road shut, it's there.
+quest QC17 ACTIVE marker
+journal | QC17 The Highway That Was: the Tessellate stands on Mile 0 of the Night Rider's old highway. Its traffic control deck may say why the road was shut.
+objective rider | Search the Tessellate's traffic control deck for the highway's last logs.
+end
+label known
+say rider | Mile zero. Everything I am starts here.
+@end
+
+@scene QC17_LOG1
+if q:QC17:ACTIVE quest
+say narr | A builder console, dead. Lines of old light are burned into the glass: LANE 1 - VOLUME NOMINAL.
+end
+label quest
+if flag:qc17_log1 read
+set qc17_log1
+say narr | The console wakes at the Rider's touch. LANE 1, FINAL NIGHT: VOLUME ZERO. ALL UNITS HOLD POSITION PENDING RELIEF.
+say rider | Volume zero. There was nobody on the road. They pulled everybody off, and they told the patrol to stay.
+call QC17_CHECK
+end
+label read
+say rider | Hold position pending relief. That's the last thing anyone told me.
+@end
+
+@scene QC17_LOG2
+if q:QC17:ACTIVE quest
+say narr | A dead console: LANE 6 - SURFACE DECK SEALED.
+end
+label quest
+if flag:qc17_log2 read
+set qc17_log2
+say narr | LANE 6, FINAL NIGHT: SURFACE DECK SEALED. TRAFFIC DIVERTED TO LOWER DECK - LATTICE CONNECTOR.
+say rider | Lower deck. The highway had a lower deck? They sent everything underground and left the surface to us.
+call QC17_CHECK
+end
+label read
+say rider | Diverted underground. To the Lattice. That's where everyone went.
+@end
+
+@scene QC17_LOG3
+if q:QC17:ACTIVE quest
+say narr | The dispatch relay's single key glows, waiting for a patrol code.
+end
+label quest
+if flag:qc17_log3 read
+set qc17_log3
+say narr | The Rider types a code from memory. The relay answers: PATROL UNIT 17 - STATUS ACTIVE - RELIEF: NOT SCHEDULED.
+say rider | Not scheduled. They never meant to send anyone. They just forgot to tell us to go home.
+say rider | The master dispatch console will be at the top, with the governor. If I can reach it, I can close my own patrol. Or not.
+call QC17_CHECK
+end
+label read
+say rider | Relief not scheduled. The top of the tower. That's where I end this, one way or another.
+@end
+
+@scene QC17_CHECK
+if flag:qc17_log1,flag:qc17_log2,flag:qc17_log3 ready
+end
+label ready
+quest QC17 ACTIVE logs
+objective rider | Reach the master dispatch console at the crown of the Tessellate.
+@end
+
+@scene QC17_CONSOLE
+if flag:qc17_surface_done done
+if qs:QC17:logs rider
+say narr | The master dispatch console of the Ring Highway. A single line blinks: PATROL UNITS AWAITING DISPATCH.
+end
+label rider
+if !flag:p02_cleared locked
+say narr | The Rider lays his hand on the console. Every screen in the room wakes. PATROL UNIT 17 RECOGNISED.
+say rider | There. Dispatch. I can close the patrol from here.
+say narr | Panels in the walls slide open. Patrol drones - squat, armoured, rimmed with red light - roll out and turn toward him.
+say tessellate | UNAUTHORISED PATROL CLOSURE. UNITS: ENFORCE SCHEDULE.
+battle OWP_2
+say narr | The last drone rolls to a stop at the Rider's boots. Its red light goes out.
+say rider | They were on patrol too. Same orders. Same night. Nobody came for them either.
+say narr | The console waits. Two commands glow: PATROL ENDED - UNIT RELIEVED, and PATROL CONTINUES - NEW ROUTE.
+choice | Tell him to end it. He's earned rest -> ended | Tell him to choose a new road -> route
+label ended
+set qc17_ended
+say dain | You held it long enough. Close it. You're relieved.
+say rider | ...PATROL ENDED. UNIT RELIEVED.
+say narr | The console clicks. For a moment the Rider sits very still, like a man who has put down something heavy he forgot he was carrying.
+say rider | Strange. I don't feel lighter. I feel like I have room. I don't know what to put in it yet.
+goto after
+label route
+set qc17_route
+say dain | The roads out there are broken and there's nobody watching them. Pick a new route.
+say rider | ...PATROL CONTINUES. NEW ROUTE: WHEREVER THEY'RE WALKING.
+say narr | The console accepts the order without complaint, as if it had been waiting for someone to give it.
+say rider | The causeways. The Refuge Rock stair. The Oathstone road. I'll ride them all. Somebody should.
+label after
+say narr | One more line scrolls up the screen: LOWER DECK - LATTICE CONNECTOR - STATUS: LIGHTS ON.
+say rider | Lights on. Down there, under the plain. The rest of my road is still lit, and something's driving on it.
+set qc17_surface_done
+quest QC17 ACTIVE deep
+give A111 1
+journal | QC17 The Highway That Was: the Rider has settled his patrol at the Tessellate. The highway's lower deck runs on into the Lattice - the Highway That Was, deep below - and its lights are on.
+objective rider | Find the Ring Highway's lower deck in the Lattice: the Highway That Was.
+end
+label locked
+say narr | The master dispatch console, dark behind the governor's cradle. The governor's light holds every screen in the room.
+end
+label done
+say narr | The console reads: LOWER DECK - LATTICE CONNECTOR - LIGHTS ON.
+@end
+
+# ================================================================ P05 Refuge Rock (post-fault village, R03) + QW1 "Refuge Rock"
+# QW1 beats: hook (Marit) -> Tide Shelf: Ansa (crab fight), Dov (splint), the wreck (Tamm, Wynn and Sergeant Kell's
+# deserters) -> stage plead -> harpy ambush on the way home (qw1_home) -> council decision at Marit -> COMPLETED.
+@scene QW1_MARIT
+if q:QW1 done
+if qs:QW1:plead plead
+if q:QW1:ACTIVE active
+say marit | Marit Oakes. Warden of the Rock, because somebody had to be and I was standing nearest the rope.
+say marit | Two hundred people on a rock that used to be a cormorant colony. We have boats, tents and one spring. The spring is failing.
+say marit | And four of my fishers went down to the Tide Shelf three days ago, to salvage the wreck there. Tamm, Ansa, Dov. And Wynn - she's eleven. She wasn't supposed to go.
+say marit | The gulls have been circling the shelf since. Gulls don't circle for fish.
+choice | We'll bring them back -> take | Tell me about the wreck -> wreck
+label wreck
+say marit | A Crown supply hulk, washed up in the fault. If there's food or water gear aboard, it could keep us through winter. If there's Crown aboard, it could finish us.
+label take
+say dain | We'll go down. Open the shelf gate.
+say marit | Untie it yourself, the knot's mine. Bring them back. All of them, or tell me which ones to mourn.
+set qw1_started
+quest QW1 ACTIVE shelf
+journal | QW1 Refuge Rock: four fishers are missing on the Tide Shelf below the Rock. Bring them back to Warden Marit.
+objective marit | Find the missing fishers on the Tide Shelf.
+end
+label active
+say marit | The shelf stair's south-east. Four of them. Ansa, Dov, Tamm, and Wynn.
+end
+label plead
+if flag:qw1_home decide
+say marit | Get them up the stair first. We'll talk in daylight.
+end
+label decide
+call QW1_DECISION
+end
+label done
+if flag:qw1_kell_in in
+say marit | Kell's lot are camped on the shelf with half the rations. They send water up every morning, and nobody's said thank you yet. We will.
+end
+label in
+say marit | The still drips all day now. Kell's lot take turns on it. Old Fenn still won't sit next to them at supper. He will.
+@end
+
+@scene QW1_DECISION once
+say marit | Ansa. Dov. Tamm. Wynn. All four of them home, and Wynn with a scolding coming she'll remember when she's ninety.
+say marit | Now. The other thing. Tamm says there are Crown soldiers on that wreck. Nine of them, and a sergeant.
+say tamm | They kept us alive, Warden. Harpies came every night. The sergeant stood in the hatch with a boat-hook.
+say kell | Sergeant Kell, late of the Gallowgate Toll. We walked away from the Crown when the ground broke. We've a salvaged water still and the hulk's rations.
+say kell | We'll give you both either way. But we'd like to come up. We're tired of the shelf. We're tired of being the Crown.
+say marit | Half this rock lost somebody to a Crown toll, a Crown levy, a Crown convoy. You're asking me to feed their collectors.
+say marit | ...You brought my people home. You decide. I'll stand behind it, and so will the council, or they can find their own rock.
+choice | Let the deserters in -> in | Keep them on the shelf, with a share of what they brought -> out
+label in
+set qw1_kell_in
+say dain | They held a hatch against harpies for strangers. That's the only oath worth anything now. Let them in.
+say marit | ...Then they're in. They sleep on the east side, they carry water, and they learn every name on the council table.
+say kell | We'll learn them. I used to collect names. I'd like to hand some back.
+goto reward
+label out
+set qw1_kell_out
+say dain | Not yet. Give the Rock time. Let them camp on the shelf, share the rations, run the still, and earn it.
+say kell | Fair. It's more than the Crown ever gave anyone. We'll send water up every morning. Leave the gate unknotted.
+say marit | The gate stays open. The door can come later. Maybe that's how it should be.
+label reward
+quest QW1 RESOLUTION_READY council
+say marit | The still will save the spring. The rations will save the winter. You saved four people I'd already started to mourn.
+say marit | Take this. It was the lighthouse keeper's charm. He said it kept the lamp honest.
+give A117 1
+give I003 2
+gold 2000
+quest QW1 COMPLETED done
+journal | QW1 Refuge Rock: the fishers are home, the salvaged still feeds the spring, and Sergeant Kell's deserters have their answer.
+@end
+
+@scene QW1_WAITING
+if flag:qw1_home home
+say baker | My Tamm went down to the shelf with the others. I stand here because from here you can see the top of the stair.
+say baker | If you're going down, tell him the baby's teeth came in. He'll want to know. He'll want to come up and see.
+end
+label home
+say baker | He's home. He's asleep, the lump. The baby's biting him. I've never seen him so happy.
+@end
+
+@scene QW1_CRABS
+say narr | Out on the tide pools a woman stands on a rock, swinging a gaff at a ring of snapping, barnacled shells.
+say ansa | About time! Don't just stand there, they're HUNGRY!
+battle POWX_R03_1
+set qw1_ansa
+say ansa | Ansa. Thank you. They had me on that rock for a day. The others are in the wreck, with - well. You'll see.
+say ansa | Dov went up the north rocks for a better look and didn't come down. I think his leg's gone.
+say ansa | I'll wait here for the others. I'm not walking home alone after that.
+call QW1_CHECK
+@end
+
+@scene QW1_ANSA
+if flag:qw1_ansa done
+say ansa | Watch the pools!
+end
+label done
+say ansa | I'll wait for the others. Dov's up the north rocks. The rest are in the wreck.
+@end
+
+@scene QW1_DOV
+if flag:qw1_dov done
+set qw1_dov
+say dov | Don't laugh. I climbed up for a look and the rock climbed down without me. The leg's broken.
+say narr | You splint the leg with a boat-slat and a strip of sail. Dov swears in three coastal dialects and one Crown one.
+say dov | Tamm and the girl are in the hulk with the soldiers. The soldiers are - I don't know what they are. They didn't hurt us.
+call QW1_CHECK
+end
+label done
+say dov | I'll hop. I'm a very good hopper. Don't wait for me.
+@end
+
+@scene QW1_WRECK
+if flag:qw1_wreck done
+set qw1_wreck
+say narr | Inside the hulk, lamplight. Two fishers - a man and a girl - sit by a patched Crown still, drinking from tin cups. Crown soldiers sit with them.
+say kell | Don't draw. We're not what we look like. Or we are, and we've stopped.
+say dain | Sergeant Kell. Gallowgate Toll.
+say kell | You've a memory. I'm done collecting names, sir. We found these two with the harpies on them and brought them in.
+say tamm | It's true. They've been sharing the rations. The girl sleeps behind the sergeant. Nobody gets near her.
+say kell | Take them home. And - ask your Warden. If there's room on that rock for nine soldiers who'd rather not be.
+quest QW1 ACTIVE wreck
+call QW1_CHECK
+end
+label done
+say kell | Take your fishers up. We'll follow when your Warden says, or we won't. Either way, the still goes to the Rock.
+@end
+
+@scene QW1_CHECK
+if flag:qw1_ansa,flag:qw1_dov,flag:qw1_wreck ready
+end
+label ready
+quest QW1 ACTIVE plead
+objective marit | Take the fishers home up the shelf stair, then speak to Warden Marit about Kell's deserters.
+@end
+
+@scene QW1_WYNN
+say child | I'm Wynn. I'm not in trouble. I came to help. I helped. The sergeant says I'm a very good lookout.
+@end
+
+@scene QW1_SOLDIER
+say guard | I was a toll guard. Now I'm a harpy guard. The pay's worse and I've never been prouder.
+@end
+
+@scene QW1_AMBUSH once
+say narr | Halfway to the stair, the gulls stop circling. They fold their wings and drop. They are not gulls.
+say kell | Harpies! Fishers to the rocks - soldiers, form on me!
+battle POWX_R03_3
+set qw1_home
+say narr | The harpies break and scatter out to sea. Everyone climbs the stair together: fishers, soldiers, and a very proud lookout.
+@end
+
+@scene QW1_ANSA_HOME
+say ansa | Back on the nets. I'll never complain about mending again. That's a lie. But I'll mean it for a week.
+@end
+
+@scene QW1_DOV_HOME
+say dov | Leg's mending. Marit says I can't climb anything taller than a chair until spring. I climbed the chair. She saw.
+@end
+
+@scene QW1_TAMM_HOME
+if flag:qw1_kell_in in
+say tamm | Kell's lot camp down on the shelf. I take the baby down to see them. The sergeant holds her like she's made of glass.
+end
+label in
+say tamm | The soldiers sleep on the east side. They carry water up the stair twice a day. Nobody asked them to do it twice.
+@end
+
+@scene QW1_WYNN_HOME
+say child | I'm grounded until I'm twelve. That's in four months. I'm counting.
+@end
+
+@scene QW1_KELL_CAMP
+say kell | We run the still and send the water up at dawn. The gate's unknotted. One day somebody will come down and ask us to supper.
+@end
+
+@scene QW1_KELL_HOME
+say kell | Kell. Just Kell. I carry water and I learn names off the council table. Forty-one so far. They're better names than the ones I used to collect.
+@end
+
+@scene QW1_DESERTER
+say guard | They gave me a tent and a job. Nobody's asked for my papers. I keep waiting for someone to ask for my papers.
+@end
+
+# ---------------------------------------------------------------- Refuge Rock townsfolk
+@scene P05_CISTERN
+if q:QW1 fixed
+say narr | The cistern is cracked and barely wet. A tally of water rations is chalked on the rim, each line smaller than the last.
+end
+label fixed
+say narr | A patched Crown still drips into the cistern day and night. Someone has chalked over the ration tally: ENOUGH.
+@end
+
+@scene P05_BOATWRIGHT
+say sailor | I build boats out of other boats. The fault broke a whole fleet on the shoals. I'm never short of parts. I'm always short of hands.
+@end
+
+@scene P05_NETMENDER
+say baker | Every net here is three nets knotted together. You can tell whose by the knots. Glass Coast knots are neat. Veyr knots are angry.
+@end
+
+@scene P05_LOOKOUT
+say guard | I watch the sea for boats, harpies and the Crown. So far: boats. Harpies. No Crown. I'm grateful.
+say guard | North-east, past the cliffs, there's a signal tower on a headland. Dark. If anyone lit it, you could see it from half the ruin.
+rumor | Refuge Rock: a dark signal tower stands on a headland to the north-east. Lit, it would be seen across half the ruin.
+@end
+
+@scene P05_MOTHER
+say baker | I walked out of Veyr carrying my daughter and a bag of the wrong things. A clock. Two left shoes. I don't know why.
+say baker | The Rock took us anyway. The clock still works. It's the only one here. People come to ask me the time.
+@end
+
+@scene P05_KID
+say child | I found a crab with a Crown seal stuck on its shell! I named it Sergeant. It pinched the real sergeant. Everybody laughed.
+@end
+
+@scene P05_KID2
+say child | Marit says we'll have a school when we have a roof. We have a roof! It's upside down. It still counts.
+@end
+
+@scene P05_WEND
+say wend | Refuge Rock! Worst harbour, best customers. Nobody here has any money, so I take payment in news and fish.
+say wend | Tell them at the Oathstone I'm alive. They worry. Well. Some of them owe me, so they worry.
+shop SHOP_WEND
+@end
+
+@scene P05_SCRIBE
+say clerk | I was a clerk for the Ministry of Provision. I used to write down what the Crown took. Now I write down who arrives.
+say clerk | Two hundred and twelve. I write the name, where they walked from, and one thing they want. Most want the same thing. To stop walking.
+@end
+
+@scene P05_SPRING
+if q:QW1 fixed
+say worker | Spring-keeper. The fault cracked the rock and the spring's leaking into the sea. I'm rationing a cup a head. Soon half a cup.
+end
+label fixed
+say worker | The still makes more water than the spring ever did. I'm a still-keeper now. It's a promotion. I've asked for a hat.
+@end
+
+@scene P05_DRAGONBORN
+say survivor | I'm dragonborn. In Veyr they'd have numbered me for the relays. Here, Marit put me on the net crew and asked my name.
+say survivor | Your Raven carries a dragon, they say. Tell him - tell him there are more of us walking out of the ruin than anyone thinks.
+@end
+
+@scene P05_LIBRARIAN
+say librarian | I was a tide-librarian at Bellharbor. I saved one crate of books from the flood. It turned out to be the cookery section.
+say librarian | So the Rock eats well, at least. We are working through the soups alphabetically.
+@end
+
+@scene P05_INN
+say keeper | The Upturned Hull. Bunks, blankets, and a stove made from a ship's boiler. Pay what you can. You can, can't you?
+inn 20
+@end
+
+@scene P05_SLEEPER
+say survivor | Please. I walked from the Veyr Rift. I've slept four hours since the fault. Let me make it five.
+@end
+
+@scene P05_CARDS
+say sailor | We play for fish. I'm up three mackerel and a very small eel. The eel's a promissory eel. I haven't caught it yet.
+@end
+
+@scene P05_SHOPKEEP
+say keeper | Salvager Quill. Whatever the sea brings up, I sell. Mostly Crown gear, lightly drowned. Works fine once it's dried.
+shop SHOP_P05
+@end
+
+@scene P05_CRAFTER
+if flag:p05_nan met
+set p05_nan
+say nan | Nan. Wreckwright. I make things out of wrecks, which is lucky, because that's all the world is right now.
+say nan | Bring me salvage - brass, oak, sailcloth, Crown steel - and whatever you've pulled off the beasts out there. I'll make it into something that floats. Or stabs.
+end
+label met
+say nan | Salvage brass, drowned oak, sailcloth, beast hide, Crown steel. The ruin is full of materials. It's just badly arranged.
+@end
+
+@scene P05_COUNCIL
+if flag:qw1_kell_in in
+say elder | Councillor Fenn. I vote on everything. Mostly 'no'. Somebody has to test the ideas.
+end
+label in
+say elder | Crown soldiers on the Rock. I voted no. I was outvoted. The sergeant brought me tea. I'm still voting no. Slower.
+@end
+
+@scene P05_COUNCIL2
+say baker | Councillor Rue. I run the kitchens, so I run the council. Nobody argues with the person who ladles.
+@end
+
+@scene P05_HALLSCRIBE
+say clerk | Every name that arrives gets carved into the table edge. We're running out of edge. Rue wants a second table.
+@end
+
+# ================================================================ P09 The Last Beacon (post-fault landmark, R04) + QW6 "The Last Beacon"
+# QW6 beats: hook (Hesk) -> the dead keeper's cairn on the cliff ledge (key) -> lamp gallery: the griffon roost (climb)
+# -> the fire-cup decision (heartglass or the camp's winter oil) -> the beacon burns: fast-travel network, and the
+# Lanternwake's Grapnel Keel (flag lanternwake_grapnel).
+@scene QW6_HESK
+if q:QW6 done
+if qs:QW6:lamp lamp
+if qs:QW6:climb climb
+if q:QW6:ACTIVE active
+say hesk | Hesk, Signal Company of the Skyspine. What's left of it: me, two keepers, a child, and a tower with no light in it.
+say hesk | The Last Beacon was the master lamp. When it burned, every waystone and signal lantern in sight answered. Roads by night. Ships home.
+say hesk | The fault put it out. The keeper, Old Mattock, went up to relight it and came down the cliff instead of the stair. He had the key.
+say hesk | He's on the ledge below the west cliff. We built him a cairn. We couldn't bring ourselves to go through his pockets.
+choice | We'll relight it -> take | What's in it for the ruin? -> why
+label why
+say hesk | Light it, and the beacon wakes the stones - the old keepers' network. You'd walk from one lit stone to the next.
+say hesk | And your airship. The Company kept plans for a grapnel keel, for landing where there's no field. Light the lamp and my crew will fit it.
+label take
+say dain | We'll get the key.
+say hesk | Ladder's down past the camp, at the west cliff. Be gentle with him. He was always cold.
+quest QW6 ACTIVE key
+journal | QW6 The Last Beacon: relight the dark signal tower. The keeper's key is with his body, on the ledge below the west cliff.
+objective hesk | Find Old Mattock's key on the cliff ledge below the Last Beacon.
+end
+label active
+say hesk | The ladder's on the west side, past the tents. His cairn has a lantern on it. We couldn't light that either.
+end
+label climb
+say hesk | You've the key. The stair goes up to the lamp gallery. Griffons have been roosting up there since the fault. They won't like company.
+end
+label lamp
+say hesk | The fire-cup's empty, isn't it. It always was the hard part.
+end
+label done
+say hesk | Every night I climb up and look. Stones answering on the islands, lanterns on the causeways. Like the ruin remembering it's a country.
+@end
+
+@scene QW6_CAIRN
+if flag:qw6_key done
+if q:QW6:ACTIVE take
+say narr | A cairn with a dark lantern on top. Beneath it, an old man in a signal keeper's coat, hands folded over his chest.
+end
+label take
+set qw6_key
+say narr | Old Mattock's hands are folded over a bronze key shaped like a lantern. It comes away easily, as if he'd been holding it out.
+say narr | There's a stub of candle in his coat pocket. You light the cairn lantern with it before you go.
+quest QW6 ACTIVE climb
+objective hesk | Climb the Last Beacon to the lamp gallery.
+end
+label done
+say narr | The cairn lantern burns, small and steady, over Old Mattock.
+@end
+
+@scene QW6_ROOST once
+say narr | The gallery is thick with feathers and signal-flag nests. Something huge shifts behind the great lamp and unfolds its wings.
+battle POWX_R04_4
+quest QW6 ACTIVE lamp
+say narr | The griffons break out through the gallery windows and wheel away over the sea. The great lamp stands in the silence.
+@end
+
+@scene QW6_LAMP
+if q:QW6 lit
+if qs:QW6:lamp decide
+say narr | A lens of a thousand prisms around an empty fire-cup. It is dark and very cold.
+end
+label decide
+say narr | The fire-cup is empty. In the lamp housing, wrapped in Crown oilcloth, is a shard of red crystal as long as your forearm. Heartglass.
+say narr | A note in the keepers' hand is tied to it: 'SENT BY THE MINISTRY. BURNS A HUNDRED YEARS. WE DID NOT ASK WHERE IT CAME FROM.'
+say ilyr | We know where it came from.
+say dain | Dragonborn. Ground down in the relays until they were fuel.
+say narr | Below, in the camp, Hesk's keepers are breaking up their last cask of winter lamp-oil, just in case.
+choice | Burn the heartglass - it's already been paid for -> glass | Burn the camp's oil, and bury the heartglass -> oil
+label glass
+set qw6_heartglass
+say dain | It's already been paid for. Nobody gets it back by leaving it in a box. Let it light somebody home.
+say ilyr | ...Then let it burn for them. All of them. I'll remember whose it was.
+say narr | The heartglass catches with a sound like a held breath let go. Red light floods the lens and pours out over the sea.
+goto lit_now
+label oil
+set qw6_oil
+say dain | No. The Crown burned enough of them. We'll burn oil, and we'll carry more.
+say narr | You carry the heartglass down, and the keepers carry the oil up. It burns lower and yellower than a Crown lamp. It burns.
+say narr | Old Mattock's ledge gets a second stone that night: the heartglass, buried under the cairn, with its note.
+label lit_now
+set p09_beacon_lit
+sfx FX029
+flash
+say narr | Far out on the ruin, one by one, the waystones answer. Lanterns on the causeways. A lamp on Refuge Rock. A light on the Oathstone.
+call QW6_REWARD
+end
+label lit
+say narr | The great lamp burns. Every prism throws a road across the dark.
+@end
+
+@scene QW6_REWARD once
+say hesk | Look at it. LOOK at it. Mattock, you old goat, look at it.
+if flag:qw6_oil oil
+say hesk | Red light. It's beautiful. I'll hate it every night, and I'll climb up every night to look at it.
+goto keel
+label oil
+say hesk | Oil. We'll be cold this winter. We'll be cold and we'll be proud of it. Tobiah Wend owes me a favour. He's about to find out.
+label keel
+say hesk | Now: your airship. The Company kept plans for a grapnel keel - hooks and a winch, so a ship can moor on any cliff or field.
+say hesk | My crew will have it fitted by morning. Land where you like. The ruin's yours to walk again.
+set lanternwake_grapnel
+say narr | (The Lanternwake is fitted with the Grapnel Keel: she can now land anywhere on open ground.)
+say narr | (The Last Beacon wakes the keepers' network: lit waystones can be used to travel between them.)
+discover L_P09
+quest QW6 COMPLETED lit
+give A118 1
+gold 3000
+journal | QW6 The Last Beacon: the beacon burns again, the waystone network is awake, and the Lanternwake carries the Grapnel Keel.
+@end
+
+@scene P09_KEEPER1
+if flag:p09_beacon_lit lit
+say survivor | Signal-keeper, second class. There's no first class anymore. There's no anything anymore, except this headland.
+say survivor | We send flags by day. Nobody answers. You keep sending. That's what signal work is.
+end
+label lit
+say survivor | Seventeen answering lights last night. Seventeen! I've written them all down. I'm going to write to every one of them.
+@end
+
+@scene P09_KEEPER2
+if flag:p09_beacon_lit lit
+say worker | Griffons took the gallery after the fault. They like the height and the flags. Can't blame them. Can't climb past them either.
+end
+label lit
+say worker | We take turns in the gallery now, tending the lamp. It's warm up there. The griffons come back and sit on the rail, like they're guarding it.
+@end
+
+@scene P09_CHILD
+say child | I'm the Signal Company's newest recruit. I know seven flags. This one means 'help'. This one means 'we're fine'. They look the same.
+@end
+
+@scene P09_LIFTMAN
+say elder | The cable lift ran down to the harbour. The harbour's under the sea now. So it's a lift to nowhere. I still oil it.
+@end
+
+@scene P09_WEND
+say wend | I saw the light from three islands away and turned my boat round. Hesk says I owe her oil. I don't remember owing her oil.
+say wend | ...I'll bring the oil.
+shop SHOP_WEND
+@end
+

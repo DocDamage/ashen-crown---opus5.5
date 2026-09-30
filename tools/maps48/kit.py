@@ -46,6 +46,7 @@ PACKS = {
 }
 
 _img_cache = {}
+_gen_written = set()
 
 
 def sheet_path(alias, sheet):
@@ -463,9 +464,14 @@ class Map:
                 rel = "cute/%s/%s.png" % (s.alias, s.sheet.replace("/", "_"))
                 dst = os.path.join(EXT, rel)
                 os.makedirs(os.path.dirname(dst), exist_ok=True)
-                src = sheet_path(s.alias, s.sheet)
-                if not os.path.exists(dst) or os.path.getmtime(src) > os.path.getmtime(dst):
-                    shutil.copy2(src, dst)
+                if k in GEN_SHEETS:
+                    if k not in _gen_written:
+                        _img_cache[k].save(dst)
+                        _gen_written.add(k)
+                else:
+                    src = sheet_path(s.alias, s.sheet)
+                    if not os.path.exists(dst) or os.path.getmtime(src) > os.path.getmtime(dst):
+                        shutil.copy2(src, dst)
                 sidx[k] = len(sheets)
                 sheets.append(rel)
             return sidx[k]
@@ -516,3 +522,23 @@ def write_group(group, maps_text):
         for t in maps_text:
             f.write(t)
     return p
+# appended to tools/maps48/kit.py
+# ---------------------------------------------------------------- generated sheets (tinted copies of pack sheets)
+GEN_SHEETS = set()
+
+
+def gen_sheet(alias, name, img):
+    """Register an in-memory sheet under (alias, name); Map.save writes it into ext/cute like a pack sheet."""
+    _img_cache[(alias, name)] = img.convert("RGBA")
+    GEN_SHEETS.add((alias, name))
+    return name
+
+
+def tinted(alias, sheet, mul, add=(0, 0, 0), name=None):
+    """A recoloured copy of a pack sheet (rgb * mul + add), for regional variants of the same stamps."""
+    name = name or "gen_%s_%d_%d_%d" % (sheet.replace("/", "_"), int(mul[0] * 100), int(mul[1] * 100), int(mul[2] * 100))
+    if (alias, name) not in _img_cache:
+        a = np.array(sheet_img(alias, sheet)).astype(np.float32)
+        a[..., :3] = np.clip(a[..., :3] * np.array(mul, np.float32) + np.array(add, np.float32), 0, 255)
+        gen_sheet(alias, name, Image.fromarray(a.astype(np.uint8), "RGBA"))
+    return name
