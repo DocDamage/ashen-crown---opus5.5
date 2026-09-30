@@ -252,11 +252,13 @@ def dress(m, grid, skin, reserved, cm):
     for e in ents:
         if "x" in e and (e["type"] in ("chest", "save", "switch", "shop", "inn", "heal") or (e["type"] == "npc" and e.get("solid", True)) or (e["type"] == "prop" and e.get("solid", True))):
             _BLOCKED.add((int(e["x"]), int(e["y"])))
-    before = set()
+    # per spawn: what each spawn reaches now must stay reachable from that same spawn (a union over spawns lets a
+    # prop cut a map in two when each half has its own spawn)
+    starts = [sp for sp in dict.fromkeys(starts) if 0 <= sp[0] < W and 0 <= sp[1] < H]
+    must_by = {}
     for sp in starts:
-        if 0 <= sp[0] < W and 0 <= sp[1] < H:
-            before |= _reach(grid, W, H, sp)
-    must = {c for c in keep if c in before}
+        r = _reach(grid, W, H, sp)
+        must_by[sp] = {c for c in keep if c in r}
     opens = [(x, y) for y in range(H) for x in range(W) if passable(grid[y][x]) and grid[y][x] not in PASS_EXTRA]
     target = int(len(opens) * skin.dress_target)
     walls = set(skin.walls)
@@ -278,12 +280,10 @@ def dress(m, grid, skin, reserved, cm):
         s = rng.choice(pool)
         grid[y][x] = skin.dress_kind
         ok = True
-        after = set()
         for sp in starts:
-            if 0 <= sp[0] < W and 0 <= sp[1] < H and passable(grid[sp[1]][sp[0]]):
-                after |= _reach(grid, W, H, sp)
-        if not must <= after:
-            ok = False
+            if not passable(grid[sp[1]][sp[0]]) or not must_by[sp] <= _reach(grid, W, H, sp):
+                ok = False
+                break
         if not ok:
             grid[y][x] = m.kind[y][x]
             continue

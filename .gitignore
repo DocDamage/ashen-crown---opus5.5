@@ -4,3 +4,4 @@ dist/
 *.tmp
 __pycache__/
 game/assets/ext/
+tools/maps48/gen_aerie/
