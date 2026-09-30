@@ -382,7 +382,96 @@ def vehicles():
     print("vehicles: installed")
 
 
-SECTIONS = {"vehicles": vehicles, "common": common_sheets, "arenas": arenas, "audio": audio, "vfx": vfx, "vestiges": vestiges, "icons": spell_icons, "field_anim": field_anims}
+# ---------------------------------------------------------------- enemies
+# Source codes: bN = BD-09 field monster N (sorted index over the five sets), F:<name> = Factory Monster Pack,
+# M:<nnn> = BattleInkMaps Monster Mega Pack (original size), G:<pack>/<boss> = Giant Boss Pack (fullest frame of
+# the first 60), M1:<nnn> = the extra 101-105 in the 1-100 pack, R:<nn> = RuneFoundry boss (pixel version). Height in battle units (1 unit = 3 screen px); flip
+# mirrors art that faces left so every enemy faces the party on the right.
+S_, M_, L_ = 34, 46, 60
+ENEMY_ART = {
+    "E001": ("F:Trash_Rat", S_, 1), "E002": ("b67", S_, 0), "E003": ("b82", S_, 0), "E004": ("M1:102", M_, 0),
+    "E005": ("F:Oil_Spill", S_, 0), "E006": ("b37", S_, 0), "E007": ("b89", S_, 0), "E008": ("b46", M_, 0),
+    "E009": ("M:165", M_, 0), "E010": ("b70", S_, 0), "E011": ("M:024", M_, 0), "E012": ("b78", M_, 0),
+    "E013": ("F:Scrap_Bandit", M_, 0), "E014": ("b107", M_, 0), "E015": ("M:052", S_, 0), "E016": ("b110", L_, 0),
+    "E017": ("b11", M_, 0), "E018": ("b63", S_, 0), "E019": ("M:037", M_, 0), "E020": ("b55", M_, 0),
+    "E021": ("b44", M_, 0), "E022": ("F:Volt_Viper", M_, 0), "E023": ("b53", L_, 0), "E024": ("b61", S_, 0),
+    "E025": ("b33", L_, 0), "E026": ("F:Rust_Slug", S_, 0), "E027": ("M:082", M_, 0), "E028": ("M:161", M_, 0),
+    "E029": ("M:088", M_, 0), "E030": ("b21", M_, 0), "E031": ("b69", M_, 0), "E032": ("b115", L_, 0),
+    "E033": ("b40", M_, 0), "E034": ("b117", L_, 0), "E035": ("b83", M_, 0), "E036": ("b57", L_, 0),
+    "E037": ("b99", L_, 0), "E038": ("b52", L_, 0), "E039": ("b133", M_, 0), "E040": ("b96", L_, 0),
+    "B01": ("b35", 100, 0), "B01_P1": ("F:Defective_Turret", 40, 0), "B02": ("b36", 96, 0), "B03": ("R:03", 104, 0),
+    "B03_P1": ("b74", 44, 0), "B04": ("b95", 110, 0), "B05": ("b58", 104, 0), "B06": ("M:171", 104, 0),
+    "B07": ("b93", 104, 0), "B08": ("b12", 100, 0), "B09": ("b108", 84, 0), "B10": ("b109", 84, 0),
+    "B10_P1": ("b38", 40, 0), "B10_P2": ("b38", 40, 0), "B11": ("G:3/Boss (11)", 118, 0), "B11_P1": ("F:Magnet_Maw", 44, 0),
+    "B12": ("R:07", 116, 0), "B13": ("b81", 100, 0), "B13_P1": ("b145", 48, 0), "B14": ("R:12", 116, 0),
+    "B15": ("G:1/Boss (2)", 120, 0), "B16": ("R:08", 124, 0),
+}
+MAX_W = {"E": 96, "B": 176}
+
+
+def _enemy_source(code):
+    import glob, re
+    from PIL import Image
+    mon = os.path.join(ASSETS, "Monsters")
+    if code.startswith("b"):
+        fs = sorted(glob.glob(os.path.join(ASSETS, "Field Monsters", "BD-09", "BD-09", "*", "*.png")))
+        return Image.open(fs[int(code[1:])])
+    if code.startswith("F:"):
+        return Image.open(os.path.join(mon, "Factory Monster Pack 1", code[2:] + ".png"))
+    if code.startswith("M1:"):
+        # the 1-100 pack also carries 101-105 (wolves)
+        return Image.open(os.path.join(mon, "Monster Mega Pack 1-100 by BattleInkMaps/Monster Mega Pack- Original Size", "%03d.png" % int(code[3:])))
+    if code.startswith("M:"):
+        n = int(code[2:])
+        d = ("Monster Mega Pack 1-100 by BattleInkMaps/Monster Mega Pack- Original Size" if n <= 100 else
+             "Monster Mega Pack 101-200 (2)/MMP 101-200 - Original Size" if n <= 200 else "Monsters Mega Pack 201-300/Original Size")
+        return Image.open(os.path.join(mon, d, "%03d.png" % n))
+    if code.startswith("R:"):
+        return Image.open(glob.glob(os.path.join(PROC, "bosses", "RuneFoundry", code[2:] + "_*_px.png"))[0])
+    if code.startswith("G:"):
+        pack, boss = code[2:].split("/", 1)
+        packdir = {"1": "Giant Boss Pack –  2D Pixel Art Boss Collection", "2": "Giant Boss Pack  2 –  2D Pixel Art Boss Collection",
+                   "3": "Giant Boss Pack  3 –  2D Pixel Art Boss Collection"}[pack]
+        d = os.path.join(PROC, "bosses", packdir, packdir, boss)
+        fs = [p for p in glob.glob(os.path.join(d, "**", "*.png"), recursive=True) if re.search(r"/(ANIMATION/PNG|Animation/PNG|PNG|png)/", p) and re.search(r"\d+\.png$", p)]
+        key = lambda p: int(re.search(r"(\d+)\.png$", p).group(1))
+        fs = sorted(fs, key=key)[:60]
+        best, area = None, -1
+        for f in fs:
+            im = Image.open(f).convert("RGBA")
+            bb = im.getchannel("A").point(lambda a: 255 if a > 40 else 0).getbbox()
+            if bb and (bb[2] - bb[0]) * (bb[3] - bb[1]) > area:
+                best, area = im, (bb[2] - bb[0]) * (bb[3] - bb[1])
+        return best
+    raise ValueError(code)
+
+
+def enemies():
+    from PIL import Image
+    out = os.path.join(EXT, "enemies")
+    os.makedirs(out, exist_ok=True)
+    meta = {}
+    for eid, (code, h_units, flip) in ENEMY_ART.items():
+        im = _enemy_source(code).convert("RGBA")
+        bb = im.getchannel("A").point(lambda a: 255 if a > 24 else 0).getbbox()
+        im = im.crop(bb)
+        th = h_units * 3
+        tw = round(im.width * th / im.height)
+        mw = MAX_W[eid[0]] * 3
+        if tw > mw:
+            th, tw = round(th * mw / tw), mw
+        im = im.resize((tw, th), Image.LANCZOS)
+        a = im.getchannel("A").point(lambda v: 0 if v < 40 else (255 if v > 200 else v))
+        im.putalpha(a)
+        if flip:
+            im = im.transpose(Image.FLIP_LEFT_RIGHT)
+        im.save(os.path.join(out, eid + ".png"))
+        meta[eid] = {"src": code, "w": tw, "h": th}
+    json.dump(meta, open(os.path.join(out, "enemies.json"), "w"), indent=1)
+    print("enemies: %d installed" % len(meta))
+
+
+SECTIONS = {"enemies": enemies, "vehicles": vehicles, "common": common_sheets, "arenas": arenas, "audio": audio, "vfx": vfx, "vestiges": vestiges, "icons": spell_icons, "field_anim": field_anims}
 
 if __name__ == "__main__":
     for s in (sys.argv[1:] or SECTIONS.keys()):

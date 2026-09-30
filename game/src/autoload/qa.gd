@@ -263,11 +263,12 @@ func run_gallery(p_main: Node, which: String) -> void:
 			await _g_frames(2)
 		get_tree().quit(0)
 		return
-	if which in ["battle", "all"]:
-		for cid in ["C02", "C03", "C04"]:
+	if which in ["battle", "all"] or which.begins_with("battle:"):
+		for cid in ["C02", "C03", "C04", "C05"]:
 			if Content.data["characters"].has(cid):
 				Game.recruit(cid)
-		for f in GALLERY_FORMS:
+		var forms: Array = GALLERY_FORMS if not which.begins_with("battle:") else Array(which.substr(7).split(","))
+		for f in forms:
 			if Content.formation(f).is_empty():
 				continue
 			var bs = BattleScene.new()

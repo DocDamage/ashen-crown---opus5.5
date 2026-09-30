@@ -149,10 +149,21 @@ func _enemy_size(eid: String) -> Vector2:
 	var b = model.battlers.get(eid)
 	if b == null:
 		return Vector2(32, 32)
+	var art = _enemy_art(b)
+	if art:
+		return Vector2(art.get_width(), art.get_height()) / float(UI.U)
 	var tx = _enemy_tex(b)
 	if tx == null:
 		return Vector2(32, 32)
 	return Vector2(tx.get_width() / 4, tx.get_height())
+
+## Native-resolution enemy art (assets/ext/enemies/<sprite>.png, installed by tools/art/install_overhaul.py enemies).
+func _enemy_art(b) -> Texture2D:
+	var key: String = str(Content.enemy(b.ref).get("sprite", b.ref)).split("@")[0]
+	var path = "res://assets/ext/enemies/%s.png" % key
+	if not tex.has(path):
+		tex[path] = load(path) if ResourceLoader.exists(path) else null
+	return tex[path]
 
 func _enemy_tex(b) -> Texture2D:
 	return _t("res://assets/sprites/enemies/%s.png" % Content.enemy(b.ref).get("sprite", b.ref).split("@")[0])
@@ -754,6 +765,29 @@ func _draw() -> void:
 			continue
 		var tx = _enemy_tex(e)
 		var p: Vector2 = enemy_pos.get(eid, Vector2(88, 110)) + offsets.get(eid, Vector2.ZERO)
+		var art = _enemy_art(e)
+		if art:
+			# painted/pixel art at native resolution: gentle breathing bob, red pulse while casting, white flash on hurt
+			var aw = art.get_width()
+			var ah = art.get_height()
+			_draw_shadow(p, aw / float(UI.U))
+			var bob = round(sin(t * 2.2 + float(hash(eid) % 7)) * 1.5)
+			var mod = Color.WHITE
+			if e.state == "CASTING":
+				var k = 0.5 + 0.5 * sin(t * 10.0)
+				mod = Color(1.0, 1.0 - 0.45 * k, 1.0 - 0.45 * k)
+			var hurt = flashes.get(eid, 0.0) > 0
+			var shake = Vector2(round(sin(t * 60.0) * 2.0), 0) if hurt else Vector2.ZERO
+			UI.native_begin(self, (p * UI.U).round() / UI.U)
+			var r = Rect2(Vector2(-aw / 2, -ah + bob) + shake, Vector2(aw, ah))
+			draw_texture_rect(art, r, false, mod)
+			if hurt and not Settings.get_v("reduced_flash"):
+				draw_texture_rect(art, r, false, Color(1, 1, 1, 0.55))
+				draw_texture_rect(art, r, false, Color(3, 3, 3, 0.35))
+			UI.native_end(self)
+			if e.state == "CASTING":
+				UI.text(self, p + Vector2(-4, -ah / float(UI.U) - 12), "!", UI.C_RED if int(t * 4) % 2 == 0 else UI.C_HI)
+			continue
 		if tx:
 			var fw = tx.get_width() / 4
 			var fh = tx.get_height()
