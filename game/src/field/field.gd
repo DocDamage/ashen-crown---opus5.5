@@ -30,6 +30,7 @@ var solid_set = {}
 var enc_set = {}
 var tall_set = {}
 # Library tileset (owner's licensed art, installed into assets/ext by tools/gen_art.py library): per-kind rules
+var art: Art48 = null              # native 48px map art (tools/maps48), replaces tile drawing when present
 var ext_tex: Texture2D = null
 var ext_rules: Dictionary = {}     # kind -> {type: tile|auto|wall|stamp, ...}
 var ext_group: Dictionary = {}     # kind -> autotile connection group
@@ -142,7 +143,8 @@ func load_map(id: String, spawn: String = "default", pos: Vector2i = Vector2i(-1
 	H = int(map["h"])
 	atlas = _tex("res://assets/tiles/%s.png" % map["tileset"])
 	props_tex = _tex("res://assets/tiles/%s_props.png" % map["tileset"])
-	_load_ext(map["tileset"])
+	art = Art48.load_for(id)
+	_load_ext(map["tileset"] if art == null else "")
 	var sp = pos
 	var sdir = dir
 	if sp.x < 0:
@@ -1212,7 +1214,12 @@ func _draw() -> void:
 	var y1 = mini(H - 1, int((cam.y + VIEW.y) / TS) + 2)
 	var bg = Color8(12, 10, 18)
 	var talls = []
-	if ext_tex != null:
+	if art != null:
+		draw_rect(Rect2(Vector2.ZERO, VIEW), bg)
+		art.draw_ground(self, cam)
+		art.collect(talls, cam, VIEW)
+		y1 = y0 - 1
+	elif ext_tex != null:
 		# cached ground layers (drawn behind this node); only moved by the camera
 		var sig = "%s|" % map_id
 		for e in map["entities"]:
@@ -1255,7 +1262,7 @@ func _draw() -> void:
 					draw_rect(Rect2(pos, Vector2(TS, 1)), Color(1, 1, 1, 0.35))
 	# conditional blocks drawn as their tile
 	for e in map["entities"]:
-		if ext_tex != null:
+		if ext_tex != null or art != null:
 			break
 		if e["type"] == "block" and Game.eval_cond(e["cond"]):
 			for by in range(e["y1"], e["y2"] + 1):
@@ -1301,15 +1308,19 @@ func _draw() -> void:
 					draw_texture_rect_region(props_tex, Rect2(t[3] + Vector2(0, -16), Vector2(16, 32)), Rect2(col * 16, 0, 16, 32))
 			"ext":
 				_ci.draw_texture_rect_region(ext_tex, Rect2(t[3], t[2].size), t[2])
+			"a48":
+				art.draw_object(self, t[2], cam)
+			"a48anim":
+				art.draw_anim(self, t[2], cam, time)
 			"obj":
-				if objects_tex:
+				if not _draw_obj48(int(t[2]), t[3]) and objects_tex:
 					draw_texture_rect_region(objects_tex, Rect2(t[3], Vector2(16, 16)), Rect2(int(t[2]) * 16, 0, 16, 16))
 			"sprite":
 				var st = _tex("res://assets/sprites/props/%s.png" % t[2])
 				if st:
 					draw_texture(st, t[3] + Vector2(8 - st.get_width() / 2.0, 16 - st.get_height()))
 			"actor":
-				_draw_char(t[2]["sprite"], t[2]["dir"], 1 + int(time * 6) % 4 if t[2]["moving"] else 0, t[3])
+				_draw_char(t[2]["sprite"], t[2]["dir"], 1 + int(time * 6) % 4 if t[2].get("moving", false) else 0, t[3], str(t[2].get("id", "")))
 			"player":
 				var fr = 0
 				if p_moving:
@@ -1333,6 +1344,8 @@ func _draw() -> void:
 						draw_rect(Rect2(px, Vector2(3, 3)), Color(0.95, 0.95, 1.0, 0.75))
 				else:
 					draw_rect(Rect2(hp + Vector2(6, 11), Vector2(4, 3)), Color(1, 1, 1, 0.45))
+	if art != null:
+		art.draw_over(self, cam)
 	if map.get("dark", false):
 		draw_rect(Rect2(Vector2.ZERO, VIEW), Color(0.02, 0.02, 0.08, 0.35))
 	if tint.a > 0:
@@ -1345,12 +1358,40 @@ func _draw() -> void:
 		UI.win(self, r)
 		UI.text(self, r.position + Vector2(14, 6), banner_text)
 
+## Native field objects: chests (dungeon pack), save points (blue beam effect), healing springs (green aura).
+var _chest_tex: Texture2D = null
+
+func _draw_obj48(i: int, pos: Vector2) -> bool:
+	if i <= 1:
+		if _chest_tex == null:
+			var p = "res://assets/ext/cute/dungeon/2.png"
+			if not ResourceLoader.exists(p):
+				return false
+			_chest_tex = load(p)
+		UI.native_begin(self, (pos * UI.U).round() / UI.U)
+		draw_texture_rect_region(_chest_tex, Rect2(0, 0, 48, 48), Rect2((3 if i == 1 else 0) * 48, 6 * 48, 48, 48))
+		UI.native_end(self)
+		return true
+	if i in [2, 3, 6] and BattleFX.ok():
+		var nm = "blue_beam" if i != 6 else "green_aura"
+		var ln = BattleFX.length(nm)
+		if ln <= 0.0:
+			return false
+		draw_circle(pos + Vector2(8, 13), 6, Color(0.4, 0.7, 1.0, 0.25) if i != 6 else Color(0.4, 1.0, 0.5, 0.25))
+		BattleFX.draw(self, nm, fmod(time, ln), pos + Vector2(8, 15))
+		return true
+	return false
+
 func _outdoor() -> bool:
 	return not String(map.get("tileset", "")).begins_with("interior")
 
 const DIR_ROW := {"down": 0, "left": 1, "right": 2, "up": 3}
 
-func _draw_char(sprite: String, dir: String, frame: int, pos: Vector2) -> void:
+func _draw_char(sprite: String, dir: String, frame: int, pos: Vector2, npc_id: String = "") -> void:
+	if not HeroArt.has_field(sprite):
+		var nk = HeroArt.npc_key(sprite, npc_id)
+		if nk != "" and HeroArt.has_field(nk):
+			sprite = nk
 	if HeroArt.has_field(sprite):
 		draw_rect(Rect2(pos + Vector2(2, 14), Vector2(12, 2)), Color(0, 0, 0, 0.25))
 		HeroArt.draw_field(self, sprite, dir if not dir.begins_with("pose") else "down", frame > 0, pos + Vector2(8, 15.67))

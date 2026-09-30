@@ -1,0 +1,6931 @@
+{
+"pack": "Medieval Plague Town Tileset",
+"sheets": {
+"plague age/1.png": [
+{
+"cells": [
+0,
+0,
+3,
+5
+],
+"px": [
+0,
+0,
+144,
+240
+],
+"n": 15,
+"fill": 1.0,
+"solid_rect": true,
+"id": "plague age/1:0"
+},
+{
+"cells": [
+3,
+0,
+1,
+2
+],
+"px": [
+145,
+0,
+47,
+96
+],
+"n": 2,
+"fill": 0.98,
+"solid_rect": true,
+"id": "plague age/1:1"
+},
+{
+"cells": [
+4,
+0,
+3,
+2
+],
+"px": [
+193,
+0,
+143,
+96
+],
+"n": 6,
+"fill": 0.98,
+"solid_rect": true,
+"id": "plague age/1:2"
+},
+{
+"cells": [
+7,
+0,
+1,
+2
+],
+"px": [
+337,
+0,
+47,
+96
+],
+"n": 2,
+"fill": 0.98,
+"solid_rect": true,
+"id": "plague age/1:3"
+},
+{
+"cells": [
+8,
+0,
+2,
+2
+],
+"px": [
+385,
+0,
+95,
+96
+],
+"n": 4,
+"fill": 0.85,
+"solid_rect": false,
+"id": "plague age/1:4"
+},
+{
+"cells": [
+10,
+0,
+5,
+2
+],
+"px": [
+481,
+6,
+239,
+90
+],
+"n": 10,
+"fill": 0.89,
+"solid_rect": false,
+"id": "plague age/1:5"
+},
+{
+"cells": [
+15,
+0,
+1,
+2
+],
+"px": [
+721,
+6,
+47,
+90
+],
+"n": 2,
+"fill": 0.91,
+"solid_rect": false,
+"id": "plague age/1:6"
+},
+{
+"cells": [
+3,
+2,
+1,
+1
+],
+"px": [
+145,
+97,
+47,
+47
+],
+"n": 1,
+"fill": 0.96,
+"solid_rect": false,
+"id": "plague age/1:7"
+},
+{
+"cells": [
+4,
+2,
+4,
+6
+],
+"px": [
+192,
+97,
+192,
+287
+],
+"n": 19,
+"fill": 0.93,
+"solid_rect": false,
+"id": "plague age/1:8"
+},
+{
+"cells": [
+7,
+2,
+1,
+1
+],
+"px": [
+337,
+97,
+47,
+47
+],
+"n": 1,
+"fill": 0.96,
+"solid_rect": false,
+"id": "plague age/1:9"
+},
+{
+"cells": [
+8,
+2,
+3,
+3
+],
+"px": [
+385,
+97,
+143,
+143
+],
+"n": 9,
+"fill": 0.99,
+"solid_rect": true,
+"id": "plague age/1:10"
+},
+{
+"cells": [
+11,
+2,
+1,
+1
+],
+"px": [
+529,
+97,
+47,
+47
+],
+"n": 1,
+"fill": 0.96,
+"solid_rect": false,
+"id": "plague age/1:11"
+},
+{
+"cells": [
+12,
+2,
+3,
+3
+],
+"px": [
+577,
+97,
+143,
+143
+],
+"n": 9,
+"fill": 0.99,
+"solid_rect": true,
+"id": "plague age/1:12"
+},
+{
+"cells": [
+15,
+2,
+1,
+1
+],
+"px": [
+722,
+97,
+46,
+47
+],
+"n": 1,
+"fill": 0.94,
+"solid_rect": false,
+"id": "plague age/1:13"
+},
+{
+"cells": [
+3,
+3,
+1,
+1
+],
+"px": [
+145,
+144,
+47,
+48
+],
+"n": 1,
+"fill": 0.96,
+"solid_rect": false,
+"id": "plague age/1:14"
+},
+{
+"cells": [
+7,
+3,
+1,
+1
+],
+"px": [
+337,
+145,
+47,
+47
+],
+"n": 1,
+"fill": 0.96,
+"solid_rect": false,
+"id": "plague age/1:15"
+},
+{
+"cells": [
+11,
+3,
+1,
+1
+],
+"px": [
+529,
+145,
+47,
+47
+],
+"n": 1,
+"fill": 0.96,
+"solid_rect": false,
+"id": "plague age/1:16"
+},
+{
+"cells": [
+15,
+3,
+1,
+1
+],
+"px": [
+722,
+145,
+46,
+47
+],
+"n": 1,
+"fill": 0.94,
+"solid_rect": false,
+"id": "plague age/1:17"
+},
+{
+"cells": [
+3,
+4,
+1,
+1
+],
+"px": [
+145,
+193,
+47,
+47
+],
+"n": 1,
+"fill": 0.96,
+"solid_rect": false,
+"id": "plague age/1:18"
+},
+{
+"cells": [
+11,
+4,
+1,
+1
+],
+"px": [
+529,
+193,
+47,
+47
+],
+"n": 1,
+"fill": 0.94,
+"solid_rect": false,
+"id": "plague age/1:19"
+},
+{
+"cells": [
+15,
+4,
+1,
+1
+],
+"px": [
+722,
+193,
+46,
+47
+],
+"n": 1,
+"fill": 0.94,
+"solid_rect": false,
+"id": "plague age/1:20"
+},
+{
+"cells": [
+0,
+5,
+5,
+3
+],
+"px": [
+0,
+242,
+228,
+142
+],
+"n": 15,
+"fill": 0.7,
+"solid_rect": false,
+"id": "plague age/1:21"
+},
+{
+"cells": [
+8,
+5,
+2,
+2
+],
+"px": [
+387,
+248,
+92,
+85
+],
+"n": 4,
+"fill": 0.61,
+"solid_rect": false,
+"id": "plague age/1:22"
+},
+{
+"cells": [
+10,
+5,
+2,
+2
+],
+"px": [
+482,
+247,
+94,
+86
+],
+"n": 4,
+"fill": 0.62,
+"solid_rect": false,
+"id": "plague age/1:23"
+},
+{
+"cells": [
+12,
+5,
+2,
+2
+],
+"px": [
+579,
+246,
+92,
+87
+],
+"n": 4,
+"fill": 0.62,
+"solid_rect": false,
+"id": "plague age/1:24"
+},
+{
+"cells": [
+14,
+5,
+2,
+2
+],
+"px": [
+675,
+243,
+92,
+92
+],
+"n": 4,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/1:25"
+},
+{
+"cells": [
+8,
+7,
+2,
+2
+],
+"px": [
+386,
+343,
+94,
+89
+],
+"n": 4,
+"fill": 0.75,
+"solid_rect": false,
+"id": "plague age/1:26"
+},
+{
+"cells": [
+10,
+7,
+2,
+2
+],
+"px": [
+482,
+341,
+94,
+91
+],
+"n": 4,
+"fill": 0.77,
+"solid_rect": false,
+"id": "plague age/1:27"
+},
+{
+"cells": [
+12,
+7,
+1,
+1
+],
+"px": [
+577,
+340,
+47,
+43
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "plague age/1:28"
+},
+{
+"cells": [
+13,
+7,
+1,
+1
+],
+"px": [
+628,
+353,
+41,
+30
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "plague age/1:29"
+},
+{
+"cells": [
+14,
+7,
+1,
+1
+],
+"px": [
+675,
+339,
+44,
+45
+],
+"n": 1,
+"fill": 0.55,
+"solid_rect": false,
+"id": "plague age/1:30"
+},
+{
+"cells": [
+15,
+7,
+1,
+1
+],
+"px": [
+722,
+347,
+46,
+33
+],
+"n": 1,
+"fill": 0.51,
+"solid_rect": false,
+"id": "plague age/1:31"
+},
+{
+"cells": [
+0,
+8,
+1,
+1
+],
+"px": [
+5,
+386,
+37,
+45
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "plague age/1:32"
+},
+{
+"cells": [
+1,
+8,
+1,
+1
+],
+"px": [
+54,
+386,
+37,
+45
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "plague age/1:33"
+},
+{
+"cells": [
+2,
+8,
+1,
+1
+],
+"px": [
+100,
+387,
+37,
+44
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "plague age/1:34"
+},
+{
+"cells": [
+3,
+8,
+1,
+1
+],
+"px": [
+150,
+387,
+37,
+44
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/1:35"
+},
+{
+"cells": [
+4,
+8,
+1,
+1
+],
+"px": [
+196,
+387,
+37,
+44
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "plague age/1:36"
+},
+{
+"cells": [
+5,
+8,
+1,
+1
+],
+"px": [
+245,
+386,
+38,
+45
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "plague age/1:37"
+},
+{
+"cells": [
+6,
+8,
+1,
+1
+],
+"px": [
+293,
+387,
+39,
+44
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "plague age/1:38"
+},
+{
+"cells": [
+12,
+8,
+2,
+2
+],
+"px": [
+589,
+402,
+83,
+78
+],
+"n": 4,
+"fill": 0.51,
+"solid_rect": false,
+"id": "plague age/1:39"
+},
+{
+"cells": [
+14,
+8,
+2,
+2
+],
+"px": [
+686,
+395,
+80,
+85
+],
+"n": 4,
+"fill": 0.53,
+"solid_rect": false,
+"id": "plague age/1:40"
+},
+{
+"cells": [
+0,
+9,
+8,
+2
+],
+"px": [
+0,
+432,
+384,
+96
+],
+"n": 14,
+"fill": 0.93,
+"solid_rect": false,
+"id": "plague age/1:41"
+},
+{
+"cells": [
+8,
+9,
+2,
+2
+],
+"px": [
+386,
+433,
+76,
+95
+],
+"n": 4,
+"fill": 0.55,
+"solid_rect": false,
+"id": "plague age/1:42"
+},
+{
+"cells": [
+10,
+9,
+2,
+2
+],
+"px": [
+482,
+441,
+71,
+86
+],
+"n": 4,
+"fill": 0.55,
+"solid_rect": false,
+"id": "plague age/1:43"
+},
+{
+"cells": [
+0,
+10,
+2,
+1
+],
+"px": [
+3,
+495,
+91,
+30
+],
+"n": 2,
+"fill": 0.43,
+"solid_rect": false,
+"id": "plague age/1:44"
+},
+{
+"cells": [
+0,
+11,
+2,
+1
+],
+"px": [
+3,
+541,
+90,
+32
+],
+"n": 2,
+"fill": 0.42,
+"solid_rect": false,
+"id": "plague age/1:45"
+},
+{
+"cells": [
+2,
+11,
+2,
+1
+],
+"px": [
+99,
+539,
+90,
+34
+],
+"n": 2,
+"fill": 0.45,
+"solid_rect": false,
+"id": "plague age/1:46"
+},
+{
+"cells": [
+4,
+11,
+2,
+1
+],
+"px": [
+204,
+533,
+75,
+40
+],
+"n": 2,
+"fill": 0.46,
+"solid_rect": false,
+"id": "plague age/1:47"
+},
+{
+"cells": [
+7,
+11,
+3,
+2
+],
+"px": [
+339,
+530,
+139,
+92
+],
+"n": 6,
+"fill": 0.61,
+"solid_rect": false,
+"id": "plague age/1:48"
+},
+{
+"cells": [
+10,
+11,
+2,
+2
+],
+"px": [
+482,
+546,
+91,
+78
+],
+"n": 4,
+"fill": 0.53,
+"solid_rect": false,
+"id": "plague age/1:49"
+},
+{
+"cells": [
+12,
+11,
+1,
+1
+],
+"px": [
+582,
+542,
+35,
+27
+],
+"n": 1,
+"fill": 0.21,
+"solid_rect": false,
+"id": "plague age/1:50"
+},
+{
+"cells": [
+13,
+11,
+1,
+1
+],
+"px": [
+635,
+542,
+32,
+25
+],
+"n": 1,
+"fill": 0.2,
+"solid_rect": false,
+"id": "plague age/1:51"
+},
+{
+"cells": [
+14,
+11,
+1,
+1
+],
+"px": [
+677,
+546,
+40,
+21
+],
+"n": 1,
+"fill": 0.23,
+"solid_rect": false,
+"id": "plague age/1:52"
+},
+{
+"cells": [
+15,
+11,
+1,
+1
+],
+"px": [
+721,
+537,
+47,
+36
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "plague age/1:53"
+},
+{
+"cells": [
+0,
+12,
+2,
+1
+],
+"px": [
+3,
+587,
+90,
+34
+],
+"n": 2,
+"fill": 0.44,
+"solid_rect": false,
+"id": "plague age/1:54"
+},
+{
+"cells": [
+2,
+12,
+2,
+1
+],
+"px": [
+99,
+590,
+91,
+31
+],
+"n": 2,
+"fill": 0.48,
+"solid_rect": false,
+"id": "plague age/1:55"
+},
+{
+"cells": [
+4,
+12,
+2,
+1
+],
+"px": [
+195,
+588,
+89,
+33
+],
+"n": 2,
+"fill": 0.49,
+"solid_rect": false,
+"id": "plague age/1:56"
+},
+{
+"cells": [
+6,
+12,
+1,
+1
+],
+"px": [
+297,
+618,
+5,
+2
+],
+"n": 1,
+"fill": 0.0,
+"solid_rect": false,
+"id": "plague age/1:57"
+},
+{
+"cells": [
+12,
+12,
+1,
+1
+],
+"px": [
+578,
+595,
+41,
+20
+],
+"n": 1,
+"fill": 0.23,
+"solid_rect": false,
+"id": "plague age/1:58"
+},
+{
+"cells": [
+13,
+12,
+1,
+1
+],
+"px": [
+626,
+585,
+46,
+30
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/1:59"
+},
+{
+"cells": [
+14,
+12,
+2,
+3
+],
+"px": [
+687,
+578,
+67,
+142
+],
+"n": 6,
+"fill": 0.61,
+"solid_rect": false,
+"id": "plague age/1:60"
+},
+{
+"cells": [
+0,
+13,
+2,
+1
+],
+"px": [
+4,
+637,
+89,
+33
+],
+"n": 2,
+"fill": 0.44,
+"solid_rect": false,
+"id": "plague age/1:61"
+},
+{
+"cells": [
+2,
+13,
+2,
+1
+],
+"px": [
+101,
+640,
+89,
+29
+],
+"n": 2,
+"fill": 0.45,
+"solid_rect": false,
+"id": "plague age/1:62"
+},
+{
+"cells": [
+4,
+13,
+2,
+1
+],
+"px": [
+207,
+626,
+71,
+44
+],
+"n": 2,
+"fill": 0.38,
+"solid_rect": false,
+"id": "plague age/1:63"
+},
+{
+"cells": [
+6,
+13,
+2,
+1
+],
+"px": [
+290,
+629,
+90,
+42
+],
+"n": 2,
+"fill": 0.55,
+"solid_rect": false,
+"id": "plague age/1:64"
+},
+{
+"cells": [
+8,
+13,
+2,
+1
+],
+"px": [
+387,
+632,
+91,
+40
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "plague age/1:65"
+},
+{
+"cells": [
+10,
+13,
+2,
+2
+],
+"px": [
+482,
+644,
+92,
+74
+],
+"n": 4,
+"fill": 0.48,
+"solid_rect": false,
+"id": "plague age/1:66"
+},
+{
+"cells": [
+12,
+13,
+2,
+2
+],
+"px": [
+577,
+634,
+95,
+86
+],
+"n": 4,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/1:67"
+},
+{
+"cells": [
+0,
+14,
+1,
+1
+],
+"px": [
+10,
+682,
+29,
+30
+],
+"n": 1,
+"fill": 0.25,
+"solid_rect": false,
+"id": "plague age/1:68"
+},
+{
+"cells": [
+1,
+14,
+1,
+1
+],
+"px": [
+51,
+678,
+42,
+39
+],
+"n": 1,
+"fill": 0.56,
+"solid_rect": false,
+"id": "plague age/1:69"
+},
+{
+"cells": [
+2,
+14,
+1,
+1
+],
+"px": [
+101,
+677,
+40,
+40
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "plague age/1:70"
+},
+{
+"cells": [
+3,
+14,
+1,
+1
+],
+"px": [
+147,
+677,
+42,
+41
+],
+"n": 1,
+"fill": 0.22,
+"solid_rect": false,
+"id": "plague age/1:71"
+},
+{
+"cells": [
+4,
+14,
+1,
+1
+],
+"px": [
+197,
+677,
+41,
+39
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "plague age/1:72"
+},
+{
+"cells": [
+5,
+14,
+1,
+1
+],
+"px": [
+246,
+676,
+38,
+43
+],
+"n": 1,
+"fill": 0.24,
+"solid_rect": false,
+"id": "plague age/1:73"
+},
+{
+"cells": [
+6,
+14,
+1,
+1
+],
+"px": [
+297,
+678,
+28,
+39
+],
+"n": 1,
+"fill": 0.21,
+"solid_rect": false,
+"id": "plague age/1:74"
+},
+{
+"cells": [
+7,
+14,
+1,
+1
+],
+"px": [
+338,
+677,
+45,
+40
+],
+"n": 1,
+"fill": 0.49,
+"solid_rect": false,
+"id": "plague age/1:75"
+},
+{
+"cells": [
+8,
+14,
+1,
+1
+],
+"px": [
+387,
+680,
+42,
+34
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "plague age/1:76"
+},
+{
+"cells": [
+9,
+14,
+1,
+1
+],
+"px": [
+436,
+677,
+41,
+40
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "plague age/1:77"
+},
+{
+"cells": [
+0,
+15,
+1,
+1
+],
+"px": [
+14,
+737,
+22,
+18
+],
+"n": 1,
+"fill": 0.08,
+"solid_rect": false,
+"id": "plague age/1:78"
+},
+{
+"cells": [
+1,
+15,
+1,
+1
+],
+"px": [
+54,
+728,
+38,
+34
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/1:79"
+},
+{
+"cells": [
+2,
+15,
+2,
+1
+],
+"px": [
+98,
+733,
+91,
+29
+],
+"n": 2,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/1:80"
+},
+{
+"cells": [
+4,
+15,
+1,
+1
+],
+"px": [
+195,
+723,
+44,
+42
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "plague age/1:81"
+},
+{
+"cells": [
+5,
+15,
+1,
+1
+],
+"px": [
+240,
+727,
+47,
+38
+],
+"n": 1,
+"fill": 0.5,
+"solid_rect": false,
+"id": "plague age/1:82"
+},
+{
+"cells": [
+6,
+15,
+1,
+1
+],
+"px": [
+293,
+727,
+41,
+36
+],
+"n": 1,
+"fill": 0.13,
+"solid_rect": false,
+"id": "plague age/1:83"
+},
+{
+"cells": [
+7,
+15,
+1,
+1
+],
+"px": [
+352,
+733,
+17,
+25
+],
+"n": 1,
+"fill": 0.14,
+"solid_rect": false,
+"id": "plague age/1:84"
+},
+{
+"cells": [
+8,
+15,
+1,
+1
+],
+"px": [
+386,
+726,
+46,
+41
+],
+"n": 1,
+"fill": 0.47,
+"solid_rect": false,
+"id": "plague age/1:85"
+},
+{
+"cells": [
+9,
+15,
+1,
+1
+],
+"px": [
+433,
+724,
+46,
+44
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "plague age/1:86"
+},
+{
+"cells": [
+10,
+15,
+1,
+1
+],
+"px": [
+483,
+725,
+42,
+40
+],
+"n": 1,
+"fill": 0.47,
+"solid_rect": false,
+"id": "plague age/1:87"
+},
+{
+"cells": [
+11,
+15,
+1,
+1
+],
+"px": [
+538,
+727,
+29,
+36
+],
+"n": 1,
+"fill": 0.27,
+"solid_rect": false,
+"id": "plague age/1:88"
+},
+{
+"cells": [
+12,
+15,
+1,
+1
+],
+"px": [
+584,
+731,
+33,
+29
+],
+"n": 1,
+"fill": 0.25,
+"solid_rect": false,
+"id": "plague age/1:89"
+},
+{
+"cells": [
+13,
+15,
+1,
+1
+],
+"px": [
+627,
+729,
+42,
+33
+],
+"n": 1,
+"fill": 0.32,
+"solid_rect": false,
+"id": "plague age/1:90"
+},
+{
+"cells": [
+14,
+15,
+1,
+1
+],
+"px": [
+676,
+723,
+41,
+45
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "plague age/1:91"
+},
+{
+"cells": [
+15,
+15,
+1,
+1
+],
+"px": [
+724,
+723,
+40,
+45
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "plague age/1:92"
+}
+],
+"plague age/2.png": [
+{
+"cells": [
+0,
+0,
+8,
+16
+],
+"px": [
+0,
+0,
+384,
+768
+],
+"n": 119,
+"fill": 0.92,
+"solid_rect": false,
+"id": "plague age/2:0"
+},
+{
+"cells": [
+8,
+0,
+4,
+3
+],
+"px": [
+403,
+4,
+155,
+140
+],
+"n": 12,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/2:1"
+},
+{
+"cells": [
+12,
+0,
+4,
+3
+],
+"px": [
+582,
+3,
+182,
+141
+],
+"n": 10,
+"fill": 0.61,
+"solid_rect": false,
+"id": "plague age/2:2"
+},
+{
+"cells": [
+8,
+3,
+4,
+3
+],
+"px": [
+403,
+147,
+154,
+141
+],
+"n": 11,
+"fill": 0.56,
+"solid_rect": false,
+"id": "plague age/2:3"
+},
+{
+"cells": [
+12,
+3,
+4,
+3
+],
+"px": [
+582,
+168,
+179,
+120
+],
+"n": 12,
+"fill": 0.74,
+"solid_rect": false,
+"id": "plague age/2:4"
+},
+{
+"cells": [
+8,
+6,
+2,
+2
+],
+"px": [
+387,
+305,
+93,
+78
+],
+"n": 4,
+"fill": 0.29,
+"solid_rect": false,
+"id": "plague age/2:5"
+},
+{
+"cells": [
+10,
+6,
+2,
+2
+],
+"px": [
+480,
+299,
+95,
+81
+],
+"n": 4,
+"fill": 0.24,
+"solid_rect": false,
+"id": "plague age/2:6"
+},
+{
+"cells": [
+12,
+6,
+1,
+2
+],
+"px": [
+580,
+297,
+44,
+80
+],
+"n": 2,
+"fill": 0.29,
+"solid_rect": false,
+"id": "plague age/2:7"
+},
+{
+"cells": [
+14,
+6,
+2,
+2
+],
+"px": [
+673,
+291,
+94,
+93
+],
+"n": 4,
+"fill": 0.5,
+"solid_rect": false,
+"id": "plague age/2:8"
+},
+{
+"cells": [
+13,
+7,
+1,
+1
+],
+"px": [
+626,
+351,
+45,
+32
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "plague age/2:9"
+},
+{
+"cells": [
+8,
+8,
+2,
+2
+],
+"px": [
+386,
+386,
+94,
+94
+],
+"n": 4,
+"fill": 0.66,
+"solid_rect": false,
+"id": "plague age/2:10"
+},
+{
+"cells": [
+12,
+8,
+2,
+2
+],
+"px": [
+577,
+388,
+95,
+91
+],
+"n": 4,
+"fill": 0.55,
+"solid_rect": false,
+"id": "plague age/2:11"
+},
+{
+"cells": [
+14,
+8,
+2,
+2
+],
+"px": [
+674,
+391,
+94,
+87
+],
+"n": 4,
+"fill": 0.62,
+"solid_rect": false,
+"id": "plague age/2:12"
+},
+{
+"cells": [
+10,
+9,
+2,
+1
+],
+"px": [
+486,
+446,
+84,
+26
+],
+"n": 2,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/2:13"
+},
+{
+"cells": [
+6,
+10,
+2,
+2
+],
+"px": [
+291,
+496,
+92,
+80
+],
+"n": 4,
+"fill": 0.5,
+"solid_rect": false,
+"id": "plague age/2:14"
+},
+{
+"cells": [
+8,
+10,
+1,
+2
+],
+"px": [
+391,
+507,
+37,
+63
+],
+"n": 2,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/2:15"
+},
+{
+"cells": [
+9,
+10,
+1,
+2
+],
+"px": [
+440,
+499,
+33,
+71
+],
+"n": 2,
+"fill": 0.36,
+"solid_rect": false,
+"id": "plague age/2:16"
+},
+{
+"cells": [
+10,
+10,
+2,
+2
+],
+"px": [
+482,
+489,
+94,
+86
+],
+"n": 4,
+"fill": 0.64,
+"solid_rect": false,
+"id": "plague age/2:17"
+},
+{
+"cells": [
+12,
+10,
+2,
+2
+],
+"px": [
+578,
+483,
+94,
+92
+],
+"n": 4,
+"fill": 0.63,
+"solid_rect": false,
+"id": "plague age/2:18"
+},
+{
+"cells": [
+14,
+10,
+1,
+1
+],
+"px": [
+675,
+498,
+45,
+23
+],
+"n": 1,
+"fill": 0.24,
+"solid_rect": false,
+"id": "plague age/2:19"
+},
+{
+"cells": [
+15,
+10,
+1,
+1
+],
+"px": [
+725,
+491,
+40,
+30
+],
+"n": 1,
+"fill": 0.25,
+"solid_rect": false,
+"id": "plague age/2:20"
+},
+{
+"cells": [
+14,
+11,
+1,
+1
+],
+"px": [
+678,
+530,
+38,
+33
+],
+"n": 1,
+"fill": 0.25,
+"solid_rect": false,
+"id": "plague age/2:21"
+},
+{
+"cells": [
+15,
+11,
+1,
+1
+],
+"px": [
+721,
+548,
+45,
+23
+],
+"n": 1,
+"fill": 0.24,
+"solid_rect": false,
+"id": "plague age/2:22"
+},
+{
+"cells": [
+6,
+12,
+1,
+1
+],
+"px": [
+291,
+585,
+45,
+32
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/2:23"
+},
+{
+"cells": [
+7,
+12,
+1,
+1
+],
+"px": [
+336,
+580,
+48,
+43
+],
+"n": 1,
+"fill": 0.57,
+"solid_rect": false,
+"id": "plague age/2:24"
+},
+{
+"cells": [
+8,
+12,
+2,
+2
+],
+"px": [
+391,
+582,
+85,
+84
+],
+"n": 4,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/2:25"
+},
+{
+"cells": [
+10,
+12,
+2,
+2
+],
+"px": [
+488,
+582,
+83,
+83
+],
+"n": 4,
+"fill": 0.54,
+"solid_rect": false,
+"id": "plague age/2:26"
+},
+{
+"cells": [
+12,
+12,
+2,
+2
+],
+"px": [
+580,
+579,
+89,
+87
+],
+"n": 4,
+"fill": 0.63,
+"solid_rect": false,
+"id": "plague age/2:27"
+},
+{
+"cells": [
+14,
+12,
+2,
+2
+],
+"px": [
+675,
+594,
+91,
+76
+],
+"n": 4,
+"fill": 0.47,
+"solid_rect": false,
+"id": "plague age/2:28"
+},
+{
+"cells": [
+7,
+13,
+1,
+1
+],
+"px": [
+336,
+638,
+48,
+28
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "plague age/2:29"
+},
+{
+"cells": [
+8,
+14,
+2,
+2
+],
+"px": [
+387,
+681,
+91,
+85
+],
+"n": 4,
+"fill": 0.66,
+"solid_rect": false,
+"id": "plague age/2:30"
+},
+{
+"cells": [
+10,
+14,
+2,
+2
+],
+"px": [
+480,
+680,
+96,
+87
+],
+"n": 4,
+"fill": 0.56,
+"solid_rect": false,
+"id": "plague age/2:31"
+},
+{
+"cells": [
+12,
+14,
+2,
+2
+],
+"px": [
+580,
+673,
+89,
+95
+],
+"n": 4,
+"fill": 0.52,
+"solid_rect": false,
+"id": "plague age/2:32"
+},
+{
+"cells": [
+14,
+14,
+2,
+2
+],
+"px": [
+676,
+675,
+89,
+93
+],
+"n": 4,
+"fill": 0.55,
+"solid_rect": false,
+"id": "plague age/2:33"
+}
+],
+"plague age/3.png": [
+{
+"cells": [
+0,
+0,
+16,
+8
+],
+"px": [
+0,
+0,
+768,
+384
+],
+"n": 116,
+"fill": 0.87,
+"solid_rect": false,
+"id": "plague age/3:0"
+},
+{
+"cells": [
+10,
+0,
+6,
+2
+],
+"px": [
+487,
+2,
+281,
+94
+],
+"n": 12,
+"fill": 0.79,
+"solid_rect": false,
+"id": "plague age/3:1"
+},
+{
+"cells": [
+0,
+8,
+3,
+2
+],
+"px": [
+5,
+385,
+136,
+95
+],
+"n": 6,
+"fill": 0.66,
+"solid_rect": false,
+"id": "plague age/3:2"
+},
+{
+"cells": [
+3,
+8,
+1,
+2
+],
+"px": [
+146,
+430,
+45,
+50
+],
+"n": 2,
+"fill": 0.39,
+"solid_rect": false,
+"id": "plague age/3:3"
+},
+{
+"cells": [
+4,
+8,
+1,
+2
+],
+"px": [
+199,
+406,
+39,
+67
+],
+"n": 2,
+"fill": 0.31,
+"solid_rect": false,
+"id": "plague age/3:4"
+},
+{
+"cells": [
+5,
+8,
+1,
+2
+],
+"px": [
+244,
+393,
+40,
+80
+],
+"n": 2,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/3:5"
+},
+{
+"cells": [
+6,
+8,
+1,
+1
+],
+"px": [
+293,
+390,
+39,
+38
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "plague age/3:6"
+},
+{
+"cells": [
+7,
+8,
+1,
+1
+],
+"px": [
+342,
+388,
+38,
+40
+],
+"n": 1,
+"fill": 0.32,
+"solid_rect": false,
+"id": "plague age/3:7"
+},
+{
+"cells": [
+8,
+8,
+2,
+2
+],
+"px": [
+389,
+390,
+85,
+87
+],
+"n": 4,
+"fill": 0.65,
+"solid_rect": false,
+"id": "plague age/3:8"
+},
+{
+"cells": [
+10,
+8,
+2,
+2
+],
+"px": [
+485,
+387,
+86,
+90
+],
+"n": 4,
+"fill": 0.56,
+"solid_rect": false,
+"id": "plague age/3:9"
+},
+{
+"cells": [
+12,
+8,
+2,
+2
+],
+"px": [
+579,
+387,
+90,
+89
+],
+"n": 4,
+"fill": 0.29,
+"solid_rect": false,
+"id": "plague age/3:10"
+},
+{
+"cells": [
+14,
+8,
+2,
+2
+],
+"px": [
+675,
+392,
+92,
+86
+],
+"n": 4,
+"fill": 0.52,
+"solid_rect": false,
+"id": "plague age/3:11"
+},
+{
+"cells": [
+6,
+9,
+1,
+1
+],
+"px": [
+292,
+438,
+40,
+36
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "plague age/3:12"
+},
+{
+"cells": [
+7,
+9,
+1,
+1
+],
+"px": [
+346,
+442,
+29,
+27
+],
+"n": 1,
+"fill": 0.23,
+"solid_rect": false,
+"id": "plague age/3:13"
+},
+{
+"cells": [
+0,
+10,
+2,
+2
+],
+"px": [
+8,
+499,
+81,
+73
+],
+"n": 4,
+"fill": 0.54,
+"solid_rect": false,
+"id": "plague age/3:14"
+},
+{
+"cells": [
+2,
+10,
+1,
+1
+],
+"px": [
+100,
+489,
+40,
+32
+],
+"n": 1,
+"fill": 0.22,
+"solid_rect": false,
+"id": "plague age/3:15"
+},
+{
+"cells": [
+3,
+10,
+1,
+1
+],
+"px": [
+149,
+485,
+39,
+39
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "plague age/3:16"
+},
+{
+"cells": [
+4,
+10,
+1,
+1
+],
+"px": [
+197,
+486,
+40,
+35
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/3:17"
+},
+{
+"cells": [
+5,
+10,
+1,
+1
+],
+"px": [
+244,
+484,
+41,
+40
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "plague age/3:18"
+},
+{
+"cells": [
+6,
+10,
+1,
+1
+],
+"px": [
+290,
+483,
+44,
+43
+],
+"n": 1,
+"fill": 0.58,
+"solid_rect": false,
+"id": "plague age/3:19"
+},
+{
+"cells": [
+7,
+10,
+1,
+1
+],
+"px": [
+338,
+482,
+45,
+45
+],
+"n": 1,
+"fill": 0.75,
+"solid_rect": false,
+"id": "plague age/3:20"
+},
+{
+"cells": [
+8,
+10,
+2,
+1
+],
+"px": [
+386,
+484,
+93,
+42
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "plague age/3:21"
+},
+{
+"cells": [
+10,
+10,
+2,
+1
+],
+"px": [
+481,
+485,
+95,
+42
+],
+"n": 2,
+"fill": 0.56,
+"solid_rect": false,
+"id": "plague age/3:22"
+},
+{
+"cells": [
+12,
+10,
+2,
+2
+],
+"px": [
+586,
+483,
+76,
+91
+],
+"n": 4,
+"fill": 0.34,
+"solid_rect": false,
+"id": "plague age/3:23"
+},
+{
+"cells": [
+14,
+10,
+2,
+2
+],
+"px": [
+674,
+485,
+93,
+87
+],
+"n": 4,
+"fill": 0.6,
+"solid_rect": false,
+"id": "plague age/3:24"
+},
+{
+"cells": [
+2,
+11,
+2,
+1
+],
+"px": [
+96,
+529,
+94,
+47
+],
+"n": 2,
+"fill": 0.77,
+"solid_rect": false,
+"id": "plague age/3:25"
+},
+{
+"cells": [
+4,
+11,
+1,
+1
+],
+"px": [
+196,
+534,
+41,
+36
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "plague age/3:26"
+},
+{
+"cells": [
+5,
+11,
+1,
+1
+],
+"px": [
+246,
+534,
+36,
+34
+],
+"n": 1,
+"fill": 0.17,
+"solid_rect": false,
+"id": "plague age/3:27"
+},
+{
+"cells": [
+6,
+11,
+1,
+1
+],
+"px": [
+290,
+531,
+45,
+44
+],
+"n": 1,
+"fill": 0.67,
+"solid_rect": false,
+"id": "plague age/3:28"
+},
+{
+"cells": [
+7,
+11,
+1,
+1
+],
+"px": [
+339,
+532,
+43,
+42
+],
+"n": 1,
+"fill": 0.56,
+"solid_rect": false,
+"id": "plague age/3:29"
+},
+{
+"cells": [
+8,
+11,
+1,
+1
+],
+"px": [
+386,
+530,
+45,
+46
+],
+"n": 1,
+"fill": 0.75,
+"solid_rect": false,
+"id": "plague age/3:30"
+},
+{
+"cells": [
+9,
+11,
+1,
+1
+],
+"px": [
+433,
+530,
+46,
+44
+],
+"n": 1,
+"fill": 0.69,
+"solid_rect": false,
+"id": "plague age/3:31"
+},
+{
+"cells": [
+0,
+12,
+4,
+2
+],
+"px": [
+7,
+581,
+141,
+86
+],
+"n": 7,
+"fill": 0.31,
+"solid_rect": false,
+"id": "plague age/3:32"
+},
+{
+"cells": [
+4,
+12,
+2,
+2
+],
+"px": [
+192,
+581,
+94,
+86
+],
+"n": 4,
+"fill": 0.63,
+"solid_rect": false,
+"id": "plague age/3:33"
+},
+{
+"cells": [
+6,
+12,
+1,
+1
+],
+"px": [
+290,
+586,
+44,
+32
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/3:34"
+},
+{
+"cells": [
+7,
+12,
+1,
+1
+],
+"px": [
+340,
+583,
+41,
+35
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "plague age/3:35"
+},
+{
+"cells": [
+8,
+12,
+1,
+1
+],
+"px": [
+389,
+582,
+42,
+32
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "plague age/3:36"
+},
+{
+"cells": [
+9,
+12,
+1,
+2
+],
+"px": [
+437,
+591,
+39,
+76
+],
+"n": 2,
+"fill": 0.44,
+"solid_rect": false,
+"id": "plague age/3:37"
+},
+{
+"cells": [
+10,
+12,
+1,
+2
+],
+"px": [
+484,
+578,
+41,
+91
+],
+"n": 2,
+"fill": 0.62,
+"solid_rect": false,
+"id": "plague age/3:38"
+},
+{
+"cells": [
+11,
+12,
+1,
+2
+],
+"px": [
+532,
+578,
+41,
+92
+],
+"n": 2,
+"fill": 0.62,
+"solid_rect": false,
+"id": "plague age/3:39"
+},
+{
+"cells": [
+12,
+12,
+2,
+1
+],
+"px": [
+578,
+583,
+93,
+34
+],
+"n": 2,
+"fill": 0.49,
+"solid_rect": false,
+"id": "plague age/3:40"
+},
+{
+"cells": [
+14,
+12,
+1,
+1
+],
+"px": [
+685,
+584,
+22,
+29
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/3:41"
+},
+{
+"cells": [
+15,
+12,
+1,
+1
+],
+"px": [
+728,
+578,
+33,
+43
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "plague age/3:42"
+},
+{
+"cells": [
+6,
+13,
+1,
+1
+],
+"px": [
+293,
+630,
+42,
+37
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/3:43"
+},
+{
+"cells": [
+8,
+13,
+1,
+1
+],
+"px": [
+387,
+628,
+43,
+40
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "plague age/3:44"
+},
+{
+"cells": [
+12,
+13,
+2,
+1
+],
+"px": [
+578,
+630,
+93,
+34
+],
+"n": 2,
+"fill": 0.48,
+"solid_rect": false,
+"id": "plague age/3:45"
+},
+{
+"cells": [
+14,
+13,
+1,
+1
+],
+"px": [
+674,
+626,
+44,
+42
+],
+"n": 1,
+"fill": 0.74,
+"solid_rect": false,
+"id": "plague age/3:46"
+},
+{
+"cells": [
+15,
+13,
+1,
+1
+],
+"px": [
+728,
+627,
+33,
+40
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "plague age/3:47"
+}
+],
+"plague age/4.png": [
+{
+"cells": [
+0,
+0,
+10,
+16
+],
+"px": [
+0,
+0,
+480,
+768
+],
+"n": 105,
+"fill": 0.79,
+"solid_rect": false,
+"id": "plague age/4:0"
+},
+{
+"cells": [
+8,
+0,
+3,
+3
+],
+"px": [
+399,
+0,
+115,
+144
+],
+"n": 9,
+"fill": 0.62,
+"solid_rect": false,
+"id": "plague age/4:1"
+},
+{
+"cells": [
+11,
+0,
+5,
+3
+],
+"px": [
+538,
+8,
+221,
+136
+],
+"n": 15,
+"fill": 0.75,
+"solid_rect": false,
+"id": "plague age/4:2"
+},
+{
+"cells": [
+8,
+3,
+3,
+4
+],
+"px": [
+385,
+145,
+143,
+191
+],
+"n": 12,
+"fill": 0.77,
+"solid_rect": false,
+"id": "plague age/4:3"
+},
+{
+"cells": [
+11,
+3,
+2,
+2
+],
+"px": [
+533,
+182,
+85,
+50
+],
+"n": 4,
+"fill": 0.29,
+"solid_rect": false,
+"id": "plague age/4:4"
+},
+{
+"cells": [
+13,
+3,
+3,
+3
+],
+"px": [
+624,
+153,
+144,
+135
+],
+"n": 9,
+"fill": 0.77,
+"solid_rect": false,
+"id": "plague age/4:5"
+},
+{
+"cells": [
+11,
+5,
+1,
+1
+],
+"px": [
+533,
+241,
+43,
+47
+],
+"n": 1,
+"fill": 0.45,
+"solid_rect": false,
+"id": "plague age/4:6"
+},
+{
+"cells": [
+11,
+6,
+1,
+1
+],
+"px": [
+533,
+297,
+38,
+36
+],
+"n": 1,
+"fill": 0.34,
+"solid_rect": false,
+"id": "plague age/4:7"
+},
+{
+"cells": [
+12,
+6,
+1,
+2
+],
+"px": [
+578,
+298,
+46,
+84
+],
+"n": 2,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/4:8"
+},
+{
+"cells": [
+13,
+6,
+3,
+2
+],
+"px": [
+626,
+323,
+139,
+60
+],
+"n": 6,
+"fill": 0.36,
+"solid_rect": false,
+"id": "plague age/4:9"
+},
+{
+"cells": [
+10,
+7,
+1,
+1
+],
+"px": [
+485,
+337,
+39,
+46
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "plague age/4:10"
+},
+{
+"cells": [
+11,
+7,
+1,
+1
+],
+"px": [
+539,
+340,
+27,
+43
+],
+"n": 1,
+"fill": 0.24,
+"solid_rect": false,
+"id": "plague age/4:11"
+},
+{
+"cells": [
+4,
+8,
+2,
+1
+],
+"px": [
+195,
+388,
+91,
+44
+],
+"n": 2,
+"fill": 0.6,
+"solid_rect": false,
+"id": "plague age/4:12"
+},
+{
+"cells": [
+6,
+8,
+1,
+1
+],
+"px": [
+297,
+406,
+30,
+19
+],
+"n": 1,
+"fill": 0.1,
+"solid_rect": false,
+"id": "plague age/4:13"
+},
+{
+"cells": [
+7,
+8,
+1,
+1
+],
+"px": [
+341,
+389,
+39,
+43
+],
+"n": 1,
+"fill": 0.27,
+"solid_rect": false,
+"id": "plague age/4:14"
+},
+{
+"cells": [
+8,
+8,
+1,
+1
+],
+"px": [
+392,
+393,
+34,
+33
+],
+"n": 1,
+"fill": 0.17,
+"solid_rect": false,
+"id": "plague age/4:15"
+},
+{
+"cells": [
+9,
+8,
+1,
+1
+],
+"px": [
+438,
+392,
+36,
+36
+],
+"n": 1,
+"fill": 0.26,
+"solid_rect": false,
+"id": "plague age/4:16"
+},
+{
+"cells": [
+10,
+8,
+1,
+1
+],
+"px": [
+488,
+394,
+34,
+29
+],
+"n": 1,
+"fill": 0.18,
+"solid_rect": false,
+"id": "plague age/4:17"
+},
+{
+"cells": [
+11,
+8,
+1,
+1
+],
+"px": [
+534,
+394,
+35,
+29
+],
+"n": 1,
+"fill": 0.19,
+"solid_rect": false,
+"id": "plague age/4:18"
+},
+{
+"cells": [
+12,
+8,
+2,
+2
+],
+"px": [
+584,
+392,
+81,
+81
+],
+"n": 4,
+"fill": 0.71,
+"solid_rect": false,
+"id": "plague age/4:19"
+},
+{
+"cells": [
+14,
+8,
+2,
+2
+],
+"px": [
+674,
+392,
+94,
+88
+],
+"n": 4,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/4:20"
+},
+{
+"cells": [
+4,
+9,
+2,
+1
+],
+"px": [
+196,
+436,
+89,
+43
+],
+"n": 2,
+"fill": 0.57,
+"solid_rect": false,
+"id": "plague age/4:21"
+},
+{
+"cells": [
+6,
+9,
+1,
+1
+],
+"px": [
+291,
+436,
+41,
+41
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "plague age/4:22"
+},
+{
+"cells": [
+7,
+9,
+1,
+1
+],
+"px": [
+340,
+452,
+42,
+28
+],
+"n": 1,
+"fill": 0.16,
+"solid_rect": false,
+"id": "plague age/4:23"
+},
+{
+"cells": [
+8,
+9,
+2,
+1
+],
+"px": [
+392,
+440,
+81,
+34
+],
+"n": 2,
+"fill": 0.39,
+"solid_rect": false,
+"id": "plague age/4:24"
+},
+{
+"cells": [
+10,
+9,
+1,
+1
+],
+"px": [
+486,
+449,
+38,
+20
+],
+"n": 1,
+"fill": 0.18,
+"solid_rect": false,
+"id": "plague age/4:25"
+},
+{
+"cells": [
+11,
+9,
+1,
+1
+],
+"px": [
+534,
+443,
+36,
+28
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/4:26"
+},
+{
+"cells": [
+4,
+10,
+2,
+2
+],
+"px": [
+195,
+483,
+91,
+92
+],
+"n": 4,
+"fill": 0.49,
+"solid_rect": false,
+"id": "plague age/4:27"
+},
+{
+"cells": [
+6,
+10,
+1,
+1
+],
+"px": [
+291,
+502,
+43,
+25
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "plague age/4:28"
+},
+{
+"cells": [
+7,
+10,
+1,
+1
+],
+"px": [
+341,
+486,
+40,
+33
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "plague age/4:29"
+},
+{
+"cells": [
+8,
+10,
+1,
+1
+],
+"px": [
+389,
+485,
+39,
+39
+],
+"n": 1,
+"fill": 0.51,
+"solid_rect": false,
+"id": "plague age/4:30"
+},
+{
+"cells": [
+9,
+10,
+1,
+1
+],
+"px": [
+437,
+485,
+39,
+43
+],
+"n": 1,
+"fill": 0.54,
+"solid_rect": false,
+"id": "plague age/4:31"
+},
+{
+"cells": [
+10,
+10,
+2,
+2
+],
+"px": [
+488,
+488,
+81,
+86
+],
+"n": 4,
+"fill": 0.72,
+"solid_rect": false,
+"id": "plague age/4:32"
+},
+{
+"cells": [
+12,
+10,
+2,
+2
+],
+"px": [
+578,
+490,
+92,
+78
+],
+"n": 4,
+"fill": 0.53,
+"solid_rect": false,
+"id": "plague age/4:33"
+},
+{
+"cells": [
+14,
+10,
+2,
+2
+],
+"px": [
+672,
+483,
+96,
+92
+],
+"n": 4,
+"fill": 0.61,
+"solid_rect": false,
+"id": "plague age/4:34"
+},
+{
+"cells": [
+6,
+11,
+2,
+1
+],
+"px": [
+294,
+536,
+85,
+39
+],
+"n": 2,
+"fill": 0.51,
+"solid_rect": false,
+"id": "plague age/4:35"
+},
+{
+"cells": [
+8,
+11,
+1,
+1
+],
+"px": [
+389,
+533,
+39,
+39
+],
+"n": 1,
+"fill": 0.51,
+"solid_rect": false,
+"id": "plague age/4:36"
+},
+{
+"cells": [
+10,
+12,
+2,
+1
+],
+"px": [
+480,
+578,
+95,
+46
+],
+"n": 2,
+"fill": 0.67,
+"solid_rect": false,
+"id": "plague age/4:37"
+},
+{
+"cells": [
+12,
+12,
+4,
+4
+],
+"px": [
+582,
+582,
+174,
+182
+],
+"n": 16,
+"fill": 0.52,
+"solid_rect": false,
+"id": "plague age/4:38"
+},
+{
+"cells": [
+9,
+13,
+3,
+3
+],
+"px": [
+443,
+633,
+124,
+135
+],
+"n": 9,
+"fill": 0.55,
+"solid_rect": false,
+"id": "plague age/4:39"
+},
+{
+"cells": [
+8,
+14,
+1,
+2
+],
+"px": [
+390,
+707,
+37,
+57
+],
+"n": 2,
+"fill": 0.4,
+"solid_rect": false,
+"id": "plague age/4:40"
+}
+],
+"plague age/5.png": [
+{
+"cells": [
+0,
+0,
+3,
+2
+],
+"px": [
+0,
+7,
+136,
+89
+],
+"n": 6,
+"fill": 0.63,
+"solid_rect": false,
+"id": "plague age/5:0"
+},
+{
+"cells": [
+0,
+0,
+8,
+16
+],
+"px": [
+0,
+0,
+384,
+768
+],
+"n": 96,
+"fill": 0.84,
+"solid_rect": false,
+"id": "plague age/5:1"
+},
+{
+"cells": [
+8,
+0,
+3,
+3
+],
+"px": [
+386,
+0,
+118,
+144
+],
+"n": 8,
+"fill": 0.63,
+"solid_rect": false,
+"id": "plague age/5:2"
+},
+{
+"cells": [
+13,
+0,
+3,
+3
+],
+"px": [
+649,
+0,
+118,
+144
+],
+"n": 8,
+"fill": 0.62,
+"solid_rect": false,
+"id": "plague age/5:3"
+},
+{
+"cells": [
+6,
+3,
+1,
+1
+],
+"px": [
+294,
+149,
+41,
+41
+],
+"n": 1,
+"fill": 0.34,
+"solid_rect": false,
+"id": "plague age/5:4"
+},
+{
+"cells": [
+7,
+3,
+1,
+1
+],
+"px": [
+342,
+149,
+38,
+41
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/5:5"
+},
+{
+"cells": [
+8,
+3,
+2,
+3
+],
+"px": [
+385,
+145,
+95,
+143
+],
+"n": 6,
+"fill": 0.78,
+"solid_rect": false,
+"id": "plague age/5:6"
+},
+{
+"cells": [
+10,
+3,
+4,
+3
+],
+"px": [
+489,
+145,
+176,
+143
+],
+"n": 12,
+"fill": 0.68,
+"solid_rect": false,
+"id": "plague age/5:7"
+},
+{
+"cells": [
+14,
+3,
+2,
+3
+],
+"px": [
+672,
+145,
+96,
+143
+],
+"n": 6,
+"fill": 0.79,
+"solid_rect": false,
+"id": "plague age/5:8"
+},
+{
+"cells": [
+6,
+4,
+1,
+1
+],
+"px": [
+293,
+197,
+39,
+41
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/5:9"
+},
+{
+"cells": [
+7,
+4,
+1,
+1
+],
+"px": [
+342,
+196,
+33,
+42
+],
+"n": 1,
+"fill": 0.26,
+"solid_rect": false,
+"id": "plague age/5:10"
+},
+{
+"cells": [
+6,
+5,
+1,
+1
+],
+"px": [
+295,
+246,
+37,
+40
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/5:11"
+},
+{
+"cells": [
+7,
+5,
+1,
+1
+],
+"px": [
+345,
+244,
+32,
+43
+],
+"n": 1,
+"fill": 0.27,
+"solid_rect": false,
+"id": "plague age/5:12"
+},
+{
+"cells": [
+6,
+6,
+1,
+1
+],
+"px": [
+299,
+292,
+28,
+42
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/5:13"
+},
+{
+"cells": [
+7,
+6,
+1,
+1
+],
+"px": [
+343,
+305,
+35,
+20
+],
+"n": 1,
+"fill": 0.15,
+"solid_rect": false,
+"id": "plague age/5:14"
+},
+{
+"cells": [
+8,
+6,
+4,
+1
+],
+"px": [
+387,
+290,
+188,
+46
+],
+"n": 4,
+"fill": 0.38,
+"solid_rect": false,
+"id": "plague age/5:15"
+},
+{
+"cells": [
+12,
+6,
+1,
+1
+],
+"px": [
+583,
+294,
+37,
+18
+],
+"n": 1,
+"fill": 0.14,
+"solid_rect": false,
+"id": "plague age/5:16"
+},
+{
+"cells": [
+13,
+6,
+1,
+1
+],
+"px": [
+626,
+312,
+44,
+23
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/5:17"
+},
+{
+"cells": [
+14,
+6,
+2,
+2
+],
+"px": [
+680,
+293,
+83,
+90
+],
+"n": 4,
+"fill": 0.53,
+"solid_rect": false,
+"id": "plague age/5:18"
+},
+{
+"cells": [
+6,
+7,
+1,
+1
+],
+"px": [
+293,
+348,
+39,
+30
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "plague age/5:19"
+},
+{
+"cells": [
+7,
+7,
+1,
+1
+],
+"px": [
+338,
+344,
+45,
+35
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/5:20"
+},
+{
+"cells": [
+8,
+7,
+3,
+4
+],
+"px": [
+385,
+336,
+139,
+192
+],
+"n": 12,
+"fill": 0.74,
+"solid_rect": false,
+"id": "plague age/5:21"
+},
+{
+"cells": [
+11,
+7,
+3,
+4
+],
+"px": [
+529,
+336,
+143,
+192
+],
+"n": 12,
+"fill": 0.75,
+"solid_rect": false,
+"id": "plague age/5:22"
+},
+{
+"cells": [
+4,
+8,
+2,
+2
+],
+"px": [
+196,
+388,
+89,
+91
+],
+"n": 4,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/5:23"
+},
+{
+"cells": [
+6,
+8,
+1,
+1
+],
+"px": [
+291,
+389,
+42,
+43
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "plague age/5:24"
+},
+{
+"cells": [
+7,
+8,
+1,
+1
+],
+"px": [
+345,
+411,
+36,
+20
+],
+"n": 1,
+"fill": 0.16,
+"solid_rect": false,
+"id": "plague age/5:25"
+},
+{
+"cells": [
+14,
+8,
+2,
+2
+],
+"px": [
+675,
+384,
+86,
+96
+],
+"n": 4,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/5:26"
+},
+{
+"cells": [
+6,
+9,
+2,
+1
+],
+"px": [
+292,
+434,
+90,
+46
+],
+"n": 2,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/5:27"
+},
+{
+"cells": [
+4,
+10,
+2,
+2
+],
+"px": [
+195,
+483,
+91,
+90
+],
+"n": 4,
+"fill": 0.54,
+"solid_rect": false,
+"id": "plague age/5:28"
+},
+{
+"cells": [
+6,
+10,
+2,
+2
+],
+"px": [
+292,
+491,
+85,
+78
+],
+"n": 4,
+"fill": 0.44,
+"solid_rect": false,
+"id": "plague age/5:29"
+},
+{
+"cells": [
+14,
+10,
+2,
+2
+],
+"px": [
+672,
+483,
+96,
+93
+],
+"n": 4,
+"fill": 0.61,
+"solid_rect": false,
+"id": "plague age/5:30"
+},
+{
+"cells": [
+8,
+11,
+2,
+1
+],
+"px": [
+387,
+533,
+90,
+43
+],
+"n": 2,
+"fill": 0.49,
+"solid_rect": false,
+"id": "plague age/5:31"
+},
+{
+"cells": [
+10,
+11,
+1,
+1
+],
+"px": [
+483,
+540,
+42,
+35
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "plague age/5:32"
+},
+{
+"cells": [
+11,
+11,
+1,
+1
+],
+"px": [
+529,
+534,
+44,
+42
+],
+"n": 1,
+"fill": 0.45,
+"solid_rect": false,
+"id": "plague age/5:33"
+},
+{
+"cells": [
+12,
+11,
+1,
+1
+],
+"px": [
+580,
+540,
+41,
+30
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/5:34"
+},
+{
+"cells": [
+13,
+11,
+1,
+1
+],
+"px": [
+625,
+530,
+46,
+46
+],
+"n": 1,
+"fill": 0.65,
+"solid_rect": false,
+"id": "plague age/5:35"
+},
+{
+"cells": [
+8,
+12,
+2,
+2
+],
+"px": [
+387,
+591,
+91,
+81
+],
+"n": 4,
+"fill": 0.58,
+"solid_rect": false,
+"id": "plague age/5:36"
+},
+{
+"cells": [
+10,
+12,
+2,
+2
+],
+"px": [
+483,
+584,
+91,
+85
+],
+"n": 4,
+"fill": 0.58,
+"solid_rect": false,
+"id": "plague age/5:37"
+},
+{
+"cells": [
+12,
+12,
+2,
+2
+],
+"px": [
+578,
+580,
+93,
+92
+],
+"n": 4,
+"fill": 0.67,
+"solid_rect": false,
+"id": "plague age/5:38"
+},
+{
+"cells": [
+14,
+12,
+2,
+2
+],
+"px": [
+675,
+579,
+92,
+93
+],
+"n": 4,
+"fill": 0.6,
+"solid_rect": false,
+"id": "plague age/5:39"
+},
+{
+"cells": [
+8,
+14,
+3,
+2
+],
+"px": [
+386,
+680,
+141,
+86
+],
+"n": 6,
+"fill": 0.55,
+"solid_rect": false,
+"id": "plague age/5:40"
+},
+{
+"cells": [
+11,
+14,
+3,
+2
+],
+"px": [
+536,
+675,
+135,
+93
+],
+"n": 6,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/5:41"
+},
+{
+"cells": [
+14,
+14,
+2,
+2
+],
+"px": [
+674,
+674,
+92,
+93
+],
+"n": 4,
+"fill": 0.73,
+"solid_rect": false,
+"id": "plague age/5:42"
+}
+],
+"plague age/6.png": [
+{
+"cells": [
+0,
+0,
+12,
+16
+],
+"px": [
+0,
+0,
+576,
+768
+],
+"n": 153,
+"fill": 0.87,
+"solid_rect": false,
+"id": "plague age/6:0"
+},
+{
+"cells": [
+12,
+1,
+2,
+2
+],
+"px": [
+581,
+68,
+87,
+72
+],
+"n": 4,
+"fill": 0.65,
+"solid_rect": false,
+"id": "plague age/6:1"
+},
+{
+"cells": [
+8,
+2,
+1,
+1
+],
+"px": [
+387,
+113,
+42,
+31
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "plague age/6:2"
+},
+{
+"cells": [
+8,
+3,
+1,
+1
+],
+"px": [
+389,
+155,
+41,
+37
+],
+"n": 1,
+"fill": 0.53,
+"solid_rect": false,
+"id": "plague age/6:3"
+},
+{
+"cells": [
+9,
+3,
+1,
+1
+],
+"px": [
+446,
+148,
+25,
+44
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/6:4"
+},
+{
+"cells": [
+10,
+3,
+1,
+1
+],
+"px": [
+491,
+148,
+27,
+44
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "plague age/6:5"
+},
+{
+"cells": [
+11,
+3,
+1,
+1
+],
+"px": [
+542,
+147,
+25,
+45
+],
+"n": 1,
+"fill": 0.27,
+"solid_rect": false,
+"id": "plague age/6:6"
+},
+{
+"cells": [
+12,
+3,
+2,
+1
+],
+"px": [
+576,
+153,
+96,
+36
+],
+"n": 2,
+"fill": 0.63,
+"solid_rect": false,
+"id": "plague age/6:7"
+},
+{
+"cells": [
+8,
+4,
+1,
+1
+],
+"px": [
+387,
+197,
+44,
+43
+],
+"n": 1,
+"fill": 0.73,
+"solid_rect": false,
+"id": "plague age/6:8"
+},
+{
+"cells": [
+9,
+4,
+1,
+2
+],
+"px": [
+435,
+197,
+44,
+90
+],
+"n": 2,
+"fill": 0.81,
+"solid_rect": false,
+"id": "plague age/6:9"
+},
+{
+"cells": [
+10,
+4,
+1,
+2
+],
+"px": [
+485,
+192,
+40,
+95
+],
+"n": 2,
+"fill": 0.69,
+"solid_rect": false,
+"id": "plague age/6:10"
+},
+{
+"cells": [
+11,
+4,
+1,
+1
+],
+"px": [
+529,
+197,
+47,
+43
+],
+"n": 1,
+"fill": 0.88,
+"solid_rect": false,
+"id": "plague age/6:11"
+},
+{
+"cells": [
+11,
+5,
+1,
+1
+],
+"px": [
+537,
+246,
+32,
+42
+],
+"n": 1,
+"fill": 0.57,
+"solid_rect": false,
+"id": "plague age/6:12"
+},
+{
+"cells": [
+8,
+6,
+1,
+1
+],
+"px": [
+385,
+290,
+47,
+46
+],
+"n": 1,
+"fill": 0.68,
+"solid_rect": false,
+"id": "plague age/6:13"
+},
+{
+"cells": [
+14,
+6,
+2,
+2
+],
+"px": [
+672,
+302,
+96,
+79
+],
+"n": 4,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/6:14"
+},
+{
+"cells": [
+9,
+7,
+2,
+1
+],
+"px": [
+432,
+336,
+96,
+48
+],
+"n": 2,
+"fill": 0.82,
+"solid_rect": false,
+"id": "plague age/6:15"
+},
+{
+"cells": [
+7,
+8,
+1,
+1
+],
+"px": [
+346,
+389,
+29,
+40
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "plague age/6:16"
+},
+{
+"cells": [
+8,
+8,
+1,
+2
+],
+"px": [
+395,
+407,
+27,
+52
+],
+"n": 2,
+"fill": 0.25,
+"solid_rect": false,
+"id": "plague age/6:17"
+},
+{
+"cells": [
+8,
+8,
+4,
+4
+],
+"px": [
+387,
+406,
+187,
+149
+],
+"n": 10,
+"fill": 0.4,
+"solid_rect": false,
+"id": "plague age/6:18"
+},
+{
+"cells": [
+9,
+8,
+1,
+2
+],
+"px": [
+442,
+406,
+29,
+53
+],
+"n": 2,
+"fill": 0.24,
+"solid_rect": false,
+"id": "plague age/6:19"
+},
+{
+"cells": [
+12,
+8,
+2,
+2
+],
+"px": [
+576,
+398,
+96,
+79
+],
+"n": 4,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/6:20"
+},
+{
+"cells": [
+14,
+8,
+1,
+1
+],
+"px": [
+675,
+393,
+43,
+36
+],
+"n": 1,
+"fill": 0.65,
+"solid_rect": false,
+"id": "plague age/6:21"
+},
+{
+"cells": [
+15,
+8,
+1,
+1
+],
+"px": [
+723,
+392,
+43,
+37
+],
+"n": 1,
+"fill": 0.64,
+"solid_rect": false,
+"id": "plague age/6:22"
+},
+{
+"cells": [
+11,
+9,
+1,
+1
+],
+"px": [
+536,
+435,
+33,
+26
+],
+"n": 1,
+"fill": 0.23,
+"solid_rect": false,
+"id": "plague age/6:23"
+},
+{
+"cells": [
+12,
+10,
+1,
+2
+],
+"px": [
+581,
+484,
+25,
+49
+],
+"n": 2,
+"fill": 0.15,
+"solid_rect": false,
+"id": "plague age/6:24"
+},
+{
+"cells": [
+14,
+10,
+2,
+2
+],
+"px": [
+677,
+480,
+85,
+96
+],
+"n": 4,
+"fill": 0.73,
+"solid_rect": false,
+"id": "plague age/6:25"
+},
+{
+"cells": [
+12,
+12,
+2,
+1
+],
+"px": [
+579,
+585,
+92,
+37
+],
+"n": 2,
+"fill": 0.48,
+"solid_rect": false,
+"id": "plague age/6:26"
+},
+{
+"cells": [
+14,
+12,
+2,
+1
+],
+"px": [
+672,
+584,
+96,
+38
+],
+"n": 2,
+"fill": 0.52,
+"solid_rect": false,
+"id": "plague age/6:27"
+},
+{
+"cells": [
+12,
+13,
+1,
+1
+],
+"px": [
+583,
+628,
+36,
+44
+],
+"n": 1,
+"fill": 0.5,
+"solid_rect": false,
+"id": "plague age/6:28"
+},
+{
+"cells": [
+13,
+13,
+1,
+1
+],
+"px": [
+633,
+629,
+32,
+42
+],
+"n": 1,
+"fill": 0.5,
+"solid_rect": false,
+"id": "plague age/6:29"
+},
+{
+"cells": [
+14,
+13,
+1,
+1
+],
+"px": [
+675,
+629,
+43,
+41
+],
+"n": 1,
+"fill": 0.55,
+"solid_rect": false,
+"id": "plague age/6:30"
+},
+{
+"cells": [
+15,
+13,
+1,
+1
+],
+"px": [
+723,
+630,
+40,
+39
+],
+"n": 1,
+"fill": 0.29,
+"solid_rect": false,
+"id": "plague age/6:31"
+},
+{
+"cells": [
+12,
+14,
+2,
+1
+],
+"px": [
+576,
+680,
+95,
+37
+],
+"n": 2,
+"fill": 0.5,
+"solid_rect": false,
+"id": "plague age/6:32"
+},
+{
+"cells": [
+14,
+14,
+2,
+1
+],
+"px": [
+672,
+678,
+96,
+42
+],
+"n": 2,
+"fill": 0.5,
+"solid_rect": false,
+"id": "plague age/6:33"
+},
+{
+"cells": [
+12,
+15,
+1,
+1
+],
+"px": [
+576,
+727,
+46,
+36
+],
+"n": 1,
+"fill": 0.66,
+"solid_rect": false,
+"id": "plague age/6:34"
+},
+{
+"cells": [
+13,
+15,
+1,
+1
+],
+"px": [
+629,
+726,
+40,
+37
+],
+"n": 1,
+"fill": 0.63,
+"solid_rect": false,
+"id": "plague age/6:35"
+},
+{
+"cells": [
+14,
+15,
+2,
+1
+],
+"px": [
+674,
+730,
+94,
+33
+],
+"n": 2,
+"fill": 0.49,
+"solid_rect": false,
+"id": "plague age/6:36"
+}
+],
+"plague age/7.png": [
+{
+"cells": [
+0,
+0,
+1,
+2
+],
+"px": [
+4,
+29,
+41,
+67
+],
+"n": 2,
+"fill": 0.59,
+"solid_rect": false,
+"id": "plague age/7:0"
+},
+{
+"cells": [
+1,
+0,
+1,
+2
+],
+"px": [
+52,
+2,
+41,
+94
+],
+"n": 2,
+"fill": 0.74,
+"solid_rect": false,
+"id": "plague age/7:1"
+},
+{
+"cells": [
+2,
+0,
+1,
+2
+],
+"px": [
+100,
+2,
+41,
+94
+],
+"n": 2,
+"fill": 0.67,
+"solid_rect": false,
+"id": "plague age/7:2"
+},
+{
+"cells": [
+3,
+0,
+1,
+2
+],
+"px": [
+148,
+2,
+41,
+94
+],
+"n": 2,
+"fill": 0.67,
+"solid_rect": false,
+"id": "plague age/7:3"
+},
+{
+"cells": [
+4,
+0,
+1,
+2
+],
+"px": [
+196,
+5,
+41,
+91
+],
+"n": 2,
+"fill": 0.65,
+"solid_rect": false,
+"id": "plague age/7:4"
+},
+{
+"cells": [
+5,
+0,
+1,
+2
+],
+"px": [
+250,
+8,
+29,
+78
+],
+"n": 2,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/7:5"
+},
+{
+"cells": [
+6,
+0,
+1,
+2
+],
+"px": [
+297,
+10,
+31,
+78
+],
+"n": 2,
+"fill": 0.38,
+"solid_rect": false,
+"id": "plague age/7:6"
+},
+{
+"cells": [
+7,
+0,
+1,
+2
+],
+"px": [
+344,
+7,
+33,
+81
+],
+"n": 2,
+"fill": 0.43,
+"solid_rect": false,
+"id": "plague age/7:7"
+},
+{
+"cells": [
+8,
+0,
+3,
+4
+],
+"px": [
+384,
+6,
+143,
+183
+],
+"n": 12,
+"fill": 0.34,
+"solid_rect": false,
+"id": "plague age/7:8"
+},
+{
+"cells": [
+11,
+0,
+2,
+4
+],
+"px": [
+528,
+1,
+96,
+189
+],
+"n": 8,
+"fill": 0.4,
+"solid_rect": false,
+"id": "plague age/7:9"
+},
+{
+"cells": [
+13,
+0,
+3,
+3
+],
+"px": [
+624,
+3,
+135,
+135
+],
+"n": 9,
+"fill": 0.31,
+"solid_rect": false,
+"id": "plague age/7:10"
+},
+{
+"cells": [
+0,
+2,
+1,
+1
+],
+"px": [
+8,
+97,
+33,
+45
+],
+"n": 1,
+"fill": 0.55,
+"solid_rect": false,
+"id": "plague age/7:11"
+},
+{
+"cells": [
+1,
+2,
+1,
+1
+],
+"px": [
+57,
+104,
+30,
+39
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "plague age/7:12"
+},
+{
+"cells": [
+2,
+2,
+1,
+1
+],
+"px": [
+106,
+105,
+29,
+37
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "plague age/7:13"
+},
+{
+"cells": [
+3,
+2,
+1,
+1
+],
+"px": [
+151,
+100,
+34,
+42
+],
+"n": 1,
+"fill": 0.48,
+"solid_rect": false,
+"id": "plague age/7:14"
+},
+{
+"cells": [
+4,
+2,
+1,
+1
+],
+"px": [
+199,
+100,
+35,
+42
+],
+"n": 1,
+"fill": 0.53,
+"solid_rect": false,
+"id": "plague age/7:15"
+},
+{
+"cells": [
+5,
+2,
+1,
+1
+],
+"px": [
+248,
+99,
+33,
+43
+],
+"n": 1,
+"fill": 0.51,
+"solid_rect": false,
+"id": "plague age/7:16"
+},
+{
+"cells": [
+6,
+2,
+1,
+1
+],
+"px": [
+297,
+99,
+32,
+43
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "plague age/7:17"
+},
+{
+"cells": [
+7,
+2,
+1,
+1
+],
+"px": [
+345,
+97,
+31,
+45
+],
+"n": 1,
+"fill": 0.29,
+"solid_rect": false,
+"id": "plague age/7:18"
+},
+{
+"cells": [
+0,
+3,
+1,
+1
+],
+"px": [
+3,
+149,
+43,
+43
+],
+"n": 1,
+"fill": 0.64,
+"solid_rect": false,
+"id": "plague age/7:19"
+},
+{
+"cells": [
+1,
+3,
+1,
+1
+],
+"px": [
+55,
+161,
+35,
+29
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "plague age/7:20"
+},
+{
+"cells": [
+2,
+3,
+1,
+1
+],
+"px": [
+103,
+148,
+35,
+42
+],
+"n": 1,
+"fill": 0.52,
+"solid_rect": false,
+"id": "plague age/7:21"
+},
+{
+"cells": [
+3,
+3,
+1,
+1
+],
+"px": [
+157,
+146,
+23,
+44
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "plague age/7:22"
+},
+{
+"cells": [
+4,
+3,
+1,
+1
+],
+"px": [
+203,
+145,
+28,
+47
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "plague age/7:23"
+},
+{
+"cells": [
+5,
+3,
+1,
+1
+],
+"px": [
+248,
+145,
+33,
+45
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "plague age/7:24"
+},
+{
+"cells": [
+6,
+3,
+1,
+1
+],
+"px": [
+302,
+145,
+21,
+43
+],
+"n": 1,
+"fill": 0.29,
+"solid_rect": false,
+"id": "plague age/7:25"
+},
+{
+"cells": [
+7,
+3,
+1,
+1
+],
+"px": [
+341,
+149,
+39,
+39
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "plague age/7:26"
+},
+{
+"cells": [
+8,
+3,
+6,
+5
+],
+"px": [
+384,
+144,
+288,
+240
+],
+"n": 21,
+"fill": 0.38,
+"solid_rect": false,
+"id": "plague age/7:27"
+},
+{
+"cells": [
+14,
+3,
+1,
+1
+],
+"px": [
+682,
+176,
+29,
+12
+],
+"n": 1,
+"fill": 0.1,
+"solid_rect": false,
+"id": "plague age/7:28"
+},
+{
+"cells": [
+15,
+3,
+1,
+1
+],
+"px": [
+728,
+145,
+36,
+42
+],
+"n": 1,
+"fill": 0.22,
+"solid_rect": false,
+"id": "plague age/7:29"
+},
+{
+"cells": [
+0,
+4,
+2,
+1
+],
+"px": [
+5,
+203,
+87,
+27
+],
+"n": 2,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/7:30"
+},
+{
+"cells": [
+2,
+4,
+1,
+2
+],
+"px": [
+105,
+200,
+31,
+80
+],
+"n": 2,
+"fill": 0.41,
+"solid_rect": false,
+"id": "plague age/7:31"
+},
+{
+"cells": [
+3,
+4,
+1,
+2
+],
+"px": [
+152,
+199,
+34,
+81
+],
+"n": 2,
+"fill": 0.44,
+"solid_rect": false,
+"id": "plague age/7:32"
+},
+{
+"cells": [
+4,
+4,
+1,
+2
+],
+"px": [
+195,
+200,
+45,
+78
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "plague age/7:33"
+},
+{
+"cells": [
+5,
+4,
+3,
+2
+],
+"px": [
+240,
+202,
+135,
+74
+],
+"n": 6,
+"fill": 0.56,
+"solid_rect": false,
+"id": "plague age/7:34"
+},
+{
+"cells": [
+14,
+4,
+2,
+2
+],
+"px": [
+680,
+193,
+81,
+95
+],
+"n": 4,
+"fill": 0.61,
+"solid_rect": false,
+"id": "plague age/7:35"
+},
+{
+"cells": [
+0,
+5,
+2,
+1
+],
+"px": [
+5,
+249,
+88,
+29
+],
+"n": 2,
+"fill": 0.41,
+"solid_rect": false,
+"id": "plague age/7:36"
+},
+{
+"cells": [
+0,
+6,
+2,
+1
+],
+"px": [
+5,
+299,
+88,
+29
+],
+"n": 2,
+"fill": 0.44,
+"solid_rect": false,
+"id": "plague age/7:37"
+},
+{
+"cells": [
+2,
+6,
+2,
+1
+],
+"px": [
+98,
+294,
+92,
+37
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "plague age/7:38"
+},
+{
+"cells": [
+5,
+6,
+3,
+2
+],
+"px": [
+243,
+293,
+138,
+89
+],
+"n": 6,
+"fill": 0.65,
+"solid_rect": false,
+"id": "plague age/7:39"
+},
+{
+"cells": [
+12,
+6,
+1,
+1
+],
+"px": [
+578,
+291,
+45,
+43
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "plague age/7:40"
+},
+{
+"cells": [
+13,
+6,
+1,
+1
+],
+"px": [
+627,
+288,
+45,
+48
+],
+"n": 1,
+"fill": 0.47,
+"solid_rect": false,
+"id": "plague age/7:41"
+},
+{
+"cells": [
+14,
+6,
+1,
+1
+],
+"px": [
+683,
+290,
+28,
+41
+],
+"n": 1,
+"fill": 0.23,
+"solid_rect": false,
+"id": "plague age/7:42"
+},
+{
+"cells": [
+15,
+6,
+1,
+4
+],
+"px": [
+722,
+291,
+45,
+181
+],
+"n": 4,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/7:43"
+},
+{
+"cells": [
+0,
+7,
+2,
+1
+],
+"px": [
+5,
+348,
+88,
+25
+],
+"n": 2,
+"fill": 0.33,
+"solid_rect": false,
+"id": "plague age/7:44"
+},
+{
+"cells": [
+2,
+7,
+2,
+1
+],
+"px": [
+99,
+343,
+92,
+36
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "plague age/7:45"
+},
+{
+"cells": [
+12,
+7,
+1,
+1
+],
+"px": [
+576,
+340,
+46,
+42
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/7:46"
+},
+{
+"cells": [
+13,
+7,
+1,
+1
+],
+"px": [
+624,
+339,
+48,
+45
+],
+"n": 1,
+"fill": 0.23,
+"solid_rect": false,
+"id": "plague age/7:47"
+},
+{
+"cells": [
+14,
+7,
+1,
+1
+],
+"px": [
+672,
+336,
+48,
+48
+],
+"n": 1,
+"fill": 0.5,
+"solid_rect": false,
+"id": "plague age/7:48"
+},
+{
+"cells": [
+0,
+8,
+4,
+4
+],
+"px": [
+0,
+389,
+192,
+187
+],
+"n": 16,
+"fill": 0.94,
+"solid_rect": false,
+"id": "plague age/7:49"
+},
+{
+"cells": [
+4,
+8,
+1,
+2
+],
+"px": [
+201,
+395,
+39,
+79
+],
+"n": 2,
+"fill": 0.44,
+"solid_rect": false,
+"id": "plague age/7:50"
+},
+{
+"cells": [
+5,
+8,
+3,
+2
+],
+"px": [
+243,
+393,
+141,
+79
+],
+"n": 6,
+"fill": 0.47,
+"solid_rect": false,
+"id": "plague age/7:51"
+},
+{
+"cells": [
+8,
+8,
+2,
+2
+],
+"px": [
+390,
+385,
+87,
+95
+],
+"n": 4,
+"fill": 0.36,
+"solid_rect": false,
+"id": "plague age/7:52"
+},
+{
+"cells": [
+10,
+8,
+2,
+2
+],
+"px": [
+480,
+387,
+79,
+92
+],
+"n": 4,
+"fill": 0.29,
+"solid_rect": false,
+"id": "plague age/7:53"
+},
+{
+"cells": [
+12,
+8,
+1,
+2
+],
+"px": [
+585,
+384,
+27,
+88
+],
+"n": 2,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/7:54"
+},
+{
+"cells": [
+13,
+8,
+1,
+2
+],
+"px": [
+634,
+384,
+25,
+96
+],
+"n": 2,
+"fill": 0.32,
+"solid_rect": false,
+"id": "plague age/7:55"
+},
+{
+"cells": [
+14,
+8,
+1,
+2
+],
+"px": [
+685,
+384,
+26,
+88
+],
+"n": 2,
+"fill": 0.33,
+"solid_rect": false,
+"id": "plague age/7:56"
+},
+{
+"cells": [
+0,
+10,
+8,
+6
+],
+"px": [
+0,
+480,
+384,
+287
+],
+"n": 36,
+"fill": 0.84,
+"solid_rect": false,
+"id": "plague age/7:57"
+},
+{
+"cells": [
+4,
+10,
+2,
+1
+],
+"px": [
+198,
+487,
+86,
+33
+],
+"n": 2,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/7:58"
+},
+{
+"cells": [
+8,
+10,
+2,
+1
+],
+"px": [
+388,
+487,
+90,
+33
+],
+"n": 2,
+"fill": 0.38,
+"solid_rect": false,
+"id": "plague age/7:59"
+},
+{
+"cells": [
+10,
+10,
+2,
+1
+],
+"px": [
+483,
+491,
+90,
+27
+],
+"n": 2,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/7:60"
+},
+{
+"cells": [
+12,
+10,
+1,
+2
+],
+"px": [
+578,
+484,
+46,
+92
+],
+"n": 2,
+"fill": 0.47,
+"solid_rect": false,
+"id": "plague age/7:61"
+},
+{
+"cells": [
+13,
+10,
+2,
+1
+],
+"px": [
+626,
+487,
+93,
+35
+],
+"n": 2,
+"fill": 0.41,
+"solid_rect": false,
+"id": "plague age/7:62"
+},
+{
+"cells": [
+15,
+10,
+1,
+1
+],
+"px": [
+732,
+480,
+25,
+48
+],
+"n": 1,
+"fill": 0.24,
+"solid_rect": false,
+"id": "plague age/7:63"
+},
+{
+"cells": [
+4,
+11,
+2,
+1
+],
+"px": [
+198,
+538,
+86,
+31
+],
+"n": 2,
+"fill": 0.41,
+"solid_rect": false,
+"id": "plague age/7:64"
+},
+{
+"cells": [
+8,
+11,
+2,
+1
+],
+"px": [
+388,
+535,
+89,
+33
+],
+"n": 2,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/7:65"
+},
+{
+"cells": [
+10,
+11,
+2,
+1
+],
+"px": [
+485,
+532,
+89,
+39
+],
+"n": 2,
+"fill": 0.49,
+"solid_rect": false,
+"id": "plague age/7:66"
+},
+{
+"cells": [
+13,
+11,
+2,
+1
+],
+"px": [
+625,
+531,
+94,
+43
+],
+"n": 2,
+"fill": 0.56,
+"solid_rect": false,
+"id": "plague age/7:67"
+},
+{
+"cells": [
+15,
+11,
+1,
+1
+],
+"px": [
+723,
+534,
+39,
+39
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "plague age/7:68"
+},
+{
+"cells": [
+8,
+12,
+2,
+1
+],
+"px": [
+389,
+587,
+87,
+28
+],
+"n": 2,
+"fill": 0.36,
+"solid_rect": false,
+"id": "plague age/7:69"
+},
+{
+"cells": [
+10,
+12,
+2,
+1
+],
+"px": [
+482,
+584,
+91,
+32
+],
+"n": 2,
+"fill": 0.38,
+"solid_rect": false,
+"id": "plague age/7:70"
+},
+{
+"cells": [
+12,
+12,
+1,
+1
+],
+"px": [
+576,
+576,
+45,
+47
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/7:71"
+},
+{
+"cells": [
+13,
+12,
+1,
+1
+],
+"px": [
+632,
+584,
+36,
+40
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/7:72"
+},
+{
+"cells": [
+14,
+12,
+1,
+1
+],
+"px": [
+678,
+579,
+34,
+44
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "plague age/7:73"
+},
+{
+"cells": [
+15,
+12,
+1,
+2
+],
+"px": [
+725,
+577,
+39,
+90
+],
+"n": 2,
+"fill": 0.33,
+"solid_rect": false,
+"id": "plague age/7:74"
+},
+{
+"cells": [
+8,
+13,
+2,
+1
+],
+"px": [
+389,
+630,
+88,
+38
+],
+"n": 2,
+"fill": 0.47,
+"solid_rect": false,
+"id": "plague age/7:75"
+},
+{
+"cells": [
+10,
+13,
+1,
+1
+],
+"px": [
+481,
+626,
+47,
+44
+],
+"n": 1,
+"fill": 0.51,
+"solid_rect": false,
+"id": "plague age/7:76"
+},
+{
+"cells": [
+11,
+13,
+2,
+1
+],
+"px": [
+528,
+630,
+88,
+34
+],
+"n": 2,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/7:77"
+},
+{
+"cells": [
+13,
+13,
+1,
+1
+],
+"px": [
+625,
+625,
+46,
+43
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "plague age/7:78"
+},
+{
+"cells": [
+14,
+13,
+1,
+1
+],
+"px": [
+674,
+628,
+45,
+41
+],
+"n": 1,
+"fill": 0.26,
+"solid_rect": false,
+"id": "plague age/7:79"
+},
+{
+"cells": [
+8,
+14,
+2,
+1
+],
+"px": [
+389,
+681,
+88,
+31
+],
+"n": 2,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/7:80"
+},
+{
+"cells": [
+10,
+14,
+1,
+1
+],
+"px": [
+486,
+675,
+39,
+41
+],
+"n": 1,
+"fill": 0.51,
+"solid_rect": false,
+"id": "plague age/7:81"
+},
+{
+"cells": [
+11,
+14,
+2,
+1
+],
+"px": [
+533,
+681,
+90,
+31
+],
+"n": 2,
+"fill": 0.36,
+"solid_rect": false,
+"id": "plague age/7:82"
+},
+{
+"cells": [
+13,
+14,
+3,
+2
+],
+"px": [
+626,
+672,
+142,
+95
+],
+"n": 5,
+"fill": 0.77,
+"solid_rect": false,
+"id": "plague age/7:83"
+},
+{
+"cells": [
+8,
+15,
+2,
+1
+],
+"px": [
+388,
+733,
+88,
+28
+],
+"n": 2,
+"fill": 0.39,
+"solid_rect": false,
+"id": "plague age/7:84"
+},
+{
+"cells": [
+10,
+15,
+1,
+1
+],
+"px": [
+482,
+723,
+46,
+44
+],
+"n": 1,
+"fill": 0.53,
+"solid_rect": false,
+"id": "plague age/7:85"
+},
+{
+"cells": [
+11,
+15,
+2,
+1
+],
+"px": [
+534,
+724,
+83,
+39
+],
+"n": 2,
+"fill": 0.37,
+"solid_rect": false,
+"id": "plague age/7:86"
+},
+{
+"cells": [
+13,
+15,
+1,
+1
+],
+"px": [
+626,
+721,
+45,
+46
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "plague age/7:87"
+}
+]
+}
+}

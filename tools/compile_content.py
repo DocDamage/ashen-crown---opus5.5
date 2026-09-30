@@ -236,7 +236,7 @@ LEGEND_BASE = {
     ">": "gear", "{": "grate", "}": "chain", "[": "shelter", "]": "tent", "/": "stair_l", "\\": "stair_r", "(": "arch",
     ")": "lever_deco", "`": "moss", "'": "puddle", ";": "roots",
 }
-SOLID = {"tree2", "banner", "crystal_tall", "pipe_tall", "mast", "totem", "lantern_post", "roof_block", "wall", "water", "tree", "rock", "roof", "house", "void", "cliff", "rail", "crate", "barrel", "lamp", "shelf",
+SOLID = {"block", "tree2", "banner", "crystal_tall", "pipe_tall", "mast", "totem", "lantern_post", "roof_block", "wall", "water", "tree", "rock", "roof", "house", "void", "cliff", "rail", "crate", "barrel", "lamp", "shelf",
          "machine", "table", "pipe", "bed", "rubble", "crystal", "fence", "hedge", "counter", "pillar", "bell", "vent",
          "statue", "mountain", "deep", "reef", "window", "cart", "chimney", "anvil", "boat", "cable", "mural", "pool",
          "hole", "sluice", "altar", "brazier", "wheel", "gear", "chain", "shelter", "tent", "lever_deco", "well", "sign",

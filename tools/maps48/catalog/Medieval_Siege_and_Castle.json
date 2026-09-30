@@ -1,0 +1,7959 @@
+{
+"pack": "Medieval Siege & Castle Tileset",
+"sheets": {
+"medieval siege/1.png": [
+{
+"cells": [
+0,
+0,
+16,
+16
+],
+"px": [
+0,
+0,
+768,
+768
+],
+"n": 176,
+"fill": 0.8,
+"solid_rect": false,
+"id": "medieval siege/1:0"
+},
+{
+"cells": [
+8,
+0,
+1,
+2
+],
+"px": [
+390,
+3,
+40,
+93
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "medieval siege/1:1"
+},
+{
+"cells": [
+9,
+0,
+1,
+2
+],
+"px": [
+438,
+6,
+37,
+90
+],
+"n": 2,
+"fill": 0.51,
+"solid_rect": false,
+"id": "medieval siege/1:2"
+},
+{
+"cells": [
+10,
+0,
+1,
+2
+],
+"px": [
+484,
+1,
+41,
+95
+],
+"n": 2,
+"fill": 0.64,
+"solid_rect": false,
+"id": "medieval siege/1:3"
+},
+{
+"cells": [
+11,
+0,
+1,
+2
+],
+"px": [
+528,
+5,
+48,
+91
+],
+"n": 2,
+"fill": 0.73,
+"solid_rect": false,
+"id": "medieval siege/1:4"
+},
+{
+"cells": [
+12,
+0,
+1,
+1
+],
+"px": [
+594,
+1,
+13,
+46
+],
+"n": 1,
+"fill": 0.14,
+"solid_rect": false,
+"id": "medieval siege/1:5"
+},
+{
+"cells": [
+13,
+0,
+3,
+1
+],
+"px": [
+624,
+3,
+142,
+45
+],
+"n": 3,
+"fill": 0.78,
+"solid_rect": false,
+"id": "medieval siege/1:6"
+},
+{
+"cells": [
+12,
+1,
+1,
+1
+],
+"px": [
+582,
+57,
+38,
+39
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/1:7"
+},
+{
+"cells": [
+13,
+1,
+1,
+1
+],
+"px": [
+627,
+57,
+43,
+39
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/1:8"
+},
+{
+"cells": [
+14,
+1,
+1,
+1
+],
+"px": [
+678,
+52,
+37,
+44
+],
+"n": 1,
+"fill": 0.64,
+"solid_rect": false,
+"id": "medieval siege/1:9"
+},
+{
+"cells": [
+15,
+1,
+1,
+1
+],
+"px": [
+722,
+53,
+45,
+43
+],
+"n": 1,
+"fill": 0.62,
+"solid_rect": false,
+"id": "medieval siege/1:10"
+},
+{
+"cells": [
+8,
+2,
+1,
+2
+],
+"px": [
+389,
+105,
+41,
+87
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "medieval siege/1:11"
+},
+{
+"cells": [
+9,
+2,
+1,
+2
+],
+"px": [
+438,
+100,
+37,
+92
+],
+"n": 2,
+"fill": 0.55,
+"solid_rect": false,
+"id": "medieval siege/1:12"
+},
+{
+"cells": [
+9,
+2,
+3,
+4
+],
+"px": [
+433,
+99,
+143,
+189
+],
+"n": 7,
+"fill": 0.66,
+"solid_rect": false,
+"id": "medieval siege/1:13"
+},
+{
+"cells": [
+10,
+2,
+1,
+2
+],
+"px": [
+485,
+101,
+36,
+91
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "medieval siege/1:14"
+},
+{
+"cells": [
+12,
+2,
+1,
+2
+],
+"px": [
+582,
+100,
+37,
+92
+],
+"n": 2,
+"fill": 0.36,
+"solid_rect": false,
+"id": "medieval siege/1:15"
+},
+{
+"cells": [
+13,
+2,
+1,
+2
+],
+"px": [
+627,
+104,
+43,
+88
+],
+"n": 2,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/1:16"
+},
+{
+"cells": [
+14,
+2,
+1,
+2
+],
+"px": [
+680,
+102,
+33,
+90
+],
+"n": 2,
+"fill": 0.29,
+"solid_rect": false,
+"id": "medieval siege/1:17"
+},
+{
+"cells": [
+15,
+2,
+1,
+2
+],
+"px": [
+723,
+102,
+43,
+90
+],
+"n": 2,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/1:18"
+},
+{
+"cells": [
+8,
+4,
+1,
+1
+],
+"px": [
+402,
+195,
+13,
+44
+],
+"n": 1,
+"fill": 0.14,
+"solid_rect": false,
+"id": "medieval siege/1:19"
+},
+{
+"cells": [
+12,
+4,
+1,
+1
+],
+"px": [
+593,
+194,
+15,
+46
+],
+"n": 1,
+"fill": 0.15,
+"solid_rect": false,
+"id": "medieval siege/1:20"
+},
+{
+"cells": [
+13,
+4,
+1,
+1
+],
+"px": [
+641,
+194,
+15,
+45
+],
+"n": 1,
+"fill": 0.15,
+"solid_rect": false,
+"id": "medieval siege/1:21"
+},
+{
+"cells": [
+14,
+4,
+2,
+2
+],
+"px": [
+678,
+225,
+69,
+63
+],
+"n": 4,
+"fill": 0.26,
+"solid_rect": false,
+"id": "medieval siege/1:22"
+},
+{
+"cells": [
+8,
+5,
+1,
+1
+],
+"px": [
+401,
+242,
+15,
+45
+],
+"n": 1,
+"fill": 0.15,
+"solid_rect": false,
+"id": "medieval siege/1:23"
+},
+{
+"cells": [
+12,
+5,
+1,
+1
+],
+"px": [
+582,
+246,
+41,
+42
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/1:24"
+},
+{
+"cells": [
+13,
+5,
+1,
+1
+],
+"px": [
+626,
+247,
+41,
+41
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/1:25"
+},
+{
+"cells": [
+8,
+6,
+1,
+2
+],
+"px": [
+387,
+291,
+43,
+93
+],
+"n": 2,
+"fill": 0.57,
+"solid_rect": false,
+"id": "medieval siege/1:26"
+},
+{
+"cells": [
+9,
+6,
+1,
+2
+],
+"px": [
+437,
+296,
+42,
+88
+],
+"n": 2,
+"fill": 0.55,
+"solid_rect": false,
+"id": "medieval siege/1:27"
+},
+{
+"cells": [
+10,
+6,
+1,
+2
+],
+"px": [
+481,
+303,
+47,
+81
+],
+"n": 2,
+"fill": 0.56,
+"solid_rect": false,
+"id": "medieval siege/1:28"
+},
+{
+"cells": [
+11,
+6,
+1,
+2
+],
+"px": [
+530,
+312,
+44,
+72
+],
+"n": 2,
+"fill": 0.48,
+"solid_rect": false,
+"id": "medieval siege/1:29"
+},
+{
+"cells": [
+12,
+6,
+2,
+2
+],
+"px": [
+576,
+305,
+96,
+79
+],
+"n": 4,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/1:30"
+},
+{
+"cells": [
+15,
+6,
+1,
+1
+],
+"px": [
+720,
+293,
+48,
+43
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "medieval siege/1:31"
+},
+{
+"cells": [
+14,
+7,
+1,
+1
+],
+"px": [
+675,
+336,
+44,
+47
+],
+"n": 1,
+"fill": 0.66,
+"solid_rect": false,
+"id": "medieval siege/1:32"
+},
+{
+"cells": [
+15,
+7,
+1,
+1
+],
+"px": [
+722,
+347,
+44,
+37
+],
+"n": 1,
+"fill": 0.49,
+"solid_rect": false,
+"id": "medieval siege/1:33"
+},
+{
+"cells": [
+10,
+8,
+2,
+1
+],
+"px": [
+481,
+386,
+95,
+46
+],
+"n": 2,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/1:34"
+},
+{
+"cells": [
+12,
+8,
+3,
+1
+],
+"px": [
+576,
+386,
+144,
+46
+],
+"n": 3,
+"fill": 0.76,
+"solid_rect": false,
+"id": "medieval siege/1:35"
+},
+{
+"cells": [
+15,
+8,
+1,
+1
+],
+"px": [
+721,
+409,
+47,
+23
+],
+"n": 1,
+"fill": 0.25,
+"solid_rect": false,
+"id": "medieval siege/1:36"
+},
+{
+"cells": [
+12,
+9,
+1,
+1
+],
+"px": [
+578,
+450,
+44,
+25
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/1:37"
+},
+{
+"cells": [
+14,
+12,
+1,
+1
+],
+"px": [
+694,
+600,
+5,
+4
+],
+"n": 1,
+"fill": 0.01,
+"solid_rect": false,
+"id": "medieval siege/1:38"
+},
+{
+"cells": [
+15,
+12,
+1,
+1
+],
+"px": [
+722,
+596,
+45,
+4
+],
+"n": 1,
+"fill": 0.08,
+"solid_rect": false,
+"id": "medieval siege/1:39"
+},
+{
+"cells": [
+13,
+14,
+1,
+1
+],
+"px": [
+625,
+674,
+46,
+46
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/1:40"
+},
+{
+"cells": [
+14,
+14,
+1,
+1
+],
+"px": [
+673,
+674,
+46,
+46
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/1:41"
+},
+{
+"cells": [
+15,
+14,
+1,
+1
+],
+"px": [
+721,
+674,
+46,
+46
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/1:42"
+},
+{
+"cells": [
+12,
+15,
+1,
+1
+],
+"px": [
+577,
+722,
+46,
+46
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/1:43"
+},
+{
+"cells": [
+13,
+15,
+1,
+1
+],
+"px": [
+625,
+722,
+46,
+46
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/1:44"
+},
+{
+"cells": [
+14,
+15,
+1,
+1
+],
+"px": [
+673,
+722,
+46,
+46
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/1:45"
+}
+],
+"medieval siege/2.png": [
+{
+"cells": [
+0,
+0,
+15,
+16
+],
+"px": [
+0,
+0,
+720,
+768
+],
+"n": 168,
+"fill": 0.76,
+"solid_rect": false,
+"id": "medieval siege/2:0"
+},
+{
+"cells": [
+8,
+0,
+1,
+3
+],
+"px": [
+387,
+6,
+45,
+137
+],
+"n": 3,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/2:1"
+},
+{
+"cells": [
+10,
+0,
+1,
+3
+],
+"px": [
+481,
+7,
+47,
+136
+],
+"n": 3,
+"fill": 0.73,
+"solid_rect": false,
+"id": "medieval siege/2:2"
+},
+{
+"cells": [
+14,
+0,
+1,
+1
+],
+"px": [
+683,
+2,
+28,
+46
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/2:3"
+},
+{
+"cells": [
+15,
+0,
+1,
+1
+],
+"px": [
+731,
+2,
+27,
+46
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/2:4"
+},
+{
+"cells": [
+12,
+1,
+2,
+2
+],
+"px": [
+583,
+51,
+83,
+84
+],
+"n": 4,
+"fill": 0.36,
+"solid_rect": false,
+"id": "medieval siege/2:5"
+},
+{
+"cells": [
+15,
+1,
+1,
+1
+],
+"px": [
+734,
+57,
+20,
+30
+],
+"n": 1,
+"fill": 0.14,
+"solid_rect": false,
+"id": "medieval siege/2:6"
+},
+{
+"cells": [
+15,
+2,
+1,
+1
+],
+"px": [
+738,
+97,
+13,
+47
+],
+"n": 1,
+"fill": 0.14,
+"solid_rect": false,
+"id": "medieval siege/2:7"
+},
+{
+"cells": [
+12,
+4,
+1,
+4
+],
+"px": [
+579,
+201,
+43,
+182
+],
+"n": 4,
+"fill": 0.63,
+"solid_rect": false,
+"id": "medieval siege/2:8"
+},
+{
+"cells": [
+13,
+4,
+3,
+4
+],
+"px": [
+624,
+199,
+144,
+185
+],
+"n": 11,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/2:9"
+},
+{
+"cells": [
+14,
+4,
+1,
+1
+],
+"px": [
+687,
+199,
+19,
+26
+],
+"n": 1,
+"fill": 0.19,
+"solid_rect": false,
+"id": "medieval siege/2:10"
+},
+{
+"cells": [
+13,
+8,
+1,
+2
+],
+"px": [
+627,
+387,
+43,
+93
+],
+"n": 2,
+"fill": 0.46,
+"solid_rect": false,
+"id": "medieval siege/2:11"
+},
+{
+"cells": [
+14,
+8,
+2,
+2
+],
+"px": [
+675,
+389,
+88,
+91
+],
+"n": 4,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/2:12"
+},
+{
+"cells": [
+14,
+10,
+2,
+2
+],
+"px": [
+675,
+491,
+93,
+85
+],
+"n": 4,
+"fill": 0.47,
+"solid_rect": false,
+"id": "medieval siege/2:13"
+},
+{
+"cells": [
+5,
+12,
+1,
+1
+],
+"px": [
+241,
+585,
+47,
+31
+],
+"n": 1,
+"fill": 0.34,
+"solid_rect": false,
+"id": "medieval siege/2:14"
+},
+{
+"cells": [
+6,
+12,
+1,
+1
+],
+"px": [
+291,
+582,
+45,
+42
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/2:15"
+},
+{
+"cells": [
+7,
+12,
+1,
+1
+],
+"px": [
+337,
+587,
+46,
+28
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "medieval siege/2:16"
+},
+{
+"cells": [
+12,
+12,
+1,
+1
+],
+"px": [
+579,
+588,
+43,
+30
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/2:17"
+},
+{
+"cells": [
+13,
+12,
+1,
+1
+],
+"px": [
+626,
+582,
+46,
+35
+],
+"n": 1,
+"fill": 0.17,
+"solid_rect": false,
+"id": "medieval siege/2:18"
+},
+{
+"cells": [
+14,
+12,
+1,
+1
+],
+"px": [
+680,
+582,
+34,
+40
+],
+"n": 1,
+"fill": 0.15,
+"solid_rect": false,
+"id": "medieval siege/2:19"
+},
+{
+"cells": [
+15,
+12,
+1,
+1
+],
+"px": [
+728,
+579,
+34,
+43
+],
+"n": 1,
+"fill": 0.14,
+"solid_rect": false,
+"id": "medieval siege/2:20"
+},
+{
+"cells": [
+4,
+13,
+1,
+1
+],
+"px": [
+192,
+629,
+48,
+40
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/2:21"
+},
+{
+"cells": [
+5,
+13,
+2,
+1
+],
+"px": [
+242,
+624,
+94,
+48
+],
+"n": 2,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/2:22"
+},
+{
+"cells": [
+7,
+13,
+1,
+1
+],
+"px": [
+339,
+627,
+45,
+41
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "medieval siege/2:23"
+},
+{
+"cells": [
+12,
+13,
+2,
+1
+],
+"px": [
+576,
+625,
+96,
+47
+],
+"n": 2,
+"fill": 0.5,
+"solid_rect": false,
+"id": "medieval siege/2:24"
+},
+{
+"cells": [
+14,
+13,
+1,
+1
+],
+"px": [
+678,
+628,
+37,
+42
+],
+"n": 1,
+"fill": 0.16,
+"solid_rect": false,
+"id": "medieval siege/2:25"
+},
+{
+"cells": [
+15,
+13,
+1,
+1
+],
+"px": [
+722,
+627,
+45,
+44
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/2:26"
+},
+{
+"cells": [
+0,
+14,
+2,
+2
+],
+"px": [
+6,
+681,
+85,
+87
+],
+"n": 4,
+"fill": 0.51,
+"solid_rect": false,
+"id": "medieval siege/2:27"
+},
+{
+"cells": [
+2,
+14,
+2,
+2
+],
+"px": [
+96,
+684,
+96,
+84
+],
+"n": 4,
+"fill": 0.74,
+"solid_rect": false,
+"id": "medieval siege/2:28"
+},
+{
+"cells": [
+4,
+14,
+1,
+1
+],
+"px": [
+194,
+675,
+46,
+42
+],
+"n": 1,
+"fill": 0.34,
+"solid_rect": false,
+"id": "medieval siege/2:29"
+},
+{
+"cells": [
+5,
+14,
+2,
+2
+],
+"px": [
+242,
+672,
+85,
+96
+],
+"n": 4,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/2:30"
+},
+{
+"cells": [
+7,
+14,
+1,
+1
+],
+"px": [
+336,
+673,
+42,
+47
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/2:31"
+},
+{
+"cells": [
+12,
+14,
+1,
+1
+],
+"px": [
+579,
+676,
+42,
+44
+],
+"n": 1,
+"fill": 0.21,
+"solid_rect": false,
+"id": "medieval siege/2:32"
+},
+{
+"cells": [
+13,
+14,
+1,
+1
+],
+"px": [
+626,
+677,
+42,
+37
+],
+"n": 1,
+"fill": 0.19,
+"solid_rect": false,
+"id": "medieval siege/2:33"
+},
+{
+"cells": [
+14,
+14,
+1,
+1
+],
+"px": [
+673,
+679,
+45,
+40
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/2:34"
+},
+{
+"cells": [
+15,
+14,
+1,
+1
+],
+"px": [
+722,
+674,
+45,
+45
+],
+"n": 1,
+"fill": 0.52,
+"solid_rect": false,
+"id": "medieval siege/2:35"
+},
+{
+"cells": [
+4,
+15,
+1,
+1
+],
+"px": [
+194,
+731,
+46,
+28
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "medieval siege/2:36"
+},
+{
+"cells": [
+7,
+15,
+1,
+1
+],
+"px": [
+337,
+735,
+46,
+33
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "medieval siege/2:37"
+},
+{
+"cells": [
+12,
+15,
+1,
+1
+],
+"px": [
+579,
+726,
+44,
+40
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "medieval siege/2:38"
+},
+{
+"cells": [
+13,
+15,
+1,
+1
+],
+"px": [
+625,
+726,
+47,
+41
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/2:39"
+},
+{
+"cells": [
+14,
+15,
+1,
+1
+],
+"px": [
+675,
+725,
+42,
+42
+],
+"n": 1,
+"fill": 0.22,
+"solid_rect": false,
+"id": "medieval siege/2:40"
+},
+{
+"cells": [
+15,
+15,
+1,
+1
+],
+"px": [
+722,
+722,
+45,
+45
+],
+"n": 1,
+"fill": 0.51,
+"solid_rect": false,
+"id": "medieval siege/2:41"
+}
+],
+"medieval siege/3.png": [
+{
+"cells": [
+0,
+0,
+16,
+14
+],
+"px": [
+0,
+0,
+768,
+672
+],
+"n": 193,
+"fill": 0.88,
+"solid_rect": false,
+"id": "medieval siege/3:0"
+},
+{
+"cells": [
+0,
+12,
+3,
+2
+],
+"px": [
+4,
+577,
+140,
+95
+],
+"n": 6,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/3:1"
+},
+{
+"cells": [
+5,
+12,
+1,
+2
+],
+"px": [
+242,
+595,
+44,
+77
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "medieval siege/3:2"
+},
+{
+"cells": [
+12,
+12,
+3,
+2
+],
+"px": [
+578,
+578,
+106,
+94
+],
+"n": 6,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/3:3"
+},
+{
+"cells": [
+10,
+13,
+6,
+3
+],
+"px": [
+482,
+624,
+286,
+144
+],
+"n": 13,
+"fill": 0.64,
+"solid_rect": false,
+"id": "medieval siege/3:4"
+},
+{
+"cells": [
+0,
+14,
+4,
+2
+],
+"px": [
+1,
+672,
+175,
+96
+],
+"n": 8,
+"fill": 0.46,
+"solid_rect": false,
+"id": "medieval siege/3:5"
+},
+{
+"cells": [
+4,
+14,
+1,
+1
+],
+"px": [
+197,
+674,
+39,
+46
+],
+"n": 1,
+"fill": 0.63,
+"solid_rect": false,
+"id": "medieval siege/3:6"
+},
+{
+"cells": [
+5,
+14,
+1,
+2
+],
+"px": [
+241,
+673,
+46,
+95
+],
+"n": 2,
+"fill": 0.73,
+"solid_rect": false,
+"id": "medieval siege/3:7"
+},
+{
+"cells": [
+4,
+15,
+1,
+1
+],
+"px": [
+192,
+724,
+48,
+44
+],
+"n": 1,
+"fill": 0.79,
+"solid_rect": false,
+"id": "medieval siege/3:8"
+},
+{
+"cells": [
+9,
+15,
+1,
+1
+],
+"px": [
+432,
+720,
+48,
+48
+],
+"n": 1,
+"fill": 0.9,
+"solid_rect": false,
+"id": "medieval siege/3:9"
+}
+],
+"medieval siege/4.png": [
+{
+"cells": [
+0,
+0,
+8,
+16
+],
+"px": [
+0,
+0,
+384,
+768
+],
+"n": 103,
+"fill": 0.86,
+"solid_rect": false,
+"id": "medieval siege/4:0"
+},
+{
+"cells": [
+8,
+0,
+3,
+3
+],
+"px": [
+405,
+0,
+104,
+144
+],
+"n": 9,
+"fill": 0.48,
+"solid_rect": false,
+"id": "medieval siege/4:1"
+},
+{
+"cells": [
+11,
+0,
+1,
+2
+],
+"px": [
+529,
+23,
+46,
+73
+],
+"n": 2,
+"fill": 0.31,
+"solid_rect": false,
+"id": "medieval siege/4:2"
+},
+{
+"cells": [
+12,
+0,
+1,
+1
+],
+"px": [
+578,
+25,
+45,
+23
+],
+"n": 1,
+"fill": 0.25,
+"solid_rect": false,
+"id": "medieval siege/4:3"
+},
+{
+"cells": [
+13,
+0,
+1,
+1
+],
+"px": [
+626,
+18,
+44,
+30
+],
+"n": 1,
+"fill": 0.24,
+"solid_rect": false,
+"id": "medieval siege/4:4"
+},
+{
+"cells": [
+12,
+1,
+1,
+1
+],
+"px": [
+578,
+54,
+45,
+39
+],
+"n": 1,
+"fill": 0.47,
+"solid_rect": false,
+"id": "medieval siege/4:5"
+},
+{
+"cells": [
+13,
+1,
+1,
+1
+],
+"px": [
+635,
+50,
+27,
+46
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/4:6"
+},
+{
+"cells": [
+14,
+1,
+2,
+1
+],
+"px": [
+682,
+51,
+82,
+41
+],
+"n": 2,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/4:7"
+},
+{
+"cells": [
+11,
+2,
+1,
+1
+],
+"px": [
+537,
+102,
+31,
+42
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/4:8"
+},
+{
+"cells": [
+12,
+2,
+1,
+1
+],
+"px": [
+583,
+99,
+34,
+45
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "medieval siege/4:9"
+},
+{
+"cells": [
+14,
+2,
+1,
+1
+],
+"px": [
+675,
+97,
+43,
+47
+],
+"n": 1,
+"fill": 0.87,
+"solid_rect": false,
+"id": "medieval siege/4:10"
+},
+{
+"cells": [
+15,
+2,
+1,
+1
+],
+"px": [
+723,
+97,
+43,
+47
+],
+"n": 1,
+"fill": 0.78,
+"solid_rect": false,
+"id": "medieval siege/4:11"
+},
+{
+"cells": [
+8,
+3,
+3,
+3
+],
+"px": [
+392,
+145,
+129,
+143
+],
+"n": 9,
+"fill": 0.51,
+"solid_rect": false,
+"id": "medieval siege/4:12"
+},
+{
+"cells": [
+11,
+3,
+1,
+1
+],
+"px": [
+543,
+150,
+20,
+42
+],
+"n": 1,
+"fill": 0.23,
+"solid_rect": false,
+"id": "medieval siege/4:13"
+},
+{
+"cells": [
+12,
+3,
+1,
+1
+],
+"px": [
+578,
+147,
+45,
+43
+],
+"n": 1,
+"fill": 0.46,
+"solid_rect": false,
+"id": "medieval siege/4:14"
+},
+{
+"cells": [
+13,
+3,
+1,
+1
+],
+"px": [
+626,
+146,
+45,
+44
+],
+"n": 1,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/4:15"
+},
+{
+"cells": [
+14,
+3,
+1,
+1
+],
+"px": [
+683,
+148,
+27,
+42
+],
+"n": 1,
+"fill": 0.13,
+"solid_rect": false,
+"id": "medieval siege/4:16"
+},
+{
+"cells": [
+15,
+3,
+1,
+1
+],
+"px": [
+738,
+154,
+13,
+34
+],
+"n": 1,
+"fill": 0.08,
+"solid_rect": false,
+"id": "medieval siege/4:17"
+},
+{
+"cells": [
+11,
+4,
+1,
+1
+],
+"px": [
+530,
+201,
+45,
+37
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/4:18"
+},
+{
+"cells": [
+12,
+4,
+1,
+1
+],
+"px": [
+578,
+195,
+45,
+42
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/4:19"
+},
+{
+"cells": [
+13,
+4,
+3,
+2
+],
+"px": [
+625,
+204,
+131,
+84
+],
+"n": 6,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/4:20"
+},
+{
+"cells": [
+11,
+5,
+1,
+1
+],
+"px": [
+538,
+249,
+29,
+39
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/4:21"
+},
+{
+"cells": [
+12,
+5,
+1,
+1
+],
+"px": [
+579,
+241,
+39,
+47
+],
+"n": 1,
+"fill": 0.48,
+"solid_rect": false,
+"id": "medieval siege/4:22"
+},
+{
+"cells": [
+8,
+6,
+2,
+2
+],
+"px": [
+392,
+291,
+87,
+92
+],
+"n": 4,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/4:23"
+},
+{
+"cells": [
+10,
+6,
+4,
+2
+],
+"px": [
+481,
+291,
+190,
+93
+],
+"n": 7,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/4:24"
+},
+{
+"cells": [
+14,
+6,
+2,
+2
+],
+"px": [
+672,
+304,
+96,
+80
+],
+"n": 4,
+"fill": 0.51,
+"solid_rect": false,
+"id": "medieval siege/4:25"
+},
+{
+"cells": [
+4,
+8,
+1,
+1
+],
+"px": [
+194,
+404,
+46,
+26
+],
+"n": 1,
+"fill": 0.27,
+"solid_rect": false,
+"id": "medieval siege/4:26"
+},
+{
+"cells": [
+5,
+8,
+1,
+1
+],
+"px": [
+242,
+391,
+45,
+38
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/4:27"
+},
+{
+"cells": [
+6,
+8,
+1,
+1
+],
+"px": [
+290,
+402,
+43,
+29
+],
+"n": 1,
+"fill": 0.26,
+"solid_rect": false,
+"id": "medieval siege/4:28"
+},
+{
+"cells": [
+7,
+8,
+1,
+1
+],
+"px": [
+338,
+409,
+46,
+19
+],
+"n": 1,
+"fill": 0.23,
+"solid_rect": false,
+"id": "medieval siege/4:29"
+},
+{
+"cells": [
+8,
+8,
+2,
+2
+],
+"px": [
+387,
+385,
+90,
+95
+],
+"n": 4,
+"fill": 0.55,
+"solid_rect": false,
+"id": "medieval siege/4:30"
+},
+{
+"cells": [
+10,
+8,
+2,
+2
+],
+"px": [
+481,
+400,
+95,
+80
+],
+"n": 4,
+"fill": 0.5,
+"solid_rect": false,
+"id": "medieval siege/4:31"
+},
+{
+"cells": [
+12,
+8,
+2,
+2
+],
+"px": [
+577,
+387,
+95,
+93
+],
+"n": 4,
+"fill": 0.69,
+"solid_rect": false,
+"id": "medieval siege/4:32"
+},
+{
+"cells": [
+14,
+8,
+1,
+1
+],
+"px": [
+673,
+387,
+46,
+45
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/4:33"
+},
+{
+"cells": [
+15,
+8,
+1,
+1
+],
+"px": [
+721,
+387,
+46,
+45
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/4:34"
+},
+{
+"cells": [
+5,
+9,
+1,
+1
+],
+"px": [
+242,
+451,
+44,
+29
+],
+"n": 1,
+"fill": 0.27,
+"solid_rect": false,
+"id": "medieval siege/4:35"
+},
+{
+"cells": [
+6,
+9,
+1,
+1
+],
+"px": [
+291,
+432,
+43,
+45
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/4:36"
+},
+{
+"cells": [
+7,
+9,
+1,
+1
+],
+"px": [
+339,
+448,
+45,
+29
+],
+"n": 1,
+"fill": 0.27,
+"solid_rect": false,
+"id": "medieval siege/4:37"
+},
+{
+"cells": [
+14,
+9,
+1,
+1
+],
+"px": [
+673,
+435,
+46,
+45
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/4:38"
+},
+{
+"cells": [
+15,
+9,
+1,
+1
+],
+"px": [
+721,
+435,
+46,
+45
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/4:39"
+},
+{
+"cells": [
+4,
+10,
+1,
+1
+],
+"px": [
+195,
+482,
+43,
+43
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/4:40"
+},
+{
+"cells": [
+5,
+10,
+1,
+1
+],
+"px": [
+243,
+497,
+42,
+29
+],
+"n": 1,
+"fill": 0.24,
+"solid_rect": false,
+"id": "medieval siege/4:41"
+},
+{
+"cells": [
+7,
+10,
+1,
+1
+],
+"px": [
+341,
+482,
+37,
+46
+],
+"n": 1,
+"fill": 0.26,
+"solid_rect": false,
+"id": "medieval siege/4:42"
+},
+{
+"cells": [
+8,
+10,
+2,
+2
+],
+"px": [
+387,
+488,
+90,
+88
+],
+"n": 4,
+"fill": 0.49,
+"solid_rect": false,
+"id": "medieval siege/4:43"
+},
+{
+"cells": [
+10,
+10,
+2,
+2
+],
+"px": [
+482,
+481,
+93,
+92
+],
+"n": 4,
+"fill": 0.18,
+"solid_rect": false,
+"id": "medieval siege/4:44"
+},
+{
+"cells": [
+12,
+10,
+2,
+1
+],
+"px": [
+581,
+482,
+87,
+46
+],
+"n": 2,
+"fill": 0.34,
+"solid_rect": false,
+"id": "medieval siege/4:45"
+},
+{
+"cells": [
+14,
+10,
+1,
+1
+],
+"px": [
+672,
+484,
+48,
+27
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/4:46"
+},
+{
+"cells": [
+15,
+10,
+1,
+1
+],
+"px": [
+720,
+497,
+48,
+29
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/4:47"
+},
+{
+"cells": [
+12,
+11,
+1,
+1
+],
+"px": [
+578,
+531,
+45,
+45
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/4:48"
+},
+{
+"cells": [
+13,
+11,
+1,
+1
+],
+"px": [
+625,
+530,
+46,
+46
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/4:49"
+},
+{
+"cells": [
+14,
+11,
+1,
+1
+],
+"px": [
+673,
+531,
+46,
+45
+],
+"n": 1,
+"fill": 0.62,
+"solid_rect": false,
+"id": "medieval siege/4:50"
+},
+{
+"cells": [
+15,
+11,
+1,
+1
+],
+"px": [
+721,
+531,
+46,
+45
+],
+"n": 1,
+"fill": 0.62,
+"solid_rect": false,
+"id": "medieval siege/4:51"
+},
+{
+"cells": [
+4,
+12,
+1,
+1
+],
+"px": [
+195,
+583,
+43,
+38
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/4:52"
+},
+{
+"cells": [
+5,
+12,
+1,
+1
+],
+"px": [
+243,
+577,
+43,
+44
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/4:53"
+},
+{
+"cells": [
+6,
+12,
+2,
+3
+],
+"px": [
+302,
+613,
+82,
+107
+],
+"n": 6,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/4:54"
+},
+{
+"cells": [
+8,
+12,
+2,
+2
+],
+"px": [
+392,
+577,
+81,
+95
+],
+"n": 4,
+"fill": 0.53,
+"solid_rect": false,
+"id": "medieval siege/4:55"
+},
+{
+"cells": [
+10,
+12,
+2,
+2
+],
+"px": [
+481,
+577,
+95,
+94
+],
+"n": 4,
+"fill": 0.59,
+"solid_rect": false,
+"id": "medieval siege/4:56"
+},
+{
+"cells": [
+12,
+12,
+2,
+2
+],
+"px": [
+579,
+583,
+91,
+88
+],
+"n": 4,
+"fill": 0.66,
+"solid_rect": false,
+"id": "medieval siege/4:57"
+},
+{
+"cells": [
+14,
+12,
+2,
+2
+],
+"px": [
+672,
+577,
+96,
+95
+],
+"n": 4,
+"fill": 0.74,
+"solid_rect": false,
+"id": "medieval siege/4:58"
+},
+{
+"cells": [
+4,
+13,
+1,
+1
+],
+"px": [
+206,
+626,
+21,
+46
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "medieval siege/4:59"
+},
+{
+"cells": [
+5,
+13,
+1,
+1
+],
+"px": [
+254,
+626,
+20,
+46
+],
+"n": 1,
+"fill": 0.25,
+"solid_rect": false,
+"id": "medieval siege/4:60"
+},
+{
+"cells": [
+4,
+14,
+1,
+1
+],
+"px": [
+196,
+675,
+42,
+45
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/4:61"
+},
+{
+"cells": [
+5,
+14,
+1,
+1
+],
+"px": [
+240,
+680,
+48,
+40
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/4:62"
+},
+{
+"cells": [
+8,
+14,
+1,
+1
+],
+"px": [
+390,
+673,
+37,
+47
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "medieval siege/4:63"
+},
+{
+"cells": [
+9,
+14,
+1,
+1
+],
+"px": [
+440,
+678,
+33,
+41
+],
+"n": 1,
+"fill": 0.27,
+"solid_rect": false,
+"id": "medieval siege/4:64"
+},
+{
+"cells": [
+10,
+14,
+1,
+1
+],
+"px": [
+482,
+679,
+45,
+37
+],
+"n": 1,
+"fill": 0.46,
+"solid_rect": false,
+"id": "medieval siege/4:65"
+},
+{
+"cells": [
+11,
+14,
+1,
+1
+],
+"px": [
+530,
+675,
+43,
+44
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/4:66"
+},
+{
+"cells": [
+12,
+14,
+1,
+1
+],
+"px": [
+578,
+675,
+46,
+44
+],
+"n": 1,
+"fill": 0.72,
+"solid_rect": false,
+"id": "medieval siege/4:67"
+},
+{
+"cells": [
+13,
+14,
+1,
+1
+],
+"px": [
+626,
+673,
+45,
+36
+],
+"n": 1,
+"fill": 0.32,
+"solid_rect": false,
+"id": "medieval siege/4:68"
+},
+{
+"cells": [
+14,
+14,
+1,
+1
+],
+"px": [
+683,
+674,
+27,
+46
+],
+"n": 1,
+"fill": 0.24,
+"solid_rect": false,
+"id": "medieval siege/4:69"
+},
+{
+"cells": [
+8,
+15,
+1,
+1
+],
+"px": [
+385,
+723,
+47,
+45
+],
+"n": 1,
+"fill": 0.63,
+"solid_rect": false,
+"id": "medieval siege/4:70"
+},
+{
+"cells": [
+9,
+15,
+1,
+1
+],
+"px": [
+433,
+723,
+47,
+45
+],
+"n": 1,
+"fill": 0.64,
+"solid_rect": false,
+"id": "medieval siege/4:71"
+},
+{
+"cells": [
+10,
+15,
+1,
+1
+],
+"px": [
+481,
+722,
+47,
+46
+],
+"n": 1,
+"fill": 0.64,
+"solid_rect": false,
+"id": "medieval siege/4:72"
+},
+{
+"cells": [
+11,
+15,
+1,
+1
+],
+"px": [
+529,
+722,
+47,
+46
+],
+"n": 1,
+"fill": 0.63,
+"solid_rect": false,
+"id": "medieval siege/4:73"
+},
+{
+"cells": [
+12,
+15,
+1,
+1
+],
+"px": [
+577,
+723,
+47,
+45
+],
+"n": 1,
+"fill": 0.63,
+"solid_rect": false,
+"id": "medieval siege/4:74"
+}
+],
+"medieval siege/5.png": [
+{
+"cells": [
+0,
+0,
+8,
+8
+],
+"px": [
+0,
+0,
+384,
+384
+],
+"n": 64,
+"fill": 1.0,
+"solid_rect": true,
+"id": "medieval siege/5:0"
+},
+{
+"cells": [
+8,
+0,
+6,
+5
+],
+"px": [
+385,
+0,
+287,
+240
+],
+"n": 28,
+"fill": 0.9,
+"solid_rect": false,
+"id": "medieval siege/5:1"
+},
+{
+"cells": [
+14,
+0,
+2,
+1
+],
+"px": [
+672,
+0,
+96,
+48
+],
+"n": 2,
+"fill": 0.52,
+"solid_rect": false,
+"id": "medieval siege/5:2"
+},
+{
+"cells": [
+14,
+1,
+2,
+1
+],
+"px": [
+672,
+48,
+96,
+48
+],
+"n": 2,
+"fill": 0.51,
+"solid_rect": false,
+"id": "medieval siege/5:3"
+},
+{
+"cells": [
+14,
+2,
+2,
+2
+],
+"px": [
+672,
+96,
+96,
+96
+],
+"n": 4,
+"fill": 0.51,
+"solid_rect": false,
+"id": "medieval siege/5:4"
+},
+{
+"cells": [
+12,
+4,
+1,
+1
+],
+"px": [
+587,
+199,
+28,
+35
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/5:5"
+},
+{
+"cells": [
+13,
+4,
+1,
+1
+],
+"px": [
+634,
+200,
+29,
+34
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/5:6"
+},
+{
+"cells": [
+14,
+4,
+1,
+1
+],
+"px": [
+672,
+197,
+36,
+43
+],
+"n": 1,
+"fill": 0.66,
+"solid_rect": false,
+"id": "medieval siege/5:7"
+},
+{
+"cells": [
+15,
+4,
+1,
+1
+],
+"px": [
+720,
+202,
+48,
+38
+],
+"n": 1,
+"fill": 0.78,
+"solid_rect": false,
+"id": "medieval siege/5:8"
+},
+{
+"cells": [
+8,
+5,
+1,
+1
+],
+"px": [
+395,
+246,
+28,
+36
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/5:9"
+},
+{
+"cells": [
+9,
+5,
+1,
+1
+],
+"px": [
+443,
+246,
+28,
+36
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/5:10"
+},
+{
+"cells": [
+10,
+5,
+1,
+1
+],
+"px": [
+490,
+246,
+29,
+36
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/5:11"
+},
+{
+"cells": [
+11,
+5,
+1,
+1
+],
+"px": [
+539,
+248,
+28,
+34
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/5:12"
+},
+{
+"cells": [
+12,
+5,
+1,
+1
+],
+"px": [
+578,
+248,
+45,
+34
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/5:13"
+},
+{
+"cells": [
+13,
+5,
+1,
+1
+],
+"px": [
+634,
+247,
+29,
+35
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/5:14"
+},
+{
+"cells": [
+14,
+5,
+1,
+1
+],
+"px": [
+672,
+245,
+36,
+43
+],
+"n": 1,
+"fill": 0.67,
+"solid_rect": false,
+"id": "medieval siege/5:15"
+},
+{
+"cells": [
+15,
+5,
+1,
+1
+],
+"px": [
+720,
+244,
+48,
+44
+],
+"n": 1,
+"fill": 0.66,
+"solid_rect": false,
+"id": "medieval siege/5:16"
+},
+{
+"cells": [
+8,
+6,
+1,
+1
+],
+"px": [
+396,
+296,
+27,
+32
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/5:17"
+},
+{
+"cells": [
+9,
+6,
+1,
+1
+],
+"px": [
+442,
+295,
+29,
+35
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/5:18"
+},
+{
+"cells": [
+10,
+6,
+1,
+1
+],
+"px": [
+490,
+295,
+29,
+35
+],
+"n": 1,
+"fill": 0.27,
+"solid_rect": false,
+"id": "medieval siege/5:19"
+},
+{
+"cells": [
+11,
+6,
+1,
+2
+],
+"px": [
+531,
+318,
+44,
+66
+],
+"n": 2,
+"fill": 0.62,
+"solid_rect": false,
+"id": "medieval siege/5:20"
+},
+{
+"cells": [
+12,
+6,
+1,
+2
+],
+"px": [
+578,
+318,
+45,
+66
+],
+"n": 2,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/5:21"
+},
+{
+"cells": [
+13,
+6,
+1,
+2
+],
+"px": [
+626,
+318,
+45,
+66
+],
+"n": 2,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/5:22"
+},
+{
+"cells": [
+14,
+6,
+1,
+1
+],
+"px": [
+672,
+291,
+48,
+45
+],
+"n": 1,
+"fill": 0.57,
+"solid_rect": false,
+"id": "medieval siege/5:23"
+},
+{
+"cells": [
+15,
+6,
+1,
+1
+],
+"px": [
+730,
+300,
+29,
+19
+],
+"n": 1,
+"fill": 0.14,
+"solid_rect": false,
+"id": "medieval siege/5:24"
+},
+{
+"cells": [
+8,
+7,
+3,
+1
+],
+"px": [
+385,
+336,
+143,
+48
+],
+"n": 3,
+"fill": 0.99,
+"solid_rect": true,
+"id": "medieval siege/5:25"
+},
+{
+"cells": [
+14,
+7,
+2,
+1
+],
+"px": [
+672,
+341,
+96,
+43
+],
+"n": 2,
+"fill": 0.51,
+"solid_rect": false,
+"id": "medieval siege/5:26"
+},
+{
+"cells": [
+0,
+8,
+4,
+4
+],
+"px": [
+0,
+386,
+190,
+190
+],
+"n": 16,
+"fill": 0.8,
+"solid_rect": false,
+"id": "medieval siege/5:27"
+},
+{
+"cells": [
+4,
+8,
+4,
+4
+],
+"px": [
+198,
+386,
+185,
+190
+],
+"n": 15,
+"fill": 0.56,
+"solid_rect": false,
+"id": "medieval siege/5:28"
+},
+{
+"cells": [
+8,
+8,
+2,
+2
+],
+"px": [
+389,
+388,
+88,
+90
+],
+"n": 4,
+"fill": 0.49,
+"solid_rect": false,
+"id": "medieval siege/5:29"
+},
+{
+"cells": [
+10,
+8,
+1,
+2
+],
+"px": [
+496,
+393,
+17,
+87
+],
+"n": 2,
+"fill": 0.17,
+"solid_rect": false,
+"id": "medieval siege/5:30"
+},
+{
+"cells": [
+11,
+8,
+1,
+2
+],
+"px": [
+537,
+393,
+31,
+87
+],
+"n": 2,
+"fill": 0.22,
+"solid_rect": false,
+"id": "medieval siege/5:31"
+},
+{
+"cells": [
+12,
+8,
+2,
+2
+],
+"px": [
+581,
+400,
+87,
+78
+],
+"n": 4,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/5:32"
+},
+{
+"cells": [
+14,
+8,
+1,
+1
+],
+"px": [
+687,
+392,
+19,
+33
+],
+"n": 1,
+"fill": 0.2,
+"solid_rect": false,
+"id": "medieval siege/5:33"
+},
+{
+"cells": [
+15,
+8,
+1,
+1
+],
+"px": [
+734,
+392,
+21,
+38
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/5:34"
+},
+{
+"cells": [
+14,
+9,
+1,
+1
+],
+"px": [
+683,
+446,
+27,
+32
+],
+"n": 1,
+"fill": 0.29,
+"solid_rect": false,
+"id": "medieval siege/5:35"
+},
+{
+"cells": [
+15,
+9,
+1,
+1
+],
+"px": [
+723,
+447,
+42,
+33
+],
+"n": 1,
+"fill": 0.51,
+"solid_rect": false,
+"id": "medieval siege/5:36"
+},
+{
+"cells": [
+8,
+10,
+2,
+2
+],
+"px": [
+387,
+518,
+80,
+58
+],
+"n": 4,
+"fill": 0.32,
+"solid_rect": false,
+"id": "medieval siege/5:37"
+},
+{
+"cells": [
+10,
+10,
+2,
+2
+],
+"px": [
+482,
+501,
+93,
+75
+],
+"n": 4,
+"fill": 0.47,
+"solid_rect": false,
+"id": "medieval siege/5:38"
+},
+{
+"cells": [
+12,
+10,
+2,
+2
+],
+"px": [
+577,
+510,
+95,
+65
+],
+"n": 4,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/5:39"
+},
+{
+"cells": [
+14,
+10,
+1,
+1
+],
+"px": [
+682,
+495,
+29,
+30
+],
+"n": 1,
+"fill": 0.28,
+"solid_rect": false,
+"id": "medieval siege/5:40"
+},
+{
+"cells": [
+15,
+10,
+1,
+1
+],
+"px": [
+723,
+486,
+42,
+42
+],
+"n": 1,
+"fill": 0.66,
+"solid_rect": false,
+"id": "medieval siege/5:41"
+},
+{
+"cells": [
+14,
+11,
+1,
+1
+],
+"px": [
+687,
+538,
+25,
+38
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "medieval siege/5:42"
+},
+{
+"cells": [
+15,
+11,
+1,
+1
+],
+"px": [
+726,
+543,
+39,
+32
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "medieval siege/5:43"
+},
+{
+"cells": [
+0,
+12,
+4,
+4
+],
+"px": [
+1,
+576,
+190,
+192
+],
+"n": 16,
+"fill": 0.8,
+"solid_rect": false,
+"id": "medieval siege/5:44"
+},
+{
+"cells": [
+4,
+12,
+2,
+2
+],
+"px": [
+201,
+580,
+79,
+92
+],
+"n": 4,
+"fill": 0.63,
+"solid_rect": false,
+"id": "medieval siege/5:45"
+},
+{
+"cells": [
+6,
+12,
+2,
+2
+],
+"px": [
+294,
+579,
+84,
+93
+],
+"n": 4,
+"fill": 0.64,
+"solid_rect": false,
+"id": "medieval siege/5:46"
+},
+{
+"cells": [
+8,
+12,
+2,
+2
+],
+"px": [
+387,
+585,
+91,
+86
+],
+"n": 4,
+"fill": 0.8,
+"solid_rect": false,
+"id": "medieval siege/5:47"
+},
+{
+"cells": [
+10,
+12,
+2,
+2
+],
+"px": [
+483,
+585,
+91,
+86
+],
+"n": 4,
+"fill": 0.8,
+"solid_rect": false,
+"id": "medieval siege/5:48"
+},
+{
+"cells": [
+12,
+12,
+2,
+2
+],
+"px": [
+581,
+581,
+90,
+90
+],
+"n": 3,
+"fill": 0.52,
+"solid_rect": false,
+"id": "medieval siege/5:49"
+},
+{
+"cells": [
+14,
+12,
+2,
+1
+],
+"px": [
+672,
+581,
+93,
+42
+],
+"n": 2,
+"fill": 0.62,
+"solid_rect": false,
+"id": "medieval siege/5:50"
+},
+{
+"cells": [
+12,
+13,
+1,
+1
+],
+"px": [
+581,
+627,
+42,
+44
+],
+"n": 1,
+"fill": 0.56,
+"solid_rect": false,
+"id": "medieval siege/5:51"
+},
+{
+"cells": [
+14,
+13,
+2,
+1
+],
+"px": [
+676,
+625,
+89,
+46
+],
+"n": 2,
+"fill": 0.67,
+"solid_rect": false,
+"id": "medieval siege/5:52"
+},
+{
+"cells": [
+4,
+14,
+2,
+2
+],
+"px": [
+202,
+677,
+77,
+91
+],
+"n": 4,
+"fill": 0.54,
+"solid_rect": false,
+"id": "medieval siege/5:53"
+},
+{
+"cells": [
+6,
+14,
+2,
+2
+],
+"px": [
+299,
+711,
+81,
+52
+],
+"n": 4,
+"fill": 0.23,
+"solid_rect": false,
+"id": "medieval siege/5:54"
+},
+{
+"cells": [
+8,
+14,
+1,
+1
+],
+"px": [
+391,
+680,
+35,
+37
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/5:55"
+},
+{
+"cells": [
+9,
+14,
+1,
+1
+],
+"px": [
+439,
+680,
+35,
+37
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/5:56"
+},
+{
+"cells": [
+10,
+14,
+1,
+1
+],
+"px": [
+487,
+680,
+35,
+37
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/5:57"
+},
+{
+"cells": [
+11,
+14,
+1,
+1
+],
+"px": [
+535,
+680,
+35,
+37
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/5:58"
+},
+{
+"cells": [
+12,
+14,
+1,
+1
+],
+"px": [
+587,
+687,
+27,
+33
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "medieval siege/5:59"
+},
+{
+"cells": [
+13,
+14,
+1,
+1
+],
+"px": [
+626,
+690,
+45,
+27
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/5:60"
+},
+{
+"cells": [
+14,
+14,
+1,
+2
+],
+"px": [
+682,
+704,
+29,
+28
+],
+"n": 2,
+"fill": 0.15,
+"solid_rect": false,
+"id": "medieval siege/5:61"
+},
+{
+"cells": [
+15,
+14,
+1,
+2
+],
+"px": [
+723,
+690,
+43,
+78
+],
+"n": 2,
+"fill": 0.68,
+"solid_rect": false,
+"id": "medieval siege/5:62"
+},
+{
+"cells": [
+8,
+15,
+1,
+1
+],
+"px": [
+391,
+731,
+35,
+31
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/5:63"
+},
+{
+"cells": [
+9,
+15,
+1,
+1
+],
+"px": [
+439,
+729,
+35,
+33
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/5:64"
+},
+{
+"cells": [
+10,
+15,
+1,
+1
+],
+"px": [
+484,
+726,
+41,
+38
+],
+"n": 1,
+"fill": 0.54,
+"solid_rect": false,
+"id": "medieval siege/5:65"
+},
+{
+"cells": [
+11,
+15,
+1,
+1
+],
+"px": [
+532,
+729,
+41,
+37
+],
+"n": 1,
+"fill": 0.47,
+"solid_rect": false,
+"id": "medieval siege/5:66"
+},
+{
+"cells": [
+12,
+15,
+1,
+1
+],
+"px": [
+588,
+737,
+26,
+30
+],
+"n": 1,
+"fill": 0.27,
+"solid_rect": false,
+"id": "medieval siege/5:67"
+},
+{
+"cells": [
+13,
+15,
+1,
+1
+],
+"px": [
+626,
+725,
+45,
+43
+],
+"n": 1,
+"fill": 0.7,
+"solid_rect": false,
+"id": "medieval siege/5:68"
+}
+],
+"medieval siege/6.png": [
+{
+"cells": [
+0,
+0,
+4,
+3
+],
+"px": [
+1,
+2,
+191,
+142
+],
+"n": 12,
+"fill": 0.65,
+"solid_rect": false,
+"id": "medieval siege/6:0"
+},
+{
+"cells": [
+0,
+0,
+16,
+16
+],
+"px": [
+0,
+0,
+768,
+768
+],
+"n": 223,
+"fill": 0.85,
+"solid_rect": false,
+"id": "medieval siege/6:1"
+},
+{
+"cells": [
+0,
+3,
+1,
+1
+],
+"px": [
+1,
+147,
+23,
+21
+],
+"n": 1,
+"fill": 0.16,
+"solid_rect": false,
+"id": "medieval siege/6:2"
+},
+{
+"cells": [
+2,
+3,
+2,
+1
+],
+"px": [
+97,
+169,
+71,
+23
+],
+"n": 2,
+"fill": 0.28,
+"solid_rect": false,
+"id": "medieval siege/6:3"
+},
+{
+"cells": [
+1,
+6,
+1,
+1
+],
+"px": [
+51,
+297,
+39,
+25
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "medieval siege/6:4"
+},
+{
+"cells": [
+6,
+7,
+1,
+1
+],
+"px": [
+288,
+337,
+24,
+23
+],
+"n": 1,
+"fill": 0.17,
+"solid_rect": false,
+"id": "medieval siege/6:5"
+},
+{
+"cells": [
+0,
+11,
+3,
+1
+],
+"px": [
+0,
+531,
+143,
+45
+],
+"n": 3,
+"fill": 0.32,
+"solid_rect": false,
+"id": "medieval siege/6:6"
+},
+{
+"cells": [
+0,
+12,
+1,
+1
+],
+"px": [
+3,
+591,
+44,
+33
+],
+"n": 1,
+"fill": 0.56,
+"solid_rect": false,
+"id": "medieval siege/6:7"
+},
+{
+"cells": [
+1,
+12,
+1,
+1
+],
+"px": [
+50,
+591,
+43,
+33
+],
+"n": 1,
+"fill": 0.47,
+"solid_rect": false,
+"id": "medieval siege/6:8"
+},
+{
+"cells": [
+0,
+13,
+2,
+1
+],
+"px": [
+27,
+637,
+68,
+35
+],
+"n": 2,
+"fill": 0.36,
+"solid_rect": false,
+"id": "medieval siege/6:9"
+},
+{
+"cells": [
+2,
+13,
+1,
+1
+],
+"px": [
+96,
+635,
+24,
+37
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "medieval siege/6:10"
+},
+{
+"cells": [
+0,
+14,
+3,
+2
+],
+"px": [
+0,
+698,
+143,
+70
+],
+"n": 5,
+"fill": 0.34,
+"solid_rect": false,
+"id": "medieval siege/6:11"
+}
+],
+"medieval siege/7.png": [
+{
+"cells": [
+0,
+0,
+16,
+11
+],
+"px": [
+0,
+0,
+768,
+528
+],
+"n": 109,
+"fill": 0.71,
+"solid_rect": false,
+"id": "medieval siege/7:0"
+},
+{
+"cells": [
+0,
+3,
+1,
+1
+],
+"px": [
+36,
+159,
+8,
+9
+],
+"n": 1,
+"fill": 0.02,
+"solid_rect": false,
+"id": "medieval siege/7:1"
+},
+{
+"cells": [
+8,
+4,
+2,
+2
+],
+"px": [
+392,
+203,
+82,
+83
+],
+"n": 4,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/7:2"
+},
+{
+"cells": [
+10,
+4,
+2,
+2
+],
+"px": [
+488,
+195,
+81,
+91
+],
+"n": 4,
+"fill": 0.34,
+"solid_rect": false,
+"id": "medieval siege/7:3"
+},
+{
+"cells": [
+12,
+4,
+2,
+2
+],
+"px": [
+584,
+195,
+81,
+91
+],
+"n": 4,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/7:4"
+},
+{
+"cells": [
+14,
+4,
+2,
+2
+],
+"px": [
+680,
+204,
+82,
+82
+],
+"n": 4,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/7:5"
+},
+{
+"cells": [
+8,
+6,
+1,
+1
+],
+"px": [
+388,
+289,
+43,
+47
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/7:6"
+},
+{
+"cells": [
+9,
+6,
+1,
+1
+],
+"px": [
+435,
+302,
+45,
+32
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/7:7"
+},
+{
+"cells": [
+10,
+6,
+1,
+1
+],
+"px": [
+482,
+309,
+46,
+22
+],
+"n": 1,
+"fill": 0.29,
+"solid_rect": false,
+"id": "medieval siege/7:8"
+},
+{
+"cells": [
+11,
+6,
+1,
+1
+],
+"px": [
+531,
+304,
+45,
+27
+],
+"n": 1,
+"fill": 0.34,
+"solid_rect": false,
+"id": "medieval siege/7:9"
+},
+{
+"cells": [
+12,
+6,
+1,
+1
+],
+"px": [
+585,
+297,
+32,
+38
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "medieval siege/7:10"
+},
+{
+"cells": [
+13,
+6,
+1,
+1
+],
+"px": [
+627,
+305,
+45,
+26
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/7:11"
+},
+{
+"cells": [
+14,
+6,
+1,
+1
+],
+"px": [
+674,
+303,
+46,
+29
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/7:12"
+},
+{
+"cells": [
+15,
+6,
+1,
+1
+],
+"px": [
+724,
+295,
+39,
+41
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "medieval siege/7:13"
+},
+{
+"cells": [
+8,
+7,
+1,
+1
+],
+"px": [
+392,
+337,
+30,
+46
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/7:14"
+},
+{
+"cells": [
+9,
+7,
+1,
+1
+],
+"px": [
+433,
+351,
+46,
+30
+],
+"n": 1,
+"fill": 0.34,
+"solid_rect": false,
+"id": "medieval siege/7:15"
+},
+{
+"cells": [
+10,
+7,
+1,
+1
+],
+"px": [
+482,
+342,
+42,
+42
+],
+"n": 1,
+"fill": 0.34,
+"solid_rect": false,
+"id": "medieval siege/7:16"
+},
+{
+"cells": [
+11,
+7,
+1,
+1
+],
+"px": [
+536,
+341,
+32,
+43
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "medieval siege/7:17"
+},
+{
+"cells": [
+12,
+7,
+1,
+1
+],
+"px": [
+577,
+354,
+46,
+26
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "medieval siege/7:18"
+},
+{
+"cells": [
+13,
+7,
+1,
+1
+],
+"px": [
+626,
+354,
+45,
+30
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/7:19"
+},
+{
+"cells": [
+14,
+7,
+1,
+1
+],
+"px": [
+673,
+353,
+47,
+24
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "medieval siege/7:20"
+},
+{
+"cells": [
+15,
+7,
+1,
+1
+],
+"px": [
+723,
+348,
+45,
+33
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/7:21"
+},
+{
+"cells": [
+6,
+8,
+1,
+1
+],
+"px": [
+289,
+406,
+46,
+22
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "medieval siege/7:22"
+},
+{
+"cells": [
+7,
+8,
+1,
+1
+],
+"px": [
+337,
+404,
+46,
+25
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/7:23"
+},
+{
+"cells": [
+8,
+8,
+1,
+1
+],
+"px": [
+386,
+390,
+44,
+36
+],
+"n": 1,
+"fill": 0.59,
+"solid_rect": false,
+"id": "medieval siege/7:24"
+},
+{
+"cells": [
+9,
+8,
+1,
+1
+],
+"px": [
+435,
+389,
+45,
+43
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/7:25"
+},
+{
+"cells": [
+10,
+8,
+1,
+1
+],
+"px": [
+482,
+389,
+45,
+43
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/7:26"
+},
+{
+"cells": [
+11,
+8,
+1,
+1
+],
+"px": [
+536,
+386,
+34,
+44
+],
+"n": 1,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/7:27"
+},
+{
+"cells": [
+12,
+8,
+1,
+1
+],
+"px": [
+577,
+391,
+46,
+39
+],
+"n": 1,
+"fill": 0.59,
+"solid_rect": false,
+"id": "medieval siege/7:28"
+},
+{
+"cells": [
+13,
+8,
+1,
+1
+],
+"px": [
+626,
+386,
+44,
+43
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/7:29"
+},
+{
+"cells": [
+14,
+8,
+1,
+2
+],
+"px": [
+672,
+386,
+48,
+94
+],
+"n": 2,
+"fill": 0.73,
+"solid_rect": false,
+"id": "medieval siege/7:30"
+},
+{
+"cells": [
+15,
+8,
+1,
+3
+],
+"px": [
+723,
+384,
+43,
+144
+],
+"n": 3,
+"fill": 0.78,
+"solid_rect": false,
+"id": "medieval siege/7:31"
+},
+{
+"cells": [
+4,
+9,
+1,
+1
+],
+"px": [
+192,
+444,
+47,
+34
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/7:32"
+},
+{
+"cells": [
+5,
+9,
+1,
+1
+],
+"px": [
+242,
+448,
+46,
+29
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "medieval siege/7:33"
+},
+{
+"cells": [
+6,
+9,
+1,
+1
+],
+"px": [
+289,
+452,
+47,
+24
+],
+"n": 1,
+"fill": 0.32,
+"solid_rect": false,
+"id": "medieval siege/7:34"
+},
+{
+"cells": [
+7,
+9,
+1,
+1
+],
+"px": [
+338,
+438,
+43,
+42
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "medieval siege/7:35"
+},
+{
+"cells": [
+8,
+9,
+1,
+1
+],
+"px": [
+387,
+433,
+44,
+47
+],
+"n": 1,
+"fill": 0.62,
+"solid_rect": false,
+"id": "medieval siege/7:36"
+},
+{
+"cells": [
+9,
+9,
+1,
+1
+],
+"px": [
+433,
+437,
+44,
+43
+],
+"n": 1,
+"fill": 0.59,
+"solid_rect": false,
+"id": "medieval siege/7:37"
+},
+{
+"cells": [
+10,
+9,
+1,
+1
+],
+"px": [
+482,
+438,
+45,
+38
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/7:38"
+},
+{
+"cells": [
+11,
+9,
+1,
+1
+],
+"px": [
+536,
+433,
+38,
+47
+],
+"n": 1,
+"fill": 0.64,
+"solid_rect": false,
+"id": "medieval siege/7:39"
+},
+{
+"cells": [
+12,
+9,
+1,
+2
+],
+"px": [
+579,
+433,
+44,
+95
+],
+"n": 2,
+"fill": 0.78,
+"solid_rect": false,
+"id": "medieval siege/7:40"
+},
+{
+"cells": [
+13,
+9,
+1,
+1
+],
+"px": [
+626,
+435,
+45,
+45
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/7:41"
+},
+{
+"cells": [
+4,
+10,
+1,
+1
+],
+"px": [
+193,
+485,
+45,
+39
+],
+"n": 1,
+"fill": 0.24,
+"solid_rect": false,
+"id": "medieval siege/7:42"
+},
+{
+"cells": [
+5,
+10,
+1,
+1
+],
+"px": [
+241,
+499,
+47,
+29
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "medieval siege/7:43"
+},
+{
+"cells": [
+6,
+10,
+1,
+1
+],
+"px": [
+290,
+499,
+45,
+25
+],
+"n": 1,
+"fill": 0.29,
+"solid_rect": false,
+"id": "medieval siege/7:44"
+},
+{
+"cells": [
+7,
+10,
+1,
+1
+],
+"px": [
+338,
+495,
+46,
+31
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/7:45"
+},
+{
+"cells": [
+8,
+10,
+1,
+1
+],
+"px": [
+386,
+483,
+45,
+44
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/7:46"
+},
+{
+"cells": [
+9,
+10,
+1,
+1
+],
+"px": [
+434,
+485,
+44,
+42
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/7:47"
+},
+{
+"cells": [
+10,
+10,
+1,
+1
+],
+"px": [
+483,
+482,
+45,
+45
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/7:48"
+},
+{
+"cells": [
+11,
+10,
+1,
+1
+],
+"px": [
+529,
+488,
+47,
+40
+],
+"n": 1,
+"fill": 0.64,
+"solid_rect": false,
+"id": "medieval siege/7:49"
+},
+{
+"cells": [
+13,
+10,
+1,
+2
+],
+"px": [
+626,
+506,
+45,
+68
+],
+"n": 2,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/7:50"
+},
+{
+"cells": [
+14,
+10,
+1,
+1
+],
+"px": [
+673,
+486,
+47,
+42
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/7:51"
+},
+{
+"cells": [
+0,
+11,
+1,
+1
+],
+"px": [
+1,
+547,
+46,
+29
+],
+"n": 1,
+"fill": 0.33,
+"solid_rect": false,
+"id": "medieval siege/7:52"
+},
+{
+"cells": [
+1,
+11,
+1,
+1
+],
+"px": [
+56,
+533,
+37,
+43
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/7:53"
+},
+{
+"cells": [
+2,
+11,
+1,
+1
+],
+"px": [
+99,
+536,
+42,
+40
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/7:54"
+},
+{
+"cells": [
+3,
+11,
+1,
+1
+],
+"px": [
+148,
+534,
+41,
+42
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/7:55"
+},
+{
+"cells": [
+4,
+11,
+1,
+1
+],
+"px": [
+195,
+537,
+45,
+39
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/7:56"
+},
+{
+"cells": [
+5,
+11,
+1,
+1
+],
+"px": [
+242,
+546,
+46,
+23
+],
+"n": 1,
+"fill": 0.34,
+"solid_rect": false,
+"id": "medieval siege/7:57"
+},
+{
+"cells": [
+6,
+11,
+1,
+1
+],
+"px": [
+293,
+533,
+41,
+42
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/7:58"
+},
+{
+"cells": [
+7,
+11,
+1,
+1
+],
+"px": [
+339,
+536,
+44,
+37
+],
+"n": 1,
+"fill": 0.49,
+"solid_rect": false,
+"id": "medieval siege/7:59"
+},
+{
+"cells": [
+8,
+11,
+2,
+1
+],
+"px": [
+385,
+531,
+95,
+44
+],
+"n": 2,
+"fill": 0.59,
+"solid_rect": false,
+"id": "medieval siege/7:60"
+},
+{
+"cells": [
+10,
+11,
+1,
+1
+],
+"px": [
+482,
+534,
+45,
+38
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/7:61"
+},
+{
+"cells": [
+11,
+11,
+1,
+1
+],
+"px": [
+535,
+529,
+38,
+47
+],
+"n": 1,
+"fill": 0.65,
+"solid_rect": false,
+"id": "medieval siege/7:62"
+},
+{
+"cells": [
+12,
+11,
+1,
+1
+],
+"px": [
+581,
+529,
+38,
+47
+],
+"n": 1,
+"fill": 0.65,
+"solid_rect": false,
+"id": "medieval siege/7:63"
+},
+{
+"cells": [
+14,
+11,
+1,
+2
+],
+"px": [
+672,
+554,
+48,
+68
+],
+"n": 2,
+"fill": 0.46,
+"solid_rect": false,
+"id": "medieval siege/7:64"
+},
+{
+"cells": [
+15,
+11,
+1,
+2
+],
+"px": [
+721,
+534,
+46,
+88
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "medieval siege/7:65"
+},
+{
+"cells": [
+0,
+12,
+1,
+1
+],
+"px": [
+2,
+580,
+45,
+42
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/7:66"
+},
+{
+"cells": [
+1,
+12,
+1,
+1
+],
+"px": [
+50,
+597,
+46,
+25
+],
+"n": 1,
+"fill": 0.31,
+"solid_rect": false,
+"id": "medieval siege/7:67"
+},
+{
+"cells": [
+2,
+12,
+1,
+1
+],
+"px": [
+98,
+580,
+45,
+43
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/7:68"
+},
+{
+"cells": [
+3,
+12,
+1,
+1
+],
+"px": [
+146,
+581,
+44,
+39
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/7:69"
+},
+{
+"cells": [
+4,
+12,
+1,
+1
+],
+"px": [
+195,
+580,
+42,
+40
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/7:70"
+},
+{
+"cells": [
+5,
+12,
+1,
+1
+],
+"px": [
+243,
+577,
+40,
+47
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/7:71"
+},
+{
+"cells": [
+6,
+12,
+1,
+1
+],
+"px": [
+289,
+585,
+46,
+38
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/7:72"
+},
+{
+"cells": [
+7,
+12,
+1,
+1
+],
+"px": [
+337,
+579,
+46,
+44
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/7:73"
+},
+{
+"cells": [
+8,
+12,
+1,
+4
+],
+"px": [
+387,
+576,
+43,
+192
+],
+"n": 4,
+"fill": 0.72,
+"solid_rect": false,
+"id": "medieval siege/7:74"
+},
+{
+"cells": [
+9,
+12,
+1,
+1
+],
+"px": [
+432,
+582,
+48,
+42
+],
+"n": 1,
+"fill": 0.84,
+"solid_rect": false,
+"id": "medieval siege/7:75"
+},
+{
+"cells": [
+10,
+12,
+1,
+2
+],
+"px": [
+482,
+582,
+45,
+88
+],
+"n": 2,
+"fill": 0.53,
+"solid_rect": false,
+"id": "medieval siege/7:76"
+},
+{
+"cells": [
+11,
+12,
+1,
+2
+],
+"px": [
+530,
+579,
+45,
+91
+],
+"n": 2,
+"fill": 0.53,
+"solid_rect": false,
+"id": "medieval siege/7:77"
+},
+{
+"cells": [
+12,
+12,
+1,
+2
+],
+"px": [
+579,
+603,
+42,
+67
+],
+"n": 2,
+"fill": 0.35,
+"solid_rect": false,
+"id": "medieval siege/7:78"
+},
+{
+"cells": [
+13,
+12,
+1,
+2
+],
+"px": [
+628,
+602,
+41,
+68
+],
+"n": 2,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/7:79"
+},
+{
+"cells": [
+0,
+13,
+2,
+2
+],
+"px": [
+0,
+626,
+88,
+94
+],
+"n": 4,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/7:80"
+},
+{
+"cells": [
+2,
+13,
+2,
+2
+],
+"px": [
+96,
+626,
+88,
+93
+],
+"n": 4,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/7:81"
+},
+{
+"cells": [
+4,
+13,
+2,
+2
+],
+"px": [
+193,
+628,
+88,
+91
+],
+"n": 4,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/7:82"
+},
+{
+"cells": [
+6,
+13,
+1,
+1
+],
+"px": [
+289,
+630,
+46,
+38
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/7:83"
+},
+{
+"cells": [
+7,
+13,
+1,
+3
+],
+"px": [
+339,
+624,
+43,
+144
+],
+"n": 3,
+"fill": 0.74,
+"solid_rect": false,
+"id": "medieval siege/7:84"
+},
+{
+"cells": [
+9,
+13,
+1,
+1
+],
+"px": [
+437,
+625,
+38,
+47
+],
+"n": 1,
+"fill": 0.65,
+"solid_rect": false,
+"id": "medieval siege/7:85"
+},
+{
+"cells": [
+6,
+14,
+1,
+1
+],
+"px": [
+293,
+672,
+38,
+48
+],
+"n": 1,
+"fill": 0.66,
+"solid_rect": false,
+"id": "medieval siege/7:86"
+},
+{
+"cells": [
+9,
+14,
+1,
+2
+],
+"px": [
+435,
+672,
+43,
+96
+],
+"n": 2,
+"fill": 0.77,
+"solid_rect": false,
+"id": "medieval siege/7:87"
+},
+{
+"cells": [
+10,
+14,
+2,
+2
+],
+"px": [
+485,
+675,
+86,
+93
+],
+"n": 4,
+"fill": 0.35,
+"solid_rect": false,
+"id": "medieval siege/7:88"
+},
+{
+"cells": [
+12,
+14,
+2,
+2
+],
+"px": [
+582,
+673,
+85,
+95
+],
+"n": 4,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/7:89"
+},
+{
+"cells": [
+0,
+15,
+1,
+1
+],
+"px": [
+2,
+723,
+46,
+44
+],
+"n": 1,
+"fill": 0.63,
+"solid_rect": false,
+"id": "medieval siege/7:90"
+},
+{
+"cells": [
+1,
+15,
+1,
+1
+],
+"px": [
+51,
+720,
+43,
+48
+],
+"n": 1,
+"fill": 0.9,
+"solid_rect": false,
+"id": "medieval siege/7:91"
+},
+{
+"cells": [
+2,
+15,
+1,
+1
+],
+"px": [
+96,
+726,
+48,
+40
+],
+"n": 1,
+"fill": 0.57,
+"solid_rect": false,
+"id": "medieval siege/7:92"
+},
+{
+"cells": [
+3,
+15,
+1,
+1
+],
+"px": [
+145,
+724,
+47,
+41
+],
+"n": 1,
+"fill": 0.54,
+"solid_rect": false,
+"id": "medieval siege/7:93"
+},
+{
+"cells": [
+4,
+15,
+1,
+1
+],
+"px": [
+193,
+726,
+47,
+42
+],
+"n": 1,
+"fill": 0.55,
+"solid_rect": false,
+"id": "medieval siege/7:94"
+},
+{
+"cells": [
+5,
+15,
+1,
+1
+],
+"px": [
+240,
+724,
+46,
+44
+],
+"n": 1,
+"fill": 0.56,
+"solid_rect": false,
+"id": "medieval siege/7:95"
+},
+{
+"cells": [
+6,
+15,
+1,
+1
+],
+"px": [
+288,
+725,
+46,
+43
+],
+"n": 1,
+"fill": 0.6,
+"solid_rect": false,
+"id": "medieval siege/7:96"
+}
+],
+"medieval siege/8.png": [
+{
+"cells": [
+0,
+0,
+4,
+4
+],
+"px": [
+0,
+0,
+192,
+192
+],
+"n": 16,
+"fill": 0.71,
+"solid_rect": false,
+"id": "medieval siege/8:0"
+},
+{
+"cells": [
+4,
+0,
+4,
+8
+],
+"px": [
+192,
+0,
+192,
+384
+],
+"n": 32,
+"fill": 0.84,
+"solid_rect": false,
+"id": "medieval siege/8:1"
+},
+{
+"cells": [
+8,
+0,
+5,
+4
+],
+"px": [
+384,
+0,
+240,
+192
+],
+"n": 18,
+"fill": 0.85,
+"solid_rect": false,
+"id": "medieval siege/8:2"
+},
+{
+"cells": [
+13,
+0,
+1,
+1
+],
+"px": [
+624,
+0,
+43,
+41
+],
+"n": 1,
+"fill": 0.29,
+"solid_rect": false,
+"id": "medieval siege/8:3"
+},
+{
+"cells": [
+14,
+0,
+2,
+2
+],
+"px": [
+672,
+0,
+96,
+96
+],
+"n": 4,
+"fill": 0.8,
+"solid_rect": false,
+"id": "medieval siege/8:4"
+},
+{
+"cells": [
+13,
+1,
+1,
+1
+],
+"px": [
+624,
+48,
+43,
+44
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/8:5"
+},
+{
+"cells": [
+12,
+2,
+1,
+1
+],
+"px": [
+576,
+96,
+47,
+48
+],
+"n": 1,
+"fill": 0.81,
+"solid_rect": false,
+"id": "medieval siege/8:6"
+},
+{
+"cells": [
+12,
+2,
+4,
+2
+],
+"px": [
+576,
+96,
+192,
+96
+],
+"n": 5,
+"fill": 0.73,
+"solid_rect": false,
+"id": "medieval siege/8:7"
+},
+{
+"cells": [
+13,
+2,
+1,
+1
+],
+"px": [
+624,
+96,
+48,
+48
+],
+"n": 1,
+"fill": 0.96,
+"solid_rect": false,
+"id": "medieval siege/8:8"
+},
+{
+"cells": [
+14,
+2,
+1,
+1
+],
+"px": [
+673,
+96,
+47,
+43
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/8:9"
+},
+{
+"cells": [
+0,
+4,
+4,
+4
+],
+"px": [
+0,
+192,
+191,
+192
+],
+"n": 16,
+"fill": 0.82,
+"solid_rect": false,
+"id": "medieval siege/8:10"
+},
+{
+"cells": [
+8,
+4,
+2,
+1
+],
+"px": [
+388,
+194,
+89,
+46
+],
+"n": 2,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/8:11"
+},
+{
+"cells": [
+10,
+4,
+2,
+1
+],
+"px": [
+484,
+200,
+87,
+35
+],
+"n": 2,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/8:12"
+},
+{
+"cells": [
+13,
+4,
+1,
+1
+],
+"px": [
+627,
+196,
+45,
+43
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/8:13"
+},
+{
+"cells": [
+14,
+4,
+1,
+1
+],
+"px": [
+677,
+197,
+40,
+42
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/8:14"
+},
+{
+"cells": [
+15,
+4,
+1,
+1
+],
+"px": [
+723,
+197,
+43,
+42
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "medieval siege/8:15"
+},
+{
+"cells": [
+8,
+5,
+2,
+1
+],
+"px": [
+393,
+246,
+86,
+39
+],
+"n": 2,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/8:16"
+},
+{
+"cells": [
+10,
+5,
+2,
+1
+],
+"px": [
+484,
+248,
+83,
+36
+],
+"n": 2,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/8:17"
+},
+{
+"cells": [
+12,
+5,
+1,
+1
+],
+"px": [
+579,
+244,
+45,
+42
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/8:18"
+},
+{
+"cells": [
+14,
+5,
+1,
+1
+],
+"px": [
+677,
+245,
+42,
+42
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "medieval siege/8:19"
+},
+{
+"cells": [
+15,
+5,
+1,
+1
+],
+"px": [
+723,
+244,
+42,
+43
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/8:20"
+},
+{
+"cells": [
+8,
+6,
+2,
+1
+],
+"px": [
+389,
+295,
+87,
+36
+],
+"n": 2,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/8:21"
+},
+{
+"cells": [
+10,
+6,
+2,
+1
+],
+"px": [
+489,
+299,
+85,
+34
+],
+"n": 2,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/8:22"
+},
+{
+"cells": [
+12,
+6,
+1,
+1
+],
+"px": [
+582,
+293,
+41,
+43
+],
+"n": 1,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/8:23"
+},
+{
+"cells": [
+13,
+6,
+1,
+1
+],
+"px": [
+626,
+296,
+42,
+40
+],
+"n": 1,
+"fill": 0.47,
+"solid_rect": false,
+"id": "medieval siege/8:24"
+},
+{
+"cells": [
+14,
+6,
+2,
+2
+],
+"px": [
+673,
+291,
+94,
+91
+],
+"n": 4,
+"fill": 0.62,
+"solid_rect": false,
+"id": "medieval siege/8:25"
+},
+{
+"cells": [
+8,
+7,
+2,
+1
+],
+"px": [
+396,
+342,
+80,
+42
+],
+"n": 2,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/8:26"
+},
+{
+"cells": [
+10,
+7,
+2,
+1
+],
+"px": [
+487,
+342,
+87,
+39
+],
+"n": 2,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/8:27"
+},
+{
+"cells": [
+12,
+7,
+1,
+1
+],
+"px": [
+586,
+341,
+33,
+37
+],
+"n": 1,
+"fill": 0.35,
+"solid_rect": false,
+"id": "medieval siege/8:28"
+},
+{
+"cells": [
+13,
+7,
+1,
+1
+],
+"px": [
+629,
+352,
+37,
+26
+],
+"n": 1,
+"fill": 0.3,
+"solid_rect": false,
+"id": "medieval siege/8:29"
+},
+{
+"cells": [
+0,
+8,
+2,
+2
+],
+"px": [
+5,
+386,
+87,
+91
+],
+"n": 4,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/8:30"
+},
+{
+"cells": [
+2,
+8,
+1,
+2
+],
+"px": [
+101,
+390,
+39,
+86
+],
+"n": 2,
+"fill": 0.49,
+"solid_rect": false,
+"id": "medieval siege/8:31"
+},
+{
+"cells": [
+4,
+8,
+1,
+1
+],
+"px": [
+194,
+388,
+45,
+42
+],
+"n": 1,
+"fill": 0.65,
+"solid_rect": false,
+"id": "medieval siege/8:32"
+},
+{
+"cells": [
+5,
+8,
+1,
+1
+],
+"px": [
+242,
+388,
+45,
+41
+],
+"n": 1,
+"fill": 0.66,
+"solid_rect": false,
+"id": "medieval siege/8:33"
+},
+{
+"cells": [
+6,
+8,
+1,
+1
+],
+"px": [
+290,
+387,
+45,
+42
+],
+"n": 1,
+"fill": 0.53,
+"solid_rect": false,
+"id": "medieval siege/8:34"
+},
+{
+"cells": [
+7,
+8,
+1,
+1
+],
+"px": [
+337,
+387,
+45,
+44
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/8:35"
+},
+{
+"cells": [
+8,
+8,
+1,
+1
+],
+"px": [
+389,
+387,
+39,
+41
+],
+"n": 1,
+"fill": 0.69,
+"solid_rect": false,
+"id": "medieval siege/8:36"
+},
+{
+"cells": [
+9,
+8,
+2,
+2
+],
+"px": [
+437,
+404,
+87,
+70
+],
+"n": 4,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/8:37"
+},
+{
+"cells": [
+11,
+8,
+1,
+1
+],
+"px": [
+534,
+389,
+37,
+40
+],
+"n": 1,
+"fill": 0.63,
+"solid_rect": false,
+"id": "medieval siege/8:38"
+},
+{
+"cells": [
+12,
+8,
+2,
+2
+],
+"px": [
+576,
+391,
+94,
+89
+],
+"n": 4,
+"fill": 0.7,
+"solid_rect": false,
+"id": "medieval siege/8:39"
+},
+{
+"cells": [
+14,
+8,
+2,
+2
+],
+"px": [
+675,
+389,
+91,
+89
+],
+"n": 4,
+"fill": 0.59,
+"solid_rect": false,
+"id": "medieval siege/8:40"
+},
+{
+"cells": [
+0,
+9,
+4,
+7
+],
+"px": [
+0,
+432,
+192,
+336
+],
+"n": 25,
+"fill": 0.77,
+"solid_rect": false,
+"id": "medieval siege/8:41"
+},
+{
+"cells": [
+4,
+9,
+1,
+1
+],
+"px": [
+194,
+440,
+46,
+37
+],
+"n": 1,
+"fill": 0.56,
+"solid_rect": false,
+"id": "medieval siege/8:42"
+},
+{
+"cells": [
+5,
+9,
+1,
+1
+],
+"px": [
+242,
+436,
+45,
+40
+],
+"n": 1,
+"fill": 0.55,
+"solid_rect": false,
+"id": "medieval siege/8:43"
+},
+{
+"cells": [
+6,
+9,
+1,
+1
+],
+"px": [
+296,
+438,
+38,
+39
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/8:44"
+},
+{
+"cells": [
+7,
+9,
+1,
+1
+],
+"px": [
+338,
+438,
+45,
+41
+],
+"n": 1,
+"fill": 0.56,
+"solid_rect": false,
+"id": "medieval siege/8:45"
+},
+{
+"cells": [
+8,
+9,
+1,
+1
+],
+"px": [
+390,
+437,
+37,
+39
+],
+"n": 1,
+"fill": 0.63,
+"solid_rect": false,
+"id": "medieval siege/8:46"
+},
+{
+"cells": [
+11,
+9,
+1,
+1
+],
+"px": [
+534,
+438,
+37,
+38
+],
+"n": 1,
+"fill": 0.61,
+"solid_rect": false,
+"id": "medieval siege/8:47"
+},
+{
+"cells": [
+4,
+10,
+1,
+1
+],
+"px": [
+193,
+490,
+47,
+30
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/8:48"
+},
+{
+"cells": [
+5,
+10,
+1,
+1
+],
+"px": [
+243,
+484,
+44,
+44
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/8:49"
+},
+{
+"cells": [
+6,
+10,
+1,
+1
+],
+"px": [
+289,
+496,
+47,
+26
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/8:50"
+},
+{
+"cells": [
+7,
+10,
+1,
+1
+],
+"px": [
+337,
+489,
+47,
+32
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/8:51"
+},
+{
+"cells": [
+8,
+10,
+1,
+1
+],
+"px": [
+389,
+480,
+39,
+48
+],
+"n": 1,
+"fill": 0.81,
+"solid_rect": false,
+"id": "medieval siege/8:52"
+},
+{
+"cells": [
+9,
+10,
+1,
+1
+],
+"px": [
+436,
+480,
+40,
+48
+],
+"n": 1,
+"fill": 0.81,
+"solid_rect": false,
+"id": "medieval siege/8:53"
+},
+{
+"cells": [
+10,
+10,
+2,
+2
+],
+"px": [
+484,
+486,
+89,
+86
+],
+"n": 4,
+"fill": 0.63,
+"solid_rect": false,
+"id": "medieval siege/8:54"
+},
+{
+"cells": [
+12,
+10,
+2,
+1
+],
+"px": [
+582,
+484,
+87,
+40
+],
+"n": 2,
+"fill": 0.74,
+"solid_rect": false,
+"id": "medieval siege/8:55"
+},
+{
+"cells": [
+14,
+10,
+1,
+2
+],
+"px": [
+678,
+489,
+40,
+76
+],
+"n": 2,
+"fill": 0.54,
+"solid_rect": false,
+"id": "medieval siege/8:56"
+},
+{
+"cells": [
+15,
+10,
+1,
+2
+],
+"px": [
+720,
+489,
+42,
+83
+],
+"n": 2,
+"fill": 0.58,
+"solid_rect": false,
+"id": "medieval siege/8:57"
+},
+{
+"cells": [
+4,
+11,
+1,
+1
+],
+"px": [
+193,
+542,
+47,
+28
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/8:58"
+},
+{
+"cells": [
+5,
+11,
+1,
+1
+],
+"px": [
+242,
+533,
+46,
+43
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/8:59"
+},
+{
+"cells": [
+6,
+11,
+1,
+1
+],
+"px": [
+289,
+538,
+47,
+32
+],
+"n": 1,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/8:60"
+},
+{
+"cells": [
+7,
+11,
+1,
+1
+],
+"px": [
+337,
+536,
+46,
+34
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/8:61"
+},
+{
+"cells": [
+8,
+11,
+1,
+1
+],
+"px": [
+387,
+533,
+42,
+40
+],
+"n": 1,
+"fill": 0.71,
+"solid_rect": false,
+"id": "medieval siege/8:62"
+},
+{
+"cells": [
+12,
+11,
+1,
+1
+],
+"px": [
+579,
+531,
+45,
+40
+],
+"n": 1,
+"fill": 0.76,
+"solid_rect": false,
+"id": "medieval siege/8:63"
+},
+{
+"cells": [
+4,
+12,
+1,
+1
+],
+"px": [
+192,
+581,
+48,
+42
+],
+"n": 1,
+"fill": 0.47,
+"solid_rect": false,
+"id": "medieval siege/8:64"
+},
+{
+"cells": [
+5,
+12,
+1,
+1
+],
+"px": [
+241,
+585,
+47,
+32
+],
+"n": 1,
+"fill": 0.4,
+"solid_rect": false,
+"id": "medieval siege/8:65"
+},
+{
+"cells": [
+6,
+12,
+1,
+1
+],
+"px": [
+288,
+584,
+48,
+36
+],
+"n": 1,
+"fill": 0.47,
+"solid_rect": false,
+"id": "medieval siege/8:66"
+},
+{
+"cells": [
+7,
+12,
+1,
+1
+],
+"px": [
+338,
+587,
+46,
+32
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/8:67"
+},
+{
+"cells": [
+8,
+12,
+1,
+1
+],
+"px": [
+388,
+582,
+41,
+41
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/8:68"
+},
+{
+"cells": [
+10,
+12,
+2,
+2
+],
+"px": [
+484,
+582,
+89,
+85
+],
+"n": 4,
+"fill": 0.57,
+"solid_rect": false,
+"id": "medieval siege/8:69"
+},
+{
+"cells": [
+12,
+12,
+2,
+2
+],
+"px": [
+581,
+579,
+87,
+92
+],
+"n": 4,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/8:70"
+},
+{
+"cells": [
+14,
+12,
+2,
+2
+],
+"px": [
+677,
+599,
+87,
+71
+],
+"n": 4,
+"fill": 0.56,
+"solid_rect": false,
+"id": "medieval siege/8:71"
+},
+{
+"cells": [
+4,
+13,
+1,
+1
+],
+"px": [
+194,
+627,
+46,
+43
+],
+"n": 1,
+"fill": 0.44,
+"solid_rect": false,
+"id": "medieval siege/8:72"
+},
+{
+"cells": [
+5,
+13,
+1,
+1
+],
+"px": [
+242,
+626,
+45,
+45
+],
+"n": 1,
+"fill": 0.46,
+"solid_rect": false,
+"id": "medieval siege/8:73"
+},
+{
+"cells": [
+6,
+13,
+1,
+1
+],
+"px": [
+289,
+633,
+47,
+33
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/8:74"
+},
+{
+"cells": [
+7,
+13,
+1,
+1
+],
+"px": [
+338,
+629,
+46,
+36
+],
+"n": 1,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/8:75"
+},
+{
+"cells": [
+8,
+13,
+1,
+1
+],
+"px": [
+386,
+630,
+44,
+41
+],
+"n": 1,
+"fill": 0.43,
+"solid_rect": false,
+"id": "medieval siege/8:76"
+},
+{
+"cells": [
+4,
+14,
+1,
+1
+],
+"px": [
+195,
+675,
+45,
+45
+],
+"n": 1,
+"fill": 0.45,
+"solid_rect": false,
+"id": "medieval siege/8:77"
+},
+{
+"cells": [
+5,
+14,
+1,
+1
+],
+"px": [
+241,
+679,
+47,
+34
+],
+"n": 1,
+"fill": 0.38,
+"solid_rect": false,
+"id": "medieval siege/8:78"
+},
+{
+"cells": [
+6,
+14,
+1,
+1
+],
+"px": [
+292,
+675,
+39,
+45
+],
+"n": 1,
+"fill": 0.39,
+"solid_rect": false,
+"id": "medieval siege/8:79"
+},
+{
+"cells": [
+7,
+14,
+1,
+1
+],
+"px": [
+345,
+674,
+34,
+46
+],
+"n": 1,
+"fill": 0.36,
+"solid_rect": false,
+"id": "medieval siege/8:80"
+},
+{
+"cells": [
+8,
+14,
+1,
+1
+],
+"px": [
+388,
+675,
+41,
+43
+],
+"n": 1,
+"fill": 0.42,
+"solid_rect": false,
+"id": "medieval siege/8:81"
+},
+{
+"cells": [
+10,
+14,
+2,
+2
+],
+"px": [
+480,
+674,
+96,
+93
+],
+"n": 4,
+"fill": 0.46,
+"solid_rect": false,
+"id": "medieval siege/8:82"
+},
+{
+"cells": [
+12,
+14,
+2,
+2
+],
+"px": [
+579,
+675,
+91,
+90
+],
+"n": 4,
+"fill": 0.48,
+"solid_rect": false,
+"id": "medieval siege/8:83"
+},
+{
+"cells": [
+14,
+14,
+2,
+2
+],
+"px": [
+675,
+687,
+90,
+76
+],
+"n": 4,
+"fill": 0.57,
+"solid_rect": false,
+"id": "medieval siege/8:84"
+},
+{
+"cells": [
+4,
+15,
+1,
+1
+],
+"px": [
+193,
+729,
+45,
+34
+],
+"n": 1,
+"fill": 0.37,
+"solid_rect": false,
+"id": "medieval siege/8:85"
+},
+{
+"cells": [
+5,
+15,
+1,
+1
+],
+"px": [
+241,
+726,
+46,
+34
+],
+"n": 1,
+"fill": 0.41,
+"solid_rect": false,
+"id": "medieval siege/8:86"
+},
+{
+"cells": [
+6,
+15,
+1,
+1
+],
+"px": [
+290,
+729,
+44,
+31
+],
+"n": 1,
+"fill": 0.34,
+"solid_rect": false,
+"id": "medieval siege/8:87"
+},
+{
+"cells": [
+7,
+15,
+1,
+1
+],
+"px": [
+343,
+733,
+34,
+27
+],
+"n": 1,
+"fill": 0.17,
+"solid_rect": false,
+"id": "medieval siege/8:88"
+},
+{
+"cells": [
+8,
+15,
+1,
+1
+],
+"px": [
+387,
+724,
+43,
+41
+],
+"n": 1,
+"fill": 0.29,
+"solid_rect": false,
+"id": "medieval siege/8:89"
+}
+]
+}
+}

@@ -7,12 +7,16 @@ extends RefCounted
 static var _meta = {}
 static var _tex = {}
 
+static func _dir(cid: String) -> String:
+	## heroes: "C01" -> res://assets/heroes/C01; townsfolk: "npcs/<stem>" -> res://assets/npcs/<stem>
+	return "res://assets/" + (cid if cid.contains("/") else "heroes/" + cid)
+
 static func _load(cid: String, kind: String) -> bool:
 	var key = cid + "/" + kind
 	if _meta.has(key):
 		return _meta[key] != null
-	var jp = Content.art("res://assets/heroes/%s/%s.json" % [cid, kind])
-	var tp = "res://assets/heroes/%s/%s.png" % [cid, kind]
+	var jp = Content.art("%s/%s.json" % [_dir(cid), kind])
+	var tp = "%s/%s.png" % [_dir(cid), kind]
 	var m = null
 	if FileAccess.file_exists(jp) and ResourceLoader.exists(Content.art(tp)):
 		m = JSON.parse_string(FileAccess.get_file_as_string(jp))
@@ -101,3 +105,16 @@ static func draw_battle(ci: CanvasItem, cid: String, anim: String, t: float, foo
 static func anim_length(cid: String, anim: String) -> float:
 	var info = anim_info(cid, anim)
 	return float(info.get("n", 1)) / float(info.get("fps", 10)) if not info.is_empty() else 0.4
+
+## Townsfolk for an NPC sprite key (assets/ext/npcs/npc_map.json): one of the key's candidates, chosen by NPC id.
+static var _npc_map = null
+
+static func npc_key(sprite: String, npc_id: String = "") -> String:
+	if _npc_map == null:
+		var p = "res://assets/ext/npcs/npc_map.json"
+		_npc_map = JSON.parse_string(FileAccess.get_file_as_string(p)) if FileAccess.file_exists(p) else {}
+	var c: Array = _npc_map.get(sprite, [])
+	if c.is_empty():
+		return ""
+	var h = absi(hash(npc_id)) if npc_id != "" else 0
+	return "npcs/" + str(c[h % c.size()])

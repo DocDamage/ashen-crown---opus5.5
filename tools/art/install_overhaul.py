@@ -313,7 +313,33 @@ def spell_icons():
     print("spell icons:", len(ids))
 
 
-SECTIONS = {"arenas": arenas, "audio": audio, "vfx": vfx, "vestiges": vestiges, "icons": spell_icons}
+def field_anims():
+    src = os.path.join(PROC, "field_anim")
+    n = 0
+    for f in sorted(os.listdir(src)):
+        if not f.endswith(".json"):
+            continue
+        name = f[:-5]
+        meta = json.load(open(os.path.join(src, f)))
+        fr = meta["frames"]
+        w, h = fr[0]["frame"]["w"], fr[0]["frame"]["h"]
+        cols = meta["meta"]["size"]["w"] // w
+        info = {"frames": len(fr), "fps": round(1000.0 / max(1, fr[0]["duration"]), 2), "cell": [w, h], "cols": cols}
+        n += copy(os.path.join(src, name + ".png"), os.path.join(EXT, "field_anim", name + ".png"))
+        json.dump(info, open(os.path.join(EXT, "field_anim", name + ".json"), "w"))
+    print("field anims:", n)
+
+
+def common_sheets():
+    """CuteSCKR sheets the engine draws directly (chests, switches): copied like the map builder does."""
+    n = 0
+    for alias, rel in (("dungeon", "Medieval Fantasy Dungeon & Prison Pixel Art Tileset Pack/2.png"),
+                       ("dungeon", "Medieval Fantasy Dungeon & Prison Pixel Art Tileset Pack/4.png")):
+        n += copy(os.path.join(ASSETS, "CuteSCKR", rel), os.path.join(EXT, "cute", alias, os.path.basename(rel)))
+    print("common sheets:", n)
+
+
+SECTIONS = {"common": common_sheets, "arenas": arenas, "audio": audio, "vfx": vfx, "vestiges": vestiges, "icons": spell_icons, "field_anim": field_anims}
 
 if __name__ == "__main__":
     for s in (sys.argv[1:] or SECTIONS.keys()):
