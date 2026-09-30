@@ -1,12 +1,12 @@
 # Optional quests Q01-Q12 (all require CH20; none permanently missable).
 # State machine: NOT_STARTED -> ACTIVE -> RESOLUTION_READY -> COMPLETED; completion transactions are `once` scenes.
 
-# ================================================================ Q01 A Shield Nobody Asked For (Dain; T01 -> D01)
+# ================================================================ Q01 A Shield Nobody Asked For (Raven; T01 -> D01)
 @scene Q01_HOOK
 if q:Q01 done
 if q:Q01:RESOLUTION_READY resolve
 if q:Q01:ACTIVE active
-say mara | Dain. The quarry ledger only kept numbers. I want names on the memorial - every worker it erased.
+say mara | Raven. The quarry ledger only kept numbers. I want names on the memorial - every worker it erased.
 say mara | Three name-records survived: one at the memorial stones, one in the salvage route by the rubble, one by the old gate. And the families should be asked.
 say dain | I'll find them.
 quest Q01 ACTIVE found0
@@ -79,20 +79,20 @@ say mara | Not on this stone. This stone is theirs. It isn't a stage for anyone'
 say mara | But there's a book at the shelter. For the things people need to say. Write it there. I'll keep it.
 say dain | ...That's fair.
 say narr | Mara chooses the inscription: 'They were counted by name.'
-say ilyr | Dain. I want us to write something too. Between us. That either of us can end this - out loud, at any time.
+say ilyr | Raven. I want us to write something too. Between us. That either of us can end this - out loud, at any time.
 say dain | Yes. Written down. Where we can both read it.
 take K_MEMORIAL_RECORDS 1
 give W006 1
 quest Q01 COMPLETED
 set q01_done
-say narr | (Dain received Open Hand. His final technique is now available.)
+say narr | (Raven received Open Hand. His final technique is now available.)
 @end
 
-# ================================================================ Q02 A Lantern Left Burning (Tessa; T04 -> D05)
+# ================================================================ Q02 A Lantern Left Burning (Morwen; T04 -> D05)
 @scene Q02_HOOK
 if q:Q02 done
 if q:Q02:ACTIVE active
-say apprentice | Tessa? I - I used to sweep your workshop. Could you teach me the light? A version that doesn't cost what yours cost you.
+say apprentice | Morwen? I - I used to sweep your workshop. Could you teach me the light? A version that doesn't cost what yours cost you.
 say tessa | ...I don't know one. Let's find one.
 quest Q02 ACTIVE start
 journal | Q02: Collect observations at the three inhabited lantern stations in the Drowned Archive, then test a low-power circuit with the apprentice.
@@ -153,7 +153,7 @@ say apprentice | Ready when you are. It's by the machine.
 @scene Q02_CIRCUIT once
 say narr | The low-power circuit: three slow cells, wired so each can rest. The apprentice connects it. It flickers. It fails.
 say tessa | Let me just -
-say oriel | Tessa.
+say oriel | Morwen.
 wait 0.5
 say tessa | ...Right. It's your circuit. What do you think it needs?
 say apprentice | The second cell's backwards. I think. I - yes. It's backwards.
@@ -164,16 +164,16 @@ key K_LOW_CIRCUIT
 give W012 1
 quest Q02 COMPLETED
 set q02_done
-say narr | (Tessa received Ash Without Fire. Her final technique is now available.)
+say narr | (Morwen received Ash Without Fire. Her final technique is now available.)
 @end
 
-# ================================================================ Q03 The Returners' Wall (Corren; T05 -> D06)
+# ================================================================ Q03 The Returners' Wall (Vespera; T05 -> D06)
 @scene Q03_HOOK
 if q:Q03 done
 if q:Q03:RESOLUTION_READY resolve
 if q:Q03:ACTIVE active
 say edda | I want a record of rescues. Not deaths. There's a flight recorder in the wreck by the mooring, a survivor who remembers, and a landing marker that needs fixing.
-say edda | Corren. You'll have to hear the account of the cable you cut. The whole thing.
+say edda | Vespera. You'll have to hear the account of the cable you cut. The whole thing.
 say corren | ...I know.
 quest Q03 ACTIVE start
 journal | Q03: At the Skyspine mooring: find the flight recorder, interview the survivor, repair the landing marker. Then return to Edda.
@@ -202,8 +202,8 @@ say narr | The recorder's cradle is empty.
 @scene Q03_SURVIVOR
 if !q:Q03:ACTIVE plain
 set q03_int
-say survivor | I was on the basket the day Corren cut the cable. The one they said he cut to save himself.
-say survivor | He cut it because the second line would have pulled us all over. I'll say that on the record. All of it, including the part where it was still terrible.
+say survivor | I was on the basket the day Vespera cut the cable. The one they said she cut to save herself.
+say survivor | She cut it because the second line would have pulled us all over. I'll say that on the record. All of it, including the part where it was still terrible.
 call Q03_CHECK
 end
 label plain
@@ -231,7 +231,7 @@ objective corren | Take the recorder and testimony back to Edda at High Aerie.
 
 @scene Q03_DECISION once
 say edda | Here's the unedited account. Recorder and testimony.
-say narr | Corren reads it. All of it. The cut, the fall, the names.
+say narr | Vespera reads it. All of it. The cut, the fall, the names.
 say edda | Do you want me to add your rescues underneath? Balance it out?
 say corren | No. Leave it as it is. The rescues go on the other wall. This one doesn't need balancing. It needs reading.
 set q03_wall
@@ -239,28 +239,28 @@ take K_FLIGHT_RECORDER 1
 give W018 1
 quest Q03 COMPLETED
 set q03_done
-say narr | (Corren received Unbound Descent. His final technique is now available.)
+say narr | (Vespera received Unbound Descent. Her final technique is now available.)
 @end
 
-# ================================================================ Q04 The Unborrowed Engine (Ivo; T03 -> D04)
+# ================================================================ Q04 The Unborrowed Engine (Golem; T03 -> D04)
 @scene Q04_HOOK
 if q:Q04 done
 if q:Q04:ACTIVE active
-say pell | The new engine in the Spine works. Only while Ivo's standing beside it. I've seen it twice. That's not an engine, that's a pet.
+say pell | The new engine in the Spine works. Only while the Golem's standing beside it. I've seen it twice. That's not an engine, that's a pet.
 say ivo | ...It shouldn't need me.
 say pell | Then prove it. Three of my crew, your manual, a cold restart.
 quest Q04 ACTIVE start
 journal | Q04: At the Furnace Spine's waterwheel engine house, have three workers follow the manual and find where it fails.
 end
 label active
-say pell | Three workers, one manual, no Ivo hands. Engine house, east of here.
+say pell | Three workers, one manual, no Golem hands. Engine house, east of here.
 end
 label done
-say pell | Cold restart, no Ivo. The notes are in every town now. That's a revolution I'll sign.
+say pell | Cold restart, no Golem. The notes are in every town now. That's a revolution I'll sign.
 @end
 
 @scene Q04_MANUAL
-say narr | Ivo's engine manual. Clear, clever, and assuming the reader is Ivo.
+say narr | The Golem's engine manual. Clear, clever, and assuming the reader is the Golem.
 @end
 
 @scene Q04_WORKER1
@@ -276,7 +276,7 @@ say worker | Engine's humming. We're not touching it.
 @scene Q04_WORKER2
 if !q:Q04:ACTIVE plain
 set q04_w2
-say worker | Step nine is missing a valve. Ivo always opens it without thinking. It's not written down.
+say worker | Step nine is missing a valve. The Golem always opens it without thinking. It's not written down.
 call Q04_CHECK
 end
 label plain
@@ -299,46 +299,46 @@ end
 label ready
 say ivo | 'Sounds right'. A missing valve. 'The usual wrench'. ...It's not a manual. It's my memory with page numbers.
 fade out 0.4
-say narr | Ivo revises it with the crew at the lectern. Measurements instead of sounds. Every valve. Every wrench, labelled.
+say narr | The Golem revises it with the crew at the lectern. Measurements instead of sounds. Every valve. Every wrench, labelled.
 fade in 0.4
 key K_REVISED_MANUAL
 quest Q04 ACTIVE revised
-objective ivo | The manual is revised. Have the crew attempt a cold restart at the engine lever - with Ivo only watching.
+objective ivo | The manual is revised. Have the crew attempt a cold restart at the engine lever - with the Golem only watching.
 @end
 
 @scene Q04_RESTART once
-say ivo | I'm going to stand over here. With my hands in my pockets.
+say ivo | I'm going to stand over here. With my joints locked.
 say worker | Page one. Cold channels open.
 say worker | Page two. Bleed until the gauge reads four. Not 'sounds right'. Four.
 say worker | Page nine. Valve nine-A. It's written down now.
 sfx FX031
 shake 0.4
-say narr | The engine turns over, catches, and runs. Ivo hasn't moved.
+say narr | The engine turns over, catches, and runs. The Golem hasn't moved.
 say ivo | It doesn't need me.
 say pell | It never should have.
 take K_REVISED_MANUAL 1
 give W024 1
 quest Q04 COMPLETED
 set q04_done
-say narr | (Ivo received Unborrowed Engine. His final technique is now available.)
+say narr | (The Golem received Unborrowed Engine. His final technique is now available.)
 @end
 
 @scene D04P_CREW
 say worker | The Spine runs on waterwheels now. Loud. Honest.
 @end
 
-# ================================================================ Q05 Every Road a Promise (Nera; T01 -> D03)
+# ================================================================ Q05 Every Road a Promise (Elowen; T01 -> D03)
 @scene Q05_HOOK
 if q:Q05 done
 if qs:Q05:surveyed sched
 if q:Q05:ACTIVE active
-say farmer | West camp needs the mill road. East camp needs the clinic road. One crew, one season. Nera - you know the Rootward. Choose.
+say farmer | West camp needs the mill road. East camp needs the clinic road. One crew, one season. Elowen - you know the Rootward. Choose.
 say nera | I'm not choosing. We survey all three crossings and then everyone chooses together.
 quest Q05 ACTIVE start
-journal | Q05: Survey the three crossings in the flooded Rootward, uncover the route Nera once concealed, then draft a shared schedule.
+journal | Q05: Survey the three crossings in the flooded Rootward, uncover the route Elowen once concealed, then draft a shared schedule.
 end
 label active
-say farmer | Three crossings at the Rootward. And Nera says there's a fourth she never talks about.
+say farmer | Three crossings at the Rootward. And Elowen says there's a fourth she never talks about.
 end
 label sched
 call Q05_SCHEDULE
@@ -356,13 +356,13 @@ say nera | And there's a fourth. Behind the camp. I hid it. Years ago. I sold th
 say nera | It goes straight to the clinic. It's been there the whole time.
 set q05_concealed
 quest Q05 ACTIVE surveyed
-objective nera | Nera's concealed route is revealed. Draft the shared schedule with both camps at Brackenford.
+objective nera | Elowen's concealed route is revealed. Draft the shared schedule with both camps at Brackenford.
 end
 label done
 say narr | Four crossings, all surveyed.
 end
 label plain
-say narr | Nera's chalk on a stump: three crossings, three sluice levers.
+say narr | Elowen's chalk on a stump: three crossings, three sluice levers.
 @end
 
 @scene Q05_SCHEDULE once
@@ -378,7 +378,7 @@ key K_ROUTE_SCHEDULE
 give W030 1
 quest Q05 COMPLETED
 set q05_done
-say narr | (Nera received Many Paths. Her final technique is now available.)
+say narr | (Elowen received Many Paths. Her final technique is now available.)
 @end
 
 @scene Q05_CAMP
@@ -389,11 +389,11 @@ label sched
 call Q05_SCHEDULE
 @end
 
-# ================================================================ Q06 The Right to Refuse (Oriel; T06 -> D08)
+# ================================================================ Q06 The Right to Refuse (Aurex; T06 -> D08)
 @scene Q06_HOOK
 if q:Q06 done
 if q:Q06:ACTIVE active
-say patient | This order says I'm to have a 'vision-guided treatment'. It has your signature on it, Oriel. From before.
+say patient | This order says I'm to have a 'vision-guided treatment'. It has your signature on it, Aurex. From before.
 say oriel | ...It does. I signed a stack of them. I believed my visions meant I knew better.
 say patient | I don't want it. I want someone to hear me say that.
 quest Q06 ACTIVE start
@@ -410,7 +410,7 @@ say patient | I said no. It stayed no. Then I changed my mind and said yes to so
 if !q:Q06:ACTIVE plain
 set q06_auth
 key K_AUTHORIZATION
-say narr | The original authorization: 'Prognosis by approved visionary supersedes patient preference.' Oriel's signature at the bottom.
+say narr | The original authorization: 'Prognosis by approved visionary supersedes patient preference.' Aurex's signature at the bottom.
 end
 label plain
 say narr | Shelves of old treatment orders. Nacre is sorting them.
@@ -429,26 +429,26 @@ say patient | Read the authorization first. I want you to know what you signed.
 @scene Q06_SEAL once
 if !flag:q06_heard wait
 sfx FX024
-say narr | Oriel pries the automatic seal from its housing. The order-reader goes quiet.
+say narr | Aurex pries the automatic seal from its housing. The order-reader goes quiet.
 say oriel | Your treatment. Your decision. I'll tell you what I see, if you want it. It's advice. Nothing more.
 say patient | Then I'll take the advice. And maybe ignore it.
 say oriel | That's the right.
-say narr | Nacre's sanctuary changes its practice that week. Oriel's admission is added to the public record, in her own words.
+say narr | Nacre's sanctuary changes its practice that week. Aurex's admission is added to the public record, in his own words.
 take K_AUTHORIZATION 1
 give W036 1
 quest Q06 COMPLETED
 set q06_done
-say narr | (Oriel received Borrowed Dawn. Her final technique is now available.)
+say narr | (Aurex received Borrowed Dawn. His final technique is now available.)
 end
 label wait
 say narr | The patient hasn't been heard yet.
 @end
 
-# ================================================================ Q07 What the Hand Remembers (Sable; T06 -> D07)
+# ================================================================ Q07 What the Hand Remembers (Oni; T06 -> D07)
 @scene Q07_HOOK
 if q:Q07 done
 if q:Q07:ACTIVE active
-say survivor | I don't want your apology, Sable. I want to know where the other binding site is. The deep one, under Whitebone.
+say survivor | I don't want your apology, Oni. I want to know where the other binding site is. The deep one, under Whitebone.
 say sable | The deep seals. Three still in use - by choice, now. They'd need to consent to an inspection.
 quest Q07 ACTIVE start
 journal | Q07: In the deep seals under the Whitebone sanctuary, inspect three seals with their occupants, record the design, remove the repeat-command mechanism.
@@ -498,7 +498,7 @@ say narr | Ask the person beside it first.
 @scene Q07_SEAL3
 if !flag:q07_o3 ask
 set q07_s3
-say narr | The third seal carries Sable's own mark. She writes down the design exactly as it is.
+say narr | The third seal carries Oni's own mark. He writes down the design exactly as it is.
 call Q07_CHECK
 end
 label ask
@@ -516,22 +516,22 @@ objective sable | The design is recorded. Remove the repeat-command mechanism be
 
 @scene Q07_REPEATER once
 sfx FX024
-say narr | Sable dismantles the repeater with her bare hands and a borrowed screwdriver. The loops stop renewing. The seals are just seals now - removable, whenever their bearers choose.
-say narr | At the hearing, Sable comes without her sword. A survivor asks: 'Did you know what the repeater did when you built it?' She answers: 'Yes.' Nothing else.
+say narr | Oni dismantles the repeater with his bare hands and a borrowed screwdriver. The loops stop renewing. The seals are just seals now - removable, whenever their bearers choose.
+say narr | At the hearing, Oni comes without his sword. A survivor asks: 'Did you know what the repeater did when you built it?' He answers: 'Yes.' Nothing else.
 give W042 1
 quest Q07 COMPLETED
 set q07_done
-say narr | (Sable received Unwritten Law. Her final technique is now available.)
+say narr | (Oni received Unwritten Law. His final technique is now available.)
 @end
 
-# ================================================================ Q08 The Names We Keep (Pip; T02 -> D02)
+# ================================================================ Q08 The Names We Keep (Sak; T02 -> D02)
 @scene Q08_HOOK
 if q:Q08 done
 if qs:Q08:sealed fix
 if q:Q08:ACTIVE active
 say clerk | Jori's brought people whose recovered legal names aren't the names they use now. The registry can't amend without the official seal - and the seal's in the safe chamber off the canals.
 say pip | I could just - make a seal. I'm very good.
-say jori | Pip.
+say jori | Sak.
 say pip | ...I'll fetch the real one.
 quest Q08 ACTIVE start
 journal | Q08: Recover the official seal from the safe chamber off Veyr's canals, then offer chosen-name corrections at the registry.
@@ -543,7 +543,7 @@ label fix
 call Q08_CORRECTIONS
 end
 label done
-say clerk | Amendments open. Every change records who asked for it. Including the ones Pip asked for.
+say clerk | Amendments open. Every change records who asked for it. Including the ones Sak asked for.
 @end
 
 @scene Q08_DIAL1
@@ -605,11 +605,11 @@ say narr | The seal safe stands open.
 say pip | Here's the seal. The real one. And - I could've made the corrections perfect. Technically accurate. Every one.
 say jori | And decided them for everyone.
 say pip | ...Yes. A forgery can be perfect and still be someone else deciding. I get it. I get it now.
-say narr | The residents make their own amendments. Pip holds the ink. Every entry records who asked for it.
+say narr | The residents make their own amendments. Sak holds the ink. Every entry records who asked for it.
 give W048 1
 quest Q08 COMPLETED
 set q08_done
-say narr | (Pip received False Crown. His final technique is now available.)
+say narr | (Sak received False Crown. His final technique is now available.)
 @end
 
 # ================================================================ Q09 The Winter Without Sleep (world; T06 -> D11)

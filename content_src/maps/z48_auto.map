@@ -153,7 +153,7 @@ spawn from_r01 15 29 up
 spawn from_r03 29 14 left
 spawn from_r04 15 2 down
 exit 14..17 31 D01_R01 from_r02
-exit 31 13..16 D01_R03 from_r02 if=recruited:C02 locked="Dain: The spur floods past here. We need someone who understands the pumps."
+exit 31 13..16 D01_R03 from_r02 if=recruited:C02 locked="Raven: The spur floods past here. We need someone who understands the pumps."
 exit 14..17 0 D01_R04 from_r02 if=flag:d01_loftgate
 block 14..17 1 tile=gate if=!flag:d01_loftgate msg="A service gate, latched from the loft side."
 === D01_R03
@@ -486,7 +486,7 @@ spawn default 6 11 right
 npc oriel_cell 12 11 left sprite=C06 talk=D02_ORIEL if=!recruited:C06
 npc jailer 20 20 left sprite=guard talk=D02_JAILER if=!recruited:C06
 chest D02_C_R01 35 24 I001 2
-exit 18..21 0 D02_R02 from_r01 if=recruited:C06 locked="Dain: The door's barred. We need a way out that isn't this one."
+exit 18..21 0 D02_R02 from_r01 if=recruited:C06 locked="Raven: The door's barred. We need a way out that isn't this one."
 save 33 12
 === D02_R02
 name: Veyr Underways - Ledger Stacks
@@ -535,7 +535,7 @@ entities:
 spawn from_r01 15 29 up
 spawn from_r03 29 15 left
 exit 14..17 31 D02_R01 from_r02
-exit 31 14..17 D02_R03 from_r02 if=event:D02_SC03 locked="Oriel: The records first. All of them."
+exit 31 14..17 D02_R03 from_r02 if=event:D02_SC03 locked="Aurex: The records first. All of them."
 trigger 11..20 13..14 scene=D02_SC03 if=!event:D02_SC03
 read 6 17 "A ledger page: 'Unit 4419, dragonborn, Crown Quarry lift crew. Status: expendable material.' The unit has a name written in pencil: Wren."
 read 25 22 "Transport orders, stamped by the Marshal's office: heartglass cargo routed 'via Rootward sluices to the northern road.'"
@@ -837,7 +837,7 @@ tileset_over 19..20 10..21 bridge if=flag:d03p_route2
 switch route2 22 24 flag=d03p_route2 scene=CH14_ROUTE2
 tileset_over 31..32 10..21 bridge if=flag:d03p_route3
 switch route3 34 24 flag=d03p_route3 scene=CH14_ROUTE3
-read 12 25 "Nera's chalk on a stump: three crossings, three sluice levers. 'Lift each lever to raise its walkway. The current eats whichever route stays low.'" if=!q:Q05:ACTIVE
+read 12 25 "Elowen's chalk on a stump: three crossings, three sluice levers. 'Lift each lever to raise its walkway. The current eats whichever route stays low.'" if=!q:Q05:ACTIVE
 read 12 25 "x" scene=Q05_SURVEY if=q:Q05:ACTIVE
 chest D03P_C_R02 35 5 I002 2
 save 16 5
@@ -935,7 +935,7 @@ spawn world 20 26 up
 spawn from_r02 37 13 left
 spawn default 20 26 up
 exit 18..21 27 WORLD l_d03
-exit 39 12..15 D03_R02 from_r01 if=event:D03_NERA_MEET locked="Nera: That's our road you're about to trample. Talk first."
+exit 39 12..15 D03_R02 from_r01 if=event:D03_NERA_MEET locked="Elowen: That's our road you're about to trample. Talk first."
 npc nera_camp 20 12 down sprite=C05 talk=D03_NERA_MEET if=!recruited:C05
 npc camp_elder 10 10 right sprite=elder talk=D03_CAMP_ELDER if=!ch:CH03
 npc camp_mother 25 17 left sprite=farmer talk=D03_CAMP_MOTHER if=!ch:CH03
@@ -1274,7 +1274,7 @@ spawn from_town 1 13 right
 spawn from_r02 38 13 left
 spawn default 1 13 right
 exit 0 12..15 T03_TOWN from_spine
-exit 39 12..15 D04_R02 from_r01 if=recruited:C04 locked="Ivo: Wait. You don't walk into the Spine without someone who knows the lines."
+exit 39 12..15 D04_R02 from_r01 if=recruited:C04 locked="Golem: Wait. You don't walk into the Spine without someone who knows the lines."
 trigger 5..7 12..15 scene=D04_SHIFT_GATE if=!recruited:C04
 save 20 20
 heal 22 20
@@ -2515,7 +2515,7 @@ spawn from_r02 1 21 right
 spawn from_r05 15 26 up
 exit 0 12..15 D07_R03 from_r04
 exit 0 20..23 D07_R02 from_r04
-exit 14..17 27 D07_R05 from_r04 if=flag:d07_open1,flag:d07_open2,flag:d07_open3 locked="Sable: Not until every cell is open. That was the agreement."
+exit 14..17 27 D07_R05 from_r04 if=flag:d07_open1,flag:d07_open2,flag:d07_open3 locked="Oni: Not until every cell is open. That was the agreement."
 === D07_R05
 name: Whitebone Redoubt - Tribunal Ring
 encounters: none
@@ -4418,7 +4418,7 @@ spawn entry 10 12 up
 exit 10..11 13 T03_TOWN from_shop
 npc ivo_shop 10 5 down sprite=C04 talk=T03_IVO_SHOP if=!recruited:C04
 npc pell 6 5 right sprite=pell talk=T03_PELL
-read 13 2 "A regulator on the bench: brass coils around a cup of red heartglass. Tessa goes very quiet looking at it."
+read 13 2 "A regulator on the bench: brass coils around a cup of red heartglass. Morwen goes very quiet looking at it."
 save 18 11
 === T03_YARD
 name: Cinderwake - Old Assembly Yard

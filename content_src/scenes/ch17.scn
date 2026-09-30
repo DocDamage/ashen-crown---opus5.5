@@ -1,9 +1,9 @@
-# CH17 — Wings Without Chains. Skyspine mooring: three ballast anchors, Corren steps away from the last lever.
+# CH17 — Wings Without Chains. Skyspine mooring: three ballast anchors, Vespera steps away from the last lever.
 
 @scene CH17_ARRIVE once
 say narr | The Skyspine chain has snapped. What's left of it links two new islands - and between them hangs a mooring, groaning, holding a cargo platform full of evacuees from the cliff settlement.
-say edda | You're Corren's lot. He's on the mooring lever. He's been on it all night.
-say edda | His plan is to cut himself loose with the load if it slips. Take the platform down with him, drop the weight, save the rest.
+say edda | You're Vespera's lot. She's on the mooring lever. She's been on it all night.
+say edda | Her plan is to cut herself loose with the load if it slips. Take the platform down with her, drop the weight, save the rest.
 say tessa | That's not a plan. That's a eulogy.
 say edda | There are three ballast anchors - one on the settlement, one on the old anchor rock, one on the mooring island itself. Set all three and the mooring holds without anyone on it.
 say edda | My crew can't cross the gust lanes carrying the ballast. Can you?
@@ -20,10 +20,10 @@ say survivor | We're waiting for the platform. Nobody's going to jump. Captain H
 
 @scene CH17_EDDA
 if flag:d06p_a1,flag:d06p_a2,flag:d06p_a3 all
-say edda | Three anchors. You can't count on him counting them for you.
+say edda | Three anchors. You can't count on her counting them for you.
 end
 label all
-say edda | All three are set. Go and talk to my brother.
+say edda | All three are set. Go and talk to my sister.
 @end
 
 @scene CH17_ANCHOR1
@@ -64,7 +64,7 @@ if flag:d06p_a1,flag:d06p_a2,flag:d06p_a3 all
 say narr | (The mooring still leans on the lever. Set the remaining anchors.)
 end
 label all
-objective dain | All three anchors are set. Talk to Corren at the mooring lever.
+objective dain | All three anchors are set. Talk to Vespera at the mooring lever.
 @end
 
 @scene CH17_CORREN
@@ -75,9 +75,9 @@ label ready
 say corren | The line's steady.
 say oriel | Three anchors are holding it. You can let go of the lever.
 say corren | If I let go and I'm wrong -
-say nera | Then the anchors are wrong, and we'll all be wrong together. Step away, Corren.
+say nera | Then the anchors are wrong, and we'll all be wrong together. Step away, Vespera.
 wait 0.6
-say narr | Corren takes his hands off the lever. One finger at a time. The mooring holds.
+say narr | Vespera takes her hands off the lever. One finger at a time. The mooring holds.
 say narr | The platform comes across, and the evacuees walk off it onto solid rock.
 say edda | I'm not putting your name on the memorial.
 say corren | I didn't -
@@ -96,7 +96,7 @@ label sabledone
 join C03
 chapter CH17
 set skyspine_anchor
-objective dain | Corren is back. Skyspine's anchor is ready for the release protocol.
+objective dain | Vespera is back. Skyspine's anchor is ready for the release protocol.
 call REUNION_CHECK
 level_floor 29
 @end
@@ -104,11 +104,11 @@ level_floor 29
 # ---------------------------------------------------------------- High Aerie (post)
 @scene T05P_EDDA
 if ch:CH17 after
-say edda | My brother's on the mooring at the broken chain, south of here. Please bring him back with his hands empty.
+say edda | My sister's on the mooring at the broken chain, south of here. Please bring her back with her hands empty.
 end
 label after
 if ch:CH20 q03
-say edda | Tuesday shift. He was early.
+say edda | Tuesday shift. She was early.
 end
 label q03
 call Q03_HOOK
@@ -152,13 +152,13 @@ say narr | The Returners' Wall. Names of people who brought others home - pilots
 @scene REUNION_CHECK
 if ch:CH17,ch:CH18,ch:CH19 all
 if ch:CH17 c17
-say narr | (Still missing: Corren, at the broken Skyspine chain.)
+say narr | (Still missing: Vespera, at the broken Skyspine chain.)
 label c17
 if ch:CH18 c18
-say narr | (Still missing: Pip, under Veyr's registry.)
+say narr | (Still missing: Sak, under Veyr's registry.)
 label c18
 if ch:CH19 c19
-say narr | (Still missing: Sable, at the Whitebone sanctuary.)
+say narr | (Still missing: Oni, at the Whitebone sanctuary.)
 label c19
 end
 label all

@@ -30,7 +30,7 @@ choice | Release it slowly (the Nacre method) -> slow | Smash the housing -> sma
 label smash
 sfx FX004
 shake 0.4
-say narr | Tessa's hand is on the housing before anyone else moves - then she stops.
+say narr | Morwen's hand is on the housing before anyone else moves - then she stops.
 say tessa | No. If it's somebody in there, I'm not doing to them what Rook wants to do to everyone.
 say narr | (The relay is still singing. Try the slow release.)
 end
@@ -139,7 +139,7 @@ objective dain | Quiet the bridge relay, then climb to the Crown Dais.
 if flag:d09_relay_b done
 say narr | The bridge relay. The third synchronization line.
 sfx FX024
-say narr | Ivo and Oriel release it the way they did in Nacre. It goes dim. The dais door groans open.
+say narr | The Golem and Aurex release it the way they did in Nacre. It goes dim. The dais door groans open.
 set d09_relay_b
 say ivo | Three visible relays. All dark.
 say oriel | Visible.

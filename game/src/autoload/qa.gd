@@ -176,7 +176,7 @@ func run_gallery(p_main: Node, which: String) -> void:
 	if which in ["ui", "all"]:
 		main.enter_field("T01_PLATFORM", "default")
 		main.field.banner_t = 0.0
-		main.say("Tessa", "The quarry bell rang twice at dawn. That only happens when the lower gate floods.", "C02")
+		main.say("Morwen", "The quarry bell rang twice at dawn. That only happens when the lower gate floods.", "C02")
 		await _g_frames(40)
 		await _g_shot("ui_dialogue")
 		main.dialogue.visible = false
@@ -292,7 +292,7 @@ func _g_ui_screens() -> void:
 	await _g_menu("main", {}, "ui_menu_theme_crimson")
 	Settings.v["window_color"] = old_theme
 	# dialogue with a choice
-	main.say("Tessa", "Do we take the flooded gate, or wait for the pumps?", "C02")
+	main.say("Morwen", "Do we take the flooded gate, or wait for the pumps?", "C02")
 	main.choose(["Take the gate", "Wait for the pumps"])
 	await _g_frames(40)
 	await _g_shot("ui_choice")

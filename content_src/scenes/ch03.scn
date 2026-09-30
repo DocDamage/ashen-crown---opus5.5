@@ -1,4 +1,4 @@
-# CH03 — A Road Without Banners. Rootward, Nera, the Rootbound Stag.
+# CH03 — A Road Without Banners. Rootward, Elowen, the Rootbound Stag.
 
 @scene D03_NERA_MEET once
 say nera | Stop there. That's the only dry road for thirty families.
@@ -26,7 +26,7 @@ say farmer | Water reached the upper channel. My children drank from a cup, not 
 @end
 
 @scene D03_CAMP_CHILD
-say child | Nera made me a map of where it's safe to play. It has a picture of a frog on it.
+say child | Elowen made me a map of where it's safe to play. It has a picture of a frog on it.
 @end
 
 @scene D03_CAMP_CARTER
@@ -124,19 +124,19 @@ call CH03_CAMP
 @scene CH03_CAMP once
 fade out 0.5
 say narr | The party spends the evening helping the camp move its wagons to higher, drier ground.
-say narr | Dain carries water barrels until his shoulders ache. He does not ask anyone for anything.
+say narr | Raven carries water barrels until his shoulders ache. He does not ask anyone for anything.
 fade in 0.5
-say narr | Later, a cookfire. Barley stew, and a stubborn flat bread Nera insists is traditional.
+say narr | Later, a cookfire. Barley stew, and a stubborn flat bread Elowen insists is traditional.
 say tessa | This is the first thing I've eaten in three days that wasn't paperwork.
 say oriel | You have not eaten paperwork.
-say tessa | Metaphorically, Sister, I've eaten nothing else.
+say tessa | Metaphorically, Champion, I've eaten nothing else.
 say nera | You carried barrels all night, Captain. You didn't once ask me to say it was all right.
 say dain | It isn't all right.
 say nera | No. It isn't.
 say nera | The transport route runs north, to Cinder Reach. The ministry closed the northern road, but I know the way around the barricade.
 say nera | I'll guide you. Not for you. For the next camp that route runs through.
 join C05
-say narr | Nera's Hunt marks targets, reveals weaknesses and scouts what enemies will do next.
+say narr | Elowen's Hunt marks targets, reveals weaknesses and scouts what enemies will do next.
 @end
 
 @scene CH03_VERGE once

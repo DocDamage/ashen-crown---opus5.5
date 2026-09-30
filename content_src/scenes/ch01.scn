@@ -4,7 +4,7 @@
 @scene OPENING once
 music M010
 say narr | Brackenford Halt. The morning train from Veyr, three hours late.
-say inspector | Captain Ashward. The quarry gate is up the north road. The regulator report is due by the evening bell.
+say inspector | Captain Raven. The quarry gate is up the north road. The regulator report is due by the evening bell.
 say dain | Understood.
 say inspector | Whatever the crew tells you, Captain, production is not your department.
 move inspector up
@@ -22,7 +22,7 @@ say worker | I'm not getting on that train. Not till someone checks the list.
 say dain | What list?
 say worker | Seven of ours went down at dawn. None came up. Mara's gone to the gate to count them herself.
 say worker | You're ministry.
-say dain | Crown Guard. Dain Ashward.
+say dain | Crown's Executioner. Raven.
 say worker | The badge means they sent you.
 say dain | It means I can open a gate.
 say worker | Then open it. Mara's up there already, arguing with a man who thinks people are a schedule.
@@ -174,7 +174,7 @@ say guard | On your badge, Captain.
 say tessa | Your badge. Fine. I'll owe it a thank-you note.
 set d01_tessa_circuit
 join C02
-say narr | Tessa's Magic spends MP. Ember Lance burns what fire hurts; flasks work for anyone and cost no MP.
+say narr | Morwen's Magic spends MP. Ember Lance burns what fire hurts; flasks work for anyone and cost no MP.
 @end
 
 @scene D01_LIST once
@@ -264,7 +264,7 @@ if party:C02 ask
 say narr | The handle moves, but water rushes back through the other valve. It needs two people.
 end
 label ask
-choice | Ask Tessa to hold this handle -> hold | Pull it alone -> alone
+choice | Ask Morwen to hold this handle -> hold | Pull it alone -> alone
 label hold
 set d01_p1
 unset d01_p2
@@ -289,7 +289,7 @@ if party:C02 ask
 say narr | The handle moves, but water rushes back through the other valve. It needs two people.
 end
 label ask
-choice | Ask Tessa to hold this handle -> hold | Pull it alone -> alone
+choice | Ask Morwen to hold this handle -> hold | Pull it alone -> alone
 label hold
 set d01_p2
 unset d01_p1
@@ -368,7 +368,7 @@ set b01_done
 music M020
 say narr | The Warden shudders and goes still. Its arm locks above the occupied lift - disconnected, not destroyed.
 say ilyr | That is not a stone.
-say tessa | Dain. You heard that.
+say tessa | Raven. You heard that.
 say dain | I heard it.
 objective | Get the workers out through the Lift Yard, east of the face.
 xp 60
@@ -418,7 +418,7 @@ level_floor 4
 @end
 
 @scene V01_PACT once
-say narr | A small moth of ember light has followed Dain up from the quarry. It settles on his gauntlet.
+say narr | A small moth of ember light has followed Raven up from the quarry. It settles on his gauntlet.
 say ilyr | It came out of the dimmed machine. It asks to travel. It does not ask to be carried.
 say dain | Then it walks with us. Or flies.
 say narr | The Ember Moth offers a small pact: it will help when called, and leave when it chooses.

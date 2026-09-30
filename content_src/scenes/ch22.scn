@@ -3,18 +3,18 @@
 
 @scene D10_DOCK once
 music M028
-say narr | Wayfarer ties up at the Crown Heart - a rib of dragon bone and relay glass rising out of the Ember Sea.
+say narr | Lanternwake ties up at the Crown Heart - a rib of dragon bone and relay glass rising out of the Ember Sea.
 say ivo | Two lungs. West runs the physical pressure; east runs the name-binding circuit. The locks alternate - west, east, west, east.
 say oriel | Two teams, then. Four and four. Neither team can finish alone and neither can shut the other in.
 say sable | The swap bells in each lung pass control between the teams whenever you like.
-say narr | (This is the Accord Dock. You can still leave: Wayfarer is moored behind you. Past the Concord Bridge, the Crown Vessel.)
+say narr | (This is the Accord Dock. You can still leave: Lanternwake is moored behind you. Past the Concord Bridge, the Crown Vessel.)
 backup pre_finale
 say narr | (A protected backup has been written: "Before the Final Descent". It is kept separate from your slots and from any clear save.)
 objective oriel | When ready, use the split lever on the dock to divide into two teams.
 @end
 
 @scene D10_CREW
-say pilot | Wayfarer's moored and not going anywhere without you. Rest, restock, come back whenever.
+say pilot | Lanternwake's moored and not going anywhere without you. Rest, restock, come back whenever.
 shop SHOP_SHIP
 @end
 
@@ -147,7 +147,7 @@ objective dain | Step out into the Open Sky.
 @scene CH22_SC11 once
 music silence
 say narr | The Open Sky. The last of the network drifts away as ordinary light. There are no chains in it.
-say narr | Something like a door stands open beside Dain - a form of light and scale, restored and waiting.
+say narr | Something like a door stands open beside Raven - a form of light and scale, restored and waiting.
 say ilyr | The way is open.
 say dain | I know.
 say ilyr | You are not going to ask me to stay.
@@ -157,7 +157,7 @@ say dain | Then I will ask whether you wish to.
 say ilyr | For now.
 say dain | And when that changes?
 say ilyr | We speak again.
-say narr | The binding pattern on Dain's hands fades. What is left is a promise, not a lock - one either of them can end.
+say narr | The binding pattern on Raven's hands fades. What is left is a promise, not a lock - one either of them can end.
 set voluntary_accord
 chapter CH22
 music M016
@@ -176,7 +176,7 @@ goto q1b
 label q1
 say narr | At the market wall, the quarry workers' names are carved where their numbers were. Mara chose the inscription.
 label q1b
-say narr | Rook's hearing is held in the open, on the pontoons. Sable appears before the Whitebone survivors, as promised. Nobody is paraded. Everybody is heard.
+say narr | Rook's hearing is held in the open, on the pontoons. Oni appears before the Whitebone survivors, as promised. Nobody is paraded. Everybody is heard.
 say narr | Families light a lamp for each person lost. The lamps are not counted against anyone.
 chapter CH23
 objective dain | Walk Hearthward. When you're ready, go to the communal hearth.
@@ -199,7 +199,7 @@ say corren | The Returners' Wall has forty names now. Mine isn't one of them. Th
 label corren_end
 epilogue C03
 if flag:q04_done ivo2
-say ivo | Wayfarer needs maintenance. So does everything else. Good.
+say ivo | Lanternwake needs maintenance. So does everything else. Good.
 goto ivo_end
 label ivo2
 say ivo | Every town has the notes now. Somebody in Bellharbor already improved the boiler. Didn't ask me. Perfect.
@@ -235,7 +235,7 @@ label pip_end
 epilogue C08
 say dain | And me?
 say ilyr | And us.
-say narr | Dain unpins the old Crown service badge from his coat and leaves it at the public memorial, among the lamps. Then he signs up for a maintenance shift aboard Wayfarer.
+say narr | Raven unpins the old Crown service badge from his coat and leaves it at the public memorial, among the lamps. Then he signs up for a maintenance shift aboard Lanternwake.
 epilogue C01
 fade out 1.0
 music silence
@@ -244,7 +244,7 @@ set dawn
 fade in 1.2
 music M030
 say narr | Dawn over the rebuilt harbor.
-objective dain | Wayfarer is waiting at the berth.
+objective dain | Lanternwake is waiting at the berth.
 @end
 
 @scene CH24_MORNING once
@@ -258,12 +258,12 @@ say ilyr | That sound.
 say dain | The morning bell.
 say ilyr | A door opening.
 say dain | Both, then.
-objective dain | Step aboard Wayfarer.
+objective dain | Step aboard Lanternwake.
 @end
 
 @scene CH24_BOARD once
 chapter CH24
-say narr | Dain steps aboard Wayfarer.
+say narr | Raven steps aboard Lanternwake.
 clear_save
 credits
 ending

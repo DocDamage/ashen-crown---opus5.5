@@ -10,19 +10,19 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Inspector:** “Production cannot stop on an unverified report.”
 
-**Dain:** “How many?”
+**Raven:** “How many?”
 
 **Mara:** “Seven. I have their names.”
 
 **Inspector:** “Captain, the inspection is about the regulator.”
 
-**Dain:** “Then the regulator can wait.”
+**Raven:** “Then the regulator can wait.”
 
 **Mara:** “It never has before.”
 
-**Dain:** “Show me the lift.”
+**Raven:** “Show me the lift.”
 
-**Staging:** Dain steps off the inspection route toward Mara; movement returns immediately.
+**Staging:** Raven steps off the inspection route toward Mara; movement returns immediately.
 
 **State contract:** No completion flag; begin the rescue objective. Do not award XP for this conversation.
 
@@ -30,47 +30,47 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Chapter:** CH01. **Location:** Heartglass Face after the first pressure vent.
 
-**Tessa:** “That pulse is answering the pump.”
+**Morwen:** “That pulse is answering the pump.”
 
-**Dain:** “Pressure does that.”
+**Raven:** “Pressure does that.”
 
-**Tessa:** “Not with your name.”
+**Morwen:** “Not with your name.”
 
 **Ilyr:** “Little ember.”
 
-**Dain:** “Who said that?”
+**Raven:** “Who said that?”
 
-**Tessa:** “You heard it too.”
+**Morwen:** “You heard it too.”
 
 **Inspector:** “Resonance artifact. Restart the line.”
 
-**Dain:** “No.”
+**Raven:** “No.”
 
 **Staging:** The extractor light dims rather than flaring theatrically. A short silence precedes the boss tell.
 
 **State contract:** Start B01 only once. The following evacuation commit depends on actual victory.
 
-## SC03 — Oriel’s signature
+## SC03 — Aurex’s signature
 
 **Chapter:** CH02. **Location:** Ledger Stacks.
 
-**Tessa:** “This one was signed before we reached the quarry.”
+**Morwen:** “This one was signed before we reached the quarry.”
 
-**Dain:** “They knew it would happen.”
+**Raven:** “They knew it would happen.”
 
-**Oriel:** “They knew what they intended to call it.”
+**Aurex:** “They knew what they intended to call it.”
 
-**Tessa:** “And this older one?”
+**Morwen:** “And this older one?”
 
-**Oriel:** “Mine.”
+**Aurex:** “Mine.”
 
-**Dain:** “You did not know what they meant.”
+**Raven:** “You did not know what they meant.”
 
-**Oriel:** “I knew I had not asked.”
+**Aurex:** “I knew I had not asked.”
 
-**Oriel:** “Take the ledger. All of it.”
+**Aurex:** “Take the ledger. All of it.”
 
-**Staging:** Oriel does not receive a reassuring reaction shot. She hands over the actual document.
+**Staging:** Aurex does not receive a reassuring reaction shot. He hands over the actual document.
 
 **State contract:** Record evidence discovered; do not complete CH02 until the canal exit.
 
@@ -78,51 +78,51 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Chapter:** CH04. **Location:** Cooling Garden after the Colossus.
 
-**Tessa:** “Shut every line down.”
+**Morwen:** “Shut every line down.”
 
 **Pell:** “The clinic is on the second line.”
 
-**Tessa:** “You know what is inside it.”
+**Morwen:** “You know what is inside it.”
 
 **Pell:** “I know who is inside the clinic.”
 
-**Ivo:** “We can turn the lower wheel by hand until the canal clears.”
+**Golem:** “We can turn the lower wheel by hand until the canal clears.”
 
 **Pell:** “For how long?”
 
-**Ivo:** “I do not know yet.”
+**Golem:** “I do not know yet.”
 
 **Pell:** “That is a better beginning than another promise.”
 
 **Staging:** Workers begin the temporary repair while the conversation ends.
 
-**State contract:** Commit the temporary supply state with Ivo’s recruitment; show the repaired wheel on later visits.
+**State contract:** Commit the temporary supply state with the Golem’s recruitment; show the repaired wheel on later visits.
 
 ## SC05 — The cargo names
 
 **Chapter:** CH05. **Location:** Bellharbor’s chartmaker lane.
 
-**Pip:** “Seven barrels of lamp oil. Extremely talkative lamp oil.”
+**Sak:** “Seven barrels of lamp oil. Extremely talkative lamp oil.”
 
 **Jori:** “Her name is Senn.”
 
-**Pip:** “Not at the checkpoint it is not.”
+**Sak:** “Not at the checkpoint it is not.”
 
 **Jori:** “And when she asks for her wages?”
 
-**Pip:** “We work something out.”
+**Sak:** “We work something out.”
 
 **Jori:** “You work something out. She waits.”
 
-**Tessa:** “Keep the names with the cargo numbers.”
+**Morwen:** “Keep the names with the cargo numbers.”
 
-**Pip:** “I did.”
+**Sak:** “I did.”
 
 **Jori:** “Then give them back.”
 
-**Staging:** The humor stops naturally. Jori remains focused on the ledger rather than Pip’s embarrassment.
+**Staging:** The humor stops naturally. Jori remains focused on the ledger rather than Sak’s embarrassment.
 
-**State contract:** Open the archive lead; Pip joins at the chapter’s documented commit, not on every dialogue replay.
+**State contract:** Open the archive lead; Sak joins at the chapter’s documented commit, not on every dialogue replay.
 
 ## SC06 — A body is not a door
 
@@ -130,25 +130,25 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Ilyr:** “There is enough of me here to begin again.”
 
-**Dain:** “Here means my hands.”
+**Raven:** “Here means my hands.”
 
 **Ilyr:** “They made them to hold me.”
 
-**Dain:** “They are still mine.”
+**Raven:** “They are still mine.”
 
 **Ilyr:** “You would keep me imprisoned.”
 
-**Dain:** “I would stop you calling my life an empty room.”
+**Raven:** “I would stop you calling my life an empty room.”
 
-**Oriel:** “There was a way to leave. Before they removed it.”
+**Aurex:** “There was a way to leave. Before they removed it.”
 
-**Dain:** “Then we find that way.”
+**Raven:** “Then we find that way.”
 
 **Ilyr:** “And until then?”
 
-**Dain:** “You ask.”
+**Raven:** “You ask.”
 
-**Staging:** Use the normal Dain sprite and a modest reflected light. Do not transform him into a monster to validate Ilyr’s claim.
+**Staging:** Use the normal Raven sprite and a modest reflected light. Do not transform him into a monster to validate Ilyr’s claim.
 
 **State contract:** Commit the limited shared-body accord and CH09 evidence; no hidden domination or morality meter.
 
@@ -158,7 +158,7 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Rook:** “One relay. While a hundred keep screaming.”
 
-**Ivo:** “This one no longer needs a captive to hold it.”
+**Golem:** “This one no longer needs a captive to hold it.”
 
 **Rook:** “How many years will you ask them to wait?”
 
@@ -168,7 +168,7 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Volunteer:** “I have not accepted it. I am choosing how to leave.”
 
-**Tessa:** “The difference is not nothing.”
+**Morwen:** “The difference is not nothing.”
 
 **Rook:** “It will be, to the ones who do not live long enough.”
 
@@ -180,25 +180,25 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Chapter:** CH12. **Location:** Crown Dais after B10.
 
-**Ivo:** “The visible relays are dark.”
+**Golem:** “The visible relays are dark.”
 
-**Tessa:** “Then why is it still climbing?”
+**Morwen:** “Then why is it still climbing?”
 
-**Dain:** “Rook.”
+**Raven:** “Rook.”
 
 **Rook:** “I could not leave it to permission.”
 
-**Oriel:** “Whose permission?”
+**Aurex:** “Whose permission?”
 
 **Rook:** “Any of yours.”
 
 **Ilyr:** “No.”
 
-**Dain:** “Was that for him or for me?”
+**Raven:** “Was that for him or for me?”
 
 **Ilyr:** “For the command.”
 
-**Ivo:** “The lifts still have power. Move.”
+**Golem:** “The lifts still have power. Move.”
 
 **Staging:** Show the secondary route’s previously established diagram motif. Use short playable evacuation segments; reduce flashes when requested.
 
@@ -208,23 +208,23 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Chapter:** CH15. **Location:** Upper gallery in Bellharbor.
 
-**Tessa:** “The roof goes when I stop.”
+**Morwen:** “The roof goes when I stop.”
 
-**Nera:** “Nobody is under it now.”
+**Elowen:** “Nobody is under it now.”
 
-**Tessa:** “There could be—”
+**Morwen:** “There could be—”
 
-**Oriel:** “We counted them. Twice.”
+**Aurex:** “We counted them. Twice.”
 
-**Dain:** “Let it go.”
+**Raven:** “Let it go.”
 
-**Tessa:** “I do not know what happens after.”
+**Morwen:** “I do not know what happens after.”
 
 **Jori:** “We light the lamps.”
 
-**Staging:** Tessa releases the spell. The screen darkens briefly; ordinary lamps illuminate the safe walkway one by one.
+**Staging:** Morwen releases the spell. The screen darkens briefly; ordinary lamps illuminate the safe walkway one by one.
 
-**State contract:** Return Tessa without duplicating equipment. The barrier collision is removed only after the alternate route exists.
+**State contract:** Return Morwen without duplicating equipment. The barrier collision is removed only after the alternate route exists.
 
 ## SC10 — No thank-you required
 
@@ -232,21 +232,21 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Survivor:** “You wrote my number.”
 
-**Sable:** “Yes.”
+**Oni:** “Yes.”
 
 **Survivor:** “You remember it.”
 
-**Sable:** “Yes.”
+**Oni:** “Yes.”
 
 **Survivor:** “Do you know my name?”
 
-**Sable:** “Not yet.”
+**Oni:** “Not yet.”
 
 **Survivor:** “Then start there.”
 
-**Sable:** “May I write it down?”
+**Oni:** “May I write it down?”
 
-**Staging:** Let the survivor control the pace. No applause or party member declaring Sable redeemed.
+**Staging:** Let the survivor control the pace. No applause or party member declaring Oni redeemed.
 
 **State contract:** Store the consent record and reunion agreement; later quest dialogue knows the chosen name.
 
@@ -256,25 +256,25 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Ilyr:** “The way is open.”
 
-**Dain:** “I know.”
+**Raven:** “I know.”
 
 **Ilyr:** “You are not going to ask me to stay.”
 
-**Dain:** “Would that make it easier?”
+**Raven:** “Would that make it easier?”
 
 **Ilyr:** “No.”
 
-**Dain:** “Then I will ask whether you wish to.”
+**Raven:** “Then I will ask whether you wish to.”
 
 **Ilyr:** “For now.”
 
-**Dain:** “And when that changes?”
+**Raven:** “And when that changes?”
 
 **Ilyr:** “We speak again.”
 
 **Staging:** The visual payoff is a removed binding pattern, not a new badge granting ownership.
 
-**State contract:** Commit ending availability and the continuing voluntary accord. Do not alter Dain’s stored equipment or character identity.
+**State contract:** Commit ending availability and the continuing voluntary accord. Do not alter Raven’s stored equipment or character identity.
 
 ## SC12 — An ordinary repair
 
@@ -284,18 +284,18 @@ These twelve scenes provide concrete dramatic language for the major beats. They
 
 **Another Worker:** “The spare is under the bench.”
 
-**Dain:** “Do you need—”
+**Raven:** “Do you need—”
 
 **Worker:** “No. Thank you.”
 
 **Ilyr:** “That sound.”
 
-**Dain:** “The morning bell.”
+**Raven:** “The morning bell.”
 
 **Ilyr:** “A door opening.”
 
-**Dain:** “Both, then.”
+**Raven:** “Both, then.”
 
-**Staging:** The workers repair the lamp while Dain boards Wayfarer. Complete the title cadence and roll credits.
+**Staging:** The workers repair the lamp while Raven boards Wayfarer. Complete the title cadence and roll credits.
 
 **State contract:** Write clear state once; offer the labelled pre-finale return after credits.

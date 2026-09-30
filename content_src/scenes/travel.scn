@@ -49,7 +49,7 @@ warp WORLD cable_aerie
 label stay
 @end
 
-# ---------------------------------------------------------------- Wayfarer (after CH16)
+# ---------------------------------------------------------------- Lanternwake (after CH16)
 @scene SHIP_BOARD
 choice | Take the helm -> helm | Go below deck -> below | Stay ashore -> stay
 label helm
@@ -73,11 +73,11 @@ label stay
 @end
 
 @scene SHIP_RECALL
-say narr | A marked landing field. Wayfarer can be called down here.
-choice | Call Wayfarer -> call | Not now -> stay
+say narr | A marked landing field. Lanternwake can be called down here.
+choice | Call Lanternwake -> call | Not now -> stay
 label call
 airship recall
-say narr | Wayfarer settles onto the field, engines ticking as they cool.
+say narr | Lanternwake settles onto the field, engines ticking as they cool.
 label stay
 @end
 

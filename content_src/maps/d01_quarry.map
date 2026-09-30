@@ -107,7 +107,7 @@ spawn from_r01 15 29 up
 spawn from_r03 29 14 left
 spawn from_r04 15 2 down
 exit 14..17 31 D01_R01 from_r02
-exit 31 13..16 D01_R03 from_r02 if=recruited:C02 locked="Dain: The spur floods past here. We need someone who understands the pumps."
+exit 31 13..16 D01_R03 from_r02 if=recruited:C02 locked="Raven: The spur floods past here. We need someone who understands the pumps."
 exit 14..17 0 D01_R04 from_r02 if=flag:d01_loftgate
 block 14..17 1 tile=gate if=!flag:d01_loftgate msg="A service gate, latched from the loft side."
 

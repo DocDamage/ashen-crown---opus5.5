@@ -212,7 +212,7 @@ npc chase_guard_6_5 6 5 down sprite=guard talk=T04_CAUGHT
 npc chase_guard_24_11 24 11 down sprite=guard talk=T04_CAUGHT
 trigger 6 7 scene=T04_CAUGHT
 trigger 24 13 scene=T04_CAUGHT
-sign 3 15 "Pip, whispering: 'Watch where they stand. They never leave their posts.'"
+sign 3 15 "Sak, whispering: 'Watch where they stand. They never leave their posts.'"
 trigger 26..27 2..3 scene=CH05_CHASE_END
 spawn start 1 17 right
 spawn end 28 2 left

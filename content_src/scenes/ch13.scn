@@ -42,7 +42,7 @@ if flag:t07_path talk
 say elder | You've got a plank, too. The east walkway broke yesterday. There's a family stuck on the far pontoon.
 end
 label talk
-objective oriel | Sit with Oriel by the hearth.
+objective oriel | Sit with Aurex by the hearth.
 end
 label nofuel
 say elder | The lamps are low. There's fuel in the crates by the plank pile - if you can carry some over, the skiffs will thank you.
@@ -63,14 +63,14 @@ say survivor | Thank you. The kids were starting to think this pontoon was a new
 if flag:t07_path done
 if !flag:t07_fuel_carry noplank
 sfx FX010
-say narr | Dain lays the plank across the gap and Oriel lashes it down. It isn't pretty. It holds.
+say narr | Raven lays the plank across the gap and Aurex lashes it down. It isn't pretty. It holds.
 set t07_path
 say survivor | Oh thank goodness. Come on, kids - dry land. Well. Dry pontoon.
 if flag:t07_fuel talk
 objective oriel | Walkway fixed. Carry the lamp fuel to the keeper by the hearth.
 end
 label talk
-objective oriel | Sit with Oriel by the hearth.
+objective oriel | Sit with Aurex by the hearth.
 end
 label noplank
 say narr | A gap in the walkway. You'd need a plank - there's a pile by the cots.
@@ -99,18 +99,18 @@ say narr | (The chest is empty for now.)
 @end
 
 @scene CH13_TALK once
-say narr | The lamps are lit. The walkway holds. Oriel and Dain sit by the hearth drum.
+say narr | The lamps are lit. The walkway holds. Aurex and Raven sit by the hearth drum.
 say dain | Would the world be safer without me in it? Without - us.
-say oriel | No. I refuse the premise. Your body is not a public utility, Dain. Not the ministry's, not Rook's, not the world's.
+say oriel | No. I refuse the premise. Your body is not a public utility, Raven. Not the ministry's, not Rook's, not the world's.
 say ilyr | I heard them. During the activation. Other fragments, taking their hosts' voices. Some hosts let them. Some did not get the choice.
 say dain | Then we free both. The fragments and the hosts. Without making either of them disposable.
 say ilyr | Both.
 say mara | News, since you're awake. A signal flare's been going up over the flooded Rootward every dusk. Three green, one red. Old guide code.
-say dain | Nera.
+say dain | Elowen.
 say mara | Brackenford's west of here along the pontoon road. Rootward's north of it, where the forest used to be dry.
 say mara | And take the supplies in the hearth chest. You two can't fight the whole sea with borrowed spoons.
 chapter CH13
-objective oriel | Follow Nera's signal flares to the flooded Rootward (north-west, past Brackenford).
+objective oriel | Follow Elowen's signal flares to the flooded Rootward (north-west, past Brackenford).
 rumor | Brackenford's bakery is a footbridge depot now. Mara says the bunkhouse became a shelter.
 level_floor 24
 @end
@@ -175,7 +175,7 @@ label stay
 
 @scene T07_BERTH_MASTER
 if ch:CH16 after
-say sailor | Empty berth. Ivo Quill had plans for a ship here - a rescue ship. Heard he's in Cinderwake, if anyone's alive there.
+say sailor | Empty berth. The Rune Golem had plans for a ship here - a rescue ship. Heard he's in Cinderwake, if anyone's alive there.
 end
 label after
 say sailor | Wayfarer. Slowest ship I ever saw. Also the only one.

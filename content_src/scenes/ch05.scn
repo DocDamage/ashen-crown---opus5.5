@@ -1,4 +1,4 @@
-# CH05 — Paper Ghosts. Bellharbor, Pip, the confiscated ledger. SC05 is authored.
+# CH05 — Paper Ghosts. Bellharbor, Sak, the confiscated ledger. SC05 is authored.
 
 @scene T04_POT_CHILD
 if event:T04_PIP_OFFER,!flag:t04_distracted alarm
@@ -38,7 +38,7 @@ say scholar | Charts of every coast from here to the cliffs. Most of them still 
 @end
 
 @scene T04_LANE_KID
-say child | Jori writes our names down properly. Pip writes them down wrong on purpose. Mum says both are a kind of kindness.
+say child | Jori writes our names down properly. Sak writes them down wrong on purpose. Mum says both are a kind of kindness.
 @end
 
 @scene T04_LAMPLIGHTER
@@ -56,7 +56,7 @@ inn
 
 @scene T04_JORI
 if ch:CH05 after
-say jori | Jori Marr. Clerk in practice, if not on paper. I write down who people are. My brother writes down who they aren't.
+say jori | Jori. Clerk in practice, if not on paper. I write down who people are. My brother writes down who they aren't.
 end
 label after
 say jori | The families are choosing their own names in the archive record. That's how it should have been from the start.
@@ -65,14 +65,14 @@ say jori | The families are choosing their own names in the archive record. That
 @scene T04_PIP_OFFER once
 say pip | You look like people who need a boat and can't be seen asking for one.
 say dain | Who are you?
-say pip | Pip Marr. Forger, some say. Logistics, I say. Passage out of Bellharbor, anywhere the tide goes.
+say pip | Sak. Forger, some say. Logistics, I say. Passage out of Bellharbor, anywhere the tide goes.
 say pip | Price: the customs house confiscated a ledger of mine. Get it back and you sail free.
 say oriel | What is in the ledger?
 say pip | Names. Numbers. The usual paperwork of making people disappear, in a nice way.
 say nera | 'In a nice way.'
 say pip | There's a nice way! I'll show you. Ledger first.
 say pip | The clerk won't leave the counter unless something louder than her happens. Ask the kid with the pot.
-objective pip | Recover Pip's confiscated ledger from the customs house (south-west of the quay).
+objective pip | Recover Sak's confiscated ledger from the customs house (south-west of the quay).
 @end
 
 @scene T04_CUSTOMS_CLERK
@@ -145,10 +145,10 @@ say "Senn" | Then write it down somewhere the ministry can't cross it out.
 say pip | There's an archive under the tide. The drowned archive. Old contracts, older than the ministry. A record there isn't theirs.
 say pip | I'll take you. I owe - I owe the paperwork.
 join C08
-say narr | Pip's Tricks include Pilfer: steal from enemies. The Journal keeps rumors you hear, separate from your objective.
+say narr | Sak's Tricks include Pilfer: steal from enemies. The Journal keeps rumors you hear, separate from your objective.
 chapter CH05
 objective pip | Reach the Drowned Archive, south-east along the coast from Bellharbor, at low water.
 discover L_D05
-rumor | Pip says the Drowned Archive opens its tide door at low water, south-east of Bellharbor.
+rumor | Sak says the Drowned Archive opens its tide door at low water, south-east of Bellharbor.
 level_floor 12
 @end

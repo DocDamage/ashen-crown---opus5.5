@@ -1,4 +1,4 @@
-# CH04 — The Walking Furnace. Cinderwake, Ivo, the Foundry Colossus. SC04 is authored.
+# CH04 — The Walking Furnace. Cinderwake, the Golem, the Foundry Colossus. SC04 is authored.
 
 @scene T03_CLINIC
 say worker | How does stopping extraction keep the clinic heated? Tell me that and I'll march with you.
@@ -14,7 +14,7 @@ say child | My mum says the pipes sing when it's cold. I think they're complaini
 
 @scene T03_FOREMAN
 if ch:CH04 after
-say "Foreman" | Spine's closed unless Quill vouches for you. He built half of it.
+say "Foreman" | Spine's closed unless the Golem vouches for you. He built half of it.
 end
 label after
 say "Foreman" | Waterwheel's turning. It's slower. The clinic's warm. I'll take slower.
@@ -49,7 +49,7 @@ say farmer | Old cooling garden. The pipes used to run under it. Plants grew all
 
 @scene T03_PELL
 if recruited:C04 after
-say pell | You're the ones from Veyr. Ivo said you'd come. Ivo says a lot of things he means to do next week.
+say pell | You're the ones from Veyr. The Golem said you'd come. He says a lot of things he means to do next week.
 end
 label after
 say pell | Leave the manual. That's all I ask. Leave it so someone else can keep the wheel turning.
@@ -61,7 +61,7 @@ say pell | The temporary wheel is running. Crews rotate the hand crank at the lo
 say pell | It isn't elegant. It's ours.
 end
 label accord
-say pell | Ivo. You read the vault's records. So: the heartglass is alive and the clinic still needs heat. Both.
+say pell | Golem. You read the vault's records. So: the heartglass is alive and the clinic still needs heat. Both.
 say ivo | Both. The wheel's governor can take a pressure bypass - the old channel under this garden.
 say pell | Then fit it. With the crew watching, so they can do it without you.
 @end
@@ -91,7 +91,7 @@ say ivo | Every valve can vent into two chambers. One is always a workshop. Look
 say nera | Empty room, then. Not the one with people in it.
 say ivo | You'd be surprised how often that isn't the first thing people check.
 join C04
-say narr | Ivo's Tools set mines, decoys and field repairs. With five in the party, the extra member waits in reserve. Use Formation in the menu to swap.
+say narr | The Golem's Tools set mines, decoys and field repairs. With five in the party, the extra member waits in reserve. Use Formation in the menu to swap.
 objective ivo | Balance the red and blue lines, venting into empty chambers.
 @end
 
@@ -172,7 +172,7 @@ say pell | That is a better beginning than another promise.
 fade out 0.5
 say narr | Workers rig a waterwheel at the lower sluice and take turns at the crank. The clinic stays warm. The regulator stays dark.
 fade in 0.5
-say pell | Go and find out what's in the heartglass, Ivo. Then come back and fix the heating properly.
+say pell | Go and find out what's in the heartglass, Golem. Then come back and fix the heating properly.
 say ivo | That's not a revolution, Pell.
 say pell | It's a better one.
 say ivo | Shipping manifest from the regulator office. Heartglass crates, marked for Bellharbor on the Glass Coast.

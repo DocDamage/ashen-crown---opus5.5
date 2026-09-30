@@ -1,8 +1,8 @@
-# CH07 — To Borrow Sky. Skychain Viaduct, Corren, the Chain Roc, High Aerie.
+# CH07 — To Borrow Sky. Skychain Viaduct, Vespera, the Chain Roc, High Aerie.
 
 @scene D06_CREW
 say pilot | Maintenance crew, Skychain anchors. We'd reset them ourselves if the captain let us up.
-say worker | Captain says it's a one-person job. Captain's brother volunteered. Of course he did.
+say worker | Captain says it's a one-person job. Captain's sister volunteered. Of course she did.
 @end
 
 @scene D06_CORREN_MEET once
@@ -17,7 +17,7 @@ say corren | The ballast yard locks steady the wind lanes. The crew knows the lo
 say corren | Fine. We go together. I'll still take the nest myself.
 say oriel | We'll see.
 join C03
-say narr | Corren's Aerial techniques leave the field and strike on landing. While airborne he can't be targeted.
+say narr | Vespera's Aerial techniques leave the field and strike on landing. While airborne she can't be targeted.
 objective corren | Cross the Skychain: lock the ballast in the yard, then cross the span to the Chain Nest.
 @end
 
@@ -55,7 +55,7 @@ music M021
 say narr | The Roc slumps against the anchor, exhausted. The crew's alternate cable is already rigged, taut and steady.
 say corren | ...The span's holding.
 say nera | Because six people are holding it. Cut the tether.
-say narr | Corren cuts the chain. The Roc beats its wings once, twice, and lifts away into the cloud. Nobody falls.
+say narr | Vespera cuts the chain. The Roc beats its wings once, twice, and lifts away into the cloud. Nobody falls.
 say corren | I was supposed to - there was supposed to be a leap.
 say oriel | You survived something you expected to die for. That can be disorienting.
 xp 260
@@ -74,7 +74,7 @@ set cable_open
 say narr | High Aerie's cable ferry now runs west across the chasm toward the Pale Basin and Nacre.
 objective corren | Visit High Aerie (north), then take the cable ferry west to the Pale Basin.
 discover L_T05
-rumor | Corren says the wind shrine above High Aerie's stair is older than the Crown.
+rumor | Vespera says the wind shrine above High Aerie's stair is older than the Crown.
 level_floor 15
 @end
 
@@ -88,15 +88,15 @@ vestige V04
 @scene T05_EDDA
 if ch:CH09,!flag:accord_aerie accord
 if ch:CH07 after
-say edda | Captain Edda Hale. Corren's sister and supervisor. The Skychain's closed until the anchors are reset.
+say edda | Captain Edda Hale. Vespera's sister and supervisor. The Skychain's closed until the anchors are reset.
 end
 label accord
-say edda | The evidence from the vault - Corren told me. The cable ferry runs on a relay under the court. If that relay goes silent, every basket stops mid-chasm.
+say edda | The evidence from the vault - Vespera told me. The cable ferry runs on a relay under the court. If that relay goes silent, every basket stops mid-chasm.
 say edda | I need transit that doesn't depend on something screaming under my feet. Can your machinist do anything?
 say ivo | The cable brake by the operator's post. If I give it a counterweight governor, the baskets hold without the relay.
 end
 label after
-say edda | You brought my brother back with a crew behind him. I don't have a ceremony for that. I should.
+say edda | You brought my sister back with a crew behind him. I don't have a ceremony for that. I should.
 @end
 
 @scene T05_OLD_PILOT

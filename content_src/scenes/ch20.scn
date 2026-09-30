@@ -28,8 +28,8 @@ say ilyr | Voss is in the Crown Heart. What is left of him. He has fused himself
 say dain | Then we go there with everyone's pieces.
 chapter CH20
 set ash_accord
-objective dain | The Ash Accord is signed. When you're ready, fly Wayfarer to the Crown Heart in the middle of the Ember Sea.
-rumor | The Wayfarer crew room has a board of leads - personal matters for each of you, and four strange ones besides. None of them has to be done first.
+objective dain | The Ash Accord is signed. When you're ready, fly Lanternwake to the Crown Heart in the middle of the Ember Sea.
+rumor | The Lanternwake crew room has a board of leads - personal matters for each of you, and four strange ones besides. None of them has to be done first.
 level_floor 33
 @end
 

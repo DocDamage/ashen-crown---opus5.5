@@ -1,7 +1,7 @@
 # CH02 — Orders in Ashes. Veyr and the Underways. SC03 is the authored key scene.
 
 @scene VEYR_WANTED
-say narr | Veyr's south gate is doubled with guards. Dain's description is nailed to the post beside Tessa's.
+say narr | Veyr's south gate is doubled with guards. Raven's description is nailed to the post beside Morwen's.
 say tessa | They spelled my name right this time. Progress.
 @end
 
@@ -51,7 +51,7 @@ shop SHOP_T02
 @end
 
 @scene T02_AIDE
-say "Ministry Aide" | Captain Ashward! The Marshal's office has your commendation ready. Step up to the oath square.
+say "Ministry Aide" | Captain Raven! The Marshal's office has your commendation ready. Step up to the oath square.
 @end
 
 @scene T02_GUARD_S
@@ -74,7 +74,7 @@ say scholar | The lower hall survives everything. That's what lower halls are fo
 @scene CH02_ARREST once
 music M011
 face player up
-say "Ministry Aide" | Captain Dain Ashward. For the successful reopening of Crown Quarry, the Marshal's office commends -
+say "Ministry Aide" | Captain Raven. For the successful reopening of Crown Quarry, the Marshal's office commends -
 say dain | The quarry did not reopen. I refused the restart. Seven workers were trapped below the lift.
 say "Ministry Aide" | The report says -
 say dain | The report is wrong. Correct it.
@@ -93,11 +93,11 @@ objective | Find a way out of the Intake Hall.
 @end
 
 @scene D02_JAILER
-say guard | Sister Oriel's coming down to certify the apprentice. Mental fitness. Formality.
+say guard | Champion Aurex is coming down to certify the apprentice. Mental fitness. Formality.
 @end
 
 @scene D02_ORIEL once
-say oriel | Tessa Vale. I am here to certify whether you are fit to stand trial.
+say oriel | Morwen. I am here to certify whether you are fit to stand trial.
 say tessa | Am I?
 say oriel | I have not examined you yet. I have examined this.
 say oriel | Your charge sheet is dated two days before the inspection. They wrote the charge before you did anything.
@@ -109,7 +109,7 @@ say oriel | We take the records first. If you only run, you are fugitives. If yo
 say tessa | I like being a witness. Witnesses get to talk.
 set d02_oriel
 join C06
-say narr | Oriel's Prayer heals, cleanses and reveals what enemies have committed to. She cannot see what they have not chosen.
+say narr | Aurex's Prayer heals, cleanses and reveals what enemies have committed to. He cannot see what they have not chosen.
 objective oriel | Take the ledgers from the Ledger Stacks, then leave by the canal.
 @end
 

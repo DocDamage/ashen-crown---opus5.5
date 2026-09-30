@@ -203,7 +203,7 @@ spawn from_r02 1 21 right
 spawn from_r05 15 26 up
 exit 0 12..15 D07_R03 from_r04
 exit 0 20..23 D07_R02 from_r04
-exit 14..17 27 D07_R05 from_r04 if=flag:d07_open1,flag:d07_open2,flag:d07_open3 locked="Sable: Not until every cell is open. That was the agreement."
+exit 14..17 27 D07_R05 from_r04 if=flag:d07_open1,flag:d07_open2,flag:d07_open3 locked="Oni: Not until every cell is open. That was the agreement."
 
 === D07_R05
 name: Whitebone Redoubt - Tribunal Ring

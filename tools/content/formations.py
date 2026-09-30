@@ -159,8 +159,8 @@ SHOPS = {
 
 # speaker id -> display name, portrait key (character id or npc sprite)
 SPEAKERS = {
-    "dain": ["Dain", "C01"], "tessa": ["Tessa", "C02"], "corren": ["Corren", "C03"], "ivo": ["Ivo", "C04"],
-    "nera": ["Nera", "C05"], "oriel": ["Oriel", "C06"], "sable": ["Sable", "C07"], "pip": ["Pip", "C08"],
+    "dain": ["Raven", "C01"], "tessa": ["Morwen", "C02"], "corren": ["Vespera", "C03"], "ivo": ["Golem", "C04"],
+    "nera": ["Elowen", "C05"], "oriel": ["Aurex", "C06"], "sable": ["Oni", "C07"], "pip": ["Sak", "C08"],
     "ilyr": ["Ilyr", "ilyr"], "mara": ["Mara", "mara"], "inspector": ["Inspector Holt", "inspector"],
     "rook": ["Rook", "rook"], "voss": ["Voss", "voss"], "pell": ["Pell", "pell"], "jori": ["Jori", "jori"],
     "edda": ["Edda", "edda"], "sen": ["Sen", "sen"], "ansel": ["Ansel", "ansel"], "guard": ["Guard", "guard"],

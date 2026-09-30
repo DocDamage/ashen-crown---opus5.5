@@ -104,7 +104,7 @@ if flag:d08_projection mem
 doc Testimony_III | A century ago: the last independent great dragons were broken into distributed consciousnesses, spread across bred lineages and relay organs. The industry called the organs fossils. The lineages were called hosts.
 end
 label mem
-say narr | Memory flickers toward a nursery ledger. Dain stops at the records and does not step into the named child's memory.
+say narr | Memory flickers toward a nursery ledger. Raven stops at the records and does not step into the named child's memory.
 say dain | Records only. It's hers.
 doc Testimony_III | A century ago: the last independent great dragons were broken into distributed consciousnesses, spread across bred lineages and relay organs. The industry called the organs fossils. The lineages were called hosts.
 end
@@ -157,14 +157,14 @@ battle B08 noflee
 set b08_done
 music M024
 say narr | The masks crack. The single note breaks into many voices, all different, none silenced.
-say narr | A small fox made of warm light steps out of the broken chorus and sits at Oriel's feet.
+say narr | A small fox made of warm light steps out of the broken chorus and sits at Aurex's feet.
 say "Lumen Fox" | You kept every voice. I light what is actually there. Call me when you need to see.
 vestige V05
 xp 380
 @end
 
 @scene D08_SC06 once
-say narr | The Still Pool. Dain kneels at the water. His reflection moves a half-beat late.
+say narr | The Still Pool. Raven kneels at the water. His reflection moves a half-beat late.
 say ilyr | There is enough of me here to begin again.
 say dain | Here means my hands.
 say ilyr | They made them to hold me.
@@ -186,6 +186,6 @@ say rook | Freedom for all of them.
 say oriel | Without asking any of them.
 chapter CH09
 objective oriel | Return the evidence to Cinderwake, High Aerie and Nacre. Each needs something different.
-rumor | Ivo and Oriel think a single relay could be released slowly, locally, without a captive holding it.
+rumor | The Golem and Aurex think a single relay could be released slowly, locally, without a captive holding it.
 level_floor 20
 @end

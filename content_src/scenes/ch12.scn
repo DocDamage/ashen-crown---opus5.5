@@ -14,7 +14,7 @@ say narr | Three relay lights kindle around the dais.
 battle B10 noflee
 set b10_done
 music silence
-say narr | Rook goes down on one knee. The dais controls spark and fail. Ivo pulls the last visible coupling.
+say narr | Rook goes down on one knee. The dais controls spark and fail. The Golem pulls the last visible coupling.
 say ivo | The visible relays are dark.
 shake 0.5
 sfx FX015
@@ -23,14 +23,14 @@ say dain | Rook.
 say rook | I could not leave it to permission.
 say oriel | Whose permission?
 say rook | Any of yours.
-say narr | Under the dais floor, lines Ivo never drew light one after another - the fourth relay, the pasted-over line from the archive diagram.
-say ilyr | (Through Dain's throat, a command arrives that is not his own: overwrite the host.)
+say narr | Under the dais floor, lines the Golem never drew light one after another - the fourth relay, the pasted-over line from the archive diagram.
+say ilyr | (Through Raven's throat, a command arrives that is not his own: overwrite the host.)
 say ilyr | No.
 say dain | Was that for him or for me?
 say ilyr | For the command.
 say oriel | The common channel - it's giving every node the same order. I can break it. Not stop it. Break it.
 say ivo | The lifts still have power. Move.
-say narr | Oriel sets both hands on the dais and pulls the channel apart. The order shatters into a thousand small voices. It does not stop.
+say narr | Aurex sets both hands on the dais and pulls the channel apart. The order shatters into a thousand small voices. It does not stop.
 music M027
 flash #ffd8a0
 shake 1.0
@@ -47,7 +47,7 @@ say narr | Stone rains down in waves. Wait for the shaking to pass, then run.
 
 @scene CH12_FALL once
 music silence
-say narr | The lift cage slams shut. Ivo throws every lever he built into the cable brake.
+say narr | The lift cage slams shut. The Golem throws every lever he built into the cable brake.
 say ivo | Holding - holding -
 shake 1.2
 flash #ffffff

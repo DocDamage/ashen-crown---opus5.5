@@ -1,11 +1,11 @@
 # CH16 — The Engine That Waited. Cinderwake's assembly yard: channels, space, the Iron Tortoise, the manual, the launch.
 
 @scene CH16_YARD once
-say narr | The old assembly yard. On the slipway lies a hull - broad, ugly, bolted rather than grown. Ivo is under it with a lamp.
-say ivo | Tessa. Nera. Dain. Oriel. ...You're here. You're here and I'm covered in grease.
+say narr | The old assembly yard. On the slipway lies a hull - broad, ugly, bolted rather than grown. The Golem is under it with a lamp.
+say ivo | Morwen. Elowen. Raven. Aurex. ...You're here. You're here and I'm leaking oil everywhere.
 say tessa | You found a ship.
 say ivo | I found a ship nobody finished. Rescue vessel, drafted before heartglass made everything 'efficient'. Steam and gears. Heavy. Slow.
-say ivo | Her name's Wayfarer. The engine works. I've tested every part twice. It just needs the cooling channels powered and room to fit the stabilisers.
+say ivo | Her name's Lanternwake. The engine works. I've tested every part twice. It just needs the cooling channels powered and room to fit the stabilisers.
 say oriel | And?
 say ivo | And the hull twists on the slipway. Nothing I've got is heavy enough to hold her straight while we bolt the keel.
 objective ivo | Power the three cooling channels (valves on the north wall), then help the crews clear the assembly space.
@@ -91,15 +91,15 @@ say ivo | ...Now the manual. Pell's going to ask.
 @end
 
 @scene CH16_PELL
-say pell | Ivo. Before you take her anywhere. The manual.
+say pell | Golem. Before you take her anywhere. The manual.
 say ivo | It's in my head.
 say pell | That's the problem. Write it down. All of it. Every valve, every spare, every noise she makes when she's sick.
 say ivo | That's weeks of work -
-say pell | Then we'll wait weeks. I'm not watching another machine that only works when one man stands beside it.
+say pell | Then we'll wait weeks. I'm not watching another machine that only works when one engineer stands beside it.
 wait 0.4
 say ivo | ...You're right. You were right about the wheel, too.
 fade out 0.6
-say narr | Ivo writes for three days. Tessa checks every page. The crews read it aloud and argue with it, and Ivo changes it where they're right.
+say narr | The Golem writes for three days. Morwen checks every page. The crews read it aloud and argue with it, and the Golem changes it where they're right.
 fade in 0.6
 key K_MANUAL
 say narr | The manual lies on the workshop bench, heavy and dog-eared. Anyone can pick it up.
@@ -108,19 +108,19 @@ call CH16_LAUNCH
 
 @scene CH16_BENCH
 if flag:v06_given bench
-say narr | A workbench covered in Ivo's calculations. Very little of it is legible to anyone but Ivo.
+say narr | A workbench covered in the Golem's calculations. Very little of it is legible to anyone but the Golem.
 end
 label bench
 if ch:CH16 manual
 say narr | The workbench, waiting for a manual.
 end
 label manual
-say narr | The Wayfarer manual, dog-eared, with a pencil tied to it on a string. The newest note, in a crew hand: 'Page 12 is wrong. Fixed.'
+say narr | The Lanternwake manual, dog-eared, with a pencil tied to it on a string. The newest note, in a crew hand: 'Page 12 is wrong. Fixed.'
 @end
 
 @scene CH16_LAUNCH once
 music silence
-say narr | Launch morning. The crews take their places - not Ivo. Ivo stands at the back, with his hands in his pockets.
+say narr | Launch morning. The crews take their places - not the Golem. The Golem stands at the back, plated hands folded, runes dimmed.
 say worker | Page one. Cooling channels open.
 say worker | Open.
 say worker | Page two. Boiler to working pressure. Slow.
@@ -129,14 +129,14 @@ say worker | Page three. Release the slipway brakes.
 sfx FX031
 shake 0.5
 music M019
-say narr | Wayfarer slides down the slipway and lifts, heavy and steady, into the smoky sky over Cinderwake.
+say narr | Lanternwake slides down the slipway and lifts, heavy and steady, into the smoky sky over Cinderwake.
 say ivo | ...I didn't touch anything.
 say tessa | You wrote it down. That's touching everything.
 join C04
 chapter CH16
 vehicle ship true
 airship home
-objective dain | Wayfarer waits at Hearthward's berth. Find Corren (High Aerie), Pip (Veyr) and Sable (Whitebone) - in any order.
+objective dain | Lanternwake waits at Hearthward's berth. Find Vespera (High Aerie), Sak (Veyr) and Oni (Whitebone) - in any order.
 rumor | High Aerie's broken chain now links two new islands. A cliff settlement there is evacuating.
 rumor | Veyr's throne square is a distribution point. Someone is guarding the lower registry from Voss's remnants.
 rumor | Whitebone's old cells are a sanctuary now. People with bindings nobody can safely remove shelter there.
@@ -147,7 +147,7 @@ level_floor 28
 @scene T03P_PELL
 if ch:CH16 after
 say pell | Power fails in patches now. We rotate heat workshop by workshop. The clinic never goes cold - that's the one rule.
-say pell | Ivo's in the old assembly yard east of here. He says he found a ship. He also says he's fine. He's lying about one of those.
+say pell | The Golem's in the old assembly yard east of here. He says he found a ship. He also says he's fine. He's lying about one of those.
 end
 label after
 if ch:CH20 q04

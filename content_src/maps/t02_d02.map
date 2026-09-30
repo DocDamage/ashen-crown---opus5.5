@@ -207,7 +207,7 @@ spawn default 6 11 right
 npc oriel_cell 12 11 left sprite=C06 talk=D02_ORIEL if=!recruited:C06
 npc jailer 20 20 left sprite=guard talk=D02_JAILER if=!recruited:C06
 chest D02_C_R01 35 24 I001 2
-exit 18..21 0 D02_R02 from_r01 if=recruited:C06 locked="Dain: The door's barred. We need a way out that isn't this one."
+exit 18..21 0 D02_R02 from_r01 if=recruited:C06 locked="Raven: The door's barred. We need a way out that isn't this one."
 save 33 12
 
 === D02_R02
@@ -256,7 +256,7 @@ entities:
 spawn from_r01 15 29 up
 spawn from_r03 29 15 left
 exit 14..17 31 D02_R01 from_r02
-exit 31 14..17 D02_R03 from_r02 if=event:D02_SC03 locked="Oriel: The records first. All of them."
+exit 31 14..17 D02_R03 from_r02 if=event:D02_SC03 locked="Aurex: The records first. All of them."
 trigger 11..20 13..14 scene=D02_SC03 if=!event:D02_SC03
 read 6 17 "A ledger page: 'Unit 4419, dragonborn, Crown Quarry lift crew. Status: expendable material.' The unit has a name written in pencil: Wren."
 read 25 22 "Transport orders, stamped by the Marshal's office: heartglass cargo routed 'via Rootward sluices to the northern road.'"

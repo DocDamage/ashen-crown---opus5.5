@@ -2,7 +2,7 @@
 
 @scene CH19_ARRIVE once
 say narr | Whitebone's snow gate. The redoubt's cells are a sanctuary now - doors propped open, blankets on the bunks. Except three.
-say oriel | Sable?
+say oriel | Oni?
 say sable | Here. Don't come in with weapons out. Some of them flinch.
 say sable | Three people still wear bindings I wrote. I can't take them off alone. If I get the key wrong, the seal repeats its command. I won't risk that on someone else's body.
 say sable | I've already sent my name and testimony to Nacre. Whatever they decide, I'll answer it. But first - these three.
@@ -14,7 +14,7 @@ say monk | The sanctuary keeps no records of who is 'guilty'. Only who needs a b
 @end
 
 @scene CH19_SURVIVOR_GATE
-say survivor | You're with her? ...I'll watch. That's all.
+say survivor | You're with him? ...I'll watch. That's all.
 @end
 
 @scene CH19_SABLE
@@ -107,7 +107,7 @@ say narr | The cell is open.
 if flag:d07p_open1,flag:d07p_open2,flag:d07p_open3 all
 end
 label all
-objective oriel | All three cells are open. Walk Sable out to the sanctuary exit.
+objective oriel | All three cells are open. Walk Oni out to the sanctuary exit.
 @end
 
 @scene CH19_SC10 once
@@ -122,11 +122,11 @@ say survivor | Then start there.
 say sable | May I write it down?
 wait 0.8
 say survivor | ...Ilse. With an s.
-say narr | Sable writes it. The survivor watches her do it, and does not say thank you, and walks away.
+say narr | Oni writes it. The survivor watches him do it, and does not say thank you, and walks away.
 hide surv10
 say sable | Before I go back to Nacre for the hearing - Voss's network. If there's any way to stop it from compelling anyone again, I want to help.
 say oriel | The survivors decide that.
-say narr | In the sanctuary hall, the survivors talk it over without her. They come back with a single page: a limited agreement. She may help. They keep a copy of her account.
+say narr | In the sanctuary hall, the survivors talk it over without him. They come back with a single page: a limited agreement. He may help. They keep a copy of his account.
 set sable_agreement
 if party:C03 correnline
 goto correndone
@@ -140,7 +140,7 @@ say pip | Blank forms and a proper seal. Welcome to paperwork that doesn't hurt 
 label pipdone
 join C07
 chapter CH19
-objective dain | Sable is back, under the survivors' agreement.
+objective dain | Oni is back, under the survivors' agreement.
 call REUNION_CHECK
 level_floor 29
 @end

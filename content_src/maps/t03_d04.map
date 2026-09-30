@@ -117,7 +117,7 @@ spawn entry 10 12 up
 exit 10..11 13 T03_TOWN from_shop
 npc ivo_shop 10 5 down sprite=C04 talk=T03_IVO_SHOP if=!recruited:C04
 npc pell 6 5 right sprite=pell talk=T03_PELL
-read 13 2 "A regulator on the bench: brass coils around a cup of red heartglass. Tessa goes very quiet looking at it."
+read 13 2 "A regulator on the bench: brass coils around a cup of red heartglass. Morwen goes very quiet looking at it."
 save 18 11
 
 === T03_GARDEN
@@ -202,7 +202,7 @@ spawn from_town 1 13 right
 spawn from_r02 38 13 left
 spawn default 1 13 right
 exit 0 12..15 T03_TOWN from_spine
-exit 39 12..15 D04_R02 from_r01 if=recruited:C04 locked="Ivo: Wait. You don't walk into the Spine without someone who knows the lines."
+exit 39 12..15 D04_R02 from_r01 if=recruited:C04 locked="Golem: Wait. You don't walk into the Spine without someone who knows the lines."
 trigger 5..7 12..15 scene=D04_SHIFT_GATE if=!recruited:C04
 save 20 20
 heal 22 20

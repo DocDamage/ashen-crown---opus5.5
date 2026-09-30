@@ -43,7 +43,7 @@ spawn world 20 26 up
 spawn from_r02 37 13 left
 spawn default 20 26 up
 exit 18..21 27 WORLD l_d03
-exit 39 12..15 D03_R02 from_r01 if=event:D03_NERA_MEET locked="Nera: That's our road you're about to trample. Talk first."
+exit 39 12..15 D03_R02 from_r01 if=event:D03_NERA_MEET locked="Elowen: That's our road you're about to trample. Talk first."
 npc nera_camp 20 12 down sprite=C05 talk=D03_NERA_MEET if=!recruited:C05
 npc camp_elder 10 10 right sprite=elder talk=D03_CAMP_ELDER if=!ch:CH03
 npc camp_mother 25 17 left sprite=farmer talk=D03_CAMP_MOTHER if=!ch:CH03

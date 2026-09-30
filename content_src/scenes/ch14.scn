@@ -1,13 +1,13 @@
-# CH14 — Roads Grow Teeth. Flooded Rootward: Nera's survivors, three crossings, the Ash-Tide Warden (B11).
+# CH14 — Roads Grow Teeth. Flooded Rootward: Elowen's survivors, three crossings, the Ash-Tide Warden (B11).
 
 @scene CH14_CAMP once
 say narr | A camp on the high roots. Tarps, a cook fire, and forty people who have been waiting for the water to decide something.
-say nera | Dain? Oriel. You're alive. Good. Don't touch the map.
+say nera | Raven? Aurex. You're alive. Good. Don't touch the map.
 say dain | Hello to you too.
 say nera | There are three crossings north of here. Two of them drown people. One doesn't. I know which. So I lead every group across myself.
 say oriel | How many trips a day?
 say nera | As many as it takes.
-say mara | Which is why half of them are still here after two weeks. Nobody can wait for one guide forever, Nera.
+say mara | Which is why half of them are still here after two weeks. Nobody can wait for one guide forever, Elowen.
 say nera | If I hand out the map and somebody takes the wrong crossing -
 say mara | Then we make every crossing the right one.
 say nera | ...The current's being pushed south by something in the old sluice. If the sluice lets go, the water drops. The walkways can be raised with the levers - if you know which way they lift.
@@ -27,7 +27,7 @@ say mara | She's been carrying the whole camp on one map. Let's give her arms a 
 @end
 
 @scene CH14_CHILD
-say child | Nera says the forest used to be dry. I don't believe her. Trees can't live without swimming.
+say child | Elowen says the forest used to be dry. I don't believe her. Trees can't live without swimming.
 @end
 
 @scene CH14_ELDER
@@ -99,12 +99,12 @@ wait 0.5
 say nera | Fine. We make copies. One per family. Warnings in the margins. Names of who keeps each crossing.
 say nera | It's a start. Not a finish. I'm not done paying for what I sold, back before any of this.
 say dain | Come with us?
-say nera | Someone's got to find Tessa. She never could read a map.
+say nera | Someone's got to find Morwen. She never could read a map.
 hide nera_s
 join C05
 chapter CH14
 set brackenford_routes
-objective dain | Brackenford's new crossings are open. Take the repaired ferry from Hearthward east to Bellharbor to find Tessa.
+objective dain | Brackenford's new crossings are open. Take the repaired ferry from Hearthward east to Bellharbor to find Morwen.
 rumor | Hearthward's ferryman has his caulk back. The ferry to the Glass Coast runs again.
 level_floor 26
 @end
@@ -116,7 +116,7 @@ if ch:CH14 after
 say mara | I split my days between here and Hearthward. We count the shelter by name every night - that part I won't hand to anyone.
 end
 label after
-say mara | New crossings, copies of Nera's map on every door. Brackenford's two halves talk again.
+say mara | New crossings, copies of Elowen's map on every door. Brackenford's two halves talk again.
 end
 label q01
 call Q01_HOOK

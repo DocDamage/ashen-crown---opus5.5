@@ -40,7 +40,7 @@ grid:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 entities:
-block 18..26 22 tile=water if=!ch:CH14 msg="Nera's survivors are meant to rebuild this crossing. Not yet."
+block 18..26 22 tile=water if=!ch:CH14 msg="Elowen's survivors are meant to rebuild this crossing. Not yet."
 spawn world 1 14 right
 spawn east 42 14 left
 spawn default 1 14 right
@@ -206,7 +206,7 @@ tileset_over 19..20 10..21 bridge if=flag:d03p_route2
 switch route2 22 24 flag=d03p_route2 scene=CH14_ROUTE2
 tileset_over 31..32 10..21 bridge if=flag:d03p_route3
 switch route3 34 24 flag=d03p_route3 scene=CH14_ROUTE3
-read 12 25 "Nera's chalk on a stump: three crossings, three sluice levers. 'Lift each lever to raise its walkway. The current eats whichever route stays low.'" if=!q:Q05:ACTIVE
+read 12 25 "Elowen's chalk on a stump: three crossings, three sluice levers. 'Lift each lever to raise its walkway. The current eats whichever route stays low.'" if=!q:Q05:ACTIVE
 read 12 25 "x" scene=Q05_SURVEY if=q:Q05:ACTIVE
 chest D03P_C_R02 35 5 I002 2
 save 16 5

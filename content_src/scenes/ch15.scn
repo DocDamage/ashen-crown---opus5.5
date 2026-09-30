@@ -2,8 +2,8 @@
 
 @scene CH15_ARRIVE once
 say narr | The upper gallery of the old archive annex. The roof sags over a shelter of families - held up by a lattice of white light.
-say narr | Beneath it, standing in knee-deep water, Tessa. Her hands are raised. They are shaking.
-say nera | Tess!
+say narr | Beneath it, standing in knee-deep water, Morwen. Her hands are raised. They are shaking.
+say nera | Morwen!
 say tessa | Don't come under the edge. The roof goes when I stop.
 say jori | She's been holding it for three days. We bring her water. She won't sit.
 say oriel | Then we get everyone out from under it first. The walkway above - is it passable?
@@ -85,7 +85,7 @@ if flag:t04g_res1,flag:t04g_res2,flag:t04g_res3 all
 say narr | (Some families are still under the roof.)
 end
 label all
-objective oriel | Everyone is out along the walkway. Go to Tessa.
+objective oriel | Everyone is out along the walkway. Go to Morwen.
 @end
 
 @scene CH15_SC09 once
@@ -99,7 +99,7 @@ say jori | We light the lamps.
 music silence
 wait 0.4
 flash #ffffff
-say narr | Tessa lowers her hands. The lattice goes out. The roof comes down into empty water with a long, tired sound.
+say narr | Morwen lowers her hands. The lattice goes out. The roof comes down into empty water with a long, tired sound.
 fade out 0.8
 wait 0.6
 say narr | Darkness. Then, one by one along the walkway, ordinary lanterns - held by the families she was protecting.
@@ -107,27 +107,27 @@ fade in 0.8
 music M003
 say tessa | ...Oh.
 say tessa | They did that. Not me.
-say nera | You can sit down now, Tess.
+say nera | You can sit down now, Morwen.
 say tessa | I can sit down.
-say tessa | Ivo. We have to find Ivo. I want to see a machine that runs without someone pretending to be its fuel.
+say tessa | The Golem. We have to find the Golem. I want to see a machine that runs without someone pretending to be its fuel.
 join C02
 chapter CH15
-objective dain | Travel to Cinderwake (north-west, beyond Rootward) and find Ivo.
-rumor | Cinderwake crews are rotating heat between workshops with waterwheels. Someone says Ivo is in the old assembly yard.
+objective dain | Travel to Cinderwake (north-west, beyond Rootward) and find the Golem.
+rumor | Cinderwake crews are rotating heat between workshops with waterwheels. Someone says the Golem is in the old assembly yard.
 level_floor 27
 @end
 
 # ---------------------------------------------------------------- Bellharbor upper town (post)
 @scene T04U_JORI
 if ch:CH15 after
-say jori | Tessa's in the upper gallery. She won't let go of the roof. Please - she'll listen to you before she listens to me.
+say jori | Morwen's in the upper gallery. She won't let go of the roof. Please - she'll listen to you before she listens to me.
 end
 label after
 if ch:CH20 q
 say jori | The lower streets are gone, but the ropewalks make good roads. We're painting names on every door that has someone behind it.
 end
 label q
-say jori | Pip - if you see him - tell him I have people who need their names fixed. The right way this time.
+say jori | Sak - if you see him - tell him I have people who need their names fixed. The right way this time.
 @end
 
 @scene T04U_POT
