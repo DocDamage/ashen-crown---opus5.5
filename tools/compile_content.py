@@ -14,6 +14,7 @@ from content import gear as GR  # noqa: E402
 from content import cast as CAST  # noqa: E402
 from content import vestiges as VES  # noqa: E402
 from content import bestiary2 as BX  # noqa: E402
+from content import bosses2 as BS  # noqa: E402
 
 SUPPORTED_OPS = {"self_hp", "damage", "heal", "mp", "full_restore", "revive", "status", "cleanse", "dispel_positive", "atb", "oath",
                  "arm_overcast", "heat_exchange", "leap", "ground", "mine", "decoy", "steal", "protect", "lethal_guard",
@@ -596,9 +597,10 @@ def main():
     BX.apply(cat["enemies"], EN)
     BX.apply_formations(FM)
     BX.apply_world_groups(FM)
+    BS.apply(cat["bosses"], EN, TB, FM)
     content["enemies"] = build_enemies(cat["enemies"], cat["bosses"])
     for eid, e in content["enemies"].items():
-        e["lore"] = BX.LORE.get(eid, e.get("lore", ""))
+        e["lore"] = BX.LORE.get(eid, BS.LORE.get(eid, e.get("lore", "")))
     content["vestiges"] = TB.VESTIGES
     content["formations"] = build_formations(content["enemies"])
     content["shops"] = build_shops(content["items"])

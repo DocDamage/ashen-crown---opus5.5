@@ -874,8 +874,8 @@ func info_of(path: String) -> Dictionary:
 
 func world_for_phase(map_id: String) -> String:
 	## Pre-state dungeons revisited after the catastrophe exit to the altered overworld (shared location IDs).
-	if map_id == "WORLD" and S.get("world_phase", "pre") == "post":
-		return "WORLD_POST"
+	if S.get("world_phase", "pre") == "post" and (map_id == "WORLD" or map_id == "DEEP"):
+		return map_id + "_POST"
 	return map_id
 
 func autosave_current() -> Dictionary:

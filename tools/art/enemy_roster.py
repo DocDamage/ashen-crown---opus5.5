@@ -24,3 +24,5 @@ import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "content"))
 import bestiary2 as _BX  # noqa: E402
 ROSTER.update(_BX.ROSTER)
+import bosses2 as _BS  # noqa: E402
+ROSTER.update(_BS.ROSTER)
