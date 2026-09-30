@@ -293,6 +293,12 @@ func _process(delta: float) -> void:
 			p_tile = p_target
 			p_moving = false
 			_on_arrive()
+			# route bots release the key when a step starts; at bot speed a step can start and finish inside one
+			# frame, so never chain a new step in the arrival frame for them
+			if QA.route != "":
+				_update_camera()
+				queue_redraw()
+				return
 	if not p_moving and can_move():
 		var d = _input_dir()
 		if d != "":
