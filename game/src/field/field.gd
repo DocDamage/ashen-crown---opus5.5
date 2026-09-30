@@ -1444,6 +1444,9 @@ func ship_key() -> String:
 
 func riding() -> bool:
 	## Brackhorn mount: on the world map, on foot, once the party has it (Settings can turn riding off)
+	# route bots walk on foot: at bot speed a mounted step can finish inside one frame and chain an extra tile
+	if QA.route != "":
+		return false
 	return vehicle == "foot" and map.get("kind", "") == "world" and bool(Game.S["vehicle"].get("mount", false)) \
 		and Settings.get_v("ride_mount") != false and not hidden_actors.has("player")
 

@@ -520,7 +520,7 @@ def hearth():
     m.place(L.LOGS[1], 13, 11)
     m.place(L.LOGS[2], 19, 12)
     m.place(L.STOOLS_V[1], 14, 14)
-    m.place(L.STOOLS_V[3], 17, 14)
+    # (17,14) stays clear: the CH23 epilogue walk stops there
     # the long table west of the hearth
     m.place(L.LONG_TABLE, 6, 14)
     m.place(L.STOOLS_V[0], 7, 13)
