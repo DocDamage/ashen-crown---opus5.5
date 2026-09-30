@@ -28,6 +28,9 @@ var v = {
 	"window_scale": 4,
 	"window_color": "blue",   # UI window gradient theme (UI.THEMES)
 	"fullscreen": false,
+	"mature": false,           # Mature content (nudity uncovered); off by default
+	"mature_ok": false,        # one-time 18+ confirmation given
+	"difficulty_default": "normal",   # difficulty for new games (each save keeps its own)
 	"bindings": {},            # action -> [keycodes]
 }
 

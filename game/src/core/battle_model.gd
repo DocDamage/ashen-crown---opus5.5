@@ -131,12 +131,15 @@ func _init(p_content: Dictionary) -> void:
 # ======================================================================
 ## party: Array of dicts {cid, name, level, stats (F.member_stats), hp, mp, row, abilities, link}
 ## enemies: Array of enemy content ids (formation slots) or dicts {id, level}
+var opts_diff: Dictionary = {}     # difficulty multipliers for enemies {hp, dmg}
+
 func setup(party: Array, enemies: Array, inv: Dictionary, seed_value: int, opts: Dictionary = {}) -> void:
 	seed_used = seed_value
 	rng = Rng.new(seed_value)
 	loot_rng = Rng.new(seed_value ^ 0x5bd1e995)
 	inventory = inv.duplicate(true)
 	mode = opts.get("mode", "wait")
+	opts_diff = opts.get("difficulty", {})
 	speed = float(opts.get("speed", 1.0))
 	encounter = opts.get("encounter", {})
 	var i = 1
@@ -215,11 +218,12 @@ func add_enemy(spec, idx: int) -> Battler:
 	b.mhp = int(round(int(d["hp"]) * (scale * scale if scale != 1.0 else 1.0)))
 	if typeof(spec) != TYPE_STRING and spec.has("hp"):
 		b.mhp = int(spec["hp"])
+	b.mhp = maxi(1, int(round(b.mhp * float(opts_diff.get("hp", 1.0)))))
 	b.hp = b.mhp
 	b.mmp = 999
 	b.mp = 999
-	b.atk = float(d["atk"]) * scale
-	b.matk = float(d["mag"]) * scale
+	b.atk = float(d["atk"]) * scale * float(opts_diff.get("dmg", 1.0))
+	b.matk = float(d["mag"]) * scale * float(opts_diff.get("dmg", 1.0))
 	b.def = float(d["def"]) * scale
 	b.res = float(d["res"]) * scale
 	b.spd = int(d["spd"])

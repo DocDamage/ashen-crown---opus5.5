@@ -77,9 +77,11 @@ func _exec(c: Dictionary, labels: Dictionary):
 				nm = spk.strip_edges().replace("\"", "")
 			if not Content.data["speakers"].has(spk) and spk != "narr":
 				nm = spk.replace("_", " ")
-			await main.say(nm, _interp(c["text"]), info[1] if info.size() > 1 else "", ex)
+			if info.size() > 1 and Game.CHAR_IDS.has(str(info[1])):
+				nm = Game.short_name(str(info[1]))
+			await main.say(nm, Game.sub_names(_interp(c["text"])), info[1] if info.size() > 1 else "", ex)
 		"choice":
-			var idx: int = await main.choose(c["options"].map(func(o): return o["text"]))
+			var idx: int = await main.choose(c["options"].map(func(o): return Game.sub_names(o["text"])))
 			var tgt: String = c["options"][idx]["goto"]
 			if tgt != "" and labels.has(tgt):
 				return labels[tgt]
@@ -144,11 +146,27 @@ func _exec(c: Dictionary, labels: Dictionary):
 						await main.say("", m + " (milestone growth)", "")
 		"join":
 			var cid: String = a[0]
+			var first = not Game.is_recruited(cid)
 			var msgs = Game.recruit(cid)
 			Audio.sfx("FX028")
 			main.field.update_leader()
 			for m in msgs:
 				await main.say("", m, "")
+			if first and not Game.S.get("names_asked", {}).has(cid):
+				if not Game.S.has("names_asked"):
+					Game.S["names_asked"] = {}
+				Game.S["names_asked"][cid] = true
+				await main.name_entry(cid)
+		"name":
+			await main.name_entry(a[0])
+		"rename":
+			# the Namer: pick a recruited hero, then enter a name
+			var ids: Array = Game.S["party"]["roster"].duplicate()
+			var opts: Array = ids.map(func(x): return Game.short_name(x))
+			opts.append("Never mind")
+			var pick: int = await main.choose(opts)
+			if pick >= 0 and pick < ids.size():
+				await main.name_entry(ids[pick])
 		"leave", "avail":
 			var val = false if c["c"] == "leave" else (a[1] == "true")
 			Game.set_available(a[0], val)

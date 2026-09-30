@@ -10,13 +10,22 @@ const SAVE_DIR := "user://saves"
 const SLOTS := 3
 const STACK_CAP := 99
 const GOLD_CAP := 9999999
-const CHAR_IDS := ["C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08"]
+## Hero ids come from content (C01-C08 originally; the overhaul cast adds C09-C17).
+var CHAR_IDS: Array = []
+const PARTY_MAX := 5
+## Difficulty (per save): enemy HP and damage multipliers.
+const DIFFICULTY := {"easy": {"hp": 0.75, "dmg": 0.8}, "normal": {"hp": 1.0, "dmg": 1.0}, "hard": {"hp": 1.35, "dmg": 1.2}}
 
 var S: Dictionary = {}
 var playing = false
 var session_start_ms = 0
 var checkpoint: Dictionary = {}
 var fixture_label = ""   # non-empty when state was built by a labelled test fixture
+
+func _ready() -> void:
+	var ids: Array = Content.data.get("characters", {}).keys()
+	ids.sort()
+	CHAR_IDS = ids
 
 func _process(delta: float) -> void:
 	if playing and not S.is_empty() and not get_tree().paused:
@@ -36,6 +45,7 @@ func new_game() -> void:
 		"rng": {"combat": 12345, "loot": 777, "enc": 4242}, "play_settings": {"encounters": Settings.get_v("encounters")},
 		"journal": {"objective": "", "clue": "", "destination": "", "source": "", "rumors": [], "log": []},
 		"links": {}, "salvage": [], "clear": false, "epilogue": {}, "last_town": "L_T01",
+		"difficulty": str(Settings.get_v("difficulty_default")), "names": {},
 	}
 	for cid in CHAR_IDS:
 		S["party"]["members"][cid] = {"level": 1, "xp": 0, "hp": -1, "mp": -1, "equip": {}, "recruited": false, "starter_given": false}
@@ -51,6 +61,44 @@ func new_game() -> void:
 	recruit("C01")
 	playing = true
 	emit_signal("state_changed")
+
+func difficulty() -> String:
+	return str(S.get("difficulty", "normal")) if not S.is_empty() else "normal"
+
+func diff_mult(k: String) -> float:
+	return float(DIFFICULTY.get(difficulty(), DIFFICULTY["normal"])[k])
+
+## Player-chosen names (renaming when a hero joins, and at the Namer). Empty = the hero's own name.
+func char_name(cid: String) -> String:
+	var n = str(S.get("names", {}).get(cid, "")) if not S.is_empty() else ""
+	return n if n != "" else str(Content.ch(cid).get("name", cid))
+
+func short_name(cid: String) -> String:
+	var n = str(S.get("names", {}).get(cid, "")) if not S.is_empty() else ""
+	return n if n != "" else str(Content.ch(cid).get("short", cid))
+
+func rename_hero(cid: String, n: String) -> void:
+	if not S.has("names"):
+		S["names"] = {}
+	n = n.strip_edges()
+	if n == "" or n == str(Content.ch(cid).get("short", "")):
+		S["names"].erase(cid)
+	else:
+		S["names"][cid] = n
+	emit_signal("state_changed")
+
+## Replaces each renamed hero's default short name in a line of script text (whole words only).
+func sub_names(text: String) -> String:
+	if S.is_empty() or S.get("names", {}).is_empty():
+		return text
+	for cid in S["names"]:
+		var old = str(Content.ch(cid).get("short", ""))
+		if old == "":
+			continue
+		var re = RegEx.new()
+		re.compile("\\b" + old + "\\b")
+		text = re.sub(text, str(S["names"][cid]), true)
+	return text
 
 # ======================================================================
 # Flags / conditions
@@ -220,9 +268,9 @@ func recruit(cid: String) -> Array:
 	var s = stats(cid)
 	m["hp"] = s["mhp"]
 	m["mp"] = s["mmp"]
-	if S["party"]["active"].size() < 4 and not S["party"]["active"].has(cid):
+	if S["party"]["active"].size() < PARTY_MAX and not S["party"]["active"].has(cid):
 		S["party"]["active"].append(cid)
-	msgs.append("%s joins the party." % Content.ch(cid)["name"])
+	msgs.append("%s joins the party." % char_name(cid))
 	emit_signal("state_changed")
 	return msgs
 
@@ -232,11 +280,11 @@ func set_available(cid: String, val: bool) -> void:
 		S["party"]["active"].erase(cid)
 		# free any vestige link held by an unavailable member (reassign at next safe screen)
 	else:
-		if S["party"]["active"].size() < 4 and not S["party"]["active"].has(cid):
+		if S["party"]["active"].size() < PARTY_MAX and not S["party"]["active"].has(cid):
 			S["party"]["active"].append(cid)
 
 func set_active(order: Array) -> void:
-	S["party"]["active"] = order.filter(func(c): return is_available(c)).slice(0, 4)
+	S["party"]["active"] = order.filter(func(c): return is_available(c)).slice(0, PARTY_MAX)
 
 func row(cid: String) -> String:
 	return S["party"]["rows"].get(cid, "front")
@@ -258,7 +306,7 @@ func battle_party() -> Array:
 		var m = member(cid)
 		var s = stats(cid)
 		var hp = int(m["hp"]) if int(m["hp"]) >= 0 else int(s["mhp"])
-		out.append({"cid": cid, "name": Content.ch(cid)["short"], "stats": s, "hp": mini(hp, s["mhp"]),
+		out.append({"cid": cid, "name": short_name(cid), "stats": s, "hp": mini(hp, s["mhp"]),
 			"mp": mini(int(m["mp"]) if int(m["mp"]) >= 0 else int(s["mmp"]), s["mmp"]),
 			"row": row(cid), "abilities": learned_abilities(cid), "link": link_of(cid)})
 	return out
@@ -297,10 +345,10 @@ func award_xp(amount: int) -> Array:
 				m["hp"] = int(m["hp"]) + (s1["mhp"] - s0["mhp"])
 			m["mp"] = int(m["mp"]) + (s1["mmp"] - s0["mmp"])
 			if is_available(cid):
-				msgs.append("%s reached level %d." % [Content.ch(cid)["short"], nl])
+				msgs.append("%s reached level %d." % [short_name(cid), nl])
 				for a in learned_abilities(cid):
 					if not old_learn.has(a):
-						msgs.append("%s learned %s." % [Content.ch(cid)["short"], Content.ability(a)["name"]])
+						msgs.append("%s learned %s." % [short_name(cid), Content.ability(a)["name"]])
 	return msgs
 
 # ======================================================================
@@ -321,7 +369,7 @@ func can_equip(cid: String, slot: String, iid: String) -> Dictionary:
 	if kind == "accessory" and want != "accessory":
 		return {"ok": false, "reason": "Wrong slot"}
 	if not it.get("allowed", []).has(cid):
-		return {"ok": false, "reason": "%s cannot use this" % Content.ch(cid)["short"]}
+		return {"ok": false, "reason": "%s cannot use this" % short_name(cid)}
 	if want == "offhand":
 		var w = member(cid)["equip"].get("weapon", "")
 		if w != "" and Content.item(w).get("two_handed", false):
@@ -832,6 +880,14 @@ func _sanitize(st: Dictionary) -> Dictionary:
 	st["inventory"]["gold"] = int(st["inventory"]["gold"])
 	if not st.has("upgrades"):
 		st["upgrades"] = {}
+	# overhaul fields (older saves): difficulty, names, members for the heroes added in the overhaul
+	if not st.has("difficulty"):
+		st["difficulty"] = "normal"
+	if not st.has("names"):
+		st["names"] = {}
+	for cid in CHAR_IDS:
+		if not st["party"]["members"].has(cid):
+			st["party"]["members"][cid] = {"level": 1, "xp": 0, "hp": -1, "mp": -1, "equip": {}, "recruited": false, "starter_given": false}
 	for k in st["upgrades"].keys():
 		st["upgrades"][k] = int(st["upgrades"][k])
 	for k in st["rng"]:

@@ -182,7 +182,7 @@ func _draw_party_panel(r: Rect2) -> void:
 		var x = r.position.x + 13
 		for cid in res:
 			var st = "" if Game.is_available(cid) else " (away)"
-			UI.text(self, Vector2(x, y), Content.ch(cid)["short"] + st, UI.C_TEXT if Game.is_available(cid) else UI.C_DIM)
+			UI.text(self, Vector2(x, y), Game.short_name(cid) + st, UI.C_TEXT if Game.is_available(cid) else UI.C_DIM)
 			y += 10
 			if y > r.end.y - 12:
 				x += 100
@@ -201,7 +201,7 @@ func _draw_member_line(cid: String, p: Vector2, full: bool) -> void:
 	var hp = int(m["hp"]) if int(m["hp"]) >= 0 else s["mhp"]
 	var mp = int(m["mp"]) if int(m["mp"]) >= 0 else s["mmp"]
 	var x = p.x + 32
-	UI.text(self, Vector2(x, p.y), Content.ch(cid)["name"])
+	UI.text(self, Vector2(x, p.y), Game.char_name(cid))
 	UI.label(self, Vector2(p.x + 134, p.y), "LV")
 	UI.text_right(self, p.x + 162, p.y, str(m["level"]))
 	UI.text(self, Vector2(p.x + 170, p.y), "[" + Game.row(cid).substr(0, 1).to_upper() + "]", UI.C_DIM)
@@ -221,7 +221,7 @@ func _pick_member(cb: Callable, title: String, only_available: bool = true) -> v
 	var items = []
 	for cid in Game.S["party"]["roster"]:
 		var ok = Game.is_available(cid) or not only_available
-		items.append({"text": Content.ch(cid)["name"], "value": cid, "enabled": ok, "reason": "Away from the party"})
+		items.append({"text": Game.char_name(cid), "value": cid, "enabled": ok, "reason": "Away from the party"})
 	var m = _menu(items, Rect2(232, 150, 84, 56), 4, "")
 	m.chosen.connect(func(_i, it): cb.call(it["value"]))
 
@@ -378,7 +378,7 @@ const SLOTS := ["weapon", "offhand", "head", "body", "acc1", "acc2"]
 func _equip_menu(cid: String) -> void:
 	sel_member = cid
 	page = "equip"
-	var m = _menu([], Rect2(4, 4, 168, 98), 7, Content.ch(cid)["name"])
+	var m = _menu([], Rect2(4, 4, 168, 98), 7, Game.char_name(cid))
 	var refresh = func(mm: MenuList):
 		var items = []
 		var eq: Dictionary = Game.member(cid)["equip"]
@@ -516,7 +516,7 @@ func _abilities_menu(cid: String) -> void:
 		items.append({"text": Content.ability(ult)["name"] if has2 else "Personal story: ???", "value": ult, "enabled": false, "reason": "Battle technique" if has2 else "Resolve their personal story", "desc": Content.ability(ult)["desc"] if has2 else ""})
 	for g in st["grants"]:
 		items.append({"text": Content.ability(g)["name"] + " (acc.)", "right": str(int(Content.ability(g)["mp"])), "value": g, "enabled": Content.ability(g).get("field", false), "reason": "Granted while equipped", "desc": Content.ability(g)["desc"]})
-	var m = _menu(items, Rect2(4, 4, 200, 150), 12, Content.ch(cid)["name"])
+	var m = _menu(items, Rect2(4, 4, 200, 150), 12, Game.char_name(cid))
 	info_draw = func():
 		var it = m.current()
 		UI.win(self, Rect2(4, 158, 312, 78))
@@ -562,12 +562,12 @@ func _formation_menu() -> void:
 			var cid: String = order[i]
 			var tag = "Active" if i < act.size() else ("Reserve" if Game.is_available(cid) else "Away")
 			var mark = "* " if i == swap_from else ""
-			items.append({"text": mark + Content.ch(cid)["short"], "right": "%s %s" % [tag, Game.row(cid).substr(0, 1).to_upper()], "value": cid,
+			items.append({"text": mark + Game.short_name(cid), "right": "%s %s" % [tag, Game.row(cid).substr(0, 1).to_upper()], "value": cid,
 				"enabled": Game.is_available(cid), "reason": "Away from the party"})
 		mm.items = items
 		info_draw = func():
 			UI.win(self, Rect2(158, 4, 158, 150))
-			var lines = UI.wrap("Confirm a member, then another to swap places. Press Page (Q/E) on a member to switch front/back row. The first four available are active.", 146)
+			var lines = UI.wrap("Confirm a member, then another to swap places. Press Page (Q/E) on a member to switch front/back row. The first five available are active.", 146)
 			var y = 10
 			for ln in lines:
 				UI.text(self, Vector2(164, y), ln, UI.C_DIM)
@@ -583,7 +583,7 @@ func _formation_menu() -> void:
 			order[swap_from] = order[i]
 			order[i] = a
 			var avail = order.filter(func(c): return Game.is_available(c))
-			Game.set_active(avail.slice(0, 4))
+			Game.set_active(avail.slice(0, Game.PARTY_MAX))
 			var ros: Array = Game.S["party"]["roster"]
 			ros.sort_custom(func(x, y): return order.find(x) < order.find(y))
 			swap_from = -1
@@ -636,7 +636,7 @@ func _vestige_menu() -> void:
 	m.chosen.connect(func(_i, it):
 		var items = [{"text": "(unlink)", "value": ""}]
 		for cid in Game.available_members():
-			items.append({"text": Content.ch(cid)["name"], "value": cid})
+			items.append({"text": Game.char_name(cid), "value": cid})
 		var m2 = _menu(items, Rect2(208, 4, 108, 110), 9)
 		m2.chosen.connect(func(_j, it2):
 			var r = Game.link_vestige(it["value"], it2["value"])
@@ -785,6 +785,7 @@ func _bestiary() -> void:
 # Settings (persist separately from saves) and key remapping
 # ======================================================================
 const SETTING_DEFS := [
+	["difficulty", "Difficulty", ["easy", "normal", "hard"]],
 	["battle_mode", "Battle mode", ["wait", "active"]],
 	["battle_speed", "Battle speed", [0.75, 1.0, 1.25]],
 	["text_speed", "Text speed", [0, 1, 2, 3]],
@@ -799,7 +800,13 @@ const SETTING_DEFS := [
 	["pause_on_focus_loss", "Pause on focus loss", [true, false]],
 	["fullscreen", "Fullscreen", [false, true]],
 	["window_color", "Window colour", ["blue", "ash", "crimson", "verdant", "violet"]],
+	["mature", "Mature content", [false, true]],
 ]
+
+func _setting_value(k: String):
+	if k == "difficulty":
+		return Game.difficulty() if Game.playing else Settings.get_v("difficulty_default")
+	return Settings.get_v(k)
 
 func _setting_label(k: String, v) -> String:
 	match k:
@@ -818,7 +825,7 @@ func _settings_menu() -> void:
 	var refresh = func(mm: MenuList):
 		var items = []
 		for d in SETTING_DEFS:
-			items.append({"text": d[1], "right": _setting_label(d[0], Settings.get_v(d[0])), "value": d[0]})
+			items.append({"text": d[1], "right": _setting_label(d[0], _setting_value(d[0])), "value": d[0]})
 		for a in ["up", "down", "left", "right", "confirm", "cancel", "menu", "run"]:
 			var ks = []
 			for k in Settings.keys_for(a):
@@ -850,7 +857,7 @@ func _cycle_setting(k: String, dirn: int) -> void:
 	for d in SETTING_DEFS:
 		if d[0] == k:
 			var opts: Array = d[2]
-			var cur = Settings.get_v(k)
+			var cur = _setting_value(k)
 			var i = 0
 			for j in range(opts.size()):
 				if typeof(opts[j]) == typeof(cur) and opts[j] == cur:
@@ -858,6 +865,18 @@ func _cycle_setting(k: String, dirn: int) -> void:
 				elif typeof(cur) == TYPE_FLOAT and typeof(opts[j]) == TYPE_FLOAT and absf(opts[j] - cur) < 0.01:
 					i = j
 			i = (i + dirn + opts.size()) % opts.size()
+			if k == "difficulty":
+				if Game.playing:
+					Game.S["difficulty"] = opts[i]
+				Settings.set_v("difficulty_default", opts[i])
+				Audio.ui("FX001")
+				return
+			if k == "mature" and opts[i] and not Settings.get_v("mature_ok"):
+				_confirm("Mature content shows uncovered adult figures. It is meant for players aged 18 or older. Are you 18 or older?", func():
+					Settings.set_v("mature_ok", true)
+					Settings.set_v("mature", true)
+					_refresh_top())
+				return
 			Settings.set_v(k, opts[i])
 			if k == "fullscreen":
 				get_window().mode = Window.MODE_FULLSCREEN if opts[i] else Window.MODE_WINDOWED
@@ -941,9 +960,14 @@ func _save_menu(at_point: bool) -> void:
 func _confirm(q: String, yes: Callable) -> void:
 	var m = _menu([{"text": "No", "value": 0}, {"text": "Yes", "value": 1}], Rect2(120, 170, 80, 36), 2, "")
 	info_draw = func():
-		var qw = maxf(120.0, UI.width(q) + 28)
-		UI.win(self, Rect2(round(160 - qw / 2), 144, qw, 22))
-		UI.text_center(self, 160, 149, q)
+		var lines = UI.wrap(q, 280)
+		var qw = 120.0
+		for ln in lines:
+			qw = maxf(qw, UI.width(ln) + 28)
+		var qh = 11 * lines.size() + 11
+		UI.win(self, Rect2(round(160 - qw / 2), 166 - qh, qw, qh))
+		for li in range(lines.size()):
+			UI.text_center(self, 160, 171 - qh + li * 11, lines[li])
 	m.chosen.connect(func(_i, it):
 		_pop_list()
 		if it["value"] == 1:
@@ -1200,7 +1224,7 @@ func _shop_info(m) -> void:
 		for cid in Game.S["party"]["roster"]:
 			if y > 222:
 				break
-			var nm: String = Content.ch(cid)["name"].split(" ")[0]
+			var nm: String = Game.char_name(cid).split(" ")[0]
 			var can: bool = d.get("allowed", []).has(cid) and (d["kind"] != "weapon" or d.get("owner", cid) == cid)
 			UI.text(self, Vector2(211, y), nm, UI.C_TEXT if can else UI.C_DIM)
 			if not can:
@@ -1256,13 +1280,13 @@ func _split_menu() -> void:
 	split_teams = {"A": [], "B": []}
 	var avail = Game.available_members()
 	for i in range(avail.size()):
-		split_teams["A" if i < 4 else "B"].append(avail[i])
+		split_teams["A" if i < Game.PARTY_MAX else "B"].append(avail[i])
 	var m = _menu([], Rect2(4, 4, 150, 150), 11, "West (A) / East (B)")
 	var refresh = func(mm: MenuList):
 		var items = []
 		for cid in avail:
 			var team = "A" if split_teams["A"].has(cid) else "B"
-			items.append({"text": Content.ch(cid)["short"], "right": team, "value": cid})
+			items.append({"text": Game.short_name(cid), "right": team, "value": cid})
 		var ok: bool = split_teams["A"].size() == 4 and split_teams["B"].size() == 4
 		items.append({"text": "Confirm teams", "value": "__ok", "enabled": ok, "reason": "Each team needs four"})
 		mm.items = items
@@ -1274,7 +1298,7 @@ func _split_menu() -> void:
 				y += 11
 				var heal = false
 				for cid in split_teams[tm]:
-					UI.text(self, Vector2(170, y), Content.ch(cid)["short"])
+					UI.text(self, Vector2(170, y), Game.short_name(cid))
 					y += 10
 					for a in Game.learned_abilities(cid):
 						if Content.ability(a).get("kind", "") == "heal":

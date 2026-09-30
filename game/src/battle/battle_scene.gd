@@ -53,7 +53,7 @@ func setup(form_id: String, seed_value: int, opts: Dictionary) -> void:
 	var party = Game.battle_party()
 	model.setup(party, form["enemies"], Game.battle_inventory(), seed_value,
 		{"mode": Settings.get_v("battle_mode"), "speed": float(Settings.get_v("battle_speed")), "boss": form.get("boss", false),
-		 "encounter": form, "no_flee": opts.get("flags", []).has("noflee")})
+		 "encounter": form, "difficulty": Game.DIFFICULTY.get(Game.difficulty(), {}), "no_flee": opts.get("flags", []).has("noflee")})
 	bg = _t("res://assets/sprites/bg/%s.png" % form.get("bg", "quarry"))
 	for eid in model.enemy_ids:
 		Game.bestiary_seen(model.battlers[eid].ref, "seen")

@@ -33,13 +33,7 @@ func say(p_speaker: String, p_text: String, p_portrait: String = "", p_expr: Str
 	waiting = true
 
 func _has_portrait() -> bool:
-	return portrait_key != "" and _portrait() != null
-
-func _portrait() -> Texture2D:
-	var path = "res://assets/sprites/portraits/%s.png" % portrait_key
-	if not portrait_cache.has(path):
-		portrait_cache[path] = Content.load_art(path)
-	return portrait_cache[path]
+	return Portraits.has(portrait_key)
 
 func _page_text() -> String:
 	var ls = lines.slice(page * 4, page * 4 + 4)
@@ -79,14 +73,10 @@ func _draw() -> void:
 	UI.win(self, BOX)
 	var tx = BOX.position.x + 9
 	if _has_portrait():
-		var t = _portrait()
-		var col = {"neutral": 0, "concern": 1, "determined": 2}.get(expr, 0)
 		var fw = 40
-		if t.get_width() < 120:
-			col = 0
 		var pr = Rect2(BOX.position + Vector2(7, 7), Vector2(fw + 4, fw + 4))
 		UI.inset(self, pr, Color8(20, 26, 70))
-		draw_texture_rect_region(t, Rect2(pr.position + Vector2(2, 2), Vector2(fw, fw)), Rect2(col * fw, 0, fw, fw))
+		Portraits.draw(self, portrait_key, Rect2(pr.position + Vector2(2, 2), Vector2(fw, fw)), expr)
 		tx += 48
 	var ty = BOX.position.y + 5
 	if speaker != "":

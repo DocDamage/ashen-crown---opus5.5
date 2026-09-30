@@ -133,6 +133,10 @@ func to_title() -> void:
 	Audio.music("M001")
 
 func start_new_game() -> void:
+	if not QA.active:
+		await say("", "Choose a difficulty. You can change it at any time in Settings.")
+		var d: int = await choose(["Easy - for the story", "Normal", "Hard - tougher enemies"], 1)
+		Settings.set_v("difficulty_default", ["easy", "normal", "hard"][maxi(d, 0)])
 	await fade(true, 0.6)
 	if title_screen:
 		router.pop(title_screen)
@@ -143,6 +147,7 @@ func start_new_game() -> void:
 	await fade(false, 0.6)
 	if Content.data["scenes"].has("OPENING"):
 		await director.run("OPENING")
+	await name_entry("C01")
 
 func continue_from_state() -> void:
 	if title_screen:
@@ -217,7 +222,7 @@ func show_text(speaker: String, text: String) -> void:
 	await say(speaker, text)
 	field.busy = false
 
-func choose(options: Array) -> int:
+func choose(options: Array, default_idx: int = 0) -> int:
 	var m = MenuList.new()
 	var items = []
 	for o in options:
@@ -229,6 +234,7 @@ func choose(options: Array) -> int:
 	m.position = Vector2(316 - m.size.x, 166 - m.size.y)
 	m.allow_cancel = false
 	m.setup(items, options.size())
+	m.index = clampi(default_idx, 0, options.size() - 1)
 	ui.add_child(m)
 	router.push(m)
 	var res = [-1]
@@ -237,6 +243,18 @@ func choose(options: Array) -> int:
 	router.pop(m)
 	m.queue_free()
 	return res[0]
+
+## Name entry for a hero (on joining, or at the Namer). Skipped while the QA bot plays or a scene is skipped.
+func name_entry(cid: String) -> void:
+	if director.skipping or QA.active:
+		return
+	var n = NameEntry.new()
+	n.setup(cid)
+	ui.add_child(n)
+	router.push(n)
+	await n.done
+	router.pop(n)
+	n.queue_free()
 
 func show_doc(title: String, text: String) -> void:
 	if director.skipping:
