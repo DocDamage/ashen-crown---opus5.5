@@ -173,8 +173,76 @@ say worker | I light the lamps of the old district every night. Down here it's a
 @end
 
 @scene S3_MAGISTRATE
+if flag:s3_drowned_gate over
 say Magistrate | This district is under emergency law. It has been since it sank. Nobody has repealed it, and nobody will.
 say Magistrate | The Oath Gate stays shut until the emergency ends. I don't know who would declare it over. They're all down here with me.
+if !party:C01 end_
+choice | Declare the emergency over -> declare | Leave it -> end_
+label declare
+say dain | I carried the Crown's writs for six years. By the Crown's own form: the emergency is ended. Go home.
+say Magistrate | ...That is the correct form. Nobody has used it in a century.
+say narr | The Magistrate unpins the seal from his coat. Across the district, the lamps dim one by one, gently, like people going to sleep.
+set s3_emergency_over
+say Magistrate | The Oath Gate will open now. Its warden will not know the emergency is over. It never listened to anyone.
+end
+label over
+say Magistrate | The emergency is over. I am told I may rest. I am considering it.
+end
+label end_
+@end
+
+@scene S3_OATH_GATE
+if flag:s3_drowned_gate open
+if !flag:s3_emergency_over shut
+say narr | The bars grind apart. The empty armour behind them draws its sword and speaks the oath of the district to nobody.
+battle S3G_OATH noflee
+set s3_drowned_gate
+say narr | The armour kneels and does not rise. On the step where it stood lies a helm, polished for a century.
+end
+label shut
+say narr | The Oath Gate is locked by emergency law. The armour behind it has not blinked in a hundred years.
+end
+label open
+say narr | The gate stands open. The district's lamps are dark and calm.
+@end
+
+@scene S3_TITHE_BELL
+if flag:s3_tithe_hold done
+say narr | The customs seal on the clapper is still intact. Whatever was declared in the hold, it was never paid.
+choice | Cut the seal -> cut | Leave it -> leave
+label cut
+say narr | The bell rings once. Below, the chains on the hatch go slack - and something comes up through it.
+battle S3G_TITHE noflee
+set s3_tithe_hold
+say narr | The hatch hangs open. The hold is mostly sea, but a customs strongbox has been dragged up onto the deck.
+end
+label leave
+end
+label done
+say narr | The bell is silent again, and the hold is open.
+@end
+
+@scene S3_REEF_KEEPER
+if flag:s3_reef_sanctum done
+say narr | A voice from the kneeling coral, older than the reef: What comes every day, takes everything, and gives it all back?
+choice | The tide -> right | Death -> wrong | The Crown -> wrong
+label right
+say narr | The keeper closes its mouth. Across the nave, the coral hand on the sanctum door slowly opens.
+set s3_reef_sanctum
+end
+label wrong
+say narr | The keeper says nothing. The coral hand stays closed.
+end
+label done
+say narr | The keeper is quiet. The sanctum stands open.
+@end
+
+@scene S3_REEF_SANCTUM
+if flag:s3_reef_sanctum open
+say narr | The coral hand holds the door shut.
+end
+label open
+say narr | The great shell breathes in, and out. Before it, on the altar, a smaller shell breathes in time with you.
 @end
 
 @scene S3_CRADLE_SEAL

@@ -189,6 +189,18 @@ func run_gallery(p_main: Node, which: String) -> void:
 				main.field.show_map = false
 		get_tree().quit(0)
 		return
+	if which.begins_with("maps:"):
+		# ad-hoc review: --qa-gallery-set maps:D02_R01,D03_R02 (one shot per map at its default spawn)
+		Game.new_game()
+		for mp in which.substr(5).split(","):
+			if Content.map(mp).is_empty():
+				continue
+			main.enter_field(mp, "default")
+			main.field.banner_t = 0.0
+			await _g_frames(8)
+			await _g_shot("map_" + mp.to_lower())
+		get_tree().quit(0)
+		return
 	if which == "rescue":
 		# CH12 rescue review: the lift cage, a rescuer arriving, and the Bound in the Rootwell (changed tints)
 		Game.new_game()
@@ -213,6 +225,11 @@ func run_gallery(p_main: Node, which: String) -> void:
 		main.field.banner_t = 0.0
 		await _g_frames(8)
 		await _g_shot("rescue_bound_camp")
+		for mp in ["EP1_NAVE", "EP2_GALLERY", "EP3_CARILLON", "EP4_BELFRY", "D01_DEPTHS"]:
+			main.enter_field(mp, "default")
+			main.field.banner_t = 0.0
+			await _g_frames(8)
+			await _g_shot("rescue_" + mp.to_lower())
 		get_tree().quit(0)
 		return
 	if which == "ov":

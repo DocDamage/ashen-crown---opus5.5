@@ -233,6 +233,8 @@ exit 14..18 13 UNDERSEA l_s02
 block 15..16 1 tile=gate if=!flag:s3_drowned_gate msg="The Oath Gate of the old district. Its bars are rusted into the reef. Something on the far side is still standing guard."
 npc s3_lamplighter 12 6 down sprite=worker talk=S3_LAMPLIGHTER name="A Lamplighter"
 npc s3_magistrate 20 5 left sprite=noble talk=S3_MAGISTRATE name="Drowned Magistrate"
+read 15 2 "The Oath Gate. Behind the bars, a suit of district armour stands at attention, empty and watching." scene=S3_OATH_GATE
+chest S3_C_OATH 16 2 GN42 1 if=flag:s3_drowned_gate
 read 8 8 "A Crown ministry office. The seal on the door reads: 'CLOSED FOR THE DURATION OF THE EMERGENCY.'"
 read 23 8 "A pawnbroker's. Everything in the window is labelled 'UNREDEEMED'."
 chest S3_C_CROWN 27 10 A117 1
@@ -268,7 +270,8 @@ spawn world 13 11 up
 spawn default 13 11 up
 exit 12..15 12 UNDERSEA l_s03
 block 15..16 6..7 tile=gate if=!flag:s3_tithe_hold msg="The main hatch to the treasure hold. Chained from below, and the chains are warm."
-read 16 5 "The Tithe's bell, green with salt. Its clapper has been tied silent with a customs seal."
+read 16 5 "The Tithe's bell, green with salt. Its clapper has been tied silent with a customs seal." scene=S3_TITHE_BELL
+chest S3_C_HOLD 15 6 WN41 1 if=flag:s3_tithe_hold
 read 9 4 "A cannon, loaded, aimed at nothing. The powder has turned to stone."
 chest S3_C_TITHE1 24 4 I003 2
 chest S3_C_TITHE2 6 7 A013 1
@@ -302,7 +305,9 @@ spawn world 12 9 up
 spawn default 12 9 up
 exit 12..13 10 UNDERSEA l_s04
 block 12..13 2 tile=gate if=!flag:s3_reef_sanctum msg="Coral has grown across the sanctum door in the shape of a closed hand."
-read 12 2 "Behind the coral: an altar, and on it a shell as large as a door, breathing."
+read 12 2 "Behind the coral: an altar, and on it a shell as large as a door, breathing." scene=S3_REEF_SANCTUM
+read 4 5 "A coral keeper, carved kneeling. Its mouth is open as if asking something." scene=S3_REEF_KEEPER
+chest S3_C_SANCTUM 13 3 AN41 1 if=flag:s3_reef_sanctum
 chest S3_C_REEF 23 7 I005 1
 
 #! S3_CRADLE The Abyssal Cradle: the leviathan lair at the bottom of the trench. Thalassar's inner lair stays sealed.

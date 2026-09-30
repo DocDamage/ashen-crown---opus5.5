@@ -2,7 +2,7 @@
 
 === EP1_NAVE
 name: The Belfry Below - Drowned Nave
-tileset: crown
+tileset: reef
 music: M028
 zone: T07
 region: R03
@@ -47,7 +47,7 @@ save 18 17
 
 === EP2_GALLERY
 name: The Belfry Below - Bellrope Galleries
-tileset: crown
+tileset: reef
 music: M028
 zone: T07
 region: R03
@@ -89,7 +89,7 @@ save 15 14
 
 === EP3_CARILLON
 name: The Belfry Below - The Carillon
-tileset: crown
+tileset: reef
 music: M028
 zone: T07
 region: R03
@@ -134,7 +134,7 @@ chest EP3_C_ROPES 5 10 GN40 1
 
 === EP4_BELFRY
 name: The Belfry Below - The Wrong Bell
-tileset: crown
+tileset: reef
 music: M028
 zone: T07
 region: R03

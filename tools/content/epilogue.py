@@ -15,3 +15,13 @@ def apply(FM):
         FM.FORMATIONS[fid] = FM.F([FM.v(e, lv + k % 2) for k, e in enumerate(ids)], "reef" if i < 3 else "crown_core")
         names.append(fid)
     FM.GROUPS["W_EPI"] = names
+    apply_guards(FM)
+
+
+# undersea sealed spots (field systems s3 follow-up): the guardians behind the Tithe's hold and the Oath Gate
+GUARDS = {"S3G_TITHE": (["E117", "E117", "E114"], 42, "reef"), "S3G_OATH": (["E120", "E120"], 44, "crown")}
+
+
+def apply_guards(FM):
+    for fid, (ids, lv, bg) in GUARDS.items():
+        FM.FORMATIONS[fid] = FM.F([FM.v(e, lv) for e in ids], bg)

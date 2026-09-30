@@ -279,6 +279,9 @@ NAMED = [
     ("AN19", "The Tally", "acc", 102, "SB10", "S19", {"heal_mult": 1.12}, [], "", "Everything it gave back."),
     ("GN29", "The Verdict", "head", 110, "SB11", "S19", {"lowhp_guard": 0.25}, [], "", "What the two sums mean."),
     # standalone uniques
+    ("AN41", "Breathing Shell", "acc", 40, "S3_C_SANCTUM", "", {"mp_regen": 3}, [], "", "It breathes with the tide, and so do you."),
+    ("GN42", "Oathwarden's Helm", "head", 44, "S3_C_OATH", "", {"immune": ["doom", "silence"]}, [], "", "It kept the district's oath long after the district forgot it."),
+    ("WN41", "Customs Seal", "C08", 42, "S3_C_HOLD", "", {"acc_bonus": 8}, [], "", "The Tithe's customs seal, sharpened. Every pocket it touches is declared."),
     ("AN40", "The Right Bell", "acc", 95, "BX27", "", {"mhp_mult": 1.12, "immune": ["doom", "stun"]}, [], "", "It rings once, correctly, and then keeps quiet."),
     ("GN40", "Carillon Mantle", "robe", 90, "EP3_C_ROPES", "", {"mag_bonus": 0.08}, [], "", "Woven from bell-rope. It hums when magic passes through it."),
     ("GN41", "Nave-Warden Plate", "plate", 90, "EP2_C_WARDEN", "", {"elem_resist": {"water": True, "shadow": True}}, [], "", "Armour of the drowned cathedral's last guard."),

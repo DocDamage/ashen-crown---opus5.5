@@ -4297,7 +4297,7 @@ spawn default 15 21 up
 exit 14..17 23 D12_R05 from_r06
 === EP1_NAVE
 name: The Belfry Below - Drowned Nave
-tileset: crown
+tileset: reef
 music: M028
 zone: T07
 region: R03
@@ -4305,30 +4305,30 @@ location: L_T07
 encounters: W_EPI
 rate: 0.8
 dark: true
-legend: a=altar b=bench c=floor d=floor2 e=pillar f=rubble g=shallow h=stairs i=statue j=wall k=water
+legend: a=altar b=bench c=floor d=floor2 e=pillar f=reef g=rubble h=shallow i=stairs j=statue k=wall l=water
 grid:
-jjjjjjjjjjjjjjhhjjjjjjjjjjjjjj
-jjejjejjejjjfcddcfjjjejjejjejj
-jffffcffcfffcddddcfffcffcffcfj
-jfeccgggceccgddddgccecgggccefj
-jfcccggccccccddddccfcccggcccfj
-jfbcbcbcbcckkddddkkccbcbcbcbfj
-jfcccccccckkkgddgkkkcccccfccfj
-jfeccccccckkggddggkkcccccccefj
-jfbcbcbcbccfgcddfggccbcbcbcbfj
-jfcccccccccgccddfcgcccccccccfj
-jfeccfcccccccddddcfcccccfccefj
-jccccffccccccddddccccccffccccj
-jcbcbcbcbfcccddddccccbcbcbcbcj
-jccccccccccccddddccccccccccccj
-jcefcggccecccddddccceccggccecj
-jcccgggccccccddddccccccgggcccj
-jjfcggcccccccddddcccccccggcfjj
-jjjfcccccccccddddcccccccccfjjj
-jjjjicccccccaddddacccccccijjjj
-jjjjjjjfcccccddddcccccfjjjjjjj
-jjjjjjjjjjfccddddccfjjjjjjjjjj
-jjjjjjjjjjjjjfcccjjjjjjjjjjjjj
+kkkkkkkkkkkkkkiikkkkkkkkkkkkkk
+kkekkekkekkkfcddcfkkkekkekkekk
+kfcffcffcfffcddddcfffcffcffcfk
+kfecchhhcecchddddhccechhhcceck
+kfccchhccccccddddcccccchhcccck
+kcbcbcbcbccllddddllccbcbcbcbfk
+kfcccccccclllhddhlllccccccccfk
+kfecccccccllhhddhhllcccccccefk
+kfbcbcbcbcchhcddchhccbcbcbcbfk
+kfccccccccchccddcchcccccccccfk
+kfeccgcccccccddddcccccccgccefk
+kccccggccccccddddccccccggcccck
+kcbcbcbcbccccddddccccbcbcbcbck
+kccccccccccccddddcccccccccccck
+kcecchhccecccddddcccecchhcceck
+kccchhhccccccddddcccccchhhccck
+kkfchhcccccccddddccccccchhcfkk
+kkkfcccccccccddddcccccccccfkkk
+kkkkjcccccccaddddacccccccjkkkk
+kkkkkkkccccccddddcccccfkkkkkkk
+kkkkkkkkkkfccddddccfkkkkkkkkkk
+kkkkkkkkkkkkkfccckkkkkkkkkkkkk
 entities:
 spawn from_bell 15 20 up
 spawn default 15 20 up
@@ -4342,7 +4342,7 @@ chest EP1_C_AISLE 28 13 I024 1
 save 18 17
 === EP2_GALLERY
 name: The Belfry Below - Bellrope Galleries
-tileset: crown
+tileset: reef
 music: M028
 zone: T07
 region: R03
@@ -4350,23 +4350,23 @@ location: L_T07
 encounters: W_EPI
 rate: 0.8
 dark: true
-legend: a=bell b=chain c=floor d=floor2 e=rail f=rubble g=stairs h=void i=wall
+legend: a=bell b=chain c=floor d=floor2 e=rail f=reef g=stairs h=void i=wall
 grid:
 iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 ihhhhhhhhhhhhhhhhhhhhhhhhhhhhiii
-ihccbcccbcccbhhhhhccbcccbccchiii
-ihcddddddddddchhhcdddddddddchiii
-ihcdeeeeeeeddchhhcdeeeeeeefchiii
-ihcddddddddddcccccddfdddddddcggi
+ihccbcccbfccbhhhhhccbcccbccchiii
+ihfddddddddddchhhcdfdddddddchiii
+ihcdeeeeeeeddchhhcdeeeeeeedchiii
+ihcddddddddddcccccddddddddddcggi
 ihccccccccccchhhhhcccccccccccddi
 ihhhhhchhhhhhhhhhhhhhchhhhhhcdfi
 ihhhhhchhhhhhhhhhhhhcchhhhhhcdfi
 ihhhhhchhhhhhhhhhhhcchhhhhhhchhi
 ihhhhccchhhhhhhhhhcchhhhhhhhchhi
-ihhhccccchhhhhhhhcchhhhccccfchhi
-ihhhcdddcchhhhhhhchhhhcfdddcchhi
-ihhhcdadfcchhhhhhchhhhccdddcchhi
-ihhhcddfcccccccccchhhhhcccccchhi
+ihhhccccchhhhhhhhcchhhhcccccchhi
+ihhhcdddcchhhhhhhchhhhccdddcchhi
+ihhhcdadccchhhhhhchhhhccdddcchhi
+ihhhcdddcccccccccchhhhhcccccchhi
 ihhhhccchhhhhhhhhhhhhhcchhhhhhfi
 ihhhhhhchhhhhhhhhhhhhhcccccccfii
 ihhhhhhchhhhhhhhhhhhhhhhhhhhhhhh
@@ -4384,7 +4384,7 @@ read 12 2 "Bell-ropes hang into nothing. One is still warm, as if someone pulled
 save 15 14
 === EP3_CARILLON
 name: The Belfry Below - The Carillon
-tileset: crown
+tileset: reef
 music: M028
 zone: T07
 region: R03
@@ -4392,7 +4392,7 @@ location: L_T07
 encounters: W_EPI
 rate: 0.8
 dark: true
-legend: a=bell b=floor c=floor2 d=pillar e=rubble f=stairs g=wall
+legend: a=bell b=floor c=floor2 d=pillar e=reef f=stairs g=wall
 grid:
 gggggggggggggggggggggggggggg
 gggggggggggbffffbggggggggggg
@@ -4403,19 +4403,19 @@ gggggggebbbbccccbbbbeggggggg
 ggggggebabbbccccbbbabegggggg
 gggggebbbbbbccccbbbbbbeggggg
 ggggebbdbbbbccccbbbbdbbegggg
-ggggebbbbbbbccccbbbbbbbegggg
+ggggbbbbbbbbccccbbbbbbbegggg
 ggggbbbccccccccccccccbbegggg
-ggggbbbcccccccaccccccbbegggg
-ggggebbccccccccccccccbbbgggg
-ggggebbbbbbbccccbbbbbbbegggg
-ggggbbbdbbbbccccbbbbdbbegggg
-gggggbbbbbbbccccbbbbbbeggggg
-ggggggebbbbbccccbbbbbegggggg
-gggggggebbbbccccbbbbeggggggg
-ggggggggbbdbccccbdbegggggggg
+ggggebbcccccccaccccccbbbgggg
+ggggbbbccccccccccccccbbegggg
+ggggebbbbbbbccccbbbbbbbbgggg
+ggggbbbdbbbbccccbbbbdbbbgggg
+gggggebbbbbbccccbbbbbbbggggg
+ggggggbbbbbbccccbbbbbegggggg
+gggggggbbbbbccccbbbbeggggggg
+ggggggggbbdbccccbdbbgggggggg
 gggggggggebbccccbbeggggggggg
-ggggggggggebccccbegggggggggg
-gggggggggggecffceggggggggggg
+ggggggggggbbccccbegggggggggg
+gggggggggggecffcbggggggggggg
 entities:
 spawn from_ep2 13 20 up
 spawn default 13 20 up
@@ -4429,28 +4429,28 @@ read 14 11 "The carillon's heart bell, cracked down one side. The lip reads: LAS
 chest EP3_C_ROPES 5 10 GN40 1
 === EP4_BELFRY
 name: The Belfry Below - The Wrong Bell
-tileset: crown
+tileset: reef
 music: M028
 zone: T07
 region: R03
 location: L_T07
 encounters: none
 dark: true
-legend: a=floor b=floor2 c=pillar d=rubble e=stairs f=void g=wall
+legend: a=floor b=floor2 c=pillar d=reef e=stairs f=void g=wall
 grid:
 gggggggggggggggggggggggg
 gggggggffffffffffggggggg
 gggggffffffffffffffggggg
 ggggffffaaaaaaaaffffgggg
 gggfffaaabbbbbbaaafffggg
-gggffaaabbbbbbbbaaaffggg
-ggffaaddbbccccbbbadaffgg
+gggffaaabbbbbdbbaaaffggg
+ggffdaabbbccccbbbaaaffgg
 ggffaabbbcaaaacbbbaaffgg
-ggffaabbbcaaaacbbdaaffgg
+ggffaabbbcaaaacbbbaaffgg
 ggffaabbbcaaaacbbbaaffgg
 ggffaaabbbcaacbbbaaaffgg
 gggffaaabbbbbbbbaaaffggg
-gggfffaaabbbbbbaaafffggg
+gggfffdaabbbbbbaaafffggg
 ggggffffaaabbaaaffffgggg
 gggggffffffbbffffffggggg
 gggggggffffbbffffggggggg
@@ -9259,6 +9259,8 @@ exit 14..18 13 UNDERSEA l_s02
 block 15..16 1 tile=gate if=!flag:s3_drowned_gate msg="The Oath Gate of the old district. Its bars are rusted into the reef. Something on the far side is still standing guard."
 npc s3_lamplighter 12 6 down sprite=worker talk=S3_LAMPLIGHTER name="A Lamplighter"
 npc s3_magistrate 20 5 left sprite=noble talk=S3_MAGISTRATE name="Drowned Magistrate"
+read 15 2 "The Oath Gate. Behind the bars, a suit of district armour stands at attention, empty and watching." scene=S3_OATH_GATE
+chest S3_C_OATH 16 2 GN42 1 if=flag:s3_drowned_gate
 read 8 8 "A Crown ministry office. The seal on the door reads: 'CLOSED FOR THE DURATION OF THE EMERGENCY.'"
 read 23 8 "A pawnbroker's. Everything in the window is labelled 'UNREDEEMED'."
 chest S3_C_CROWN 27 10 A117 1
@@ -9362,7 +9364,9 @@ spawn world 12 9 up
 spawn default 12 9 up
 exit 12..13 10 UNDERSEA l_s04
 block 12..13 2 tile=gate if=!flag:s3_reef_sanctum msg="Coral has grown across the sanctum door in the shape of a closed hand."
-read 12 2 "Behind the coral: an altar, and on it a shell as large as a door, breathing."
+read 12 2 "Behind the coral: an altar, and on it a shell as large as a door, breathing." scene=S3_REEF_SANCTUM
+read 4 5 "A coral keeper, carved kneeling. Its mouth is open as if asking something." scene=S3_REEF_KEEPER
+chest S3_C_SANCTUM 13 3 AN41 1 if=flag:s3_reef_sanctum
 chest S3_C_REEF 23 7 I005 1
 
 #! S3_CRADLE The Abyssal Cradle: the leviathan lair at the bottom of the trench. Thalassar's inner lair stays sealed.
@@ -9397,7 +9401,8 @@ spawn world 13 11 up
 spawn default 13 11 up
 exit 12..15 12 UNDERSEA l_s03
 block 15..16 6..7 tile=gate if=!flag:s3_tithe_hold msg="The main hatch to the treasure hold. Chained from below, and the chains are warm."
-read 16 5 "The Tithe's bell, green with salt. Its clapper has been tied silent with a customs seal."
+read 16 5 "The Tithe's bell, green with salt. Its clapper has been tied silent with a customs seal." scene=S3_TITHE_BELL
+chest S3_C_HOLD 15 6 WN41 1 if=flag:s3_tithe_hold
 read 9 4 "A cannon, loaded, aimed at nothing. The powder has turned to stone."
 chest S3_C_TITHE1 24 4 I003 2
 chest S3_C_TITHE2 6 7 A013 1
