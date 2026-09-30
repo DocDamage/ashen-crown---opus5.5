@@ -154,6 +154,101 @@ def _value_noise(h, w, scale, seed):
     return (a * (1 - fx) + b * fx) * (1 - fy) + (c * (1 - fx) + d * fx) * fy
 
 
+_ALPHA = {}
+_RGBA = {}
+_LABELS = {}
+
+
+def _sheet_arrays(rel):
+    """Sheet pixels plus an object segmentation: touching objects are split where they meet by eroding 2 px,
+    labelling, then giving every pixel to its nearest eroded blob."""
+    if rel not in _RGBA:
+        import numpy as np
+        from scipy import ndimage
+        im = np.array(Image.open(os.path.join(EXT, rel)).convert("RGBA"))
+        a = im[..., 3] > 0
+        core = ndimage.binary_erosion(a, iterations=2)
+        lab0, n = ndimage.label(core, structure=np.ones((3, 3)))
+        if n:
+            _, (iy, ix) = ndimage.distance_transform_edt(lab0 == 0, return_indices=True)
+            lab = np.where(a, lab0[iy, ix], 0)
+        else:
+            lab, _ = ndimage.label(a, structure=np.ones((3, 3)))
+        _RGBA[rel], _ALPHA[rel] = im, a
+        _LABELS[rel] = (lab, ndimage.find_objects(lab))
+    return _RGBA[rel], _ALPHA[rel], _LABELS[rel]
+
+
+def _clipped_sides(a, sx, sy, sw, sh):
+    H, W = a.shape
+    return (sy > 0 and (a[sy, sx:sx + sw] & a[sy - 1, sx:sx + sw]).sum() > 2,
+            sy + sh < H and (a[sy + sh - 1, sx:sx + sw] & a[sy + sh, sx:sx + sw]).sum() > 2,
+            sx > 0 and (a[sy:sy + sh, sx] & a[sy:sy + sh, sx - 1]).sum() > 2,
+            sx + sw < W and (a[sy:sy + sh, sx + sw - 1] & a[sy:sy + sh, sx + sw]).sum() > 2)
+
+
+def _fixed_stamp(rel, sx, sy, sw, sh):
+    """Returns (new_rel, dx, dy, w, h) for a stamp whose rectangle slices an object, or None. The stamp becomes the
+    objects that mostly sit inside its rectangle (whole, masked), dropping bits of neighbours that poke in."""
+    import numpy as np
+    im, a, (lab, objs) = _sheet_arrays(rel)
+    if not any(_clipped_sides(a, sx, sy, sw, sh)):
+        return None
+    inside = lab[sy:sy + sh, sx:sx + sw]
+    keep = []
+    for v in np.unique(inside):
+        if not v:
+            continue
+        sl = objs[v - 1]
+        total = int((lab[sl] == v).sum())
+        ins = int((inside == v).sum())
+        if ins >= 0.35 * total:
+            keep.append(int(v))
+    if not keep:
+        return None
+    # slivers of neighbours cut by the rectangle: small blobs lying against its edge
+    sizes = {v: int((lab[objs[v - 1]] == v).sum()) for v in keep}
+    big = max(sizes.values())
+    def at_edge(v):
+        sl = objs[v - 1]
+        return sl[1].start <= sx or sl[1].stop >= sx + sw or sl[0].start <= sy or sl[0].stop >= sy + sh
+    keep = [v for v in keep if sizes[v] >= 0.06 * big or not at_edge(v)]
+    y0 = min(objs[v - 1][0].start for v in keep); y1 = max(objs[v - 1][0].stop for v in keep)
+    x0 = min(objs[v - 1][1].start for v in keep); x1 = max(objs[v - 1][1].stop for v in keep)
+    if x0 < sx - 72 or y0 < sy - 144 or x1 > sx + sw + 72 or y1 > sy + sh + 72:
+        return None
+    mask = np.isin(lab[y0:y1, x0:x1], keep)
+    piece = im[y0:y1, x0:x1].copy()
+    piece[~mask] = 0
+    alias_sheet = rel[len("cute/"):-4].replace("/", "_")
+    new_rel = "cute/_fix/%s_%d_%d_%d_%d.png" % (alias_sheet, sx, sy, sw, sh)
+    dst = os.path.join(EXT, new_rel)
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    Image.fromarray(piece).save(dst)
+    return new_rel, sx - x0, sy - y0, x1 - x0, y1 - y0
+
+
+def unclip(objs, sheets, reach=48):
+    """Stamps are cut by cell rectangles, which can slice through an object that overhangs its cells (a rubble pile, a
+    shelf side, a tree crown). Replace such stamps with a cleanly masked cut of the whole object (cute/_fix/...)."""
+    out = []
+    extra = {}
+    for o in objs:
+        si, sx, sy, sw, sh, x, y, base = o
+        try:
+            fx = _fixed_stamp(sheets[si], sx, sy, sw, sh)
+        except Exception:
+            fx = None
+        if not fx:
+            out.append(o); continue
+        rel, dx, dy, w, h = fx
+        if rel not in extra:
+            extra[rel] = len(sheets)
+            sheets.append(rel)
+        out.append([int(extra[rel]), 0, 0, int(w), int(h), int(x - dx), int(y - dy), base])
+    return out
+
+
 class Map:
     def __init__(self, mid, w, h, name, tileset, music="", zone="", location="", region="", group="misc", seed=None, **hdr):
         self.id, self.w, self.h = mid, w, h
@@ -377,6 +472,7 @@ class Map:
         objs = []
         for (s, x, y, base) in sorted(self.objects, key=lambda o: o[3]):
             objs.append([sheet_id(s), s.px[0], s.px[1], s.px[2], s.px[3], x, y, base])
+        objs = unclip(objs, sheets)
         over_name = ""
         if self.over:
             ov = Image.new("RGBA", g.size, (0, 0, 0, 0))
