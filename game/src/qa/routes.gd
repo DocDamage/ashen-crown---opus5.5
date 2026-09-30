@@ -1038,7 +1038,7 @@ func r_seg3() -> bool:
 		["use", "switch", "bell_low"], ["go", 3, 9], ["check", "flag:d05_dry"], ["use", "switch", "bell_high"],
 		["exit", "D05_R03"], ["go", 1, 19], ["check", "flag:d05_vault"], ["exit", "D05_R05"], ["go", 19, 14],
 		["check", "flag:b05_done"], ["exit", "D05_R06"], ["go", 15, 8], ["wait_map", "WORLD"], ["check", "ch:CH06"],
-		["ms", "ch06_done"], ["choice", [0]], ["go", 90, 44], ["settle"], ["loc", "L_D06"], ["npc", "corren_foot"],
+		["ms", "ch06_done"], ["choice", [0]], ["trig", "FERRY_BELLHARBOR"], ["settle"], ["loc", "L_D06"], ["npc", "corren_foot"],
 		["check", "recruited:C03"], ["exit", "D06_R02"], ["use", "switch", "ballast1"], ["use", "switch", "ballast2"],
 		["exit", "D06_R03"], ["exit", "D06_R04"], ["save", 2], ["exit", "D06_R05"], ["go", 19, 18], ["check", "flag:b06_done"],
 		["exit", "D06_R06"], ["go", 4, 11], ["check", "ch:CH07"], ["shot", "high_landing"], ["exit", "WORLD"], ["ms", "ch07_done"],
