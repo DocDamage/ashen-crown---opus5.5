@@ -1,0 +1,6 @@
+weather.gdshader and starfield.gdshader are adapted from shaders by Brian Smith
+(steampunkdemon.itch.io), MIT licence. Originals: Assets/Shaders/rain_and_snow_shader.gdshader,
+Assets/Shaders/starfield_shader_v5.gdshader.
+Ashen Crown changes: rain/snow and scroll direction as uniforms, pixel-grid snapping (pixel_size = 2
+matches the 2x backdrops), script-driven time so effects pause with the game, 960x720 defaults.
+Both compile and render in Godot 4.7.2 (tested with the OpenGL renderer).
