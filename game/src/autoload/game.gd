@@ -201,6 +201,15 @@ func _eval_one(c: String) -> bool:
 		"achv": r = has_achievement(p[1])
 		"stat", "meta":
 			r = Achievements.eval_meta(c)
+		# ---- CH12 rescue: changed:C07 (any form) or changed:C07:undead; bound (the Bound stand apart);
+		# bound_on (the Bound are the party in control); bound_member:C05; qa (the route bot plays)
+		"changed":
+			var f = Rescue.form(p[1])
+			r = f != "" and (p.size() < 3 or f == p[2])
+		"bound": r = Rescue.bound_active()
+		"bound_on": r = Rescue.bound_on()
+		"bound_member": r = Rescue.is_bound(p[1])
+		"qa": r = QA.active
 		_: push_error("Unknown condition " + c)
 	return r != neg
 
@@ -229,6 +238,8 @@ func stats(cid: String) -> Dictionary:
 func stats_for(cid: String, mem: Dictionary) -> Dictionary:
 	var st = F.member_stats(mem, Content.ch(cid), Content.data["items"], S.get("upgrades", {}), float(Content.data.get("gear", {}).get("step", 0.08)))
 	st = apply_set_bonus(st, mem)
+	st = Rescue.apply_form(cid, st)
+	st = Bonds.apply(cid, st)
 	var rs = float(st["passives"].get("reserve_scale", 0.0))
 	if rs > 0.0:
 		# Salvage line: stronger for every recruited, available member waiting in reserve
@@ -725,6 +736,7 @@ func apply_battle_victory(model: BattleModel) -> Array:
 	msgs.append_array(limit_learning())
 	msgs.append_array(vestige_learning(3 if model.is_boss_battle else 1))
 	msgs.append_array(gear_learning(3 if model.is_boss_battle else 1))
+	msgs.append_array(Bonds.after_battle(active()))
 	S["battles"] = int(S.get("battles", 0)) + 1
 	emit_signal("state_changed")
 	return msgs
@@ -1058,6 +1070,8 @@ func superboss_victory(bid: String) -> Array:
 			grant_vestige(vid)
 			msgs.append("The Vestige %s answers. (Link it from the menu.)" % Content.data["vestiges"][vid]["name"])
 	msgs.append_array(update_level_breaks())
+	if flag("levelbreak_1") and Rescue.merge():
+		msgs.append("An ancient dragon has fallen. The soul-bound ties loosen; the Bound can travel with everyone again.")
 	return msgs
 
 func expansion_victory(model: BattleModel) -> Array:

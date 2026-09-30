@@ -1,0 +1,306 @@
+# CH12 rescue: pick five of eight, the hidden timer at the lift, the Bound (story/rescue.gd).
+@scene CH12_HINT1
+shake 0.4
+say narr | The cable groans on the drum and settles. It is holding. For now.
+@end
+
+@scene CH12_HINT2
+shake 0.4
+say ilyr | (Through Raven's throat:) Five hearts, below. Still climbing. Wait.
+@end
+
+@scene CH12_HINT3
+shake 0.4
+say survivor | The brake! Pull it, or we all go down with them!
+say dain | Not yet.
+@end
+
+@scene CH12_HINT4
+shake 0.4
+say narr | A rivet shears from the housing and rings all the way down the shaft.
+@end
+
+@scene CH12_HINT5
+shake 0.4
+say oriel | There is still someone down there. I can feel them climbing.
+@end
+
+@scene CH12_HINT6
+shake 0.4
+say narr | The cable begins to unravel, one strand at a time.
+say dain | Wait. Wait for them.
+@end
+
+@scene CH12_ARRIVE_C02
+sfx FX028
+show resc 12 6 right C02
+move resc right right right right right right right right right
+hide resc
+say tessa | Four tenders. They're light, they're starving, and one of them bit me. Take them.
+if var:rescue_left==0 last
+say narr | (Morwen is on the cage. {v:rescue_left} still below.)
+end
+label last
+call CH12_LAST_SECOND
+@end
+
+@scene CH12_ARRIVE_C03
+sfx FX028
+show resc 12 6 right C03
+move resc right right right right right right right right right
+hide resc
+say corren | Cells are empty. I took the long way back. I always do.
+if var:rescue_left==0 last
+say narr | (Vespera is on the cage. {v:rescue_left} still below.)
+end
+label last
+call CH12_LAST_SECOND
+@end
+
+@scene CH12_ARRIVE_C04
+sfx FX028
+show resc 12 6 right C04
+move resc right right right right right right right right right
+hide resc
+say ivo | Unchained eleven. Carried two. Recommend we leave now.
+if var:rescue_left==0 last
+say narr | (Golem is on the cage. {v:rescue_left} still below.)
+end
+label last
+call CH12_LAST_SECOND
+@end
+
+@scene CH12_ARRIVE_C05
+sfx FX028
+show resc 12 6 right C05
+move resc right right right right right right right right right
+hide resc
+say nera | Every road out of there is gone except the one we made. Go.
+if var:rescue_left==0 last
+say narr | (Elowen is on the cage. {v:rescue_left} still below.)
+end
+label last
+call CH12_LAST_SECOND
+@end
+
+@scene CH12_ARRIVE_C07
+sfx FX028
+show resc 12 6 right C07
+move resc right right right right right right right right right
+hide resc
+say sable | Tenders out. No one left in the cells. That's the count.
+if var:rescue_left==0 last
+say narr | (Oni is on the cage. {v:rescue_left} still below.)
+end
+label last
+call CH12_LAST_SECOND
+@end
+
+@scene CH12_ARRIVE_C08
+sfx FX028
+show resc 12 6 right C08
+move resc right right right right right right right right right
+hide resc
+say pip | Got them! All of them! Even the grumpy one. Especially the grumpy one.
+if var:rescue_left==0 last
+say narr | (Sak is on the cage. {v:rescue_left} still below.)
+end
+label last
+call CH12_LAST_SECOND
+@end
+
+@scene CH12_ARRIVE_C09
+sfx FX028
+show resc 12 6 right C09
+move resc right right right right right right right right right
+hide resc
+say kitsune | An illusion held the door while the real ones ran. The prisoners are out. Mostly real.
+if var:rescue_left==0 last
+say narr | (Kitsune is on the cage. {v:rescue_left} still below.)
+end
+label last
+call CH12_LAST_SECOND
+@end
+
+@scene CH12_ARRIVE_C10
+sfx FX028
+show resc 12 6 right C10
+move resc right right right right right right right right right
+hide resc
+say archangel | Order kept. Every prisoner accounted for. Board.
+if var:rescue_left==0 last
+say narr | (Archangel is on the cage. {v:rescue_left} still below.)
+end
+label last
+call CH12_LAST_SECOND
+@end
+
+@scene CH12_LAST_SECOND
+shake 1.0
+say narr | The last of them leaps the gap as the housing splits. Every one of the five is on the cage.
+say dain | Now!
+call CH12_LIFT_DROP
+@end
+
+@scene CH12_LIFT_LEVER
+say narr | The cable brake. One pull and the cage drops.
+choice | Pull the brake -> pull | Wait -> wait
+label wait
+say dain | Not yet.
+end
+label pull
+if var:rescue_left>0 warn
+call CH12_LIFT_DROP
+end
+label warn
+say oriel | {v:rescue_left} of them are still down there.
+choice | Pull it anyway -> go | Wait -> wait2
+label wait2
+say dain | We wait.
+end
+label go
+call CH12_LIFT_DROP
+@end
+
+@scene CH12_LIFT_AUREX
+say oriel | I can hold the channel shut a little longer. The cable is another matter.
+say oriel | Whatever you decide, decide it with them in mind. Not with the cable.
+@end
+
+@scene CH12_LIFT_TENDER
+say survivor | They came back for us. Nobody comes back for relay tenders.
+@end
+
+@scene CH12_LIFT_CRUSH
+shake 1.2
+sfx FX015
+flash #ffffff
+say narr | The cable lets go. The cage falls into the Conduit with everyone in it.
+rescue crush
+@end
+
+@scene CH12_LIFT_DROP
+sfx FX015
+say narr | Raven hauls the brake. The cage drops.
+rescue finish
+if flag:rescue_all all
+say narr | Behind them, the cells vanish under the flood, and whoever was still below goes with them.
+say oriel | ...They were so close.
+say dain | Remember their names. We are not done with them.
+goto fall
+label all
+say narr | Five rescuers, every tender, and the cage still on its cable. For one heartbeat, nobody breathes.
+say dain | Everyone. You brought everyone.
+label fall
+call CH12_FALL_BODY
+@end
+
+@scene BOUND_INTRO
+say narr | ...
+say narr | Elsewhere. Under the roots of the drowned Conduit, a green fire burns.
+still ST09_rootwell
+bound swap
+if !changed:C02 skip_c02
+say tessa | Something followed me up out of the dark. It's warm. It's in my chest, next to the light I borrowed.
+label skip_c02
+if !changed:C03 skip_c03
+say corren | I remember the water closing. Then a voice that wasn't a god's, asking whether I'd finished.
+label skip_c03
+if !changed:C04 skip_c04
+say ivo | Unit crushed. Unit reassembled. The hands that rebuilt me were not mine and not yours.
+label skip_c04
+if !changed:C05 skip_c05
+say nera | The roots found me in the dark, and something older than the roots found them.
+label skip_c05
+if !changed:C07 skip_c07
+say sable | I held the door. The door held me. Something on the other side let me walk back through it.
+label skip_c07
+if !changed:C08 skip_c08
+say pip | Something clicked me back together. I have a new tail. It's brass. It's great. Don't look at it.
+label skip_c08
+if !changed:C09 skip_c09
+say kitsune | I lied to death. Death didn't care. A dragon's ember did, and it stayed.
+label skip_c09
+if !changed:C10 skip_c10
+say archangel | My host stopped answering long ago. When I fell, something else did.
+label skip_c10
+say narr | The ones who died came back changed. The ones who carried them out cannot walk away from them. The bond pulls like a rope around the heart.
+say narr | (The Bound are a party of their own, and their formation is fixed. Switch between them and Raven's company from the menu, at a save point or on the world map.)
+say narr | (The bond will loosen once one of the ancient dragons has fallen.)
+objective narr | The Bound: climb out of the Rootwell and find a way through the ruined world.
+bound swap
+@end
+
+@scene BOUND_SWAP
+bound swap
+@end
+
+@scene BOUND_FIRE
+say narr | The green fire burns without smoke. Sitting close to it, the five hear each other's hearts.
+heal
+@end
+
+@scene BOUND_MEET_C02
+if !changed:C02 survivor
+say tessa | I died, Raven. Down there. A dragon fragment lit in me like a lamp in an empty house. I can't go far from the others - the ones who carried me out. Not yet.
+end
+label survivor
+say tessa | I made it out, Raven. The ones who didn't came back, and I owe them my life. I go where they go - for now.
+@end
+
+@scene BOUND_MEET_C03
+if !changed:C03 survivor
+say corren | I drowned in the cells, Raven. Mother Sepulchre's court sent me back because I hadn't finished running. The ones who pulled me out - I'm tied to them now.
+end
+label survivor
+say corren | I made it out, Raven. The ones who didn't came back, and I owe them my life. I go where they go - for now.
+@end
+
+@scene BOUND_MEET_C04
+if !changed:C04 survivor
+say ivo | I was broken under the relay. CURATOR's machines in the Deep rebuilt me - better, it says. I disagree. I stay with the four who carried my pieces.
+end
+label survivor
+say ivo | I made it out, Raven. The ones who didn't came back, and I owe them my life. I go where they go - for now.
+@end
+
+@scene BOUND_MEET_C05
+if !changed:C05 survivor
+say nera | I was buried, Raven. A dragon's splinter grew through me like a root through stone. The ones who dug me out are my grove now. I have to go back to them.
+end
+label survivor
+say nera | I made it out, Raven. The ones who didn't came back, and I owe them my life. I go where they go - for now.
+@end
+
+@scene BOUND_MEET_C07
+if !changed:C07 survivor
+say sable | I held the cell door until the channel came in. Mother Sepulchre's court sent me back with the door still in my hands. I owe the four who waited for me. I don't leave a debt behind.
+end
+label survivor
+say sable | I made it out, Raven. The ones who didn't came back, and I owe them my life. I go where they go - for now.
+@end
+
+@scene BOUND_MEET_C08
+if !changed:C08 survivor
+say pip | I got squashed, Raven. Properly. One of CURATOR's machines put me back together and forgot to ask what cats are for. The others remembered. I'm staying with them.
+end
+label survivor
+say pip | I made it out, Raven. The ones who didn't came back, and I owe them my life. I go where they go - for now.
+@end
+
+@scene BOUND_MEET_C09
+if !changed:C09 survivor
+say kitsune | I burned out in the cells, Raven. A dragon's ember took my illusions for a home. I rule nothing now except the four who carried my ashes out. That's enough court for me.
+end
+label survivor
+say kitsune | I made it out, Raven. The ones who didn't came back, and I owe them my life. I go where they go - for now.
+@end
+
+@scene BOUND_MEET_C10
+if !changed:C10 survivor
+say archangel | I fell in the cells, Raven, and Mother Sepulchre's court raised me instead of the sky. I serve the four who waited for me. That is the only order I have left.
+end
+label survivor
+say archangel | I made it out, Raven. The ones who didn't came back, and I owe them my life. I go where they go - for now.
+@end
+

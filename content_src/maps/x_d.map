@@ -46,6 +46,8 @@ spawn from_quarry 19 2 down
 spawn world 20 27 up
 spawn default 20 27 up
 exit 18..22 29 DEEP l_u01
+exit 19..20 0 D01_DEPTHS from_breach
+trigger 19..20 3 scene=CH07B_BACK if=flag:crown_dig_cleared
 save 22 11
 npc breach_worker1 8 12 right sprite=worker talk=U01_BREACH_WORKER1 name="Trapped Worker"
 npc breach_worker2 12 14 left sprite=survivor talk=U01_BREACH_WORKER2 name="Trapped Worker"

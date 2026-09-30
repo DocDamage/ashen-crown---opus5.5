@@ -41,6 +41,10 @@ ach("ST09", "Story", "Let the Names Remain", "Reach the end of the Final Descent
 ach("ST10", "Story", "The First Unborrowed Morning", "See the ending.", ["clear"])
 ach("ST11", "Story", "Again, With Scars", "Begin a New Game+.", ["meta:ng>=1"])
 ach("ST12", "Story", "Every Road Walked", "Complete 20 questlines.", ["meta:quests>=20"], ["meta:quests", 20])
+ach("ST13", "Story", "At the Last Second", "Bring every rescuer back up the Conduit lift.", ["flag:rescue_all"])
+ach("ST14", "Story", "Still Five", "Reunite the Bound with everyone.", ["flag:bound_merged"])
+ach("ST15", "Story", "The Right Note", "Silence the bell under drowned Veyr.", ["flag:epi_done"])
+ach("ST16", "Story", "Every Map Filled", "Reach 100% completion.", ["meta:completion>=100"], ["meta:completion", 100])
 
 # ---------------------------------------------------------------- battle
 ach("BT01", "Battle", "Blooded", "Win 50 battles.", ["stat:battles>=50"])

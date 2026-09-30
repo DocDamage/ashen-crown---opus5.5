@@ -147,6 +147,13 @@ func _exec(c: Dictionary, labels: Dictionary):
 						await main.say("", m + " (milestone growth)", "")
 		"join":
 			var cid: String = a[0]
+			if Rescue.holds(cid):
+				# a reunion with one of the Bound: the scene plays, but the hero goes back to the other four
+				Rescue.note_met(cid)
+				if not Content.scene("BOUND_MEET_" + cid).is_empty():
+					await run("BOUND_MEET_" + cid, ctx)
+				await main.say("", "%s is soul-bound to the others and goes back to them." % Game.char_name(cid), "")
+				return -1
 			var first = not Game.is_recruited(cid)
 			var msgs = Game.recruit(cid)
 			if first:
@@ -249,6 +256,10 @@ func _exec(c: Dictionary, labels: Dictionary):
 		"flash":
 			if not skipping:
 				main.flash(Color(a[0]) if a.size() > 0 else Color.WHITE)
+		"still":
+			# still <id> [seconds]: a full-screen cutscene image; skipped when the art is not installed yet
+			if not skipping and StillView.exists(a[0]):
+				await main.show_still(a[0], float(a[1]) if a.size() > 1 else 0.0)
 		"doc":
 			await main.show_doc(a[0].replace("_", " ") if a.size() > 0 else "", c["text"])
 		"phase":
@@ -297,7 +308,14 @@ func _exec(c: Dictionary, labels: Dictionary):
 			return "abort"
 		"ship_travel":
 			pass
+		"rescue":
+			var jr = await _rescue_cmd(a, labels)
+			if typeof(jr) == TYPE_INT or (typeof(jr) == TYPE_STRING and jr != ""):
+				return jr
+		"bound":
+			await _bound_cmd(a)
 		"team":
+			Rescue.merge()
 			# final-dungeon teams: "team A" / "team B" lock the formation to that team; "team all" reunites
 			if a[0] == "all":
 				Game.S["party"]["locked"] = false
@@ -320,6 +338,69 @@ func _exec(c: Dictionary, labels: Dictionary):
 		_:
 			push_error("Unhandled scene command " + c["c"])
 	return -1
+
+# ---------------------------------------------------------------- CH12 rescue (story/rescue.gd)
+## rescue begin <skip_label>: jumps to the label when the route bot plays or the scene is skipped
+## rescue pick: the player sends five of the eight heroes after the prisoners; the timer starts
+## rescue finish: the brake is pulled (sets rescue_all or bound_formed)
+## rescue crush: the timer ran out - retry from the lift or load a save
+func _rescue_cmd(a: Array, labels: Dictionary):
+	match a[0]:
+		"begin":
+			if skipping or QA.active or Rescue.eligible().is_empty():
+				return labels.get(a[1], -1) if a.size() > 1 else -1
+		"pick":
+			var pool: Array = Rescue.eligible()
+			var need = mini(5, pool.size())
+			var team = []
+			while team.size() < need:
+				var opts = []
+				for c in pool:
+					if not team.has(c):
+						opts.append(Game.short_name(c))
+				var left = need - team.size()
+				main.toast("Send who? (%d more)" % left)
+				var idx = await main.choose(opts)
+				var picked = pool.filter(func(c): return not team.has(c))[idx]
+				team.append(picked)
+			Game.S["vars"]["rescue_n"] = team.size()
+			for i in range(team.size()):
+				Game.S["vars"]["rescue_%d" % i] = team[i]
+			Rescue.begin(team)
+			main.field.update_leader()
+		"finish":
+			var lost = Rescue.finish()
+			Game.S["vars"]["rescue_lost"] = lost.size()
+			main.field.update_leader()
+		"crush":
+			var choice = await main.defeat_menu()
+			Rescue.retry()
+			if choice == 0:
+				await main.warp(Rescue.LIFT_MAP, "start")
+				main.field.update_leader()
+				return "end"
+			await main.open_menu_async("load_after_defeat")
+			return "abort"
+	return -1
+
+## bound swap: switch control between Raven's company and the Bound (at the cursor's safe spot)
+## bound merge: the Bound rejoin everyone
+func _bound_cmd(a: Array) -> void:
+	match a[0]:
+		"swap":
+			if not Rescue.bound_active():
+				return
+			var f = main.field
+			var cur = {"map": f.map_id, "spawn": "default", "x": f.p_tile.x, "y": f.p_tile.y, "dir": f.p_dir}
+			var dest: Dictionary = Rescue.swap(cur)
+			await main.fade(true, 0.0 if skipping else 0.35)
+			var pos = Vector2i(int(dest.get("x", -1)), int(dest.get("y", -1)))
+			f.load_map(str(dest["map"]), str(dest.get("spawn", "default")), pos, str(dest.get("dir", "down")))
+			f.update_leader()
+			await main.fade(false, 0.0 if skipping else 0.35)
+		"merge":
+			Rescue.merge()
+			main.field.update_leader()
 
 func _interp(t: String) -> String:
 	var i = t.find("{v:")

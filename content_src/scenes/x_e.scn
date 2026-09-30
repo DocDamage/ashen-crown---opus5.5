@@ -629,11 +629,29 @@ quest QBM3 COMPLETED
 say narr | The seal stays shut. Behind it, CURATOR goes on dreaming, and the Lattice's lights dim to a patient glow.
 end
 label spoken
+if flag:sb_sb05_down gone
+if flag:levelbreak_1 wake
 if flag:qbm3_told told
 say narr | The seal hums. Behind it CURATOR is asleep, or pretending to be. Its lights pulse slowly: nobody, nobody, nobody.
 end
 label told
 say narr | The seal hums. Behind it CURATOR is thinking. The Lattice's lights flicker as it does, like someone muttering.
+end
+label wake
+say narr | The seal answers you now. Since the first wyrm fell, something in the Lattice has been listening for strength like yours.
+say curator | ...YOU AGAIN. YOU HAVE CHANGED. YOU ARE ON NO ROSTER I KEEP. I WOULD LIKE TO KEEP YOU.
+choice | Break the Inner Seal (a superboss waits) -> fight | Leave it dreaming -> leave
+label fight
+say curator | CURATION BEGINS. PLEASE HOLD STILL. THIS WILL BE ARCHIVED.
+battle SB05 noflee
+say narr | The Lattice goes dark from end to end, then relights, one district at a time, in no hurry at all.
+say curator | ...RECORD CLOSED. THANK YOU FOR VISITING. NOBODY EVER VISITS.
+end
+label leave
+say narr | You leave the seal humming. Behind it, a mind the size of a city dreams of a roster.
+end
+label gone
+say narr | The Inner Seal stands open. The chamber beyond is quiet; CURATOR's lights move slowly, the way a sleeper turns over.
 @end
 
 @scene QC16_FINALE
@@ -1299,8 +1317,29 @@ say narr | The rail is warm. It is sealed with something that isn't a lock. It i
 @end
 
 @scene U38_CHANCEL_BEYOND
+if flag:sb_sb08_down gone
 say narr | The rail has parted. The Choir That Remains turns, all of it at once, toward you.
-say narr | (The chancel is open. What waits here is beyond any ordinary hymn.)
+choice | Sing back (a superboss waits) -> fight | Keep silent -> leave
+label fight
+battle SB08 noflee
+say narr | The stalls empty one voice at a time. The last one hums a single note, very quietly, and stops of its own accord.
+end
+label leave
+say narr | You say nothing. The Choir waits. It has waited longer than this.
+end
+label gone
+say narr | The chancel is silent. It is the good kind of silence.
+@end
+
+@scene U38_RAIL_PART
+if flag:u38_chancel_open done
+if flag:levelbreak_1 part
+say narr | The chancel rail. Beyond it, the choir stalls are full. Nobody is singing. Nobody has ever stopped.
+end
+label part
+say narr | The rail trembles as you touch it, like a held note finally let go.
+set u38_chancel_open
+label done
 @end
 
 # ================================================================ U40 Undersea Throat
@@ -1519,8 +1558,31 @@ say narr | On the throne's arm: a child's ribbon and a soldier's tag, side by si
 @end
 
 @scene U31_SANCTUM
+if flag:sb_sb06_down gone
 say narr | The veil has lifted. Beyond it, the inner sanctum breathes, and something in it is taking off its face.
-say narr | (Mother Sepulchre's true form waits in the sanctum.)
+say sepulchre | You came back. Children always come back. Look at me, then. Properly, this time.
+choice | Look (a superboss waits) -> fight | Look away -> leave
+label fight
+battle SB06 noflee
+say narr | The sanctum goes cold. The drawers under the throne slide open, one after another, and the keepsakes inside are only keepsakes now.
+end
+label leave
+say narr | You keep your eyes on the floor. Behind the veil, something laughs very kindly.
+end
+label gone
+say narr | The sanctum is empty. The veil hangs still. Nobody is adopting anyone tonight.
+@end
+
+@scene U31_VEIL_LIFT
+if flag:sepulchre_unveiled done
+if flag:bx22_done,flag:levelbreak_1 lift
+say narr | The Veil breathes in, out. It does not open for the living. Not yet.
+end
+label lift
+say narr | The Veil stirs as you come near: it has felt the wyrm's death in the rock, and it wants a closer look at whoever did it.
+set sepulchre_unveiled
+say narr | The Veil lifts.
+label done
 @end
 
 @scene QC15_VEIL
@@ -2088,21 +2150,81 @@ say lastpilgrim | Three keepers, three doors. Behind the last, the crown that wa
 @end
 
 @scene U39_KEEPER1
-say narr | The first keeper's door. Behind it, something counts. Every item, every tithe, every life the Crown took, in one voice that never draws breath.
-say narr | The door is sealed. The Ledger is not ready to be read. (A keeper waits here.)
+if flag:sb_sb09_down gone
+if flag:levelbreak_1 open
+say narr | The keeper's door is sealed. The Ledger is not ready for you.
+end
+label open
+say narr | The door opens onto a room of ledgers that reach the dark. The Ledger looks up.
+choice | Answer the keeper (a superboss waits) -> fight | Not yet -> leave
+label fight
+battle SB09 noflee
+say narr | The keeper's books close. Somewhere deeper, a lock turns.
+end
+label leave
+say narr | You back out. The counting resumes behind the door.
+end
+label gone
+say narr | The keeper's room is quiet. The books are closed.
 @end
 
 @scene U39_KEEPER2
-say narr | The second keeper's door. Behind it, a much shorter count: everything the Crown ever gave back. It finishes quickly, and starts again.
-say narr | The door is sealed. The Tally is not ready to be heard. (A keeper waits here.)
+if flag:sb_sb10_down gone
+if flag:sb_sb09_down open
+say narr | The keeper's door is sealed. The Tally is not ready for you.
+end
+label open
+say narr | The door opens onto a room of ledgers that reach the dark. The Tally looks up.
+choice | Answer the keeper (a superboss waits) -> fight | Not yet -> leave
+label fight
+battle SB10 noflee
+say narr | The keeper's books close. Somewhere deeper, a lock turns.
+end
+label leave
+say narr | You back out. The counting resumes behind the door.
+end
+label gone
+say narr | The keeper's room is quiet. The books are closed.
 @end
 
 @scene U39_KEEPER3
-say narr | The third keeper's door. Behind it, two books close together with a sound like a gavel.
-say narr | The door is sealed. The Verdict has not been reached. (A keeper waits here.)
+if flag:sb_sb11_down gone
+if flag:sb_sb10_down open
+say narr | The keeper's door is sealed. The Verdict is not ready for you.
+end
+label open
+say narr | The door opens onto a room of ledgers that reach the dark. The Verdict looks up.
+choice | Answer the keeper (a superboss waits) -> fight | Not yet -> leave
+label fight
+battle SB11 noflee
+say narr | The keeper's books close. Somewhere deeper, a lock turns.
+end
+label leave
+say narr | You back out. The counting resumes behind the door.
+end
+label gone
+say narr | The keeper's room is quiet. The books are closed.
 @end
 
 @scene U39_UNMADE_DOOR
+if flag:sb_sb12_down gone
+if flag:sb_sb11_down,flag:levelbreak_2 open
 say narr | The innermost door. Behind it, something the size of a crown and the weight of a kingdom turns, slowly, looking for a head.
-say narr | The door is sealed three times over, once for each keeper. It will not open until all three are answered.
+say narr | The door is sealed three times over, once for each keeper, and once more for the four wyrms. It will not open yet.
+end
+label open
+say narr | The door opens. The Unmade Crown turns toward you and, for the first time, finds a head it likes.
+say ilyr | Raven. Whatever happens in there, it does not get to be worn.
+choice | Go in (the final superboss) -> fight | Not yet -> leave
+label fight
+battle SB12 noflee
+say narr | The crown that was never made comes apart into the thing it always was: ash, and a little light.
+say ilyr | ...There. Nobody wears it. Not ever.
+event HOLLOW_HEART_DONE
+end
+label leave
+say narr | You step back. The door stays open. It is patient. Crowns are.
+end
+label gone
+say narr | The innermost room is empty but for a little ash, and the ash is only ash.
 @end

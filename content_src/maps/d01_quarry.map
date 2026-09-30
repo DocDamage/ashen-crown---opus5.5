@@ -261,6 +261,9 @@ grid:
 #################::::::#################
 #################::::::#################
 entities:
+spawn from_depths 5 17 right
+exit 4 16..18 D01_DEPTHS from_quarry if=flag:deep_open
+trigger 5..8 15..19 scene=CH07B_COLLAPSE if=flag:deep_quest,!flag:deep_open
 npc worker6 4 18 right sprite=worker talk=D01_W6 if=!flag:d01_w6
 read 30 20 "A surveyor's note: 'Fossil organs show no response to stimulus.' Someone has underlined 'no' twice."
 trigger 17..22 18 scene=D01_SC02 if=!flag:b01_done

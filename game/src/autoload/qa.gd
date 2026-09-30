@@ -189,6 +189,32 @@ func run_gallery(p_main: Node, which: String) -> void:
 				main.field.show_map = false
 		get_tree().quit(0)
 		return
+	if which == "rescue":
+		# CH12 rescue review: the lift cage, a rescuer arriving, and the Bound in the Rootwell (changed tints)
+		Game.new_game()
+		for cid in Game.CHAR_IDS:
+			Game.recruit(cid)
+		var team = ["C02", "C03", "C04", "C07", "C10"]
+		main.enter_field(Rescue.LIFT_MAP, "start")
+		Rescue.begin(team)
+		main.field.update_leader()
+		main.field.banner_t = 0.0
+		await _g_frames(6)
+		await _g_shot("rescue_lift")
+		main.field.show_actor("resc", 15, 6, "right", "C03")
+		main.field.move_actor("resc", ["right", "right", "right"])
+		await _g_frames(20)
+		await _g_shot("rescue_arrive")
+		Game.S["rescue"]["arrived"] = ["C02", "C03"]
+		Rescue.finish()
+		Rescue.swap({"map": Rescue.LIFT_MAP, "x": 25, "y": 6, "dir": "left"})
+		main.enter_field("BOUND_CAMP", "default")
+		main.field.update_leader()
+		main.field.banner_t = 0.0
+		await _g_frames(8)
+		await _g_shot("rescue_bound_camp")
+		get_tree().quit(0)
+		return
 	if which == "ov":
 		# overhaul review: vehicles on the world maps, and each new recruit / Vestige in its room
 		Game.S["vehicle"]["mount"] = true

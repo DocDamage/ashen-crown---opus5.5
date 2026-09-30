@@ -42,6 +42,8 @@ static func draw_field(ci: CanvasItem, cid: String, dir: String, moving: bool, f
 		return
 	var m: Dictionary = _meta[cid + "/field"]
 	var t: Texture2D = _tex[cid + "/field"]
+	if mod == Color.WHITE:
+		mod = Rescue.tint(cid)
 	var d = dir if m["rows"].has(dir) else "down"
 	var r: Dictionary = m["rows"][d]
 	var col = 0
@@ -80,6 +82,8 @@ static func draw_battle(ci: CanvasItem, cid: String, anim: String, t: float, foo
 		return
 	var m: Dictionary = _meta[cid + "/battle"]
 	var tex: Texture2D = _tex[cid + "/battle"]
+	if mod == Color.WHITE:
+		mod = Rescue.tint(cid)
 	var info = anim_info(cid, "death" if anim == "ko" else anim)
 	var n = int(info["n"])
 	var f: int

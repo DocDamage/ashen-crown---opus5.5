@@ -129,6 +129,7 @@ objective dain | Cross the Concord Bridge north to the Crown Vessel.
 @scene CH22_VESSEL once
 music silence
 say narr | The Crown Vessel: a heart of relay glass the size of a chapel, with a man's shape half-sunk in its surface.
+still ST12_crown_heart
 say voss | Order. You broke it. I am putting it back. Every fragment, every host, one voice.
 say dain | You don't have a voice anymore, Voss. You have a command.
 say voss | It is the same thing.
@@ -233,6 +234,109 @@ label pip2
 say pip | The registry takes amendments now, and records who made each one. Including mine.
 label pip_end
 epilogue C08
+if !recruited:C09 c09_end
+if q:QC09 c092
+say kitsune | The court has a regent and a mirror nobody is ordered to look into. I visit. I leave before the bowing starts.
+goto c09_end_e
+label c092
+say kitsune | I'm going east for a while. Someone has to teach foxes to tell the truth. I've started with myself.
+label c09_end_e
+epilogue C09
+label c09_end
+if !recruited:C10 c10_end
+if q:QC10 c102
+say archangel | The host still doesn't answer. I've stopped waiting at the gate. I patrol the harbour instead.
+goto c10_end_e
+label c102
+say archangel | I gave my host its last order back. It's in the archive now, filed under 'kept'. I keep new ones.
+label c10_end_e
+epilogue C10
+label c10_end
+if !recruited:C11 c11_end
+if q:QC11 c112
+say inferna | The ledger is shorter every month. I read the names I've freed out loud, so they hear it.
+goto c11_end_e
+label c112
+say inferna | The Warden's ledger is closed. I carry people now. Upward, only upward.
+label c11_end_e
+epilogue C11
+label c11_end
+if !recruited:C12 c12_end
+if q:QC12 c122
+say corvus | Every cook on the pontoons can brew the cure. I'm down to one patient: me. I'm doing fine.
+goto c12_end_e
+label c122
+say corvus | Idony runs the physic house. She corrects my dosages. Loudly. I've never been happier to be wrong.
+label c12_end_e
+epilogue C12
+label c12_end
+if !recruited:C13 c13_end
+if q:QC13 c132
+say lich | My court is thawing, one throne at a time. It is slow. I have time.
+goto c13_end_e
+label c132
+say lich | The court came home from the Deep. We held a funeral for the mourning. It was very short.
+label c13_end_e
+epilogue C13
+label c13_end
+if !recruited:C14 c14_end
+if q:QC14 c142
+say maldrath | I read the March's names every evening. The graveyards are shorter than the list. Good.
+goto c14_end_e
+label c142
+say maldrath | The First Crown sleeps. I gave its sword back to the tomb. I kept the names.
+label c14_end_e
+epilogue C14
+label c14_end
+if !recruited:C15 c15_end
+if q:QC15 c152
+say velkhar | The dead in the crypts are resting now. The living hold the doors. It works.
+goto c15_end_e
+label c152
+say velkhar | My teacher's gate is shut, and Sorrow has gone home. So have I, mostly.
+label c15_end_e
+epilogue C15
+label c15_end
+if !recruited:C16 c16_end
+if q:QC16 c162
+say kael | My standing orders still exist. I've filed them under 'history'. It's the first order I've given myself.
+goto c16_end_e
+label c162
+say kael | CURATOR's codes are in the public archive. Anyone can cancel an order now. I checked. Twice.
+label c16_end_e
+epilogue C16
+label c16_end
+if !recruited:C17 c17_end
+if q:QC17 c172
+say rider | The roads I patrol are real again. Some of them. I ride the rest anyway.
+goto c17_end_e
+label c172
+say rider | The highway has a name now, and traffic. I hate the traffic. I love the traffic.
+label c17_end_e
+epilogue C17
+label c17_end
+if !flag:rescue_all rs_changed
+say narr | On the Conduit lift housing, five rescuers' names are carved above the tenders'. The tenders did the carving.
+goto rs_end
+label rs_changed
+if !flag:bound_formed rs_end
+say narr | The ones who came back changed sit a little apart at the fire, and are never alone there.
+if changed:C07 ch_oni
+goto ch_oni_end
+label ch_oni
+say sable | I don't sleep. I keep watch. Somebody should, and I'm good at it now.
+label ch_oni_end
+if changed:C04 ch_golem
+goto ch_golem_end
+label ch_golem
+say ivo | CURATOR's joints are better than mine were. I have repainted them anyway. They are mine now.
+label ch_golem_end
+if changed:C02 ch_morwen
+goto ch_morwen_end
+label ch_morwen
+say tessa | The fragment keeps my lamp lit. I asked it once whose light it was. It said: ours.
+label ch_morwen_end
+label rs_end
 say dain | And me?
 say ilyr | And us.
 say narr | Raven unpins the old Crown service badge from his coat and leaves it at the public memorial, among the lamps. Then he signs up for a maintenance shift aboard Lanternwake.
@@ -249,6 +353,7 @@ objective dain | Lanternwake is waiting at the berth.
 
 @scene CH24_MORNING once
 say narr | On the way to the berth, a lamp flickers out.
+still ST13_dawn
 say worker | Lamp three is out.
 say worker | The spare is under the bench.
 say dain | Do you need -

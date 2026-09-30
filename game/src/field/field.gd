@@ -363,6 +363,10 @@ func _process(delta: float) -> void:
 			p_anim = 0.0
 	_update_camera()
 	_tick_clock(delta)
+	if map_id == Rescue.LIFT_MAP and can_move() and Rescue.running():
+		var rsc = Rescue.tick(delta)
+		if rsc != "" and not Content.scene(rsc).is_empty():
+			main.call("_on_field_scene", rsc, {})
 	_s3_tick(delta)
 	if hud != null:
 		hud.tick(delta)

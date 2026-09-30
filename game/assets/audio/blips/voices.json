@@ -1,0 +1,160 @@
+{
+ "voices": [
+  "bell",
+  "chip",
+  "pulse",
+  "rasp",
+  "reed",
+  "saw",
+  "stone",
+  "tri"
+ ],
+ "map": {
+  "C01": [
+   "pulse",
+   0.72
+  ],
+  "C02": [
+   "bell",
+   1.08
+  ],
+  "C03": [
+   "tri",
+   1.28
+  ],
+  "C04": [
+   "stone",
+   0.9
+  ],
+  "C05": [
+   "reed",
+   1.22
+  ],
+  "C06": [
+   "pulse",
+   0.9
+  ],
+  "C07": [
+   "saw",
+   0.72
+  ],
+  "C08": [
+   "tri",
+   1.6
+  ],
+  "C09": [
+   "reed",
+   1.42
+  ],
+  "C10": [
+   "bell",
+   0.95
+  ],
+  "C11": [
+   "saw",
+   1.12
+  ],
+  "C12": [
+   "rasp",
+   0.92
+  ],
+  "C13": [
+   "bell",
+   0.6
+  ],
+  "C14": [
+   "pulse",
+   0.62
+  ],
+  "C15": [
+   "saw",
+   0.58
+  ],
+  "C16": [
+   "chip",
+   1.0
+  ],
+  "C17": [
+   "rasp",
+   0.7
+  ]
+ },
+ "types": {
+  "guard": [
+   "pulse",
+   0.82
+  ],
+  "soldier": [
+   "pulse",
+   0.86
+  ],
+  "elder": [
+   "tri",
+   0.82
+  ],
+  "child": [
+   "tri",
+   1.75
+  ],
+  "survivor": [
+   "tri",
+   1.0
+  ],
+  "keeper": [
+   "reed",
+   1.0
+  ],
+  "clerk": [
+   "reed",
+   1.16
+  ],
+  "sailor": [
+   "saw",
+   0.92
+  ],
+  "baker": [
+   "tri",
+   1.2
+  ],
+  "farmer": [
+   "pulse",
+   1.0
+  ],
+  "noble": [
+   "bell",
+   1.12
+  ],
+  "apprentice": [
+   "tri",
+   1.4
+  ],
+  "worker": [
+   "pulse",
+   0.95
+  ],
+  "priest": [
+   "bell",
+   0.85
+  ],
+  "merchant": [
+   "reed",
+   1.05
+  ],
+  "delver": [
+   "stone",
+   1.1
+  ],
+  "machine": [
+   "chip",
+   0.8
+  ],
+  "dead": [
+   "rasp",
+   0.6
+  ],
+  "monster": [
+   "stone",
+   0.7
+  ]
+ }
+}

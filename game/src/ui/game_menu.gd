@@ -125,6 +125,13 @@ func _main_menu() -> void:
 			it["enabled"] = false
 			it["reason"] = T.s("menu.formation_locked")
 		items.append(it)
+		if n == "Formation" and Rescue.bound_active():
+			var sw = {"text": T.s("menu.Switch", "Switch"), "value": "Switch"}
+			var ok_here = (main.field.map.get("save_ok", false) or main.field.map.get("kind", "") == "world") and main.field.vehicle in ["", "foot"]
+			if not ok_here:
+				sw["enabled"] = false
+				sw["reason"] = T.s("menu.switch_where", "Switch parties at a save point or on foot on the world map.")
+			items.append(sw)
 	var m = _menu(items, Rect2(232, 4, 84, 153), 13)
 	m.memory_key = "main_menu"
 	m.chosen.connect(_on_main_choice)
@@ -137,6 +144,9 @@ func _on_main_choice(_i: int, it: Dictionary) -> void:
 		"Equipment": _pick_member(func(cid): _equip_menu(cid), T.s("gm.equip_whom", "Equip whom?"))
 		"Abilities": _pick_member(func(cid): _abilities_menu(cid), T.s("gm.whose_techniques", "Whose techniques?"))
 		"Formation": _formation_menu()
+		"Switch":
+			_close_all()
+			main.call_deferred("run_bound_swap")
 		"Vestiges": _vestige_menu()
 		"Journal": _journal()
 		"World Map": _worldmap()
@@ -1764,6 +1774,7 @@ func _inn_menu() -> void:
 	m.chosen.connect(func(_i, it):
 		if it["value"] >= 1 and Game.spend_gold(price):
 			Game.heal_all()
+			Game.S["vars"]["inn_rests"] = int(Game.S["vars"].get("inn_rests", 0)) + 1
 			if it["value"] >= 2:
 				FieldSys.sleep_until("morning" if it["value"] == 2 else "evening")
 			var jl = Audio.jingle("inn")
@@ -1855,7 +1866,7 @@ func _clear_save_menu() -> void:
 func _records_menu() -> void:
 	page = "records"
 	var items = [{"text": T.s("records.achievements"), "value": "achv"}, {"text": T.s("records.fish"), "value": "fish"},
-		{"text": T.s("records.stats"), "value": "stats"}]
+		{"text": T.s("records.stats"), "value": "stats"}, {"text": T.s("records.bonds", "Bonds"), "value": "bonds"}]
 	var m = _menu(items, Rect2(4, 4, 110, 22 + 11 * items.size()), items.size(), T.s("records.title"))
 	var prev = func():
 		UI.win(self, Rect2(118, 4, 198, 60))
@@ -1872,6 +1883,35 @@ func _records_open(v: String) -> void:
 		"achv": _achievements_page()
 		"fish": _fish_log_page()
 		"stats": _stats_page()
+		"bonds": _bonds_page()
+
+func _bonds_page() -> void:
+	page = "records"
+	var items = []
+	for row in Bonds.listing():
+		items.append({"text": "%s & %s" % [Game.short_name(row[0]), Game.short_name(row[1])], "value": row})
+	if items.is_empty():
+		items.append({"text": T.s("bonds.none", "No bonds yet."), "value": [], "enabled": false})
+	var m = _menu(items, Rect2(4, 4, 176, 232), 19, T.s("records.bonds", "Bonds"))
+	var draw_it = func():
+		UI.win(self, Rect2(184, 4, 132, 92))
+		var cur: Dictionary = m.current() if m.has_method("current") else {}
+		var row = cur.get("value", [])
+		if typeof(row) != TYPE_ARRAY or row.size() < 4:
+			UI.text(self, Vector2(191, 9), T.s("bonds.hint", "Fight side by side."), UI.C_DIM)
+			return
+		UI.text(self, Vector2(191, 9), "Bond %d / 5" % int(row[3]))
+		var lo = 0 if int(row[3]) == 0 else Bonds.LEVELS[int(row[3]) - 1]
+		var hi = Bonds.LEVELS[mini(int(row[3]), 4)]
+		UI.gauge(self, Rect2(191, 24, 118, 6), 1.0 if int(row[3]) >= 5 else float(int(row[2]) - lo) / maxf(1.0, hi - lo), UI.C_GOLD)
+		UI.text(self, Vector2(191, 36), "+%d%% together" % int(round(100.0 * minf(Bonds.PCT_CAP, Bonds.PCT_PER_LEVEL * int(row[3])))), UI.C_LABEL)
+		var seen = 0
+		for s in Bonds.SCENE_LEVELS:
+			if Game.event_applied(Bonds.scene_id(row[0], row[1], s)):
+				seen += 1
+		UI.text(self, Vector2(191, 50), "Talks heard: %d" % seen, UI.C_TEXT)
+	info_draw = draw_it
+	m.set_meta("refresh", func(_mm): page = "records"; info_draw = draw_it)
 
 func _achievements_page() -> void:
 	page = "records"
@@ -1980,8 +2020,12 @@ func _stats_page() -> void:
 		["records.stat.chests", str(Game.S.get("chests", []).size())], ["records.stat.fish", str(Game.stat("fish_caught"))],
 		["records.stat.crafted", str(Game.stat("crafted"))], ["records.stat.saves", str(Game.stat("saves"))],
 		["records.stat.ng", str(int(Game.S.get("ng", 0)))]]
+	rows.push_front(["records.stat.completion", "%d%%" % Completion.percent()])
+	for cp in Completion.parts():
+		if cp[0] != "Bestiary":
+			rows.append([str(cp[0]), "%d / %d" % [cp[1], cp[2]]])
 	var items = []
 	for r in rows:
-		items.append({"text": T.s(r[0]), "right": r[1], "value": r[0]})
-	var m = _menu(items, Rect2(4, 4, 200, 22 + 11 * items.size()), items.size(), T.s("records.stats"))
+		items.append({"text": T.s(r[0], r[0]) if r[0] != "records.stat.completion" else T.s(r[0], "Completion"), "right": r[1], "value": r[0]})
+	var m = _menu(items, Rect2(4, 4, 200, mini(232, 22 + 11 * items.size())), mini(items.size(), 19), T.s("records.stats"))
 	info_draw = func(): pass

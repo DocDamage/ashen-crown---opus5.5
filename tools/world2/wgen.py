@@ -505,6 +505,7 @@ def astar(w, a, b, noise, prefer_road=True, mountain_cost=None):
 # mountain passes: roads allowed to cut a ridge (story routes that must not detour through a later region)
 MOUNTAIN_PASSES = [
     ("L_D06", (141, 60)),     # the Skyspine ferry landing to the Skychain Viaduct (CH07 goes by ferry, not the high road)
+    ((105, 48), (116, 57)),   # the Aerie cable station to the Skyspine foothills (CH08 rides the cable from this side)
 ]
 
 
@@ -1189,8 +1190,8 @@ def deep_entities(w, post=False):
         if r == "U3" and not post:
             continue
         cond = "" if post else " if=ch:%s" % DEEP_OPENS[r]
-        dest = "D01_R05" if lid == "L_U01" else "%s_R01" % key
-        spawn = "from_deep" if lid == "L_U01" else "world"
+        dest = "%s_R01" % key          # the Breach (U01_R01) leads up to the Crown Quarry's collapse (D01_DEPTHS)
+        spawn = "world"
         lines.append("location %s %d %d dest=%s spawn=%s%s" % (lid, x, y, dest, spawn, cond))
         sx, sy = free_near(w, x, y, occupied)
         lines.append("spawn l_%s %d %d down" % (key.lower(), sx, sy))

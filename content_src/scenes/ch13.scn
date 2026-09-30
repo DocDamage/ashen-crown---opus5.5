@@ -3,6 +3,7 @@
 @scene CH13_WAKE once
 music M016
 say narr | A cot on a floating pontoon. A fire in an iron drum. Someone is humming, badly.
+still ST10_hearthward
 say oriel | Don't sit up yet. You swallowed half the Ember Sea.
 say dain | The Ember - what sea?
 say oriel | The one that used to be the middle of the country. Three weeks ago.

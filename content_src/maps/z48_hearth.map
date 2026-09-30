@@ -61,6 +61,7 @@ npc sign_keeper 8 11 down sprite=elder talk=T07_SIGNS
 npc argue_a 27 16 left sprite=worker talk=T07_ARGUE
 npc argue_b 26 16 right sprite=farmer talk=T07_ARGUE
 npc bell_child 38 11 left sprite=child talk=T07_BELL_CHILD
+npc bellwright 40 10 left sprite=elder talk=EPI_BELLWRIGHT name="Old Bellwright Anse" if=flag:post_clear
 npc fuel_worker 12 22 up sprite=worker talk=T07_FUEL
 npc stall 20 14 down sprite=keeper talk=T07_SHOP
 shop 20 13 SHOP_T07

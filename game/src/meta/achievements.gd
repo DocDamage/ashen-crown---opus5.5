@@ -98,6 +98,8 @@ static func evaluate() -> Array:
 static func meta_value(key: String) -> float:
 	var S = Game.S
 	match key:
+		"completion":
+			return float(Completion.percent())
 		"bestiary_pct":
 			var total = 0
 			var got = 0

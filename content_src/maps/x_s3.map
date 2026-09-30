@@ -302,7 +302,7 @@ spawn world 12 9 up
 spawn default 12 9 up
 exit 12..13 10 UNDERSEA l_s04
 block 12..13 2 tile=gate if=!flag:s3_reef_sanctum msg="Coral has grown across the sanctum door in the shape of a closed hand."
-read 12 1 "Behind the coral: an altar, and on it a shell as large as a door, breathing."
+read 12 2 "Behind the coral: an altar, and on it a shell as large as a door, breathing."
 chest S3_C_REEF 23 7 I005 1
 
 #! S3_CRADLE The Abyssal Cradle: the leviathan lair at the bottom of the trench. Thalassar's inner lair stays sealed.

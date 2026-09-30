@@ -4,6 +4,7 @@
 @scene OPENING once
 music M010
 say narr | Brackenford Halt. The morning train from Veyr, three hours late.
+still ST00_opening
 say inspector | Captain Raven. The quarry gate is up the north road. The regulator report is due by the evening bell.
 say dain | Understood.
 say inspector | Whatever the crew tells you, Captain, production is not your department.
@@ -124,6 +125,7 @@ say guard | The drains back up into the yard. Pump handles by the alcoves clear 
 face player up
 music M020
 say mara | The lift is filling. My people are below it.
+still ST01_quarry
 say inspector | Production cannot stop on an unverified report.
 say dain | How many?
 say mara | Seven. I have their names.

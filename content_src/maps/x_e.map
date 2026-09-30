@@ -1569,6 +1569,7 @@ spawn world 17 15 up
 spawn default 17 15 up
 exit 16..19 16 DEEP_POST l_u38
 block 11..24 2 tile=gate if=!flag:u38_chancel_open msg="The chancel rail. Beyond it, the choir stalls are full. Nobody is singing. Nobody has ever stopped."
+trigger 11..24 3 scene=U38_RAIL_PART touch=0 if=!flag:u38_chancel_open
 trigger 12..23 2 scene=U38_CHANCEL_BEYOND touch=0 if=flag:u38_chancel_open
 read 16 3 "The chancel altar, seen through the rail: two hymnals, open, with every word scraped out." scene=U38_CHANCEL
 npc u38_mute 9 12 right sprite=monk talk=U38_MUTE name="A Chorister"
@@ -2010,6 +2011,7 @@ spawn from_r04 16 14 up
 exit 16..17 15 U31_R04 from_r05
 trigger 10..23 9 scene=U31_SEPULCHRE if=!flag:bx22_done
 block 12..21 2 tile=gate if=!flag:sepulchre_unveiled msg="The Veil. Behind it, the inner sanctum breathes. It does not open for the living. Not yet."
+trigger 12..21 3 scene=U31_VEIL_LIFT touch=0 if=!flag:sepulchre_unveiled
 trigger 12..21 2 scene=U31_SANCTUM touch=0 if=flag:sepulchre_unveiled
 read 17 4 "The throne. It is warm. On the arm, a child's ribbon and a soldier's tag, side by side, like keepsakes." scene=U31_THRONE
 npc u31_veil 11 4 down sprite=noble talk=QC15_VEIL name="The Veiled Shade" if=flag:bx22_done

@@ -1,0 +1,146 @@
+# Post-game epilogue arc (QEPI): the Belfry Below. Opens after the ending, when the player continues from the clear.
+
+@scene EPI_BELLWRIGHT
+if flag:epi_done done
+if q:QEPI:ACTIVE ask
+say anse | You heard it too. Last night. Under the sea, once, and wrong.
+say anse | That was the Crown's bell. It went down with Veyr. I cast it, when I was an apprentice. I would know its voice anywhere.
+say dain | It rang at the fault. It shouldn't ring again.
+say anse | Bells don't ring themselves. Something down there is pulling the rope.
+say anse | My diving bell still holds air. I'll lower you. I won't come down. I'm old, not stupid.
+quest QEPI ACTIVE start
+objective dain | Ride Anse's diving bell down to drowned Veyr and find out what is ringing the Crown's bell.
+label ask
+choice | Go down in the diving bell -> down | Not yet -> wait
+label wait
+say anse | The sea isn't going anywhere. Neither am I.
+end
+label down
+sfx FX028
+fade out 0.8
+say narr | The diving bell sinks through green, then grey, then a dark that has weight.
+warp EP1_NAVE from_bell up
+fade in 0.8
+end
+label done
+say anse | It's quiet down there now. I sleep better. So does the sea.
+@end
+
+@scene EPI_ASCEND
+choice | Ride the bell back up -> up | Stay below -> stay
+label stay
+end
+label up
+fade out 0.6
+warp T07_MARKET from_hearth up
+fade in 0.6
+@end
+
+@scene EPI_NAVE_ALTAR
+if flag:epi_keys have
+set epi_keys
+say narr | The keys are bell-ringers' keys, one for each tower of old Veyr. Someone has kept them polished.
+say ilyr | Someone has been waiting for a visitor.
+end
+label have
+say narr | The empty bowl. The altar has nothing more to give.
+@end
+
+@scene EPI_BELL1
+if flag:epi_b1 rung
+set epi_b1
+sfx FX029
+shake 0.3
+say narr | The first bell speaks: low, round, patient. The water in the carillon trembles and settles.
+end
+label rung
+say narr | The first bell hums, still answering.
+@end
+
+@scene EPI_BELL2
+if flag:epi_b2 rung
+if !flag:epi_b1 wrong
+set epi_b2
+sfx FX029
+shake 0.3
+say narr | The second bell answers the first. Somewhere above, a grille of bell-metal shifts.
+end
+label wrong
+say narr | The second bell swallows the note before it sounds. It will not speak first.
+end
+label rung
+say narr | The second bell hums, still answering.
+@end
+
+@scene EPI_BELL3
+if flag:epi_open rung
+if !flag:epi_b2 wrong
+set epi_b3
+set epi_open
+sfx FX029
+shake 0.8
+flash #d8e8ff
+say narr | The cracked bell rings last, and right. Three notes hang in the water as one chord. The grille at the top of the stair folds open.
+say ilyr | That is the note the Crown's bell was cast to ring. It has forgotten.
+end
+label wrong
+say narr | The cracked bell groans and falls silent. The others have not spoken yet.
+end
+label rung
+say narr | The chord still hangs in the water.
+@end
+
+@scene EPI_CARILLON_SHUT
+say narr | A grille of bell-metal closes the stair. Three bells wait in the carillon below, each marked with its place in the order.
+@end
+
+@scene EPI_BOSS
+music silence
+say narr | The belfry. The Crown's great bell hangs over nothing, from no rope. It swings anyway.
+say dain | No one is pulling it.
+say ilyr | It is pulling itself. It rang the fault into the world. It wants to ring it again, and get it right this time.
+say narr | The bell turns its mouth toward the party.
+battle BX27 noflee
+set epi_done
+quest QEPI COMPLETED
+music M016
+say narr | The bell stops swinging. For the first time in a long time, the sea around Veyr is silent.
+say ilyr | It rang its last note. The right one.
+choice | Leave the bell in the deep -> leave | Raise it for Hearthward -> raise
+label leave
+set epi_bell_left
+say dain | Let it sleep where it fell.
+goto after
+label raise
+set epi_bell_raised
+say dain | Anse can hang it in the harbour. Somebody should ring it on purpose.
+label after
+objective dain | Ride the diving bell back up and tell Anse the sea is quiet.
+call EPI_EPILOGUE
+@end
+
+@scene EPI_AFTER
+say narr | The empty cradle. The water inside the ring does not move.
+@end
+
+@scene EPI_EPILOGUE once
+say narr | Later, in Hearthward, they tell it around the communal fire, and everyone tells it slightly wrong.
+if !flag:epi_bell_raised left
+say narr | The Crown's bell hangs in the harbour now. Anse rings it at dawn, badly, and nobody asks him to stop.
+goto bell_end
+label left
+say narr | The Crown's bell stays in the deep. On quiet nights the sailors say they can hear it not ringing.
+label bell_end
+if !flag:rescue_all nores
+say narr | Five names are carved on the lift housing at the Conduit, with the tenders' names beneath: everyone who came up at the last second.
+goto res_end
+label nores
+if !flag:bound_formed res_end
+say narr | The Bound still sit together some nights, around a green fire nobody else can see. Nobody asks them to explain. They are still five.
+label res_end
+if !flag:levelbreak_3 crown
+say narr | Far below, in the Hollow Heart, the Unmade Crown stays unmade. The crypts are quiet. The ledger is closed.
+label crown
+say ilyr | Is it finished?
+say dain | No. It's started. That's what we get.
+@end

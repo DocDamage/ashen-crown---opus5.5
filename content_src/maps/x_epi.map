@@ -1,0 +1,169 @@
+#! Post-game epilogue arc: the Belfry Below under drowned Veyr (QEPI).
+
+=== EP1_NAVE
+name: The Belfry Below - Drowned Nave
+tileset: crown
+music: M028
+zone: T07
+region: R03
+location: L_T07
+encounters: W_EPI
+rate: 0.8
+dark: true
+grid:
+##############ss##############
+##u##u##u###..,,..###u##u##u##
+#.....ww.....,,,,.....ww.....#
+#.u..www.u..w,,,,w..u.www..u.#
+#....ww......,,,,......ww....#
+#.b.b.b.b..~~,,,,~~..b.b.b.b.#
+#.........~~~w,,w~~~.........#
+#.u.......~~ww,,ww~~.......u.#
+#.b.b.b.b..ww.,,.ww..b.b.b.b.#
+#..........w..,,..w..........#
+#.u..x.......,,,,.......x..u.#
+#....xx......,,,,......xx....#
+#.b.b.b.b....,,,,....b.b.b.b.#
+#............,,,,............#
+#.u..ww..u...,,,,...u..ww..u.#
+#...www......,,,,......www...#
+##..ww.......,,,,.......ww..##
+###..........,,,,..........###
+####y.......@,,,,@.......y####
+#######......,,,,......#######
+##########...,,,,...##########
+#############....#############
+entities:
+spawn from_bell 15 20 up
+spawn default 15 20 up
+spawn from_ep2 14 1 down
+exit 14..15 0 EP2_GALLERY from_ep1
+read 15 21 "The diving bell, resting on the nave floor. Anse's rope runs up into the dark." scene=EPI_ASCEND
+read 12 18 "An altar to the Crown, barnacled over. The offering bowl holds a single ring of keys." scene=EPI_NAVE_ALTAR
+read 4 18 "A statue of a bell-ringer, arms raised. Someone has tied a new rope to its hands."
+chest EP1_C_PEW 1 13 I024 1
+chest EP1_C_AISLE 28 13 I024 1
+save 18 17
+
+=== EP2_GALLERY
+name: The Belfry Below - Bellrope Galleries
+tileset: crown
+music: M028
+zone: T07
+region: R03
+location: L_T07
+encounters: W_EPI
+rate: 0.8
+dark: true
+grid:
+################################
+#____________________________###
+#_..}...}...}_____..}...}..._###
+#_.,,,,,,,,,,.___.,,,,,,,,,._###
+#_.,|||||||,,.___.,|||||||,._###
+#_.,,,,,,,,,,.....,,,,,,,,,,.ss#
+#_..........._____...........,,#
+#_____.______________.______.,,#
+#_____._____________..______.,,#
+#_____.____________.._______.__#
+#____...__________..________.__#
+#___.....________..____......__#
+#___.,,,.._______.____..,,,..__#
+#___.,j,...______.____..,,,..__#
+#___.,,,.........._____......__#
+#____...______________..______.#
+#______.______________........##
+#______.________________________
+#______ss_______________________
+################################
+entities:
+spawn from_ep1 7 17 up
+spawn default 7 17 up
+spawn from_ep3 28 5 left
+exit 7..8 18 EP1_NAVE from_ep2
+exit 29..30 5 EP3_CARILLON from_ep2
+chest EP2_C_WARDEN 5 13 GN41 1
+chest EP2_C_ROPE 25 13 I024 1
+read 12 2 "Bell-ropes hang into nothing. One is still warm, as if someone pulled it a moment ago."
+save 15 14
+
+=== EP3_CARILLON
+name: The Belfry Below - The Carillon
+tileset: crown
+music: M028
+zone: T07
+region: R03
+location: L_T07
+encounters: W_EPI
+rate: 0.8
+dark: true
+grid:
+############################
+###########.ssss.###########
+##########..,,,,..##########
+#########...,,,,...#########
+########..u.,,,,.u..########
+#######.....,,,,.....#######
+######..j...,,,,...j..######
+#####.......,,,,.......#####
+####...u....,,,,....u...####
+####........,,,,........####
+####...,,,,,,,,,,,,,,...####
+####...,,,,,,,j,,,,,,...####
+####...,,,,,,,,,,,,,,...####
+####........,,,,........####
+####...u....,,,,....u...####
+#####.......,,,,.......#####
+######......,,,,......######
+#######.....,,,,.....#######
+########..u.,,,,.u..########
+#########...,,,,...#########
+##########..,,,,..##########
+###########.,ss,.###########
+entities:
+spawn from_ep2 13 20 up
+spawn default 13 20 up
+spawn from_ep4 13 2 down
+exit 13..14 21 EP2_GALLERY from_ep3
+exit 12..15 1 EP4_BELFRY from_ep3 if=flag:epi_open
+trigger 12..15 1 scene=EPI_CARILLON_SHUT if=!flag:epi_open
+read 8 6 "A bronze bell the height of a man. Its note is written on the lip: FIRST." scene=EPI_BELL1
+read 19 6 "A bronze bell, green with age. The lip reads: SECOND." scene=EPI_BELL2
+read 14 11 "The carillon's heart bell, cracked down one side. The lip reads: LAST - AND RIGHT." scene=EPI_BELL3
+chest EP3_C_ROPES 5 10 GN40 1
+
+=== EP4_BELFRY
+name: The Belfry Below - The Wrong Bell
+tileset: crown
+music: M028
+zone: T07
+region: R03
+location: L_T07
+encounters: none
+dark: true
+grid:
+########################
+#######__________#######
+#####______________#####
+####____........____####
+###___...,,,,,,...___###
+###__...,,,,,,,,...__###
+##__...,,,uuuu,,,...__##
+##__..,,,u....u,,,..__##
+##__..,,,u....u,,,..__##
+##__..,,,u....u,,,..__##
+##__...,,,u..u,,,...__##
+###__...,,,,,,,,...__###
+###___...,,,,,,...___###
+####____...,,...____####
+#####______,,______#####
+#######____,,____#######
+##########.,,.##########
+##########ssss##########
+entities:
+spawn from_ep3 11 16 up
+spawn default 11 16 up
+exit 10..13 17 EP3_CARILLON from_ep4
+trigger 9..14 11..13 scene=EPI_BOSS if=!defeated:BX27
+chest EP4_C_BELFRY 12 8 WN40 1
+read 11 8 "The bell's cradle, empty. The water inside the ring is perfectly still." scene=EPI_AFTER if=defeated:BX27

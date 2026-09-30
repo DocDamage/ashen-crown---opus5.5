@@ -66,6 +66,8 @@ ROWS = [
      "The Lich King's under-court, a single body of every courtier who grieved too long."),
     ("BX26", "Gatewarden Sorrow", "U36", "CH18", 44, "M:221", 108, 0, "whitebone", "M026",
      "Velkhar's first student, who stayed behind to hold the gate when he left. She is still angry."),
+    ("BX27", "The Bell That Rang Wrong", "EP4", "CH24", 92, "M:150", 124, 0, "crown_core", "M028",
+     "The Crown's great bell, sunk with Veyr. It rang once at the fault and has been trying to ring the right note since."),
     # ---- superbosses
     ("SB01", "Cindermaw, the Surface Wyrm", "N10", "CH16", 60, "R:05", 150, 0, "furnace", "M028",
      "The oldest dragon that never gave up its fragment. It sleeps in the caldera and wakes to feed on towns."),
@@ -306,6 +308,16 @@ def specs(mv, dmg, st):
         {"lash": mv("Grave Lash", [dmg(165)]), "lesson": mv("Old Lesson", [dmg(120, "magical", "shadow"), st("blind", 60, 2)], target="random", anim="cast", element="shadow"),
          "gate": mv("Shut the Gate", [dmg(240, "magical", "shadow", aoe=True)], target="all", charge=2.8, tell="The crypt-gate grinds closed behind you", element="shadow")},
         {"light": "weak", "shadow": "absorb"}, [], "The gate grinds closed", "Light; cure blind.", "Light; cure blind.")
+    S["BX27"] = ("golem", [
+        {"at": 100, "cycle": ["toll", "peal", "toll"]},
+        {"at": 66, "cycle": ["peal", "toll", "wrong", "toll"], "enter": "The bell swings on no rope. The water shivers."},
+        {"at": 33, "cycle": ["wrong", "toll", "knell", "peal"], "enter": "It remembers the note it rang at the fault."}],
+        {"toll": mv("Toll", [dmg(240)]), "peal": mv("Peal", [dmg(170, "magical", "storm", aoe=True), st("stun", 35, 1)], target="all", element="storm"),
+         "wrong": mv("The Wrong Note", [st("doom", 45, 4), st("silence", 55, 2)], target="all", anim="cast", element="none"),
+         "knell": mv("Knell of Veyr", [dmg(380, "magical", "shadow", aoe=True, uncapped=True)], target="all", charge=3.2,
+                     tell="Every bell in the drowned city answers at once", element="shadow")},
+        {"earth": "weak", "storm": "absorb", "shadow": "resist"}, [], "Every bell in the city answers before the knell",
+        "Earth muffles it; cure doom before it counts out; Defend through the knell.", "Earth dulls it; cure doom; Defend on the knell.")
     # ---- superbosses: longer phase chains, heavier charged moves, damage above the 9,999 line
     def wyrm(elem, weak, sig, sig_tell, roar):
         return ("dragon", [

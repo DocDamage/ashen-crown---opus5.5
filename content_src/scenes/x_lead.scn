@@ -1,0 +1,64 @@
+# Lead-authored expansion scenes: CH07b (the Deep opens), superboss hooks.
+
+# ---------------------------------------------------------------- CH07b: the quarry below (after CH06)
+@scene CH07B_COURIER once
+say narr | A courier in quarry dust pushes through the crowd on the quay, a letter held out in front of her like a torch.
+say worker | From Mara at Brackenford. She said give it to the one with the dragon in him, and she said run.
+say narr | 'The quarry floor fell in on the fourth night. There are lights under it. Crown surveyors went down after them and the ones who came back won't say what they saw. Come home. - M.'
+say ilyr | Raven. Under the quarry. I can feel them from here. Fragments. Old ones. Lots of them.
+say dain | You never said there was anything under the quarry.
+say ilyr | I never knew. They were asleep. Something has been digging.
+set deep_quest
+quest QDEEP ACTIVE letter
+journal | Mara's letter: the Crown Quarry's floor has collapsed onto something below. Crown surveyors went down. Ilyr senses dragon fragments. Return to the quarry's Heartglass Face.
+rumor | The Crown Quarry fell in on itself. There are lights down there, and the Crown already has men in the hole.
+@end
+
+@scene CH07B_MARA
+if flag:crown_dig_cleared done
+if flag:deep_open went
+say mara | The quarry floor went on the fourth night. The Heartglass Face split right across. You go carefully, down there.
+end
+label went
+say mara | You've been below. I can smell it on you: hot stone and old bones. The Crown's still digging, isn't it.
+end
+label done
+say mara | The digging's stopped. The quarry's quiet at night again. First time in years. I don't know what you did. Thank you for it.
+@end
+
+@scene CH07B_COLLAPSE once
+say narr | The Heartglass Face has split from roof to floor. Cold air pours out of the crack, and under the cold, a warmth like breath.
+still ST04_collapse
+say ilyr | Here. It goes down, and down. The fragments are under us. Many. And men with picks among them.
+say dain | The Crown's mining the dead.
+say ilyr | Not the dead. Sleepers. They are digging sleepers out of their beds.
+say narr | Survey stakes lead into the crack. Someone has already cut steps.
+set deep_open
+quest QDEEP ACTIVE collapse
+journal | The Heartglass Face opens onto a collapse. Crown survey stakes lead down into the depths. Follow them to wherever the Crown is digging.
+@end
+
+@scene CH07B_SHAFT
+say narr | The shaft drops away into warm dark. Far below, something glows the colour of a banked forge.
+still ST05_deep_glow
+say ilyr | That's the way. Whatever you do down there, don't let them wake the ones who can't be woken.
+@end
+
+@scene CH07B_STAKE
+say narr | A Crown survey stake, driven into the rock. The tag reads DEEP LEVEL 1 - CLAIMED. Below it someone has scratched: 'claimed by who'.
+@end
+
+@scene CH07B_MINER
+say guard | You're not on the roster. Nobody gets below without a Crown warrant.
+say guard | ...Fine. You'll go anyway. Everyone does. The foreman's at the dig. He calls it overtime. It's been overtime for a month.
+@end
+
+@scene CH07B_BACK once
+say ilyr | The digging's stopped. I can feel them settling. Some of them. Not all.
+say dain | We'll come back for the rest.
+say ilyr | You keep saying 'we'. I'm starting to believe it.
+quest QDEEP COMPLETED
+xp 1200
+give I007 2
+journal | The Crown's dig in Emberdeep is shut down. The Deep stays open: Karag Dun, Emberwell and the dragon realm are reachable through the Crown Quarry and the Breach.
+@end

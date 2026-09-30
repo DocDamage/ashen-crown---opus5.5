@@ -39,6 +39,7 @@ vvvvvvvvvvvvvvuuvvvvvvvvvvvvvvvvvvvvvvvvvvpv
 uuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 uuuuuuuuuuuuuuuupppvvvvvvvvvvvvvvvvvvvvvppvv
 entities:
+npc courier_deep 24 9 down sprite=volunteer talk=CH07B_COURIER name="Quarry Courier" if=ch:CH06,!ch:CH08,!flag:deep_quest
 spawn world 20 2 down
 spawn from_lane 41 9 left
 spawn from_customs 7 8 down

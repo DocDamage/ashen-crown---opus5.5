@@ -155,7 +155,7 @@ func test_waylamp_item_and_shops() -> void:
 # ---------------------------------------------------------------- achievements
 func test_achievement_definitions() -> void:
 	var d = Achievements.defs()
-	check(d.size() >= 40 and d.size() <= 60, "40-60 achievements (%d)" % d.size())
+	check(d.size() >= 40 and d.size() <= 70, "40-70 achievements (%d)" % d.size())
 	fresh_game()
 	for id in d:
 		var ok = typeof(Game.eval_cond(d[id]["cond"])) == TYPE_BOOL

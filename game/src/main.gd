@@ -198,6 +198,10 @@ func transition_to(dest: String, spawn: String, sfx: String = "") -> void:
 	await _check_auto_scenes()
 	flush_autosave()
 
+## Menu "Switch": control passes between Raven's company and the Bound.
+func run_bound_swap() -> void:
+	await director.run("BOUND_SWAP")
+
 func warp(map_id: String, spawn: String, dir: String = "") -> void:
 	await fade(true, 0.0 if director.skipping else 0.25)
 	field.load_map(map_id, spawn, Vector2i(-1, -1), dir)
@@ -206,6 +210,8 @@ func warp(map_id: String, spawn: String, dir: String = "") -> void:
 func _check_auto_scenes() -> void:
 	# trigger entities with touch at spawn position (arrival scenes)
 	for e in field.map["entities"]:
+		if Rescue.bound_on() and str(e.get("scene", "")).begins_with("CH"):
+			continue
 		if e["type"] == "trigger" and e.get("touch", true) and e["x1"] <= field.p_tile.x and field.p_tile.x <= e["x2"] and e["y1"] <= field.p_tile.y and field.p_tile.y <= e["y2"] and Game.eval_cond(e["cond"]):
 			var sc = Content.scene(e["scene"])
 			if sc.get("once", false) and Game.event_applied(e["scene"]):
@@ -346,6 +352,10 @@ func emote(actor_id: String, sym: String) -> void:
 # Field events
 # ======================================================================
 func _on_field_scene(scene_id: String, ctx: Dictionary) -> void:
+	if Rescue.bound_on() and scene_id.begins_with("CH") and not scene_id.begins_with("CH12"):
+		# the Bound travel apart: Raven's story scenes wait for Raven's company
+		await show_text("", "This is Raven's road. The Bound go on elsewhere.")
+		return
 	await director.run(scene_id, ctx)
 	if ctx.get("craft", "") != "":
 		await open_menu_async("craft", {"id": ctx["craft"]})   # crafter NPCs (systems s2)
@@ -389,7 +399,13 @@ func open_shop(id: String) -> void:
 	await open_menu_async("shop", {"id": id})
 
 func open_inn(price: int) -> void:
+	var before = int(Game.S.get("vars", {}).get("inn_rests", 0))
 	await open_menu_async("inn", {"price": price})
+	# a night at the inn: one pair scene whose bond has grown far enough (meta/bonds.gd)
+	if int(Game.S.get("vars", {}).get("inn_rests", 0)) > before and not director.skipping and not QA.active:
+		var bs = Bonds.ready_scene()
+		if bs != "":
+			await director.run(bs)
 
 # ======================================================================
 # Battle
@@ -483,6 +499,15 @@ func defeat_menu() -> int:
 	var idx = await choose([T.s("sys.retry"), T.s("sys.load")])
 	bg.queue_free()
 	return idx
+
+func show_still(id: String, hold: float = 0.0) -> void:
+	var v = StillView.new()
+	v.setup(id, 3.5 if QA.active and hold <= 0.0 else hold)
+	ui.add_child(v)
+	router.push(v)
+	await v.closed
+	router.pop(v)
+	v.queue_free()
 
 func roll_credits() -> void:
 	var c = CreditsView.new()

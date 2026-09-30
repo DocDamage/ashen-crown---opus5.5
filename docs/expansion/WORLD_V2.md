@@ -335,3 +335,26 @@ The soul-bound party (section 10) unlocks after the first ancient dragon falls.
 - **New bosses: about 20**, one per optional dungeon or questline climax. Superbosses are in section 9.
 - **All enemies are animated:** idle, attack, cast and hurt frames, built in Aseprite.
 - **Art:** the owner's packs, pixelated in Aseprite where painted; AI art also runs through Aseprite.
+
+## 12. As built (implementation notes)
+
+- **CH12 rescue.**
+  - Code in `game/src/story/rescue.gd` (class `Rescue`); map `D09_LIFT` (`content_src/maps/x_lead.map`); scenes in `content_src/scenes/ch12_rescue.scn`.
+  - `CH12_FALL` starts it with `rescue begin` / `rescue pick`. Route bots and skipped scenes go straight to `CH12_FALL_BODY`.
+  - Timer: T = 100 s. Arrival slots are 32/50/66/81/96 s (a smaller team takes the last slots). There are six hints; `CH12_LIFT_CRUSH` retries from the lift.
+  - The forms are fixed by hero, as in section 10. Tints and passives are applied in `Game.stats_for` and `HeroArt`.
+  - Survivors start at Bond 3 with each changed hero.
+  - The Bound party: `Game.S.bound`, swapped by `bound swap` (menu **Switch**), with its camp at `BOUND_CAMP` (the Rootwell). Chapter scenes (`CH*`) do not run while the Bound are in control.
+  - A reunion `join` for a bound hero plays `BOUND_MEET_<cid>`, and the hero stays with the Bound.
+  - The Bound merge on the first wyrm (`levelbreak_1`), or at the finale team split.
+  - Conditions: `changed:<cid>[:form]`, `bound`, `bound_on`, `bound_member:<cid>`, `qa`.
+- **Bonds.** Code in `game/src/meta/bonds.gd`. Every shared victory adds +1 per pair. Levels come at 10/30/60/100/160 points, and each level gives +1% atk/matk/def/res, capped at 8%. The 36 pair scenes (`content_src/scenes/bonds.scn`) play after an inn rest at bond 2 and 4.
+- **Stills.**
+  - The `still <id> [seconds]` command shows `res://assets/stills/<id>.png` and is skipped when the file is missing.
+  - The title screen uses `stills/title.png` when present.
+  - The image brief is in `docs/expansion/STILLS.md`; processing is `tools/art/stills_job.py` with `tools/aseprite/stills.lua`.
+- **Post-game.**
+  - The QEPI Belfry Below (`x_epi.map`, `x_epi.scn`, `tools/content/epilogue.py`, `places/f_epi.py`), with boss BX27 and gear AN40, GN40, GN41 and WN40.
+  - Enhanced epilogues for C09-C17 and for the rescue outcome, in `CH23_EPILOGUES`.
+  - Completion tracking (`game/src/meta/completion.gd`, Records > Stats); achievements ST13-ST16.
+- **World fix.** A mountain pass joins the Aerie cable station to the Skyspine foothills (`MOUNTAIN_PASSES` in `wgen.py`). Write the world with `python3 wgen.py ../../content_src/maps/world2.map`.

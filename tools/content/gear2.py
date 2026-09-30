@@ -279,6 +279,10 @@ NAMED = [
     ("AN19", "The Tally", "acc", 102, "SB10", "S19", {"heal_mult": 1.12}, [], "", "Everything it gave back."),
     ("GN29", "The Verdict", "head", 110, "SB11", "S19", {"lowhp_guard": 0.25}, [], "", "What the two sums mean."),
     # standalone uniques
+    ("AN40", "The Right Bell", "acc", 95, "BX27", "", {"mhp_mult": 1.12, "immune": ["doom", "stun"]}, [], "", "It rings once, correctly, and then keeps quiet."),
+    ("GN40", "Carillon Mantle", "robe", 90, "EP3_C_ROPES", "", {"mag_bonus": 0.08}, [], "", "Woven from bell-rope. It hums when magic passes through it."),
+    ("GN41", "Nave-Warden Plate", "plate", 90, "EP2_C_WARDEN", "", {"elem_resist": {"water": True, "shadow": True}}, [], "", "Armour of the drowned cathedral's last guard."),
+    ("WN40", "Veyr's Clapper", "C04", 92, "EP4_C_BELFRY", "", {"weapon_element": "storm"}, [], "", "The iron tongue of a lesser bell. The Golem swings it like a thought."),
     ("WN18", "Wurm-Gut Blade", "C01", 28, "BX17", "", {"weapon_element": "fire"}, [], "", "Recovered from the Forge-Wurm's gut. Branna wants it back."),
     ("WN19", "Index Stylus", "C02", 36, "BX19", "", {"mag_bonus": 0.1}, [["S163", 8]], "", "It writes in a hand nobody reads now."),
     ("WN20", "Sorrow's Gate-Key", "C08", 44, "BX26", "", {"immune": ["doom"]}, [["S154", 4]], "", "A key that locks the dead in, or the living out."),

@@ -11,6 +11,7 @@ say rook | And the ones who die waiting? Do they get a hearing?
 say oriel | They get asked. That is what you are skipping.
 say rook | Then I will be the one who didn't ask. Someone has to.
 say narr | Three relay lights kindle around the dais.
+still ST06_dais
 battle B10 noflee
 set b10_done
 music silence
@@ -46,6 +47,26 @@ say narr | Stone rains down in waves. Wait for the shaking to pass, then run.
 @end
 
 @scene CH12_FALL once
+rescue begin fall
+music silence
+say narr | The lift cage shudders on its cable. Below the aqueduct, a row of barred cells is filling with dust.
+say survivor | The tenders! Rook chained the relay tenders in the lower cells. When the channel floods, they drown.
+say dain | How long does the brake hold?
+say ivo | The cable is rated for the cage, not the mountain. A hundred heartbeats. Maybe fewer.
+say oriel | Then five go down and the rest of us hold the cage.
+say dain | Choose. Now.
+rescue pick
+say narr | Five shapes drop over the rail into the dust and are gone.
+still ST07_lift
+say dain | We hold this lift as long as the cable lets us. Not one heartbeat less.
+objective dain | Hold the lift for the rescue team. Pull the brake lever only when you must.
+warp D09_LIFT start left
+end
+label fall
+call CH12_FALL_BODY
+@end
+
+@scene CH12_FALL_BODY
 music silence
 say narr | The lift cage slams shut. The Golem throws every lever he built into the cable brake.
 say ivo | Holding - holding -
@@ -54,6 +75,7 @@ flash #ffffff
 fade out 1.2
 say narr | The Conduit gives way beneath Veyr.
 say narr | Coastlines fracture along old relay faults. Dormant dragon structures rise from the plains and the sea. The Crown's bell rings once, wrong, and every city hears it.
+still ST08_fault
 say narr | The lift cable snaps. The party scatters into the dark.
 wait 1.0
 call OV_WAYFARER_LOST
@@ -64,4 +86,8 @@ say narr | Salt water. A fire, somewhere. Someone humming badly.
 warp T07_HEARTH wake down
 fade in 1.5
 call CH13_WAKE
+if flag:bound_formed intro
+end
+label intro
+call BOUND_INTRO
 @end

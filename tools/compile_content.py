@@ -15,6 +15,7 @@ from content import cast as CAST  # noqa: E402
 from content import vestiges as VES  # noqa: E402
 from content import bestiary2 as BX  # noqa: E402
 from content import bosses2 as BS  # noqa: E402
+from content import epilogue as EP  # noqa: E402
 from content import places as PL  # noqa: E402
 from content import limits as LIM, battle_sys as BSYS  # noqa: E402  (expansion battle systems, branch s1)
 from content import gear2 as G2, crafting as CR  # noqa: E402  (systems s2: tiers, sets, crafting, bestiary)
@@ -35,7 +36,7 @@ SCENE_CMDS = {"say", "choice", "label", "goto", "if", "set", "unset", "give", "t
               "title", "rumor", "discover", "shop", "inn", "formation", "save_prompt", "event", "xp", "level_floor",
               "vehicle", "tint", "end", "split_party", "setvar", "addvar", "equip", "portrait", "lights", "salvage",
               "call", "clear_save", "epilogue", "ship_travel", "sprite", "row", "note", "lock_party", "unlock_party",
-              "ending", "journal", "backup", "airship", "team", "name", "rename", "craft", "travel", "arena"}
+              "ending", "journal", "backup", "airship", "team", "name", "rename", "craft", "travel", "arena", "rescue", "bound", "still"}
 
 errors = []
 pending = []
@@ -621,6 +622,7 @@ def main():
     BX.apply_formations(FM)
     BX.apply_world_groups(FM)
     BS.apply(cat["bosses"], EN, TB, FM)
+    EP.apply(FM)
     G2.apply_enemies(EN)
     content["enemies"] = build_enemies(cat["enemies"], cat["bosses"])
     for eid, e in content["enemies"].items():

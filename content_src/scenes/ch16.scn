@@ -121,6 +121,7 @@ say narr | The Lanternwake manual, dog-eared, with a pencil tied to it on a stri
 @scene CH16_LAUNCH once
 music silence
 say narr | Launch morning. The crews take their places - not the Golem. The Golem stands at the back, plated hands folded, runes dimmed.
+still ST11_launch
 say worker | Page one. Cooling channels open.
 say worker | Open.
 say worker | Page two. Boiler to working pressure. Slow.

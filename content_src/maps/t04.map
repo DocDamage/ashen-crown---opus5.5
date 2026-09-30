@@ -55,6 +55,7 @@ npc dockhand 35 16 left sprite=worker talk=T04_DOCKHAND
 npc refugee1 10 15 right sprite=survivor talk=T04_REFUGEE
 npc customs_guard 5 9 down sprite=guard talk=T04_CUSTOMS_GUARD if=!ch:CH05
 npc fishwife 16 11 down sprite=baker talk=T04_FISHWIFE
+npc courier_deep 24 9 down sprite=volunteer talk=CH07B_COURIER name="Quarry Courier" if=ch:CH06,!ch:CH08,!flag:deep_quest
 shop 16 10 SHOP_T04
 sign 19 12 "The harbor bell post. The bell was removed 'pending inspection'."
 

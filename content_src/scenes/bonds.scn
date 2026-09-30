@@ -1,0 +1,266 @@
+# Bond pair scenes (meta/bonds.gd): played after an inn rest once a pair's bond reaches 2 and 4.
+# Ids: BOND_<a>_<b>_<level>, with the pair in id order.
+
+@scene BOND_C01_C02_2 once
+say narr | Late. The common room is empty except for two cups and a lamp Morwen keeps relighting.
+say tessa | You never ask where the light comes from.
+say dain | I carried the Crown's writs for six years. I stopped asking where things came from.
+say tessa | It's borrowed. Every spark. Someone, somewhere, is a little darker tonight.
+say dain | Then we'd better be worth it.
+@end
+
+@scene BOND_C01_C02_4 once
+say tessa | I tried to give some of it back today. The light. It wouldn't go.
+say dain | Maybe whoever lent it isn't asking for it back.
+say tessa | Or maybe they can't anymore.
+say dain | Then we carry it for them. Same as the rest.
+say narr | She leaves the lamp burning when she goes up. He doesn't put it out.
+@end
+
+@scene BOND_C01_C06_2 once
+say oriel | You sleep with your hand on the blade.
+say dain | You sleep with your eyes open.
+say oriel | Dragons did. Some of them are still doing it, inside me.
+say dain | Do they ever agree with you?
+say oriel | Once. It was about you. I won't tell you which way.
+@end
+
+@scene BOND_C01_C06_4 once
+say oriel | When this is over, the dragon memories will want a body again.
+say dain | Yours?
+say oriel | Anyone's. I will need someone who says no for me, if I can't.
+say dain | I've said no to a king. I can say it to a dragon.
+say oriel | That is why I asked you.
+@end
+
+@scene BOND_C01_C07_2 once
+say sable | You refused the order. At the quarry. I heard the story in three barracks.
+say dain | Which version?
+say sable | The one where you were a coward. I stopped believing it the day we met.
+say dain | It's still the version they teach.
+say sable | Then we teach a better one.
+@end
+
+@scene BOND_C01_C07_4 once
+say sable | I broke rank once. They hung my squad's names on a post as deserters.
+say dain | Were they?
+say sable | No. They were the ones who stayed. I was the one who left to bury them.
+say dain | Then the post has the wrong names on it.
+say sable | ...Yes. I'd like to go back and fix it. When we're done.
+@end
+
+@scene BOND_C02_C04_2 once
+say tessa | Hold still. Your runes are flickering.
+say ivo | They do that when I am thinking about something I was not built for.
+say tessa | Like what?
+say ivo | Whether you would still light them for me if it cost you.
+say tessa | It does. Hold still.
+@end
+
+@scene BOND_C02_C04_4 once
+say ivo | I have calculated how much light you have spent on my runes.
+say tessa | Don't tell me.
+say ivo | I was going to say it was a fair trade.
+say tessa | ...That's worse, somehow. Thank you.
+@end
+
+@scene BOND_C02_C05_2 once
+say nera | The grove never liked lamps. It thought they were for people afraid of the dark.
+say tessa | I am afraid of the dark.
+say nera | I know. That's why I'm sitting next to you.
+@end
+
+@scene BOND_C02_C05_4 once
+say nera | When the Warden fell, I heard every tree in the grove at once. It was like drowning.
+say tessa | What stopped it?
+say nera | You were there with the lamp, shouting my name. One voice. It gave me somewhere to stand.
+say tessa | I was shouting because I didn't know any spells for it.
+say nera | It worked better than a spell.
+@end
+
+@scene BOND_C03_C08_2 once
+say pip | You always sit by the door.
+say corren | Old habit. Somebody has to leave first.
+say pip | Or you could just not leave. That's also allowed.
+say corren | ...Is it?
+say pip | I checked. It's allowed.
+@end
+
+@scene BOND_C03_C08_4 once
+say corren | I came back to Skyspine to say goodbye properly. I haven't managed it yet.
+say pip | Maybe you came back to stay and haven't noticed.
+say corren | That's a cat's logic.
+say pip | Cats are right about where to sit. Every time.
+@end
+
+@scene BOND_C03_C10_2 once
+say archangel | You fight like someone who expects to be left behind.
+say corren | You fight like someone waiting for orders.
+say archangel | My host stopped sending them. I still listen.
+say corren | Then listen to this: I'm not leaving. Order received?
+say archangel | Received.
+@end
+
+@scene BOND_C03_C10_4 once
+say archangel | I have written a new order. For myself. The first one.
+say corren | What does it say?
+say archangel | Stay with the ones who stayed with you.
+say corren | That's not an order. That's a promise.
+say archangel | I do not know the difference yet. I am learning.
+@end
+
+@scene BOND_C04_C08_2 once
+say pip | What's this gear do?
+say ivo | Nothing. It is a spare.
+say pip | You carry a spare gear everywhere for nothing?
+say ivo | It was the first thing anyone gave me that was not an instruction.
+say pip | ...I'll get you another one. Then you'll have two nothings.
+@end
+
+@scene BOND_C04_C08_4 once
+say narr | Sak has painted something on the Golem's shoulder plate. It is either a cat or a very determined turnip.
+say ivo | It is not regulation.
+say pip | Neither are you.
+say ivo | ...Leave it on.
+@end
+
+@scene BOND_C05_C09_2 once
+say kitsune | The grove speaks to you. The fox court spoke to me, once. Mostly lies.
+say nera | Trees don't lie.
+say kitsune | Then they are poor company. I'll lie for both of us.
+say nera | Please don't.
+say kitsune | ...Fine. That was the lie.
+@end
+
+@scene BOND_C05_C09_4 once
+say kitsune | Show me something true. Something your grove taught you.
+say nera | Roots don't let go when the flood comes. That's all. They just hold.
+say kitsune | My court let go of me in an afternoon.
+say nera | Then hold on to us. We're slower to drown.
+@end
+
+@scene BOND_C06_C11_2 once
+say inferna | You carry the dead. So do I. Yours talk back.
+say oriel | Yours don't?
+say inferna | Mine only asked where they were going. I never told them the truth.
+say oriel | You can tell me.
+say inferna | ...Down. Always down. I'm trying to change the direction.
+@end
+
+@scene BOND_C06_C11_4 once
+say oriel | One of the dragons in my memory knew you. From before.
+say inferna | Then it remembers what I did.
+say oriel | It remembers you carrying a child the wrong way up. Out, not down. You thought no one saw.
+say inferna | ...Someone did.
+@end
+
+@scene BOND_C07_C09_2 once
+say kitsune | An oni and a fox at the same table. My mother would faint.
+say sable | Mine would draw steel.
+say kitsune | Shall we disappoint them both?
+say sable | I've been disappointing mine for years. Pour.
+@end
+
+@scene BOND_C07_C09_4 once
+say sable | You made an illusion of my squad today. For a second, in the fight.
+say kitsune | I thought you needed them.
+say sable | Don't do it again. ...Unless I ask.
+say kitsune | Then ask. I'll make them smile, this time.
+@end
+
+@scene BOND_C07_C10_2 once
+say archangel | You broke rank. I have never broken rank.
+say sable | Your rank broke you. It just took longer.
+say archangel | ...That is unkind.
+say sable | It's true. Kind comes later. Drink.
+@end
+
+@scene BOND_C07_C10_4 once
+say archangel | If I had been your commander, would you have stayed?
+say sable | If you'd been my commander, nobody would have had to leave.
+say archangel | That is the first thing anyone has said to me that sounds like a medal.
+@end
+
+@scene BOND_C10_C11_2 once
+say inferna | We served the same heavens, once. Opposite ends of the same ladder.
+say archangel | You went down. I stayed up.
+say inferna | And now we both stand in the middle, in a flooded inn.
+say archangel | It is a better view.
+@end
+
+@scene BOND_C10_C11_4 once
+say archangel | When the bargains are undone, where will you go?
+say inferna | Nowhere I'm owed.
+say archangel | Then come where no one's owed anything. With us.
+say inferna | ...Is that an order, commander?
+say archangel | It's an invitation. I've been practising.
+@end
+
+@scene BOND_C05_C12_2 once
+say corvus | Your grove's sap cleans wounds better than half my tinctures.
+say nera | Half?
+say corvus | The other half is spite. Mine works on spite.
+say nera | Then teach me both.
+@end
+
+@scene BOND_C05_C12_4 once
+say nera | You were sent to carry sickness into the quarry towns.
+say corvus | I was.
+say nera | The trees remember the towns that didn't die. They grew back around them. Your cure is in the rings.
+say corvus | ...Nobody has ever shown me proof before.
+@end
+
+@scene BOND_C08_C12_2 once
+say pip | Why the beak?
+say corvus | It holds herbs. The smell keeps the sickness out.
+say pip | Does it?
+say corvus | No. It keeps the fear out. That's half the sickness.
+say pip | I'm getting a beak.
+@end
+
+@scene BOND_C08_C12_4 once
+say narr | Sak is asleep against the plague doctor's coat. Corvus has not moved in an hour.
+say corvus | ...Somebody take the cat. My leg has died. I would know.
+@end
+
+@scene BOND_C13_C15_2 once
+say lich | You raise the dead to hold the crypts shut. I froze mine so they would stop asking questions.
+say velkhar | Did they?
+say lich | No. They ask them slower.
+say velkhar | Mine ask faster. We could trade.
+@end
+
+@scene BOND_C13_C15_4 once
+say velkhar | When this ends, I will let them rest. All of them.
+say lich | And the crypts?
+say velkhar | Will stay shut because the living decide it. Not because the dead are made to hold the door.
+say lich | ...Then I will thaw my court. One throne at a time.
+@end
+
+@scene BOND_C01_C14_2 once
+say maldrath | I wore the old Crown. You carried the new one's writs.
+say dain | I stopped.
+say maldrath | So did I. I just stopped later, and a kingdom fell on me when I did.
+say dain | Then we both know what it weighs.
+@end
+
+@scene BOND_C01_C14_4 once
+say maldrath | The graveyards of the March are full of people I ordered there.
+say dain | I know.
+say maldrath | I would like you to read their names with me. A king should not read them alone.
+say dain | Then you won't.
+@end
+
+@scene BOND_C16_C17_2 once
+say kael | Night Rider. Your patrol route no longer exists.
+say rider | Roads are a state of mind.
+say kael | Roads are a state of asphalt.
+say rider | Not anymore. Ride with me anyway.
+@end
+
+@scene BOND_C16_C17_4 once
+say kael | My orders cannot be cancelled. No one alive holds the codes.
+say rider | Then outlive them. That's what I did.
+say kael | How long did it take?
+say rider | I'll tell you when I'm done.
+@end

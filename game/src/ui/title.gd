@@ -11,10 +11,14 @@ var latest_path = ""
 var ng_saves: Array = []     # sys s4: cleared saves that can start New Game+
 var sub: Control = null
 var logo: Texture2D
+var title_art: Texture2D
 
 func _ready() -> void:
 	size = Vector2(320, 240)
 	logo = Content.load_art("res://assets/ui/title.png")
+	# owner-supplied title painting (run through Aseprite to 320x240); the drawn sky is the fallback
+	if StillView.exists("title"):
+		title_art = load(StillView.path("title"))
 	_build_scenery()
 	_find_latest()
 	menu = MenuList.new()
@@ -148,6 +152,8 @@ func _draw() -> void:
 	# a lit window in the ruined keep
 	if int(t * 2.0) % 7 != 0:
 		draw_rect(Rect2(247, 156, 1, 2), Color8(250, 170, 80))
+	if title_art:
+		draw_texture_rect(title_art, Rect2(0, 0, 320, 240), false)
 	# embers rising from the ash plain
 	for i in range(40):
 		var ex = fmod(i * 53.7 + t * (6 + i % 5) + sin(t + i) * 4.0, 320.0)

@@ -1,0 +1,111 @@
+#! Lead-authored expansion maps: the CH07b descent (Crown Quarry depths -> the Breach).
+
+=== D01_DEPTHS
+name: Crown Quarry - The Collapse
+tileset: quarry
+music: M020
+zone: D01
+region: R01
+location: L_D01
+encounters: W_U1
+rate: 0.5
+dark: true
+grid:
+############......############
+####xx######......############
+###x..x####..cr....###########
+###....##.........x.##########
+##..*...:::::.......#x########
+##.....::..x::..*....x.#######
+###...::......::......x.######
+####.::...xx...::.......######
+####::..x....r..::..0...x.####
+###.:....cc......::.00....####
+###.:......*.......::.0...x.##
+##..:....x...........::.....##
+##.::......................x##
+##.:..xx.......0.0..........##
+###.:.........000...*....x.###
+####.::.......00......x....###
+#####..::..............xx.####
+######...::.....x..........###
+#######....:::::.....x....####
+########.......::::::.....####
+##########.........:::..######
+############.......:::.#######
+###############....:::########
+##################.:::########
+##################.:::########
+entities:
+spawn from_quarry 12 1 down
+spawn default 12 1 down
+spawn from_breach 20 23 up
+exit 12..17 0 D01_R05 from_depths
+exit 19..21 24 U01_R01 from_quarry
+read 20 8 "A shaft drops away into warm dark. Far below, something glows the colour of a banked forge." scene=CH07B_SHAFT
+read 11 5 "A Crown survey stake, driven into the rock. The tag reads DEEP LEVEL 1 - CLAIMED." scene=CH07B_STAKE
+npc depths_miner 26 12 left sprite=soldier talk=CH07B_MINER name="Crown Surveyor" if=!flag:crown_dig_cleared
+chest D01_DEEP_C1 4 5 I002 2
+chest D01_DEEP_C2 25 17 I011 2
+
+=== D09_LIFT
+name: Sable Conduit - The Lift Cage
+encounters: none
+tileset: conduit
+music: M027
+zone: D09
+region: R01
+location: L_D09
+grid:
+##############################
+##############################
+###x#####x#####x#####x00######
+##u####u####u####u###000||||##
+##.......x..........x000,,,,##
+#....x.........x.....000,EE,)#
+#..................x.000,EE,##
+#.....x.......x......000,,,,##
+##...................000||||##
+###x#####x#####x#####x00######
+##############################
+##############################
+entities:
+spawn start 25 6 left
+spawn default 25 6 left
+read 28 5 "The cable brake. One pull and the cage drops, whoever is still below." scene=CH12_LIFT_LEVER
+npc lift_aurex 24 7 up sprite=C06 talk=CH12_LIFT_AUREX
+npc lift_tender 26 4 down sprite=survivor talk=CH12_LIFT_TENDER
+
+=== BOUND_CAMP
+name: The Rootwell - Under the Conduit
+tileset: conduit
+music: M016
+zone: D09
+region: R01
+location: L_D09
+encounters: none
+save: true
+dark: true
+grid:
+########################
+#####xx#######x#########
+###;;..;;####...;;######
+##;......;##.......;####
+##..'.......'..u.....###
+#;...........!.....'..##
+#..u......'.........;.##
+##.....;............u.##
+##;...'.........'.....##
+###;..........;.......##
+####;;.............;.###
+######;;..........;;####
+########;........;######
+##########......########
+##########......########
+entities:
+spawn default 13 12 up
+spawn from_world 13 13 up
+save 9 5
+exit 10..15 14 WORLD_POST l_d09
+read 13 5 "A fire built from relay cable insulation. It burns green, and it burns for a long time." scene=BOUND_FIRE
+read 4 3 "Scratched into the root wall: five names, and under them, in another hand, 'still five'."
