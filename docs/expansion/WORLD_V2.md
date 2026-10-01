@@ -358,3 +358,10 @@ The soul-bound party (section 10) unlocks after the first ancient dragon falls.
   - Enhanced epilogues for C09-C17 and for the rescue outcome, in `CH23_EPILOGUES`.
   - Completion tracking (`game/src/meta/completion.gd`, Records > Stats); achievements ST13-ST16.
 - **World fix.** A mountain pass joins the Aerie cable station to the Skyspine foothills (`MOUNTAIN_PASSES` in `wgen.py`). Write the world with `python3 wgen.py ../../content_src/maps/world2.map`.
+- **Ranches.** One per major kingdom, off the main town (both world phases): Fallowmere (T01_RANCH, Brackenford), Soot Paddock
+  (T03_RANCH, Cinderwake), Gullbank Croft (T04_RANCH, Bellharbor), Windbreak Fold (T05_RANCH, High Aerie), Brinewell Steading
+  (T06_RANCH, Nacre), Maple Gate Farm (N28_RANCH, Akagane), Lazar Fields (N22_RANCH, Harrowfen), Rimefold (N32_RANCH, Rimeholt).
+  Code `game/src/meta/ranch.gd`, data `tools/content/ranch.py`, maps `content_src/maps/ranch.map`, scenes `ranch.scn`, art
+  `tools/art/install_ranch.py` (Super Retro Ranch pack). Livestock is bought once per kind per ranch and fills the produce crate
+  over in-game days; crop plots take seed from the rancher's seed box; goods eat, sell and cook (recipes RF01-RF06, RA01).
+  Records > Ranches; achievements RN01-RN03.

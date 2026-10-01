@@ -3,6 +3,7 @@
 @scene CH12_DAIS once
 music silence
 show rook 15 7 down rook
+camera 15 8 0.6
 say rook | You came. Good. I wanted witnesses who had read the vault.
 say dain | We read it. It said the separation rite was taken away. Not that you get to hand it back to everyone at once.
 say rook | A century of extraction, and you want to repair it one volunteer at a time.
@@ -12,6 +13,7 @@ say oriel | They get asked. That is what you are skipping.
 say rook | Then I will be the one who didn't ask. Someone has to.
 say narr | Three relay lights kindle around the dais.
 still ST06_dais
+camera reset
 battle B10 noflee
 set b10_done
 music silence

@@ -117,6 +117,8 @@ static func icon(ci: CanvasItem, pos: Vector2, iid: String, px: int = 11, dim: b
 		# sys s4: fishing items use the Fishing Gear pack's icon sheet
 		FishingGame.draw_icon(ci, pos.round(), int(it["icon_fish"]), px / 16.0)
 		return true
+	if it.has("icon_ranch") and Ranch.draw_icon(ci, pos.round(), iid, px / 16.0):
+		return true   # ranching goods: assets/ext/ranch/icons.png
 	if not it.has("icon"):
 		return false
 	var i: int = int(it["icon"])

@@ -143,6 +143,10 @@ func run_gallery(p_main: Node, which: String) -> void:
 		await _g_sys_s2()
 		get_tree().quit(0)
 		return
+	if which == "ranch":
+		await _g_ranch()
+		get_tree().quit(0)
+		return
 	if which == "m7":
 		# world v2 review: the Mode-7 world maps on foot, mounted and flying (turned), surface and the Deep
 		var shots = [["WORLD", "l_t01", "foot", 0.0], ["WORLD", "l_t02", "foot", 0.0], ["WORLD", "l_t03", "mount", 0.0],
@@ -192,13 +196,16 @@ func run_gallery(p_main: Node, which: String) -> void:
 	if which.begins_with("maps:"):
 		# ad-hoc review: --qa-gallery-set maps:D02_R01,D03_R02 (one shot per map at its default spawn)
 		Game.new_game()
+		Game.S["clock"] = 720.0
 		for mp in which.substr(5).split(","):
 			if Content.map(mp).is_empty():
 				continue
 			main.enter_field(mp, "default")
 			main.field.banner_t = 0.0
-			await _g_frames(8)
+			await _g_frames(30)
 			await _g_shot("map_" + mp.to_lower())
+			if OS.has_environment("HD2D_DEBUG") and main.field.hd != null:
+				main.field.hd.vp.get_texture().get_image().save_png(out_dir + "/vp_" + mp.to_lower() + ".png")
 		get_tree().quit(0)
 		return
 	if which == "rescue":
@@ -384,6 +391,13 @@ func run_gallery(p_main: Node, which: String) -> void:
 			bs.setup(f, 1234, {})
 			await _g_frames(90)
 			await _g_shot("battle_" + f)
+			if bs.stage != null and OS.has_environment("HD2D_ACT"):
+				var e0 = bs.model.enemy_ids[0]
+				var p0 = bs.model.party_ids[0]
+				bs.stage.act(bs._battler_pos(p0), bs._battler_pos(e0))
+				await _g_frames(40)
+				await _g_shot("battle_" + f + "_act")
+				bs.stage.release()
 			bs.queue_free()
 			await _g_frames(2)
 	get_tree().quit(0)
@@ -634,6 +648,49 @@ func _g_sys_s2() -> void:
 	await _g_menu("main", {}, "s2_equip_set", func(m): m._equip_menu("C01"))
 	# region tier stock at Kettle Row
 	await _g_menu("shop", {"id": "SHOP_N06"}, "s2_shop_tier", func(m): m._shop_list("SHOP_N06", true); m.lists[-1].index = m.lists[-1].items.size() - 4; m.lists[-1]._fix_scroll())
+
+# ---------------------------------------------------------------- ranching gallery (meta/ranch.gd): every ranch map with
+# livestock bought, one plot growing and one ripe, and Records > Ranches
+func _g_ranch() -> void:
+	Game.add_gold(99999)
+	Game.S["day"] = 2
+	Game.S["clock"] = 600.0
+	for rid in Ranch.order():
+		for k in Ranch.info(rid)["animals"]:
+			Ranch.buy(rid, k)
+		var seeds: Array = Ranch.info(rid)["seeds"]
+		for i in range(seeds.size()):
+			Game.add_item(str(Ranch.crop(seeds[i])["seed"]), 1)
+			Ranch.plant(rid, i + 1, str(Ranch.crop(seeds[i])["seed"]))
+		Ranch._st(rid)["plots"]["1"]["t"] = 0.0
+	Game.S["day"] = 4
+	for rid in Ranch.order():
+		main.enter_field(str(Ranch.info(rid)["map"]), "default")
+		main.field.banner_t = 0.0
+		await _g_frames(20)
+		await _g_shot("ranch_" + rid)
+		main.enter_field(str(Ranch.info(rid)["map"]), "default", Vector2i(18, 14), "down")
+		main.field.banner_t = 0.0
+		await _g_frames(10)
+		await _g_shot("ranch_%s_mid" % rid)
+	await _g_menu("main", {}, "ranch_records", func(m): m._ranch_page())
+	# the produce crate and the rancher's trade menu (scene command `ranch`)
+	main.enter_field("T01_RANCH", "default", Vector2i(18, 7), "up")
+	main.field.banner_t = 0.0
+	await _g_frames(10)
+	main.director.run("RANCH_CRATE", {"npc": "crate_R01"})
+	await _g_frames(40)
+	await _g_shot("ranch_crate")
+	main.dialogue.handle("confirm")
+	await _g_frames(20)
+	main.dialogue.handle("confirm")
+	await _g_frames(20)
+	main.director.run("RANCH_R01_AGNA", {"npc": "rancher_r01"})
+	for i in range(4):
+		await _g_frames(40)
+		main.dialogue.handle("confirm")
+	await _g_frames(30)
+	await _g_shot("ranch_rancher_menu")
 
 func _g_frames(n: int) -> void:
 	for i in range(n):

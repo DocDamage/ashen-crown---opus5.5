@@ -675,6 +675,13 @@ def ferry_dock(w, dock, spawn, cable=False):
     d, sp = best[1]
     if not cable:
         w.kind[d[1]][d[0]] = "bridge"
+    else:
+        # a cable station is a dead-end platform beside the spawn, never a cell the road passes through
+        nub = [(sp[0] + ax, sp[1] + ay) for ax, ay in ((1, 0), (-1, 0), (0, 1), (0, -1))
+               if 1 <= sp[0] + ax < W - 1 and 1 <= sp[1] + ay < H - 1 and not w.walkable(sp[0] + ax, sp[1] + ay)]
+        if nub:
+            d = min(nub, key=lambda c: abs(c[0] - dock[0]) + abs(c[1] - dock[1]))
+            w.kind[d[1]][d[0]] = "path"
     return d, sp
 
 
@@ -923,7 +930,74 @@ def build_surface_post(pre):
         w.ents.append({"t": "line", "text": 'block %d..%d %d..%d tile=reef if=!ch:CH20 msg="%s"' % (x - 1, x + 1, y - 1, y + 1, msg)})
     add_places(w, PLACES_POST, {})
     ensure_access(w, PLACES_POST)
+    post_links(w)
     return w
+
+
+# the reunion chapters walk from Hearthward before the Lanternwake flies (CH14 Rootward, CH16 Cinderwake): the ruined
+# land keeps a way there - planks over the narrowest water between the pieces of the broken continent
+POST_LINKS = [("L_T07", "L_D03"), ("L_T07", "L_T03")]
+
+
+def post_links(w):
+    import heapq
+    from collections import deque
+    def comp(s):
+        seen = {s}
+        q = deque([s])
+        while q:
+            x, y = q.popleft()
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                n = (x + dx, y + dy)
+                if 0 <= n[0] < W and 0 <= n[1] < H and n not in seen and (w.walkable(*n) or w.kind[n[1]][n[0]] == "bridge"):
+                    seen.add(n)
+                    q.append(n)
+        return seen
+    for a, b in POST_LINKS:
+        pa, pb = tuple(PLACES_POST[a][:2]), tuple(PLACES_POST[b][:2])
+        ca = comp(pa)
+        if pb in ca:
+            continue
+        cb = comp(pb)
+        # cheapest crossing: land is free inside either piece, water costs, cliffs and mountains are walls
+        dist = {c: 0 for c in ca}
+        prev = {}
+        pq = [(0, c) for c in ca]
+        heapq.heapify(pq)
+        end = None
+        while pq:
+            dd, c = heapq.heappop(pq)
+            if dd > dist.get(c, 1e9):
+                continue
+            if c in cb:
+                end = c
+                break
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                n = (c[0] + dx, c[1] + dy)
+                if not (1 <= n[0] < W - 1 and 1 <= n[1] < H - 1):
+                    continue
+                k = w.kind[n[1]][n[0]]
+                if k in ("water", "deep", "shallow"):
+                    cost = 5
+                elif w.walkable(*n) or k == "bridge":
+                    cost = 1
+                else:
+                    continue
+                if dd + cost < dist.get(n, 1e9):
+                    dist[n] = dd + cost
+                    prev[n] = c
+                    heapq.heappush(pq, (dd + cost, n))
+        if end is None:
+            print("NO LINK", a, b)
+            continue
+        n = 0
+        c = end
+        while c in prev:
+            if w.kind[c[1]][c[0]] in ("water", "deep", "shallow"):
+                w.kind[c[1]][c[0]] = "bridge"
+                n += 1
+            c = prev[c]
+        print("post link", a, b, "planks", n)
 
 
 def ensure_access(w, places):

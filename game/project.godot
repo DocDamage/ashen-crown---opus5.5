@@ -16,6 +16,7 @@ config/custom_user_dir_name="AshenCrown"
 
 [autoload]
 
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Content="*res://src/autoload/content.gd"
 Settings="*res://src/autoload/settings.gd"
 Game="*res://src/autoload/game.gd"

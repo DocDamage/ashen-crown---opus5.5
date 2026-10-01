@@ -1134,7 +1134,7 @@ const SETTING_PAGES := {
 		["window_size", ["960x720", "1280x800", "1280x720", "1440x1080", "1920x1080"]], ["fullscreen", [false, true]]],
 	"access": [["colorblind", ["off", "deuteranopia", "protanopia", "tritanopia"]], ["shape_cues", [true, false]],
 		["high_contrast", [false, true]], ["reduced_flash", [false, true]], ["shake", [true, false]],
-		["world_view", ["mode7", "flat"]], ["weather", [true, false]], ["hold_confirm", [false, true]], ["reel_toggle", [false, true]],
+		["world_view", ["mode7", "flat"]], ["hd2d", [true, false]], ["hd2d_dof", [true, false]], ["battle_camera", [true, false]], ["weather", [true, false]], ["hold_confirm", [false, true]], ["reel_toggle", [false, true]],
 		["fish_assist", [false, true]], ["captions", [false, true]], ["mono", [false, true]]],
 	"audio": [["vol_master", [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]], ["vol_music", [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]],
 		["vol_sfx", [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]], ["vol_ambience", [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]],
@@ -1866,7 +1866,8 @@ func _clear_save_menu() -> void:
 func _records_menu() -> void:
 	page = "records"
 	var items = [{"text": T.s("records.achievements"), "value": "achv"}, {"text": T.s("records.fish"), "value": "fish"},
-		{"text": T.s("records.stats"), "value": "stats"}, {"text": T.s("records.bonds", "Bonds"), "value": "bonds"}]
+		{"text": T.s("records.stats"), "value": "stats"}, {"text": T.s("records.bonds", "Bonds"), "value": "bonds"},
+		{"text": T.s("records.ranches", "Ranches"), "value": "ranch"}]
 	var m = _menu(items, Rect2(4, 4, 110, 22 + 11 * items.size()), items.size(), T.s("records.title"))
 	var prev = func():
 		UI.win(self, Rect2(118, 4, 198, 60))
@@ -1884,6 +1885,24 @@ func _records_open(v: String) -> void:
 		"fish": _fish_log_page()
 		"stats": _stats_page()
 		"bonds": _bonds_page()
+		"ranch": _ranch_page()
+
+## Records > Ranches (meta/ranch.gd): each ranch's livestock, plots and the produce waiting in its crate.
+func _ranch_page() -> void:
+	page = "records"
+	var items = Ranch.record_rows()
+	var m = _menu(items, Rect2(4, 4, 150, mini(232, 22 + 11 * maxi(1, items.size()))), maxi(1, items.size()), T.s("records.ranches", "Ranches"))
+	var draw_it = func():
+		UI.win(self, Rect2(158, 4, 158, 232))
+		var rid: String = str(m.current().get("value", ""))
+		if rid == "":
+			return
+		var y = 9.0
+		for ln in Ranch.record_lines(rid):
+			UI.text(self, Vector2(165, y), str(ln[0]), ln[1])
+			y += 11.0
+	info_draw = draw_it
+	m.set_meta("refresh", func(_mm): page = "records"; info_draw = draw_it)
 
 func _bonds_page() -> void:
 	page = "records"

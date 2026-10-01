@@ -21,6 +21,7 @@ from content import limits as LIM, battle_sys as BSYS  # noqa: E402  (expansion 
 from content import gear2 as G2, crafting as CR  # noqa: E402  (systems s2: tiers, sets, crafting, bestiary)
 from content import field_s3 as FS3  # noqa: E402
 from content import fishing as FSH, achievements as ACH, mature as MAT  # noqa: E402  (sys s4)
+from content import ranch as RANCH  # noqa: E402  (ranching)
 
 SUPPORTED_OPS = {"self_hp", "damage", "heal", "mp", "full_restore", "revive", "status", "cleanse", "dispel_positive", "atb", "oath",
                  "arm_overcast", "heat_exchange", "leap", "ground", "mine", "decoy", "steal", "protect", "lethal_guard",
@@ -36,7 +37,7 @@ SCENE_CMDS = {"say", "choice", "label", "goto", "if", "set", "unset", "give", "t
               "title", "rumor", "discover", "shop", "inn", "formation", "save_prompt", "event", "xp", "level_floor",
               "vehicle", "tint", "end", "split_party", "setvar", "addvar", "equip", "portrait", "lights", "salvage",
               "call", "clear_save", "epilogue", "ship_travel", "sprite", "row", "note", "lock_party", "unlock_party",
-              "ending", "journal", "backup", "airship", "team", "name", "rename", "craft", "travel", "arena", "rescue", "bound", "still"}
+              "ending", "journal", "backup", "airship", "team", "name", "rename", "craft", "travel", "arena", "rescue", "bound", "still", "camera", "ranch"}
 
 errors = []
 pending = []
@@ -661,6 +662,7 @@ def main():
     check_scene_refs(content["scenes"], content["maps"], content["items"], content["formations"], content["characters"])
     FSH.apply(content, err)       # sys s4: fish, tables, reward items, Waylamp shops, fish spots
     FSH.boss_rooms(content)
+    RANCH.apply(content, err, check_ops)   # ranching: goods, seed boxes, cooking recipes, ranch map hooks
     ACH.apply(content)            # sys s4: achievements
     MAT.check(content["scenes"], err)   # sys s4: {m:strong|mild} markup
     dumped = json.dumps(content, ensure_ascii=False).replace("“", '\\"').replace("”", '\\"')

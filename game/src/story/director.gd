@@ -60,6 +60,8 @@ func run(scene_id: String, p_ctx: Dictionary = {}) -> String:
 		if is_instance_valid(main.field):
 			main.field.busy = false
 			main.field.refresh_npcs()
+			if main.field.hd != null:
+				main.field.hd.end_shot()     # a framed shot never outlives its scene
 	emit_signal("scene_done", scene_id)
 	return result
 
@@ -308,6 +310,14 @@ func _exec(c: Dictionary, labels: Dictionary):
 			return "abort"
 		"ship_travel":
 			pass
+		"camera":
+			# camera x y [zoom] [tilt]: an HD-2D framed shot on a map cell; "camera reset" returns to the follow camera
+			var f = main.field
+			if f.hd_on and f.hd != null and not skipping:
+				if a[0] == "reset":
+					f.hd.end_shot()
+				else:
+					f.hd.shot(Vector2(float(a[0]) * 16.0 + 8.0, float(a[1]) * 16.0 + 8.0), float(a[2]) if a.size() > 2 else 0.7, float(a[3]) if a.size() > 3 else -8.0)
 		"rescue":
 			var jr = await _rescue_cmd(a, labels)
 			if typeof(jr) == TYPE_INT or (typeof(jr) == TYPE_STRING and jr != ""):
@@ -335,6 +345,8 @@ func _exec(c: Dictionary, labels: Dictionary):
 			await FieldCmds.run(main, a)
 		"arena":
 			await Arena.run(main, a)
+		"ranch":
+			await Ranch.run(main, a)   # ranching (meta/ranch.gd)
 		_:
 			push_error("Unhandled scene command " + c["c"])
 	return -1

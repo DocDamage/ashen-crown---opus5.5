@@ -45,6 +45,8 @@ block 18..26 22 tile=water if=!ch:CH14 msg="Elowen's survivors are meant to rebu
 spawn world 1 14 right
 spawn east 42 14 left
 spawn default 1 14 right
+spawn from_ranch 41 5 down
+exit 41 3..4 T01_RANCH from_town  #! ranch: Fallowmere
 exit 0 13..16 WORLD_POST l_t01
 exit 43 13..16 WORLD_POST l_t01
 npc forewoman 8 13 right sprite=mara talk=T01P_MARA

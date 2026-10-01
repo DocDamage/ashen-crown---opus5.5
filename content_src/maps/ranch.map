@@ -1,0 +1,505 @@
+#! Ranches (one per major kingdom): hand-made farm maps reached from each kingdom's main town.
+#! Hooks for game/src/meta/ranch.gd (validated by tools/content/ranch.py): rancher_<rid>, crate_<RID>, plot_<RID>_<n>,
+#! own_<RID>_<animal> (shown once bought). Animal sprites are ranch:<key> (tools/art/install_ranch.py).
+=== T01_RANCH
+name: Fallowmere Ranch
+tileset: town_r01
+music: M010
+zone: T01
+region: R01
+location: L_T01
+encounters: none
+save: false
+grid:
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TT"""T""""""""1"""""""""""""""""T""TTT
+T""RRRRRRR"""""""""RRRRRRRRRRRR""""""T
+T""RRRR4RR""3333"""RRRRRRRRRRRR"RRRR"T
+T""RRRRRRR"""""""""RRRRRRRRRRRR"RRRR"T
+T""WQWDWQW""O""rr""WWQWWDDWWQWW"WQDW"T
+T"1"":"""""":"""c""""""":::"""""":""2T
+T"""":::::::::::::::::::::::::::::::"T
+T"ffffffffffff""":""ffffffffff"""1"""T
+T"f""""""""""f""":""f,,,"",,,f"""""T"T
+T"f""""""""""f""":""f,,"",,,,f""""""1T
+T"f""""""""""f""":""f,,,,,",,f"""""""T
+T"ffffff""ffff""":""ffff""ffff"""T"""T
+T"""""""::"""""""::"""""::"""""""""""T
+::::::::::::::::::::::::::::::::::"""T
+::"""""""":""""""""":"""""""""""":""TT
+T""ggggggggggggggg"""":"""~~~~~~~~"""T
+T"":::::::::::::::"""":""~~~~~~~~~~""T
+T""g:g:g:ggggggggg""""::"~~~~~~~~~~""T
+T"":::::::::::::::"""""""~~~~~~~~~~""T
+T""ggggggggggggggg""T"""""~~~~~~~~"T"T
+T""""""""""""""""""""""""""""""""""""T
+T""T"""1""""T"""""""T""""""""""T""""TT
+TT""""""""""""""""""""""T"""""""""""TT
+TTT""T"""""T"""""T"""""""""T"""""TTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+entities:
+spawn from_town 1 14 right
+spawn default 1 14 right
+exit 0 14..15 T01_PLATFORM from_ranch if=!phase:post
+exit 0 14..15 T01_POST from_ranch if=phase:post
+npc rancher_r01 5 6 down sprite=farmer talk=RANCH_R01_AGNA name="Agna Fallow"
+npc crate_R01 18 6 down sprite=ranch:crate:R01 talk=RANCH_CRATE name="Produce Crate"
+npc plot_R01_1 3 18 down sprite=ranch:plot:R01:1 talk=RANCH_PLOT name="Plot"
+npc plot_R01_2 5 18 down sprite=ranch:plot:R01:2 talk=RANCH_PLOT name="Plot"
+npc plot_R01_3 7 18 down sprite=ranch:plot:R01:3 talk=RANCH_PLOT name="Plot"
+npc own_R01_cow 8 10 down sprite=ranch:cow talk=RANCH_MINE wander=1 name="Your Cow" if=ranch:R01:own:cow
+npc own_R01_pig 26 10 left sprite=ranch:pig talk=RANCH_MINE wander=1 name="Your Pig" if=ranch:R01:own:pig
+npc own_R01_dove 35 7 down sprite=ranch:dove talk=RANCH_MINE wander=1 name="Your Doves" if=ranch:R01:own:dove
+npc cow_r01a 5 9 right sprite=ranch:cow talk=RANCH_COW wander=1
+npc cow_r01b 11 11 left sprite=ranch:cow talk=RANCH_COW wander=1
+npc pig_r01a 23 10 right sprite=ranch:pig talk=RANCH_PIG wander=1
+npc dove_r01a 31 6 down sprite=ranch:dove talk=RANCH_DOVE wander=1
+npc cat_r01 14 6 down sprite=ranch:cat talk=RANCH_CAT wander=1
+npc hand_r01_tobin 16 13 down sprite=child talk=RANCH_R01_TOBIN wander=1 name="Tobin"
+npc hand_r01_mott 12 17 left sprite=elder talk=RANCH_R01_MOTT name="Old Mott" if=!phase:post
+npc hand_r01_ressa 20 15 down sprite=farmer talk=RANCH_R01_RESSA name="Ressa"
+npc hand_r01_drift 30 14 left sprite=survivor talk=RANCH_R01_DRIFTER name="Flood Drifter" if=phase:post
+sign 2 13 "Fallowmere Ranch. Milk, eggs and seed. Close the gates. The quarry dogs come down at night."
+block 6 5 tile=door msg="The farmhouse door. Agna keeps it shut; the boys' boots are still by it."
+block 24..25 5 tile=door msg="The barn. Hay to the rafters and a tally of debts chalked on the door."
+block 34 5 tile=door msg="The dovecote. It smells of feathers and old straw."
+
+=== T03_RANCH
+name: Soot Paddock
+tileset: town_r02
+music: M012
+zone: T03
+region: R02
+location: L_T03
+encounters: none
+save: false
+grid:
+######################################
+#AAAx""""AAAAppppppppAAAA""""AAxAAAA##
+#A"RRRRRRR"AAAAAAAAAAAA"RRRRRRRRRR"AA#
+#A"RRR4RRR"AA2AAvAAAAAA"RRRRRR4RRR"rA#
+#A"RRRRRRR"AAAAAAAAAAAA"RRRRRRRRRR"rA#
+#A"WQWDWQW"cc"rr"AAAAA""WWQWDDWQWW"AA#
+#A"""::"""::::::::::::::::::::::"""AA#
+#AA"":"""""O""""":""""""""""""""""AAA#
+#A"fffffffffff"""":""ffffffff""A"""AA#
+#A"f''"''A''"f"""":""f""""""f""""""AA#
+#A"f'''A'''''f""v":""f""""""f""x"""AA#
+#A"f''"''''''f"""":""f""""""f"""""AAA#
+#A"ffff""fffff"""":""fff""fff""""""AA#
+#AA"""::""""""""":"""""::"""""""""AAA#
+::::::::::::::::::::::::::::::::::"AA#
+::""""""":"""""""""":""""""""""":"AAA#
+#A"########"""""":"""""""""AAA""":"AA#
+#A"#gggggg#"""""":"""ppppp"AxA""":"AA#
+#A"#::::::#"""""":"""""""""AAA""":"AA#
+#A"#g:g:g:+"""""":::::::::::::::::"AA#
+#A"#::::::#""""""""""""""""""""""""AA#
+#A"########""x"""""""""""""""""""""AA#
+#AA"""""""""""""""eee""""""AAA"""""AA#
+#AAAx"""AAA""""""AAAAA"""""AAAAx"AAAA#
+#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#
+######################################
+entities:
+spawn from_town 1 14 right
+spawn default 1 14 right
+exit 0 14..15 T03_TOWN from_ranch if=!phase:post
+exit 0 14..15 T03_POST from_ranch if=phase:post
+npc rancher_r02 5 6 down sprite=worker talk=RANCH_R02_BRANN name="Brann Coker"
+npc crate_R02 33 6 down sprite=ranch:crate:R02 talk=RANCH_CRATE name="Produce Crate"
+npc plot_R02_1 4 19 down sprite=ranch:plot:R02:1 talk=RANCH_PLOT name="Plot"
+npc plot_R02_2 6 19 down sprite=ranch:plot:R02:2 talk=RANCH_PLOT name="Plot"
+npc plot_R02_3 8 19 down sprite=ranch:plot:R02:3 talk=RANCH_PLOT name="Plot"
+npc own_R02_pig 8 10 down sprite=ranch:pig_black talk=RANCH_MINE wander=1 name="Your Pig" if=ranch:R02:own:pig
+npc own_R02_bunny 24 10 down sprite=ranch:bunny talk=RANCH_MINE wander=1 name="Your Coneys" if=ranch:R02:own:bunny
+npc own_R02_dove 15 11 down sprite=ranch:dove talk=RANCH_MINE wander=1 name="Your Doves" if=ranch:R02:own:dove
+npc pig_r02a 5 10 right sprite=ranch:pig_black talk=RANCH_PIG wander=1
+npc pig_r02b 10 9 left sprite=ranch:pig_black talk=RANCH_PIG wander=1
+npc bunny_r02a 22 9 down sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc bunny_r02b 26 11 left sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc dove_r02a 14 9 down sprite=ranch:dove talk=RANCH_DOVE wander=1
+npc cat_r02 13 7 down sprite=ranch:cat talk=RANCH_CAT wander=1
+npc hand_r02_kettle 20 15 down sprite=apprentice talk=RANCH_R02_KETTLE wander=1 name="Kettle"
+npc hand_r02_wisp 14 18 left sprite=volunteer talk=RANCH_R02_WISP name="Wisp"
+npc hand_r02_reg 25 13 down sprite=clerk talk=RANCH_R02_REGULATOR name="Regulator's Man" if=!phase:post
+npc hand_r02_lung 30 20 left sprite=survivor talk=RANCH_R02_ASHLUNG name="Ash-Lung Ped" if=phase:post
+read 16 10 "A slag vent. Warm air rises from it day and night. The pigs sleep against it in winter." scene=RANCH_R02_VENT
+sign 2 13 "Soot Paddock. Pigs, coneys, doves. Truffles weighed at the gate, not after."
+block 6 5 tile=door msg="Brann's house. The windows are black with soot on the inside, too."
+block 28..29 5 tile=door msg="The sty-barn. Something inside snores like a furnace."
+
+=== T04_RANCH
+name: Gullbank Croft
+tileset: town_r03
+music: M013
+zone: T04
+region: R03
+location: L_T04
+encounters: none
+save: false
+grid:
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+T""""""""T""""""""""""""""""T"""""""TT
+T""RRRRRRR""""333333""""RRRRRRRRRR"""T
+T""RRR4RRR""""""""""""""RRRRRRRRRR""1T
+T""RRRRRRR""O"""""""""""RRRRRRRRRR"""T
+T""WQWDWQW"""""rrc""""""WQWWDDWWQW"""T
+T""""":""""""""""""":"""""""::"""""""T
+T"::::::::::::::::::::::::::::::::"""T
+T":"fffffffffff""":"""ffffffff""""1""T
+T":"f"""""""""f""":"""f""""""f"""""""T
+T":"f"""""""""f""":"""f""""""f"""T"""T
+T":"f"""""""""f""":"""f""""""f"""""""T
+T":"fffff""ffff""":"""fff""fff"""""""T
+T":""""":"""""""""":""""":"""""""""""T
+:::::::::::::::::::::::::::::::::::""T
+:"zzzzzz:zzzzz""""":"""""""""""zzz"""T
+T"zgggggggggz"""""":""""""""zzzzzzzzzT
+T"z:::::::::z"""""":"""""zzzzzzzzzzzzT
+T"zg:g:g:gggz""""""::::::zzzdddzzzzzzT
+T"z:::::::::z"""""""""zzzzzzzdzzzzzzzT
+T"zzzzzzzzzzzz""""zzzzzzwwwwwdwwwwwwwT
+T""z""""zz"zzzzzzzzzzwwwww~~d6~~~~~~~T
+Tzzzzzzzzzzzzzzzzzwwwww~~~~~~~~~~~~~~T
+Tzzzzzz2zzzzzzzzwww~~~~~~~~~~~~~~~~~~T
+TTTzzzzzzzzzzwww~~~~~~~~~~~~~~~~~~~~~T
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+entities:
+spawn from_town 1 14 right
+spawn default 1 14 right
+exit 0 14..15 T04_QUAY from_ranch if=!phase:post
+exit 0 14..15 T04_UPPER from_ranch if=phase:post
+npc rancher_r03 6 6 down sprite=farmer talk=RANCH_R03_MAUDE name="Maude Tiller"
+npc crate_R03 31 6 down sprite=ranch:crate:R03 talk=RANCH_CRATE name="Produce Crate"
+npc plot_R03_1 3 18 down sprite=ranch:plot:R03:1 talk=RANCH_PLOT name="Plot"
+npc plot_R03_2 5 18 down sprite=ranch:plot:R03:2 talk=RANCH_PLOT name="Plot"
+npc plot_R03_3 7 18 down sprite=ranch:plot:R03:3 talk=RANCH_PLOT name="Plot"
+npc own_R03_cow 9 10 down sprite=ranch:cow talk=RANCH_MINE wander=1 name="Your Cow" if=ranch:R03:own:cow
+npc own_R03_bunny 26 10 down sprite=ranch:bunny talk=RANCH_MINE wander=1 name="Your Coneys" if=ranch:R03:own:bunny
+npc own_R03_dove 16 11 down sprite=ranch:dove talk=RANCH_MINE wander=1 name="Your Doves" if=ranch:R03:own:dove
+npc cow_r03a 6 10 right sprite=ranch:cow talk=RANCH_COW wander=1
+npc cow_r03b 12 9 left sprite=ranch:cow talk=RANCH_COW wander=1
+npc bunny_r03a 23 9 down sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc bunny_r03b 28 11 left sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc dove_r03a 16 9 down sprite=ranch:dove talk=RANCH_DOVE wander=1
+npc hand_r03_pim 20 16 down sprite=child talk=RANCH_R03_PIM wander=1 name="Pim"
+npc hand_r03_orrin 26 18 down sprite=sailor talk=RANCH_R03_ORRIN name="Orrin"
+npc hand_r03_clerk 18 13 down sprite=clerk talk=RANCH_R03_TALLY name="Grazing Tallyman" if=!phase:post
+npc hand_r03_widow 14 20 down sprite=survivor talk=RANCH_R03_WIDOW name="Tide Widow" if=phase:post
+sign 2 13 "Gullbank Croft. Salt-grass milk, sea-wind wool. Mind the tide line."
+block 6 5 tile=door msg="Maude's croft house. Nets dry in the window; nobody has fished from this house in years."
+block 28..29 5 tile=door msg="The byre. The door is swollen with salt and does not open for strangers."
+
+=== T05_RANCH
+name: Windbreak Fold
+tileset: town_r04
+music: M014
+zone: T05
+region: R04
+location: L_T05
+encounters: none
+save: false
+grid:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^qq^^^^^^^^^^^^^^^^^^qq^^^^^^^^^
+^^qRRRRRRRqqqo"""""""""RRRRRRRRRRqq^^^
+^^qRRR4RRRq""""""""""""RRRRRRRRRR""^^^
+^^qRRRRRRRq"""3333"""""RRRRRRRRRR""T^^
+^^qWQWDWQWq""""""""""""WWQWDDWQWW"""^^
+^^q""":""""O""""""""""""""""::""""""o^
+^T"::::::::::::::::::::::::::::::::"q^
+^q":"#########""":""#########""""""""^
+^q":"#"""""""#""":""#"""""""#""o"""""^
+^"":"#"""""""#""":""#"""""""#"""""""q^
+^q":"#"""""""#""":""#"""""""#""""T"""^
+^q":"####""###""":""####""###"""""""q^
+^"":""""::"""""""::"""""::""""""""""""
+^T":::::::::::::::::::::::::::::::::::
+^q""qqq""":"""""""""""""""""":"""""q""
+^^"#########"""o""""""T"""""":""""""q^
+^^"#ggggggg#""""""""""""""qqq:qqqq""^^
+^^"#:::::::#"""T""""o""""qqqqqqqqqqq^^
+^^"#g:g:g::+::::::::::::::::::qqqqqq^^
+^^"#:::::::#"""""""""""""qqqqqqqqqqq^^
+^^"#ggggggg#""o""""""T"""qqqqqqoqqqq^^
+^^q#########""""""""""""""qqqqqqqqq^^^
+^^^qqq""""""""T"""""""o""""qqqqqqq^^^^
+^^^^^^qqqq"""""""qqqq"""""qqqq^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+entities:
+spawn from_town 36 14 left
+spawn default 36 14 left
+exit 37 13..14 T05_COURT from_ranch if=!phase:post
+exit 37 13..14 T05_POST from_ranch if=phase:post
+npc rancher_r04 6 6 down sprite=elder talk=RANCH_R04_SEFTON name="Sefton Crag"
+npc crate_R04 31 6 down sprite=ranch:crate:R04 talk=RANCH_CRATE name="Produce Crate"
+npc plot_R04_1 4 19 down sprite=ranch:plot:R04:1 talk=RANCH_PLOT name="Plot"
+npc plot_R04_2 6 19 down sprite=ranch:plot:R04:2 talk=RANCH_PLOT name="Plot"
+npc plot_R04_3 8 19 down sprite=ranch:plot:R04:3 talk=RANCH_PLOT name="Plot"
+npc own_R04_bunny 8 10 down sprite=ranch:bunny talk=RANCH_MINE wander=1 name="Your Coneys" if=ranch:R04:own:bunny
+npc own_R04_cow 24 10 down sprite=ranch:cow_black talk=RANCH_MINE wander=1 name="Your Cow" if=ranch:R04:own:cow
+npc own_R04_dove 19 3 down sprite=ranch:dove talk=RANCH_MINE wander=1 name="Your Doves" if=ranch:R04:own:dove
+npc bunny_r04a 6 9 right sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc bunny_r04b 11 11 left sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc cow_r04a 22 10 right sprite=ranch:cow_black talk=RANCH_COW wander=1
+npc cow_r04b 27 9 left sprite=ranch:cow_black talk=RANCH_COW wander=1
+npc dove_r04a 12 3 down sprite=ranch:dove talk=RANCH_DOVE wander=1
+npc hand_r04_lisl 16 15 down sprite=farmer talk=RANCH_R04_LISL wander=1 name="Lisl"
+npc hand_r04_dunmore 30 16 left sprite=worker talk=RANCH_R04_DUNMORE name="Dunmore"
+npc hand_r04_priest 34 9 down sprite=monk talk=RANCH_R04_PRIEST name="Wind-Priest" if=!phase:post
+npc hand_r04_widower 22 20 down sprite=survivor talk=RANCH_R04_WIDOWER name="Cable Widower" if=phase:post
+sign 35 13 "Windbreak Fold. Wool, milk, message doves. Rope yourself on the cliff path."
+block 6 5 tile=door msg="Sefton's house. The shutters are tied down with rope against the wind."
+block 27..28 5 tile=door msg="The fold barn. The wind has worn the door boards smooth as bone."
+
+=== T06_RANCH
+name: Brinewell Steading
+tileset: town_r05
+music: M015
+zone: T06
+region: R05
+location: L_T06
+encounters: none
+save: false
+grid:
+oooooooooooooooooooooooooooooooooooooo
+oNNNNNNzzzzzzzzzzzzzzzzzzzzzNNNNNNNNNo
+oNzRRRRRRRzzzzz]]zzzzzzRRRRRRRRRRzzNNo
+oNzRRR4RRRzzzzzzzzzzzzzRRRRRRRRRRzzzNo
+oNzRRRRRRRzzzz999zzzzzzRRRRRRRRRRzrrNo
+oNzWQWDWQWzzzz999zzzzzzWWQWDDWQWWzzzNo
+ozzzz:zzzzzzzzzzzzzzzzzzzzzz::zzzzzzzo
+oz::::::::::::::::::::::::::::::::zzzo
+oz:zfffffffffffzzz:zzzffffffffzzzz]zzo
+oz:zfzzzzzzzzzfzzz:zzzfzzzzzzfzzzzzzzo
+oz:zfzzzzNzzzzfzzz:zzzfzzNzzzfzzzozzzo
+oz:zfzzzzzzzzzfzzz:zzzfzzzzzzfzzzzzzzo
+oz:zfffffzzffffzzz:zzzfffzzfffzzzzzzzo
+oz:zzzzz:zzzzzzzzz:zzzzz:zzzzzzzzzzzzo
+oz::::::::::::::::::::::::::::::::::::
+ozzzzzzzz:zzzzzzzzzzzzzzzzzzzz:zzz::::
+ozzhhhhhhhhhzzzzzzzzzzzNNNNNNz:zzzzzzo
+ozzhgggggggh:zzzzzzzzzNNN999NNz:zzzzzo
+ozzh:::::::h:zzzzzzzzzNN99999NN:zzzzzo
+ozzhg:g:g::::zzzzzzzzzNN99999NN:zzzzzo
+ozzh:::::::hzzzzzzzzzzNNN999NNN:zzzzzo
+ozzhgggggggh:zzzz]zzzzzNNNNNNN::zzoozo
+ozzhhhhhhhhhzzzzzzzzzzzzzzzzzzzzzzzzzo
+oozzzz2zzzzzzzzzzzzzozzzzzzzzzzozzzzoo
+ooozzzzzzzoozzzzzzzzzzzzzzzzzzzzzzzooo
+oooooooooooooooooooooooooooooooooooooo
+entities:
+spawn from_town 36 14 left
+spawn default 36 14 left
+exit 37 14..15 T06_MARKET from_ranch if=!phase:post
+exit 37 14..15 T06_POST from_ranch if=phase:post
+npc rancher_r05 6 6 down sprite=keeper talk=RANCH_R05_YARA name="Yara Saltmarrow"
+npc crate_R05 30 6 down sprite=ranch:crate:R05 talk=RANCH_CRATE name="Produce Crate"
+npc plot_R05_1 4 19 down sprite=ranch:plot:R05:1 talk=RANCH_PLOT name="Plot"
+npc plot_R05_2 6 19 down sprite=ranch:plot:R05:2 talk=RANCH_PLOT name="Plot"
+npc plot_R05_3 8 19 down sprite=ranch:plot:R05:3 talk=RANCH_PLOT name="Plot"
+npc own_R05_pig 9 10 down sprite=ranch:pig talk=RANCH_MINE wander=1 name="Your Pig" if=ranch:R05:own:pig
+npc own_R05_cow 26 10 down sprite=ranch:cow talk=RANCH_MINE wander=1 name="Your Cow" if=ranch:R05:own:cow
+npc own_R05_dove 19 4 down sprite=ranch:dove talk=RANCH_MINE wander=1 name="Your Doves" if=ranch:R05:own:dove
+npc pig_r05a 6 9 right sprite=ranch:pig talk=RANCH_PIG wander=1
+npc pig_r05b 12 11 left sprite=ranch:pig talk=RANCH_PIG wander=1
+npc cow_r05a 23 10 right sprite=ranch:cow talk=RANCH_COW wander=1
+npc cow_r05b 28 9 left sprite=ranch:cow talk=RANCH_COW wander=1
+npc dove_r05a 17 6 down sprite=ranch:dove talk=RANCH_DOVE wander=1
+npc hand_r05_kesh 20 16 down sprite=apprentice talk=RANCH_R05_KESH wander=1 name="Kesh"
+npc hand_r05_amon 16 21 left sprite=worker talk=RANCH_R05_AMON name="Amon"
+npc hand_r05_clerk 34 9 down sprite=clerk talk=RANCH_R05_TAXER name="Salt-Tax Clerk" if=!phase:post
+npc hand_r05_survivor 31 10 left sprite=survivor talk=RANCH_R05_SURVIVOR name="Basin Survivor" if=phase:post
+sign 35 13 "Brinewell Steading. Salt-fed pork, brine eggs. Water is sold by the cup."
+block 6 5 tile=door msg="Yara's house. A salt crust has grown up the door like frost."
+block 27..28 5 tile=door msg="The steading barn, built of salt blocks. It sweats in the afternoons."
+
+=== N28_RANCH
+name: Maple Gate Farm
+tileset: vermilion
+music: M011
+zone: N28
+region: R07
+location: L_N28
+encounters: none
+save: false
+grid:
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TT,1,,,T,,,,,,,,1,,,,,,,,,,,,,,T,,1,TT
+T,,RRRRRRR,,,,,,,,,,,,,,RRRRRRRRRR,,,T
+T,,RRR4RRR,,l,,,,,,,l,,,RRRRRRRRRR,1,T
+T,,RRRRRRR,,,,,,,,,,,,,,RRRRRRRRRR,,,T
+T,,WQWDWQW,,,,(((((,,,,,WWQWDDWQWW,,,T
+T,1,,,:,,,,,,,:::::,,,,,,,,,::,,,,,,,T
+T,::::::::::::::::::::::::::::::::,,,T
+T,:,hhhhhhhhhhh,,,:,,,hhhhhhhhh,,,1,,T
+T,:,h,,,,,,,,,h,,,:,,,h,,,,,,,h,,,,,,T
+T,:,h,,,,1,,,,h,,,:,,,h,,,,,,,h,,,T,,T
+T,:,h,,,,,,,,,h,,,:,,,h,,,,,,,h,,,,,,T
+T,:,hhhhh,,hhhh,,,:,,,hhhh,,hhhh,,,,,T
+T,:,,,,,,:,,,,,,,,:,,,,,,:,,,,,,,,l,,T
+::::::::::::::::::::::::::::::::::,,,T
+::,,,,,,,,:,,,,,,,,,,,,,,,,,,,,,,,,,,T
+T,,ggggggggggg,,,,:,,,~~~~~~~~~~,,,,,T
+T,,:::::::::::,,,,:,,~~~~~~~~~~~~,,,,T
+T,,g:g:g:ggggg,,,,:,,~~~~~~=~~~~~,,1,T
+T,,:::::::::::,,,,::::::::::=:::::,,,T
+T,,ggggggggggg,,,,,,,~~~~~~=~~~~~,,,,T
+T,,,,,,,,,,,,,,,,l,,,~~~~~~~~~~~~,,,,T
+T,T,,,1,,,T,,,,,,,,,,,~~~~~~~~~~,,,T,T
+TT,,,,,,,,,,,,,T,,,,,,,,,,,,,,,,,,,,TT
+TTT,,T,,,,,,T,,,,,,T,,,,,,,,,,T,,,TTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+entities:
+spawn from_town 1 14 right
+spawn default 1 14 right
+exit 0 14..15 N28_R01 from_ranch
+npc rancher_r07 6 6 down sprite=farmer talk=RANCH_R07_OKUNI name="Okuni Hara"
+npc crate_R07 31 6 down sprite=ranch:crate:R07 talk=RANCH_CRATE name="Produce Crate"
+npc plot_R07_1 3 18 down sprite=ranch:plot:R07:1 talk=RANCH_PLOT name="Plot"
+npc plot_R07_2 5 18 down sprite=ranch:plot:R07:2 talk=RANCH_PLOT name="Plot"
+npc plot_R07_3 7 18 down sprite=ranch:plot:R07:3 talk=RANCH_PLOT name="Plot"
+npc own_R07_bunny 9 10 down sprite=ranch:bunny talk=RANCH_MINE wander=1 name="Your Coneys" if=ranch:R07:own:bunny
+npc own_R07_pig 26 10 down sprite=ranch:pig talk=RANCH_MINE wander=1 name="Your Pig" if=ranch:R07:own:pig
+npc own_R07_dove 13 4 down sprite=ranch:dove talk=RANCH_MINE wander=1 name="Your Doves" if=ranch:R07:own:dove
+npc bunny_r07a 6 9 right sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc bunny_r07b 12 11 left sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc pig_r07a 23 10 right sprite=ranch:pig talk=RANCH_PIG wander=1
+npc pig_r07b 29 9 left sprite=ranch:pig talk=RANCH_PIG wander=1
+npc dove_r07a 16 4 down sprite=ranch:dove talk=RANCH_DOVE wander=1
+npc fox_r07a 34 17 left sprite=ranch:fox talk=RANCH_FOX wander=1
+npc fox_r07b 8 22 right sprite=ranch:fox talk=RANCH_FOX wander=1
+npc hand_r07_taro 18 16 down sprite=child talk=RANCH_R07_TARO wander=1 name="Taro"
+npc hand_r07_sumi 22 19 down sprite=farmer talk=RANCH_R07_SUMI name="Sumi"
+npc hand_r07_steward 17 13 down sprite=clerk talk=RANCH_R07_STEWARD name="Masked Steward" if=!phase:post
+npc hand_r07_exile 36 9 left sprite=noble talk=RANCH_R07_EXILE name="Exiled Courtier" if=phase:post
+read 16 5 "A small fox gate, red lacquer over grey wood. Rice and a coin are left at its foot every morning." scene=RANCH_R07_GATE
+sign 2 13 "Maple Gate Farm. By leave of the Court. Foxes are guests here; treat them so."
+block 6 5 tile=door msg="Okuni's house. A paper charm is pasted across the door: do not disturb the sleeping."
+block 28..29 5 tile=door msg="The barn. Lantern smoke has stained the beams the colour of tea."
+
+=== N22_RANCH
+name: Lazar Fields
+tileset: fen
+music: M012
+zone: N22
+region: R08
+location: L_N22
+encounters: none
+save: false
+legend: %=moss
+grid:
+######################################
+#~~ww'''%%%%%;;;;;;;;%%%%%'''ww~~~~~~#
+#~w"RRRRRRR"'''%%%%%%''"RRRRRRRRRR"w~#
+#~w"RRR4RRR"''%x%%%%%%''RRRRRRRRRR"w~#
+#~w"RRRRRRR"'''%%%%%%'''RRRRRRRRRR"w~#
+#~w"WQWDWQW"rc''''''''''WWQWDDWQWW"w~#
+#ww""""::""""""""""""""""""""::""""ww#
+#w"::::::::::::::::::::::::::::::::"w#
+#w":"fffffffffff""":"""ffffffff"""""w#
+#w":"f''%''''''f""":"""f''''''f""x""w#
+#w":"f''''%''''f""":"""f''%'''f"""""w#
+#w":"f'''''''''f""":"""f''''''f"""""w#
+#w":"ffffff""fff""":"""ffff""ff"""""w#
+#w":""""""::""""""":""""""::"""""""ww#
+::::::::::::::::::::::::::::::::::""w#
+::""""""":"""""""""""""""""""""":"""w#
+#w"fffffffffff""""""""xx""""""":"""ww#
+#w"fgggggggggf"""""""""""%%%%%%:%%%ww#
+#w"f:::::::::f""""""""""%'''''':''%ww#
+#w"fg:g:g::::::::::::::::''''''''''%w#
+#w"f:::::::::f"""""""""%%''''''''%%ww#
+#w"fgggggggggf""""x""""%%''''''''%ww~#
+#w"fffffffffff"""""""""%%%%%%''%%%w~~#
+#ww""""""""""""""""""""""""%%%%%%ww~~#
+#~~wwww"""wwww""""""wwwwww""""wwww~~~#
+######################################
+entities:
+spawn from_town 1 14 right
+spawn default 1 14 right
+exit 0 14..15 N22_R01 from_ranch
+npc rancher_r08 7 6 down sprite=keeper talk=RANCH_R08_GIDEON name="Gideon Marl"
+npc crate_R08 31 6 down sprite=ranch:crate:R08 talk=RANCH_CRATE name="Produce Crate"
+npc plot_R08_1 4 19 down sprite=ranch:plot:R08:1 talk=RANCH_PLOT name="Plot"
+npc plot_R08_2 6 19 down sprite=ranch:plot:R08:2 talk=RANCH_PLOT name="Plot"
+npc plot_R08_3 8 19 down sprite=ranch:plot:R08:3 talk=RANCH_PLOT name="Plot"
+npc own_R08_pig 11 10 down sprite=ranch:pig_black talk=RANCH_MINE wander=1 name="Your Pig" if=ranch:R08:own:pig
+npc own_R08_bunny 27 10 down sprite=ranch:bunny talk=RANCH_MINE wander=1 name="Your Coneys" if=ranch:R08:own:bunny
+npc own_R08_dove 17 4 down sprite=ranch:dove talk=RANCH_MINE wander=1 name="Your Doves" if=ranch:R08:own:dove
+npc pig_r08a 7 10 right sprite=ranch:pig_black talk=RANCH_PIG wander=1
+npc pig_r08b 13 9 left sprite=ranch:pig_black talk=RANCH_PIG wander=1
+npc bunny_r08a 24 9 down sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc bunny_r08b 29 11 left sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc dove_r08a 14 3 down sprite=ranch:dove talk=RANCH_DOVE wander=1
+npc mouse_r08 20 22 left sprite=ranch:mouse talk=RANCH_MOUSE wander=1
+npc cat_r08 13 6 down sprite=ranch:cat talk=RANCH_CAT wander=1
+npc hand_r08_nell 20 15 down sprite=child talk=RANCH_R08_NELL wander=1 name="Nell"
+npc hand_r08_ash 25 18 left sprite=monk talk=RANCH_R08_ASH name="Brother Ash"
+npc hand_r08_guard 17 13 down sprite=guard talk=RANCH_R08_GUARD name="Wall Warden" if=!phase:post
+npc hand_r08_burned 16 20 down sprite=survivor talk=RANCH_R08_BURNED name="Burned-Out Tanner" if=phase:post
+sign 2 13 "Lazar Fields. Clean meat, clean eggs, inspected by the Board. No one from the wards past this sign."
+block 7 5 tile=door msg="Gideon's house. Lime-washed, door and all. It smells of vinegar."
+block 28..29 5 tile=door msg="The barn. A Board of Quarantine seal hangs on the latch, signed and resigned."
+
+=== N32_RANCH
+name: Rimefold
+tileset: winter
+music: M014
+zone: N32
+region: R09
+location: L_N32
+encounters: none
+save: false
+grid:
+TTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTT
+TTqqqqTqqqqqqqqqq::qqqqqqqqqqqqTqqqqTT
+TqqRRRRRRRqqqqqqq::qqqqqRRRRRRRRRRqqqT
+TqqRRR4RRRqqq]qqq::qqqqqRRRRRRRRRRqqqT
+TqqRRRRRRRqqqqqqq::qqqqqRRRRRRRRRRqoqT
+TqqWQWDWQWqqqqqrc::qqqqqWWQWDDWQWWqqqT
+Tqqq::::::::::::::::::::::::::qqqqqqqT
+Tqqqqqqqqqqqqqqqq::qqqqqqqqqq:qqqqqqqT
+Tqqqfffffffffffqq::qqqqqffffffffqqq]qT
+Tqqqfqqqqqqqqqfqq::qqqqqfqqqq:qfqqqqqT
+Tqqqfqqqqqqqqqfqq::qqoqqfqqqq:qfqqqTqT
+Tqqqfqqqqqqqqqfqq::qqqqqfqqqq:qfqqqqqT
+Tqqqfffffqqffffqq::qqqqqfffqqfffqqqqqT
+Tqqqqqqq::qqqqqqq::qqqqqqqq:::qqqqqqqT
+Tq::::::::::::::::::::::::::::::::::qT
+Tqqqqqqqqqqqqq:qqqqqqqqqqqqqqqqqqqqqqT
+Tqqhhhhhhhhhhh:qqqqqqqqqqiiiiiiiiqqqqT
+Tqqhgggggggggq:qqqqqqqqqiiiiiiiiiiqqqT
+Tqqh:::::::::q:qqqqqqqqiiiiiiiiiiiiqqT
+Tqqhg:g:g:::::qqqqqqqqqiiiii~~iiiiiqqT
+Tqqh:::::::::qqqqqqqqqqqiiiiiiiiiiqqqT
+TqqhgggggggggqqqqqqqqqqqqiiiiiiiiqqTqT
+TqqhhhhhhhhhhhqqqqqqTqqqqqqqqqqqqqqqqT
+TTqqqqqTqqqqqqqqqqqqqqqqqqqqqqqqqqqqTT
+TTTqqqqqqqqqTqqqqqqqqqqqqqqqqqqqTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+entities:
+spawn from_town 17 1 down
+spawn default 17 1 down
+exit 17..18 0 N32_R01 from_ranch
+npc rancher_r09 8 7 down sprite=farmer talk=RANCH_R09_HILD name="Hild Ulfsdottir"
+npc crate_R09 31 6 down sprite=ranch:crate:R09 talk=RANCH_CRATE name="Produce Crate"
+npc plot_R09_1 4 19 down sprite=ranch:plot:R09:1 talk=RANCH_PLOT name="Plot"
+npc plot_R09_2 6 19 down sprite=ranch:plot:R09:2 talk=RANCH_PLOT name="Plot"
+npc plot_R09_3 8 19 down sprite=ranch:plot:R09:3 talk=RANCH_PLOT name="Plot"
+npc own_R09_cow 9 10 down sprite=ranch:cow_black talk=RANCH_MINE wander=1 name="Your Cow" if=ranch:R09:own:cow
+npc own_R09_bunny 27 10 down sprite=ranch:bunny talk=RANCH_MINE wander=1 name="Your Coneys" if=ranch:R09:own:bunny
+npc own_R09_pig 34 11 left sprite=ranch:pig_black talk=RANCH_MINE wander=1 name="Your Pig" if=ranch:R09:own:pig
+npc cow_r09a 6 10 right sprite=ranch:cow_black talk=RANCH_COW wander=1
+npc cow_r09b 12 9 left sprite=ranch:cow_black talk=RANCH_COW wander=1
+npc bunny_r09a 25 10 down sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc bunny_r09b 30 9 left sprite=ranch:bunny talk=RANCH_BUNNY wander=1
+npc pig_r09a 33 9 down sprite=ranch:pig_black talk=RANCH_PIG wander=1
+npc fox_r09a 34 20 left sprite=ranch:fox talk=RANCH_FOX wander=1
+npc hand_r09_ivar 20 15 down sprite=worker talk=RANCH_R09_IVAR name="Ivar"
+npc hand_r09_ketil 16 20 down sprite=child talk=RANCH_R09_KETIL wander=1 name="Ketil"
+npc hand_r09_trader 22 7 down sprite=clerk talk=RANCH_R09_TRADER name="Fur Buyer" if=!phase:post
+npc hand_r09_refugee 24 13 down sprite=survivor talk=RANCH_R09_REFUGEE name="Pit Refugee" if=phase:post
+sign 19 1 "Rimefold. Cattle that do not die of cold. Shut the gate or they will walk to the Ice Road."
+block 6 5 tile=door msg="Hild's longhouse. A cow skull is nailed above the door, horns waxed."
+block 28..29 5 tile=door msg="The byre. Warm breath fogs through the gaps in the planks."

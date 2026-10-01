@@ -33,6 +33,11 @@ var tall_set = {}
 var art: Art48 = null              # native 48px map art (tools/maps48), replaces tile drawing when present
 var m7: Mode7 = null               # world maps: tilted ground plane + upright sprites (field/mode7.gd)
 var m7_node: Node2D = null
+# HD-2D (render3d/stage3d.gd): towns, dungeons and interiors on a lit 3D ground under a Phantom Camera 3D
+var hd: Stage3D = null
+var hd_on := false
+var hd_dof: ColorRect = null
+var hd_flat := {}            # objects that carry their own ground (opaque stamps): baked into the 3D ground
 var hud: WorldHud = null           # world maps: minimap, full map, fog of war
 var ov_node: Node2D = null
 var show_map := false
@@ -184,6 +189,7 @@ func load_map(id: String, spawn: String = "default", pos: Vector2i = Vector2i(-1
 		m7_node.visible = false
 	if m7 == null:
 		self_modulate = Color.WHITE
+	_setup_hd()
 	var sp = pos
 	var sdir = dir
 	if sp.x < 0:
@@ -235,6 +241,8 @@ func load_map(id: String, spawn: String = "default", pos: Vector2i = Vector2i(-1
 	if map.get("music", "") != "":
 		Audio.music(map["music"])
 	_snap_camera()
+	if hd_on:
+		hd.update(cam + VIEW / 2.0, true)
 	if hud != null:
 		hud.reveal(p_tile)
 	if m7 != null:
@@ -384,6 +392,9 @@ func _process(delta: float) -> void:
 		m7.update(delta, p_pos + Vector2(8, 12), m7.profile_key(vehicle, riding()), turn)
 		m7.apply(m7_node.material)
 		m7_node.queue_redraw()
+	elif hd_on:
+		hd.update(cam + VIEW / 2.0)
+		_hd_light()
 	queue_redraw()
 
 func _draw_m7() -> void:
@@ -1402,6 +1413,13 @@ func _draw() -> void:
 		for o in (art.data.get("objects", []) if art != null else []):
 			talls.append([float(o[7]) / UI.U, "a48", o, Vector2.ZERO])
 		y1 = y0 - 1
+	elif art != null and hd_on:
+		# the ground is the 3D stage behind this node; every upright thing is collected and projected below
+		draw_texture_rect(hd.ground_texture(), Rect2(Vector2.ZERO, VIEW), false)
+		art.collect(talls, cam - VIEW * 1.5, VIEW * 4.0)
+		if not hd_flat.is_empty():
+			talls = talls.filter(func(t): return t[1] != "a48" or not hd_flat.has(t[2]))
+		y1 = y0 - 1
 	elif art != null:
 		draw_rect(Rect2(Vector2.ZERO, VIEW), bg)
 		art.draw_ground(self, cam)
@@ -1502,13 +1520,16 @@ func _draw() -> void:
 	if vehicle == "ship" or ship_pos.x >= 0:
 		var sp = Vector2(ship_pos * TS) + ox if vehicle != "ship" else p_pos + ox
 		talls.append([sp.y + 15.6, "ship", null, sp])
-	if m7 != null:
+	if m7 != null or hd_on:
 		talls = _m7_place(talls)
 	talls.sort_custom(func(a, b): return a[0] < b[0])
 	for t in talls:
-		if m7 != null:
+		if m7 != null or hd_on:
 			UI.base = t[4]
 			draw_set_transform_matrix(UI.base)
+		if hd_on and t[1] in ["actor", "player"]:
+			# contact shadow: HD-2D figures stand on the lit ground
+			_hd_shadow(t[3])
 		match t[1]:
 			"prop":
 				var col: int = prop_col.get(t[2], 0)
@@ -1562,7 +1583,7 @@ func _draw() -> void:
 				_draw_locmark(t[3])
 			"fishspot":
 				FishingGame.draw_spot(self, t[3], time)
-	if m7 != null:
+	if m7 != null or hd_on:
 		UI.base = Transform2D.IDENTITY
 		draw_set_transform_matrix(UI.base)
 	for e in map["entities"]:
@@ -1575,21 +1596,19 @@ func _draw() -> void:
 		for hy in range(e["y1"], e["y2"] + 1):
 			for hx in range(e["x1"], e["x2"] + 1):
 				var hp = Vector2(hx * TS, hy * TS) - cam
+				if hd_on:
+					hp = hd.project(Vector2(hx * TS + 8, hy * TS + 8))[0] - Vector2(8, 8)
 				if on:
 					for k in range(5):
 						var px = hp + Vector2(2 + (k * 5 + int(time * 20)) % 12, 12 - (k * 3 + int(time * 30)) % 16)
 						draw_rect(Rect2(px, Vector2(3, 3)), Color(0.95, 0.95, 1.0, 0.75))
 				else:
 					draw_rect(Rect2(hp + Vector2(6, 11), Vector2(4, 3)), Color(1, 1, 1, 0.45))
-	if art != null:
+	if art != null and not hd_on:
 		art.draw_over(self, cam)
-	if map.get("dark", false):
-		draw_rect(Rect2(Vector2.ZERO, VIEW), Color(0.02, 0.02, 0.08, 0.35))
-	var olc = _outdoor_light()
-	if olc.a > 0.0:
-		draw_rect(Rect2(Vector2.ZERO, VIEW), olc)
-	if tint.a > 0:
-		draw_rect(Rect2(Vector2.ZERO, VIEW), tint)
+	if hd_on and art.over != null:
+		draw_texture_rect(hd.over_texture(), Rect2(Vector2.ZERO, VIEW), false)
+	_draw_screen_tints(self)
 	if ov_node == null:
 		ov_node = Node2D.new()
 		ov_node.name = "FieldOverlay"
@@ -1597,6 +1616,19 @@ func _draw() -> void:
 		add_child(ov_node)
 		ov_node.draw.connect(_draw_overlay)
 	ov_node.queue_redraw()
+
+func _draw_screen_tints(ci: CanvasItem) -> void:
+	if map.is_empty():
+		return
+	if map.get("dark", false):
+		ci.draw_rect(Rect2(Vector2.ZERO, VIEW), Color(0.02, 0.02, 0.08, 0.35 if not hd_on else 0.12))
+	var olc = _outdoor_light()
+	if olc.a > 0.0:
+		if hd_on:
+			olc.a *= 0.45      # the stage's own light carries most of the night
+		ci.draw_rect(Rect2(Vector2.ZERO, VIEW), olc)
+	if tint.a > 0:
+		ci.draw_rect(Rect2(Vector2.ZERO, VIEW), tint)
 
 ## Drawn on a child node so the world light (self_modulate at night) leaves the minimap and banners alone.
 func _draw_overlay() -> void:
@@ -1684,6 +1716,9 @@ func _outdoor() -> bool:
 const DIR_ROW := {"down": 0, "left": 1, "right": 2, "up": 3}
 
 func _draw_char(sprite: String, dir: String, frame: int, pos: Vector2, npc_id: String = "") -> void:
+	if sprite.begins_with("ranch:"):
+		Ranch.draw_field(self, sprite.substr(6), dir, frame, pos)   # ranch animals, crop plots, produce crate
+		return
 	if sprite.begins_with("vestige:"):
 		# a waiting Vestige: its idle loop at half the battle size, feet on the tile
 		draw_rect(Rect2(pos + Vector2(-4, 13), Vector2(24, 4)), Color(0, 0, 0, 0.3))
@@ -1747,6 +1782,9 @@ func _draw_ship(pos: Vector2) -> void:
 		draw_texture(t, pos + Vector2(8 - t.get_width() / 2.0, 12 - t.get_height() + bob))
 
 func screen_pos_of(tile: Vector2i) -> Vector2:
+	if hd_on:
+		var hp = hd.project(Vector2(tile * TS) + Vector2(8, 16))
+		return hp[0] - Vector2(8, 16)
 	if m7 != null:
 		var pr = m7.project(Vector2(tile * TS) + Vector2(8, 16))
 		return pr[0] - Vector2(8, 16)
@@ -1764,7 +1802,7 @@ func _m7_place(talls: Array) -> Array:
 			foot = Vector2(float(t[2][1]) / UI.U + 8, float(t[2][3]) / UI.U)
 		else:
 			foot = t[3] + cam + Vector2(8, 16)
-		var pr = m7.project(foot)
+		var pr = m7.project(foot) if m7 != null else hd.project(foot)
 		if pr[2] <= 8.0:
 			continue
 		var q: Vector2 = pr[0]
@@ -2010,3 +2048,122 @@ func fish_spot_here() -> Dictionary:
 		if e["type"] == "fish" and Game.eval_cond(e["cond"]) and absi(e["x"] - p_tile.x) + absi(e["y"] - p_tile.y) <= 1:
 			return e
 	return {}
+
+# ======================================================================
+# HD-2D stage (render3d/stage3d.gd)
+# ======================================================================
+const HD_INTERIOR := ["interior", "interior_stone", "ship"]
+const HD_LAMP_KINDS := {"lamp": Color(1.0, 0.78, 0.5), "brazier": Color(1.0, 0.62, 0.32), "lantern_post": Color(1.0, 0.8, 0.52),
+	"crystal": Color(0.55, 0.85, 1.0), "crystal_tall": Color(0.55, 0.85, 1.0), "lava": Color(1.0, 0.45, 0.2), "ember": Color(1.0, 0.5, 0.25)}
+
+static func hd_enabled() -> bool:
+	return Settings.get_v("hd2d") != false
+
+func _setup_hd() -> void:
+	hd_on = art != null and art.ground != null and m7 == null and hd_enabled()
+	if not hd_on:
+		if hd_dof != null:
+			hd_dof.visible = false
+		return
+	if hd == null:
+		hd = Stage3D.make(self)
+		hd_dof = ColorRect.new()
+		hd_dof.name = "HD2DTiltShift"
+		hd_dof.size = VIEW
+		hd_dof.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var sm = ShaderMaterial.new()
+		sm.shader = load("res://shaders/tilt_shift.gdshader")
+		hd_dof.material = sm
+		add_child(hd_dof)
+		if ov_node != null:
+			move_child(ov_node, -1)
+	hd_dof.visible = true
+	hd_dof.visible = Settings.get_v("hd2d_dof") != false and not OS.has_environment("HD2D_NODOF")
+	var ts := str(map.get("tileset", ""))
+	var kind = "interior" if ts in HD_INTERIOR else ("town" if ts in FieldSys.OUTDOOR_TILESETS else "dungeon")
+	hd.set_map(_hd_ground_tex(), art.over, W, H, _hd_lamps(), kind, bool(map.get("dark", false)))
+	_hd_light()
+
+## Stamps that carry their own ground (opaque corners, e.g. rocks cut with the floor under them) lie flat in HD-2D:
+## they are baked into the 3D ground texture and left out of the upright sprites.
+func _hd_ground_tex() -> Texture2D:
+	hd_flat = {}
+	var objs: Array = art.data.get("objects", [])
+	var img: Image = null
+	var cache = {}
+	for o in objs:
+		var si = int(o[0])
+		if si >= art.sheets.size() or art.sheets[si] == null:
+			continue
+		if not cache.has(si):
+			var im: Image = art.sheets[si].get_image()
+			if im != null:
+				if im.is_compressed():
+					im.decompress()
+				im.convert(Image.FORMAT_RGBA8)
+			cache[si] = im
+		var sh: Image = cache[si]
+		if sh == null:
+			continue
+		var sx = int(o[1])
+		var sy = int(o[2])
+		var sw = int(o[3])
+		var shh = int(o[4])
+		if sx + sw > sh.get_width() or sy + shh > sh.get_height():
+			continue
+		var n = 0
+		for c in [Vector2i(sx + 1, sy + 1), Vector2i(sx + sw - 2, sy + 1), Vector2i(sx + 1, sy + shh - 2), Vector2i(sx + sw - 2, sy + shh - 2)]:
+			if sh.get_pixelv(c).a > 0.9:
+				n += 1
+		if n < 3:
+			continue
+		if img == null:
+			img = art.ground.get_image()
+			if img.is_compressed():
+				img.decompress()
+			img.convert(Image.FORMAT_RGBA8)
+		img.blend_rect(sh, Rect2i(sx, sy, sw, shh), Vector2i(int(o[5]), int(o[6])))
+		hd_flat[o] = true
+	return art.ground if img == null else ImageTexture.create_from_image(img)
+
+## Light sources on the map: glowing kinds in the grid and lit field animations (torches, braziers, fires).
+func _hd_lamps() -> Array:
+	var out = []
+	var seen = {}
+	for y in range(H):
+		for x in range(W):
+			var k = kind_at(x, y)
+			if HD_LAMP_KINDS.has(k):
+				var key = Vector2i(x / 2, y / 2)       # one light per 2x2 block of glowing cells
+				if seen.has(key):
+					continue
+				seen[key] = true
+				out.append([x * TS + 8, y * TS + 8, HD_LAMP_KINDS[k], 3.2 if k in ["lava", "ember"] else 2.6])
+	for an in art.data.get("anims", []):
+		var nm := str(an[0])
+		if nm.contains("torch") or nm.contains("brazier") or nm.contains("fire") or nm.contains("lamp") or nm.contains("candle"):
+			out.append([float(an[1]) / UI.U + 8, float(an[3]) / UI.U, Color(1.0, 0.66, 0.36), 2.8])
+	if out.size() > 48:
+		out = out.slice(0, 48)
+	return out
+
+## Ambient and sun by the hour outdoors; a fixed mood indoors; dark dungeons rely on their lamps.
+func _hd_light() -> void:
+	var ts := str(map.get("tileset", ""))
+	if ts in FieldSys.OUTDOOR_TILESETS:
+		var dt = day_tint()
+		var night = 1.0 - (dt.r + dt.g + dt.b) / 3.0
+		hd.set_light(dt, 0.75 + 0.25 * (1.0 - night), dt.lerp(Color(1, 0.95, 0.85), 0.5), 0.35 * (1.0 - night))
+		self_modulate = Color(1, 1, 1).lerp(dt, 0.6)
+	elif map.get("dark", false):
+		hd.set_light(Color(0.55, 0.58, 0.75), 0.55, Color.WHITE, 0.0)
+		self_modulate = Color(0.78, 0.8, 0.92)
+	else:
+		hd.set_light(Color(1.0, 0.96, 0.9), 0.92, Color.WHITE, 0.0)
+		self_modulate = Color(1, 0.98, 0.95)
+
+func _hd_shadow(pos: Vector2) -> void:
+	var c = pos + Vector2(8, 15)
+	for i in range(3):
+		var rw = 7.0 - i * 1.5
+		draw_rect(Rect2(c - Vector2(rw, 1.5 - i * 0.4), Vector2(rw * 2.0, 3.0 - i * 0.8)), Color(0, 0, 0, 0.12))

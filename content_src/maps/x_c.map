@@ -31,8 +31,8 @@ TTThhhhhhhhhhhhhhhhh::::hhhhhhhhhhhhhhhhhhTT
 ~~w,RRRRRRR,RRRRRR,,::::,,RRRRRRRR,RRRRRR,##
 ~~w,WQWDWQW,WQWQWW,,::::,,WQWQDQWW,WQWQWW,##
 ~~w,,,,,,,,,ggg,gg,l::::l,,aaa:aaa,cc,,,c,##
-~~w:::::::::::::::::::::::::::::::::::::::##
-~~w:::::::::::::::::::::::::::::::::::::::##
+~~w:::::::::::::::::::::::::::::::::::::::::
+~~w:::::::::::::::::::::::::::::::::::::::::
 ~~w''''''''x''''''',::::,JJJJJJJJJJJJxJJJJ##
 ~~w'''''x'''''''fff,::::,fffJJxJJJJJJJJJJJ##
 ####################((((####################
@@ -50,6 +50,8 @@ spawn from_inn 7 7 down
 spawn from_hall 32 7 down
 spawn from_house 7 19 down
 spawn from_shop 30 19 down
+spawn from_ranch 41 20 left
+exit 43 20..21 N22_RANCH from_town  #! ranch: Lazar Fields
 exit 20..23 29 WORLD l_n22
 exit 20..23 0 N22_R02 from_r01
 exit 43 8..10 N22_WARD from_r01 if=phase:post locked="The Ward gate is chained shut. A Board seal: NO ENTRY, NO EXIT, BY ORDER."
@@ -1268,8 +1270,8 @@ TT,,RR4RRRR,,,,,,,,,::::,,RRRRRRR4R,RRRRR,TT
 TT,,RRRRRRR,RRRRRR,,::::,,RRRRRRRRR,RRRRR,TT
 TT,,RRRRRRR,RRRRRR,,::::,,RRRRRRRRR,RRRRR,TT
 TT,,WQWQWQW,WQWQWW,,::::,,WQWQDQWQW,WQWQW,TT
-TT::::::::::::::::::::::::::::::::::::::::TT
-TT::::::::::::::::::::::::::::::::::::::::TT
+TT::::::::::::::::::::::::::::::::::::::::::
+TT::::::::::::::::::::::::::::::::::::::::::
 TT,,,,,,ggggggg,,,,,::::,S,,,1111111,,,,O,TT
 TT,T,,,,,,,,T,,,,,,,::::,,,,T,,,,,,,,,T,,,TT
 TT,,,,,T,,,,,,,,T,,l::::l,,,,,,,,T,,,,,,,,TT
@@ -1284,6 +1286,8 @@ spawn from_r02 21 3 down
 spawn from_inn 7 7 down
 spawn from_tea 35 7 down
 spawn from_shop 30 21 down
+spawn from_ranch 41 21 left
+exit 43 21..22 N28_RANCH from_town  #! ranch: Maple Gate Farm
 exit 20..23 29 WORLD l_n28
 exit 19..24 0 N28_R02 from_r01
 door 7 6 N28_INN entry sfx=FX008
@@ -1829,6 +1833,8 @@ spawn default 17 24 up
 spawn from_inn 8 7 down
 spawn from_hall 27 7 down
 spawn from_shop 26 21 down
+spawn from_ranch 3 24 up
+exit 3..4 25 N32_RANCH from_town  #! ranch: Rimefold
 exit 16..19 25 WORLD l_n32
 door 8 6 N32_INN entry sfx=FX008
 door 27 6 N32_HALL entry sfx=FX008

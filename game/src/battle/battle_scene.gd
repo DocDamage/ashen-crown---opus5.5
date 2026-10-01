@@ -54,6 +54,23 @@ var auto_mode = "off"
 var auto_default = "off"
 var last_cmd = {}
 
+var stage: BattleStage3D = null     # HD-2D battle stage (render3d/battle_stage3d.gd); null = flat 2D
+
+func _bx(p: Vector2) -> void:
+	var m = stage.xf(p) if stage != null else Transform2D.IDENTITY
+	UI.base = m
+	draw_set_transform_matrix(m)
+
+func _bx_move(p: Vector2) -> void:
+	# position only (text and cursors keep their size)
+	var m = Transform2D(0.0, (stage.point(p) - p) if stage != null else Vector2.ZERO)
+	UI.base = m
+	draw_set_transform_matrix(m)
+
+func _bx_reset() -> void:
+	UI.base = Transform2D.IDENTITY
+	draw_set_transform_matrix(UI.base)
+
 func setup(form_id: String, seed_value: int, opts: Dictionary) -> void:
 	form = Content.formation(form_id)
 	model = BattleModel.new(Content.data)
@@ -68,6 +85,8 @@ func setup(form_id: String, seed_value: int, opts: Dictionary) -> void:
 		bg = _t("res://assets/sprites/bg/%s.png" % form.get("bg", "quarry"))
 	for eid in model.enemy_ids:
 		Game.bestiary_seen(model.battlers[eid].ref, "seen")
+	if Settings.get_v("hd2d") != false:
+		stage = BattleStage3D.make(self, str(form.get("bg", "quarry")), bg)
 	_layout_enemies()
 	ui = Control.new()
 	ui.size = Vector2(320, 240)
@@ -354,6 +373,15 @@ func _present_action(ev: Dictionary, sk: bool) -> void:
 		"item": sfx = "FX002"
 		"summon": sfx = "FX030"
 	Audio.sfx(sfx)
+	# HD-2D: the camera pushes in on the exchange (attacker and first target), then settles back
+	var cam_on = stage != null and not sk and Settings.get_v("battle_camera") != false and an != "guard"
+	if cam_on:
+		var tgt0 = ""
+		for r in ev.get("results", []):
+			if model.battlers.has(str(r.get("id", ""))):
+				tgt0 = r["id"]
+				break
+		stage.act(_battler_pos(b.id), _battler_pos(tgt0) if tgt0 != "" else _battler_pos(b.id))
 	var fxspec: Dictionary = _action_fx_cast(ev) if not sk else {}
 	if ev.has("summon"):
 		await _summon_fx(ev["summon"], sk)
@@ -387,6 +415,8 @@ func _present_action(ev: Dictionary, sk: bool) -> void:
 		if rv["what"] == "intent":
 			intent_reveal = true
 	await _wait(0.45 if not sk else 0.05)
+	if cam_on:
+		stage.release()
 	offsets.erase(b.id)
 	if b.side == 0 and b.alive():
 		anim[b.id] = {"name": "idle", "t": 0.0}
@@ -834,7 +864,9 @@ func _close_menus() -> void:
 # Drawing
 # ======================================================================
 func _draw() -> void:
-	if bg and bg_native:
+	if stage != null:
+		draw_texture_rect(stage.texture(), Rect2(Vector2.ZERO, BattleStage3D.AREA), false)
+	elif bg and bg_native:
 		UI.native_begin(self, Vector2.ZERO)
 		draw_texture(bg, Vector2.ZERO)
 		UI.native_end(self)
@@ -851,6 +883,7 @@ func _draw() -> void:
 			continue
 		var tx = _enemy_tex(e)
 		var p: Vector2 = enemy_pos.get(eid, Vector2(88, 110)) + offsets.get(eid, Vector2.ZERO)
+		_bx(p)
 		var art = _enemy_art(e)
 		var em: Dictionary = _enemy_meta(e) if art else {}
 		if art and not em.is_empty():
@@ -916,6 +949,7 @@ func _draw() -> void:
 		if e.state == "CASTING":
 			var mk = p + Vector2(-4, -((tx.get_height() if tx else 32)) - 12)
 			UI.text(self, mk, "!", UI.C_RED if int(t * 4) % 2 == 0 else UI.C_HI)
+	_bx_reset()
 	for k in flashes.keys():
 		flashes[k] -= get_process_delta_time()
 		if flashes[k] <= 0:
@@ -927,6 +961,7 @@ func _draw() -> void:
 		var base: Vector2 = PARTY_ANCHORS[i] + offsets.get(bid, Vector2.ZERO)
 		if b.row == "back":
 			base.x += 12
+		_bx(base)
 		var tx = _party_tex(b)
 		var a: Dictionary = anim.get(bid, {"name": "idle", "t": 0.0})
 		var nm: String = a["name"]
@@ -962,15 +997,18 @@ func _draw() -> void:
 			draw_texture_rect_region(tx, Rect2(base - Vector2(24, 62) * PARTY_SCALE, Vector2(48, 64) * PARTY_SCALE), Rect2(fr * 48, 0, 48, 64))
 		if selecting == b:
 			UI.text(self, base + Vector2(-3, -76), "▼", UI.C_HI)
+	_bx_reset()
 	# target cursor
 	if target_mode != "" and not target_list.is_empty():
 		var sel: Array = target_list if target_mode in ["enemy_all", "ally_all"] else [target_list[target_idx]]
 		for tid in sel:
 			var tp = _battler_pos(tid)
+			_bx_move(tp)
 			if model.battlers[tid].side == 1:
 				UI.cursor(self, tp + Vector2(-_enemy_size(tid).x / 2.0 - 10, -4))
 			else:
 				UI.cursor(self, tp + Vector2(-36, 4))
+	_bx_reset()
 	# sprite effects (library packs)
 	for fx in sfx_sprites:
 		if fx["t"] < 0:
@@ -978,7 +1016,9 @@ func _draw() -> void:
 		var fp: Vector2 = fx["pos"]
 		if fx.has("to"):
 			fp = (fx["from"] as Vector2).lerp(fx["to"], clampf(fx["t"] / fx["travel"], 0, 1))
+		_bx(fp)
 		BattleFX.draw(self, fx["name"], fmod(fx["t"], maxf(0.01, BattleFX.length(fx["name"]))) if fx.has("to") else fx["t"], fp)
+	_bx_reset()
 	# vfx (fallback particles when the effect packs are not installed)
 	for v in vfx:
 		if BattleFX.ok():
@@ -999,10 +1039,12 @@ func _draw() -> void:
 				draw_texture(st, Vector2(96 - st.get_width() / 2.0, 150 - st.get_height()))
 	# popups
 	for p in popups:
+		_bx_move(p["pos"])
 		var yoff: float = (1.0 - p["t"]) * 10.0
 		UI.text_center(self, p["pos"].x, p["pos"].y - yoff, p["text"], p["col"])
 		if str(p.get("elem", "")) != "" and UI.cues_on():
 			UI.elem_badge(self, Vector2(p["pos"].x - UI.width(p["text"]) / 2.0 - 18, p["pos"].y - yoff), p["elem"])
+	_bx_reset()
 
 ## Limit gauge: a slim bar under the readiness gauge; pulses red/gold when full.
 func _draw_limit_gauge(c: CanvasItem, r: Rect2, b) -> void:

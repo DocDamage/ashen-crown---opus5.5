@@ -12,12 +12,13 @@ Each entry: id -> {name, desc, cond, [progress], [hidden], [group]}
   progress  [value expression, target] for the progress bar, e.g. ["meta:bestiary_pct", 100]; inferred from a single
             numeric cond when omitted.
 Counters other systems bump with Game.stat_add(key): battles, boss_wins, boss_nokos, superbosses (automatic, battle
-transaction), fish_caught / fish_rare / fish_night / tourney_entries (fishing), crafted / gathered (crafting author),
+transaction), fish_caught / fish_rare / fish_night / tourney_entries (fishing), crafted / gathered (crafting author), ranch_animals / ranch_herds / ranch_harvests /
+ranch_goods (ranch.gd),
 secrets (hidden areas; secret-area author), arena_wins (arena author; the Arena rank is var:arena_rank), saves,
 autosaves, ng_started.
 """
 
-GROUPS = ["Story", "Battle", "Superbosses", "Collection", "Crafts", "Fishing", "Secrets"]
+GROUPS = ["Story", "Battle", "Superbosses", "Collection", "Crafts", "Fishing", "Ranching", "Secrets"]
 
 A = {}
 
@@ -94,6 +95,11 @@ ach("FS04", "Fishing", "Night Line", "Land a fish that only bites after dark.", 
 ach("FS05", "Fishing", "Angler's Log", "Log 20 kinds of fish.", ["meta:fish_species>=20"])
 ach("FS06", "Fishing", "Every Fin and Claw", "Log every kind of fish.", ["meta:fish_species>=44"])
 ach("FS07", "Fishing", "The Silver Hook", "Win the Saltwhistle Open.", ["flag:fishing_champion"])
+
+# ---------------------------------------------------------------- ranching (ranch.gd bumps the stats)
+ach("RN01", "Ranching", "A Beast of Your Own", "Buy livestock at a ranch.", ["stat:ranch_animals>=1"])
+ach("RN02", "Ranching", "Eight Fences", "Keep livestock at all eight ranches.", ["stat:ranch_herds>=8"], ["stat:ranch_herds", 8])
+ach("RN03", "Ranching", "Whatever Grows", "Harvest 25 crops from ranch plots.", ["stat:ranch_harvests>=25"], ["stat:ranch_harvests", 25])
 
 # ---------------------------------------------------------------- secrets and misc
 ach("SC01", "Secrets", "Off the Map", "Find 5 secret places.", ["stat:secrets>=5"], hidden=True)

@@ -43,6 +43,8 @@ spawn world 21 28 up
 spawn from_hall 8 10 down
 spawn from_stair 41 11 left
 spawn default 21 28 up
+spawn from_ranch 2 12 down
+exit 2 10..11 T05_RANCH from_town  #! ranch: Windbreak Fold
 exit 19..24 29 WORLD l_t05
 door 8 9 T05_HALL entry sfx=FX008
 exit 43 10..13 T05_STAIR from_court
@@ -99,6 +101,8 @@ entities:
 tileset_over 14 12 floor if=!flag:q03_wall
 spawn world 21 28 up
 spawn default 21 28 up
+spawn from_ranch 2 12 down
+exit 2 10..11 T05_RANCH from_town  #! ranch: Windbreak Fold
 exit 19..24 29 WORLD_POST l_t05
 inn 7 10 scene=T05P_INN
 npc hall_p 9 10 down sprite=elder talk=T05P_INN
@@ -200,6 +204,8 @@ spawn world 21 28 up
 spawn from_cloister 35 8 down
 spawn from_pool 1 13 right
 spawn default 21 28 up
+spawn from_ranch 2 22 up
+exit 2 23..24 T06_RANCH from_town  #! ranch: Brinewell Steading
 exit 19..24 29 WORLD l_t06
 door 35 7 T06_CLOISTER entry sfx=FX009
 exit 0 12..15 T06_POOL from_market
@@ -255,6 +261,8 @@ dddddddddddddddddddmmmmmmddddddddddddddddddd
 entities:
 spawn world 21 28 up
 spawn default 21 28 up
+spawn from_ranch 2 22 up
+exit 2 23..24 T06_RANCH from_town  #! ranch: Brinewell Steading
 exit 19..24 29 WORLD_POST l_t06
 inn 34 8 scene=T06P_INN
 npc house_keeper 36 9 left sprite=monk talk=T06P_INN

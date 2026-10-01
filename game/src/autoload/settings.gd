@@ -24,6 +24,9 @@ var v = {
 	"ride_mount": true,        # ride the Brackhorn on the world map once the party has it
 	"world_view": "mode7",     # mode7 (tilted world map) | flat (top-down, for motion comfort)
 	"minimap": true,           # world-map minimap (top right)
+	"hd2d": true,              # towns, dungeons and interiors in HD-2D (3D ground, Phantom Camera); false = flat 2D
+	"hd2d_dof": true,          # HD-2D tilt-shift depth of field
+	"battle_camera": true,     # HD-2D battles: the camera pushes in on attacks
 	"weather": true,           # visual weather (rain, snow, ash, fog, sandstorm) on the world and outdoor maps
 	"battle_mode": "wait",     # wait | active
 	"battle_speed": 1.0,       # 0.75, 1.0, 1.25

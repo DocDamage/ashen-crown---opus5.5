@@ -42,6 +42,8 @@ spawn from_bakery 7 17 down
 spawn from_bunk 33 17 down
 spawn from_left 3 6 down
 spawn from_right 35 6 down
+spawn from_ranch 37 12 left
+exit 38 12..13 T01_RANCH from_town  #! ranch: Fallowmere
 exit 19..21 0 D01_R01 from_town if=flag:sc00_done locked="Holt: The inspection waits for no one, Captain. Talk to the crew first."
 exit 18..19 24 WORLD t01 if=ch:CH01 locked="Mara: Not before the lift. People are down there."
 door 7 16 T01_BAKERY entry sfx=FX008

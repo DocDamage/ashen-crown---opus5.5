@@ -46,6 +46,8 @@ entities:
 spawn world 21 29 up
 spawn from_yard 40 6 left
 spawn default 21 29 up
+spawn from_ranch 41 15 down
+exit 41 13..14 T03_RANCH from_town  #! ranch: Soot Paddock
 exit 19..24 31 WORLD_POST l_t03
 exit 43 5..7 T03_YARD from_town if=ch:CH15 locked="A crew chief: 'Yard's Quill's business. And Quill says he's waiting for someone who can light a lamp without burning down the street.'"
 npc pell_p 18 24 up sprite=pell talk=T03P_PELL

@@ -60,6 +60,7 @@ func new_game() -> void:
 	}
 	S.merge({"glearn": {}, "gknown": {}, "nodes": {}, "steps": 0, "battles": 0, "bestiary_claimed": []})   # systems s2
 	S["vehicle"]["mount_kind"] = "bramble"
+	S["ranch"] = {}   # ranching (meta/ranch.gd): livestock and plots per ranch
 	for cid in CHAR_IDS:
 		S["party"]["members"][cid] = {"level": 1, "xp": 0, "hp": -1, "mp": -1, "equip": {}, "recruited": false, "starter_given": false}
 	add_item("I001", 6)
@@ -198,6 +199,7 @@ func _eval_one(c: String) -> bool:
 		"mature": r = bool(Settings.get_v("mature")) and bool(Settings.get_v("mature_ok"))
 		"ng": r = int(S.get("ng", 0)) >= (int(p[1]) if p.size() > 1 else 1)
 		"defeated": r = int(S.get("bestiary", {}).get(p[1], {}).get("defeated", 0)) > 0
+		"ranch": r = Ranch.cond(Array(p).slice(1))   # ranching: ranch:<RID>:own:<kind> | :ready | :any | ranch:at:<RID>
 		"achv": r = has_achievement(p[1])
 		"stat", "meta":
 			r = Achievements.eval_meta(c)

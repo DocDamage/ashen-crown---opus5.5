@@ -45,6 +45,8 @@ entities:
 spawn world 1 22 right
 spawn from_gallery 41 1 down
 spawn default 1 22 right
+spawn from_ranch 43 3 up
+exit 43 4..5 T04_RANCH from_town  #! ranch: Gullbank Croft
 exit 0 21..24 WORLD_POST l_t04
 exit 40..43 0 T04_GALLERY from_upper
 npc jori_u 24 6 left sprite=jori talk=T04U_JORI
