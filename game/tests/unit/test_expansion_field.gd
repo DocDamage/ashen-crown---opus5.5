@@ -469,3 +469,52 @@ func test_arena_loss_is_not_game_over() -> void:
 	eq(QA.main.field.map_id, "N38_ARENA", "still in the hall")
 	eq(Game.gold(), gold, "the checkpoint restored the state")
 	check(int(Game.member("C01")["hp"]) > 0, "the party is restored")
+
+# ---------------------------------------------------------------- 2026-10-01 fixes
+func test_parked_ship_is_solid_on_foot() -> void:
+	_post()
+	var f: Field = QA.main.field
+	QA.main.enter_field("WORLD_POST", "l_t07")
+	eq(f.vehicle, "foot", "on foot by Hearthward")
+	var t = f._free_near(f.p_tile, 3)
+	check(t.x >= 0, "a free cell near the party")
+	check(not f.solid_at(t.x, t.y), "the cell is walkable with no ship on it")
+	f.ship_pos = t
+	check(f.solid_at(t.x, t.y), "a parked airship blocks the party on foot (bump it to board)")
+	var keep = f.p_tile
+	f.p_tile = t
+	check(not f.solid_at(t.x, t.y), "standing on the ship's cell never traps the party")
+	f.p_tile = keep
+	f.ship_pos = Vector2i(-1, -1)
+
+func test_wyrm_withdraw_menu_and_scatter() -> void:
+	_post()
+	var f: Field = QA.main.field
+	QA.main.enter_field("WORLD_POST", "l_t07")
+	var w = null
+	for x in f.wyrms.list:
+		if x["id"] == "SB01":
+			w = x
+	check(w != null, "Cindermaw roams WORLD_POST")
+	if w == null:
+		return
+	var me = Vector2(f.p_pos) / Field.TS
+	w["pos"] = me
+	w["target"] = me
+	f.wyrms.scatter(f, "SB01")
+	check(me.distance_to(Vector2(w["pos"])) > 3.0, "after a withdraw the wyrm moves away (%.1f cells)" % me.distance_to(Vector2(w["pos"])))
+	check(float(w["cool"]) >= 8.0, "and ignores the party for a while")
+	check(not Game.flag("sb_SB01_down"), "withdrawing never counts as a win")
+	eq(T.s("sys.withdraw"), "Withdraw", "Withdraw string")
+	for can in [false, true]:
+		var res = [-9]
+		var run = func(): res[0] = await QA.main.defeat_menu(can)
+		run.call()
+		await _frames(3)
+		var top = QA.main.router.top()
+		check(top is MenuList, "the defeat menu is open")
+		if top is MenuList:
+			eq(top.items.size(), 3 if can else 2, "Withdraw offered only after a roaming wyrm (%s)" % str(can))
+			top.emit_signal("chosen", top.items.size() - 1, top.items[top.items.size() - 1])
+		await _frames(3)
+		eq(res[0], 2 if can else 1, "the last option returns its index")

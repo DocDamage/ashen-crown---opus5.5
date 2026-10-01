@@ -209,7 +209,15 @@ func _exec(c: Dictionary, labels: Dictionary):
 			Game.heal_all()
 		"battle":
 			var flags = a.slice(1)
-			var res: String = await main.run_battle(a[0], {"scripted": true, "flags": flags})
+			var bopts = {"scripted": true, "flags": flags}
+			var wyrm = str(ctx.get("wyrm", ""))
+			if wyrm != "":
+				bopts["withdraw"] = true   # roaming wyrms: a loss can be walked away from
+			var res: String = await main.run_battle(a[0], bopts)
+			if res == "withdrawn":
+				if main.field.wyrms != null:
+					main.field.wyrms.scatter(main.field, wyrm)
+				return "end"
 			if res == "defeat_load" or res == "aborted":
 				return "abort"
 			if res == "fled":

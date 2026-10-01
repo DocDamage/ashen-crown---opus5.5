@@ -270,6 +270,7 @@
  "sys.retry_hint": "Retry restores the checkpoint and its supplies.",
  "sys.retry": "Retry from Checkpoint",
  "sys.load": "Load Save",
+ "sys.withdraw": "Withdraw",
  "sys.ending.continue": "Continue from Before the Final Descent",
  "sys.ending.ngplus": "Begin New Game+",
  "sys.ending.title": "Return to Title",

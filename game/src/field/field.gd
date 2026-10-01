@@ -312,6 +312,8 @@ func solid_at(x: int, y: int, for_npc: bool = false) -> bool:
 		return k == "void"
 	if vehicle == "sub":
 		return FieldSys.sub_solid(k) or not block_at(x, y).is_empty()
+	if ship_pos.x >= 0 and ship_pos == Vector2i(x, y) and p_tile != ship_pos and map.get("kind", "") == "world":
+		return true   # the parked airship is solid on foot: bump it and confirm to board
 	if solid_set.has(k) and not (not for_npc and _mount_crosses(k, x, y)):
 		return true
 	if not block_at(x, y).is_empty():

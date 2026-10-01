@@ -425,7 +425,10 @@ func fight() -> void:
 			QA.note("battle: confirming an open %s target pick" % bs.target_mode)
 			await press("confirm")
 		elif tp is MenuList and tp.get_parent() == main.ui:
-			await press("confirm")   # defeat menu -> Retry
+			if tp.items.size() >= 3:
+				await _pick(tp, tp.items.size() - 1)   # defeat menu with Withdraw (roaming wyrms): fall back
+			else:
+				await press("confirm")   # defeat menu -> Retry
 		else:
 			await frames(2)
 	await frames(4)

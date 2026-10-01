@@ -462,11 +462,18 @@ func run_battle(form_id: String, opts: Dictionary = {}) -> String:
 			await fade(false, 0.25)
 			break
 		else:
-			# defeat: Retry from Checkpoint / Load Save
-			var choice = await defeat_menu()
+			# defeat: Retry from Checkpoint / Load Save (/ Withdraw from a roaming wyrm)
+			var choice = await defeat_menu(opts.get("withdraw", false))
 			if choice == 0:
 				Game.restore_checkpoint()
 				continue
+			elif choice == 2:
+				# the party falls back; the wyrm stays unbeaten and moves off
+				result = "withdrawn"
+				Game.restore_checkpoint()
+				field.visible = true
+				await fade(false, 0.25)
+				break
 			else:
 				result = "defeat_load"
 				Game.restore_checkpoint()
@@ -483,7 +490,7 @@ func run_battle(form_id: String, opts: Dictionary = {}) -> String:
 	last_battle_result = result
 	return result
 
-func defeat_menu() -> int:
+func defeat_menu(can_withdraw: bool = false) -> int:
 	fade_rect.color.a = 0.0
 	var bg = Control.new()
 	bg.size = Vector2(320, 240)
@@ -496,7 +503,10 @@ func defeat_menu() -> int:
 		UI.text_center(bg, 160, 94, T.s("sys.retry_hint"), UI.C_TEXT))
 	ui.add_child(bg)
 	Audio.music("silence")
-	var idx = await choose([T.s("sys.retry"), T.s("sys.load")])
+	var opts = [T.s("sys.retry"), T.s("sys.load")]
+	if can_withdraw:
+		opts.append(T.s("sys.withdraw"))
+	var idx = await choose(opts)
 	bg.queue_free()
 	return idx
 

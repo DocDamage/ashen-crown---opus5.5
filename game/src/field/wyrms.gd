@@ -96,6 +96,23 @@ func update(delta: float, field: Field) -> String:
 			w["cool"] = 4.0
 	return hit
 
+## After the party withdraws from a lost fight: the wyrm moves well away from the party and ignores it for a while.
+func scatter(field: Field, sb: String) -> void:
+	var me = Vector2(field.p_pos) / Field.TS
+	for w in list:
+		if w["id"] != sb:
+			continue
+		var best = Vector2(w["pos"])
+		for i in range(40):
+			var t = _pick(field, w["def"], w["rng"])
+			if t.x >= 0 and me.distance_to(Vector2(t)) > me.distance_to(best):
+				best = Vector2(t)
+				if me.distance_to(best) >= 12.0:
+					break
+		w["pos"] = best
+		w["target"] = best
+		w["cool"] = 8.0
+
 ## Adds y-sorted billboards (type "wyrm") in field screen coordinates.
 func collect(talls: Array, cam: Vector2) -> void:
 	for w in list:
