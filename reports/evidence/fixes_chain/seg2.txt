@@ -1,0 +1,72 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5727:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ERROR: Condition "status < 0" is true. Returning: ERR_CANT_OPEN
+   at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:97)
+WARNING: All audio drivers failed, falling back to the dummy driver.
+     at: initialize (servers/audio/audio_server.cpp:258)
+
+QA [1.95] route seg2 content 2bf01df477999197 engine 4.7.2-stable (official)
+QA [2.12] RESUMED FIXTURE ch01_done (debug only)
+QA [2.47] CHAIN: segment seg2 starts from milestone ch01_done (written by the previous normal-input segment)
+QA [2.61] walk (20, 1) -> (18, 24) next (20, 2) dir down busy=false top=Field:<Node2D#164064396873>
+QA [11.78] entered WORLD
+QA [43.09] entered T02_MARKET via L_T02
+QA [43.53] capture /home/claude/qa_c/seg2_veyr.png
+QA [53.59] entered T02_SQUARE
+QA [67.65] entered D02_R02
+QA [76.15] entered D02_R03
+QA [82.84] walk (31, 5) -> (33, 5) next (32, 5) dir right busy=false top=Field:<Node2D#164064396873>
+QA [88.56] entered D02_R05
+QA [90.88] battle start: B02 at D02_R05 (19, 20) meter=73.3 grace=8
+QA [100.40] capture /home/claude/qa_c/seg2_boss_tell_B02.png
+QA [135.71] battle end: victory
+QA [141.58] entered D02_R06
+QA [146.28] milestone ch02_done
+QA [147.06] entered D03_R01 via L_D03
+QA [156.47] entered D03_R02
+QA [160.35] battle start: D03_2 at D03_R02 (10, 5) meter=0.0 grace=6
+QA [168.51] battle end: victory
+QA [170.11] maintain: used I001 on C01 (hp now 596)
+QA [173.08] entered D03_R03
+QA [190.57] walk (19, 8) -> (39, 9) next (19, 9) dir down busy=false top=Field:<Node2D#164064396873>
+QA [195.90] entered D03_R04
+QA [203.14] entered D03_R05
+QA [207.01] battle start: B03 at D03_R05 (19, 12) meter=59.4 grace=8
+QA [221.20] capture /home/claude/qa_c/seg2_boss_tell_B03.png
+QA [237.64] battle end: victory
+QA [245.07] maintain: used I001 on C02 (hp now 527)
+QA [245.67] capture /home/claude/qa_c/seg2_after_b03.png
+QA [251.44] entered D03_R06
+QA [258.77] entered WORLD
+QA [258.77] milestone ch03_done
+QA [325.82] battle start: OWX_R02_5 at WORLD (39, 53) meter=0.0 grace=6
+QA [340.89] battle end: victory
+QA [342.81] maintain: used I001 on C01 (hp now 646)
+QA [346.67] entered T03_TOWN via L_T03
+QA [354.97] entered T03_SHOP
+QA [360.73] walk (11, 9) -> (10, 13) next (11, 10) dir down busy=false top=Field:<Node2D#164064396873>
+QA [362.23] entered T03_TOWN
+QA [379.19] entered D04_R01
+QA [389.56] entered D04_R02
+QA [395.31] entered D04_R03
+QA [402.53] entered D04_R02
+QA [409.10] entered D04_R04
+QA [414.21] walk (24, 14) -> (35, 14) next (25, 14) dir right busy=false top=Field:<Node2D#164064396873>
+QA [420.71] entered D04_R05
+QA [425.64] battle start: B04 at D04_R05 (14, 14) meter=61.4 grace=8
+QA [466.52] capture /home/claude/qa_c/seg2_boss_tell_B04.png
+QA [478.79] battle end: victory
+QA [485.25] entered D04_R06
+QA [489.40] capture /home/claude/qa_c/seg2_cinderwake_after.png
+QA [489.40] milestone ch04_done
+QA [489.40] ROUTE PASS: seg2 battles=5 steps=868

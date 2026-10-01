@@ -1,0 +1,497 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)
+OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5204:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5727:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ERROR: Condition "status < 0" is true. Returning: ERR_CANT_OPEN
+   at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:97)
+WARNING: All audio drivers failed, falling back to the dummy driver.
+     at: initialize (servers/audio/audio_server.cpp:258)
+
+QA [1.95] route segq content 2bf01df477999197 engine 4.7.2-stable (official)
+QA [3.45] RESUMED FIXTURE ch20_done (debug only)
+QA [3.62] CHAIN: segment segq starts from milestone ch20_done (written by the previous normal-input segment)
+QA [3.74] walk (84, 41) -> (84, 42) next (84, 42) dir down busy=false top=Field:<Node2D#164064396873>
+QA [4.54] entered T06_POST via L_T06
+QA [52.36] entered WORLD_POST
+QA [58.98] entered D08P_R01 via L_D08
+QA [65.78] walk (13, 10) -> (22, 10) next (14, 10) dir right busy=false top=Field:<Node2D#164064396873>
+QA [74.90] entered WORLD_POST
+QA [86.23] entered D07P_R01 via L_D07
+QA [91.53] entered D07P_R02
+QA [99.15] entered D07P_R03
+QA [115.56] walk (16, 17) -> (14, 21) next (16, 18) dir down busy=false top=Field:<Node2D#164064396873>
+QA [116.59] entered D07P_R02
+QA [123.71] entered D07P_R01
+QA [129.35] entered WORLD_POST
+QA [129.35] milestone q_nacre
+QA [158.65] entered T07_MARKET via L_T07
+QA [160.59] walk (8, 13) -> (20, 14) next (9, 13) dir right busy=false top=Field:<Node2D#164064396873>
+QA [164.58] shop open: page=shop lists=2 items=150 top=@Control@31:<Control#482680505983>
+QA [185.02] bought; gold now 10115, items { "A001": 1, "A002": 1, "A003": 1, "A004": 1, "A005": 1, "A006": 1, "A007": 1, "A008": 1, "A009": 1, "I003": 4, "I004": 15, "I006": 7, "I007": 3, "I009": 1, "K_ACCORD_NOTES": 1, "K_CONFISCATED": 1, "K_LEDGER": 1, "K_MANIFEST": 1, "K_MANUAL": 1, "K_ROOK_EVIDENCE": 1, "K_ROUTE_DIAGRAMS": 1, "K_WORKER_LIST": 1, "MT01": 1, "MT10": 1, "MT20": 1, "MT22": 2, "MT30": 3, "MT31": 1, "MT33": 1, "MT34": 1, "MT38": 1, "K_LISTENING_PHRASE": 1, "W036": 1, "K_SEAL_DESIGN": 1, "W042": 1, "I002": 10, "W004": 1, "W010": 1, "W028": 1 }
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 0 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+ERROR: Lambda capture at index 1 was freed. Passed "null" instead.
+   at: call (modules/gdscript/gdscript_lambda_callable.cpp:242)
+   GDScript backtrace (most recent call first):
+       [0] _draw (res://src/ui/game_menu.gd:177)
+QA [246.75] optimized equipment for available members
+QA [252.43] entered WORLD_POST
+QA [267.50] entered T01_POST via L_T01
+QA [276.79] entered WORLD_POST
+QA [280.39] entered D01_MEMORIAL via L_D01
+QA [292.47] walk (30, 10) -> (22, 15) next (30, 11) dir down busy=false top=Field:<Node2D#164064396873>
+QA [297.86] entered WORLD_POST
+QA [302.27] entered T01_POST via L_T01
+QA [308.69] entered WORLD_POST
+QA [322.17] entered D03P_R01 via L_D03
+QA [330.01] entered D03P_R02
+QA [333.31] battle start: D03P_2 at D03P_R02 (16, 27) meter=0.0 grace=6
+QA [347.52] battle end: victory
+QA [355.20] entered D03P_R01
+QA [362.14] entered WORLD_POST
+QA [363.52] walk (65, 69) -> (52, 106) next (65, 70) dir down busy=false top=Field:<Node2D#164064396873>
+QA [374.51] entered T01_POST via L_T01
+QA [381.51] entered WORLD_POST
+QA [381.51] milestone q_brackenford
+QA [403.70] entered T04_UPPER via L_T04
+QA [408.72] walk (21, 24) -> (30, 24) next (21, 23) dir up busy=false top=Field:<Node2D#164064396873>
+QA [420.90] entered WORLD_POST
+QA [427.78] entered D05P_R01 via L_D05
+QA [436.28] battle start: D05P_2 at D05P_R01 (8, 5) meter=0.0 grace=6
+QA [452.33] battle end: victory
+QA [473.55] walk (27, 22) -> (28, 21) next (27, 21) dir up busy=false top=Field:<Node2D#164064396873>
+QA [480.85] entered WORLD_POST
+QA [498.46] entered T05_POST via L_T05
+QA [509.38] entered WORLD_POST
+QA [518.48] entered D06P_R01 via L_D06
+QA [531.51] walk (33, 20) -> (36, 10) next (33, 19) dir up busy=false top=Field:<Node2D#164064396873>
+QA [543.82] battle start: D06P_1 at D06P_R01 (25, 22) meter=0.0 grace=6
+QA [564.28] battle end: victory
+QA [571.48] entered WORLD_POST
+QA [581.30] entered T05_POST via L_T05
+QA [594.66] entered WORLD_POST
+QA [614.55] walk (55, 48) -> (33, 48) next (54, 48) dir left busy=false top=Field:<Node2D#164064396873>
+QA [622.51] entered T03_POST via L_T03
+QA [629.12] entered WORLD_POST
+QA [635.74] entered D04P_R01 via L_D04
+QA [657.34] entered WORLD_POST
+QA [657.34] milestone q_personal_7
+QA [673.45] walk (33, 11) -> (11, 6) next (33, 10) dir up busy=false top=Field:<Node2D#164064396873>
+QA [680.92] entered D11_R01 via L_D11
+QA [686.77] entered D11_R02
+QA [700.87] entered D11_R03
+QA [711.92] entered D11_R04
+QA [717.64] battle start: D11_3 at D11_R04 (30, 20) meter=0.0 grace=6
+QA [738.13] battle end: victory
+QA [738.46] grind: 1 battles, Dain Lv 31
+QA [739.52] walk (30, 21) -> (30, 20) next (30, 20) dir up busy=false top=Field:<Node2D#164064396873>
+QA [772.61] battle start: D11_2 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [780.08] battle end: victory
+QA [780.20] grind: 1 battles, Dain Lv 31
+QA [799.96] walk (30, 21) -> (30, 20) next (30, 20) dir up busy=false top=Field:<Node2D#164064396873>
+QA [826.81] battle start: D11_3 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [848.61] battle end: victory
+QA [848.72] grind: 1 battles, Dain Lv 32
+QA [874.56] walk (30, 21) -> (29, 21) next (29, 21) dir left busy=false top=Field:<Node2D#164064396873>
+QA [882.22] battle start: D11_1 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [901.35] battle end: victory
+QA [901.45] grind: 1 battles, Dain Lv 32
+QA [938.90] battle start: D11_1 at D11_R04 (29, 21) meter=0.0 grace=6
+QA [953.08] battle end: victory
+QA [953.47] grind: 1 battles, Dain Lv 32
+QA [961.55] walk (30, 21) -> (29, 21) next (29, 21) dir left busy=false top=Field:<Node2D#164064396873>
+QA [995.81] battle start: D11_1 at D11_R04 (29, 21) meter=0.0 grace=6
+QA [1014.43] battle end: victory
+QA [1014.86] grind: 1 battles, Dain Lv 32
+QA [1033.69] walk (30, 21) -> (29, 21) next (29, 21) dir left busy=false top=Field:<Node2D#164064396873>
+QA [1046.75] battle start: D11_1 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [1063.67] battle end: victory
+QA [1063.81] grind: 1 battles, Dain Lv 33
+QA [1103.93] walk (30, 21) -> (29, 21) next (29, 21) dir left busy=false top=Field:<Node2D#164064396873>
+QA [1114.97] battle start: D11_2 at D11_R04 (29, 21) meter=0.0 grace=6
+QA [1126.60] battle end: victory
+QA [1126.97] grind: 1 battles, Dain Lv 33
+QA [1168.77] walk (30, 21) -> (29, 21) next (29, 21) dir left busy=false top=Field:<Node2D#164064396873>
+QA [1171.38] battle start: D11_2 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [1180.78] battle end: victory
+QA [1180.88] grind: 1 battles, Dain Lv 33
+QA [1225.50] battle start: D11_3 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [1245.45] battle end: victory
+QA [1245.55] grind: 1 battles, Dain Lv 33
+QA [1251.24] walk (30, 21) -> (29, 21) next (29, 21) dir left busy=false top=Field:<Node2D#164064396873>
+QA [1290.44] battle start: D11_1 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [1304.28] battle end: victory
+QA [1304.39] grind: 1 battles, Dain Lv 33
+QA [1317.61] walk (30, 21) -> (29, 21) next (29, 21) dir left busy=false top=Field:<Node2D#164064396873>
+QA [1353.55] battle start: D11_4 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [1378.44] battle end: victory
+QA [1378.54] grind: 1 battles, Dain Lv 34
+QA [1395.22] walk (30, 21) -> (30, 20) next (30, 20) dir up busy=false top=Field:<Node2D#164064396873>
+QA [1419.42] battle start: D11_1 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [1434.77] battle end: victory
+QA [1434.87] grind: 1 battles, Dain Lv 34
+QA [1463.61] walk (30, 21) -> (30, 20) next (30, 20) dir up busy=false top=Field:<Node2D#164064396873>
+QA [1480.11] battle start: D11_4 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [1499.13] battle end: victory
+QA [1499.26] grind: 1 battles, Dain Lv 34
+QA [1535.43] walk (30, 21) -> (29, 21) next (29, 21) dir left busy=false top=Field:<Node2D#164064396873>
+QA [1542.60] battle start: D11_3 at D11_R04 (30, 20) meter=0.0 grace=6
+QA [1559.93] battle end: victory
+QA [1560.26] grind: 1 battles, Dain Lv 34
+QA [1605.42] battle start: D11_3 at D11_R04 (30, 21) meter=0.0 grace=6
+QA [1624.98] battle end: victory
+QA [1625.09] grind: 1 battles, Dain Lv 34
+QA [1626.16] walk (30, 21) -> (30, 20) next (30, 20) dir up busy=false top=Field:<Node2D#164064396873>
+QA [1665.31] battle start: D11_3 at D11_R04 (30, 20) meter=0.0 grace=6
+QA [1684.44] battle end: victory
+QA [1684.82] grind: 1 battles, Dain Lv 34
+QA [1699.22] walk (30, 21) -> (29, 21) next (29, 21) dir left busy=false top=Field:<Node2D#164064396873>
+QA [1722.20] battle start: D11_1 at D11_R04 (30, 21) meter=0.0 grace=6
+SCRIPT ERROR: Invalid access to property or key 'target_mode' on a base object of type 'previously freed'.
+          at: _target (res://src/qa/routes.gd:569)
+          GDScript backtrace (most recent call first):
+              [0] _target (res://src/qa/routes.gd:569)
+              [1] frames (res://src/qa/routes.gd:39)
+QA [1738.73] battle end: victory
+QA [1738.84] grind: 1 battles, Dain Lv 35
+QA [1750.15] entered D11_R05
+QA [1753.02] battle start: B13 at D11_R05 (19, 17) meter=18.5 grace=8
+QA [1785.41] capture /home/claude/qa_c/segq_boss_tell_B13.png
+QA [1836.51] battle end: victory
+QA [1840.10] entered D11_R06
+QA [1846.36] entered D11_R05
+QA [1847.84] walk (19, 10) -> (18, 31) next (19, 11) dir down busy=false top=Field:<Node2D#164064396873>
+QA [1851.80] entered D11_R04
+QA [1857.14] entered D11_R02
+QA [1862.92] entered D11_R01
+QA [1868.32] entered WORLD_POST
+QA [1868.32] milestone q_winter
+QA [1890.81] walk (11, 102) -> (105, 114) next (11, 103) dir down busy=false top=Field:<Node2D#164064396873>
+QA [1915.10] entered T07_MARKET via L_T07
+QA [1944.61] entered WORLD_POST
+QA [1946.66] walk (105, 115) -> (132, 123) next (105, 116) dir down busy=false top=Field:<Node2D#164064396873>
+QA [1955.31] entered D12_R01 via L_D12
+QA [1963.86] entered D12_R02
+QA [1973.19] entered D12_R03
+QA [1985.17] battle start: D12_3 at D12_R03 (19, 10) meter=0.0 grace=6
+QA [2009.59] battle end: victory
+QA [2009.72] grind: 1 battles, Dain Lv 36
+QA [2028.70] walk (19, 9) -> (19, 10) next (19, 10) dir down busy=false top=Field:<Node2D#164064396873>
+QA [2050.49] battle start: D12_2 at D12_R03 (19, 10) meter=0.0 grace=6
+QA [2073.26] battle end: victory
+QA [2073.40] grind: 1 battles, Dain Lv 36
+QA [2116.75] battle start: D12_3 at D12_R03 (19, 10) meter=0.0 grace=6
+QA [2133.59] battle end: victory
+QA [2133.78] grind: 1 battles, Dain Lv 36
+QA [2137.35] walk (19, 9) -> (19, 10) next (19, 10) dir down busy=false top=Field:<Node2D#164064396873>
+QA [2173.70] battle start: D12_1 at D12_R03 (19, 10) meter=0.0 grace=6
+QA [2197.88] battle end: victory
+QA [2198.01] grind: 1 battles, Dain Lv 36
+QA [2233.56] walk (18, 10) -> (19, 10) next (19, 10) dir right busy=false top=Field:<Node2D#164064396873>
+QA [2247.45] battle start: D12_3 at D12_R03 (19, 10) meter=0.0 grace=6
+QA [2265.23] battle end: victory
+QA [2265.36] grind: 1 battles, Dain Lv 36
+QA [2307.55] battle start: D12_2 at D12_R03 (19, 9) meter=0.0 grace=6
+QA [2328.38] battle end: victory
+QA [2328.85] grind: 1 battles, Dain Lv 36
+QA [2340.72] walk (18, 10) -> (19, 10) next (19, 10) dir right busy=false top=Field:<Node2D#164064396873>
+QA [2364.06] battle start: D12_2 at D12_R03 (18, 10) meter=0.0 grace=6
+QA [2384.40] battle end: victory
+QA [2384.79] grind: 1 battles, Dain Lv 36
+QA [2425.95] battle start: D12_4 at D12_R03 (19, 10) meter=0.0 grace=6
+QA [2450.39] battle end: victory
+QA [2450.55] grind: 1 battles, Dain Lv 37
+QA [2451.30] walk (20, 12) -> (39, 10) next (21, 12) dir right busy=false top=Field:<Node2D#164064396873>
+QA [2456.50] entered D12_R04
+QA [2471.71] entered D12_R05
+QA [2475.06] battle start: B14 at D12_R05 (19, 17) meter=9.0 grace=8
+QA [2509.19] capture /home/claude/qa_c/segq_boss_tell_B14.png
+QA [2605.11] battle end: victory
+QA [2609.76] entered D12_R06
+QA [2616.99] entered D12_R05
+QA [2624.05] entered D12_R04
+QA [2631.34] entered D12_R02
+QA [2636.35] walk (22, 28) -> (14, 31) next (21, 28) dir left busy=false top=Field:<Node2D#164064396873>
+QA [2638.47] entered D12_R01
+QA [2646.61] entered WORLD_POST
+QA [2646.61] milestone q_reef
+QA [2671.06] entered T02_SQUARE_POST via L_T02
+QA [2681.37] entered T02_CANALS
+QA [2686.03] walk (22, 21) -> (38, 27) next (23, 21) dir right busy=false top=Field:<Node2D#164064396873>
+QA [2691.62] entered T02_REGISTRY_POST
+QA [2696.78] entered T02_CANALS
+QA [2702.30] entered D02P_SEALS
+QA [2715.66] entered T02_CANALS
+QA [2720.33] battle start: D02P_2 at T02_CANALS (39, 26) meter=0.0 grace=6
+QA [2745.19] battle end: victory
+QA [2745.71] entered T02_REGISTRY_POST
+QA [2751.10] entered T02_CANALS
+QA [2759.82] walk (5, 23) -> (2, 26) next (4, 23) dir left busy=false top=Field:<Node2D#164064396873>
+QA [2760.90] entered D02P_ECHO
+QA [2771.31] battle start: B15 at D02P_ECHO (10, 8) meter=25.2 grace=8
+QA [2830.39] capture /home/claude/qa_c/segq_boss_tell_B15.png
+QA [2870.03] battle end: victory
+QA [2874.29] entered T02_CANALS
+QA [2883.44] entered T02_SQUARE_POST
+QA [2891.31] entered WORLD_POST
+QA [2891.31] milestone q_veyr
+QA [2901.76] entered D10_R01 via L_D10
+QA [2909.89] walk (25, 15) -> (7, 15) next (24, 15) dir left busy=false top=Field:<Node2D#164064396873>
+QA [2921.15] battle start: D10_5 at D10_R03 (11, 11) meter=0.0 grace=6
+QA [2950.97] battle end: victory
+QA [2976.22] entered D10_ALCOVE
+QA [2979.34] battle start: B16 at D10_ALCOVE (14, 8) meter=20.4 grace=8
+QA [2985.22] capture /home/claude/qa_c/segq_boss_tell_B16.png
+QA [3163.83] battle end: victory
+QA [3165.06] milestone q_all
+QA [3165.06] ROUTE PASS: segq battles=35 steps=7354

@@ -1,0 +1,25 @@
+=== b1 2026-10-01T13:47:03Z
+QA [316.70] ROUTE PASS: b1 battles=7 steps=681
+=== seg2 2026-10-01T13:52:20Z
+QA [489.40] ROUTE PASS: seg2 battles=5 steps=868
+=== seg3 2026-10-01T14:00:30Z
+QA [1176.89] ROUTE PASS: seg3 battles=5 steps=908
+=== seg4 2026-10-01T14:20:07Z
+QA [1410.04] ROUTE PASS: seg4 battles=8 steps=1497
+=== seg5 2026-10-01T14:43:38Z
+QA [391.64] ROUTE PASS: seg5 battles=3 steps=351
+=== seg6 2026-10-01T14:50:10Z
+=== restarted seg6 with cached-path walker
+=== seg6 2026-10-01T15:44:10Z
+QA [866.53] ROUTE PASS: seg6 battles=10 steps=1770
+=== seg7 2026-10-01T15:58:37Z
+QA [413.92] ROUTE PASS: seg7 battles=4 steps=950
+=== seg8 2026-10-01T16:05:32Z
+QA [204.84] ROUTE FAIL: seg8 battles=1 steps=271
+CHAIN STOPPED at seg8
+=== resume seg8 (fly to Veyr)
+=== seg8 2026-10-01T16:14:20Z
+QA [1115.37] ROUTE PASS: seg8 battles=9 steps=1586
+=== segq 2026-10-01T16:32:55Z
+QA [3165.06] ROUTE PASS: segq battles=35 steps=7354
+CHAIN PASS (seg8 segq)
