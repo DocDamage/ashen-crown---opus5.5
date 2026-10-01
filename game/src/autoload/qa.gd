@@ -649,48 +649,102 @@ func _g_sys_s2() -> void:
 	# region tier stock at Kettle Row
 	await _g_menu("shop", {"id": "SHOP_N06"}, "s2_shop_tier", func(m): m._shop_list("SHOP_N06", true); m.lists[-1].index = m.lists[-1].items.size() - 4; m.lists[-1]._fix_scroll())
 
-# ---------------------------------------------------------------- ranching gallery (meta/ranch.gd): every ranch map with
-# livestock bought, one plot growing and one ripe, and Records > Ranches
+# ---------------------------------------------------------------- ranching gallery (meta/ranch.gd): every ranch with
+# its beasts bought, beds hoed / planted at several stages / watered / ripe, the hands at work, walking animals,
+# a night shot (fireflies, the fox at the open gate), the kart back with coins, and Records > Ranches.
 func _g_ranch() -> void:
 	Game.add_gold(99999)
-	Game.S["day"] = 2
+	Game.S["day"] = 6
 	Game.S["clock"] = 600.0
+	# the field path first: Confirm on a dirt bed hoes it, a hoed bed with seed asks for the seed, a planted one waters
+	var pc: Vector2i = Ranch.plot_cells("T01_RANCH")[0]
+	main.enter_field("T01_RANCH", "default", pc + Vector2i(0, -1), "down")
+	await _g_frames(4)
+	Ranch.state("R01")["tools"] = true
+	main.field.interact()
+	print("RANCH_CHECK hoe ", Ranch.state("R01")["plots"].has(Ranch.key_of(pc)))
+	Game.add_item("RS01", 1)
+	Ranch.plant("R01", pc, "RS01")
+	main.field.interact()
+	print("RANCH_CHECK water ", Ranch.is_wet("R01", Ranch.state("R01")["plots"][Ranch.key_of(pc)]))
+	Game.S["ranch"] = {}
 	for rid in Ranch.order():
-		for k in Ranch.info(rid)["animals"]:
+		var st = Ranch.state(rid)
+		st["tools"] = true
+		for k in ["cow", "bird", "pig", "bunny", "cat"]:
 			Ranch.buy(rid, k)
+			st["animals"][k]["d"] = 0
+			st["animals"][k]["aff"] = 7
+		st["animals"]["bird"]["n"] = 3
+		st["eggs"] = [4, 5, 6]
+		var cells: Array = Ranch.plot_cells(str(Ranch.info(rid)["map"]))
 		var seeds: Array = Ranch.info(rid)["seeds"]
-		for i in range(seeds.size()):
-			Game.add_item(str(Ranch.crop(seeds[i])["seed"]), 1)
-			Ranch.plant(rid, i + 1, str(Ranch.crop(seeds[i])["seed"]))
-		Ranch._st(rid)["plots"]["1"]["t"] = 0.0
-	Game.S["day"] = 4
+		for i in range(cells.size()):
+			var c: Vector2i = cells[i]
+			if i % 7 == 6:
+				continue                                   # a few untouched dirt cells
+			Ranch.till(rid, c)
+			if i % 7 == 5:
+				continue                                   # hoed, empty
+			var cid: String = seeds[i % seeds.size()]
+			var last = Ranch.crop(cid)["stages"].size() - 1
+			st["plots"][Ranch.key_of(c)] = {"c": cid, "g": (i * 3) % (last + 1), "w": Ranch.slot_now() + (2 if i % 2 == 0 else -9)}
+		st["u"] = Ranch.slot_now()
 	for rid in Ranch.order():
-		main.enter_field(str(Ranch.info(rid)["map"]), "default")
+		var mp = str(Ranch.info(rid)["map"])
+		main.enter_field(mp, "default")
 		main.field.banner_t = 0.0
 		await _g_frames(20)
 		await _g_shot("ranch_" + rid)
-		main.enter_field(str(Ranch.info(rid)["map"]), "default", Vector2i(18, 14), "down")
+		# the beds: stand by the first plot
+		var c0: Vector2i = Ranch.plot_cells(mp)[0]
+		main.enter_field(mp, "default", c0 + Vector2i(3, -1), "down")
 		main.field.banner_t = 0.0
-		await _g_frames(10)
-		await _g_shot("ranch_%s_mid" % rid)
-	await _g_menu("main", {}, "ranch_records", func(m): m._ranch_page())
-	# the produce crate and the rancher's trade menu (scene command `ranch`)
-	main.enter_field("T01_RANCH", "default", Vector2i(18, 7), "up")
+		for n in main.field.npcs:
+			if str(n["id"]).begins_with("own_") and not str(n["id"]).contains("cat"):
+				var d: String = ["left", "right", "down", "up"][randi() % 4]
+				var nt: Vector2i = n["tile"] + Field.DV[d]
+				if not main.field.solid_at(nt.x, nt.y, true):
+					n["dir"] = d
+					n["target"] = nt
+					n["moving"] = true
+		await _g_frames(16)
+		await _g_shot("ranch_%s_beds" % rid)
+		# the pen
+		var nest = Vector2i(-1, -1)
+		for e in Content.map(mp)["entities"]:
+			if e["type"] == "npc" and str(e["id"]) == "nest_" + rid:
+				nest = Vector2i(int(e["x"]), int(e["y"]))
+		main.enter_field(mp, "default", nest + Vector2i(-4, 3), "up")
+		main.field.banner_t = 0.0
+		await _g_frames(12)
+		await _g_shot("ranch_%s_pen" % rid)
+	# effects: hoeing dust, watering, the sickle, petting hearts
+	main.enter_field("T01_RANCH", "default", Ranch.plot_cells("T01_RANCH")[1] + Vector2i(0, -1), "down")
 	main.field.banner_t = 0.0
-	await _g_frames(10)
-	main.director.run("RANCH_CRATE", {"npc": "crate_R01"})
-	await _g_frames(40)
-	await _g_shot("ranch_crate")
-	main.dialogue.handle("confirm")
+	await _g_frames(6)
+	Ranch.fx("sickle", Ranch.plot_cells("T01_RANCH")[1])
+	Ranch.fx("water", Ranch.plot_cells("T01_RANCH")[3])
+	Ranch.fx("hearts:7", Ranch.plot_cells("T01_RANCH")[4])
+	await _g_frames(5)
+	await _g_shot("ranch_fx")
+	# night at Maple Gate with the pen gate open: fireflies and the fox
+	Ranch.state("R07")["gate"] = true
+	Game.S["clock"] = 1320.0
+	main.enter_field("N28_RANCH", "default", Vector2i(28, 12), "up")
+	main.field.banner_t = 0.0
 	await _g_frames(20)
-	main.dialogue.handle("confirm")
-	await _g_frames(20)
-	main.director.run("RANCH_R01_AGNA", {"npc": "rancher_r01"})
-	for i in range(4):
-		await _g_frames(40)
-		main.dialogue.handle("confirm")
-	await _g_frames(30)
-	await _g_shot("ranch_rancher_menu")
+	await _g_shot("ranch_night")
+	# the kart back with coins, Records > Ranches
+	Game.S["clock"] = 600.0
+	var k = Ranch.kart("R01")
+	k["away"] = Game.S["day"] - 1
+	k["pay"] = 420
+	main.enter_field("T01_RANCH", "default", Vector2i(21, 21), "left")
+	main.field.banner_t = 0.0
+	await _g_frames(12)
+	await _g_shot("ranch_kart")
+	await _g_menu("main", {}, "ranch_records", func(m): m._ranch_page())
 
 func _g_frames(n: int) -> void:
 	for i in range(n):

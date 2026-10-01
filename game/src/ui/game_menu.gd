@@ -1887,7 +1887,7 @@ func _records_open(v: String) -> void:
 		"bonds": _bonds_page()
 		"ranch": _ranch_page()
 
-## Records > Ranches (meta/ranch.gd): each ranch's livestock, plots and the produce waiting in its crate.
+## Records > Ranches (meta/ranch.gd): each ranch's beds, beasts (affection hearts), nest and rail kart.
 func _ranch_page() -> void:
 	page = "records"
 	var items = Ranch.record_rows()
@@ -1897,10 +1897,7 @@ func _ranch_page() -> void:
 		var rid: String = str(m.current().get("value", ""))
 		if rid == "":
 			return
-		var y = 9.0
-		for ln in Ranch.record_lines(rid):
-			UI.text(self, Vector2(165, y), str(ln[0]), ln[1])
-			y += 11.0
+		Ranch.draw_record(self, rid, Rect2(158, 4, 158, 232))   # beds, beasts and hearts, nest, kart
 	info_draw = draw_it
 	m.set_meta("refresh", func(_mm): page = "records"; info_draw = draw_it)
 

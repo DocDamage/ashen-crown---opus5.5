@@ -13,7 +13,7 @@ Each entry: id -> {name, desc, cond, [progress], [hidden], [group]}
             numeric cond when omitted.
 Counters other systems bump with Game.stat_add(key): battles, boss_wins, boss_nokos, superbosses (automatic, battle
 transaction), fish_caught / fish_rare / fish_night / tourney_entries (fishing), crafted / gathered (crafting author), ranch_animals / ranch_herds / ranch_harvests /
-ranch_goods (ranch.gd),
+ranch_goods / ranch_planted / ranch_kart / ranch_hearts (ranch.gd),
 secrets (hidden areas; secret-area author), arena_wins (arena author; the Arena rank is var:arena_rank), saves,
 autosaves, ng_started.
 """
@@ -99,7 +99,9 @@ ach("FS07", "Fishing", "The Silver Hook", "Win the Saltwhistle Open.", ["flag:fi
 # ---------------------------------------------------------------- ranching (ranch.gd bumps the stats)
 ach("RN01", "Ranching", "A Beast of Your Own", "Buy livestock at a ranch.", ["stat:ranch_animals>=1"])
 ach("RN02", "Ranching", "Eight Fences", "Keep livestock at all eight ranches.", ["stat:ranch_herds>=8"], ["stat:ranch_herds", 8])
-ach("RN03", "Ranching", "Whatever Grows", "Harvest 25 crops from ranch plots.", ["stat:ranch_harvests>=25"], ["stat:ranch_harvests", 25])
+ach("RN03", "Ranching", "Whatever Grows", "Hoe, plant, water and cut 25 crops on ranch beds.", ["stat:ranch_harvests>=25"], ["stat:ranch_harvests", 25])
+ach("RN04", "Ranching", "Down the Line", "Send the rail kart off with goods 10 times.", ["stat:ranch_kart>=10"], ["stat:ranch_kart", 10])
+ach("RN05", "Ranching", "Five Hearts", "Bring a ranch beast to full affection.", ["stat:ranch_hearts>=1"])
 
 # ---------------------------------------------------------------- secrets and misc
 ach("SC01", "Secrets", "Off the Map", "Find 5 secret places.", ["stat:secrets>=5"], hidden=True)

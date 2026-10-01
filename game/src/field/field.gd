@@ -240,6 +240,7 @@ func load_map(id: String, spawn: String = "default", pos: Vector2i = Vector2i(-1
 		Game.discover(zone)
 	if map.get("music", "") != "":
 		Audio.music(map["music"])
+	Ranch.on_enter(self)   # ranching (meta/ranch.gd): catch the farm up, the pack's music
 	_snap_camera()
 	if hd_on:
 		hd.update(cam + VIEW / 2.0, true)
@@ -626,6 +627,8 @@ func interact() -> void:
 		return
 	if not waystone_at(ft).is_empty():
 		emit_signal("request_scene", "WAYSTONE", {})
+		return
+	if Ranch.interact(self, ft):   # ranching: beds, the pen gate, the player's beasts and nest
 		return
 	# counters: talk across one counter tile
 	var across = ft + DV[p_dir]
@@ -1416,6 +1419,7 @@ func _draw() -> void:
 	elif art != null and hd_on:
 		# the ground is the 3D stage behind this node; every upright thing is collected and projected below
 		draw_texture_rect(hd.ground_texture(), Rect2(Vector2.ZERO, VIEW), false)
+		Ranch.draw_ground(self)   # ranching: hoed beds, animated water (flat, under the uprights)
 		art.collect(talls, cam - VIEW * 1.5, VIEW * 4.0)
 		if not hd_flat.is_empty():
 			talls = talls.filter(func(t): return t[1] != "a48" or not hd_flat.has(t[2]))
@@ -1423,6 +1427,7 @@ func _draw() -> void:
 	elif art != null:
 		draw_rect(Rect2(Vector2.ZERO, VIEW), bg)
 		art.draw_ground(self, cam)
+		Ranch.draw_ground(self)
 		art.collect(talls, cam, VIEW)
 		y1 = y0 - 1
 	elif ext_tex != null:
@@ -1475,6 +1480,8 @@ func _draw() -> void:
 				for bx in range(e["x1"], e["x2"] + 1):
 					if ext_tex == null or not _draw_ext(e["tile"], bx, by, Vector2(bx * TS, by * TS) + ox, talls):
 						_draw_tile_kind(e["tile"], bx, by, Vector2(bx * TS, by * TS) + ox)
+	if art == null and m7 == null:
+		Ranch.draw_ground(self)   # ranching without the pack's map art: the beds still show
 	# objects
 	for e in map["entities"]:
 		if not e.has("x") or not Game.eval_cond(e["cond"]):
@@ -1520,6 +1527,7 @@ func _draw() -> void:
 	if vehicle == "ship" or ship_pos.x >= 0:
 		var sp = Vector2(ship_pos * TS) + ox if vehicle != "ship" else p_pos + ox
 		talls.append([sp.y + 15.6, "ship", null, sp])
+	Ranch.collect(self, talls)   # ranching: crops, the hands' beds, campfires, gates, doors, effects
 	if m7 != null or hd_on:
 		talls = _m7_place(talls)
 	talls.sort_custom(func(a, b): return a[0] < b[0])
@@ -1583,9 +1591,12 @@ func _draw() -> void:
 				_draw_locmark(t[3])
 			"fishspot":
 				FishingGame.draw_spot(self, t[3], time)
+			"ranch":
+				Ranch.draw_tall(self, t[2], t[3])
 	if m7 != null or hd_on:
 		UI.base = Transform2D.IDENTITY
 		draw_set_transform_matrix(UI.base)
+	Ranch.draw_after(self)   # ranching: fireflies at night, sun rays, wind
 	for e in map["entities"]:
 		if e["type"] != "hazard" or not Game.eval_cond(e["cond"]):
 			continue

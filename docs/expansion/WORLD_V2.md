@@ -361,7 +361,10 @@ The soul-bound party (section 10) unlocks after the first ancient dragon falls.
 - **Ranches.** One per major kingdom, off the main town (both world phases): Fallowmere (T01_RANCH, Brackenford), Soot Paddock
   (T03_RANCH, Cinderwake), Gullbank Croft (T04_RANCH, Bellharbor), Windbreak Fold (T05_RANCH, High Aerie), Brinewell Steading
   (T06_RANCH, Nacre), Maple Gate Farm (N28_RANCH, Akagane), Lazar Fields (N22_RANCH, Harrowfen), Rimefold (N32_RANCH, Rimeholt).
-  Code `game/src/meta/ranch.gd`, data `tools/content/ranch.py`, maps `content_src/maps/ranch.map`, scenes `ranch.scn`, art
-  `tools/art/install_ranch.py` (Super Retro Ranch pack). Livestock is bought once per kind per ranch and fills the produce crate
-  over in-game days; crop plots take seed from the rancher's seed box; goods eat, sell and cook (recipes RF01-RF06, RA01).
-  Records > Ranches; achievements RN01-RN03.
+  Built and played with the owner's Super Retro Ranch pack (16 px; its readme: `docs/expansion/RANCH_PACK.md`). Code
+  `game/src/meta/ranch.gd`, data and rules `tools/content/ranch.py`, maps and their art `tools/maps48/maps/ranch.py`
+  (writes `content_src/maps/ranch.map`), scenes `ranch.scn`, sheets `tools/art/install_ranch.py`. The rancher lends a hoe,
+  a can and a sickle; dirt beds on the map are hoed, planted, watered (a stage per watered quarter day, rain waters) and cut;
+  frost (Rimeholt), ember storms (Cinderwake) and wind (High Aerie); cows, doves (nest, eggs hatch), pigs (grow up, truffles),
+  coneys and a barn cat (mice), affection hearts, foxes at an open gate (Akagane, Harrowfen); the rail kart ships goods
+  for coin by morning. Records > Ranches; achievements RN01-RN05.

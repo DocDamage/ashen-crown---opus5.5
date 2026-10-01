@@ -7365,68 +7365,6 @@ npc post_delver 14 16 left sprite=worker talk=N32P_DELVER if=phase:post
 node 16 2 kind=mine table=mine_r09
 node 20 19 kind=mine table=mine_r09
 node 32 22 kind=mine table=mine_r09
-=== N32_RANCH
-name: Rimefold
-tileset: winter
-music: M014
-zone: N32
-region: R09
-location: L_N32
-encounters: none
-save: false
-legend: a=barrel b=chimney c=crate d=door e=fence f=garden g=hedge h=house i=ice j=path k=rock l=roof m=snow n=tent o=tree p=water q=window
-grid:
-ooooooooooooooooojjooooooooooooooooooo
-oommmmommmmmmmmmmjjmmmmmmmmmmmmommmmoo
-omklllllllkmmmkmmjjmmmmkllllllllllkmmo
-omklllblllkmmnmmmjjmmmmkllllllllllkmmo
-omklllllllkmmmmmmjjmmmmkllllllllllkkmo
-omkhqhdhqhkmmmmacjjmmmmkhhqhddhqhhkmmo
-ommkjjjjjkjjjjjjjjjjjjjjkkjjjjmmmmmmmo
-ommmmmmmmmmmmmkmmjjmmmmmmmmmmjmmmmmmmo
-ommmeeeeeeeeeeemmjjmmmmmeeeeeeeemmmnmo
-ommmemmmmmmmmmemmjjmmmmmemmmmjmemmmmmo
-ommmemmmmmmmmmemmjjmmkmmemmmmjmemmmomo
-ommmekmmmmmmmmemmjjmmmmmemmmkjmemmmmmo
-ommmeeeeemkeeeemmjjmmmmmeeemmeeemmmmko
-ommmmmmmjjmmmmmmmjjmmmmmmmmjjjmmmmmmmo
-omkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjmo
-ommmmmmmmmmmmmjmmmmmmmmmmmmmmmmmmmmmmo
-ommgggggggggggjmmmmmmmmmmiiiiiiiimmmmo
-ommgfffffffffmjmmmmmmmkmiiiiiiiiiimmmo
-ommgjjjjjjjjjmjmmmmmmmmiiiiiiiiiiiimko
-ommgfjfjfjjjjjmmmmmmmmmiiiiippiiiiimmo
-ommgjjjjjjjjjmmmmmmmmmmmiiiiiiiiiimmmo
-ommgfffffffffmmmmmmmmkmmmiiiiiiiimmomo
-ommgggggggggggmmmmmmommmmmmmmmmmmmmmmo
-oommmmmommmmmmmmmmmmmmmmmmmmmmmmmmmmoo
-ooommmmmmmmmommmmmmmmmmmmmmmmmmmoooooo
-oooooooooooooooooooooooooooooooooooooo
-entities:
-spawn from_town 17 1 down
-spawn default 17 1 down
-exit 17..18 0 N32_R01 from_ranch
-npc rancher_r09 8 7 down sprite=farmer talk=RANCH_R09_HILD name="Hild Ulfsdottir"
-npc crate_R09 31 6 down sprite=ranch:crate:R09 talk=RANCH_CRATE name="Produce Crate"
-npc plot_R09_1 4 19 down sprite=ranch:plot:R09:1 talk=RANCH_PLOT name="Plot"
-npc plot_R09_2 6 19 down sprite=ranch:plot:R09:2 talk=RANCH_PLOT name="Plot"
-npc plot_R09_3 8 19 down sprite=ranch:plot:R09:3 talk=RANCH_PLOT name="Plot"
-npc own_R09_cow 9 10 down sprite=ranch:cow_black talk=RANCH_MINE wander=1 name="Your Cow" if=ranch:R09:own:cow
-npc own_R09_bunny 27 10 down sprite=ranch:bunny talk=RANCH_MINE wander=1 name="Your Coneys" if=ranch:R09:own:bunny
-npc own_R09_pig 34 11 left sprite=ranch:pig_black talk=RANCH_MINE wander=1 name="Your Pig" if=ranch:R09:own:pig
-npc cow_r09a 6 10 right sprite=ranch:cow_black talk=RANCH_COW wander=1
-npc cow_r09b 12 9 left sprite=ranch:cow_black talk=RANCH_COW wander=1
-npc bunny_r09a 25 10 down sprite=ranch:bunny talk=RANCH_BUNNY wander=1
-npc bunny_r09b 30 9 left sprite=ranch:bunny talk=RANCH_BUNNY wander=1
-npc pig_r09a 33 9 down sprite=ranch:pig_black talk=RANCH_PIG wander=1
-npc fox_r09a 34 20 left sprite=ranch:fox talk=RANCH_FOX wander=1
-npc hand_r09_ivar 20 15 down sprite=worker talk=RANCH_R09_IVAR name="Ivar"
-npc hand_r09_ketil 16 20 down sprite=child talk=RANCH_R09_KETIL wander=1 name="Ketil"
-npc hand_r09_trader 22 7 down sprite=clerk talk=RANCH_R09_TRADER name="Fur Buyer" if=!phase:post
-npc hand_r09_refugee 24 13 down sprite=survivor talk=RANCH_R09_REFUGEE name="Pit Refugee" if=phase:post
-sign 19 1 "Rimefold. Cattle that do not die of cold. Shut the gate or they will walk to the Ice Road."
-block 6 5 tile=door msg="Hild's longhouse. A cow skull is nailed above the door, horns waxed."
-block 28..29 5 tile=door msg="The byre. Warm breath fogs through the gaps in the planks."
 === N32_SHOP
 name: Rimeholt - Trading Post
 tileset: interior

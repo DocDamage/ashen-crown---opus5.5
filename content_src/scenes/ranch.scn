@@ -1,17 +1,22 @@
-# Ranches (one per major kingdom): ranchers, hands, animals and the ranch hooks.
-# `ranch menu <RID>` opens the rancher's trade (livestock, seed box, rules); `ranch crate`, `ranch plot` and
-# `ranch animal` read the ranch and plot from the NPC the player is talking to (game/src/meta/ranch.gd).
+# Ranches (one per major kingdom): ranchers, hands, animals and the ranch hooks (game/src/meta/ranch.gd).
+# `ranch lend <RID>` gives the Hoe, Watering Can and Sickle once; `ranch menu <RID>` opens the rancher's trade
+# (livestock, seed box, how it works). The beds, the gate, the player's beasts and the nest are handled in the field;
+# RANCH_PLANT (seed choice), RANCH_KART (the rail kart's chest) and RANCH_NEST / RANCH_ANIMAL are the scene hooks.
 
 # ---------------------------------------------------------------- shared hooks
-@scene RANCH_CRATE
-ranch crate
+@scene RANCH_PLANT
+ranch plant
 @end
 
-@scene RANCH_PLOT
-ranch plot
+@scene RANCH_KART
+ranch kart
 @end
 
-@scene RANCH_MINE
+@scene RANCH_NEST
+ranch nest
+@end
+
+@scene RANCH_ANIMAL
 ranch animal
 @end
 
@@ -25,6 +30,10 @@ say narr | The cow stood through the fault in this field. It chews as if nothing
 
 @scene RANCH_PIG
 say narr | The pig roots at your boots, decides they are not truffles, and grunts its disappointment.
+@end
+
+@scene RANCH_BIRD
+say narr | A dove picks at the straw and does not look up. Doves come home. It is the only thing anyone trusts about them.
 @end
 
 @scene RANCH_DOVE
@@ -57,8 +66,8 @@ if event:RANCH_R01_MET again
 event RANCH_R01_MET
 if phase:post post
 say agna | Agna Fallow. This is my land, what the quarry left of it. My boys went down the lift. The cows didn't.
-say agna | I sell beasts and seed. Buy a beast and it's yours, but it stays here; I feed it, you take what it gives.
-say agna | Milk and eggs go in the crate by the barn. Plots by the ditch, if you can wait for anything to grow.
+say agna | I sell beasts and seed. A beast you buy stays here; I feed it, you come and take what it gives.
+say agna | Take a hoe and a can. Those dirt beds by the well are yours to work. The kart by the rails sells what you grow.
 goto menu
 label post
 say agna | Agna Fallow. The river came through the bottom field and took Mott and half the fences. The cows swam.
@@ -66,11 +75,12 @@ say agna | I'll still sell you a beast. Somebody has to keep breeding things tha
 goto menu
 label again
 if phase:post again_post
-say agna | Back. The beasts don't miss you, but the crate might.
+say agna | Back. The beasts don't miss you, but the beds might.
 goto menu
 label again_post
 say agna | Still here. So am I. That's the whole of the news.
 label menu
+ranch lend R01
 ranch menu R01
 @end
 
@@ -85,12 +95,12 @@ say tobin | I pulled a calf out of the flood by its ears. Agna said that was stu
 
 @scene RANCH_R01_MOTT
 say mott | Forty years I've milked here. The Crown took my sons for the quarry and my teeth for the levy.
-say mott | Carrots in a day, potatoes in two. The earth here's the only honest thing left in the March.
+say mott | Water it in the morning and it's up a hand by night. The earth here's the only honest thing left in the March.
 @end
 
 @scene RANCH_R01_RESSA
 if phase:post post
-say ressa | I keep the plots. Plant, wait, pull. If you plant and leave, the crop waits for you. Mostly.
+say ressa | I keep these beds. Water, wait, cut. A crop you leave dry just stands there and sulks.
 say ressa | Agna pays in milk. Better than the quarry paid in crowns.
 end
 label post
@@ -110,15 +120,16 @@ event RANCH_R02_MET
 if phase:post post
 say brann | Brann Coker. Twenty years on the furnace floor. Now I keep pigs. My lungs prefer the pigs.
 say brann | Pigs root in the ash and turn up black truffles. Nobody knows why. The guild cooks pay not to ask.
-say brann | Buy a beast, I'll keep it. You come back and empty the crate. Seeds too, for what grows in soot.
+say brann | Buy a beast, I'll keep it. The beds are yours if you'll work them. Here, the tools. Keep them out of the ash.
 goto menu
 label post
 say brann | The furnaces went cold the night of the fault. First clean air in this paddock in a hundred years.
 say brann | The pigs hate it. Truffles still come up, though. Ash doesn't wash out of ground this old.
 goto menu
 label again
-say brann | The pigs are where you left them. So is the crate. So am I.
+say brann | The pigs are where you left them. So is the kart. So am I.
 label menu
+ranch lend R02
 ranch menu R02
 @end
 
@@ -133,7 +144,7 @@ say kettle | The regulator's men left when the pipes went dry. Took the scales. 
 
 @scene RANCH_R02_WISP
 say wisp | I'm not a farmhand. I'm a volunteer. The difference is nobody pays me.
-say wisp | Onions in a day, beets in two. In this paddock, even vegetables grow up fast.
+say wisp | When the ash comes down, water the beds. Dry leaves catch the cinders. Wet ones don't.
 @end
 
 @scene RANCH_R02_REGULATOR
@@ -156,21 +167,22 @@ event RANCH_R03_MET
 if phase:post post
 say maude | Maude Tiller. My husband fished. The sea had him. I took the croft and turned my back on the water.
 say maude | Cows on salt grass give milk you can taste the tide in. Bellharbor pays for it, grudgingly.
-say maude | Buy a beast, I'll graze it. The crate's by the byre. Seed for whatever grows in sand.
+say maude | Buy a beast, I'll graze it. The beds by the well want working; take a hoe. The kart takes goods to the quay buyers.
 goto menu
 label post
 say maude | The sea came up to the byre door the night of the fault and went back out. It took the lower town instead.
 say maude | Thirty years I turned my back on it. It didn't care either way.
 goto menu
 label again
-say maude | Tide's out. Crate's by the byre. Don't let the coneys near the nets.
+say maude | Tide's out. Kart's on the rails. Don't let the coneys near the nets.
 label menu
+ranch lend R03
 ranch menu R03
 @end
 
 @scene RANCH_R03_PIM
 if phase:post post
-say pim | Radishes come up in a day! Mum says that's the only fast thing in Bellharbor that isn't a debt.
+say pim | Rain waters the beds for you! Maude says that's the only free thing in Bellharbor that isn't the wind.
 end
 label post
 say pim | We could see the lower town from here. Now we see water. Maude says don't look. I look.
@@ -202,7 +214,7 @@ event RANCH_R04_MET
 if phase:post post
 say sefton | Sefton Crag. Sixty winters on this ledge. The wind takes a lamb a year and a shepherd a decade.
 say sefton | Coneys for wool, doves for messages, a black cow that thinks she's a goat. All for sale, once.
-say sefton | Your beast stays on my ledge. The crate's by the barn. Rope yourself if you go near the edge.
+say sefton | Your beast stays on my ledge. Take a hoe; the beds are below the house. Rope yourself if you go near the edge.
 goto menu
 label post
 say sefton | The cables came down in the fault. Half of High Aerie's sons were on them. My doves still find the Court.
@@ -211,12 +223,13 @@ goto menu
 label again
 say sefton | Wind's from the east. Wool's dry. That's the report.
 label menu
+ranch lend R04
 ranch menu R04
 @end
 
 @scene RANCH_R04_LISL
 if phase:post post
-say lisl | I comb the coneys. Every second day there's enough wool for a muffler. The crafters in the Court sew them.
+say lisl | I comb the coneys. Every second day there's enough wool for a muffler, if they like you. They don't like me.
 say lisl | Sefton says the wind will have me one day. He says it like weather.
 end
 label post
@@ -224,8 +237,8 @@ say lisl | I sewed mufflers for the cable crews. They wore them on the last cros
 @end
 
 @scene RANCH_R04_DUNMORE
-say dunmore | Pumpkins up here take three days and a fight with the wind. Leeks are easier. Leeks don't care.
-say dunmore | Corn, two days. Feed it to the cow and she still won't thank you.
+say dunmore | The wind shakes the corn all day. Doesn't hurt it. It's the shaking that keeps it honest, Sefton says.
+say dunmore | Corn takes the longest. Feed it to the cow and she still won't thank you.
 @end
 
 @scene RANCH_R04_PRIEST
@@ -244,7 +257,7 @@ event RANCH_R05_MET
 if phase:post post
 say yara | Yara Saltmarrow. Out here water costs more than pork, and pork costs more than people.
 say yara | Pigs fat on salt-root, doves on the cistern, a cow that drinks like a tax collector. Buy one, I keep it.
-say yara | Crate's by the barn. Seed for the walled garden; it's the only soft ground for a day's ride.
+say yara | Here's a can, a hoe, a sickle. The beds by the house are the only soft ground for a day's ride. Water costs nothing here. Yet.
 goto menu
 label post
 say yara | The Assembly shares the water now. The rich wells are under rubble. Funny how sharing starts.
@@ -253,13 +266,14 @@ goto menu
 label again
 say yara | Water's rationed. Business isn't.
 label menu
+ranch lend R05
 ranch menu R05
 @end
 
 @scene RANCH_R05_KESH
 if phase:post post
 say kesh | I water the garden with a cup. One cup a plant. Yara counts.
-say kesh | Eggplants take two days. Onions one. Wheat one, if the wind doesn't salt it.
+say kesh | Water it, and it grows every quarter of the day. Leave it dry and it waits. Like Yara's patience.
 end
 label post
 say kesh | After the fault the brine pool went sweet for a week. Yara made us drink till we were sick. Smart.
@@ -285,7 +299,7 @@ event RANCH_R07_MET
 if phase:post post
 say okuni | Okuni Hara. I keep the Court's table: coneys, doves, a pig the steward pretends not to eat.
 say okuni | The foxes come and go. They are guests. A farm that starves its guests does not deserve a gate.
-say okuni | A beast bought here stays here. The crate is by the barn. Seeds for bamboo and the Court's grapes.
+say okuni | A beast bought here stays here. Take these tools; the beds are by the well. Shut the pen gate at dusk, for the guests' sake.
 goto menu
 label post
 say okuni | The Court is in exile and the steward ran with the silver. The foxes stayed. Make of that what you will.
@@ -294,6 +308,7 @@ goto menu
 label again
 say okuni | Welcome back. Bow to the gate if you like. The foxes notice.
 label menu
+ranch lend R07
 ranch menu R07
 @end
 
@@ -307,7 +322,7 @@ say taro | Nobody ate anybody. Grandmother says that is the Court's real law.
 @end
 
 @scene RANCH_R07_SUMI
-say sumi | Bamboo takes three days and wants the stream. Grapes take three and want flattery.
+say sumi | Bamboo wants the stream. Grapes want flattery. Both want water twice a day if you can spare it.
 say sumi | Radishes take one and want nothing. I like radishes.
 @end
 
@@ -331,7 +346,7 @@ event RANCH_R08_MET
 if phase:post post
 say gideon | Gideon Marl. Inside the wall, the meat rots. Out here, the Board inspects mine twice a week.
 say gideon | Clean beasts are the only clean thing Harrowfen has. I sell them once, and keep them clean myself.
-say gideon | Your beast stays in my fields. Its goods go in the crate. Seed for berries and leeks, washed.
+say gideon | Your beast stays in my fields. The beds are yours; the tools are scrubbed. Shut the pen gate. The foxes are not inspected.
 goto menu
 label post
 say gideon | The town burned its own wards. The Board signed the order and then ran past my fence.
@@ -340,13 +355,14 @@ goto menu
 label again
 say gideon | Wash your hands at the trough before you touch anything. Then buy something.
 label menu
+ranch lend R08
 ranch menu R08
 @end
 
 @scene RANCH_R08_NELL
 if phase:post post
 say nell | I'm not sick. I live out here because I'm not sick. The wall people check every month.
-say nell | Berries are bitter but they're ours. Two days. I count.
+say nell | Berries are bitter but they're ours. Mice want them too. A cat would help. Gideon says cats are not inspected either.
 end
 label post
 say nell | Nobody checks anymore. I still stand in the line by the trough on the first of the month.
@@ -376,7 +392,7 @@ event RANCH_R09_MET
 if phase:post post
 say hild | Hild Ulfsdottir. My cattle are black so the snow doesn't swallow them. Mostly it works.
 say hild | Coneys for fur-wool, black cows, a pig for when the winter is worse than usual. I sell each once.
-say hild | Your beast stays in my byre. The crate's by it. Potatoes and berries grow under straw, if you're patient.
+say hild | Your beast stays in my byre. The beds take a hoe and patience. Snow takes a stage off anything left growing at night.
 goto menu
 label post
 say hild | The Pit opened north of here and the Ice Road filled with people walking south. I fed who I could.
@@ -385,6 +401,7 @@ goto menu
 label again
 say hild | Shut the gate. Then we can talk business.
 label menu
+ranch lend R09
 ranch menu R09
 @end
 
@@ -397,7 +414,7 @@ say ivar | The cows walked to the Pit's edge the night it opened and stood looki
 @end
 
 @scene RANCH_R09_KETIL
-say ketil | Mother says a fox is a cat that thinks in winters. This one steals eggs. I think it thinks in eggs.
+say ketil | Mother says pull the ripe beds before dark. Snow nights bite the green ones back down.
 @end
 
 @scene RANCH_R09_TRADER
