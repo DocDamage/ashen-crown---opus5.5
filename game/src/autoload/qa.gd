@@ -64,6 +64,7 @@ func start(p_main: Node) -> void:
 	main = p_main
 	if flat:
 		Settings.v["hd2d"] = false
+		Settings.v["world_view"] = "flat"   # the Mode-7 world view is as slow as HD-2D under software rendering
 	var scr = load("res://src/qa/routes.gd")
 	if scr == null or not scr.can_instantiate():
 		finish(false, "route script failed to load")
