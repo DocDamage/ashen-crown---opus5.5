@@ -205,19 +205,26 @@ func walk_to(x: int, y: int, adjacent: bool = false, max_t: float = 400.0) -> bo
 	var goal = Vector2i(x, y)
 	var map0: String = f.map_id
 	var t = 0.0
+	var path: Array = []   # cached route: re-planned only when the walker leaves it (a BFS per step is slow on the world maps)
+	var expect := Vector2i(-9999, -9999)
 	while t < max_t:
 		await settle()
 		if main.last_battle_result != "":
 			main.last_battle_result = ""
+			path = []
 			await maintain()
 		if f.map_id != map0:
 			return true
 		if (not adjacent and f.p_tile == goal) or (adjacent and (f.p_tile - goal).length() == 1.0):
 			return true
-		var path = _bfs(goal, adjacent)
+		if not path.is_empty() and f.p_tile == expect:
+			path.pop_front()
+		if path.is_empty() or f.p_tile != expect or f.solid_at(path[0].x, path[0].y):
+			path = _bfs(goal, adjacent)
 		if path.is_empty():
 			return fail("no path to %s on %s from %s" % [goal, f.map_id, f.p_tile])
 		var nxt: Vector2i = path[0]
+		expect = nxt
 		var d = ""
 		for k in Field.DV:
 			if f.p_tile + Field.DV[k] == nxt:
@@ -1157,6 +1164,8 @@ func r_seg8() -> bool:
 		["airship", "board"], ["airship", "fly_to", "Hearthward"], ["airship", "land"], ["loc", "L_T07"],
 		["buy", "npc:stall", [["I002", 8], ["I004", 8], ["I006", 4], ["W004", 1], ["W010", 1], ["W034", 1], ["W028", 1]]],
 		["optimize"], ["exit", "WORLD_POST"], ["grind_to", 31, 45],
+		# Veyr is across water from Hearthward after the fault: fly there
+		["airship", "board"], ["airship", "fly_to", "Veyr"], ["airship", "land"],
 		["loc", "L_T02"], ["buy", "npc:market_v", [["G016", 1], ["G004", 1], ["G008", 1], ["G023", 2]]], ["optimize"],
 		["exit", "WORLD_POST"], ["airship", "board"], ["airship", "fly_to", "Crown Heart"], ["airship", "land"], ["loc", "L_D10"],
 		["go", 19, 18], ["check", "event:D10_DOCK"], ["use", "switch", "split"], ["wait_map", "D10_R02"],
