@@ -95,7 +95,7 @@ func _build(parent: Node) -> void:
 		pcam = pcam_script.new()
 		pcam.name = "FieldPCam"
 		root.add_child(pcam)
-		pcam.set("priority", 10)
+		_prio(pcam, 10)
 		pcam.set("follow_mode", 2)            # SIMPLE: follow with an offset
 		pcam.set("follow_target", focus)
 		pcam.set("follow_damping", true)
@@ -107,7 +107,7 @@ func _build(parent: Node) -> void:
 		pcam_shot = pcam_script.new()
 		pcam_shot.name = "ShotPCam"
 		root.add_child(pcam_shot)
-		pcam_shot.set("priority", 0)
+		_prio(pcam_shot, 0)
 		pcam_shot.set("follow_mode", 2)
 		pcam_shot.set("follow_target", shot_focus)
 		pcam_shot.set("tween_on_load", false)
@@ -154,11 +154,11 @@ func shot(center_units: Vector2, zoom: float = 0.7, pitch_add: float = -8.0) -> 
 	shot_focus.position = Vector3(center_units.x / 16.0, 0.0, center_units.y / 16.0)
 	pcam_shot.rotation = Vector3(-pr, 0, 0)
 	pcam_shot.set("follow_offset", Vector3(0, sin(pr) * d, cos(pr) * d))
-	pcam_shot.set("priority", 30)
+	_prio(pcam_shot, 30)
 
 func end_shot() -> void:
 	if pcam_shot != null:
-		pcam_shot.set("priority", 0)
+		_prio(pcam_shot, 0)
 
 ## A map's ground (and over layer) as lit chunks; lamps = [[x_units, y_units, Color, radius_cells], ...].
 func set_map(ground: Texture2D, over: Texture2D, w_cells: int, h_cells: int, lamp_list: Array, kind: String, dark: bool) -> void:
@@ -280,3 +280,8 @@ func free_all() -> void:
 		vp.queue_free()
 	if is_instance_valid(vp_over):
 		vp_over.queue_free()
+
+## Phantom Camera warns when a priority is re-set to its current value; only set real changes.
+func _prio(p, v: int) -> void:
+	if p != null and int(p.get("priority")) != v:
+		p.set("priority", v)

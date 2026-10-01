@@ -189,14 +189,19 @@ func act(a: Vector2, b: Vector2) -> void:
 	var fa = floor_of(a)
 	var fb = floor_of(b)
 	focus_act.position = (fa + fb) * 0.5
-	pcam_act.set("priority", 20)
+	_prio(pcam_act, 20)
 	acting = true
 
 func release() -> void:
 	if pcam_act == null:
 		return
-	pcam_act.set("priority", 0)
+	_prio(pcam_act, 0)
 	acting = false
 
 func texture() -> Texture2D:
 	return vp.get_texture()
+
+## Phantom Camera warns when a priority is re-set to its current value; only set real changes.
+func _prio(p, v: int) -> void:
+	if p != null and int(p.get("priority")) != v:
+		p.set("priority", v)
