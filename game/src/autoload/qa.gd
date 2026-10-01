@@ -4,6 +4,7 @@ extends Node
 ##   --qa-capture        save screenshots at route checkpoints
 ##   --qa-out <dir>      screenshot/log directory (default user://qa)
 ##   --qa-speed <n>      Engine.time_scale for faster bots (simulation stays fixed-step)
+##   --qa-flat           run with HD-2D off (the flat 2D view; software-rendered CI is too slow for the 3D stage)
 ## The bot only presses the same InputMap actions a player can press. No teleports, no flag edits.
 
 var route = ""
@@ -18,6 +19,7 @@ var speed = 1.0
 var watchdog = 900
 var finished = false
 var tests = false
+var flat = false
 var gallery = ""
 
 func _ready() -> void:
@@ -47,6 +49,8 @@ func _ready() -> void:
 			"--qa-watchdog":
 				watchdog = int(args[i + 1])
 				i += 1
+			"--qa-flat":
+				flat = true
 			"--qa-speed":
 				speed = float(args[i + 1])
 				i += 1
@@ -58,6 +62,8 @@ func _ready() -> void:
 
 func start(p_main: Node) -> void:
 	main = p_main
+	if flat:
+		Settings.v["hd2d"] = false
 	var scr = load("res://src/qa/routes.gd")
 	if scr == null or not scr.can_instantiate():
 		finish(false, "route script failed to load")

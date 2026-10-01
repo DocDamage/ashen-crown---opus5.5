@@ -411,9 +411,18 @@ func fight() -> void:
 			for eid in bs.tells:
 				shot_taken = true
 				await QA.shot((seg_name if seg_name != "" else "b1") + "_boss_tell_" + str(bs.form.get("id", "")))
-		if bs.cmd_menu != null and tp == bs.cmd_menu:
+		if bs.cmd_menu != null and tp == bs.cmd_menu and stall > 4.0:
+			# the policy's pick made no progress (a closed command or an empty target list): Defend always commits
+			QA.note("battle: no progress for %s (enemies targetable %d, cmd index %d), defending" % [str(bs.selecting.ref if bs.selecting else "?"), bs.model.targetable_list(1).size(), bs.cmd_menu.index])
+			await _pick(bs.cmd_menu, _menu_index(bs.cmd_menu, func(it): return it.get("value", "") == "defend"))
+			stall = 0.0
+		elif bs.cmd_menu != null and tp == bs.cmd_menu:
 			await _choose_command(bs)
 		elif tp is DialogueBox:
+			await press("confirm")
+		elif tp == bs and bs.target_mode != "" and stall > 1.0:
+			# a target pick left open (its confirm landed before the picker took focus): confirm it
+			QA.note("battle: confirming an open %s target pick" % bs.target_mode)
 			await press("confirm")
 		elif tp is MenuList and tp.get_parent() == main.ui:
 			await press("confirm")   # defeat menu -> Retry
@@ -545,7 +554,7 @@ func _choose_command(bs) -> void:
 
 func _target(bs, want: String) -> void:
 	var guard = 0
-	while bs.target_mode == "" and guard < 20:
+	while bs.target_mode == "" and guard < 60:
 		await frames(1)
 		guard += 1
 	if want != "":
@@ -571,6 +580,11 @@ func _use_item(bs, m: MenuList, iid: String, target: String) -> void:
 
 func _use_ability(bs, m: MenuList, aid: String, target: String) -> void:
 	var ri = _menu_index(m, func(it): return it.get("value", "") == "role")
+	if ri < 0 or not m.items[ri].get("enabled", true):
+		# no usable techniques in the role list (e.g. a changed hero): attack instead of re-picking a closed command
+		await _pick(m, _menu_index(m, func(it): return it.get("value", "") == "attack"))
+		await _target(bs, "")
+		return
 	await _pick(m, ri)
 	await frames(2)
 	var sm: MenuList = bs.sub_menu
